@@ -1,0 +1,772 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/latexify.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/latexify.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:9
+msgid "Using latexify in PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:11
+msgid ""
+"In this notebook we show how to use ``latexify`` to print all the model "
+"equations."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:22
+msgid "First we import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:46
+msgid ""
+"<pre>\n"
+"ERROR: Invalid requirement: &#39;#&#39;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:52
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"ERROR: Invalid requirement: '\\#'\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:59
+msgid "ERROR: Invalid requirement: '#'"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:70
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:76
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:83
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:94
+msgid "Then we load a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "model = pybamm.lithium_ion.SPM()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:115
+msgid ""
+"Now that we have defined a model we can use latexify to get the latex of all "
+"the model equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "model.latexify()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:136
+msgid ""
+"$\\displaystyle \\large{\\underline{\\textbf{Single Particle Model "
+"Equations}}}\\\\\\\\\\\\ \\textbf{Discharge capacity [A.h]}\\\\\\\\\\frac{d}"
+"{d t} Q_{Ah} = \\frac{I}{3600}\\\\\\\\Q_{Ah} = 0.0\\quad \\text{at}\\; t=0\\"
+"\\\\\\\\\\ \\textbf{X-averaged negative particle concentration [mol.m-3]}\\\\"
+"\\\\\\frac{\\partial}{\\partial t} \\overline{c}_{\\mathrm{s,n}} = "
+"\\nabla\\cdot \\left(D_{\\mathrm{n}} \\left(\\nabla \\overline{c}"
+"_{\\mathrm{s,n}}\\right)\\right)\\quad 0 < r < R_{\\mathrm{n}}"
+"^{\\mathrm{typ}}\\\\\\\\\\overline{c}_{\\mathrm{s,n}} = \\int c_{\\mathrm{n}}"
+"^{\\mathrm{init}}\\, dxn\\quad \\text{at}\\; t=0\\\\\\\\\\nabla \\overline{c}"
+"_{\\mathrm{s,n}} = 0.0\\quad  \\text{at } r = 0\\\\\\\\\\nabla \\overline{c}"
+"_{\\mathrm{s,n}} = - \\frac{i_{\\mathrm{cell}}}{D_{\\mathrm{n}}^{surf} F "
+"L_{\\mathrm{n}} \\overline{a}_{\\mathrm{n}}}\\quad  \\text{at } r = "
+"R_{\\mathrm{n}}^{\\mathrm{typ}}\\\\\\\\\\\\ \\textbf{X-averaged positive "
+"particle concentration [mol.m-3]}\\\\\\\\\\frac{\\partial}{\\partial t} "
+"\\overline{c}_{\\mathrm{s,p}} = \\nabla\\cdot \\left(D_{\\mathrm{p}} "
+"\\left(\\nabla \\overline{c}_{\\mathrm{s,p}}\\right)\\right)\\quad 0 < r < "
+"R_{\\mathrm{p}}^{\\mathrm{typ}}\\\\\\\\\\overline{c}_{\\mathrm{s,p}} = \\int "
+"c_{\\mathrm{p}}^{\\mathrm{init}}\\, dxn\\quad \\text{at}\\; t=0\\\\\\\\"
+"\\nabla \\overline{c}_{\\mathrm{s,p}} = 0.0\\quad  \\text{at } r = 0\\\\\\\\"
+"\\nabla \\overline{c}_{\\mathrm{s,p}} = - \\frac{j_{\\mathrm{p}}}"
+"{D_{\\mathrm{p}}^{surf} F}\\quad  \\text{at } r = R_{\\mathrm{p}}"
+"^{\\mathrm{typ}}\\\\\\\\\\\\ \\textbf{Voltage [V]}\\\\\\\\V = - U_\\mathrm{n}"
+"(c^\\mathrm{surf}_\\mathrm{s,n}, T) + U_\\mathrm{p}(c^\\mathrm{surf}"
+"_\\mathrm{s,p}, T) + \\frac{2.0 R T_{\\mathrm{amb}} \\operatorname{asinh}"
+"{\\left(\\frac{0.5 j_{\\mathrm{p}}}{j_{\\mathrm{p}}^{\\mathrm{0}}} \\right)}}"
+"{F ne_{\\mathrm{p}}} - \\frac{2.0 R T_{\\mathrm{amb}} \\operatorname{asinh}"
+"{\\left(\\frac{0.5 i_{\\mathrm{cell}}}{L_{\\mathrm{n}} \\overline{a}"
+"_{\\mathrm{n}} j_{\\mathrm{n}}^{\\mathrm{0}}} \\right)}}{F "
+"ne_{\\mathrm{n}}}\\\\\\\\\\\\ \\textbf{Parameters and Variables}\\\\\\\\I = "
+"\\text{Current function [A]}\\\\\\\\\\overline{c}_{\\mathrm{s,n}} = \\text{X-"
+"averaged negative particle concentration [mol.m-3]}\\\\\\\\D_{\\mathrm{n}} = "
+"\\text{Negative particle diffusivity [m2.s-1]}\\\\\\\\T_{\\mathrm{amb}} = "
+"\\text{Ambient temperature [K]}\\\\\\\\c_{\\mathrm{n}}^{\\mathrm{max}} = "
+"\\text{Maximum concentration in negative electrode [mol.m-3]}\\\\\\\\"
+"\\overline{c}_{\\mathrm{s,p}} = \\text{X-averaged positive particle "
+"concentration [mol.m-3]}\\\\\\\\D_{\\mathrm{p}} = \\text{Positive particle "
+"diffusivity [m2.s-1]}\\\\\\\\c_{\\mathrm{p}}^{\\mathrm{max}} = "
+"\\text{Maximum concentration in positive electrode [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:148
+msgid ""
+"We can also get a list of all the equations instead of a single line joined "
+"by newline"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "model.latexify(newline=False)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:169
+msgid ""
+"$\\displaystyle \\left[ \\large{\\underline{\\textbf{Single Particle Model "
+"Equations}}}, \\  \\\\ \\textbf{Discharge capacity [A.h]}, \\  \\frac{d}{d "
+"t} Q_{Ah} = \\frac{I}{3600}, \\  Q_{Ah} = 0.0\\quad \\text{at}\\; t=0, \\  \\"
+"\\ \\textbf{X-averaged negative particle concentration [mol.m-3]}, \\  "
+"\\frac{\\partial}{\\partial t} \\overline{c}_{\\mathrm{s,n}} = \\nabla\\cdot "
+"\\left(D_{\\mathrm{n}} \\left(\\nabla \\overline{c}_{\\mathrm{s,"
+"n}}\\right)\\right)\\quad 0 < r < R_{\\mathrm{n}}^{\\mathrm{typ}}, \\  "
+"\\overline{c}_{\\mathrm{s,n}} = \\int c_{\\mathrm{n}}^{\\mathrm{init}}\\, "
+"dxn\\quad \\text{at}\\; t=0, \\  \\nabla \\overline{c}_{\\mathrm{s,n}} = "
+"0.0\\quad  \\text{at } r = 0, \\  \\nabla \\overline{c}_{\\mathrm{s,n}} = - "
+"\\frac{i_{\\mathrm{cell}}}{D_{\\mathrm{n}}^{surf} F L_{\\mathrm{n}} "
+"\\overline{a}_{\\mathrm{n}}}\\quad  \\text{at } r = R_{\\mathrm{n}}"
+"^{\\mathrm{typ}}, \\  \\\\ \\textbf{X-averaged positive particle "
+"concentration [mol.m-3]}, \\  \\frac{\\partial}{\\partial t} \\overline{c}"
+"_{\\mathrm{s,p}} = \\nabla\\cdot \\left(D_{\\mathrm{p}} \\left(\\nabla "
+"\\overline{c}_{\\mathrm{s,p}}\\right)\\right)\\quad 0 < r < R_{\\mathrm{p}}"
+"^{\\mathrm{typ}}, \\  \\overline{c}_{\\mathrm{s,p}} = \\int c_{\\mathrm{p}}"
+"^{\\mathrm{init}}\\, dxn\\quad \\text{at}\\; t=0, \\  \\nabla \\overline{c}"
+"_{\\mathrm{s,p}} = 0.0\\quad  \\text{at } r = 0, \\  \\nabla \\overline{c}"
+"_{\\mathrm{s,p}} = - \\frac{j_{\\mathrm{p}}}{D_{\\mathrm{p}}^{surf} "
+"F}\\quad  \\text{at } r = R_{\\mathrm{p}}^{\\mathrm{typ}}, \\  \\\\ "
+"\\textbf{Voltage [V]}, \\  V = - U_\\mathrm{n}(c^\\mathrm{surf}_\\mathrm{s,"
+"n}, T) + U_\\mathrm{p}(c^\\mathrm{surf}_\\mathrm{s,p}, T) + \\frac{2.0 R "
+"T_{\\mathrm{amb}} \\operatorname{asinh}{\\left(\\frac{0.5 j_{\\mathrm{p}}}"
+"{j_{\\mathrm{p}}^{\\mathrm{0}}} \\right)}}{F ne_{\\mathrm{p}}} - \\frac{2.0 "
+"R T_{\\mathrm{amb}} \\operatorname{asinh}{\\left(\\frac{0.5 "
+"i_{\\mathrm{cell}}}{L_{\\mathrm{n}} \\overline{a}_{\\mathrm{n}} "
+"j_{\\mathrm{n}}^{\\mathrm{0}}} \\right)}}{F ne_{\\mathrm{n}}}, \\  \\\\ "
+"\\textbf{Parameters and Variables}, \\  I = \\text{Current function [A]}, "
+"\\  \\overline{c}_{\\mathrm{s,n}} = \\text{X-averaged negative particle "
+"concentration [mol.m-3]}, \\  D_{\\mathrm{n}} = \\text{Negative particle "
+"diffusivity [m2.s-1]}, \\  T_{\\mathrm{amb}} = \\text{Ambient temperature "
+"[K]}, \\  c_{\\mathrm{n}}^{\\mathrm{max}} = \\text{Maximum concentration in "
+"negative electrode [mol.m-3]}, \\  \\overline{c}_{\\mathrm{s,p}} = \\text{X-"
+"averaged positive particle concentration [mol.m-3]}, \\  D_{\\mathrm{p}} = "
+"\\text{Positive particle diffusivity [m2.s-1]}, \\  c_{\\mathrm{p}}"
+"^{\\mathrm{max}} = \\text{Maximum concentration in positive electrode [mol."
+"m-3]}\\right]$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:181
+msgid ""
+"latexify can also be used to get the equations in a file format like png, "
+"jpg, pdf or tex."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "model.latexify(\"spm_equations_.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:202
+msgid ""
+"will create a png file titled ``spm_equations.png`` in the working directory."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "model_spme = pybamm.lithium_ion.SPMe()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:223
+msgid ""
+"Jupyter notebook sometimes cannot render latex output that is too large. In "
+"that case we use ``newline=False`` and loop over the lines. When "
+"``newline=False`` it returns a list, so it inherits all the properties of a "
+"list and you can also do something like this"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid ""
+"spme_latex = model_spme.latexify(newline=False)\n"
+"for line in spme_latex:\n"
+"    display(line)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:246
+msgid ""
+"$\\displaystyle \\large{\\underline{\\textbf{Single Particle Model with "
+"electrolyte Equations}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:258
+msgid "$\\displaystyle \\\\ \\textbf{Discharge capacity [A.h]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:270
+msgid "$\\displaystyle \\frac{d}{d t} Q_{Ah} = \\frac{I}{3600}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:282
+msgid "$\\displaystyle Q_{Ah} = 0.0\\quad \\text{at}\\; t=0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:294
+msgid "$\\displaystyle \\\\ \\textbf{Throughput capacity [A.h]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:306
+msgid ""
+"$\\displaystyle \\frac{d}{d t} Qt_{Ah} = \\frac{\\left|{I}\\right|}{3600}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:318
+msgid "$\\displaystyle Qt_{Ah} = 0.0\\quad \\text{at}\\; t=0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:330
+msgid ""
+"$\\displaystyle \\\\ \\textbf{X-averaged negative particle concentration "
+"[mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:342
+msgid ""
+"$\\displaystyle \\frac{\\partial}{\\partial t} \\overline{c}_{\\mathrm{s,n}} "
+"= \\nabla\\cdot \\left(D_{\\mathrm{n}} \\left(\\nabla \\overline{c}"
+"_{\\mathrm{s,n}}\\right)\\right)\\quad 0 < r < R_{\\mathrm{n}}"
+"^{\\mathrm{typ}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:354
+msgid ""
+"$\\displaystyle \\overline{c}_{\\mathrm{s,n}} = \\int c_{\\mathrm{n}}"
+"^{\\mathrm{init}}\\, dxn\\quad \\text{at}\\; t=0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:366
+msgid ""
+"$\\displaystyle \\nabla \\overline{c}_{\\mathrm{s,n}} = 0.0\\quad  "
+"\\text{at } r = 0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:378
+msgid ""
+"$\\displaystyle \\nabla \\overline{c}_{\\mathrm{s,n}} = - "
+"\\frac{i_{\\mathrm{cell}}}{D_{\\mathrm{n}}^{surf} F L_{\\mathrm{n}} "
+"\\overline{a}_{\\mathrm{n}}}\\quad  \\text{at } r = R_{\\mathrm{n}}"
+"^{\\mathrm{typ}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:390
+msgid ""
+"$\\displaystyle \\\\ \\textbf{X-averaged positive particle concentration "
+"[mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:402
+msgid ""
+"$\\displaystyle \\frac{\\partial}{\\partial t} \\overline{c}_{\\mathrm{s,p}} "
+"= \\nabla\\cdot \\left(D_{\\mathrm{p}} \\left(\\nabla \\overline{c}"
+"_{\\mathrm{s,p}}\\right)\\right)\\quad 0 < r < R_{\\mathrm{p}}"
+"^{\\mathrm{typ}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:414
+msgid ""
+"$\\displaystyle \\overline{c}_{\\mathrm{s,p}} = \\int c_{\\mathrm{p}}"
+"^{\\mathrm{init}}\\, dxn\\quad \\text{at}\\; t=0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:426
+msgid ""
+"$\\displaystyle \\nabla \\overline{c}_{\\mathrm{s,p}} = 0.0\\quad  "
+"\\text{at } r = 0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:438
+msgid ""
+"$\\displaystyle \\nabla \\overline{c}_{\\mathrm{s,p}} = "
+"\\frac{i_{\\mathrm{cell}}}{D_{\\mathrm{p}}^{surf} F L_{\\mathrm{p}} "
+"\\overline{a}_{\\mathrm{p}}}\\quad  \\text{at } r = R_{\\mathrm{p}}"
+"^{\\mathrm{typ}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:450
+msgid ""
+"$\\displaystyle \\\\ \\textbf{Porosity times concentration [mol.m-3]"
+"(Negative electrode porosity times concentration [mol.m-3], Separator "
+"porosity times concentration [mol.m-3], Positive electrode porosity times "
+"concentration [mol.m-3])}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:462
+msgid ""
+"$\\displaystyle \\frac{\\partial}{\\partial t} (\\epsilon c)_{\\mathrm{e}} = "
+"- \\nabla\\cdot \\left(- D_{\\mathrm{e}} \\mathcal{B} \\left(\\nabla "
+"c_{\\mathrm{e}}\\right) + \\frac{i_{\\mathrm{e}} t_{\\mathrm{+}}}{F}\\right) "
+"+ \\frac{aj}{F}\\quad 0 < x < L_x$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:474
+msgid ""
+"$\\displaystyle (\\epsilon c)_{\\mathrm{e}} = \\epsilon^{\\mathrm{init}} "
+"c_{\\mathrm{e}}^{\\mathrm{init}}\\quad \\text{at}\\; t=0$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:486
+msgid "$\\displaystyle \\\\ \\textbf{Voltage [V]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:498
+msgid ""
+"$\\displaystyle V = - L_{\\mathrm{n}} i_{\\mathrm{cell}} \\left(- \\frac{1.0}"
+"{\\kappa_{\\mathrm{e}} \\int \\left(\\epsilon_{\\mathrm{s}}"
+"^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,s}}}\\, dxn} + "
+"\\frac{0.333333333333333}{\\kappa_{\\mathrm{e}} \\int "
+"\\left(\\epsilon_{\\mathrm{n}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,"
+"n}}}\\, dxn}\\right) - U_\\mathrm{n}(c^\\mathrm{surf}_\\mathrm{s,n}, T) + "
+"U_\\mathrm{p}(c^\\mathrm{surf}_\\mathrm{s,p}, T) - \\int \\frac{2.0 R "
+"T_{\\mathrm{amb}} \\operatorname{asinh}{\\left(\\frac{0.5 i_{\\mathrm{cell}}}"
+"{L_{\\mathrm{n}} \\overline{a}_{\\mathrm{n}} j_{\\mathrm{n}}^{\\mathrm{0}}} "
+"\\right)}}{F}\\, dxn + \\int \\left(- \\frac{2.0 R T_{\\mathrm{amb}} "
+"\\operatorname{asinh}{\\left(\\frac{0.5 i_{\\mathrm{cell}}}{L_{\\mathrm{p}} "
+"\\overline{a}_{\\mathrm{p}} j_{\\mathrm{p}}^{\\mathrm{0}}} \\right)}}"
+"{F}\\right)\\, dxn - \\int \\frac{0.5 i_{\\mathrm{cell}} \\left(- L_{x}"
+"^{2.0} + L_{\\mathrm{p}}^{2.0} + x_{p} \\left(2.0 L_{x} - "
+"x_{p}\\right)\\right)}{L_{\\mathrm{p}} \\kappa_{\\mathrm{e}} \\int "
+"\\left(\\epsilon_{\\mathrm{p}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,"
+"p}}}\\, dxn}\\, dxn + \\int \\frac{R T_{\\mathrm{amb}} \\left(1+\\frac{dlnf}"
+"{dlnc}\\right) \\left(2.0 - 2.0 t_{\\mathrm{+}}\\right) "
+"\\log{\\left(\\max\\left(1.0 \\cdot 10^{-15}, \\frac{(\\epsilon "
+"c)_{\\mathrm{e,p}}}{\\epsilon_{\\mathrm{p}}^{\\mathrm{init}} \\int "
+"c_{\\mathrm{e}}\\, dxn}\\right) \\right)}}{F}\\, dxn + \\int \\frac{0.5 "
+"i_{\\mathrm{cell}} x_{n} \\left(- 2.0 L_{\\mathrm{n}} + x_{n}\\right)}"
+"{L_{\\mathrm{n}} \\sigma_{\\mathrm{n}} \\int \\left(1.0 - "
+"\\epsilon_{\\mathrm{n}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{s,n}}}\\, "
+"dxn}\\, dxn + \\frac{i_{\\mathrm{cell}} \\left(L_{x} - 0.333333333333333 "
+"L_{\\mathrm{p}}\\right)}{\\sigma_{\\mathrm{p}} \\int \\left(1.0 - "
+"\\epsilon_{\\mathrm{p}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{s,p}}}\\, dxn} "
+"- \\frac{i_{\\mathrm{cell}} \\left(x_{p} + \\frac{0.5 \\left(- L_{x} + "
+"x_{p}\\right)^{2.0}}{L_{\\mathrm{p}}}\\right)}{\\sigma_{\\mathrm{p}} \\int "
+"\\left(1.0 - \\epsilon_{\\mathrm{p}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{s,"
+"p}}}\\, dxn} - \\frac{i_{\\mathrm{cell}} \\left(L_{\\mathrm{n}} + "
+"L_{\\mathrm{s}}\\right)}{\\kappa_{\\mathrm{e}} \\int "
+"\\left(\\epsilon_{\\mathrm{s}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,"
+"s}}}\\, dxn} - \\frac{R T_{\\mathrm{amb}} \\left(1+\\frac{dlnf}"
+"{dlnc}\\right) \\left(2.0 - 2.0 t_{\\mathrm{+}}\\right) \\int "
+"\\log{\\left(\\max\\left(1.0 \\cdot 10^{-15}, \\frac{(\\epsilon "
+"c)_{\\mathrm{e,n}}}{\\epsilon_{\\mathrm{n}}^{\\mathrm{init}} \\int "
+"c_{\\mathrm{e}}\\, dxn}\\right) \\right)}\\, dxn}{F}"
+"^{\\mathtt{\\text{right}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:510
+msgid "$\\displaystyle \\\\ \\textbf{Parameters and Variables}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:522
+msgid "$\\displaystyle I = \\text{Current function [A]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:534
+msgid ""
+"$\\displaystyle \\overline{c}_{\\mathrm{s,n}} = \\text{X-averaged negative "
+"particle concentration [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:546
+msgid ""
+"$\\displaystyle D_{\\mathrm{n}} = \\text{Negative particle diffusivity [m2."
+"s-1]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:558
+msgid "$\\displaystyle T_{\\mathrm{amb}} = \\text{Ambient temperature [K]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:570
+msgid ""
+"$\\displaystyle c_{\\mathrm{n}}^{\\mathrm{max}} = \\text{Maximum "
+"concentration in negative electrode [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:582
+msgid ""
+"$\\displaystyle \\overline{c}_{\\mathrm{s,p}} = \\text{X-averaged positive "
+"particle concentration [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:594
+msgid ""
+"$\\displaystyle D_{\\mathrm{p}} = \\text{Positive particle diffusivity [m2."
+"s-1]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:606
+msgid ""
+"$\\displaystyle c_{\\mathrm{p}}^{\\mathrm{max}} = \\text{Maximum "
+"concentration in positive electrode [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:618
+msgid "$\\displaystyle F = \\text{Faraday constant [C.mol-1]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:630
+msgid ""
+"$\\displaystyle L_{\\mathrm{p}} = \\text{Positive electrode thickness [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:642
+msgid "$\\displaystyle L_{\\mathrm{s}} = \\text{Separator thickness [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:654
+msgid ""
+"$\\displaystyle L_{\\mathrm{n}} = \\text{Negative electrode thickness [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:666
+msgid "$\\displaystyle L_{z} = \\text{Electrode height [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:678
+msgid "$\\displaystyle L_{y} = \\text{Electrode width [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:690
+msgid ""
+"$\\displaystyle n_{electrodes parallel} = \\text{Number of electrodes "
+"connected in parallel to make a cell}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:702
+msgid "$\\displaystyle t_{\\mathrm{+}} = \\text{Cation transference number}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:714
+msgid ""
+"$\\displaystyle \\epsilon_{\\mathrm{p}}^{\\mathrm{init}} = \\text{Positive "
+"electrode porosity}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:726
+msgid ""
+"$\\displaystyle \\epsilon_{\\mathrm{s}}^{\\mathrm{init}} = \\text{Separator "
+"porosity}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:738
+msgid ""
+"$\\displaystyle \\epsilon_{\\mathrm{n}}^{\\mathrm{init}} = \\text{Negative "
+"electrode porosity}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:750
+msgid ""
+"$\\displaystyle (\\epsilon c)_{\\mathrm{e,p}} = \\text{Positive electrode "
+"porosity times concentration [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:762
+msgid ""
+"$\\displaystyle (\\epsilon c)_{\\mathrm{e,s}} = \\text{Separator porosity "
+"times concentration [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:774
+msgid ""
+"$\\displaystyle (\\epsilon c)_{\\mathrm{e,n}} = \\text{Negative electrode "
+"porosity times concentration [mol.m-3]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:786
+msgid ""
+"$\\displaystyle D_{\\mathrm{e}} = \\text{Electrolyte diffusivity [m2.s-1]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:798
+msgid ""
+"$\\displaystyle b_{\\mathrm{e,p}} = \\text{Positive electrode Bruggeman "
+"coefficient (electrolyte)}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:810
+msgid ""
+"$\\displaystyle b_{\\mathrm{e,s}} = \\text{Separator Bruggeman coefficient "
+"(electrolyte)}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:822
+msgid ""
+"$\\displaystyle b_{\\mathrm{e,n}} = \\text{Negative electrode Bruggeman "
+"coefficient (electrolyte)}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:834
+msgid "$\\displaystyle R_{\\mathrm{p}} = \\text{Positive particle radius [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:846
+msgid ""
+"$\\displaystyle \\epsilon_{\\mathrm{s,p}} = \\text{Positive electrode active "
+"material volume fraction}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:858
+msgid "$\\displaystyle R_{\\mathrm{n}} = \\text{Negative particle radius [m]}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:870
+msgid ""
+"$\\displaystyle \\epsilon_{\\mathrm{s,n}} = \\text{Negative electrode active "
+"material volume fraction}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:882
+msgid ""
+"$\\displaystyle i_{\\mathrm{e}} = \\begin{cases}\\frac{i_{\\mathrm{cell}} "
+"x_{n}}{L_{\\mathrm{n}}}\\\\i_{\\mathrm{cell}}\\\\\\frac{i_{\\mathrm{cell}} "
+"\\left(L_{x} - x_{p}\\right)}{L_{\\mathrm{p}}}\\end{cases}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:894
+msgid ""
+"$\\displaystyle L_{x} = L_{\\mathrm{n}} + L_{\\mathrm{p}} + L_{\\mathrm{s}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:906
+msgid ""
+"$\\displaystyle i_{\\mathrm{cell}} = \\frac{I}{A_{\\mathrm{cc}} "
+"n_{electrodes parallel}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:918
+msgid "$\\displaystyle A_{\\mathrm{cc}} = L_{y} L_{z}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:930
+msgid ""
+"$\\displaystyle c_{\\mathrm{e}} = \\frac{(\\epsilon c)_{\\mathrm{e}}}"
+"{\\begin{cases}\\epsilon_{\\mathrm{n}}^{\\mathrm{init}}\\\\"
+"\\epsilon_{\\mathrm{s}}^{\\mathrm{init}}\\\\\\epsilon_{\\mathrm{p}}"
+"^{\\mathrm{init}}\\end{cases}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:942
+msgid ""
+"$\\displaystyle (\\epsilon c)_{\\mathrm{e}} = \\begin{cases}(\\epsilon "
+"c)_{\\mathrm{e,n}}\\\\(\\epsilon c)_{\\mathrm{e,s}}\\\\(\\epsilon "
+"c)_{\\mathrm{e,p}}\\end{cases}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:954
+msgid ""
+"$\\displaystyle \\mathcal{B} = \\begin{cases}\\left(\\epsilon_{\\mathrm{n}}"
+"^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,n}}}\\\\"
+"\\left(\\epsilon_{\\mathrm{s}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,s}}}\\"
+"\\\\left(\\epsilon_{\\mathrm{p}}^{\\mathrm{init}}\\right)^{b_{\\mathrm{e,"
+"p}}}\\end{cases}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:966
+msgid ""
+"$\\displaystyle aj = \\begin{cases}a_{\\mathrm{n}} j_{\\mathrm{n}}\\\\0.0\\"
+"\\a_{\\mathrm{p}} j_{\\mathrm{p}}\\end{cases}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:978
+msgid ""
+"$\\displaystyle j_{\\mathrm{p}} = - \\frac{i_{\\mathrm{cell}}}"
+"{L_{\\mathrm{p}} \\overline{a}_{\\mathrm{p}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:990
+msgid ""
+"$\\displaystyle \\overline{a}_{\\mathrm{p}} = \\int a_{\\mathrm{p}}\\, dxn$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1002
+msgid ""
+"$\\displaystyle a_{\\mathrm{p}} = \\frac{3.0 \\epsilon_{\\mathrm{s,p}}}"
+"{R_{\\mathrm{p}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1014
+msgid ""
+"$\\displaystyle j_{\\mathrm{n}} = \\frac{i_{\\mathrm{cell}}}{L_{\\mathrm{n}} "
+"\\overline{a}_{\\mathrm{n}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1026
+msgid ""
+"$\\displaystyle \\overline{a}_{\\mathrm{n}} = \\int a_{\\mathrm{n}}\\, dxn$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1037
+msgid ""
+"$\\displaystyle a_{\\mathrm{n}} = \\frac{3.0 \\epsilon_{\\mathrm{s,n}}}"
+"{R_{\\mathrm{n}}}$"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1050
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1052
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1073
+msgid ""
+"<pre>\n"
+"[1] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1083
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/latexify.ipynb:1094
+msgid ""
+"[1] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

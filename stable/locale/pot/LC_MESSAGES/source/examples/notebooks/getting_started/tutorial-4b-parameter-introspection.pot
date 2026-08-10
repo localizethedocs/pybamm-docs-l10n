@@ -1,0 +1,462 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/getting_started/tutorial-4b-parameter-"
+"introspection.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/getting_started/tutorial-4b-parameter-"
+"introspection.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:9
+msgid "Tutorial 4b: Parameter Introspection and Comparison"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:11
+msgid ""
+"This tutorial introduces the parameter introspection features in PyBaMM's "
+"``ParameterValues`` class. These features help you:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:13
+msgid "**Understand parameters** - Get metadata like units and categories"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:14
+msgid ""
+"**Browse by category** - Find parameters related to electrodes, thermal, etc."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:15
+msgid "**Compare parameter sets** - See differences between parameter sets"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"import pybamm\n"
+"\n"
+"pybamm.set_logging_level(\"WARNING\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:39
+msgid "1. Getting Parameter Information"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:41
+msgid ""
+"The ``get_info()`` method returns metadata about a parameter including its "
+"value, units, and category."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"# Load the Chen2020 parameter set\n"
+"params = pybamm.ParameterValues(\"Chen2020\")\n"
+"\n"
+"# Get information about a specific parameter\n"
+"info = params.get_info(\"Maximum concentration in negative electrode [mol."
+"m-3]\")\n"
+"\n"
+"print(f\"Parameter: {info.name}\")\n"
+"print(f\"Value: {info.value}\")\n"
+"print(f\"Units: {info.units}\")\n"
+"print(f\"Category: {info.category}\")\n"
+"print(f\"Is function: {info.is_function}\")\n"
+"print(f\"Is input parameter: {info.is_input}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:73
+msgid ""
+"<pre>\n"
+"Parameter: Maximum concentration in negative electrode [mol.m-3]\n"
+"Value: 33133.0\n"
+"Units: mol.m-3\n"
+"Category: negative electrode\n"
+"Is function: False\n"
+"Is input parameter: False\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:84
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Parameter: Maximum concentration in negative electrode [mol.m-3]\n"
+"Value: 33133.0\n"
+"Units: mol.m-3\n"
+"Category: negative electrode\n"
+"Is function: False\n"
+"Is input parameter: False\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:96
+msgid ""
+"Parameter: Maximum concentration in negative electrode [mol.m-3]\n"
+"Value: 33133.0\n"
+"Units: mol.m-3\n"
+"Category: negative electrode\n"
+"Is function: False\n"
+"Is input parameter: False"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:113
+msgid "2. Browsing Parameters by Category"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:115
+msgid ""
+"Use ``list_by_category()`` to find all parameters in a specific category, or "
+"``categories()`` to see all parameters grouped by category."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"# List all negative electrode parameters\n"
+"neg_electrode_params = params.list_by_category(\"negative electrode\")\n"
+"print(f\"Found {len(neg_electrode_params)} negative electrode parameters:"
+"\")\n"
+"for p in neg_electrode_params[:5]:  # Show first 5\n"
+"    print(f\"  - {p}\")\n"
+"print(\"  ...\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:141
+msgid ""
+"<pre>\n"
+"Found 19 negative electrode parameters:\n"
+"  - Negative electrode reaction-driven LAM factor [m3.mol-1]\n"
+"  - Negative electrode thickness [m]\n"
+"  - Negative electrode conductivity [S.m-1]\n"
+"  - Maximum concentration in negative electrode [mol.m-3]\n"
+"  - Negative particle diffusivity [m2.s-1]\n"
+"  ...\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:153
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Found 19 negative electrode parameters:\n"
+"  - Negative electrode reaction-driven LAM factor [m3.mol-1]\n"
+"  - Negative electrode thickness [m]\n"
+"  - Negative electrode conductivity [S.m-1]\n"
+"  - Maximum concentration in negative electrode [mol.m-3]\n"
+"  - Negative particle diffusivity [m2.s-1]\n"
+"  {\\ldots}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:166
+msgid ""
+"Found 19 negative electrode parameters:\n"
+"  - Negative electrode reaction-driven LAM factor [m3.mol-1]\n"
+"  - Negative electrode thickness [m]\n"
+"  - Negative electrode conductivity [S.m-1]\n"
+"  - Maximum concentration in negative electrode [mol.m-3]\n"
+"  - Negative particle diffusivity [m2.s-1]\n"
+"  ..."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"# Get all categories and their counts\n"
+"all_categories = params.categories()\n"
+"print(\"Parameters by category:\")\n"
+"for category, param_list in all_categories.items():\n"
+"    print(f\"  {category}: {len(param_list)} parameters\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:197
+msgid ""
+"<pre>\n"
+"Parameters by category:\n"
+"  other: 14 parameters\n"
+"  geometric: 7 parameters\n"
+"  kinetic: 2 parameters\n"
+"  thermal: 13 parameters\n"
+"  electrolyte: 4 parameters\n"
+"  negative electrode: 19 parameters\n"
+"  positive electrode: 19 parameters\n"
+"  separator: 6 parameters\n"
+"  electrical: 9 parameters\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:212
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Parameters by category:\n"
+"  other: 14 parameters\n"
+"  geometric: 7 parameters\n"
+"  kinetic: 2 parameters\n"
+"  thermal: 13 parameters\n"
+"  electrolyte: 4 parameters\n"
+"  negative electrode: 19 parameters\n"
+"  positive electrode: 19 parameters\n"
+"  separator: 6 parameters\n"
+"  electrical: 9 parameters\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:228
+msgid ""
+"Parameters by category:\n"
+"  other: 14 parameters\n"
+"  geometric: 7 parameters\n"
+"  kinetic: 2 parameters\n"
+"  thermal: 13 parameters\n"
+"  electrolyte: 4 parameters\n"
+"  negative electrode: 19 parameters\n"
+"  positive electrode: 19 parameters\n"
+"  separator: 6 parameters\n"
+"  electrical: 9 parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "neg_electrode_params"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:259
+msgid ""
+"<pre>\n"
+"[&#39;Negative electrode reaction-driven LAM factor [m3.mol-1]&#39;,\n"
+" &#39;Negative electrode thickness [m]&#39;,\n"
+" &#39;Negative electrode conductivity [S.m-1]&#39;,\n"
+" &#39;Maximum concentration in negative electrode [mol.m-3]&#39;,\n"
+" &#39;Negative particle diffusivity [m2.s-1]&#39;,\n"
+" &#39;Negative electrode OCP [V]&#39;,\n"
+" &#39;Negative electrode porosity&#39;,\n"
+" &#39;Negative electrode active material volume fraction&#39;,\n"
+" &#39;Negative particle radius [m]&#39;,\n"
+" &#39;Negative electrode Bruggeman coefficient (electrolyte)&#39;,\n"
+" &#39;Negative electrode Bruggeman coefficient (electrode)&#39;,\n"
+" &#39;Negative electrode charge transfer coefficient&#39;,\n"
+" &#39;Negative electrode double-layer capacity [F.m-2]&#39;,\n"
+" &#39;Negative electrode exchange-current density [A.m-2]&#39;,\n"
+" &#39;Negative electrode density [kg.m-3]&#39;,\n"
+" &#39;Negative electrode specific heat capacity [J.kg-1.K-1]&#39;,\n"
+" &#39;Negative electrode thermal conductivity [W.m-1.K-1]&#39;,\n"
+" &#39;Negative electrode OCP entropic change [V.K-1]&#39;,\n"
+" &#39;Initial concentration in negative electrode [mol.m-3]&#39;]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:283
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"['Negative electrode reaction-driven LAM factor [m3.mol-1]',\n"
+" 'Negative electrode thickness [m]',\n"
+" 'Negative electrode conductivity [S.m-1]',\n"
+" 'Maximum concentration in negative electrode [mol.m-3]',\n"
+" 'Negative particle diffusivity [m2.s-1]',\n"
+" 'Negative electrode OCP [V]',\n"
+" 'Negative electrode porosity',\n"
+" 'Negative electrode active material volume fraction',\n"
+" 'Negative particle radius [m]',\n"
+" 'Negative electrode Bruggeman coefficient (electrolyte)',\n"
+" 'Negative electrode Bruggeman coefficient (electrode)',\n"
+" 'Negative electrode charge transfer coefficient',\n"
+" 'Negative electrode double-layer capacity [F.m-2]',\n"
+" 'Negative electrode exchange-current density [A.m-2]',\n"
+" 'Negative electrode density [kg.m-3]',\n"
+" 'Negative electrode specific heat capacity [J.kg-1.K-1]',\n"
+" 'Negative electrode thermal conductivity [W.m-1.K-1]',\n"
+" 'Negative electrode OCP entropic change [V.K-1]',\n"
+" 'Initial concentration in negative electrode [mol.m-3]']\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:308
+msgid ""
+"['Negative electrode reaction-driven LAM factor [m3.mol-1]',\n"
+" 'Negative electrode thickness [m]',\n"
+" 'Negative electrode conductivity [S.m-1]',\n"
+" 'Maximum concentration in negative electrode [mol.m-3]',\n"
+" 'Negative particle diffusivity [m2.s-1]',\n"
+" 'Negative electrode OCP [V]',\n"
+" 'Negative electrode porosity',\n"
+" 'Negative electrode active material volume fraction',\n"
+" 'Negative particle radius [m]',\n"
+" 'Negative electrode Bruggeman coefficient (electrolyte)',\n"
+" 'Negative electrode Bruggeman coefficient (electrode)',\n"
+" 'Negative electrode charge transfer coefficient',\n"
+" 'Negative electrode double-layer capacity [F.m-2]',\n"
+" 'Negative electrode exchange-current density [A.m-2]',\n"
+" 'Negative electrode density [kg.m-3]',\n"
+" 'Negative electrode specific heat capacity [J.kg-1.K-1]',\n"
+" 'Negative electrode thermal conductivity [W.m-1.K-1]',\n"
+" 'Negative electrode OCP entropic change [V.K-1]',\n"
+" 'Initial concentration in negative electrode [mol.m-3]']"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:338
+msgid "3. Comparing Parameter Sets"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:340
+msgid "Use ``diff()`` to compare two parameter sets and see what's different."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"# Load another parameter set\n"
+"chen = pybamm.ParameterValues(\"Chen2020\")\n"
+"marquis = pybamm.ParameterValues(\"Marquis2019\")\n"
+"\n"
+"# Compare them\n"
+"diff = chen.diff(marquis)\n"
+"\n"
+"print(f\"Parameters only in Chen2020: {len(diff.removed)}\")\n"
+"print(f\"Parameters only in Marquis2019: {len(diff.added)}\")\n"
+"print(f\"Parameters with different values: {len(diff.changed)}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:370
+msgid ""
+"<pre>\n"
+"Parameters only in Chen2020: 1\n"
+"Parameters only in Marquis2019: 12\n"
+"Parameters with different values: 46\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:378
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Parameters only in Chen2020: 1\n"
+"Parameters only in Marquis2019: 12\n"
+"Parameters with different values: 46\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:387
+msgid ""
+"Parameters only in Chen2020: 1\n"
+"Parameters only in Marquis2019: 12\n"
+"Parameters with different values: 46"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:-1
+msgid ""
+"# Show some changed parameters\n"
+"print(\"\\nSome parameters with different values:\")\n"
+"for key, (chen_val, marquis_val) in list(diff.changed.items())[:5]:\n"
+"    if not callable(chen_val) and not callable(marquis_val):\n"
+"        print(f\"  {key}:\")\n"
+"        print(f\"    Chen2020: {chen_val}\")\n"
+"        print(f\"    Marquis2019: {marquis_val}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:416
+msgid ""
+"<pre>\n"
+"\n"
+"Some parameters with different values:\n"
+"  Positive electrode Bruggeman coefficient (electrode):\n"
+"    Chen2020: 0\n"
+"    Marquis2019: 1.5\n"
+"  Current function [A]:\n"
+"    Chen2020: 5.0\n"
+"    Marquis2019: 0.680616\n"
+"  Electrode width [m]:\n"
+"    Chen2020: 1.58\n"
+"    Marquis2019: 0.207\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:432
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"Some parameters with different values:\n"
+"  Positive electrode Bruggeman coefficient (electrode):\n"
+"    Chen2020: 0\n"
+"    Marquis2019: 1.5\n"
+"  Current function [A]:\n"
+"    Chen2020: 5.0\n"
+"    Marquis2019: 0.680616\n"
+"  Electrode width [m]:\n"
+"    Chen2020: 1.58\n"
+"    Marquis2019: 0.207\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-4b-parameter-introspection.ipynb:449
+msgid ""
+"Some parameters with different values:\n"
+"  Positive electrode Bruggeman coefficient (electrode):\n"
+"    Chen2020: 0\n"
+"    Marquis2019: 1.5\n"
+"  Current function [A]:\n"
+"    Chen2020: 5.0\n"
+"    Marquis2019: 0.680616\n"
+"  Electrode width [m]:\n"
+"    Chen2020: 1.58\n"
+"    Marquis2019: 0.207"
+msgstr ""

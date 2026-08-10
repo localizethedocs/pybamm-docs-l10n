@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/submodels/particle/msmr_diffusion.rst:2
+msgid "MSMR Diffusion"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:1
+msgid ""
+"Class for molar conservation in particles within the Multi-Species Multi-"
+"Reaction framework :footcite:t:`Baker2018`. The thermodynamic model is "
+"presented in :footcite:t:`Verbrugge2017`, along with parameter values for a "
+"number of substitutional materials."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:6
+msgid ""
+"In this submodel, the stoichiometry depends on the potential in the particle "
+"and the temperature, so dUdT is not used. See `:meth:`pybamm."
+"LithiumIonParameters.dUdT` for more explanation."
+msgstr ""
+
+#: ../../../source/api/models/submodels/particle/msmr_diffusion.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:10
+msgid "The parameters to use for this submodel"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:12
+msgid "The domain of the model either 'Negative' or 'Positive'"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:14
+msgid ""
+"A dictionary of options to be passed to the model. See :class:`pybamm."
+"BaseBatteryModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:17
+msgid "Phase of the particle (default is \"primary\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:19
+msgid "Whether the particle concentration is averaged over the x-direction"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:22
+msgid ""
+"**Extends:** :class:`pybamm.models.submodels.particle.base_particle."
+"BaseParticle`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion:0
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRStoichiometryVariables:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.get_coupled_variables:1
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRStoichiometryVariables.get_coupled_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"require variables in other submodels to be set first. For example, the "
+"exchange current density requires the concentration in the electrolyte to be "
+"created before it can be created. If a variable can be created independent "
+"of other submodels then it should be created in 'get_fundamental_variables' "
+"instead of this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.get_coupled_variables:8
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_boundary_conditions:6
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_initial_conditions:7
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_rhs:6
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRStoichiometryVariables.get_coupled_variables:8
+msgid "The variables in the whole model."
+msgstr ""
+
+#: ../../../source/api/models/submodels/particle/msmr_diffusion.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.get_coupled_variables:11
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRStoichiometryVariables.get_coupled_variables:11
+msgid ""
+"The variables created in this submodel which depend on variables in other "
+"submodels."
+msgstr ""
+
+#: ../../../source/api/models/submodels/particle/msmr_diffusion.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.get_fundamental_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"can be created independent of other submodels. For example, the electrolyte "
+"concentration variables can be created independent of whether any other "
+"variables have been defined in the model. As a rule, if a variable can be "
+"created without variables from other submodels, then it should be placed in "
+"this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.get_fundamental_variables:8
+msgid ""
+"The variables created by the submodel which are independent of variables in "
+"other submodels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_boundary_conditions:1
+msgid ""
+"A method to set the boundary conditions for the submodel. Note: this method "
+"modifies the state of self.boundary_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_initial_conditions:1
+msgid ""
+"A method to set the initial conditions for the submodel. Note: this method "
+"modifies the state of self.initial_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/particle/msmr_diffusion.py:docstring
+#: of pybamm.models.submodels.particle.msmr_diffusion.MSMRDiffusion.set_rhs:1
+msgid ""
+"A method to set the right hand side of the differential equations which "
+"contain a time derivative. Note: this method modifies the state of self.rhs. "
+"Unless overwritten by a submodel, the default behaviour of 'pass' is used as "
+"implemented in :class:`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

@@ -1,0 +1,424 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/simulations_and_experiments/experiments-start-"
+"time.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/simulations_and_experiments/experiments-start-time."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:9
+msgid "Experiments with ``start_time``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:20
+msgid ""
+"This notebook introduces functionality for simulating user case in which the "
+"experiment steps are triggered at a certain point in time."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"from datetime import datetime\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:44
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.0.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">23.1.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:53
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.0.1} -> \\textcolor{ansi-green}{23.1.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:63
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.0.1[0m[39;49m -> [0m[32;49m23.1.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:77
+msgid ""
+"Let's start defining a model to illustrate this functionality, in this case "
+"we choose the SPM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "model = pybamm.lithium_ion.SPM()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:98
+msgid ""
+"Usually we define an experiment such that each step is triggered when the "
+"previous step is completed. For example, in this case we do a 1C discharge "
+"for 20 minutes and then a C/3 charge for 10 minutes. The charge step starts "
+"after 20 minutes, i.e. once the discharge step is finished."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid ""
+"experiment = pybamm.Experiment(\n"
+"    [\"Discharge at 1C for 20 minutes\", \"Charge at C/3 for 10 minutes\"]\n"
+")\n"
+"sim = pybamm.Simulation(model, experiment=experiment)\n"
+"sim.solve()\n"
+"sim.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:126
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"86a9137722254204893ad9cf3402c6df\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:137
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1800.0, step=18.0), Output()), _dom_classes=…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:143
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1800.0, "
+"step=18.0), Output()), \\_dom\\_classes=…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:150
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1800.0, "
+"step=18.0), Output()), _dom_classes=…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:162
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f8910adb4f0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:168
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f8910adb4f0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:175
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f8910adb4f0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:186
+msgid ""
+"However, if we want to represent a realistic user case we might certain "
+"experiments to be run at a certain time instead, even if that means cutting "
+"short the previous step. In this case we can pass a starting time as a "
+"keyword argument in the ``pybamm.step.string`` method. The ``start_time`` "
+"should be passed as a ``datetime.datetime`` object."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid ""
+"s = pybamm.step.string\n"
+"\n"
+"experiment = pybamm.Experiment(\n"
+"    [\n"
+"        s(\"Discharge at 1C for 1 hour\", start_time=datetime(1, 1, 1, 8, 0, "
+"0)),\n"
+"        s(\"Charge at C/3 for 10 minutes\", start_time=datetime(1, 1, 1, 8, "
+"30, 0)),\n"
+"        s(\"Discharge at C/2 for 30 minutes\", start_time=datetime(1, 1, 1, "
+"9, 0, 0)),\n"
+"        s(\"Rest for 1 hour\"),\n"
+"    ]\n"
+")\n"
+"sim = pybamm.Simulation(model, experiment=experiment)\n"
+"sim.solve()\n"
+"sim.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:221
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"a22e45e9e8ff46b194efe28b21f7a9a6\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:232
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=2.5, step=0.025), Output()), _dom_classes=(&#39;…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:238
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=2.5, "
+"step=0.025), Output()), \\_dom\\_classes=('…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:245
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=2.5, "
+"step=0.025), Output()), _dom_classes=('…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:257
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f8910b8e250&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:263
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f8910b8e250>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:270
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f8910b8e250>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:281
+msgid ""
+"In the example above, we note that the first step (1C discharge) is cut "
+"short as the second step (C/3 charge) start time occurs before the end of "
+"the first step. On the other hand, an additional resting period is added "
+"after the second step as the third step (C/2 discharge) start time is 20 "
+"minutes later than the end of the second step. The final step does not have "
+"a start time so it is triggered immediately after the previous step. Note "
+"that if the argument ``start_time`` is used in an experiment, the first step "
+"should always have a ``start_time``, otherwise the solver will throw an "
+"error."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:293
+msgid ""
+"Note that you can use the ``datetime.strptime`` (see `the docs <https://docs."
+"python.org/3/library/datetime.html#datetime.datetime.strptime>`__ for more "
+"info) function to convert a string to a datetime object. For example, to "
+"start the experiment at 8:30 on the 2nd of January 2023, you can use"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "datetime.strptime(\"2023-01-02 8:30:00\", \"%Y-%m-%d %H:%M:%S\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:315
+msgid ""
+"<pre>\n"
+"datetime.datetime(2023, 1, 2, 8, 30)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:321
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"datetime.datetime(2023, 1, 2, 8, 30)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:328
+msgid "datetime.datetime(2023, 1, 2, 8, 30)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:349
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[7] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:362
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[7] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:376
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[7] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/experiments-start-time.ipynb:-1
+msgid "[ ]:"
+msgstr ""

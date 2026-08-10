@@ -1,0 +1,378 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/parameters/parameter_store.rst:2
+msgid "Parameter Store"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_store.rst:4
+msgid ""
+"The ``ParameterStore`` class provides clean parameter storage with FuzzyDict "
+"lookup and explicit control over update behavior."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_store.rst:8
+msgid "ParameterStore"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore:1
+msgid "Manages parameter key-value storage with FuzzyDict lookup."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore:3
+msgid ""
+"This class provides a clean interface for storing and retrieving parameters "
+"with explicit control over update behavior."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:0
+#: pybamm.parameters.parameter_store.ParameterStore.get_info:0
+#: pybamm.parameters.parameter_store.ParameterStore.list_by_category:0
+#: pybamm.parameters.parameter_store.ParameterStore.set:0
+#: pybamm.parameters.parameter_store.ParameterStore.update:0
+#: ../../../source/api/parameters/parameter_store.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore:6
+msgid "Initial parameter data. If None, starts empty."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore:10
+#: pybamm.parameters.parameter_store.ParameterStore.diff:15
+#: pybamm.parameters.parameter_store.ParameterStore.get_info:10
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.categories:1
+msgid "Return all parameters grouped by category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.categories:0
+#: pybamm.parameters.parameter_store.ParameterStore.diff:0
+#: pybamm.parameters.parameter_store.ParameterStore.get_info:0
+#: pybamm.parameters.parameter_store.ParameterStore.list_by_category:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.categories:3
+msgid "Dictionary mapping category names to lists of parameter names."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.categories:0
+#: pybamm.parameters.parameter_store.ParameterStore.diff:0
+#: pybamm.parameters.parameter_store.ParameterStore.get_info:0
+#: pybamm.parameters.parameter_store.ParameterStore.list_by_category:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.categories:7
+#: pybamm.parameters.parameter_store.ParameterStore.copy:4
+#: pybamm.parameters.parameter_store.ParameterStore.get:4
+#: pybamm.parameters.parameter_store.ParameterStore.list_by_category:11
+#: pybamm.parameters.parameter_store.ParameterStore.pop:4
+#: pybamm.parameters.parameter_store.ParameterStore.search:4
+#: pybamm.parameters.parameter_store.ParameterStore.set:14
+#: pybamm.parameters.parameter_store.ParameterStore.to_dict:4
+#: pybamm.parameters.parameter_store.ParameterStore.update:16
+msgid "Example"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.copy:1
+msgid "Return a shallow copy of the store."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:1
+msgid "Compare this store with another and return differences."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:3
+msgid "The other parameter store to compare against."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:5
+msgid ""
+"Relative tolerance for numerical comparisons. Differences smaller than "
+"``rtol * max(|a|, |b|)`` are ignored. Default is 0.0 (exact comparison). Set "
+"to e.g. 1e-6 to ignore tiny floating-point differences."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:11
+msgid "Object containing added, removed, and changed parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.diff:26
+msgid "With tolerance to ignore small differences:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.get:1
+msgid "Get a parameter value, returning default if not found."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.get_info:1
+msgid "Get metadata about a parameter."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.get_info:3
+msgid "The parameter name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.get_info:6
+msgid "Metadata including value, units, category, and type information."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.items:1
+msgid "Return parameter items."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.keys:1
+msgid "Return parameter keys."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.list_by_category:1
+msgid "Return all parameter names in a given category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.list_by_category:3
+msgid ""
+"The category to filter by. Can be a ParameterCategory enum value or a string "
+"like \"negative electrode\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.list_by_category:7
+msgid "List of parameter names in the category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.pop:1
+msgid "Remove and return a parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.search:1
+msgid "Search for parameters containing the given key."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:1
+msgid "Set a parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:3
+msgid "Parameter name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:5
+msgid "Parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:7
+msgid ""
+"If False, raises KeyError when key doesn't exist. If True (default), allows "
+"adding new parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.set:11
+msgid "If allow_new=False and the key doesn't exist."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.to_dict:1
+msgid "Return a plain dictionary copy of the parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.update:1
+msgid "Bulk update parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.update:3
+msgid "Dictionary of parameter values to update."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.update:5
+msgid ""
+"If False, raises KeyError for unknown parameters. If True (default), allows "
+"adding new parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.update:8
+msgid ""
+"How to handle conflicts when a parameter already exists with a different "
+"value: - \"raise\": Raise ValueError - \"warn\": Emit a warning and update - "
+"\"ignore\": Silently update (default)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterStore.values:1
+msgid "Return parameter values."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_store.rst:15
+msgid "ParameterInfo"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:1
+msgid "Metadata about a parameter."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:5
+msgid "The parameter name (key)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:0
+#: pybamm.parameters.parameter_store.ParameterInfo:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:7
+msgid "str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:11
+msgid "The parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:13
+msgid "Any"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:17
+msgid ""
+"Units parsed from the parameter name (e.g., \"K\" from \"Temperature [K]\")."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:19
+#: pybamm.parameters.parameter_store.ParameterInfo:25
+msgid "str | None"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:23
+msgid "Category of the parameter (e.g., \"negative electrode\", \"thermal\")."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:29
+msgid "True if the value is callable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:31
+#: pybamm.parameters.parameter_store.ParameterInfo:37
+msgid "bool"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterInfo:35
+msgid "True if the value is an InputParameter."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_store.rst:21
+msgid "ParameterDiff"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:1
+msgid "Result of comparing two parameter sets."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:5
+msgid "Parameters in `other` but not in `self`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:7
+#: pybamm.parameters.parameter_store.ParameterDiff:13
+msgid "dict[str, Any]"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:11
+msgid "Parameters in `self` but not in `other`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:17
+msgid "Parameters with different values: (self_value, other_value)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterDiff:19
+msgid "dict[str, tuple[Any, Any]]"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_store.rst:27
+msgid "ParameterCategory"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterCategory:1
+msgid "Categories for grouping battery parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_store.py:docstring
+#: of pybamm.parameters.parameter_store.ParameterCategory:3
+msgid "**Extends:** :class:`enum.Enum`"
+msgstr ""

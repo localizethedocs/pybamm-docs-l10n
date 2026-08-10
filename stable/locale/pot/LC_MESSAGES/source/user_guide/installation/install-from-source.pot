@@ -1,0 +1,506 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/installation/install-from-source.rst:4
+msgid "Install from source (GNU Linux and macOS)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:7
+msgid "Contents"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:9
+msgid ""
+"This page describes the build and installation of PyBaMM from the source "
+"code, available on GitHub. Note that this is **not the recommended approach "
+"for most users** and should be reserved to people wanting to participate in "
+"the development of PyBaMM, or people who really need to use bleeding-edge "
+"feature(s) not yet available in the latest released version. If you do not "
+"fall in the two previous categories, you would be better off installing "
+"PyBaMM using pip or conda."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:11
+msgid ""
+"Lastly, familiarity with the Python ecosystem is recommended (pip or uv, "
+"virtualenvs). Here is a gentle introduction/refresher: `Python Virtual "
+"Environments: A Primer <https://realpython.com/python-virtual-environments-a-"
+"primer/>`_."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:16
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:18
+msgid ""
+"The following instructions are valid for both GNU/Linux distributions and "
+"MacOS. If you are running Windows, consider using the `Windows Subsystem for "
+"Linux (WSL) <https://learn.microsoft.com/en-us/windows/wsl/install-win10>`_."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:21
+msgid "To obtain the PyBaMM source code, clone the GitHub repository"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:23
+msgid "git clone https://github.com/pybamm-team/PyBaMM.git"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:27
+msgid "or download the source archive on the repository's homepage."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:29
+msgid "To install PyBaMM, you will need:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:31
+msgid "Python 3 (PyBaMM supports versions 3.10 — 3.14)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:32
+msgid "The Python headers file for your current Python version."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:33
+msgid "A BLAS library (for instance `openblas <https://www.openblas.net/>`_)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:34
+msgid "A C compiler (ex: ``gcc``)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:35
+msgid "A Fortran compiler (ex: ``gfortran``)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:36
+msgid ""
+"``graphviz`` (optional), if you wish to build the documentation locally."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:37
+msgid ""
+"``pandoc`` (optional) to convert the example Jupyter notebooks when building "
+"the documentation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:39
+msgid "You can install the above with"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:43
+msgid ""
+"sudo apt install python3.X python3.X-dev libopenblas-dev gcc gfortran "
+"graphviz cmake pandoc"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:47
+msgid "Where ``X`` is the version sub-number."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:51
+msgid "brew install python openblas gcc gfortran graphviz libomp cmake pandoc"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:57
+msgid ""
+"If you are using some other linux distribution you can install the "
+"equivalent packages for ``python3, cmake, gcc, gfortran, openblas, pandoc``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:59
+msgid ""
+"On Windows, you can install ``graphviz`` using the `Chocolatey <https://"
+"chocolatey.org/>`_ package manager, or follow the instructions on the "
+"`graphviz website <https://graphviz.org/download/>`_."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:61
+msgid ""
+"Finally, we recommend using `Nox <https://nox.thea.codes/en/stable/>`_ for "
+"running tests. You can install it with"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:66
+msgid "uv tool install nox"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:72
+msgid "python3.X -m pip install --user nox"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:76
+msgid ""
+"Note that running ``nox`` will create new virtual environments for you to "
+"use, so you do not need to create one yourself."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:78
+msgid ""
+"Depending on your operating system, you may or may not have ``pip`` "
+"installed along Python. If ``pip`` is not found, you probably want to "
+"install the ``python3-pip`` package."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:85
+msgid "Installing PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:87
+msgid ""
+"You should now have everything ready to build and install PyBaMM "
+"successfully."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:90
+msgid "Using ``uv`` (recommended)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:92
+msgid ""
+"`uv <https://docs.astral.sh/uv/>`_ is a fast Python package manager that "
+"supports lockfile-based installs. PyBaMM includes a ``uv.lock`` file to "
+"ensure reproducible environments."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:95
+msgid ""
+"# in the PyBaMM/ directory\n"
+"uv sync --extra all --group dev --group docs"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:100
+msgid ""
+"This creates a virtual environment ``.venv/`` inside the ``PyBaMM/`` "
+"directory with PyBaMM installed in editable mode, all optional dependencies, "
+"and development tools."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:103
+#: ../../../source/user_guide/installation/install-from-source.rst:133
+msgid "You can now activate the environment with"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:107
+msgid "source .venv/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:113
+msgid ".venv\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:117
+#: ../../../source/user_guide/installation/install-from-source.rst:147
+msgid "and run the tests to check your installation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:120
+msgid "Using ``Nox``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:122
+msgid ""
+"# in the PyBaMM/ directory\n"
+"nox -s dev"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:128
+msgid ""
+"It is recommended to use ``--verbose`` or ``-v`` to see outputs of all "
+"commands run."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:130
+msgid ""
+"This creates a virtual environment ``venv/`` inside the ``PyBaMM/`` "
+"directory. It comes ready with PyBaMM and some useful development tools like "
+"`pre-commit <https://pre-commit.com/>`_ and `ruff <https://beta.ruff.rs/docs/"
+">`_."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:137
+msgid "source venv/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:143
+msgid "venv\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:150
+msgid "Manual install (pip)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:152
+msgid "From the ``PyBaMM/`` directory, you can install PyBaMM using"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:154
+msgid "pip install ."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:158
+msgid ""
+"If you intend to contribute to the development of PyBaMM, it is convenient "
+"to install in \"editable mode\", along with all the optional dependencies "
+"and useful tools for development and documentation:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:162
+msgid "pip install -e .[all] --group dev --group docs"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:166
+msgid ""
+"If you are using ``zsh`` or ``tcsh``, you would need to use different "
+"pattern matching:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:168
+msgid "pip install -e '.[all]' --group dev --group docs"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:172
+msgid ""
+"Before you start contributing to PyBaMM, please read the `contributing "
+"guidelines <https://github.com/pybamm-team/PyBaMM/blob/main/CONTRIBUTING."
+"md>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:176
+msgid "Running the tests"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:179
+msgid "Using Nox (recommended)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:181
+msgid ""
+"You can use ``Nox`` to run the unit tests and example notebooks in isolated "
+"virtual environments."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:183
+msgid "The default command"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:185
+msgid "nox"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:189
+msgid ""
+"will run pre-commit, install ``Linux`` and ``macOS`` dependencies, and run "
+"the unit tests. This can take several minutes."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:192
+msgid "To just run the unit tests, use"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:194
+msgid "nox -s unit"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:198
+msgid "Similarly, to run the integration tests, use"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:200
+msgid "nox -s integration"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:204
+msgid "Finally, to run the unit and the integration suites sequentially, use"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:206
+msgid "nox -s tests"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:211
+msgid "Using pytest"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:213
+msgid "You can run unit tests for PyBaMM using"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:215
+msgid ""
+"# in the PyBaMM/ directory\n"
+"pytest -m unit"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:221
+msgid ""
+"The above uses pytest (in your current Python environment) to run the unit "
+"tests. This can take a few minutes."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:224
+msgid "You can also use pytest to run the doctests:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:226
+msgid "pytest --doctest-plus src"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:230
+msgid ""
+"Refer to the `testing <https://docs.pybamm.org/en/stable/source/user_guide/"
+"contributing.html#testing>`_ docs to find out more ways to test PyBaMM using "
+"pytest."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:233
+msgid "How to build the PyBaMM documentation"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:235
+msgid "The documentation is built using"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:237
+msgid "nox -s docs"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:241
+msgid ""
+"This will build the documentation and serve it locally (thanks to `sphinx-"
+"autobuild <https://github.com/GaretJax/sphinx-autobuild>`_) for preview. The "
+"preview will be updated automatically following changes."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:245
+msgid "Doctests, examples, and coverage"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:247
+msgid ""
+"``Nox`` can also be used to run doctests, run examples, and generate a "
+"coverage report using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:249
+msgid ""
+"``nox -s examples``: Run the Jupyter notebooks in ``docs/source/examples/"
+"notebooks/``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:250
+msgid ""
+"``nox -s examples -- <path-to-notebook-1.ipynb> <path-to_notebook-2."
+"ipynb>``: Run specific Jupyter notebooks."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:251
+msgid "``nox -s scripts``: Run the example scripts in ``examples/scripts/``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:252
+msgid "``nox -s doctests``: Run doctests."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:253
+msgid ""
+"``nox -s coverage``: Measure current test coverage and generate a coverage "
+"report."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:254
+msgid ""
+"``nox -s quick``: Run integration tests, unit tests, and doctests "
+"sequentially."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:257
+msgid "Extra tips while using ``Nox``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:259
+msgid "Here are some additional useful commands you can run with ``Nox``:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:261
+msgid ""
+"``--verbose or -v``: Enables verbose mode, providing more detailed output "
+"during the execution of Nox sessions."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:262
+msgid ""
+"``--list or -l``: Lists all available Nox sessions and their descriptions."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:263
+msgid ""
+"``--stop-on-first-error``: Stops the execution of Nox sessions immediately "
+"after the first error or failure occurs."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:264
+msgid ""
+"``--envdir <path>``: Specifies the directory where Nox creates and manages "
+"the virtual environments used by the sessions. In this case, the directory "
+"is set to ``<path>``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:265
+msgid ""
+"``--install-only``: Skips the test execution and only performs the "
+"installation step defined in the Nox sessions."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:266
+msgid ""
+"``--nocolor``: Disables the color output in the console during the execution "
+"of Nox sessions."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:267
+msgid ""
+"``--report output.json``: Generates a JSON report of the Nox session "
+"execution and saves it to the specified file, in this case, \"output.json\"."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:268
+msgid ""
+"``nox -s docs --non-interactive``: Builds the documentation without serving "
+"it locally (using ``sphinx-build`` instead of ``sphinx-autobuild``)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:271
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:273
+msgid ""
+"**Problem:** I have made edits to source files in PyBaMM, but these are not "
+"being used when I run my Python script."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-source.rst:276
+msgid ""
+"**Solution:** Make sure you have installed PyBaMM in editable mode. If using "
+"``uv``, run ``uv sync`` (editable by default). If using ``pip``, use the ``-"
+"e`` flag: ``pip install -e .``. This sets the installed location of the "
+"source files to your current directory."
+msgstr ""

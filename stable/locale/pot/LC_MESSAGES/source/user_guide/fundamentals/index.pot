@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/fundamentals/index.md:1
+msgid "Fundamentals"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:3
+msgid ""
+"PyBaMM (Python Battery Mathematical Modelling) is an open-source battery "
+"simulation package written in Python. Our mission is to accelerate battery "
+"modelling research by providing open-source tools for multi-institutional, "
+"interdisciplinary collaboration. Broadly, PyBaMM consists of"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:8
+msgid "a framework for writing and solving systems of differential equations,"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:9
+msgid "a library of battery models and parameters, and"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:10
+msgid ""
+"specialized tools for simulating battery-specific experiments and "
+"visualizing the results."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:12
+msgid ""
+"Together, these enable flexible model definitions and fast battery "
+"simulations, allowing users to explore the effect of different battery "
+"designs and modeling assumptions under a variety of operating scenarios."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:15
+msgid ""
+"**NOTE**: This user-guide is a work-in-progress, we hope that this brief but "
+"incomplete overview will be useful to you."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:17
+msgid "Core framework"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:19
+msgid ""
+"The core of the framework is a custom computer algebra system to define "
+"mathematical equations, and a domain specific modeling language to combine "
+"these equations into systems of differential equations (usually partial "
+"differential equations for variables depending on space and time). The "
+"[expression tree](https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/expression_tree/expression-tree.ipynb) example "
+"gives an introduction to the computer algebra system, and the [Getting "
+"Started](https://github.com/pybamm-team/PyBaMM/tree/main/docs/source/"
+"examples/notebooks/getting_started/) tutorials walk through creating models "
+"of increasing complexity."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:25
+msgid ""
+"Once a model has been defined symbolically, PyBaMM solves it using the "
+"Method of Lines. First, the equations are discretised in the spatial "
+"dimension, using the finite volume method. Then, the resulting system is "
+"solved using third-party numerical solvers. Depending on the form of the "
+"model, the system can be ordinary differential equations (ODEs) (if only "
+"`model.rhs` is defined), or algebraic equations (if only `model.algebraic` "
+"is defined), or differential-algebraic equations (DAEs) (if both `model.rhs` "
+"and `model.algebraic` are defined). Jupyter notebooks explaining the solvers "
+"can be found [here](https://github.com/pybamm-team/PyBaMM/tree/main/docs/"
+"source/examples/notebooks/solvers)."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:27
+msgid "Model and Parameter Library"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:29
+msgid ""
+"PyBaMM contains an extensive library of battery models and parameters. The "
+"bulk of the library consists of models for lithium-ion, but there are also "
+"some other chemistries (lead-acid, lithium metal). Models are first divided "
+"broadly into common named models of varying complexity, such as the single "
+"particle model (SPM) or Doyle-Fuller-Newman model (DFN). Most options can be "
+"applied to any model, but some are model-specific (an error will be raised "
+"if you attempt to set an option is not compatible with a model). See []"
+"(base_battery_model) for a list of options."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:35
+msgid ""
+"The parameter library is simply a collection of python files each defining a "
+"complete set of parameters for a particular battery chemistry, covering all "
+"major lithium-ion chemistries (NMC, LFP, NCA, ...). External parameter sets "
+"can be linked using entry points (see [](parameter_sets))."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:39
+msgid "Battery-specific tools"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:41
+msgid ""
+"One of PyBaMM's unique features is the `Experiment` class, which allows "
+"users to define synthetic experiments using simple instructions in English"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:43
+msgid ""
+"pybamm.Experiment(\n"
+"    [\n"
+"        (\n"
+"            \"Discharge at C/10 for 10 hours or until 3.3 V\",\n"
+"            \"Rest for 1 hour\",\n"
+"            \"Charge at 1 A until 4.1 V\",\n"
+"            \"Hold at 4.1 V until 50 mA\",\n"
+"            \"Rest for 1 hour\",\n"
+"        )\n"
+"    ]\n"
+"    * 3,\n"
+")\n"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:58
+msgid ""
+"The above instruction will conduct a standard discharge / rest / charge / "
+"rest cycle three times, with a 10 hour discharge and 1 hour rest at the end "
+"of each cycle."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:60
+msgid ""
+"The `Simulation` class handles simulating an `Experiment`, as well as "
+"calculating additional outputs such as capacity as a function of cycle "
+"number. For example, the following code will simulate the experiment above "
+"and plot the standard output variables:"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:62
+msgid ""
+"import pybamm\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"# load model and parameter values\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"sim = pybamm.Simulation(model, experiment=experiment)\n"
+"solution = sim.solve()\n"
+"solution.plot()\n"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:73
+msgid "Finally, PyBaMM provides custom visualization tools:"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:75
+msgid ""
+"[](quick_plot): for easily plotting simulation outputs in a grid, including "
+"comparing multiple simulations"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:76
+msgid ""
+"[](pybamm.plot_voltage_components): for plotting the component "
+"overpotentials that make up a voltage curve"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:78
+msgid ""
+"Users are not limited to these tools and can plot the output of a simulation "
+"solution by accessing the underlying numpy array for the solution variables "
+"as"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:80
+msgid "solution[\"variable name\"].data\n"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/index.md:84
+msgid "and using the plotting library of their choice."
+msgstr ""

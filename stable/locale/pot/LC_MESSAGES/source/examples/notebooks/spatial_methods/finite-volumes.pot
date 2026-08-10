@@ -1,0 +1,1653 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/spatial_methods/finite-volumes.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/spatial_methods/finite-volumes.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:9
+msgid "Finite Volume Discretisation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:20
+msgid ""
+"In this notebook, we explain the discretisation process that converts an "
+"expression tree, representing a model, to a linear algebra tree that can be "
+"evaluated by the solvers."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:22
+msgid ""
+"We use Finite Volumes as an example of a spatial method, since it is the "
+"default spatial method for most PyBaMM models. This is a good spatial method "
+"for battery problems as it is conservative: for lithium-ion battery models, "
+"we can be sure that the total amount of lithium in the system is constant. "
+"For more details on the Finite Volume method, see `Randall Leveque's book "
+"<https://books.google.co.uk/books/about/"
+"Finite_Volume_Methods_for_Hyperbolic_Pro.html?"
+"id=QazcnD7GUoUC&printsec=frontcover&source=kp_read_button&redir_esc=y#v=onepage&q&f=false>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:25
+msgid "This notebook is structured as follows:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:27
+msgid ""
+"**Setting up a discretisation**. Overview of the parameters that are passed "
+"to the discretisation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:28
+msgid ""
+"**Discretisations and spatial methods**. Operations that are common to most "
+"spatial methods:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:30
+msgid "Discretising a spatial variable (e.g. :math:`x`)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:31
+msgid "Discretising a variable (e.g. concentration)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:33
+msgid ""
+"**Example: Finite Volume operators**. Finite Volume implementation of some "
+"useful operators:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:35
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:579
+msgid "Gradient operator"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:36
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1167
+msgid "Divergence operator"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:37
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1339
+msgid "Integral operator"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:39
+msgid ""
+"**Example: Discretising a simple model**. Setting up and solving a simple "
+"model, using Finite Volumes as the spatial method"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:51
+msgid "Setting up a Discretisation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:62
+msgid ""
+"We first import ``pybamm`` and some useful other modules, and change our "
+"working directory to the root of the ``PyBaMM`` folder:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:91
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:97
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:104
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:115
+msgid ""
+"To set up a discretisation, we must create a geometry, mesh this geometry, "
+"and then create the discretisation with the appropriate spatial method(s). "
+"The easiest way to create a geometry is to the inbuilt battery geometry:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"parameter_values = pybamm.ParameterValues(\n"
+"    values={\n"
+"        \"Negative particle radius [m]\": 0.5,\n"
+"        \"Positive particle radius [m]\": 0.6,\n"
+"        \"Negative electrode thickness [m]\": 0.3,\n"
+"        \"Separator thickness [m]\": 0.2,\n"
+"        \"Positive electrode thickness [m]\": 0.3,\n"
+"    }\n"
+")\n"
+"\n"
+"geometry = pybamm.battery_geometry()\n"
+"parameter_values.process_geometry(geometry)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:147
+msgid ""
+"We then use this geometry to create a mesh, which for this example consists "
+"of uniform 1D submeshes"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"submesh_types = {\n"
+"    \"negative electrode\": pybamm.Uniform1DSubMesh,\n"
+"    \"separator\": pybamm.Uniform1DSubMesh,\n"
+"    \"positive electrode\": pybamm.Uniform1DSubMesh,\n"
+"    \"negative particle\": pybamm.Uniform1DSubMesh,\n"
+"    \"positive particle\": pybamm.Uniform1DSubMesh,\n"
+"    \"current collector\": pybamm.SubMesh0D,\n"
+"}\n"
+"\n"
+"var = pybamm.standard_spatial_vars\n"
+"var_pts = {var.x_n: 15, var.x_s: 10, var.x_p: 15, var.r_n: 10, var.r_p: 10}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:179
+msgid ""
+"Finally, we can use the mesh to create a discretisation, using Finite "
+"Volumes as the spatial method for this example"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"spatial_methods = {\n"
+"    \"macroscale\": pybamm.FiniteVolume(),\n"
+"    \"negative particle\": pybamm.FiniteVolume(),\n"
+"    \"positive particle\": pybamm.FiniteVolume(),\n"
+"}\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:206
+msgid "Discretisations and Spatial Methods"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:218
+msgid "Spatial Variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:229
+msgid ""
+"Spatial variables, such as :math:`x` and :math:`r`, are converted to "
+"``pybamm.Vector`` nodes"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"# Set up\n"
+"macroscale = [\"negative electrode\", \"separator\", \"positive "
+"electrode\"]\n"
+"x_var = pybamm.SpatialVariable(\"x\", domain=macroscale)\n"
+"r_var = pybamm.SpatialVariable(\"r\", domain=[\"negative particle\"])\n"
+"\n"
+"# Discretise\n"
+"x_disc = disc.process_symbol(x_var)\n"
+"r_disc = disc.process_symbol(r_var)\n"
+"print(f\"x_disc is a {type(x_disc)}\")\n"
+"print(f\"r_disc is a {type(r_disc)}\")\n"
+"\n"
+"# Evaluate\n"
+"x = x_disc.evaluate()\n"
+"r = r_disc.evaluate()\n"
+"\n"
+"f, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"\n"
+"ax1.plot(x, \"*\")\n"
+"ax1.set_xlabel(\"index\")\n"
+"ax1.set_ylabel(r\"$x$\")\n"
+"\n"
+"ax2.plot(r, \"*\")\n"
+"ax2.set_xlabel(\"index\")\n"
+"ax2.set_ylabel(r\"$r$\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:277
+msgid ""
+"<pre>\n"
+"x_disc is a &lt;class &#39;pybamm.expression_tree.vector.Vector&#39;&gt;\n"
+"r_disc is a &lt;class &#39;pybamm.expression_tree.vector.Vector&#39;&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:284
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"x\\_disc is a <class 'pybamm.expression\\_tree.vector.Vector'>\n"
+"r\\_disc is a <class 'pybamm.expression\\_tree.vector.Vector'>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:292
+msgid ""
+"x_disc is a <class 'pybamm.expression_tree.vector.Vector'>\n"
+"r_disc is a <class 'pybamm.expression_tree.vector.Vector'>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:312
+msgid ""
+"We define ``y_macroscale``, ``y_microscale`` and ``y_scalar`` for evaluation "
+"and visualisation of results below"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"y_macroscale = x**3 / 3\n"
+"y_microscale = np.cos(r)\n"
+"y_scalar = np.array([[5]])\n"
+"\n"
+"y = np.concatenate([y_macroscale, y_microscale, y_scalar])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:338
+msgid "Variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:349
+msgid ""
+"In this notebook, we will work with three variables ``u``, ``v``, ``w``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"u = pybamm.Variable(\n"
+"    \"u\", domain=macroscale\n"
+")  # u is a variable in the macroscale (e.g. electrolyte potential)\n"
+"v = pybamm.Variable(\n"
+"    \"v\", domain=[\"negative particle\"]\n"
+")  # v is a variable in the negative particle (e.g. particle concentration)\n"
+"w = pybamm.Variable(\n"
+"    \"w\"\n"
+")  # w is a variable without a domain (e.g. time, average concentration)\n"
+"\n"
+"variables = [u, v, w]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:380
+msgid ""
+"Before discretising, trying to evaluate the variables raises a "
+"``NotImplementedError``:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"try:\n"
+"    u.evaluate()\n"
+"except NotImplementedError as e:\n"
+"    print(e)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:404
+msgid ""
+"<pre>\n"
+"method self.evaluate() not implemented for symbol u of type &lt;class &#39;"
+"pybamm.expression_tree.variable.Variable&#39;&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:410
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"method self.evaluate() not implemented for symbol u of type <class 'pybamm."
+"expression\\_tree.variable.Variable'>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:417
+msgid ""
+"method self.evaluate() not implemented for symbol u of type <class 'pybamm."
+"expression_tree.variable.Variable'>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:428
+msgid ""
+"For any spatial method, a ``pybamm.Variable`` gets converted to a ``pybamm."
+"StateVector`` which, when evaluated, takes the appropriate slice of the "
+"input vector ``y``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"# Pass the list of variables to the discretisation to calculate the slices "
+"to be used (order matters here!)\n"
+"disc.set_variable_slices(variables)\n"
+"\n"
+"# Discretise the variables\n"
+"u_disc = disc.process_symbol(u)\n"
+"v_disc = disc.process_symbol(v)\n"
+"w_disc = disc.process_symbol(w)\n"
+"\n"
+"# Print the outcome\n"
+"print(f\"Discretised u is the StateVector {u_disc}\")\n"
+"print(f\"Discretised v is the StateVector {v_disc}\")\n"
+"print(f\"Discretised w is the StateVector {w_disc}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:460
+msgid ""
+"<pre>\n"
+"Discretised u is the StateVector y[0:40]\n"
+"Discretised v is the StateVector y[40:50]\n"
+"Discretised w is the StateVector y[50:51]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:468
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Discretised u is the StateVector y[0:40]\n"
+"Discretised v is the StateVector y[40:50]\n"
+"Discretised w is the StateVector y[50:51]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:477
+msgid ""
+"Discretised u is the StateVector y[0:40]\n"
+"Discretised v is the StateVector y[40:50]\n"
+"Discretised w is the StateVector y[50:51]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:490
+msgid ""
+"Since the variables have been passed to ``disc`` in the order ``[u,v,w]``, "
+"they each read the appropriate part of ``y`` when evaluated:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"x_fine = np.linspace(x[0], x[-1], 1000)\n"
+"r_fine = np.linspace(r[0], r[-1], 1000)\n"
+"\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"ax1.plot(x_fine, x_fine**3 / 3, x, u_disc.evaluate(y=y), \"o\")\n"
+"ax1.set_xlabel(\"x\")\n"
+"ax1.legend([\"x^3/3\", \"u\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(r_fine, np.cos(r_fine), r, v_disc.evaluate(y=y), \"o\")\n"
+"ax2.set_xlabel(\"r\")\n"
+"ax2.legend([\"cos(r)\", \"v\"], loc=\"best\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "print(f\"w = {w_disc.evaluate(y=y)}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:542
+msgid ""
+"<pre>\n"
+"w = [[5.]]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:548
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"w = [[5.]]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:555
+msgid "w = [[5.]]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:567
+msgid "Finite Volume Operators"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:581
+msgid ""
+"The gradient operator is converted to a Matrix-StateVector multiplication. "
+"In 1D, the gradient operator is equivalent to :math:`\\partial/\\partial x` "
+"on the macroscale and :math:`\\partial/\\partial r` on the microscale. In "
+"Finite Volumes, we take the gradient of an object on nodes (shape (n,)), "
+"which returns an object on the edges (shape (n-1,))."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"grad_u = pybamm.grad(u)\n"
+"grad_u_disc = disc.process_symbol(grad_u)\n"
+"grad_u_disc.render()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:604
+msgid ""
+"<pre>\n"
+"@\n"
+"├── Sparse Matrix (39, 40)\n"
+"└── y[0:40]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:612
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"@\n"
+"├── Sparse Matrix (39, 40)\n"
+"└── y[0:40]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:621
+msgid ""
+"@\n"
+"├── Sparse Matrix (39, 40)\n"
+"└── y[0:40]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:634
+msgid ""
+"The Matrix in ``grad_u_disc`` is the standard ``[-1,1]`` sparse matrix, "
+"divided by the step sizes ``dx``:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"macro_mesh = mesh.combine_submeshes(*macroscale)\n"
+"print(\"gradient matrix is:\\n\")\n"
+"print(\n"
+"    f\"1/dx *\\n{macro_mesh.d_nodes[:, np.newaxis] * grad_u_disc.children[0]."
+"entries.toarray()}\"\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:659
+msgid ""
+"<pre>\n"
+"gradient matrix is:\n"
+"\n"
+"1/dx *\n"
+"[[-1.  1.  0. ...  0.  0.  0.]\n"
+" [ 0. -1.  1. ...  0.  0.  0.]\n"
+" [ 0.  0. -1. ...  0.  0.  0.]\n"
+" ...\n"
+" [ 0.  0.  0. ...  1.  0.  0.]\n"
+" [ 0.  0.  0. ... -1.  1.  0.]\n"
+" [ 0.  0.  0. ...  0. -1.  1.]]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:674
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"gradient matrix is:\n"
+"\n"
+"1/dx *\n"
+"[[-1.  1.  0. {\\ldots}  0.  0.  0.]\n"
+" [ 0. -1.  1. {\\ldots}  0.  0.  0.]\n"
+" [ 0.  0. -1. {\\ldots}  0.  0.  0.]\n"
+" {\\ldots}\n"
+" [ 0.  0.  0. {\\ldots}  1.  0.  0.]\n"
+" [ 0.  0.  0. {\\ldots} -1.  1.  0.]\n"
+" [ 0.  0.  0. {\\ldots}  0. -1.  1.]]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:690
+msgid ""
+"gradient matrix is:\n"
+"\n"
+"1/dx *\n"
+"[[-1.  1.  0. ...  0.  0.  0.]\n"
+" [ 0. -1.  1. ...  0.  0.  0.]\n"
+" [ 0.  0. -1. ...  0.  0.  0.]\n"
+" ...\n"
+" [ 0.  0.  0. ...  1.  0.  0.]\n"
+" [ 0.  0.  0. ... -1.  1.  0.]\n"
+" [ 0.  0.  0. ...  0. -1.  1.]]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:710
+msgid ""
+"When evaluated with ``y_macroscale=x**3/3``, ``grad_u_disc`` is equal to "
+"``x**2`` as expected:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"x_edge = macro_mesh.edges[1:-1]  # note that grad_u_disc is evaluated on the "
+"node edges\n"
+"\n"
+"fig, ax = plt.subplots()\n"
+"ax.plot(x_fine, x_fine**2, x_edge, grad_u_disc.evaluate(y=y), \"o\")\n"
+"ax.set_xlabel(\"x\")\n"
+"legend = ax.legend([\"x^2\", \"grad(u).evaluate(y=x**3/3)\"], loc=\"best\")\n"
+"\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:746
+msgid ""
+"Similary, we can create, discretise and evaluate the gradient of ``v``, "
+"which is a variable in the negative particles. Note that the syntax for "
+"doing this is identical: we do not need to explicitly specify that we want "
+"the gradient in ``r``, since this is inferred from the ``domain`` of ``v``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[15]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "v.domain"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:768
+msgid ""
+"<pre>\n"
+"[&#39;negative particle&#39;]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:774
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"['negative particle']\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:781
+msgid "['negative particle']"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[16]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"grad_v = pybamm.grad(v)\n"
+"grad_v_disc = disc.process_symbol(grad_v)\n"
+"print(\"grad(v) tree is:\\n\")\n"
+"grad_v_disc.render()\n"
+"\n"
+"micro_mesh = mesh[\"negative particle\"]\n"
+"print(\"\\n gradient matrix is:\\n\")\n"
+"print(\n"
+"    f\"1/dr *\\n{micro_mesh.d_nodes[:, np.newaxis] * grad_v_disc.children[0]."
+"entries.toarray()}\"\n"
+")\n"
+"\n"
+"r_edge = micro_mesh.edges[1:-1]  # note that grad_u_disc is evaluated on the "
+"node edges\n"
+"\n"
+"fig, ax = plt.subplots()\n"
+"ax.plot(r_fine, -np.sin(r_fine), r_edge, grad_v_disc.evaluate(y=y), \"o\")\n"
+"ax.set_xlabel(\"x\")\n"
+"legend = ax.legend([\"-sin(r)\", \"grad(v).evaluate(y=cos(r))\"], "
+"loc=\"best\")\n"
+"\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:821
+msgid ""
+"<pre>\n"
+"grad(v) tree is:\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (9, 10)\n"
+"└── y[40:50]\n"
+"\n"
+" gradient matrix is:\n"
+"\n"
+"1/dr *\n"
+"[[-1.  1.  0.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0. -1.  1.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0. -1.  1.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0. -1.  1.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0. -1.  1.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0. -1.  1.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0. -1.  1.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0. -1.  1.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0.  0. -1.  1.]]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:844
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"grad(v) tree is:\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (9, 10)\n"
+"└── y[40:50]\n"
+"\n"
+" gradient matrix is:\n"
+"\n"
+"1/dr *\n"
+"[[-1.  1.  0.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0. -1.  1.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0. -1.  1.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0. -1.  1.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0. -1.  1.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0. -1.  1.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0. -1.  1.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0. -1.  1.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0.  0. -1.  1.]]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:868
+msgid ""
+"grad(v) tree is:\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (9, 10)\n"
+"└── y[40:50]\n"
+"\n"
+" gradient matrix is:\n"
+"\n"
+"1/dr *\n"
+"[[-1.  1.  0.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0. -1.  1.  0.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0. -1.  1.  0.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0. -1.  1.  0.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0. -1.  1.  0.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0. -1.  1.  0.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0. -1.  1.  0.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0. -1.  1.  0.]\n"
+" [ 0.  0.  0.  0.  0.  0.  0.  0. -1.  1.]]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:905
+msgid "Boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:916
+msgid ""
+"If the discretisation is provided with boundary conditions, appropriate "
+"ghost nodes are concatenated onto the variable, and a larger gradient matrix "
+"is used. The ghost nodes are chosen based on the value of the first/last "
+"node in the variable and the boundary condition. For a Dirichlet boundary "
+"condition :math:`u=a` on the left-hand boundary, we set the value of the "
+"left ghost node to be equal to"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:918
+msgid ""
+"2*a-u[0],\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:920
+msgid ""
+"where :math:`u[0]` is the value of :math:`u` in the left-most cell in the "
+"domain. Similarly, for a Dirichlet condition :math:`u=b` on the right-hand "
+"boundary, we set the right ghost node to be"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:922
+msgid ""
+"2*b-u[-1].\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[17]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"disc.bcs = {\n"
+"    u: {\n"
+"        \"left\": (pybamm.Scalar(1), \"Dirichlet\"),\n"
+"        \"right\": (pybamm.Scalar(2), \"Dirichlet\"),\n"
+"    }\n"
+"}\n"
+"grad_u_disc = disc.process_symbol(grad_u)\n"
+"print(\"The gradient object is:\")\n"
+"(grad_u_disc.render())\n"
+"u_eval = grad_u_disc.evaluate(y=y)\n"
+"dx = np.diff(macro_mesh.nodes)[-1]\n"
+"print(f\"The value of u on the left-hand boundary is {y[0] - dx * "
+"u_eval[0] / 2}\")\n"
+"print(f\"The value of u on the right-hand boundary is {y[1] + dx * "
+"u_eval[-1] / 2}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:955
+msgid ""
+"<pre>\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [1.]\n"
+"The value of u on the right-hand boundary is [1.67902865]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:968
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [1.]\n"
+"The value of u on the right-hand boundary is [1.67902865]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:982
+msgid ""
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [1.]\n"
+"The value of u on the right-hand boundary is [1.67902865]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1000
+msgid ""
+"For a Neumann boundary condition :math:`\\partial u/\\partial x=c` on the "
+"left-hand boundary, we set the value of the left ghost node to be"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1002
+msgid ""
+"u[0] - c * dx,\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1004
+msgid ""
+"where :math:`dx` is the step size at the left-hand boundary. For a Neumann "
+"boundary condition :math:`\\partial u/\\partial x=d` on the right-hand "
+"boundary, we set the value of the right ghost node to be"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1006
+msgid ""
+"u[-1] + d * dx.\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[20]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"disc.bcs = {\n"
+"    u: {\"left\": (pybamm.Scalar(3), \"Neumann\"), \"right\": (pybamm."
+"Scalar(4), \"Neumann\")}\n"
+"}\n"
+"grad_u_disc = disc.process_symbol(grad_u)\n"
+"print(\"The gradient object is:\")\n"
+"(grad_u_disc.render())\n"
+"grad_u_eval = grad_u_disc.evaluate(y=y)\n"
+"print(f\"The gradient on the left-hand boundary is {grad_u_eval[0]}\")\n"
+"print(f\"The gradient of u on the right-hand boundary is {grad_u_eval[-1]}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1035
+msgid ""
+"<pre>\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The gradient on the left-hand boundary is [3.]\n"
+"The gradient of u on the right-hand boundary is [4.]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1048
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The gradient on the left-hand boundary is [3.]\n"
+"The gradient of u on the right-hand boundary is [4.]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1062
+msgid ""
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The gradient on the left-hand boundary is [3.]\n"
+"The gradient of u on the right-hand boundary is [4.]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1080
+msgid "We can mix the types of the boundary conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[21]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"disc.bcs = {\n"
+"    u: {\"left\": (pybamm.Scalar(5), \"Dirichlet\"), \"right\": (pybamm."
+"Scalar(6), \"Neumann\")}\n"
+"}\n"
+"grad_u_disc = disc.process_symbol(grad_u)\n"
+"print(\"The gradient object is:\")\n"
+"(grad_u_disc.render())\n"
+"grad_u_eval = grad_u_disc.evaluate(y=y)\n"
+"u_eval = grad_u_disc.children[1].evaluate(y=y)\n"
+"print(f\"The value of u on the left-hand boundary is {(u_eval[0] + "
+"u_eval[1]) / 2}\")\n"
+"print(f\"The gradient on the right-hand boundary is {grad_u_eval[-1]}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1110
+msgid ""
+"<pre>\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [0.00036458]\n"
+"The gradient on the right-hand boundary is [6.]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1123
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [0.00036458]\n"
+"The gradient on the right-hand boundary is [6.]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1137
+msgid ""
+"The gradient object is:\n"
+"+\n"
+"├── Column vector of length 41\n"
+"└── @\n"
+"    ├── Sparse Matrix (41, 40)\n"
+"    └── y[0:40]\n"
+"The value of u on the left-hand boundary is [0.00036458]\n"
+"The gradient on the right-hand boundary is [6.]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1155
+msgid ""
+"Robin boundary conditions can be implemented by specifying a Neumann "
+"condition where the flux depends on the variable."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1178
+msgid ""
+"Before computing the Divergence operator, we set up Neumann boundary "
+"conditions. The behaviour with Dirichlet boundary conditions is very similar."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[22]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"disc.bcs = {\n"
+"    u: {\"left\": (pybamm.Scalar(-1), \"Neumann\"), \"right\": (pybamm."
+"Scalar(1), \"Neumann\")}\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1201
+msgid ""
+"Now we can process ``div(grad(u))``, converting it to a Matrix-Vector "
+"multiplication, plus a vector for the boundary conditions. Since we have "
+"Neumann boundary conditions, the divergence of an object of size (n+1,) has "
+"size (n,), and so div(grad) of an object of size (n,) has size (n,)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[23]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"div_grad_u = pybamm.div(grad_u)\n"
+"div_grad_u_disc = disc.process_symbol(div_grad_u)\n"
+"div_grad_u_disc.render()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1224
+msgid ""
+"<pre>\n"
+"+\n"
+"├── Column vector of length 40\n"
+"└── @\n"
+"    ├── Sparse Matrix (40, 40)\n"
+"    └── y[0:40]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1234
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"+\n"
+"├── Column vector of length 40\n"
+"└── @\n"
+"    ├── Sparse Matrix (40, 40)\n"
+"    └── y[0:40]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1245
+msgid ""
+"+\n"
+"├── Column vector of length 40\n"
+"└── @\n"
+"    ├── Sparse Matrix (40, 40)\n"
+"    └── y[0:40]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1260
+msgid ""
+"The div(grad) matrix is automatically simplified to the well-known "
+"``[1,-2,1]`` matrix (divided by the square of the distance between the "
+"edges), except in the first and last rows for boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[24]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"print(\"div(grad) matrix is:\\n\")\n"
+"print(\n"
+"    \"1/dx^2 * \\n{}\".format(\n"
+"        macro_mesh.d_edges[:, np.newaxis] ** 2\n"
+"        * div_grad_u_disc.right.left.entries.toarray()\n"
+"    )\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1287
+msgid ""
+"<pre>\n"
+"div(grad) matrix is:\n"
+"\n"
+"1/dx^2 *\n"
+"[[-1.  1.  0. ...  0.  0.  0.]\n"
+" [ 1. -2.  1. ...  0.  0.  0.]\n"
+" [ 0.  1. -2. ...  0.  0.  0.]\n"
+" ...\n"
+" [ 0.  0.  0. ... -2.  1.  0.]\n"
+" [ 0.  0.  0. ...  1. -2.  1.]\n"
+" [ 0.  0.  0. ...  0.  1. -1.]]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1302
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"div(grad) matrix is:\n"
+"\n"
+"1/dx\\^{}2 *\n"
+"[[-1.  1.  0. {\\ldots}  0.  0.  0.]\n"
+" [ 1. -2.  1. {\\ldots}  0.  0.  0.]\n"
+" [ 0.  1. -2. {\\ldots}  0.  0.  0.]\n"
+" {\\ldots}\n"
+" [ 0.  0.  0. {\\ldots} -2.  1.  0.]\n"
+" [ 0.  0.  0. {\\ldots}  1. -2.  1.]\n"
+" [ 0.  0.  0. {\\ldots}  0.  1. -1.]]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1318
+msgid ""
+"div(grad) matrix is:\n"
+"\n"
+"1/dx^2 *\n"
+"[[-1.  1.  0. ...  0.  0.  0.]\n"
+" [ 1. -2.  1. ...  0.  0.  0.]\n"
+" [ 0.  1. -2. ...  0.  0.  0.]\n"
+" ...\n"
+" [ 0.  0.  0. ... -2.  1.  0.]\n"
+" [ 0.  0.  0. ...  1. -2.  1.]\n"
+" [ 0.  0.  0. ...  0.  1. -1.]]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1350
+msgid ""
+"Finally, we can define an integral operator, which integrates the variable "
+"across the domain specified by the integration variable."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[25]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"int_u = pybamm.Integral(u, x_var)\n"
+"int_u_disc = disc.process_symbol(int_u)\n"
+"print(f\"int(u) = {int_u_disc.evaluate(y=y)} is approximately equal to 1/12, "
+"{1 / 12}\")\n"
+"\n"
+"# We divide v by r to evaluate the integral more easily\n"
+"int_v_over_r2 = pybamm.Integral(v / r_var**2, r_var)\n"
+"int_v_over_r2_disc = disc.process_symbol(int_v_over_r2)\n"
+"print(\n"
+"    f\"int(v/r^2) = {int_v_over_r2_disc.evaluate(y=y)} is approximately "
+"equal to 4 * pi * sin(1), {4 * np.pi * np.sin(1)}\"\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1380
+msgid ""
+"<pre>\n"
+"int(u) = [[0.08330729]] is approximately equal to 1/12, 0.08333333333333333\n"
+"int(v/r^2) = [[11.07985772]] is approximately equal to 4 * pi * sin(1), "
+"10.574236256325824\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1387
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"int(u) = [[0.08330729]] is approximately equal to 1/12, 0.08333333333333333\n"
+"int(v/r\\^{}2) = [[11.07985772]] is approximately equal to 4 * pi * sin(1), "
+"10.574236256325824\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1395
+msgid ""
+"int(u) = [[0.08330729]] is approximately equal to 1/12, 0.08333333333333333\n"
+"int(v/r^2) = [[11.07985772]] is approximately equal to 4 * pi * sin(1), "
+"10.574236256325824"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1407
+msgid "The integral operators are also Matrix-Vector multiplications"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[26]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"print(\"int(u):\\n\")\n"
+"int_u_disc.render()\n"
+"print(\"\\nint(v):\\n\")\n"
+"int_v_over_r2_disc.render()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1431
+msgid ""
+"<pre>\n"
+"int(u):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 40)\n"
+"└── y[0:40]\n"
+"\n"
+"int(v):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 10)\n"
+"└── *\n"
+"    ├── Column vector of length 10\n"
+"    └── y[40:50]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1449
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"int(u):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 40)\n"
+"└── y[0:40]\n"
+"\n"
+"int(v):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 10)\n"
+"└── *\n"
+"    ├── Column vector of length 10\n"
+"    └── y[40:50]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1468
+msgid ""
+"int(u):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 40)\n"
+"└── y[0:40]\n"
+"\n"
+"int(v):\n"
+"\n"
+"@\n"
+"├── Sparse Matrix (1, 10)\n"
+"└── *\n"
+"    ├── Column vector of length 10\n"
+"    └── y[40:50]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[27]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "int_u_disc.children[0].evaluate() / macro_mesh.d_edges"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1502
+msgid ""
+"<pre>\n"
+"matrix([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1.]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1510
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"matrix([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1.]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1519
+msgid ""
+"matrix([[1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1., 1.,\n"
+"         1., 1., 1., 1., 1., 1., 1., 1.]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1533
+msgid "Discretising a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1544
+msgid ""
+"We can now discretise a whole model. We create, and discretise, a simple "
+"model for the concentration in the electrolyte and the concentration in the "
+"particles, and discretise it with a single command:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1548
+msgid "disc.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[28]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"model = pybamm.BaseModel()\n"
+"\n"
+"c_e = pybamm.Variable(\"electrolyte concentration\", domain=macroscale)\n"
+"N_e = pybamm.grad(c_e)\n"
+"c_s = pybamm.Variable(\"particle concentration\", domain=[\"negative "
+"particle\"])\n"
+"N_s = pybamm.grad(c_s)\n"
+"model.rhs = {c_e: pybamm.div(N_e) - 5, c_s: pybamm.div(N_s)}\n"
+"model.boundary_conditions = {\n"
+"    c_e: {\"left\": (np.cos(0), \"Neumann\"), \"right\": (np.cos(10), "
+"\"Neumann\")},\n"
+"    c_s: {\"left\": (0, \"Neumann\"), \"right\": (-1, \"Neumann\")},\n"
+"}\n"
+"model.initial_conditions = {c_e: 1 + 0.1 * pybamm.sin(10 * x_var), c_s: 1}\n"
+"\n"
+"# Create a new discretisation and process model\n"
+"disc2 = pybamm.Discretisation(mesh, spatial_methods)\n"
+"disc2.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1584
+msgid ""
+"The initial conditions are discretised to vectors, and an array of "
+"concatenated initial conditions is created."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[29]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"c_e_0 = model.initial_conditions[c_e].evaluate()\n"
+"c_s_0 = model.initial_conditions[c_s].evaluate()\n"
+"y0 = model.concatenated_initial_conditions.evaluate()\n"
+"\n"
+"fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(13, 4))\n"
+"ax1.plot(x_fine, 1 + 0.1 * np.sin(10 * x_fine), x, c_e_0, \"o\")\n"
+"ax1.set_xlabel(\"x\")\n"
+"ax1.legend([\"1+0.1*sin(10*x)\", \"c_e_0\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(x_fine, np.ones_like(r_fine), r, c_s_0, \"o\")\n"
+"ax2.set_xlabel(\"r\")\n"
+"ax2.legend([\"1\", \"c_s_0\"], loc=\"best\")\n"
+"\n"
+"ax3.plot(y0, \"*\")\n"
+"ax3.set_xlabel(\"index\")\n"
+"ax3.set_ylabel(\"y0\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1631
+msgid "The discretised rhs can be evaluated, for example at ``0,y0``:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[30]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"rhs_c_e = model.rhs[c_e].evaluate(0, y0)\n"
+"rhs_c_s = model.rhs[c_s].evaluate(0, y0)\n"
+"rhs = model.concatenated_rhs.evaluate(0, y0)\n"
+"\n"
+"fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(13, 4))\n"
+"ax1.plot(x_fine, -10 * np.sin(10 * x_fine) - 5, x, rhs_c_e, \"o\")\n"
+"ax1.set_xlabel(\"x\")\n"
+"ax1.set_ylabel(\"rhs_c_e\")\n"
+"ax1.legend([\"1+0.1*sin(10*x)\", \"c_e_0\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(r, rhs_c_s, \"o\")\n"
+"ax2.set_xlabel(\"r\")\n"
+"ax2.set_ylabel(\"rhs_c_s\")\n"
+"\n"
+"ax3.plot(rhs, \"*\")\n"
+"ax3.set_xlabel(\"index\")\n"
+"ax3.set_ylabel(\"rhs\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1679
+msgid ""
+"The function ``model.concatenated_rhs`` is then passed to the solver to "
+"solve the model, with initial conditions ``model."
+"concatenated_initial_conditions``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1691
+msgid "Upwinding and downwinding"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1702
+msgid ""
+"If a system is advection-dominated (Peclet number greater than around 40), "
+"then it is important to use upwinding (if velocity is positive) or "
+"downwinding (if velocity is negative) to obtain accurate results. To see "
+"this, consider the following model (without upwinding)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[31]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"model = pybamm.BaseModel()\n"
+"\n"
+"# Define concentration and velocity\n"
+"c = pybamm.Variable(\n"
+"    \"c\", domain=[\"negative electrode\", \"separator\", \"positive "
+"electrode\"]\n"
+")\n"
+"v = pybamm.PrimaryBroadcastToEdges(\n"
+"    1, [\"negative electrode\", \"separator\", \"positive electrode\"]\n"
+")\n"
+"model.rhs = {c: -pybamm.div(c * v) + 1}\n"
+"model.initial_conditions = {c: 0}\n"
+"model.boundary_conditions = {c: {\"left\": (0, \"Dirichlet\")}}\n"
+"model.variables = {\"c\": c}\n"
+"\n"
+"\n"
+"def solve_and_plot(model):\n"
+"    model_disc = disc.process_model(model, inplace=False)\n"
+"\n"
+"    t_eval = [0, 100]\n"
+"    solution = pybamm.IDAKLUSolver().solve(model_disc, t_eval)\n"
+"\n"
+"    # plot\n"
+"    plot = pybamm.QuickPlot(solution, [\"c\"], spatial_unit=\"m\")\n"
+"    plot.dynamic_plot()\n"
+"\n"
+"\n"
+"solve_and_plot(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1750
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"a8807565aaf548f48ddf00a2e1d3f865\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1760
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1817
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1875
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"step=1.0), Output()), _dom_classes=(&#39;widget-inte…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1766
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1823
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1881
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', step=1.0), "
+"Output()), \\_dom\\_classes=('widget-inte…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1773
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1830
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1888
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', step=1.0), "
+"Output()), _dom_classes=('widget-inte…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1784
+msgid ""
+"The concentration grows indefinitely, which is clearly an incorrect "
+"solution. Instead, we can use upwinding:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[32]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"model.rhs = {c: -pybamm.div(pybamm.upwind(c) * v) + 1}\n"
+"solve_and_plot(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1807
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"b50896a3c984451282cb4f0efb8389c9\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1841
+msgid ""
+"This gives the expected linear steady state from 0 to 1. Similarly, if the "
+"velocity is negative, downwinding gives accurate results"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[33]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid ""
+"model.rhs = {c: -pybamm.div(pybamm.downwind(c) * (-v)) + 1}\n"
+"model.boundary_conditions = {c: {\"right\": (0, \"Dirichlet\")}}\n"
+"solve_and_plot(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1865
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"a40d1df3cf9745d78ca7b1450ce128b3\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1900
+msgid "More advanced concepts"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1911
+msgid ""
+"Since this notebook is only an introduction to the discretisation, we have "
+"not covered everything. More advanced concepts, such as the ones below, can "
+"be explored by looking into the `API docs <https://docs.pybamm.org/en/latest/"
+"source/api/solvers/index.html>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1913
+msgid "Gradient and divergence of microscale variables in the P2D model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1914
+msgid "Indefinite integral"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1916
+msgid ""
+"If you would like detailed examples of these operations, please `create an "
+"issue <https://docs.pybamm.org/en/latest/source/user_guide/contributing."
+"html#a-before-you-begin>`__ and we will be happy to help."
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1928
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1930
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "[34]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1951
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1960
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/spatial_methods/finite-volumes.ipynb:1970
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

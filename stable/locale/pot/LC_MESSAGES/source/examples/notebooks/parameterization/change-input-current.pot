@@ -1,0 +1,610 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/parameterization/change-input-current."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/parameterization/change-input-current.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:9
+msgid "Changing the input current when solving PyBaMM models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:11
+msgid ""
+"This notebook shows you how to change the input current when solving PyBaMM "
+"models. It also explains how to load in current data from a file, and how to "
+"add a user-defined current function. For more examples of different drive "
+"cycles see `here <https://github.com/pybamm-team/pybamm-data/releases/tag/"
+"v1.0.0>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:14
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:16
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:30
+msgid "Constant current"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:17
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:300
+msgid "Loading in current data"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:18
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:467
+msgid "Adding your own current function"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:32
+msgid ""
+"In this notebook we will use the SPM as the example model, and change the "
+"input current from the default option. If you are not familiar with running "
+"a model in PyBaMM, please see `this <../models/SPM.ipynb>`__ notebook for "
+"more details."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:34
+msgid ""
+"In PyBaMM, the current function is set using the parameter \"Current "
+"function [A]\". Below we load the SPM with the default parameters, and then "
+"change the the current function to be an input parameter, so that we can "
+"change it easily later."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")\n"
+"\n"
+"# create the model\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"\n"
+"# set the default model parameters\n"
+"param = model.default_parameter_values\n"
+"\n"
+"# change the current function to be an input parameter\n"
+"param[\"Current function [A]\"] = \"[input]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:72
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:78
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:85
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:97
+msgid ""
+"<pre>\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:103
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:110
+msgid ""
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:121
+msgid ""
+"We can set up a simulation in the usual way, making sure we pass in our "
+"updated parameters. We choose to solve with a 1.6A current. In order to do "
+"this we must pass a dictionary of inputs whose keys are the parameter names "
+"and values are the values we want to use for that call to solve"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"# set up simlation\n"
+"simulation = pybamm.Simulation(model, parameter_values=param)\n"
+"\n"
+"# solve the model at the given time points, passing the current as an input\n"
+"t_eval = np.linspace(0, 600, 300)\n"
+"simulation.solve(t_eval, inputs={\"Current function [A]\": 1.6})\n"
+"\n"
+"# plot\n"
+"simulation.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:152
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"174048e3ccf74930a39a249dc0723975\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:163
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:250
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:406
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=600.0, step=6.0), Output()), _dom_classes=(&#39;…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:169
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:256
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:412
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=600.0, "
+"step=6.0), Output()), \\_dom\\_classes=('…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:176
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:263
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:419
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=600.0, "
+"step=6.0), Output()), _dom_classes=('…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:188
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x79ada1f321e0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:194
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x79ada1f321e0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:201
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x79ada1f321e0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:212
+msgid ""
+"PyBaMM can also simulate rest behaviour by setting the current function to "
+"zero:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"# solve the model at the given time points\n"
+"simulation.solve(t_eval, inputs={\"Current function [A]\": 0})\n"
+"\n"
+"# plot\n"
+"simulation.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:239
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"bd1dbdfee61f4e518c3534b44e0ce879\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:275
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x79ae443f29f0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:281
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x79ae443f29f0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:288
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x79ae443f29f0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:302
+msgid ""
+"To run drive cycles from data we can create an interpolant and pass it as "
+"the current function."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"import pandas as pd  # needed to read the csv data file\n"
+"\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"\n"
+"# import drive cycle from file\n"
+"data_loader = pybamm.DataLoader()\n"
+"drive_cycle = pd.read_csv(\n"
+"    f\"{data_loader.get_data('US06.csv')}\", comment=\"#\", header=None\n"
+").to_numpy()\n"
+"\n"
+"# load parameter values\n"
+"param = model.default_parameter_values\n"
+"\n"
+"# create interpolant - must be a function of *dimensional* time\n"
+"current_interpolant = pybamm.Interpolant(drive_cycle[:, 0], drive_cycle[:, "
+"1], pybamm.t)\n"
+"\n"
+"# set drive cycle\n"
+"param[\"Current function [A]\"] = current_interpolant\n"
+"\n"
+"# set up simulation - for drive cycles we recommend using the CasadiSolver "
+"in \"fast\" mode\n"
+"simulation = pybamm.Simulation(model, parameter_values=param)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:344
+msgid ""
+"<pre>\n"
+"Downloading file &#39;US06.csv&#39; from &#39;https://github.com/pybamm-team/"
+"pybamm-data/releases/download/v1.0.0/US06.csv&#39; to &#39;/home/santa/."
+"cache/pybamm&#39;.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:350
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Downloading file 'US06.csv' from 'https://github.com/pybamm-team/pybamm-data/"
+"releases/download/v1.0.0/US06.csv' to '/home/santa/.cache/pybamm'.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:357
+msgid ""
+"Downloading file 'US06.csv' from 'https://github.com/pybamm-team/pybamm-data/"
+"releases/download/v1.0.0/US06.csv' to '/home/santa/.cache/pybamm'."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:368
+msgid ""
+"Note that when simulating drive cycles there is no need to pass a list of "
+"times at which to return the solution, the results are automatically "
+"returned at the time points in the data. If you would like the solution "
+"returned at times different to those in the data then you can pass an array "
+"of times ``t_eval`` to ``solve`` in the usual way."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"# simulate US06 drive cycle (duration 600 seconds)\n"
+"simulation.solve()\n"
+"\n"
+"# plot\n"
+"simulation.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:395
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"513c59118a6144a8a205510aaa9e9527\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:431
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x79ad7d74c620&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:437
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x79ad7d74c620>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:444
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x79ad7d74c620>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:455
+msgid ""
+"Note that some solvers try to evaluate the model equations at a very large "
+"value of ``t`` during the first step. This may raise a warning if the time "
+"requested by the solver is outside of the range of the data provided. "
+"However, this does not affect the solve since this large timestep is "
+"rejected by the solver, and a suitable shorter initial step is taken."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:469
+msgid ""
+"A user defined current function can be passed to any model by specifying "
+"either a function or a set of data points for interpolation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:471
+msgid ""
+"For example, you may want to simulate a sinusoidal current with amplitude A "
+"and frequency omega. In order to do so you must first define the method"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"# create user-defined function\n"
+"\n"
+"\n"
+"def my_fun(A, omega):\n"
+"    def current(t):\n"
+"        return A * pybamm.sin(2 * np.pi * omega * t)\n"
+"\n"
+"    return current"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:499
+msgid ""
+"Note that the function returns a function which takes the input time. Then "
+"the model may be loaded and the \"Current function\" parameter updated to "
+"``my_fun`` called with a specific value of ``A`` and ``omega``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.SPM()\n"
+"\n"
+"# load default parameter values\n"
+"param = model.default_parameter_values\n"
+"\n"
+"# set user defined current function\n"
+"A = model.param.I_typ\n"
+"omega = 0.1\n"
+"param[\"Current function [A]\"] = my_fun(A, omega)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:528
+msgid ""
+"Note that when ``my_fun`` is evaluated with ``A`` and ``omega``, this "
+"creates a new function ``current(t)`` which can then be used in the "
+"expression tree. The model may then be solved in the usual way"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid ""
+"# set up simulation\n"
+"simulation = pybamm.Simulation(model, parameter_values=param)\n"
+"\n"
+"# Example: simulate for 30 seconds\n"
+"simulation_time = 30  # end time in seconds\n"
+"npts = int(50 * simulation_time * omega)  # need enough timesteps to resolve "
+"output\n"
+"t_eval = np.linspace(0, simulation_time, npts)\n"
+"solution = simulation.solve(t_eval)\n"
+"label = [f\"Frequency: {omega} Hz\"]\n"
+"\n"
+"# plot current and voltage\n"
+"output_variables = [\"Current [A]\", \"Voltage [V]\"]\n"
+"simulation.plot(output_variables, labels=label)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:563
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"40a6ad712e184ba1a161932440d7a99d\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:574
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=30.0, step=0.3), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:580
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=30.0, "
+"step=0.3), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:587
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=30.0, "
+"step=0.3), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:599
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x79ad73fea6c0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:605
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x79ad73fea6c0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:612
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x79ad73fea6c0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:624
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:626
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:647
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:658
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/change-input-current.ipynb:670
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj."
+msgstr ""
