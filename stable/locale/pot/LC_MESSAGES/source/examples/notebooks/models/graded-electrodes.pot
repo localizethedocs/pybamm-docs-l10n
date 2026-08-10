@@ -1,0 +1,432 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/graded-electrodes.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/graded-electrodes.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:9
+msgid "Simulating graded electrodes"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:11
+msgid ""
+"In this notebook we explore how to simulate the effect of graded electrodes "
+"in the performance of a battery. Graded electrodes have a composition that "
+"varies along the thickness of the electrode, typically active material "
+"volume fraction and particle size. This variation can be used to improve the "
+"performance of the battery, for example, by increasing the power density."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:13
+msgid "As usual, we start by importing PyBaMM."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:35
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:48
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:59
+msgid ""
+"We use the DFN model for the simulations and the Chen2020 parameter set. "
+"Note that we will need to modify the default Chen2020 parameter set to "
+"describe graded electrodes."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"parameter_values = pybamm.ParameterValues(\"Chen2020\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:81
+msgid ""
+"We will vary the porosity in both electrodes and we will try three different "
+"scenarios: constant porosity, one where lower porosity occurs near the "
+"separator and one where lower porosity occurs near the current collector. "
+"All other parameters are kept constant. The varying porosity is defined to "
+"be linear centered around the default value and with a variation of :math:"
+"`\\pm` 10%."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:83
+msgid ""
+"We define the varying porosities and store them in a list so we can loop "
+"over when solving the model. Note that the porosities must be specified as "
+"functions of x, y, and z, even if y and z are not present in the model and "
+"not referred to at any other point, as in this example."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"L_n = parameter_values[\"Negative electrode thickness [m]\"]\n"
+"L_s = parameter_values[\"Separator thickness [m]\"]\n"
+"L_p = parameter_values[\"Positive electrode thickness [m]\"]\n"
+"\n"
+"eps_n_0 = parameter_values[\"Negative electrode porosity\"]\n"
+"eps_p_0 = parameter_values[\"Positive electrode porosity\"]\n"
+"\n"
+"eps_ns = [\n"
+"    eps_n_0,\n"
+"    lambda x, y, z: eps_n_0 * (1.1 - 0.2 * (x / L_n)),\n"
+"    lambda x, y, z: eps_n_0 * (0.9 + 0.2 * (x / L_n)),\n"
+"]\n"
+"\n"
+"eps_ps = [\n"
+"    eps_p_0,\n"
+"    lambda x, y, z: eps_p_0 * (0.9 - 0.2 / L_p * (L_n + L_s) + 0.2 * (x / "
+"L_p)),\n"
+"    lambda x, y, z: eps_p_0 * (1.1 + 0.2 / L_p * (L_n + L_s) - 0.2 * (x / "
+"L_p)),\n"
+"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:121
+msgid ""
+"Note that the distance through the electrode is computed from the negative "
+"electrode, so parameter need to be defined accordingly. Next, we can just "
+"solve the models for the various parameter sets. We apply a fairly high C-"
+"rate to see the effect of the graded electrodes on the discharge capacity."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"solutions = []\n"
+"\n"
+"experiment = pybamm.Experiment([\"Discharge at 3C until 2.5 V\"])\n"
+"\n"
+"for eps_n, eps_p in zip(eps_ns, eps_ps, strict=False):\n"
+"    parameter_values[\"Negative electrode porosity\"] = eps_n\n"
+"    parameter_values[\"Positive electrode porosity\"] = eps_p\n"
+"    sim = pybamm.Simulation(\n"
+"        model,\n"
+"        parameter_values=parameter_values,\n"
+"        experiment=experiment,\n"
+"    )\n"
+"    sol = sim.solve()\n"
+"    solutions.append(sol)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:155
+msgid "And plot the results:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(\n"
+"    solutions,\n"
+"    labels=[\n"
+"        \"Constant porosity\",\n"
+"        \"Low porosity at separator\",\n"
+"        \"High porosity at separator\",\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:185
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"9198b6c974714d07b0a68f1cbc42c988\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:196
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:289
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=673.9107055793413, step=6.739107055793413), …\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:202
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:295
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=673.9107055793413, step=6.739107055793413), …\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:209
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:302
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=673.9107055793413, step=6.739107055793413), …"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:221
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x77a5487643d0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:227
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x77a5487643d0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:234
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x77a5487643d0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:245
+msgid ""
+"We observe that, even though the average porosity is the same for the three "
+"cases the discharge capacity is much higher with the graded electrode where "
+"porosity is higher near the separator. This is because the higher porosity "
+"near the separator facilitates the ion transport and the better utilisation "
+"of the active material."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:247
+msgid ""
+"As a sanity check we can plot the porosity profiles for the three cases and "
+"see they match what we intended."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(\n"
+"    solutions,\n"
+"    output_variables=[\"Negative electrode porosity\", \"Positive electrode "
+"porosity\"],\n"
+"    labels=[\n"
+"        \"Constant porosity\",\n"
+"        \"Low porosity at separator\",\n"
+"        \"High porosity at separator\",\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:278
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"666bc13bf8cb4ee9b1a110cc828f025b\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:314
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x77a5487674c0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:320
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x77a5487674c0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:327
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x77a5487674c0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:348
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O&#39;Regan, Dominika "
+"Gastol, W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:362
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:377
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/graded-electrodes.ipynb:-1
+msgid "[ ]:"
+msgstr ""

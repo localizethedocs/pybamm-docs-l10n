@@ -1,0 +1,583 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/performance/06-output-variables.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/performance/06-output-variables.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:9
+msgid "Defining output variables to reduce memory usage"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import time\n"
+"import tracemalloc\n"
+"\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:36
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">25.1.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">26.1.1</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:45
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{25.1.1} -> \\textcolor{ansi-green}{26.1.1}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:55
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m25.1.1[0m[39;49m -> [0m[32;49m26.1.1[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:70
+msgid "Solution storage and output variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:72
+msgid ""
+"A PyBaMM model is defined as a set of differential equations. For an "
+"ordinary differential equation (ODE) model, the model is defined as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:74
+msgid ""
+"\\begin{align*}\n"
+"\\frac{d\\mathbf{y}}{dt} = \\mathbf{f}(\\mathbf{y}, t)\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:81
+msgid ""
+"where :math:`\\mathbf{y}` is the state vector, and :math:`\\mathbf{f}` is "
+"the vector of ODEs (PyBaMM actually uses a semi-explicit DAE equation form, "
+"but for the purposes of this notebook we can just assume we're dealing with "
+"an ODE). The state vector :math:`\\mathbf{y}` contains all the variables "
+"that are integrated over time by the solver."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:83
+msgid ""
+"For example, we can create a DFN model with PyBaMM and look at each of the "
+"state variables individually and all together in the final concatenated "
+"state vector :math:`\\mathbf{y}`:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"print(\"The model state variables are:\", [var.name for var in model.rhs."
+"keys()])\n"
+"sim = pybamm.Simulation(model)\n"
+"sim.build()\n"
+"print(\n"
+"    \"The concatenated state vector is a vector of shape\",\n"
+"    sim.built_model.concatenated_rhs.shape,\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:111
+msgid ""
+"<pre>\n"
+"The model state variables are: [&#39;Discharge capacity [A.h]&#39;, &#39;"
+"Throughput capacity [A.h]&#39;, &#39;Negative particle concentration [mol."
+"m-3]&#39;, &#39;Positive particle concentration [mol.m-3]&#39;, &#39;"
+"Porosity times concentration [mol.m-3]&#39;]\n"
+"The concatenated state vector is a vector of shape (862, 1)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:118
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"The model state variables are: ['Discharge capacity [A.h]', 'Throughput "
+"capacity [A.h]', 'Negative particle concentration [mol.m-3]', 'Positive "
+"particle concentration [mol.m-3]', 'Porosity times concentration [mol."
+"m-3]']\n"
+"The concatenated state vector is a vector of shape (862, 1)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:126
+msgid ""
+"The model state variables are: ['Discharge capacity [A.h]', 'Throughput "
+"capacity [A.h]', 'Negative particle concentration [mol.m-3]', 'Positive "
+"particle concentration [mol.m-3]', 'Porosity times concentration [mol."
+"m-3]']\n"
+"The concatenated state vector is a vector of shape (862, 1)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:138
+msgid ""
+"The user is also interested in a number of output variables :math:"
+"`\\mathbf{g}`. Once the simulation is complete and the model has been solved "
+"to get :math:`\\mathbf{y}`, the output variables :math:`\\mathbf{g}` can be "
+"calculated from :math:`\\mathbf{y}` using a function :math:`\\mathbf{h}`:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:140
+msgid ""
+"\\begin{align*}\n"
+"\\mathbf{g} = \\mathbf{h}(\\mathbf{y})\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:147
+msgid ""
+"where :math:`\\mathbf{h}` is a function that extracts the variables of "
+"interest from the state vector. Each model in PyBaMM has many such variables "
+"of interest, and the user can choose which ones to extract and plot. E.g. "
+"perhaps the user wants to solve the DFN model and plot the positive "
+"electrode capacity? In this case, the expression for the variable of "
+"interest is a function :math:`h` of the state vector :math:`\\mathbf{y}`, "
+"and this function is defined in the DFN model using a PyBaMM expression tree:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "print(model.variables[\"Positive electrode capacity [A.h]\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:169
+msgid ""
+"<pre>\n"
+"0.0002777777777777778 * yz-average(x-average(Positive electrode active "
+"material volume fraction)) * Positive electrode thickness [m] * Electrode "
+"width [m] * Electrode height [m] * Number of electrodes connected in "
+"parallel to make a cell * Maximum concentration in positive electrode [mol."
+"m-3] * F\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:175
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"0.0002777777777777778 * yz-average(x-average(Positive electrode active "
+"material volume fraction)) * Positive electrode thickness [m] * Electrode "
+"width [m] * Electrode height [m] * Number of electrodes connected in "
+"parallel to make a cell * Maximum concentration in positive electrode [mol."
+"m-3] * F\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:182
+msgid ""
+"0.0002777777777777778 * yz-average(x-average(Positive electrode active "
+"material volume fraction)) * Positive electrode thickness [m] * Electrode "
+"width [m] * Electrode height [m] * Number of electrodes connected in "
+"parallel to make a cell * Maximum concentration in positive electrode [mol."
+"m-3] * F"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:193
+msgid ""
+"PyBaMM doesn't evaluate this expression until the user asks for it when they "
+"extract it from the solution object. Instead, it stores the solution vector :"
+"math:`\\mathbf{y}` at each time point, and then evaluates the expression for "
+"the variable of interest :math:`\\mathbf{g}` at each time point when the "
+"user asks for it. In the code below, the evaluation of the positive "
+"electrode capacity is done by calling ``solution[\"Positive electrode "
+"capacity [A.h]\"]``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"# Solve the model, storing the state vector at each time step\n"
+"solution = sim.solve([0, 3600])\n"
+"\n"
+"# Extract the positive electrode capacity using the function $h(y)$ and the "
+"stored state vector $y$\n"
+"pos_elec_capacity = solution[\"Positive electrode capacity [A.h]\"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:218
+msgid ""
+"During a solve, the PyBaMM solver needs to store the solution vector :math:"
+"`\\mathbf{y}` at each time step. By default, PyBaMM stores the entire "
+"vector, so if the state vector is of size :math:`n` and the solver steps "
+"through :math:`m` time points, the memory usage is :math:`O(nm)`. This can "
+"be a problem for large models, especially when running on a machine with "
+"limited memory, or when running a very long-running simulation that needs to "
+"store many time points."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:221
+msgid "Calculating output variables on-the-fly"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:223
+msgid ""
+"However, it is likely that the user is only interested in a small subset of "
+"the variables, and that the size of these output variables :math:`\\mathbf{g}"
+"` is much smaller than the size of the state vector :math:`\\mathbf{y}`. "
+"Therefore, it could be wasteful to store the entire state vector :math:"
+"`\\mathbf{y}`. To address this, PyBaMM has a feature called \"output "
+"variables\". This allows the user to specify a list of variables that they "
+"are interested in up front (i.e. before the solve). During the solve, PyBaMM "
+"will evaluate the output variables of interest at each time point and "
+"discard the rest of the state vector. At the end of the solve, the ``pybamm."
+"Solution`` object will only contain the output variables of interest, as "
+"well as the full state vector at the last time point (so that other "
+"simulations can be run from this point)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:226
+msgid ""
+"Let's see how this works in practice. We'll start by solving a DFN model "
+"with a long-running experimental protocol, and assume we are only interested "
+"in the terminal voltage. We setup a PyBaMM simulation as normal and solve "
+"it, and once the solver has finished we extract the terminal voltage from "
+"the solution object. To evaluate the memory usage of this simulation, we "
+"will use the ``tracemalloc`` library, which allows us to track the total "
+"amount of memory allocated by the Python interpreter. We'll also keep track "
+"of the time taken to solve the model using the ``time`` library."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"experiment = pybamm.Experiment(\n"
+"    [\n"
+"        \"Discharge at 0.1 A for 1 hour\",\n"
+"        \"Charge at 0.1 A for 1 hour\",\n"
+"    ]\n"
+"    * 100\n"
+")\n"
+"\n"
+"tracemalloc.start()\n"
+"sim = pybamm.Simulation(model, solver=solver, experiment=experiment)\n"
+"time_start = time.perf_counter()\n"
+"sol = sim.solve()\n"
+"t_eval = np.linspace(0, 3600 * 10, 100)\n"
+"voltage = sol[\"Terminal voltage [V]\"](t_eval)\n"
+"time_end = time.perf_counter()\n"
+"print(\"Time to solve: \", time_end - time_start)\n"
+"\n"
+"snapshot = tracemalloc.take_snapshot()\n"
+"top_stats = snapshot.statistics(\"lineno\")\n"
+"total_size = sum(stat.size for stat in top_stats)\n"
+"print(\"Total allocated size: %.1f MB\" % (total_size / 10**6))\n"
+"tracemalloc.stop()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:271
+msgid ""
+"<pre>\n"
+"Time to solve:  2.17429095800253\n"
+"Total allocated size: 11.6 MB\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:278
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Time to solve:  2.17429095800253\n"
+"Total allocated size: 11.6 MB\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:286
+msgid ""
+"Time to solve:  2.17429095800253\n"
+"Total allocated size: 11.6 MB"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:298
+msgid ""
+"So for about 10 seconds of compute we have already generated 202 MB of data "
+"that is in memory, for longer-running simulations this can quickly become a "
+"problem. We will now use the output variables feature to reduce the memory "
+"usage. When the solver is created, we pass in a list of output variables "
+"that we are interested in. The solver will then only store these variables "
+"at each time point, rather than the entire state vector."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"import time\n"
+"import tracemalloc\n"
+"\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"solver = pybamm.IDAKLUSolver(output_variables=[\"Voltage [V]\"])\n"
+"experiment = pybamm.Experiment(\n"
+"    [\n"
+"        \"Discharge at 0.1 A for 1 hour\",\n"
+"        \"Charge at 0.1 A for 1 hour\",\n"
+"    ]\n"
+"    * 100\n"
+")\n"
+"\n"
+"tracemalloc.start()\n"
+"sim = pybamm.Simulation(model, solver=solver, experiment=experiment)\n"
+"time_start = time.perf_counter()\n"
+"sol = sim.solve()\n"
+"t_eval = np.linspace(0, 3600 * 10, 100)\n"
+"voltage = sol[\"Voltage [V]\"](t_eval)\n"
+"time_end = time.perf_counter()\n"
+"print(\"Time to solve: \", time_end - time_start)\n"
+"\n"
+"snapshot = tracemalloc.take_snapshot()\n"
+"top_stats = snapshot.statistics(\"lineno\")\n"
+"total_size = sum(stat.size for stat in top_stats)\n"
+"print(\"Total allocated size: %.1f MB\" % (total_size / 10**6))\n"
+"tracemalloc.stop()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:349
+msgid ""
+"<pre>\n"
+"Time to solve:  2.2499296669993782\n"
+"Total allocated size: 14.7 MB\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:356
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Time to solve:  2.2499296669993782\n"
+"Total allocated size: 14.7 MB\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:364
+msgid ""
+"Time to solve:  2.2499296669993782\n"
+"Total allocated size: 14.7 MB"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:376
+msgid ""
+"That is, the solve time is the same, but the memory usage has been reduced "
+"by an order of magnitude."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:379
+msgid "Limitations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:381
+msgid ""
+"An obvious downside is that we can only plot the variables that we have "
+"stored, if any other variables are accessed the solution object will raise "
+"an error."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"try:\n"
+"    sol[\"X-averaged positive particle surface concentration [mol.m-3]\"]\n"
+"except KeyError as e:\n"
+"    print(\"Error:\", e)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:405
+msgid ""
+"<pre>\n"
+"Error: &#34;Cannot process variable &#39;X-averaged positive particle "
+"surface concentration [mol.m-3]&#39; as it was not part of the solve. Please "
+"re-run the solve with `output_variables` set to include this variable.&#34;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:411
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Error: \"Cannot process variable 'X-averaged positive particle surface "
+"concentration [mol.m-3]' as it was not part of the solve. Please re-run the "
+"solve with `output\\_variables` set to include this variable.\"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:418
+msgid ""
+"Error: \"Cannot process variable 'X-averaged positive particle surface "
+"concentration [mol.m-3]' as it was not part of the solve. Please re-run the "
+"solve with `output_variables` set to include this variable.\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:430
+msgid "Storing only the first and last sample of each step"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:432
+msgid ""
+"For very long ageing experiments, even with ``output_variables`` set, "
+"storing one sample per intra-step time point still grows the solution "
+"linearly with the number of steps. If post-processing only needs the value "
+"at the start and end of each step, the IDAKLU solver can be told to keep "
+"only those two samples per integration window via ``store_first_last=True``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:434
+msgid ""
+"It composes with ``output_variables`` — the two flags address different axes "
+"(which variables are kept, and how many samples per window are kept), so "
+"they can be combined for the largest memory savings on long experiments."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:436
+msgid ""
+"Note: with ``store_first_last=True``, IDAKLU's Hermite interpolation is "
+"disabled and queries at intra-step times fall back to linear interpolation "
+"across the whole step, so this is **not** appropriate when post-processing "
+"reads non-endpoint times within a step."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"solver = pybamm.IDAKLUSolver(\n"
+"    output_variables=[\"Voltage [V]\"],\n"
+"    store_first_last=True,\n"
+")\n"
+"experiment = pybamm.Experiment(\n"
+"    [\n"
+"        \"Discharge at 0.1 A for 1 hour\",\n"
+"        \"Charge at 0.1 A for 1 hour\",\n"
+"    ]\n"
+"    * 100\n"
+")\n"
+"\n"
+"tracemalloc.start()\n"
+"sim = pybamm.Simulation(model, solver=solver, experiment=experiment)\n"
+"time_start = time.perf_counter()\n"
+"sol = sim.solve()\n"
+"time_end = time.perf_counter()\n"
+"print(\"Time to solve: \", time_end - time_start)\n"
+"\n"
+"# Each sub-solution now holds just two samples (start and end of step).\n"
+"print(\"Samples per step:\", {sub.t.size for sub in sol.sub_solutions})\n"
+"\n"
+"snapshot = tracemalloc.take_snapshot()\n"
+"top_stats = snapshot.statistics(\"lineno\")\n"
+"total_size = sum(stat.size for stat in top_stats)\n"
+"print(\"Total allocated size: %.1f MB\" % (total_size / 10**6))\n"
+"tracemalloc.stop()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:484
+msgid ""
+"<pre>\n"
+"Time to solve:  2.265932290996716\n"
+"Samples per step: {2}\n"
+"Total allocated size: 13.7 MB\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:492
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Time to solve:  2.265932290996716\n"
+"Samples per step: \\{2\\}\n"
+"Total allocated size: 13.7 MB\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/06-output-variables.ipynb:501
+msgid ""
+"Time to solve:  2.265932290996716\n"
+"Samples per step: {2}\n"
+"Total allocated size: 13.7 MB"
+msgstr ""

@@ -1,0 +1,764 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/solvers/instability-nonsmooth-functions."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:9
+msgid "Handling instability in non-smooth functions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:33
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:39
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:46
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:58
+msgid "Handling instabilities"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:70
+msgid "Smooth approximations to non-differentiable functions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:81
+msgid ""
+"Some functions, such as ``minimum``, ``maximum``, ``heaviside``, and "
+"``abs``, are discontinuous and/or non-differentiable (their derivative is "
+"discontinuous). Adaptive solvers can deal with this discontinuity, but will "
+"take many more steps close to the discontinuity in order to resolve it. "
+"Therefore, using soft approximations instead can reduce the number of steps "
+"taken by the solver, and hence the integration time. See `this post <https://"
+"discourse.julialang.org/t/handling-instability-when-solving-ode-"
+"problems/9019/5>`__ for more details."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:84
+msgid ""
+"Here is an example using the ``maximum`` function. The function "
+"``maximum(x,1)`` is continuous but non-differentiable at ``x=1``, where its "
+"derivative jumps from 0 to 1. However, we can approximate it using the "
+"```softplus`` function <https://en.wikipedia.org/wiki/"
+"Rectifier_(neural_networks)#Softplus>`__, which is smooth everywhere and is "
+"sometimes used in neural networks as a smooth approximation to the RELU "
+"activation function. The ``softplus`` function is given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:86
+msgid "s(x,y;k) = \\frac{\\log(\\exp(kx)+\\exp(ky))}{k},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:91
+msgid ""
+"where ``k`` is a strictly positive smoothing (or sharpness) parameter. The "
+"larger the value of ``k``, the better the approximation but the stiffer the "
+"term (exp blows up quickly!). Usually, a value of ``k=10`` is a good middle "
+"ground."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:93
+msgid ""
+"In PyBaMM, you can either call the ``softplus`` function directly, or change "
+"``pybamm.settings.max_smoothing`` to automatically replace all your calls to "
+"``pybamm.maximum`` with ``softplus``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"x = pybamm.Variable(\"x\")\n"
+"y = pybamm.Variable(\"y\")\n"
+"\n"
+"# Normal maximum\n"
+"print(f\"Exact maximum: {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# Softplus\n"
+"print(\"Softplus (k=10): \", pybamm.softplus(x, y, 10))\n"
+"\n"
+"# Changing the setting to call softplus automatically\n"
+"pybamm.settings.min_max_mode = \"soft\"\n"
+"pybamm.settings.min_max_smoothing = 20\n"
+"print(f\"Softplus (k=20): {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# All smoothing parameters can be changed at once\n"
+"pybamm.settings.set_smoothing_parameters(30)\n"
+"print(f\"Softplus (k=30): {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# Change back\n"
+"pybamm.settings.set_smoothing_parameters(\"exact\")\n"
+"print(f\"Exact maximum: {pybamm.maximum(x, y)}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:134
+msgid ""
+"<pre>\n"
+"Exact maximum: maximum(x, y)\n"
+"Softplus (k=10):  0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Softplus (k=20): 0.05 * log(exp(20.0 * x) + exp(20.0 * y))\n"
+"Softplus (k=30): 0.03333333333333333 * log(exp(30.0 * x) + exp(30.0 * y))\n"
+"Exact maximum: maximum(x, y)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:144
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Exact maximum: maximum(x, y)\n"
+"Softplus (k=10):  0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Softplus (k=20): 0.05 * log(exp(20.0 * x) + exp(20.0 * y))\n"
+"Softplus (k=30): 0.03333333333333333 * log(exp(30.0 * x) + exp(30.0 * y))\n"
+"Exact maximum: maximum(x, y)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:155
+msgid ""
+"Exact maximum: maximum(x, y)\n"
+"Softplus (k=10):  0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Softplus (k=20): 0.05 * log(exp(20.0 * x) + exp(20.0 * y))\n"
+"Softplus (k=30): 0.03333333333333333 * log(exp(30.0 * x) + exp(30.0 * y))\n"
+"Exact maximum: maximum(x, y)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:170
+msgid ""
+"Note that if both sides are constant then pybamm will use the exact value "
+"even if the setting is set to smoothing"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"a = pybamm.InputParameter(\"a\")\n"
+"pybamm.settings.max_smoothing = 20\n"
+"# Both inputs are constant so uses exact maximum\n"
+"print(\"Exact:\", pybamm.maximum(0.999, 1).evaluate())\n"
+"# One input is not constant (InputParameter) so uses softplus\n"
+"print(\"Softplus:\", pybamm.maximum(a, 1).evaluate(inputs={\"a\": 0.999}))\n"
+"pybamm.settings.set_smoothing_parameters(\"exact\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:197
+msgid ""
+"<pre>\n"
+"Exact: 1.0\n"
+"Softplus: 1.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:204
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Exact: 1.0\n"
+"Softplus: 1.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:212
+msgid ""
+"Exact: 1.0\n"
+"Softplus: 1.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:224
+msgid "Here is the plot of softplus with different values of ``k``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"pts = pybamm.linspace(0, 2, 100)\n"
+"\n"
+"fig, ax = plt.subplots(figsize=(10, 5))\n"
+"ax.plot(pts.evaluate(), pybamm.maximum(pts, 1).evaluate(), lw=2, "
+"label=\"exact\")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.softplus(pts, 1, 5).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"softplus (k=5)\",\n"
+")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.softplus(pts, 1, 10).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"softplus (k=10)\",\n"
+")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.softplus(pts, 1, 100).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"softplus (k=100)\",\n"
+")\n"
+"ax.legend();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:278
+msgid ""
+"Solving a model with the exact maximum and soft approximation, demonstrates "
+"a clear speed-up even for a very simple model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"model_exact = pybamm.BaseModel()\n"
+"model_exact.rhs = {x: pybamm.maximum(x, 1)}\n"
+"model_exact.initial_conditions = {x: 0.5}\n"
+"model_exact.variables = {\"x\": x, \"max(x,1)\": pybamm.maximum(x, 1)}\n"
+"\n"
+"model_smooth = pybamm.BaseModel()\n"
+"k = pybamm.InputParameter(\"k\")\n"
+"model_smooth.rhs = {x: pybamm.softplus(x, 1, k)}\n"
+"model_smooth.initial_conditions = {x: 0.5}\n"
+"model_smooth.variables = {\"x\": x, \"max(x,1)\": pybamm.softplus(x, 1, k)}\n"
+"\n"
+"\n"
+"# Exact solution\n"
+"timer = pybamm.Timer()\n"
+"time = 0\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"for _ in range(100):\n"
+"    exact_sol = solver.solve(model_exact, [0, 2])\n"
+"    # Report integration time, which is the time spent actually doing the "
+"integration\n"
+"    time += exact_sol.integration_time\n"
+"print(\"Exact:\", time / 100)\n"
+"sols = [exact_sol]\n"
+"\n"
+"ks = [5, 10, 100]\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"for k in ks:\n"
+"    time = 0\n"
+"    for _ in range(100):\n"
+"        sol = solver.solve(model_smooth, [0, 2], inputs={\"k\": k})\n"
+"        time += sol.integration_time\n"
+"    print(f\"Soft, k={k}:\", time / 100)\n"
+"    sols.append(sol)\n"
+"\n"
+"pybamm.dynamic_plot(\n"
+"    sols, [\"x\", \"max(x,1)\"], labels=[\"exact\"] + [f\"soft (k={k})\" for "
+"k in ks]\n"
+");"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:335
+msgid ""
+"<pre>\n"
+"Exact: 75.264 us\n"
+"Soft, k=5: 53.997 us\n"
+"Soft, k=10: 58.327 us\n"
+"Soft, k=100: 65.963 us\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:344
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Exact: 75.264 us\n"
+"Soft, k=5: 53.997 us\n"
+"Soft, k=10: 58.327 us\n"
+"Soft, k=100: 65.963 us\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:354
+msgid ""
+"Exact: 75.264 us\n"
+"Soft, k=5: 53.997 us\n"
+"Soft, k=10: 58.327 us\n"
+"Soft, k=100: 65.963 us"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:369
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"860e5aaee1744ba1a00f800f1429efa3\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:379
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:659
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=2.0, step=0.02), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:385
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:665
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=2.0, "
+"step=0.02), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:392
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:672
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=2.0, "
+"step=0.02), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:403
+msgid ""
+"For the minimum and maximum functions, an alternative smoothing functions "
+"(smooth_max, smooth_min) are provided."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:405
+msgid ""
+"\\textrm{min}(x, y) = 0.5 * (\\sqrt((x - y)^2 + \\sigma) + (x + y))\n"
+"\\quad , \\quad\n"
+"\\textrm{max}(x, y) = 0.5 * ((x + y) - \\sqrt((x - y)^2 + \\sigma))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:412
+msgid "where"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:414
+msgid "\\sigma = \\frac{1}{k^2}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:419
+msgid ""
+"For the smooth minimum and maximum functions, the recommended value of k is "
+"100, where the function closely approximates the exact function, but is "
+"differentiable."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:421
+msgid ""
+"Changing between the soft, smooth, and exact functions can be done by "
+"setting the ``min_max_mode`` and the value of ``k`` stored in "
+"``min_max_smoothing``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"x = pybamm.Variable(\"x\")\n"
+"y = pybamm.Variable(\"y\")\n"
+"\n"
+"# Normal maximum\n"
+"print(f\"Exact maximum: {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# Smooth plus can be called explicitly\n"
+"print(\"Smooth plus (k=100): \", pybamm.smooth_max(x, y, 100))\n"
+"\n"
+"# Smooth plus and smooth minus will be used when the mode is set to "
+"\"smooth\"\n"
+"pybamm.settings.min_max_mode = \"smooth\"\n"
+"pybamm.settings.min_max_smoothing = 200\n"
+"print(f\"Smooth plus (k=200): {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# Setting the smoothing parameters with set_smoothing_parameters() defaults "
+"to softplus\n"
+"pybamm.settings.set_smoothing_parameters(10)\n"
+"print(f\"Softplus (k=10): {pybamm.maximum(x, y)}\")\n"
+"\n"
+"# Change back\n"
+"pybamm.settings.set_smoothing_parameters(\"exact\")\n"
+"print(f\"Exact maximum: {pybamm.maximum(x, y)}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:462
+msgid ""
+"<pre>\n"
+"Exact maximum: maximum(x, y)\n"
+"Smooth plus (k=100):  0.5 * (sqrt(0.0001 + (x - y) ** 2.0) + x + y)\n"
+"Smooth plus (k=200): 0.5 * (sqrt(2.5e-05 + (x - y) ** 2.0) + x + y)\n"
+"Softplus (k=10): 0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Exact maximum: maximum(x, y)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:472
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Exact maximum: maximum(x, y)\n"
+"Smooth plus (k=100):  0.5 * (sqrt(0.0001 + (x - y) ** 2.0) + x + y)\n"
+"Smooth plus (k=200): 0.5 * (sqrt(2.5e-05 + (x - y) ** 2.0) + x + y)\n"
+"Softplus (k=10): 0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Exact maximum: maximum(x, y)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:483
+msgid ""
+"Exact maximum: maximum(x, y)\n"
+"Smooth plus (k=100):  0.5 * (sqrt(0.0001 + (x - y) ** 2.0) + x + y)\n"
+"Smooth plus (k=200): 0.5 * (sqrt(2.5e-05 + (x - y) ** 2.0) + x + y)\n"
+"Softplus (k=10): 0.1 * log(exp(10.0 * x) + exp(10.0 * y))\n"
+"Exact maximum: maximum(x, y)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:498
+msgid "Here is the plot of smooth_max with different values of ``k``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"pts = pybamm.linspace(0, 2, 100)\n"
+"\n"
+"fig, ax = plt.subplots(figsize=(10, 5))\n"
+"ax.plot(pts.evaluate(), pybamm.maximum(pts, 1).evaluate(), lw=2, "
+"label=\"exact\")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.smooth_max(pts, 1, 5).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"smooth_max (k=5)\",\n"
+")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.smooth_max(pts, 1, 10).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"smooth_max (k=10)\",\n"
+")\n"
+"ax.plot(\n"
+"    pts.evaluate(),\n"
+"    pybamm.smooth_max(pts, 1, 100).evaluate(),\n"
+"    \":\",\n"
+"    lw=2,\n"
+"    label=\"smooth_max (k=100)\",\n"
+")\n"
+"ax.legend();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:552
+msgid ""
+"Solving a model with the exact maximum and smooth approximation, "
+"demonstrates a clear speed-up even for a very simple model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"model_exact = pybamm.BaseModel()\n"
+"model_exact.rhs = {x: pybamm.maximum(x, 1)}\n"
+"model_exact.initial_conditions = {x: 0.5}\n"
+"model_exact.variables = {\"x\": x, \"max(x,1)\": pybamm.maximum(x, 1)}\n"
+"\n"
+"model_smooth = pybamm.BaseModel()\n"
+"k = pybamm.InputParameter(\"k\")\n"
+"model_smooth.rhs = {x: pybamm.smooth_max(x, 1, k)}\n"
+"model_smooth.initial_conditions = {x: 0.5}\n"
+"model_smooth.variables = {\"x\": x, \"max(x,1)\": pybamm.smooth_max(x, 1, "
+"k)}\n"
+"\n"
+"\n"
+"# Exact solution\n"
+"timer = pybamm.Timer()\n"
+"time = 0\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"for _ in range(100):\n"
+"    exact_sol = solver.solve(model_exact, [0, 2])\n"
+"    # Report integration time, which is the time spent actually doing the "
+"integration\n"
+"    time += exact_sol.integration_time\n"
+"print(\"Exact:\", time / 100)\n"
+"sols = [exact_sol]\n"
+"\n"
+"ks = [10, 50, 100, 1000, 10000]\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"for k in ks:\n"
+"    time = 0\n"
+"    for _ in range(100):\n"
+"        sol = solver.solve(model_smooth, [0, 2], inputs={\"k\": k})\n"
+"        time += sol.integration_time\n"
+"    print(f\"Smooth, k={k}:\", time / 100)\n"
+"    sols.append(sol)\n"
+"\n"
+"pybamm.dynamic_plot(\n"
+"    sols, [\"x\", \"max(x,1)\"], labels=[\"exact\"] + [f\"soft (k={k})\" for "
+"k in ks]\n"
+");"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:609
+msgid ""
+"<pre>\n"
+"Exact: 70.677 us\n"
+"Smooth, k=10: 66.839 us\n"
+"Smooth, k=50: 63.669 us\n"
+"Smooth, k=100: 63.810 us\n"
+"Smooth, k=1000: 62.608 us\n"
+"Smooth, k=10000: 63.784 us\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:620
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Exact: 70.677 us\n"
+"Smooth, k=10: 66.839 us\n"
+"Smooth, k=50: 63.669 us\n"
+"Smooth, k=100: 63.810 us\n"
+"Smooth, k=1000: 62.608 us\n"
+"Smooth, k=10000: 63.784 us\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:632
+msgid ""
+"Exact: 70.677 us\n"
+"Smooth, k=10: 66.839 us\n"
+"Smooth, k=50: 63.669 us\n"
+"Smooth, k=100: 63.810 us\n"
+"Smooth, k=1000: 62.608 us\n"
+"Smooth, k=10000: 63.784 us"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:649
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"5f06540ea3fc44a0b07684fc7204226e\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:684
+msgid "Other smooth approximations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:695
+msgid ""
+"Here are the other smooth approximations for the other non-smooth functions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid ""
+"pybamm.settings.set_smoothing_parameters(10)\n"
+"print(f\"Soft minimum (softminus):\\t {pybamm.minimum(x, y)!s}\")\n"
+"print(f\"Smooth heaviside (sigmoid):\\t {x < y!s}\")\n"
+"print(f\"Smooth absolute value: \\t\\t {abs(x)!s}\")\n"
+"pybamm.settings.min_max_mode = \"smooth\"\n"
+"print(f\"Smooth minimum:\\t\\t\\t {pybamm.minimum(x, y)!s}\")\n"
+"pybamm.settings.set_smoothing_parameters(\"exact\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:722
+msgid ""
+"<pre>\n"
+"Soft minimum (softminus):        -0.1 * log(exp(-10.0 * x) + exp(-10.0 * "
+"y))\n"
+"Smooth heaviside (sigmoid):      0.5 + 0.5 * tanh(10.0 * (y - x))\n"
+"Smooth absolute value:           x * (exp(10.0 * x) - exp(-10.0 * x)) / "
+"(exp(10.0 * x) + exp(-10.0 * x))\n"
+"Smooth minimum:                  0.5 * (x + y - sqrt(0.010000000000000002 + "
+"(x - y) ** 2.0))\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:731
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Soft minimum (softminus):        -0.1 * log(exp(-10.0 * x) + exp(-10.0 * "
+"y))\n"
+"Smooth heaviside (sigmoid):      0.5 + 0.5 * tanh(10.0 * (y - x))\n"
+"Smooth absolute value:           x * (exp(10.0 * x) - exp(-10.0 * x)) / "
+"(exp(10.0 * x) + exp(-10.0 * x))\n"
+"Smooth minimum:                  0.5 * (x + y - sqrt(0.010000000000000002 + "
+"(x - y) ** 2.0))\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:741
+msgid ""
+"Soft minimum (softminus):        -0.1 * log(exp(-10.0 * x) + exp(-10.0 * "
+"y))\n"
+"Smooth heaviside (sigmoid):      0.5 + 0.5 * tanh(10.0 * (y - x))\n"
+"Smooth absolute value:           x * (exp(10.0 * x) - exp(-10.0 * x)) / "
+"(exp(10.0 * x) + exp(-10.0 * x))\n"
+"Smooth minimum:                  0.5 * (x + y - sqrt(0.010000000000000002 + "
+"(x - y) ** 2.0))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:756
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:758
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:779
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:790
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/instability-nonsmooth-functions.ipynb:802
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

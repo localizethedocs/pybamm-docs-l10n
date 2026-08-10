@@ -1,0 +1,440 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/solvers/dae-solver.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/solvers/dae-solver.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:9
+msgid "DAE solver"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:11
+msgid ""
+"In this notebook, we show some examples of solving a DAE model. For the "
+"purposes of this example, we use the CasADi solver, but the syntax remains "
+"the same for other solvers"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:40
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">24.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">24.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:49
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{24.1} -> \\textcolor{ansi-green}{24.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:59
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m24.1[0m[39;49m -> [0m[32;49m24.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:74
+msgid "Integrating DAEs"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:85
+msgid ""
+"In PyBaMM, a model is solved by calling a solver with solve. This sets up "
+"the model to be solved, and then calls the method ``_integrate``, which is "
+"specific to each solver. We begin by setting up and discretising a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid ""
+"# Create model\n"
+"model = pybamm.BaseModel()\n"
+"u = pybamm.Variable(\"u\")\n"
+"v = pybamm.Variable(\"v\")\n"
+"model.rhs = {u: -v}  # du/dt = -v\n"
+"model.algebraic = {v: 2 * u - v}  # 2*v = u\n"
+"model.initial_conditions = {u: 1, v: 2}\n"
+"model.variables = {\"u\": u, \"v\": v}\n"
+"\n"
+"# Discretise using default discretisation\n"
+"disc = pybamm.Discretisation()\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:117
+msgid ""
+"Now the model can be solved by calling ``solver.solve`` with a specific time "
+"vector at which to evaluate the solution"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid ""
+"# Solve #################################\n"
+"t_eval = [0, 2]\n"
+"dae_solver = pybamm.IDAKLUSolver()\n"
+"solution = dae_solver.solve(model, t_eval)\n"
+"#########################################\n"
+"\n"
+"# Extract u and v\n"
+"t_sol = solution.t\n"
+"u = solution[\"u\"]\n"
+"v = solution[\"v\"]\n"
+"\n"
+"# Plot\n"
+"t_fine = np.linspace(0, t_eval[-1], 1000)\n"
+"\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"ax1.plot(t_fine, np.exp(-2 * t_fine), t_sol, u(t_sol), \"o\")\n"
+"ax1.set_xlabel(\"t\")\n"
+"ax1.legend([\"exp(-2*t)\", \"u\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(t_fine, 2 * np.exp(-2 * t_fine), t_sol, v(t_sol), \"o\")\n"
+"ax2.set_xlabel(\"t\")\n"
+"ax2.legend([\"2*exp(-2*t)\", \"v\"], loc=\"best\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:170
+msgid ""
+"Note that, where possible, the solver makes use of the mass matrix and "
+"jacobian for the model. However, the discretisation or solver will have "
+"created the mass matrix and jacobian algorithmically, using the expression "
+"tree, so we do not need to calculate and input these manually."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:181
+msgid "The solution terminates at the final simulation time:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "solution.termination"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:203
+msgid ""
+"<pre>\n"
+"&#39;final time&#39;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:209
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"'final time'\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:216
+msgid "'final time'"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:228
+msgid "Events"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:230
+msgid ""
+"It is possible to specify events at which a solution should terminate. This "
+"is done by adding events to the ``model.events`` dictionary. In the "
+"following example, we solve the same model as before but add a termination "
+"event when ``v=-0.2``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid ""
+"# Create model\n"
+"model = pybamm.BaseModel()\n"
+"u = pybamm.Variable(\"u\")\n"
+"v = pybamm.Variable(\"v\")\n"
+"model.rhs = {u: -v}  # du/dt = -v\n"
+"model.algebraic = {v: 2 * u - v}  # 2*v = u\n"
+"model.initial_conditions = {u: 1, v: 2}\n"
+"model.events.append(pybamm.Event(\"v=0.2\", v - 0.2))  # adding event here\n"
+"\n"
+"model.variables = {\"u\": u, \"v\": v}\n"
+"\n"
+"# Discretise using default discretisation\n"
+"disc = pybamm.Discretisation()\n"
+"disc.process_model(model)\n"
+"\n"
+"# Solve #################################\n"
+"t_eval = [0, 2]\n"
+"dae_solver = pybamm.IDAKLUSolver()\n"
+"solution = dae_solver.solve(model, t_eval)\n"
+"#########################################\n"
+"\n"
+"# Extract u and v\n"
+"t_sol = solution.t\n"
+"u = solution[\"u\"]\n"
+"v = solution[\"v\"]\n"
+"\n"
+"# Plot\n"
+"t_fine = np.linspace(0, t_eval[-1], 1000)\n"
+"\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"ax1.plot(t_fine, np.exp(-2 * t_fine), t_sol, u(t_sol), \"o\")\n"
+"ax1.set_xlabel(\"t\")\n"
+"ax1.legend([\"exp(-2*t)\", \"u\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(\n"
+"    t_fine,\n"
+"    2 * np.exp(-2 * t_fine),\n"
+"    t_sol,\n"
+"    v(t_sol),\n"
+"    \"o\",\n"
+"    t_fine,\n"
+"    0.2 * np.ones_like(t_fine),\n"
+"    \"k\",\n"
+")\n"
+"ax2.set_xlabel(\"t\")\n"
+"ax2.legend([\"2*exp(-2*t)\", \"v\", \"v = 0.2\"], loc=\"best\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:307
+msgid "Now the solution terminates because the event has been reached"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:329
+msgid ""
+"<pre>\n"
+"&#39;event: v=0.2&#39;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:335
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"'event: v=0.2'\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:342
+msgid "'event: v=0.2'"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:354
+msgid "Finding consistent initialization"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:356
+msgid ""
+"The solver will fail if initial conditions that are inconsistent with the "
+"algebraic equations are provided. However, before solving the DAE solvers "
+"automatically use ``_set_consistent_initialization`` to obtain consistent "
+"initial conditions, starting from a guess of bad initial conditions, using a "
+"simple root-finding algorithm."
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid ""
+"# Create model\n"
+"model = pybamm.BaseModel()\n"
+"u = pybamm.Variable(\"u\")\n"
+"v = pybamm.Variable(\"v\")\n"
+"model.rhs = {u: -v}  # du/dt = -v\n"
+"model.algebraic = {v: 2 * u - v}  # 2*v = u\n"
+"model.initial_conditions = {u: 1, v: 1}  # bad initial conditions, solver "
+"fixes\n"
+"model.events.append(pybamm.Event(\"v=0.2\", v - 0.2))\n"
+"model.variables = {\"u\": u, \"v\": v}\n"
+"\n"
+"# Discretise using default discretisation\n"
+"disc = pybamm.Discretisation()\n"
+"disc.process_model(model)\n"
+"print(f\"y0_guess={model.concatenated_initial_conditions.evaluate()."
+"flatten()}\")\n"
+"\n"
+"dae_solver = pybamm.IDAKLUSolver()\n"
+"dae_solver.set_up(model)\n"
+"dae_solver._set_consistent_initialization(model, 0, [{}])\n"
+"print(f\"y0_fixed={model.y0}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:395
+msgid ""
+"<pre>\n"
+"y0_guess=[1. 1.]\n"
+"y0_fixed=[1, 2]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:402
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"y0\\_guess=[1. 1.]\n"
+"y0\\_fixed=[1, 2]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:410
+msgid ""
+"y0_guess=[1. 1.]\n"
+"y0_fixed=[1, 2]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:423
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:425
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:446
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:455
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/solvers/dae-solver.ipynb:465
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

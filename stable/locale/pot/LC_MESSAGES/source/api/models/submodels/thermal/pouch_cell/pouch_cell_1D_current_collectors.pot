@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.rst:2
+msgid "Thermal Model for \"1+1D\" Pouch Cell"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D:1
+msgid ""
+"Class for one-dimensional thermal submodel for use in the \"1+1D\" pouch "
+"cell model. The thermal model is averaged in the x-direction and is "
+"therefore referred to as 'x-lumped'. For more information see :footcite:t:"
+"`Timms2021` and :footcite:t:`Marquis2020`."
+msgstr ""
+
+#: ../../../source/api/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D:6
+msgid "The parameters to use for this submodel"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D:8
+msgid "A dictionary of options to be passed to the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D:11
+msgid ""
+"**Extends:** :class:`pybamm.models.submodels.thermal.base_thermal."
+"BaseThermal`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.get_coupled_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"require variables in other submodels to be set first. For example, the "
+"exchange current density requires the concentration in the electrolyte to be "
+"created before it can be created. If a variable can be created independent "
+"of other submodels then it should be created in 'get_fundamental_variables' "
+"instead of this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.get_coupled_variables:8
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_boundary_conditions:6
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_initial_conditions:7
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_rhs:6
+msgid "The variables in the whole model."
+msgstr ""
+
+#: ../../../source/api/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.get_coupled_variables:11
+msgid ""
+"The variables created in this submodel which depend on variables in other "
+"submodels."
+msgstr ""
+
+#: ../../../source/api/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.get_fundamental_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"can be created independent of other submodels. For example, the electrolyte "
+"concentration variables can be created independent of whether any other "
+"variables have been defined in the model. As a rule, if a variable can be "
+"created without variables from other submodels, then it should be placed in "
+"this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.get_fundamental_variables:8
+msgid ""
+"The variables created by the submodel which are independent of variables in "
+"other submodels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_boundary_conditions:1
+msgid ""
+"A method to set the boundary conditions for the submodel. Note: this method "
+"modifies the state of self.boundary_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_initial_conditions:1
+msgid ""
+"A method to set the initial conditions for the submodel. Note: this method "
+"modifies the state of self.initial_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.py:docstring
+#: of
+#: pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors.CurrentCollector1D.set_rhs:1
+msgid ""
+"A method to set the right hand side of the differential equations which "
+"contain a time derivative. Note: this method modifies the state of self.rhs. "
+"Unless overwritten by a submodel, the default behaviour of 'pass' is used as "
+"implemented in :class:`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

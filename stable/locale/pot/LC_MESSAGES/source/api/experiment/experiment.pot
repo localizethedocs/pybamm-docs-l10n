@@ -1,0 +1,155 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/experiment/experiment.rst:2
+msgid "Base Experiment Class"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment:1
+msgid ""
+"Base class for experimental conditions under which to run the model. In "
+"general, a list of operating conditions should be passed in. Each operating "
+"condition should be either a `pybamm.step.BaseStep` class, which can be "
+"created using one of the methods `pybamm.step.current`, `pybamm.step."
+"c_rate`, `pybamm.step.voltage` , `pybamm.step.power`, `pybamm.step."
+"resistance`, or `pybamm.step.string`, or a string, in which case the string "
+"is passed to `pybamm.step.string`."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment:9
+msgid "List of strings representing the operating conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment:11
+msgid ""
+"Period (1/frequency) at which to record outputs. Default is 1 minute. Can be "
+"overwritten by individual operating conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment:14
+msgid ""
+"The temperature of the experiment. If a float, the value is in Kelvin. If a "
+"string, the value should be a valid temperature string, e.g. \"25 oC\". "
+"Default is None whereby the ambient temperature is taken from the parameter "
+"set. This value is overwritten if the temperature is specified in a step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment:19
+msgid ""
+"List of strings representing the conditions to terminate the experiment. "
+"Default is None. This is different from the termination for individual "
+"steps. Termination for individual steps is specified in the step itself, and "
+"the simulation moves to the next step when the termination condition is met "
+"(e.g. 2.5V discharge cut-off). Termination for the experiment as a whole is "
+"specified here, and the simulation stops when the termination condition is "
+"met (e.g. 80% capacity)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.from_config:1
+msgid "Create an :class:`Experiment` from a config dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.from_config:3
+msgid ""
+"Accepts ``{\"cycles\": [[step_config, ...], ...]}`` (new format) or "
+"``{\"steps\": [step_config, ...]}`` (legacy flat format)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.from_config:6
+msgid "Config dict as produced by :meth:`to_config`."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.from_config:9
+msgid ":class:`Experiment`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.read_termination:1
+msgid ""
+"Read the termination reason. If this condition is hit, the experiment will "
+"stop."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.read_termination:3
+msgid ""
+"A single string, or a list of strings, representing the conditions to "
+"terminate the experiment. Only capacity or voltage can be provided as a "
+"termination reason. e.g. '4 Ah capacity' or ['80% capacity', '2.5 V']"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.read_termination:8
+msgid ""
+"A dictionary of the termination conditions. e.g. {'capacity': (4.0, 'Ah')} "
+"or {'capacity': (80.0, '%'), 'voltage': (2.5, 'V')}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.search_tag:1
+msgid ""
+"Search for a tag in the experiment and return the cycles in which it appears."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.search_tag:3
+msgid "The tag to search for"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.search_tag:6
+msgid "A list of cycles in which the tag appears"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.to_config:1
+msgid "Convert this experiment to a JSON-serialisable config dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.to_config:3
+msgid ""
+"Returns ``{\"cycles\": [[step_config, ...], ...]}`` suitable for passing "
+"back to :meth:`from_config`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/experiment.py:docstring
+#: of pybamm.experiment.experiment.Experiment.to_config:6
+msgid "Config dict with key ``\"cycles\"``."
+msgstr ""

@@ -1,0 +1,401 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/solvers/solution.rst:2
+msgid "Solutions"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:1
+msgid ""
+"Class containing the solution of, and various attributes associated with, a "
+"PyBaMM model."
+msgstr ""
+
+#: ../../../source/api/solvers/solution.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:4
+msgid ""
+"A one-dimensional array containing the times at which the solution is "
+"evaluated. A list of times can be provided instead to initialize a solution "
+"with sub-solutions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:8
+msgid ""
+"A two-dimensional array containing the values of the solution. y[i, :] is "
+"the vector of solutions at time t[i]. A list of ys can be provided instead "
+"to initialize a solution with sub-solutions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:13
+msgid ""
+"The model that was used to calculate the solution. A list of models can be "
+"provided instead to initialize a solution with sub-solutions that have been "
+"calculated using those models."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:17
+msgid ""
+"The inputs that were used to calculate the solution A list of inputs can be "
+"provided instead to initialize a solution with sub-solutions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:21
+msgid ""
+"A zero-dimensional array containing the time at which the event happens."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:23
+msgid ""
+"A one-dimensional array containing the value of the solution at the time "
+"when the event happens."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:26
+msgid "String to indicate why the solution terminated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:28
+msgid ""
+"sensitivities are provided as a dict of {parameter: [sensitivities]} pairs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:30
+msgid ""
+"Evaluation time breakpoints for each segment, one array per entry in "
+"``all_ts``.  When provided by the solver these contain the ``t_eval`` times "
+"(including merged discontinuity times).  If None (the default), the property "
+"returns ``all_ts`` for each segment, since each point is asssumed to be an "
+"evaluation time."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:36
+msgid ""
+"Bool to indicate if `all_ys` contains the full state vector, or is empty "
+"because only requested variables have been returned. True if "
+"`output_variables` is used with a solver, otherwise False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:40
+msgid "Bool to indicate if the solution should be checked for large y values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:42
+msgid ""
+"Overrides for :meth:`process_casadi_var`. Unspecified keys fall back to "
+"``_DEFAULT_SOLUTION_OPTIONS`` -- the casadi ``Function`` flags and the "
+"``compile`` flag (``True`` = AOT, ``False`` = in-process VM). Solvers should "
+"forward the user's selection so observed variables use the same backend as "
+"the integration."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution:49
+msgid "**Extends:** :class:`pybamm.solvers.solution.SolutionBase`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.all_models:1
+msgid "Model(s) used for solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.data:1
+msgid "Dict-like view of all computed variable data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.first_state:1
+msgid ""
+"A Solution object that only contains the first state. This is faster to "
+"evaluate than the full solution when only the first state is needed (e.g. to "
+"initialize a model with the solution)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:1
+msgid ""
+"Construct a (standard python) dictionary of the solution data containing the "
+"variables in `variables`. If `variables` is None then all variables are "
+"returned. Any variable names in short_names are replaced with the "
+"corresponding short name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:6
+msgid ""
+"If the solution has cycles, then the cycle numbers and step numbers are also "
+"returned in the dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:9
+msgid ""
+"List of variables to return. If None, returns all variables in solution.data"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:11
+msgid "Dictionary of shortened names to use when saving."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:13
+msgid "Whether to include the cycle numbers and step numbers in the dictionary"
+msgstr ""
+
+#: ../../../source/api/solvers/solution.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.get_data_dict:16
+msgid "A dictionary of the solution data"
+msgstr ""
+
+#: ../../../source/api/solvers/solution.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.last_state:1
+msgid ""
+"A Solution object that only contains the final state. This is faster to "
+"evaluate than the full solution when only the final state is needed (e.g. to "
+"initialize a model with the solution)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.observe:1
+msgid "Observe a `pybamm.Symbol` object from the solution."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.observe:3
+msgid "The symbol to observe."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.observe:6
+msgid "The observed variable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.observe:7
+msgid ":class:`pybamm.ProcessedVariable`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot:1
+msgid ""
+"A method to quickly plot the outputs of the solution. Creates a :class:"
+"`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and then calls :"
+"meth:`pybamm.QuickPlot.dynamic_plot`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot:5
+msgid "A list of the variables to plot."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot:7
+msgid ""
+"Additional keyword arguments passed to :meth:`pybamm.QuickPlot."
+"dynamic_plot`. For a list of all possible keyword arguments see :class:"
+"`pybamm.QuickPlot`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:1
+msgid ""
+"Generate a plot showing the component overpotentials that make up the voltage"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:3
+msgid ""
+"The axis on which to put the plot. If None, a new figure and axis is created."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:5
+msgid "Whether to display the legend. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:7
+msgid ""
+"Whether to show the overpotentials for the negative and positive electrodes "
+"separately. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:10
+msgid ""
+"Whether to show the plots. Default is True. Set to False if you want to only "
+"display the plot after plt.show() has been called."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.plot_voltage_components:13
+msgid "Keyword arguments, passed to ax.fill_between."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:1
+msgid "Save solution data only (raw arrays)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:3
+msgid "The name of the file to save data to. If None, then a str is returned"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:5
+msgid ""
+"List of variables to save. If None, saves all of the variables that have "
+"been created so far"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:8
+msgid ""
+"The format to save to. Options are:  - 'pickle' (default): creates a pickle "
+"file with the data dictionary - 'matlab': creates a .mat file, for loading "
+"in matlab - 'csv': creates a csv file (0D variables only) - 'json': creates "
+"a json file"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:8
+msgid "The format to save to. Options are:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:10
+msgid "'pickle' (default): creates a pickle file with the data dictionary"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:11
+msgid "'matlab': creates a .mat file, for loading in matlab"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:12
+msgid "'csv': creates a csv file (0D variables only)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:13
+msgid "'json': creates a json file"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:15
+msgid ""
+"Dictionary of shortened names to use when saving. This may be necessary when "
+"saving to MATLAB, since no spaces or special characters are allowed in "
+"MATLAB variable names. Note that not all the variables need to be given a "
+"short name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.save_data:21
+msgid ""
+"**data** -- str if 'csv' or 'json' is chosen and filename is None, otherwise "
+"None"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.sensitivities:1
+msgid "np_array"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.sensitivities:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.sensitivities:3
+msgid "Values of the sensitivities. Returns a dict of param_name"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.sub_solutions:1
+msgid ""
+"List of sub solutions that have been concatenated to form the full solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.t:1
+msgid "Times at which the solution is evaluated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.t_eval:1
+msgid "Evaluation time breakpoints for each segment"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.t_event:1
+msgid "Time at which the event happens"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.termination:1
+msgid "Reason for termination"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.Solution.update:1
+msgid "Add ProcessedVariables to the dictionary of variables in the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.y:1
+msgid "Values of the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.y_event:1
+msgid "Value of the solution at the time of the event"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.yp:1
+msgid "Time derivatives of the solution"
+msgstr ""
