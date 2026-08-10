@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/getting_started/tutorial-7-model-options."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:9
+msgid "Tutorial 7 - Model options"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:11
+msgid ""
+"In all of the previous tutorials, we have made use of the default forms of "
+"the inbuilt models in PyBaMM. However, PyBaMM provides a high-level "
+"interface for tweaking these models for your particular application. The "
+"core idea is that additional physics can be added to your electrochemical "
+"model of choice. These additional models can be specified via the model "
+"options (for a full list of options see the `documentation <https://docs."
+"pybamm.org/en/latest/source/api/models/base_models/base_battery_model."
+"html#pybamm.BatteryModelOptions>`__)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:35
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.3.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">24.0</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:44
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.3.1} -> \\textcolor{ansi-green}{24.0}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:54
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.3.1[0m[39;49m -> [0m[32;49m24.0[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:69
+msgid ""
+"<pre>\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:75
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:82
+msgid ""
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:93
+msgid ""
+"In this tutorial, we add a thermal model to the SPMe. From the "
+"`documentation <https://docs.pybamm.org/en/latest/source/api/models/"
+"base_models/base_battery_model.html>`__, we see that we have a choice of "
+"various thermal models. For a deeper look at the thermal models see the "
+"`thermal models notebook <../models/thermal-models.ipynb>`__. We choose the "
+"lumped thermal model, which solves the spatially-dependent heat equation on "
+"our battery geometry, and couples the temperature with the electrochemistry. "
+"We set the model options by creating a Python dictionary:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "options = {\"thermal\": \"lumped\"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:115
+msgid ""
+"and passing it to the model. Then, the model can be solved as shown in "
+"previous notebooks. We also increase the current to amplify the thermal "
+"effects:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.SPMe(options=options)  # loading in options\n"
+"\n"
+"sim = pybamm.Simulation(model)\n"
+"sim.solve([0, 3600])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:140
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x7f86e488a950&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:146
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x7f86e488a950>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:153
+msgid "<pybamm.solvers.solution.Solution at 0x7f86e488a950>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:164
+msgid ""
+"We now plot the cell temperature and the total heating by passing these "
+"variables to the ``plot`` method as we saw in `Tutorial 3 <./tutorial-3-"
+"basic-plotting.ipynb>`__:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid ""
+"sim.plot(\n"
+"    [\"Cell temperature [K]\", \"Total heating [W.m-3]\", \"Current [A]\", "
+"\"Voltage [V]\"]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:189
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"7267353ed84e45a2b5aabca057eed711\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:200
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:206
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:213
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:225
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f86e45f25d0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:231
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f86e45f25d0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:238
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f86e45f25d0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:249
+msgid ""
+"In this tutorial we have seen how to adjust the model options to account for "
+"thermal effects. Here is a (non exhaustive) list of other example notebooks "
+"that demonstrate how to include additional physics:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:251
+msgid "`Composite models <../models/composite_particle.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:252
+msgid ""
+"`Particle size distributions <../models/DFN-with-particle-size-distributions."
+"ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:253
+msgid "`Lithium plating <../models/lithium-plating.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:254
+msgid "`Particle cracking <../models/submodel_cracking_DFN_or_SPM.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:255
+msgid "`Loss of active material <../models/loss_of_active_materials.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:256
+msgid "`Thermal models <../models/thermal-models.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:257
+msgid ""
+"`Coupled degradation mechanisms <../models/coupled-degradation.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:259
+msgid ""
+"In the `next tutorial <./tutorial-8-solver-options.ipynb>`__ we show how to "
+"change the solver options."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:271
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:273
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:294
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[5] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:305
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[5] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-7-model-options.ipynb:317
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[5] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898."
+msgstr ""

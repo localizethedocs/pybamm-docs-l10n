@@ -1,0 +1,313 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/sodium-ion.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/sodium-ion.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:9
+msgid "DFN model for sodium-ion batteries"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:11
+msgid ""
+"In this notebook we use the DFN model to simulate sodium-ion batteries. The "
+"parameters are based on the article > K. Chayambuka, G. Mulder, D.L. "
+"Danilov, P.H.L. Notten, Physics-based modeling of sodium-ion batteries part "
+"II. Model and validation, Electrochimica Acta 404 (2022) 139764. https://doi."
+"org/10.1016/j.electacta.2021.139764."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:13
+msgid ""
+"However, the specific values (including the data for the interpolants) are "
+"taken from the COMSOL implementation presented in `this example <https://www."
+"comsol.com/model/1d-isothermal-sodium-ion-battery-117341>`__. As usual, we "
+"start by importing PyBaMM."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:35
+msgid ""
+"<pre>\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:48
+msgid ""
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:59
+msgid ""
+"We now need to define the model. In this case we take the ``BasicDFN`` model "
+"for sodium-ion batteries (note how it is called from the ``pybamm."
+"sodium_ion`` submodule). Note that, at the moment, the model is identical to "
+"the one for lithium-ion batteries, but uses different parameter values."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "model = pybamm.sodium_ion.BasicDFN()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:80
+msgid ""
+"In order to replicate the results in the COMSOL example, we discharge at "
+"different C-rates and compare the solutions. We loop over the C-rate "
+"dictionary and solve the model for each C-rate. We append the solutions into "
+"a list so we can later plots the results."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid ""
+"C_rates = [1 / 12, 5 / 12, 10 / 12, 1]\n"
+"solutions = []\n"
+"\n"
+"for C_rate in C_rates:\n"
+"    sim = pybamm.Simulation(model, C_rate=C_rate)\n"
+"    sol = sim.solve([0, 4000 / C_rate])\n"
+"    solutions.append(sol)\n"
+"\n"
+"pybamm.dynamic_plot(solutions)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:111
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"8ca3353c637e48d28c3b02f42d25fa03\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:122
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=10.80914150213347, step=0.1080914150213347),…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:128
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=10.80914150213347, step=0.1080914150213347),…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:135
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=10.80914150213347, step=0.1080914150213347),…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:147
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f9763ff3e90&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:153
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f9763ff3e90>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:160
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f9763ff3e90>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:171
+msgid ""
+"We can now perform a manual plot of voltage versus capacity, to compare the "
+"results with the COMSOL example."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid ""
+"import matplotlib.pyplot as plt\n"
+"\n"
+"for solution, C_rate in zip(solutions, C_rates, strict=False):\n"
+"    capacity = [i * 1000 for i in solution[\"Discharge capacity [A.h]\"]."
+"entries]\n"
+"    voltage = solution[\"Voltage [V]\"].entries\n"
+"    plt.plot(capacity, voltage, label=f\"{(12 * C_rate)} A.m-2\")\n"
+"\n"
+"plt.xlabel(\"Discharge Capacity [mA.h]\")\n"
+"plt.ylabel(\"Voltage [V]\");"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:218
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Kudakwashe Chayambuka, Grietus Mulder, Dmitri L Danilov, and Peter HL "
+"Notten. Physics-based modeling of sodium-ion batteries part ii. model and "
+"validation. Electrochimica Acta, 404:139764, 2022.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:231
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Kudakwashe Chayambuka, Grietus Mulder, Dmitri L Danilov, and Peter HL "
+"Notten. Physics-based modeling of sodium-ion batteries part ii. model and "
+"validation. Electrochimica Acta, 404:139764, 2022.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:245
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Kudakwashe Chayambuka, Grietus Mulder, Dmitri L Danilov, and Peter HL "
+"Notten. Physics-based modeling of sodium-ion batteries part ii. model and "
+"validation. Electrochimica Acta, 404:139764, 2022.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:-1
+msgid "[ ]:"
+msgstr ""

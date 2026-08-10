@@ -1,0 +1,884 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/base_models/base_battery_model.rst:4
+msgid "Base Battery Model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel:1
+msgid "Base model class with some default settings and required variables"
+msgstr ""
+
+#: ../../../source/api/models/base_models/base_battery_model.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel:3
+msgid ""
+"A dictionary of options to be passed to the model. If this is a dict (and "
+"not a subtype of dict), it will be processed by :class:`pybamm."
+"BatteryModelOptions` to ensure that the options are valid. If this is a "
+"subtype of dict, it is assumed that the options have already been processed "
+"and are valid. This allows for the use of custom options classes. The "
+"default options are given by :class:`pybamm.BatteryModelOptions`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel:10
+msgid "The name of the model. The default is \"Unnamed battery model\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel:13
+msgid "**Extends:** :class:`pybamm.models.base_model.BaseModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel:0
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BaseBatteryModel.default_geometry:1
+msgid ""
+"Returns a  dictionary of the default geometry for the model, which is empty "
+"by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BaseBatteryModel.default_spatial_methods:1
+msgid ""
+"Returns a dictionary of the default spatial methods for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BaseBatteryModel.default_submesh_types:1
+msgid ""
+"Returns a dictionary of the default submesh types for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BaseBatteryModel.default_var_pts:1
+msgid ""
+"Returns a dictionary of the default variable points for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel.deserialise:1
+msgid "Create a model instance from a serialised object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BaseBatteryModel.options:1
+msgid ""
+"Returns the model options dictionary that allows customization of the "
+"model's behavior."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel.save_model:1
+msgid "Write out a discretised model to a JSON file"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel.set_degradation_variables:1
+msgid ""
+"Set variables that quantify degradation. This function is overriden by the "
+"base battery models"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel.set_external_circuit_submodel:1
+msgid ""
+"Define how the external circuit defines the boundary conditions for the "
+"model, e.g. (not necessarily constant-) current, voltage, etc"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel.set_soc_variables:1
+msgid ""
+"Set variables relating to the state of charge. This function is overriden by "
+"the base battery models"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:3
+msgid ""
+"A dictionary of options to be passed to the model. The options that can be "
+"set are listed below. Note that not all of the options are compatible with "
+"each other and with all of the models implemented in PyBaMM. Each option is "
+"optional and takes a default value if not provided. In general, the option "
+"provided must be a string, but there are some cases where a 2-tuple of "
+"strings can be provided instead to indicate a different option for the "
+"negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:11
+msgid "\"calculate discharge energy\": str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:12
+msgid ""
+"Whether to calculate the discharge energy, throughput energy and throughput "
+"capacity in addition to discharge capacity. Must be one of \"true\" or "
+"\"false\". \"false\" is the default, since calculating discharge energy can "
+"be computationally expensive for simple models like SPM."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:16
+msgid "\"cell geometry\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:-1
+msgid "str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:17
+msgid ""
+"Sets the geometry of the cell. Can be \"arbitrary\" (default) or \"pouch\". "
+"The arbitrary geometry option solves a 1D electrochemical model with "
+"prescribed cell volume and cross-sectional area, and (if thermal effects are "
+"included) solves a lumped thermal model with prescribed surface area for "
+"cooling."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:22
+msgid "\"calculate heat source for isothermal models\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:23
+msgid ""
+"Whether to calculate the heat source terms during isothermal operation. Can "
+"be \"true\" or \"false\". If \"false\", the heat source terms are set to "
+"zero. Default is \"false\" since this option may require additional "
+"parameters not needed by the electrochemical model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:27
+msgid "\"contact resistance\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:28
+msgid ""
+"Whether to include an additional series resistance, added to the terminal "
+"voltage and contributing Ohmic (I^2 R) heating. Can be \"false\" (default) "
+"or \"true\". Set via the parameter \"Contact resistance [Ohm]\", which may "
+"be a constant or a function of the volume-averaged cell temperature."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:33
+msgid "\"convection\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:34
+msgid ""
+"Whether to include the effects of convection in the model. Can be "
+"\"none\" (default), \"uniform transverse\" or \"full transverse\". Must be "
+"\"none\" for lithium-ion models."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:37
+msgid "\"current collector\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:38
+msgid ""
+"Sets the current collector model to use. Can be \"uniform\" (default), "
+"\"potential pair\" or \"potential pair quite conductive\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:40
+msgid "\"diffusivity\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:41
+msgid ""
+"Sets the model for the diffusivity. Can be \"single\" (default) or \"current "
+"sigmoid\". A 2-tuple can be provided for different behaviour in negative and "
+"positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:44
+msgid "\"dimensionality\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:-1
+msgid "int"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:45
+msgid ""
+"Sets the dimension of the current collector problem. Can be 0 (default), 1 "
+"or 2."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:47
+msgid "\"electrolyte conductivity\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:48
+msgid ""
+"Can be \"default\" (default), \"full\", \"leading order\", \"composite\" or "
+"\"integrated\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:50
+msgid "\"exchange-current density\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:51
+msgid ""
+"Sets the model for the exchange-current density. Can be \"single\" (default) "
+"or \"current sigmoid\". A 2-tuple can be provided for different behaviour in "
+"negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:54
+msgid "\"hydrolysis\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:55
+msgid ""
+"Whether to include hydrolysis in the model. Only implemented for lead-acid "
+"models. Can be \"false\" (default) or \"true\". If \"true\", then \"surface "
+"form\" cannot be 'false'."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:58
+msgid "\"intercalation kinetics\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:59
+msgid ""
+"Model for intercalation kinetics. Can be \"symmetric Butler-"
+"Volmer\" (default), \"asymmetric Butler-Volmer\", \"linear\", \"Marcus\", "
+"\"Marcus-Hush-Chidsey\" (which uses the asymptotic form from Zeng 2014), or "
+"\"MSMR\" (which uses the form from Baker 2018). A 2-tuple can be provided "
+"for different behaviour in negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:64
+msgid "\"interface utilisation\": str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:65
+msgid "Can be \"full\" (default), \"constant\", or \"current-driven\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:66
+msgid "\"lithium plating\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:67
+msgid ""
+"Sets the model for lithium plating. Can be \"none\" (default), "
+"\"reversible\", \"partially reversible\", or \"irreversible\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:69
+msgid "\"lithium plating porosity change\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:70
+msgid ""
+"Whether to include porosity change due to lithium plating, can be "
+"\"false\" (default) or \"true\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:72
+msgid "\"loss of active material\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:73
+msgid ""
+"Sets the model for loss of active material. Can be \"none\" (default), "
+"\"stress-driven\", \"asymmetric stress-driven\", \"reaction-driven\", "
+"\"current-driven\", \"stress and reaction-driven\", or \"asymmetric stress "
+"and reaction-driven\". A 2-tuple can be provided for different behaviour in "
+"negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:79
+msgid "\"number of MSMR reactions\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:80
+msgid ""
+"Sets the number of reactions to use in the MSMR model in each electrode. A 2-"
+"tuple can be provided to give a different number of reactions in the "
+"negative and positive electrodes. Default is \"none\". Can be any 2-tuple of "
+"strings of integers. For example, set to (\"6\", \"4\") for a negative "
+"electrode with 6 reactions and a positive electrode with 4 reactions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:86
+msgid "\"open-circuit potential\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:87
+msgid ""
+"Sets the model for the open circuit potential. Can be \"single\" (default), "
+"\"current sigmoid\", \"one-state hysteresis\", \"one-state differential "
+"capacity hysteresis\", or \"MSMR\". If \"MSMR\" then the \"particle\" option "
+"must also be \"MSMR\". A 2-tuple can be provided for different behaviour in "
+"negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:92
+msgid "\"operating mode\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:93
+msgid ""
+"Sets the operating mode for the model. This determines how the current is "
+"set. Can be:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:96
+msgid "\"current\" (default) : the current is explicity supplied"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:97
+msgid ""
+"\"voltage\"/\"power\"/\"resistance\" : solve an algebraic equation "
+"for                     current such that voltage/power/resistance is correct"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:98
+msgid ""
+"\"differential power\"/\"differential resistance\" : solve "
+"a                     differential equation for the power or resistance"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:99
+msgid ""
+"\"explicit power\"/\"explicit resistance\" : current is defined in "
+"terms                     of the voltage such that power/resistance is "
+"correct"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:100
+msgid ""
+"\"CCCV\": a special implementation of the common constant-"
+"current                     constant-voltage charging protocol, via an ODE "
+"for the current"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:101
+msgid ""
+"callable : if a callable is given as this option, the "
+"function                     defines the residual of an algebraic equation. "
+"The applied current                     will be solved for such that the "
+"algebraic constraint is satisfied."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:102
+msgid "\"particle\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:103
+msgid ""
+"Sets the submodel to use to describe behaviour within the particle. Can be "
+"\"Fickian diffusion\" (default), \"uniform profile\", \"quadratic profile\", "
+"\"quartic profile\", or \"MSMR\". If \"MSMR\" then the \"open-circuit "
+"potential\" option must also be \"MSMR\". A 2-tuple can be provided for "
+"different behaviour in negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:108
+msgid "\"particle mechanics\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:109
+msgid ""
+"Sets the model to account for mechanical effects such as particle swelling "
+"and cracking. Can be \"none\" (default), \"swelling only\", or \"swelling "
+"and cracking\". A 2-tuple can be provided for different behaviour in "
+"negative and positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:114
+msgid "\"particle phases\": str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:115
+msgid ""
+"Number of phases present in the electrode. A 2-tuple can be provided for "
+"different behaviour in negative and positive electrodes. For example, set to "
+"(\"2\", \"1\") for a negative electrode with 2 phases, e.g. graphite and "
+"silicon."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:119
+msgid "\"particle shape\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:120
+msgid ""
+"Sets the model shape of the electrode particles. This is used to calculate "
+"the surface area to volume ratio. Can be \"spherical\" (default), or \"no "
+"particles\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:123
+msgid "\"particle size\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:124
+msgid ""
+"Sets the model to include a single active particle size or a distribution of "
+"sizes at any macroscale location. Can be \"single\" (default) or "
+"\"distribution\". Option applies to both electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:127
+msgid "\"SEI\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:128
+msgid "Set the SEI submodel to be used. Options are:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:130
+msgid "\"none\": :class:`pybamm.sei.NoSEI` (no SEI growth)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:131
+msgid "\"constant\": :class:`pybamm.sei.Constant` (constant SEI thickness)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:132
+msgid ""
+"\"reaction limited\", \"reaction limited (asymmetric)\",                     "
+"\"solvent-diffusion limited\", \"electron-migration "
+"limited\",                     \"interstitial-diffusion limited\", \"ec "
+"reaction limited\" ,                       \"VonKolzenberg2020\", "
+"\"tunnelling limited\",                    or \"ec reaction limited "
+"(asymmetric)\": :class:`pybamm.sei.SEIGrowth`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:133
+msgid "\"SEI film resistance\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:134
+msgid ""
+"Set the submodel for additional term in the overpotential due to SEI. The "
+"default value is \"none\" if the \"SEI\" option is \"none\", and "
+"\"distributed\" otherwise. This is because the \"distributed\" model is more "
+"complex than the model with no additional resistance, which adds unnecessary "
+"complexity if there is no SEI in the first place"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:140
+msgid "\"none\": no additional resistance"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:141
+msgid ""
+"\\eta_r = \\frac{F}{RT} * (\\phi_s - \\phi_e - U)\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:144
+msgid "\"distributed\": properly included additional resistance term"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:145
+msgid ""
+"\\eta_r = \\frac{F}{RT}\n"
+"* (\\phi_s - \\phi_e - U - R_{sei} * L_{sei} * j)\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:149
+msgid ""
+"\"average\": constant additional resistance term (approximation to "
+"the                     true model). This model can give similar results to "
+"the                     \"distributed\" case without needing to make j an "
+"algebraic state"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:150
+msgid ""
+"\\eta_r = \\frac{F}{RT}\n"
+"* (\\phi_s - \\phi_e - U - R_{sei} * L_{sei} * \\frac{I}{aL})\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:153
+msgid "\"SEI on cracks\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:154
+msgid ""
+"Whether to include SEI growth on particle cracks, can be \"false\" (default) "
+"or \"true\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:156
+msgid "\"SEI porosity change\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:157
+msgid ""
+"Whether to include porosity change due to SEI formation, can be "
+"\"false\" (default) or \"true\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:159
+msgid "\"stress-induced diffusion\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:160
+msgid ""
+"Whether to include stress-induced diffusion, can be \"false\" or \"true\". "
+"The default is \"false\" if \"particle mechanics\" is \"none\" and \"true\" "
+"otherwise. A 2-tuple can be provided for different behaviour in negative and "
+"positive electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:164
+msgid "\"surface form\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:165
+msgid ""
+"Whether to use the surface formulation of the problem. Can be "
+"\"false\" (default), \"differential\" or \"algebraic\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:167
+msgid "\"surface temperature\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:168
+msgid ""
+"Sets the surface temperature model to use. Can be \"ambient\" (default), "
+"which sets the surface temperature equal to the ambient temperature, or "
+"\"lumped\", which adds an ODE for the surface temperature (e.g. to model "
+"internal heating of a thermal chamber)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:172
+msgid "\"thermal\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:173
+msgid ""
+"Sets the thermal model to use. Can be \"isothermal\" (default), \"lumped\", "
+"\"x-lumped\", or \"x-full\". The 'cell geometry' option must be set to "
+"'pouch' for 'x-lumped' or 'x-full' to be valid. Using the 'x-lumped' option "
+"with 'dimensionality' set to 0 is equivalent to using the 'lumped' option."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:178
+msgid "\"total interfacial current density as a state\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:179
+msgid ""
+"Whether to make a state for the total interfacial current density and solve "
+"an algebraic equation for it. Default is \"false\", unless \"SEI film "
+"resistance\" is distributed in which case it is automatically set to "
+"\"true\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:183
+msgid "\"voltage as a state\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:184
+msgid ""
+"Whether to promote voltage to an algebraic state variable. Can be "
+"\"false\" (default) or \"true\", unless the operating mode is \"explicit "
+"power\" or \"explicit resistance\", in which case it is automatically set to "
+"\"true\". When \"true\", the model is a DAE and requires a DAE-capable "
+"solver (e.g. the default IDAKLUSolver). When \"false\", voltage is computed "
+"as an expression. Note that setting this to \"false\" only removes the "
+"voltage algebraic equation; SPM/SPMe with ``surface form=\"false\"`` become "
+"pure ODE models, but DFN retains other algebraic states (electrode/"
+"electrolyte potentials) regardless of this option."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:195
+msgid "\"working electrode\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:196
+msgid ""
+"Can be \"both\" (default) for a standard battery or \"positive\" for a half-"
+"cell where the negative electrode is replaced with a lithium metal counter "
+"electrode."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:199
+msgid "\"x-average side reactions\": str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:200
+msgid ""
+"Whether to average the side reactions (SEI growth, lithium plating and the "
+"respective porosity change) over the x-axis in Single Particle Models, can "
+"be \"false\" or \"true\". Default is \"false\" for SPMe and \"true\" for SPM."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:204
+msgid "\"use lumped thermal capacity\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:205
+msgid ""
+"Whether to use a lumped capacity model for the thermal model. Can be "
+"\"false\" (default) or \"true\". This is only available for the lumped "
+"thermal model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:209
+msgid "dict"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions:211
+msgid "**Extends:** :class:`pybamm.util.FuzzyDict`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BatteryModelOptions.negative:1
+msgid "Returns the options for the negative electrode"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of pybamm.BatteryModelOptions.positive:1
+msgid "Returns the options for the positive electrode"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions.print_detailed_options:1
+msgid "Print the docstring for Options"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/base_battery_model.py:docstring
+#: of
+#: pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions.print_options:1
+msgid "Print the possible options with the ones currently selected"
+msgstr ""

@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/codegen/compilation.rst:2
+msgid "AOT compilation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/codegen/compilation.py:docstring
+#: of pybamm.codegen.compilation.aot_compile:1
+msgid ""
+"Ahead-of-time compile one or more casadi ``Function`` objects to a single "
+"shared library and return ``casadi.external`` wrappers."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/codegen/compilation.py:docstring
+#: of pybamm.codegen.compilation.aot_compile:4
+msgid ""
+"Accepts either a single ``casadi.Function`` (returns a Function) or a list/"
+"tuple of Functions (returns a list, one per input, in order). In either case "
+"everything is lowered in one ``CodeGenerator`` / ``gcc`` invocation -- a "
+"single fn is a bundle of size one."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/codegen/compilation.py:docstring
+#: of pybamm.codegen.compilation.aot_compile:9
+msgid ""
+"Intended for the *outermost* Functions a solver hands off (e.g. "
+"``rhs_algebraic``, ``jac_times_cjmass``, ``rootfn``, output-variable "
+"evaluators). Intermediate Functions should stay as MX/SX so ``casadi."
+"CodeGenerator`` can inline them into one translation unit. Wrapping inner "
+"Functions as Externals forces cross-dylib dispatch and produces unresolvable "
+"``extern`` declarations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/codegen/compilation.py:docstring
+#: of pybamm.codegen.compilation.aot_compile:16
+msgid ""
+"Results are cached in-process (by a hash of the serialised forms) and on "
+"disk under ``$PYBAMM_CASADI_AOT_CACHE`` (default ``$TMPDIR/"
+"pybamm_casadi_aot``). Inputs already of class ``External`` are returned "
+"unchanged. On any failure, the original Function(s) are returned and a "
+"warning is logged."
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/codegen/compilation.py:docstring
+#: of pybamm.codegen.compilation.aot_compile:24
+msgid "``cache_dir``, ``compiler`` and ``flags`` overrides."
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:8
+msgid "Environment variables"
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:10
+msgid "``PYBAMM_CASADI_AOT_CACHE``"
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:11
+msgid "On-disk cache directory. Defaults to ``$TMPDIR/pybamm_casadi_aot``."
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:13
+msgid "``PYBAMM_CASADI_AOT_KEEP_C``"
+msgstr ""
+
+#: ../../../source/api/codegen/compilation.rst:14
+msgid ""
+"If set, retain the generated ``.c`` source next to each compiled library. "
+"Useful for debugging codegen output."
+msgstr ""

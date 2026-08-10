@@ -1,0 +1,373 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/simulation/base_simulation.rst:2
+msgid "Base Simulation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:1
+msgid "A Simulation class for easy building and running of PyBaMM simulations."
+msgstr ""
+
+#: ../../../source/api/simulation/base_simulation.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:3
+msgid "The model to be simulated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:5
+msgid "The geometry upon which to solve the model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:7
+msgid "Parameters and their corresponding numerical values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:9
+msgid "A dictionary of the types of submesh to use on each subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:11
+msgid "A dictionary of the number of points used by each spatial variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:13
+msgid ""
+"A dictionary of the types of spatial method to use on each domain (e.g. "
+"pybamm.FiniteVolume)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:16
+#: pybamm.simulation.base_simulation.BaseSimulation.step:6
+msgid "The solver to use to solve the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:18
+msgid "A list of variables to plot automatically"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:20
+msgid ""
+"The C-rate at which you would like to run a constant current (dis)charge."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation:22
+msgid ""
+"Any keyword arguments to pass to the Discretisation class. See :class:"
+"`pybamm.Discretisation` for details."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.build:1
+msgid ""
+"A method to build the model into a system of matrices and vectors suitable "
+"for performing numerical computations. If the model has already been built "
+"or solved then this function will have no effect. This method will "
+"automatically set the parameters if they have not already been set."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.build:7
+#: pybamm.simulation.base_simulation.BaseSimulation.solve:27
+msgid ""
+"Initial State of Charge (SOC) for the simulation. Must be between 0 and 1. "
+"If given, overwrites the initial concentrations provided in the parameter "
+"set."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.build:11
+msgid "A dictionary of input parameters to pass to the model when solving."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.create_gif:1
+msgid ""
+"Generates x plots over a time span of t_eval and compiles them to create a "
+"GIF. For more information see :meth:`pybamm.QuickPlot.create_gif`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.create_gif:4
+msgid "Number of images/plots to be compiled for a GIF."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.create_gif:6
+msgid "Duration of visibility of a single image/plot in the created GIF."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.create_gif:8
+msgid "Name of the generated GIF file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.plot:1
+msgid ""
+"A method to quickly plot the outputs of the simulation. Creates a :class:"
+"`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and then calls :"
+"meth:`pybamm.QuickPlot.dynamic_plot`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.plot:5
+msgid "A list of the variables to plot."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.plot:7
+msgid ""
+"Additional keyword arguments passed to :meth:`pybamm.QuickPlot."
+"dynamic_plot`. For a list of all possible keyword arguments see :class:"
+"`pybamm.QuickPlot`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:1
+msgid ""
+"Generate a plot showing the component overpotentials that make up the voltage"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:3
+msgid ""
+"The axis on which to put the plot. If None, a new figure and axis is created."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:5
+msgid "Whether to display the legend. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:7
+msgid ""
+"Whether to show the overpotentials for the negative and positive electrodes "
+"separately. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:10
+msgid ""
+"The phases for which to plot the anode and cathode overpotentials, "
+"respectively. Default is `(\"primary\", \"primary\")`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:13
+msgid ""
+"Whether to show the plots. Default is True. Set to False if you want to only "
+"display the plot after plt.show() has been called."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of
+#: pybamm.simulation.base_simulation.BaseSimulation.plot_voltage_components:16
+msgid "Keyword arguments, passed to ax.fill_between."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save:1
+msgid "Save simulation using pickle module."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save:3
+msgid ""
+"The file extension can be arbitrary, but it is common to use \".pkl\" or \"."
+"pickle\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save_model:1
+msgid "Write out a discretised model to a JSON file"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save_model:3
+msgid ""
+"The mesh used to discretise the model. If false, plotting tools will not be "
+"available when the model is read back in and solved."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save_model:6
+msgid ""
+"The discretised variables. Not required to solve a model, but if false tools "
+"will not be available. Will automatically save meshes as well, required for "
+"plotting tools."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.save_model:10
+msgid ""
+"The desired name of the JSON file. If no name is provided, one will be "
+"created based on the model name, and the current datetime."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:1
+msgid ""
+"A method to solve the model. This method will automatically build and set "
+"the model parameters if not already done so."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:4
+msgid ""
+"The times at which to stop the integration due to a discontinuity in time. "
+"Can be provided as an array of times at which to return the solution, or as "
+"a list `[t0, tf]` where `t0` is the initial time and `tf` is the final time. "
+"If the solver does not support intra-solve interpolation, providing `t_eval` "
+"as a list returns the solution at 100 points within the interval `[t0, tf]`. "
+"Otherwise, the solution is returned at the times specified in `t_interp` or "
+"as a result of the adaptive time-stepping solution. See the `t_interp` "
+"argument for more details.  If not using an experiment or running a drive "
+"cycle simulation (current provided as data) `t_eval` *must* be provided.  If "
+"None and the parameter \"Current function [A]\" is read from data (i.e. "
+"drive cycle simulation) the model will be solved at the times provided in "
+"the data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:4
+msgid ""
+"The times at which to stop the integration due to a discontinuity in time. "
+"Can be provided as an array of times at which to return the solution, or as "
+"a list `[t0, tf]` where `t0` is the initial time and `tf` is the final time. "
+"If the solver does not support intra-solve interpolation, providing `t_eval` "
+"as a list returns the solution at 100 points within the interval `[t0, tf]`. "
+"Otherwise, the solution is returned at the times specified in `t_interp` or "
+"as a result of the adaptive time-stepping solution. See the `t_interp` "
+"argument for more details."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:13
+msgid ""
+"If not using an experiment or running a drive cycle simulation (current "
+"provided as data) `t_eval` *must* be provided."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:16
+msgid ""
+"If None and the parameter \"Current function [A]\" is read from data (i.e. "
+"drive cycle simulation) the model will be solved at the times provided in "
+"the data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:20
+msgid ""
+"The solver to use to solve the model. If None, Simulation.solver is used"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:22
+msgid ""
+"Whether to include eSOH variables in the summary variables. If `False` then "
+"only summary variables that do not require the eSOH calculation are "
+"calculated. If given, overwrites the default provided by the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:31
+msgid ""
+"A list of callbacks to be called at each time step. Each callback must "
+"implement all the methods defined in :class:`pybamm.callbacks.BaseCallback`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:34
+msgid ""
+"The times (in seconds) at which to interpolate the solution. Defaults to "
+"None. Only valid for solvers that support intra-solve interpolation "
+"(`IDAKLUSolver`)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:37
+msgid ""
+"Additional key-word arguments passed to `solver.solve`. See :meth:`pybamm."
+"BaseSolver.solve`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:1
+msgid ""
+"A method to step the model forward one timestep. This method will "
+"automatically build and set the model parameters if not already done so."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:4
+msgid "The timestep over which to step the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:8
+msgid ""
+"An array of times at which to return the solution during the step (Note: "
+"t_eval is the time measured from the start of the step, so should start at 0 "
+"and end at dt). By default, the solution is returned at t0 and t0 + dt."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:12
+msgid "Turn on to store the solution of all previous timesteps"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:14
+msgid ""
+"The solution to start stepping from. If None (default), then self._solution "
+"is used"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.step:17
+msgid ""
+"Additional key-word arguments passed to `solver.solve`. See :meth:`pybamm."
+"BaseSolver.step`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.load_sim:1
+msgid "Load a saved simulation"
+msgstr ""
