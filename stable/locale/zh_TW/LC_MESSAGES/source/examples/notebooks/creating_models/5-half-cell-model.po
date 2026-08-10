@@ -1,0 +1,813 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/creating_models/5-half-cell-model.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/creating_models/5-half-cell-model.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:9
+msgid "A half cell model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:20
+msgid ""
+"In the `previous notebook <./4-comparing-full-and-reduced-order-models."
+"ipynb>`__ we saw how to compare full and reduced-order models. Both of these "
+"models were posed on a single domain: the negative electrode particle. Here "
+"we will see how to create a model which contains multiple domains."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:22
+msgid ""
+"We consider a problem posed on a half-cell geometry, which consists of a "
+"separator (:math:`-L_s<x<0`) and a positive electrode (:math:`0<x<L_p`). "
+"These two regions are considered \"macroscale\" domains. At each point in "
+"the positive electrode we treat a \"microscale\" problem to model diffusion "
+"of lithium within the positive particles (:math:`0<r<R_p`). We will see how "
+"to create variables in each of the different domains so that the governing "
+"equations are properly coupled."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:24
+msgid ""
+"In the interest of simplicity we assume that the current in both the the "
+"solid and electrolyte is given by Ohm's law, and ignore any concentration "
+"gradients in the electrolyte. The governing equations for charge "
+"conservation at the macroscale are then"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:26
+msgid ""
+"i_e = -\\kappa \\nabla \\phi_e, \\quad \\nabla i_e = a j, \\quad -L_s<x<0, \\"
+"\\\n"
+"i = -\\sigma \\nabla \\phi, \\quad \\nabla \\cdot i = -a j, \\quad 0<x<L_p,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:32
+msgid ""
+"where :math:`i` and :math:`i_e` are the current densities in the solid and "
+"electrolyte, respectively, :math:`\\phi` and :math:`\\phi_e` are the "
+"electric potentials in the solid and electrolyte, respectively, :math:"
+"`\\sigma` is the solid conductivity, :math:`\\kappa` is the ionic "
+"conductivity, :math:`a` is the electrode surface area per unit volume and :"
+"math:`j` the interfacial current density. The charge conservation equations "
+"are subject to the boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:34
+msgid ""
+"\\left.\\phi_e\\right\\vert_{x=-L_s} = 0, \\quad \\left."
+"i_e\\right\\vert_{x=L_p} = 0, \\quad \\left.i\\right\\vert_{x=0} = 0, \\quad "
+"\\left.i\\right\\vert_{x=L_p} = \\frac{I_{\\text{app}}}{A},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:39
+msgid ""
+"where :math:`I_{\\text{app}}` is the applied current and :math:`A` is the "
+"electrode cross-sectional area. We then have an equation posed at each "
+"macroscopic point in the electrode (:math:`0<x<L_p`) describing transport of "
+"lithium within the active material particles. That is,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:41
+msgid ""
+"\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (D \\nabla c), \\quad "
+"0<r<R_p,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:46
+msgid "with the following boundary and initial conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:48
+msgid ""
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=R} = -\\frac{j}{FD}, "
+"\\quad \\left.c\\right\\vert_{t=0} = c_0,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:53
+msgid ""
+"where :math:`c` is the concentration, :math:`r` the radial coordinate, :math:"
+"`t` time, :math:`R` the particle radius, :math:`D` the diffusion "
+"coefficient, :math:`F` Faraday's constant, and :math:`c_0` the initial "
+"concentration. For the interfacial current density we assume Butler-Volmer "
+"kinetics"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:55
+msgid ""
+"j = \\begin{cases}\n"
+"        0 &-L_s<x<0 \\\\\n"
+"        2 j_0(c)\\sinh\\left(\\frac{F}{2RT}(\\phi-\\phi_e-U(c))\\right) "
+"&0<x<L_p\n"
+"    \\end{cases},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:63
+msgid ""
+"where :math:`j_0` is the exchange current density, and :math:`U` is the open-"
+"circuit potential."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:75
+msgid "Setting up the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:77
+msgid ""
+"As before, we begin by importing the PyBaMM library into this notebook, "
+"along with any other packages we require, and start with an empty ``pybamm."
+"BaseModel``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[19]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm\n"
+"\n"
+"model = pybamm.BaseModel()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:101
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:107
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:114
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:125
+msgid ""
+"Let's first define our model variables. We can define the electric potential "
+"in the positive electrode in the same way as we defined the concentration "
+"variables in the previous notebooks"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[20]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"phi = pybamm.Variable(\"Positive electrode potential [V]\", "
+"domain=\"positive electrode\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:146
+msgid ""
+"The potential in the electrolyte spans two domains. To set this up we first "
+"define the electric potential in each of the domains"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[21]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"phi_e_s = pybamm.Variable(\"Separator electrolyte potential [V]\", "
+"domain=\"separator\")\n"
+"phi_e_p = pybamm.Variable(\n"
+"    \"Positive electrolyte potential [V]\", domain=\"positive electrode\"\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:170
+msgid ""
+"and then concatenate these two variables together to define a single "
+"variable that spans the separator and positive electrode"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[22]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "phi_e = pybamm.concatenation(phi_e_s, phi_e_p)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:191
+msgid ""
+"Note that in our formulation the separator will be on the left and the "
+"positive electrode will be on the right, so this is the order in which we "
+"concatenated the variables for the electrolyte potential in each domain."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:202
+msgid ""
+"The concentration in the electrode particles can vary both in :math:`r` and :"
+"math:`x`, but diffusion only occurs in the :math:`r` direction. In order to "
+"handle this situation we introduce the concept of \"auxiliary domains\". "
+"These are domains in which quantities can vary, but spatial operators do not "
+"act. To set up our concentration variable we create a ``Variable`` which has "
+"domain \"positive particle\" and secondary domain \"positive electrode\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[23]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"c = pybamm.Variable(\n"
+"    \"Positive particle concentration [mol.m-3]\",\n"
+"    domain=\"positive particle\",\n"
+"    auxiliary_domains={\n"
+"        \"secondary\": \"positive electrode\",\n"
+"    },\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:229
+msgid ""
+"Now spatial operators acting on ``c`` only act in the :math:`r` direction "
+"(corresponding to the primary domain \"positive particle\"), but ``c`` can "
+"still depend on :math:`x` (corresponding to the secondary domain \"positive "
+"electrode\"). For more details on the different domains (primary, secondary, "
+"etc.) see the `broadcasts notebook <../expression_tree/broadcasts.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:240
+msgid ""
+"Next we will define our parameters. As seen before, scalar parameters can be "
+"defined using the ``Parameter`` object"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[24]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"F = pybamm.Parameter(\"Faraday constant [C.mol-1]\")\n"
+"R = pybamm.Parameter(\"Molar gas constant [J.mol-1.K-1]\")\n"
+"T = pybamm.Parameter(\"Temperature [K]\")\n"
+"\n"
+"a = pybamm.Parameter(\"Surface area per unit volume [m-1]\")\n"
+"R_p = pybamm.Parameter(\"Positive particle radius [m]\")\n"
+"L_s = pybamm.Parameter(\"Separator thickness [m]\")\n"
+"L_p = pybamm.Parameter(\"Positive electrode thickness [m]\")\n"
+"A = pybamm.Parameter(\"Electrode cross-sectional area [m2]\")\n"
+"\n"
+"sigma = pybamm.Parameter(\"Positive electrode conductivity [S.m-1]\")\n"
+"kappa = pybamm.Parameter(\"Electrolyte conductivity [S.m-1]\")\n"
+"D = pybamm.Parameter(\"Diffusion coefficient [m2.s-1]\")\n"
+"\n"
+"I_app = pybamm.Parameter(\"Applied current [A]\")\n"
+"c0 = pybamm.Parameter(\"Initial concentration [mol.m-3]\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:276
+msgid ""
+"Parameters can also have some functional dependence. We can define such "
+"parameters using the ``FunctionParameter`` object. We also need to specify "
+"the inputs (i.e. the variables on which the function depends). In our "
+"example both the exchange current density and the open-circuit potential "
+"will depend on the particle surface concentration."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[25]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"c_surf = pybamm.surf(c)  # get the surface concentration\n"
+"inputs = {\"Positive particle surface concentration [mol.m-3]\": c_surf}\n"
+"j0 = pybamm.FunctionParameter(\n"
+"    \"Positive electrode exchange-current density [A.m-2]\", inputs\n"
+")\n"
+"U = pybamm.FunctionParameter(\"Positive electrode OCP [V]\", inputs)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:302
+msgid ""
+"We also need to define the interfacial current, which is zero in the "
+"separator and given by the Butler-Volmer equation in the positive electrode"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[26]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"j_s = pybamm.PrimaryBroadcast(0, \"separator\")\n"
+"j_p = 2 * j0 * pybamm.sinh((F / 2 / R / T) * (phi - phi_e_p - U))\n"
+"j = pybamm.concatenation(j_s, j_p)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:325
+msgid ""
+"Now we can write our governing equations, boundary and initial conditions. "
+"Note that we provide initial conditions for the algebraic equations. These "
+"are not really initial conditions, but are used as an initial guess for the "
+"solver."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[27]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"# charge conservation equations\n"
+"i = -sigma * pybamm.grad(phi)\n"
+"i_e = -kappa * pybamm.grad(phi_e)\n"
+"model.algebraic = {\n"
+"    phi: pybamm.div(i) + a * j_p,\n"
+"    phi_e: pybamm.div(i_e) - a * j,\n"
+"}\n"
+"# particle equations (mass conservation)\n"
+"N = -D * pybamm.grad(c)  # flux\n"
+"dcdt = -pybamm.div(N)\n"
+"model.rhs = {c: dcdt}\n"
+"\n"
+"# boundary conditions\n"
+"model.boundary_conditions = {\n"
+"    phi: {\n"
+"        \"left\": (pybamm.Scalar(0), \"Neumann\"),\n"
+"        \"right\": (-I_app / A / sigma, \"Neumann\"),\n"
+"    },\n"
+"    phi_e: {\n"
+"        \"left\": (pybamm.Scalar(0), \"Dirichlet\"),\n"
+"        \"right\": (pybamm.Scalar(0), \"Neumann\"),\n"
+"    },\n"
+"    c: {\"left\": (pybamm.Scalar(0), \"Neumann\"), \"right\": (-j_p / F / D, "
+"\"Neumann\")},\n"
+"}\n"
+"\n"
+"# initial conditions\n"
+"inputs = {\"Initial concentration [mol.m-3]\": c0}\n"
+"U_init = pybamm.FunctionParameter(\"Positive electrode OCP [V]\", inputs)\n"
+"model.initial_conditions = {phi: U_init, phi_e: 0, c: c0}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:374
+msgid "Finally we can add any variables of interest to the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[28]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"model.variables = {\n"
+"    \"Positive electrode potential [V]\": phi,\n"
+"    \"Electrolyte potential [V]\": phi_e,\n"
+"    \"Positive particle concentration [mol.m-3]\": c,\n"
+"    \"Positive particle surface concentration [mol.m-3]\": c_surf,\n"
+"    \"Average positive particle surface concentration [mol.m-3]\": pybamm."
+"x_average(\n"
+"        c_surf\n"
+"    ),\n"
+"    \"Positive electrode interfacial current density [A.m-2]\": j_p,\n"
+"    \"Positive electrode OCP [V]\": pybamm.boundary_value(U, \"right\"),\n"
+"    \"Voltage [V]\": pybamm.boundary_value(phi, \"right\"),\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:407
+msgid "Using the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:418
+msgid ""
+"As we have seen before, we can provide values for our parameters using the "
+"``ParameterValues`` class. As well as providing scalar values, we also need "
+"to provide the functional form using by our ``FunctionParameter`` objects. "
+"Here we will define these functions locally, but we could provide the path "
+"to a function defined elsewhere or provide data (see the `parameterization "
+"notebook <../parameterization/parameterization.ipynb>`__)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[29]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"from pybamm import tanh\n"
+"\n"
+"# both functions will depend on the maximum concentration\n"
+"c_max = pybamm.Parameter(\"Maximum concentration in positive electrode [mol."
+"m-3]\")\n"
+"\n"
+"\n"
+"def exchange_current_density(c_surf):\n"
+"    k = 6 * 10 ** (-7)  # reaction rate [(A/m2)(m3/mol)**1.5]\n"
+"    c_e = 1000  # (constant) electrolyte concentration [mol.m-3]\n"
+"    return k * c_e**0.5 * c_surf**0.5 * (c_max - c_surf) ** 0.5\n"
+"\n"
+"\n"
+"def open_circuit_potential(c_surf):\n"
+"    stretch = 1.062\n"
+"    sto = stretch * c_surf / c_max\n"
+"\n"
+"    u_eq = (\n"
+"        2.16216\n"
+"        + 0.07645 * tanh(30.834 - 54.4806 * sto)\n"
+"        + 2.1581 * tanh(52.294 - 50.294 * sto)\n"
+"        - 0.14169 * tanh(11.0923 - 19.8543 * sto)\n"
+"        + 0.2051 * tanh(1.4684 - 5.4888 * sto)\n"
+"        + 0.2531 * tanh((-sto + 0.56478) / 0.1316)\n"
+"        - 0.02167 * tanh((sto - 0.525) / 0.006)\n"
+"    )\n"
+"    return u_eq"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:464
+msgid ""
+"Now we can pass these functions, along with our scalar parameters, to "
+"``ParameterValues``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[30]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"param = pybamm.ParameterValues(\n"
+"    {\n"
+"        \"Surface area per unit volume [m-1]\": 0.15e6,\n"
+"        \"Positive particle radius [m]\": 10e-6,\n"
+"        \"Separator thickness [m]\": 25e-6,\n"
+"        \"Positive electrode thickness [m]\": 100e-6,\n"
+"        \"Electrode cross-sectional area [m2]\": 2.8e-2,\n"
+"        \"Applied current [A]\": 0.9,\n"
+"        \"Positive electrode conductivity [S.m-1]\": 10,\n"
+"        \"Electrolyte conductivity [S.m-1]\": 1,\n"
+"        \"Diffusion coefficient [m2.s-1]\": 1e-13,\n"
+"        \"Faraday constant [C.mol-1]\": 96485,\n"
+"        \"Initial concentration [mol.m-3]\": 25370,\n"
+"        \"Molar gas constant [J.mol-1.K-1]\": 8.314,\n"
+"        \"Temperature [K]\": 298.15,\n"
+"        \"Maximum concentration in positive electrode [mol.m-3]\": 51217,\n"
+"        \"Positive electrode exchange-current density [A.m-2]\": "
+"exchange_current_density,\n"
+"        \"Positive electrode OCP [V]\": open_circuit_potential,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:504
+msgid ""
+"Next we define the geometry. In the same way that our variable for the "
+"concentration in the electrode particles had and \"auxiliary domain\", our "
+"spatial variable :math:`r` also has an auxiliary domain. This means that "
+"when the model in discretised there will be the correct number of particles "
+"included in the geometry - one for each point in :math:`x`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[31]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"r = pybamm.SpatialVariable(\n"
+"    \"r\",\n"
+"    domain=[\"positive particle\"],\n"
+"    auxiliary_domains={\"secondary\": \"positive electrode\"},\n"
+"    coord_sys=\"spherical polar\",\n"
+")\n"
+"x_s = pybamm.SpatialVariable(\"x_s\", domain=[\"separator\"], "
+"coord_sys=\"cartesian\")\n"
+"x_p = pybamm.SpatialVariable(\n"
+"    \"x_p\", domain=[\"positive electrode\"], coord_sys=\"cartesian\"\n"
+")\n"
+"\n"
+"\n"
+"geometry = {\n"
+"    \"separator\": {x_s: {\"min\": -L_s, \"max\": 0}},\n"
+"    \"positive electrode\": {x_p: {\"min\": 0, \"max\": L_p}},\n"
+"    \"positive particle\": {r: {\"min\": 0, \"max\": R_p}},\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:541
+msgid ""
+"Both the model and geometry can now be processed by the parameter class. "
+"This replaces the parameters with the values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[32]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"param.process_model(model)\n"
+"param.process_geometry(geometry)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:563
+msgid ""
+"We can now set up our mesh, choose a spatial method, and discretise our model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[33]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"submesh_types = {\n"
+"    \"separator\": pybamm.Uniform1DSubMesh,\n"
+"    \"positive electrode\": pybamm.Uniform1DSubMesh,\n"
+"    \"positive particle\": pybamm.Uniform1DSubMesh,\n"
+"}\n"
+"var_pts = {x_s: 10, x_p: 20, r: 30}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)\n"
+"\n"
+"spatial_methods = {\n"
+"    \"separator\": pybamm.FiniteVolume(),\n"
+"    \"positive electrode\": pybamm.FiniteVolume(),\n"
+"    \"positive particle\": pybamm.FiniteVolume(),\n"
+"}\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:598
+msgid "The model is now discretised and ready to be solved."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:610
+msgid "Solving the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:612
+msgid "We can now solve the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[34]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"# solve\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"t_eval = [0, 3600]\n"
+"solution = solver.solve(model, t_eval)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:636
+msgid ""
+"and plot the results. To make the plot we will use ``dynamic_plot`` which "
+"automatically creates a slider plot given a ``solution`` and a list of "
+"variables to plot. By nesting variables in the list we can plot two "
+"variables together on the same axes."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[35]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid ""
+"# plot\n"
+"pybamm.dynamic_plot(\n"
+"    solution,\n"
+"    [\n"
+"        \"Positive electrode potential [V]\",\n"
+"        \"Electrolyte potential [V]\",\n"
+"        \"Positive electrode interfacial current density [A.m-2]\",\n"
+"        \"Positive particle surface concentration [mol.m-3]\",\n"
+"        \"Average positive particle surface concentration [mol.m-3]\",\n"
+"        [\"Positive electrode OCP [V]\", \"Voltage [V]\"],\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:670
+msgid ""
+"<pre>\n"
+"2021-11-19 15:30:23,304 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m].\n"
+"2021-11-19 15:30:23,328 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for separator. Using default of "
+"1 [m].\n"
+"2021-11-19 15:30:23,367 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m].\n"
+"2021-11-19 15:30:23,395 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m].\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:679
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"2021-11-19 15:30:23,304 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(520): No length scale set for positive electrode. "
+"Using default of 1 [m].\n"
+"2021-11-19 15:30:23,328 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(520): No length scale set for separator. Using default "
+"of 1 [m].\n"
+"2021-11-19 15:30:23,367 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(520): No length scale set for positive electrode. "
+"Using default of 1 [m].\n"
+"2021-11-19 15:30:23,395 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(520): No length scale set for positive electrode. "
+"Using default of 1 [m].\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:689
+msgid ""
+"2021-11-19 15:30:23,304 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m].\n"
+"2021-11-19 15:30:23,328 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for separator. Using default of "
+"1 [m].\n"
+"2021-11-19 15:30:23,367 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m].\n"
+"2021-11-19 15:30:23,395 - [WARNING] processed_variable."
+"get_spatial_scale(520): No length scale set for positive electrode. Using "
+"default of 1 [m]."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:705
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1d57bc29107d47838633a27df1b920cc\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:716
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:722
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:729
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:741
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7ff07a82d130&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:747
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7ff07a82d130>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:754
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7ff07a82d130>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:765
+msgid ""
+"In the `next notebook <./6-a-simple-SEI-model.ipynb>`__ we consider a simple "
+"model for SEI growth, and show how to correctly pose the model in non-"
+"dimensional form and then create and solve it using pybamm."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:777
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:779
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "[36]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:800
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:809
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/5-half-cell-model.ipynb:819
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
