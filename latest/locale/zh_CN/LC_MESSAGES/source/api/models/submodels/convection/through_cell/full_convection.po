@@ -1,0 +1,135 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/submodels/convection/through_cell/full_convection.rst:2
+msgid "Full Through-cell Model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of pybamm.models.submodels.convection.through_cell.full_convection.Full:1
+msgid "Submodel for the full model of pressure-driven convection"
+msgstr ""
+
+#: ../../../source/api/models/submodels/convection/through_cell/full_convection.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of pybamm.models.submodels.convection.through_cell.full_convection.Full:3
+msgid "The parameters to use for this submodel"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of pybamm.models.submodels.convection.through_cell.full_convection.Full:6
+msgid ""
+"**Extends:** :class:`pybamm.models.submodels.convection.through_cell."
+"base_through_cell_convection.BaseThroughCellModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of pybamm.models.submodels.convection.through_cell.full_convection.Full:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.get_coupled_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"require variables in other submodels to be set first. For example, the "
+"exchange current density requires the concentration in the electrolyte to be "
+"created before it can be created. If a variable can be created independent "
+"of other submodels then it should be created in 'get_fundamental_variables' "
+"instead of this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.get_coupled_variables:8
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_algebraic:6
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_boundary_conditions:6
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_initial_conditions:7
+msgid "The variables in the whole model."
+msgstr ""
+
+#: ../../../source/api/models/submodels/convection/through_cell/full_convection.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.get_coupled_variables:11
+msgid ""
+"The variables created in this submodel which depend on variables in other "
+"submodels."
+msgstr ""
+
+#: ../../../source/api/models/submodels/convection/through_cell/full_convection.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.get_fundamental_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"can be created independent of other submodels. For example, the electrolyte "
+"concentration variables can be created independent of whether any other "
+"variables have been defined in the model. As a rule, if a variable can be "
+"created without variables from other submodels, then it should be placed in "
+"this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.get_fundamental_variables:8
+msgid ""
+"The variables created by the submodel which are independent of variables in "
+"other submodels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_algebraic:1
+msgid ""
+"A method to set the differential equations which do not contain a time "
+"derivative. Note: this method modifies the state of self.algebraic. Unless "
+"overwritten by a submodel, the default behaviour of 'pass' is used as "
+"implemented in :class:`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_boundary_conditions:1
+msgid ""
+"A method to set the boundary conditions for the submodel. Note: this method "
+"modifies the state of self.boundary_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/convection/through_cell/full_convection.py:docstring
+#: of
+#: pybamm.models.submodels.convection.through_cell.full_convection.Full.set_initial_conditions:1
+msgid ""
+"A method to set the initial conditions for the submodel. Note: this method "
+"modifies the state of self.initial_conditions. Unless overwritten by a "
+"submodel, the default behaviour of 'pass' is used as implemented in :class:"
+"`pybamm.BaseSubModel`."
+msgstr ""

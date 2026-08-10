@@ -1,0 +1,559 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/symbol.rst:2
+msgid "Symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.simplify_if_constant:1
+msgid ""
+"Utility function to simplify an expression tree if it evaluates to a "
+"constant scalar, vector or matrix. Also handles TensorField by simplifying "
+"each component."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:1
+msgid "Base node class for the expression tree."
+msgstr ""
+
+#: ../../../source/api/expression_tree/symbol.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:3
+msgid "name for the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:5
+msgid "children to attach to this node, default to an empty list"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:7
+msgid ""
+"list of domains over which the node is valid (empty list indicates the "
+"symbol is valid over all domains)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:10
+msgid ""
+"dictionary of auxiliary domains over which the node is valid (empty "
+"dictionary indicates no auxiliary domains). Keys can be \"secondary\", "
+"\"tertiary\" or \"quaternary\". The symbol is broadcast over its auxiliary "
+"domains. For example, a symbol might have domain \"negative particle\", "
+"secondary domain \"separator\" and tertiary domain \"current "
+"collector\" (`domain=\"negative particle\", "
+"auxiliary_domains={\"secondary\": \"separator\", \"tertiary\": \"current "
+"collector\"}`)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol:18
+msgid ""
+"A dictionary equivalent to {'primary': domain, auxiliary_domains}. Either "
+"'domain' and 'auxiliary_domains', or just 'domains', should be provided (not "
+"both). In future, the 'domain' and 'auxiliary_domains' arguments may be "
+"deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__abs__:1
+msgid "return an :class:`AbsoluteValue` object, or a smooth approximation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__add__:1
+#: pybamm.expression_tree.symbol.Symbol.__radd__:1
+msgid "return an :class:`Addition` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__array_ufunc__:1
+msgid ""
+"If a numpy ufunc is applied to a symbol, call the corresponding pybamm "
+"function instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__eq__:1
+msgid "Return self==value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__ge__:1
+#: pybamm.expression_tree.symbol.Symbol.__le__:1
+msgid "return a :class:`EqualHeaviside` object, or a smooth approximation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__gt__:1
+#: pybamm.expression_tree.symbol.Symbol.__lt__:1
+msgid "return a :class:`NotEqualHeaviside` object, or a smooth approximation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__hash__:1
+msgid "Return hash(self)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__matmul__:1
+#: pybamm.expression_tree.symbol.Symbol.__rmatmul__:1
+msgid "return a :class:`MatrixMultiplication` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__mod__:1
+msgid "return an :class:`Modulo` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__mul__:1
+#: pybamm.expression_tree.symbol.Symbol.__rmul__:1
+msgid "return a :class:`Multiplication` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__neg__:1
+msgid "return a :class:`Negate` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__pow__:1
+#: pybamm.expression_tree.symbol.Symbol.__rpow__:1
+msgid "return a :class:`Power` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__repr__:1
+msgid "returns the string `__class__(id, name, children, domain)`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__rsub__:1
+#: pybamm.expression_tree.symbol.Symbol.__sub__:1
+msgid "return a :class:`Subtraction` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__rtruediv__:1
+#: pybamm.expression_tree.symbol.Symbol.__truediv__:1
+msgid "return a :class:`Division` object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__str__:1
+msgid "return a string representation of the node and its children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.__weakref__:1
+msgid "list of weak references to the object"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.auxiliary_domains:1
+msgid "Returns auxiliary domains."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.children:1
+msgid "returns the cached children of this node."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.children:3
+msgid ""
+"Note: it is assumed that children of a node are not modified after initial "
+"creation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.clear_domains:1
+msgid "Clear domains, bypassing checks."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.copy_domains:1
+msgid "Copy the domains from a given symbol, bypassing checks."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.create_copy:1
+msgid ""
+"Make a new copy of a symbol, to avoid Tree corruption errors while bypassing "
+"copy.deepcopy(), which is slow."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.create_copy:4
+msgid ""
+"If new_children are provided, they are used instead of the existing children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.create_copy:6
+msgid ""
+"If `perform_simplifications` = True, some classes (e.g. `BinaryOperator`, "
+"`UnaryOperator`, `Concatenation`) will perform simplifications and error "
+"checks based on the new children before copying the symbol. This may result "
+"in a different symbol being returned than the one copied."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.create_copy:11
+msgid ""
+"Turning off this behaviour to ensure the symbol remains unchanged is "
+"discouraged."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.diff:1
+msgid ""
+"Differentiate a symbol with respect to a variable. For any symbol that can "
+"be differentiated, return `1` if differentiating with respect to yourself, "
+"`self._diff(variable)` if `variable` is in the expression tree of the "
+"symbol, and zero otherwise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.diff:6
+msgid "The variable with respect to which to differentiate"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.domain:1
+msgid "list of applicable domains."
+msgstr ""
+
+#: ../../../source/api/expression_tree/symbol.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:1
+msgid "Evaluate expression tree (wrapper to allow using dict of known values)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:3
+msgid "time at which to evaluate (default None)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:5
+msgid "array with state values to evaluate when solving (default None)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:7
+msgid ""
+"array with time derivatives of state values to evaluate when solving "
+"(default None)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:10
+msgid "dictionary of inputs to use when solving (default None)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/symbol.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate:13
+msgid "the node evaluated at (t,y)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate_for_shape:1
+msgid "Evaluate expression tree to find its shape."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate_for_shape:3
+msgid ""
+"For symbols that cannot be evaluated directly (e.g. `Variable` or "
+"`Parameter`), a vector of the appropriate shape is returned instead, using "
+"the symbol's domain. See :meth:`pybamm.Symbol.evaluate()`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate_ignoring_errors:1
+msgid ""
+"Evaluates the expression. If a node exists in the tree that cannot be "
+"evaluated as a scalar or vector (e.g. Time, Parameter, Variable, "
+"StateVector), then None is returned. If there is an InputParameter in the "
+"tree then a 1 is returned. Otherwise the result of the evaluation is given."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate_ignoring_errors:8
+#: pybamm.expression_tree.symbol.Symbol.evaluates_to_number:8
+#: pybamm.expression_tree.symbol.Symbol.is_constant:6
+msgid ":py:obj:`evaluate`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluate_ignoring_errors:9
+#: pybamm.expression_tree.symbol.Symbol.evaluates_to_number:9
+#: pybamm.expression_tree.symbol.Symbol.is_constant:7
+msgid "evaluate the expression"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluates_on_edges:1
+msgid ""
+"Returns True if a symbol evaluates on an edge, i.e. symbol contains a "
+"gradient operator, but not a divergence operator, and is not an "
+"IndefiniteIntegral. Caches the solution for faster results. If the symbol is "
+"a component of a vector field, returns a string indicating the direction "
+"that it evaluates on edges."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluates_on_edges:7
+msgid ""
+"The dimension (primary, secondary, etc) in which to query evaluation on edges"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluates_on_edges:11
+msgid ""
+"Whether the symbol evaluates on edges (in the finite volume discretisation "
+"sense)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.evaluates_to_number:1
+msgid ""
+"Returns True if evaluating the expression returns a number. Returns False "
+"otherwise, including if NotImplementedError or TyperError is raised. !Not to "
+"be confused with isinstance(self, pybamm.Scalar)!"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.get_children_domains:1
+msgid "Combine domains from children, at all levels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.has_symbol_of_classes:1
+msgid "Returns True if equation has a term of the class(es) `symbol_class`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.has_symbol_of_classes:3
+msgid "The classes to test the symbol against"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.is_constant:1
+msgid ""
+"returns true if evaluating the expression is not dependent on `t` or `y` or "
+"`inputs`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.jac:1
+msgid ""
+"Differentiate a symbol with respect to a (slice of) a StateVector or "
+"StateVectorDot. See :class:`pybamm.Jacobian`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.name:1
+msgid "name of the node."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.ndim_for_testing:1
+msgid ""
+"Number of dimensions of an object, found by evaluating it with appropriate t "
+"and y"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.new_copy:1
+msgid "Deprecated alias for :meth:`create_copy`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.orphans:1
+msgid ""
+"Returning new copies of the children, with parents removed to avoid "
+"corrupting the expression tree internal data"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.post_order:1
+msgid "returns an iterable that steps through the tree in post-order fashion."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.pre_order:1
+msgid "returns an iterable that steps through the tree in pre-order fashion."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.pre_order:4
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.quaternary_domain:1
+msgid "Helper function to get the quaternary domain of a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.relabel_tree:1
+msgid ""
+"Finds all children of a symbol and assigns them a new id so that they can be "
+"visualised properly using the graphviz output"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.render:1
+msgid ""
+"Print out a visual representation of the tree (this node and its children)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.secondary_domain:1
+msgid "Helper function to get the secondary domain of a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.set_id:1
+msgid ""
+"Set the immutable \"identity\" of a variable (e.g. for identifying y_slices)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.set_id:3
+msgid ""
+"Hashing can be slow, so we set the id when we create the node, and hence "
+"only need to hash once."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.shape:1
+msgid "Shape of an object, found by evaluating it with appropriate t and y."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.shape_for_testing:1
+msgid ""
+"Shape of an object for cases where it cannot be evaluated directly. If a "
+"symbol cannot be evaluated directly (e.g. it is a `Variable` or "
+"`Parameter`), it is instead given an arbitrary domain-dependent shape."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.size:1
+msgid "Size of an object, found by evaluating it with appropriate t and y"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.size_for_testing:1
+msgid "Size of an object, based on shape for testing."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.tertiary_domain:1
+msgid "Helper function to get the tertiary domain of a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.test_shape:1
+msgid ""
+"Check that the discretised self has a pybamm `shape`, i.e. can be evaluated."
+msgstr ""
+
+#: ../../../source/api/expression_tree/symbol.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.test_shape:3
+msgid "If the shape of the object cannot be found"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:1
+msgid "Convert the expression tree to a CasADi expression tree."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:3
+msgid "A casadi symbol representing time"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:5
+msgid "A casadi symbol representing state vectors"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:7
+msgid "A casadi symbol representing time derivatives of state vectors"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:9
+msgid "A dictionary of casadi symbols representing parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:11
+msgid ""
+"An optional shared cache mapping Symbol objects to their already-converted "
+"casadi expressions. When converting multiple related expressions over the "
+"same (t, y, y_dot, inputs), pass a single ``{}`` created by the caller so "
+"that shared subgraph nodes are only converted once. The cache is never "
+"stored on the symbol itself — its lifetime is controlled by the caller."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_casadi:18
+msgid ":class:`casadi.MX`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.to_json:1
+msgid "Method to serialise a Symbol object into JSON."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.visualise:1
+msgid ""
+"Produces a .png file of the tree (this node and its children) with the name "
+"filename"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.visualise:4
+msgid "filename to output, must end in \".png\""
+msgstr ""

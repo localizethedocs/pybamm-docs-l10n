@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/array.rst:2
+msgid "Array"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:1
+msgid ""
+"Node in the expression tree that holds an tensor type variable (e.g. :class:"
+"`numpy.array`)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/array.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:4
+msgid ""
+"the array associated with the node. If a list is provided, it is converted "
+"to a numpy array"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:7
+msgid "the name of the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:9
+msgid "list of domains the parameter is valid over, defaults to empty list"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:11
+msgid "dictionary of auxiliary domains, defaults to empty dict"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:13
+msgid ""
+"A dictionary equivalent to {'primary': domain, auxiliary_domains}. Either "
+"'domain' and 'auxiliary_domains', or just 'domains', should be provided (not "
+"both). In future, the 'domain' and 'auxiliary_domains' arguments may be "
+"deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:18
+msgid "String representing the entries (slow to recalculate when copying)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array:21
+msgid "**Extends:** :class:`pybamm.expression_tree.symbol.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array.create_copy:1
+msgid "See :meth:`pybamm.Symbol.new_copy()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array.is_constant:1
+msgid "See :meth:`pybamm.Symbol.is_constant()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.Array.ndim:1
+msgid "returns the number of dimensions of the tensor."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array.set_id:1
+msgid "See :meth:`pybamm.Symbol.set_id()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.Array.shape:1
+msgid "returns the number of entries along each dimension."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array.to_equation:1
+msgid "Returns the value returned by the node when evaluated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.Array.to_json:1
+msgid "Method to serialise an Array object into JSON."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.linspace:1
+msgid ""
+"Creates a linearly spaced array by calling `numpy.linspace` with keyword "
+"arguments 'kwargs'. For a list of 'kwargs' see the `numpy linspace "
+"documentation <https://numpy.org/doc/stable/reference/generated/numpy."
+"linspace.html>`_"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/array.py:docstring
+#: of pybamm.expression_tree.array.meshgrid:1
+msgid ""
+"Return coordinate matrices as from coordinate vectors by calling `numpy."
+"meshgrid` with keyword arguments 'kwargs'. For a list of 'kwargs' see the "
+"`numpy meshgrid documentation <https://numpy.org/doc/stable/reference/"
+"generated/numpy.meshgrid.html>`_"
+msgstr ""

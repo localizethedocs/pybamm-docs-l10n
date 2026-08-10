@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/parameters/parameter_sets.rst:7
+msgid "Parameters Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:9
+msgid ""
+"PyBaMM provides :ref:`pre-defined parameters <bundled-parameter-sets>` for "
+"common chemistries, as well as, a growing set of :ref:`third-party parameter "
+"sets <third-party-parameter-sets>`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:1
+msgid ""
+"A mapping interface for accessing PyBaMM models and parameter sets through "
+"entry points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:3
+msgid ""
+"This class provides a unified way to load, and instantiate PyBaMM models and "
+"parameter sets that have been registered as entry points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:6
+msgid ""
+"Access via :py:data:`pybamm.parameter_sets` for parameter sets - provides "
+"access to all registered battery parameter sets (e.g., 'Chen2020', 'Ai2020') "
+"that can be used to parameterise battery models."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:10
+msgid ""
+"Access via :py:data:`pybamm.Model` for models - provides access to all "
+"registered battery models (e.g., 'SPM', 'DFN')."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:15
+msgid "This feature is currently experimental."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:18
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:19
+msgid "Listing available parameter sets:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:24
+msgid "Listing available models:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:29
+msgid "Get the docstring for a parameter set or model:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint:38
+msgid "**Extends:** :class:`collections.abc.Mapping`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint.get_docstring:1
+msgid "Return the docstring for the ``key`` parameter set or model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/dispatch/entry_points.py:docstring
+#: of pybamm.dispatch.entry_points.EntryPoint.get_entries:1
+msgid "Wrapper for the importlib version logic"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:19
+msgid "Adding Parameter Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:21
+msgid ""
+"Parameter sets can be added to PyBaMM by creating a python package, and "
+"registering a `entry point`_ to ``pybamm_parameter_sets``. At a minimum, the "
+"package (``cell_parameters``) should consist of the following::"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:25
+msgid ""
+"cell_parameters\n"
+"├── pyproject.toml        # and/or setup.cfg, setup.py\n"
+"└── src\n"
+"    └── cell_parameters\n"
+"        └── cell_alpha.py"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:33
+msgid ""
+"The actual parameter set is defined within ``cell_alpha.py``, as shown "
+"below. For an example, see the `Marquis2019`_ parameter sets."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:38
+msgid ""
+"import pybamm\n"
+"\n"
+"\n"
+"def get_parameter_values():\n"
+"    \"\"\"Doc string for cell-alpha\"\"\"\n"
+"    return {\n"
+"        \"chemistry\": \"lithium_ion\",\n"
+"        \"citation\": \"@book{van1995python, title={Python reference "
+"manual}}\",\n"
+"        # ...\n"
+"    }"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:52
+msgid ""
+"Then register ``get_parameter_values`` to ``pybamm_parameter_sets`` in "
+"``pyproject.toml``:"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:54
+msgid ""
+"[project.entry-points.pybamm_parameter_sets]\n"
+"cell_alpha = \"cell_parameters.cell_alpha:get_parameter_values\""
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:59
+msgid ""
+"If you are using ``setup.py`` or ``setup.cfg`` to setup your package, please "
+"see SetupTools' documentation for registering `entry points`_."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:64
+msgid ""
+"If you're willing to open-source your parameter set, `let us know`_, and we "
+"can add an entry to :ref:`third-party-parameter-sets`."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:74
+msgid "Third-Party Parameter Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:76
+msgid ""
+"Registered a new parameter set to ``pybamm_parameter_sets``? `Let us know`_, "
+"and we'll update our list."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:83
+msgid "Bundled Parameter Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:85
+msgid ""
+"PyBaMM provides pre-defined parameter sets for several common chemistries, "
+"listed below. See :ref:`adding-parameter-sets` for information on "
+"registering new parameter sets with PyBaMM."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:90
+msgid "Lead-acid Parameter Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:92
+msgid ""
+"{% for k,v in parameter_sets.items() if v.chemistry == \"lead_acid\" %} "
+"{{k}} ---------------------------- {{ parameter_sets.get_docstring(k) }} {% "
+"endfor %}"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:99
+msgid "Lithium-ion Parameter Sets"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_sets.rst:100
+msgid ""
+"{% for k,v in parameter_sets.items() if v.chemistry == \"lithium_ion\" %} "
+"{{k}} -------------------------------- {{ parameter_sets.get_docstring(k) }} "
+"{% endfor %}"
+msgstr ""

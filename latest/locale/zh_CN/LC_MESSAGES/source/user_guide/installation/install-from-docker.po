@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:2
+msgid "Install from source (Docker)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:4
+msgid "Contents"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:6
+msgid ""
+"This page describes the build and installation of PyBaMM using a Dockerfile, "
+"available on GitHub. Note that this is **not the recommended approach for "
+"most users** and should be reserved to people wanting to participate in the "
+"development of PyBaMM, or people who really need to use bleeding-edge "
+"feature(s) not yet available in the latest released version. If you do not "
+"fall in the two previous categories, you would be better off installing "
+"PyBaMM using ``pip`` or ``conda``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:9
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:11
+msgid ""
+"Before you begin, make sure you have Docker installed on your system. You "
+"can download and install Docker from the official `Docker website <https://"
+"www.docker.com/get-started/>`_. Ensure Docker installation by running:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:14
+msgid "docker --version"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:19
+msgid "Pulling the Docker image"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:21
+msgid ""
+"Use the following command to pull the PyBaMM Docker image from Docker Hub:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:24
+msgid "docker pull pybamm/pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:30
+msgid "Running the Docker container"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:32
+msgid ""
+"Once you have pulled the Docker image, you can run a Docker container with "
+"the PyBaMM environment:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:34
+msgid ""
+"In your terminal, use the following command to start a Docker container from "
+"the pulled image:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:37
+msgid "docker run -it pybamm/pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:42
+msgid ""
+"You will now be inside the Docker container's shell. You can use PyBaMM and "
+"its dependencies as if you were in a virtual environment."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:44
+msgid ""
+"You can execute PyBaMM-related commands, run tests develop & contribute from "
+"the container."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:48
+msgid ""
+"The default user for the container is ``pybamm`` with ``pybamm`` as "
+"password. The user belongs to ``sudoers`` and ``root`` group, so the sudo "
+"command can be issued to install additional packages to the container.  "
+"After a clean install, ``sudo apt-get update`` should be executed to update "
+"the source list. Additional packages can be installed using ``sudo apt-get "
+"install [package_name]``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:54
+msgid "Exiting the Docker container"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:56
+msgid "To exit the Docker container's shell, you can simply type:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:58
+msgid "exit"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:62
+msgid "This will return you to your host machine's terminal."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:65
+msgid "Building Docker image locally from source"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:67
+msgid ""
+"If you want to build the PyBaMM Docker image locally from the PyBaMM source "
+"code, follow these steps:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:69
+msgid ""
+"Clone the PyBaMM GitHub repository to your local machine if you haven't "
+"already:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:71
+msgid "git clone https://github.com/pybamm-team/PyBaMM.git"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:75
+msgid "Change into the PyBaMM directory:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:77
+msgid "cd PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:81
+msgid "Build the Docker image using the following command:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:83
+msgid "docker build -t pybamm -f scripts/Dockerfile ."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:87
+msgid "Once the image is built, you can run a Docker container using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:89
+msgid "docker run -it pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:93
+msgid ""
+"Activate PyBaMM development virtual environment inside docker container "
+"using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:95
+msgid "source /home/pybamm/venv/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:100
+msgid "Using Git inside a running Docker container"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:103
+msgid ""
+"You might require re-configuring git while running the docker container for "
+"the first time. You can run ``git config --list`` to ensure if you have "
+"desired git configuration already."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:106
+msgid "Setting up git configuration"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:108
+msgid ""
+"git config --global user.name \"Your Name\"\n"
+"\n"
+"git config --global user.email your@mail.com"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:114
+msgid "Setting a git remote"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:116
+msgid ""
+"git remote set-url origin <fork_url>\n"
+"\n"
+"git remote add upstream https://github.com/pybamm-team/PyBaMM\n"
+"\n"
+"git fetch --all"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:125
+msgid "Using Visual Studio Code inside a running Docker container"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:127
+msgid ""
+"You can easily use Visual Studio Code inside a running Docker container by "
+"attaching it directly. This provides a seamless development environment "
+"within the container. Here's how:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:129
+msgid ""
+"Install the \"Docker\" extension from Microsoft in your local Visual Studio "
+"Code if it's not already installed."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:130
+msgid ""
+"Pull and run the Docker image containing PyBaMM development environment."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:131
+msgid ""
+"In your local Visual Studio Code, open the \"Docker\" extension by clicking "
+"on the Docker icon in the sidebar."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:132
+msgid ""
+"Under the \"Containers\" section, you'll see a list of running containers. "
+"Right-click the running PyBaMM container."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:133
+msgid "Select \"Attach Visual Studio Code\" from the context menu."
+msgstr ""
+
+#: ../../../source/user_guide/installation/install-from-docker.rst:134
+msgid ""
+"Visual Studio Code will now connect to the container, and a new VS Code "
+"window will open up, running inside the container. You can now edit, debug, "
+"and work on your code using VS Code as if you were working directly on your "
+"local machine."
+msgstr ""

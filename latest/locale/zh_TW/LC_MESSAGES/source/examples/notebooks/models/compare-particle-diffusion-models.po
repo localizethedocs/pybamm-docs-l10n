@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/compare-particle-diffusion-models."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/compare-particle-diffusion-models.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:9
+msgid "Compare particle diffusion models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:11
+msgid ""
+"In this notebook we compare the different models for mass transport within "
+"the electrode particles. For a full list of all the particle models, see the "
+"`documentation <https://docs.pybamm.org/en/latest/source/api/models/"
+"submodels/particle/index.html>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:13
+msgid ""
+"With the \"Fickian diffusion\" option a diffusion equation is solved within "
+"the particle domain, with the boundary flux prescribed at the surface "
+"related to the local current density. Alternatively, one can assume a "
+"particular (polynomial) concentration profile within the particle (at "
+"present, this can be uniform, quadratic, or quartic). The \"uniform "
+"profile\" model assumes that the concentration inside the particle is "
+"uniform in space (and therefore equal to the surface concentration through "
+"the entire particle - in effect ignoring transport resistance within the "
+"particle), and solves an ODE for the average particle concentration. The "
+"\"quadratic profile\" model additionally solves an algebraic equation for "
+"the surface concentration, taking into account the effect of diffusion "
+"within the particle. Finally, the \"quartic profile\" model also solves for "
+"the average concentration gradient (the integral of :math:`\\partial c/ "
+"\\partial r`) in the particle, giving a higher-order approximation to the "
+"concentration profile within the particle."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:17
+msgid ""
+"As the exchange current density is a function of surface concentration, we "
+"can see the effect the choice of particle model has on the voltage profile "
+"arising from different overpotentials."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:28
+msgid "First we import the packages we're going to use"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:56
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:62
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:69
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:80
+msgid ""
+"We then create a list of models with the different particle diffusion "
+"submodels using the options functionality"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"particle_options = [\n"
+"    \"Fickian diffusion\",\n"
+"    \"uniform profile\",\n"
+"    \"quadratic profile\",\n"
+"    \"quartic profile\",\n"
+"]\n"
+"models = [\n"
+"    pybamm.lithium_ion.DFN(options={\"particle\": opt}, name=opt)\n"
+"    for opt in particle_options\n"
+"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:110
+msgid ""
+"Next we set up simulations for each model with the current set as an input "
+"function. We will change this later to observe the effect on the different "
+"models."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"simulations = []\n"
+"for model in models:\n"
+"    param = model.default_parameter_values\n"
+"    param[\"Current function [A]\"] = \"[input]\"\n"
+"    simulations.append(pybamm.Simulation(model, parameter_values=param))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "t_eval = [0, 3600]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:145
+msgid ""
+"First we run the simulations for each model with a current of 0.68A - this "
+"corresponds to a C-rate of about 1 with the standard cell size configured in "
+"the default parameters."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"solutions_1C = []\n"
+"for sim in simulations:\n"
+"    sim.solve(t_eval, inputs={\"Current function [A]\": 0.68})\n"
+"    solutions_1C.append(sim.solution)\n"
+"    print(f\"Particle model: {sim.model.name}\")\n"
+"    print(f\"Solve time: {sim.solution.solve_time}s\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:171
+msgid ""
+"<pre>\n"
+"Particle model: Fickian diffusion\n"
+"Solve time: 18.081 mss\n"
+"Particle model: uniform profile\n"
+"Solve time: 5.459 mss\n"
+"Particle model: quadratic profile\n"
+"Solve time: 10.637 mss\n"
+"Particle model: quartic profile\n"
+"Solve time: 10.988 mss\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:184
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Particle model: Fickian diffusion\n"
+"Solve time: 18.081 mss\n"
+"Particle model: uniform profile\n"
+"Solve time: 5.459 mss\n"
+"Particle model: quadratic profile\n"
+"Solve time: 10.637 mss\n"
+"Particle model: quartic profile\n"
+"Solve time: 10.988 mss\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:198
+msgid ""
+"Particle model: Fickian diffusion\n"
+"Solve time: 18.081 mss\n"
+"Particle model: uniform profile\n"
+"Solve time: 5.459 mss\n"
+"Particle model: quadratic profile\n"
+"Solve time: 10.637 mss\n"
+"Particle model: quartic profile\n"
+"Solve time: 10.988 mss"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:216
+msgid ""
+"By not solving the diffusion problem in the particles explicitly, and "
+"instead assuming a polynomial profile, we can speed up the simulation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"plt.figure(figsize=(15, 15))\n"
+"style = [\"k\", \"r*\", \"b^\", \"g--\"]\n"
+"for i in range(len(models)):\n"
+"    plt.plot(\n"
+"        solutions_1C[i][\"Time [s]\"].entries,\n"
+"        solutions_1C[i][\"Voltage [V]\"].entries,\n"
+"        style[i],\n"
+"        label=particle_options[i],\n"
+"    )\n"
+"plt.legend()\n"
+"plt.title(\"Model Comparison 1C\")\n"
+"plt.xlabel(\"Time [s]\")\n"
+"plt.ylabel(\"Voltage [V]\")\n"
+"plt.grid()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:258
+msgid ""
+"We can see that the Fickian, quadratic and quartic profiles agree very well "
+"and that the uniform profile over-predicts the cell voltage and capacity by "
+"ignoring this transport resistance. The only significant difference between "
+"the Fickian and quadratic models is on the first datapoint when transient "
+"effects after the initial state may differ. Observe what happens next when "
+"we increase the current."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"t_eval = [0, 1800]\n"
+"solutions_2C = []\n"
+"for sim in simulations:\n"
+"    sim.solve(t_eval, inputs={\"Current function [A]\": 2 * 0.68})\n"
+"    solutions_2C.append(sim.solution)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"plt.figure(figsize=(15, 15))\n"
+"for i in range(len(models)):\n"
+"    plt.plot(\n"
+"        solutions_2C[i][\"Time [s]\"].entries,\n"
+"        solutions_2C[i][\"Voltage [V]\"].entries,\n"
+"        style[i],\n"
+"        label=particle_options[i],\n"
+"    )\n"
+"plt.legend()\n"
+"plt.title(\"Model Comparison 2C\")\n"
+"plt.xlabel(\"Time [s]\")\n"
+"plt.ylabel(\"Voltage [V]\")\n"
+"plt.grid()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:313
+msgid ""
+"The quadratic model is still much better at approximating Fickian diffusion "
+"and the relative error in the uniform model has increased. However, the "
+"initial error in the quadratic model has grown slightly. Increasing current "
+"even more will highlight the problem further. The quartic model is still "
+"providing an excellent match to the Fickian diffusion profile."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"t_eval = [0, 360]\n"
+"solutions_6C = []\n"
+"for sim in simulations:\n"
+"    sim.solve(t_eval, inputs={\"Current function [A]\": 6 * 0.68})\n"
+"    solutions_6C.append(sim.solution)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid ""
+"plt.figure(figsize=(15, 15))\n"
+"for i in range(len(models)):\n"
+"    plt.plot(\n"
+"        solutions_6C[i][\"Time [s]\"].entries,\n"
+"        solutions_6C[i][\"Voltage [V]\"].entries,\n"
+"        style[i],\n"
+"        label=particle_options[i],\n"
+"    )\n"
+"plt.legend()\n"
+"plt.title(\"Model Comparison 6C\")\n"
+"plt.xlabel(\"Time [s]\")\n"
+"plt.ylabel(\"Voltage [V]\")\n"
+"plt.grid()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:368
+msgid ""
+"Now the quadratic profile assumption begins to breakdown and that initial "
+"error propagates much further into the discharge. Happily the quartic model "
+"is higher-order and the match to the Fickian profile is still very good."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:370
+msgid ""
+"Finally we can take a look at some of the internal states using PyBaMM's "
+"``dynamic_plot``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "pybamm.dynamic_plot(solutions_6C);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:392
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1b4332cef40e45819bdeddbf2950bf01\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:402
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=360.0, step=3.6), Output()), _dom_classes=(&#39;…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:408
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=360.0, "
+"step=3.6), Output()), \\_dom\\_classes=('…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:415
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=360.0, "
+"step=3.6), Output()), _dom_classes=('…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:427
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:429
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:450
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:465
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-particle-diffusion-models.ipynb:481
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
