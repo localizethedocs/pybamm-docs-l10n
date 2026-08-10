@@ -59,7 +59,6 @@ remove_cmake_message_indent()
 message("")
 execute_process(
     COMMAND ${Git_EXECUTABLE} clean -xfdf
-            # --exclude packages/pybammsolvers/build/
     WORKING_DIRECTORY ${PROJ_OUT_REPO_DIR}
     ECHO_OUTPUT_VARIABLE
     ECHO_ERROR_VARIABLE
