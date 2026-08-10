@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/interpolant.rst:2
+msgid "Interpolant"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:1
+msgid ""
+"Interpolate data in 1D, 2D, or 3D. Interpolation in 3D requires the input "
+"data to be on a regular grid (as per scipy.interpolate."
+"RegularGridInterpolator)."
+msgstr ""
+
+#: ../../../source/api/expression_tree/interpolant.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:4
+msgid ""
+"The data point coordinates. If 1-D, then this is an array(s) of real values. "
+"If, 2D or 3D interpolation, then this is to ba a tuple of 1D arrays (one for "
+"each dimension) which together define the coordinates of the points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:8
+msgid ""
+"The values of the function to interpolate at the data points. In 2D and 3D, "
+"this should be a matrix of two and three dimensions respectively."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:11
+msgid ""
+"Node(s) to use when evaluating the interpolant. Each child corresponds to an "
+"entry of x"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:14
+msgid ""
+"Name of the interpolant. Default is None, in which case the name "
+"\"interpolating function\" is given."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:17
+msgid ""
+"Which interpolator to use. Can be \"linear\", \"cubic\", or \"pchip\". "
+"Default is \"linear\". For 3D interpolation, only \"linear\" an \"cubic\" "
+"are currently supported."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:21
+msgid ""
+"Whether to extrapolate for points that are outside of the parametrisation "
+"range, or return NaN (following default behaviour from scipy). Default is "
+"True. Generally, it is best to set this to be False for 3D interpolation due "
+"to the higher potential for errors in extrapolation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant:27
+msgid "**Extends:** :class:`pybamm.expression_tree.functions.Function`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant.create_copy:1
+msgid "See :meth:`pybamm.Symbol.new_copy()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant.set_id:1
+msgid "See :meth:`pybamm.Symbol.set_id()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/interpolant.py:docstring
+#: of pybamm.expression_tree.interpolant.Interpolant.to_json:1
+msgid "Method to serialise an Interpolant object into JSON."
+msgstr ""

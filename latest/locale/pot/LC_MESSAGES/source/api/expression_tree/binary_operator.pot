@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/binary_operator.rst:2
+msgid "Binary Operators"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:1
+msgid ""
+"A node in the expression tree representing a binary operator (e.g. `+`, `*`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:3
+msgid "Derived classes will specify the particular operator"
+msgstr ""
+
+#: ../../../source/api/expression_tree/binary_operator.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:5
+msgid "name of the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:7
+msgid "lhs child node (converted to :class:`Scalar` if Number)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:9
+msgid "rhs child node (converted to :class:`Scalar` if Number)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator:12
+msgid "**Extends:** :class:`pybamm.expression_tree.symbol.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator.create_copy:1
+msgid "See :meth:`pybamm.Symbol.new_copy()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator.evaluate:1
+msgid "See :meth:`pybamm.Symbol.evaluate()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator.is_constant:1
+msgid "See :meth:`pybamm.Symbol.is_constant()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator.to_equation:1
+msgid "Convert the node and its subtree into a SymPy equation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.BinaryOperator.to_json:1
+msgid "Method to serialise a BinaryOperator object into JSON."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Power:1
+msgid "A node in the expression tree representing a `**` power operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Addition:3
+#: pybamm.expression_tree.binary_operators.Division:3
+#: pybamm.expression_tree.binary_operators.Inner:14
+#: pybamm.expression_tree.binary_operators.MatrixMultiplication:3
+#: pybamm.expression_tree.binary_operators.Maximum:3
+#: pybamm.expression_tree.binary_operators.Minimum:3
+#: pybamm.expression_tree.binary_operators.Modulo:3
+#: pybamm.expression_tree.binary_operators.Multiplication:5
+#: pybamm.expression_tree.binary_operators.Power:3
+#: pybamm.expression_tree.binary_operators.Subtraction:3
+#: pybamm.expression_tree.binary_operators._Heaviside:15
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.binary_operators.BinaryOperator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Addition:1
+msgid "A node in the expression tree representing an addition operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Subtraction:1
+msgid "A node in the expression tree representing a subtraction operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Multiplication:1
+msgid ""
+"A node in the expression tree representing a multiplication operator "
+"(Hadamard product). Overloads cases where the \"*\" operator would usually "
+"return a matrix multiplication (e.g. scipy.sparse.coo.coo_matrix)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.MatrixMultiplication:1
+msgid ""
+"A node in the expression tree representing a matrix multiplication operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.MatrixMultiplication.diff:1
+#: pybamm.expression_tree.binary_operators._Heaviside.diff:1
+msgid "See :meth:`pybamm.Symbol.diff()`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Division:1
+msgid "A node in the expression tree representing a division operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Inner:1
+msgid ""
+"A node in the expression tree which represents the inner (or dot) product. "
+"This operator should be used to take the inner product of two mathematical "
+"vectors (as opposed to the computational vectors arrived at post-"
+"discretisation) of the form v = v_x e_x + v_y e_y + v_z e_z where v_x, v_y, "
+"v_z are scalars and e_x, e_y, e_z are x-y-z-directional unit vectors. For v "
+"and w mathematical vectors, inner product returns v_x * w_x + v_y * w_y + "
+"v_z * w_z. In addition, for some spatial discretisations mathematical vector "
+"quantities (such as i = grad(phi) ) are evaluated on a different part of the "
+"grid to mathematical scalars (e.g. for finite volume mathematical scalars "
+"are evaluated on the nodes but mathematical vectors are evaluated on cell "
+"edges). Therefore, inner also transfers the inner product of the vector onto "
+"the scalar part of the grid if required by a particular discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators._Heaviside:1
+msgid ""
+"A node in the expression tree representing a heaviside step function. This "
+"class is semi-private and should not be called directly, use "
+"`EqualHeaviside` or `NotEqualHeaviside` instead, or `<` or `<=`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators._Heaviside:5
+msgid ""
+"Adding this operation to the rhs or algebraic equations in a model can often "
+"cause a discontinuity in the solution. For the specific cases listed below, "
+"this will be automatically handled by the solver. In the general case, you "
+"can explicitly tell the solver of discontinuities by adding a :class:`Event` "
+"object with :class:`EventType` DISCONTINUITY to the model's list of events."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators._Heaviside:11
+msgid ""
+"In the case where the Heaviside function is of the form `pybamm.t < x`, "
+"`pybamm.t <= x`, `x < pybamm.t`, or `x <= pybamm.t`, where `x` is any "
+"constant equation, this DISCONTINUITY event will automatically be added by "
+"the solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.EqualHeaviside:1
+msgid "A heaviside function with equality (return 1 when left = right)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.EqualHeaviside:3
+#: pybamm.expression_tree.binary_operators.NotEqualHeaviside:3
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.binary_operators._Heaviside`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.NotEqualHeaviside:1
+msgid "A heaviside function without equality (return 0 when left = right)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Modulo:1
+msgid "Calculates the remainder of an integer division."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Minimum:1
+msgid "Returns the smaller of two objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.Maximum:1
+msgid "Returns the greater of two objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.minimum:1
+msgid ""
+"Returns the smaller of two objects, possibly with a smoothing approximation. "
+"Not to be confused with :meth:`pybamm.min`, which returns min function of "
+"child."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.maximum:1
+msgid ""
+"Returns the larger of two objects, possibly with a smoothing approximation. "
+"Not to be confused with :meth:`pybamm.max`, which returns max function of "
+"child."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.softminus:1
+msgid ""
+"Softminus approximation to the minimum function. k is the smoothing "
+"parameter, set by `pybamm.settings.min_max_smoothing`. The recommended value "
+"is k=10."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.softplus:1
+msgid ""
+"Softplus approximation to the maximum function. k is the smoothing "
+"parameter, set by `pybamm.settings.min_max_smoothing`. The recommended value "
+"is k=10."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.sigmoid:1
+msgid ""
+"Sigmoidal approximation to the heaviside function. k is the smoothing "
+"parameter, set by `pybamm.settings.heaviside_smoothing`. The recommended "
+"value is k=10. Note that the concept of deciding which side to pick when "
+"left=right does not apply for this smooth approximation. When left=right, "
+"the value is (left+right)/2."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.source:1
+msgid ""
+"A convenience function for creating (part of) an expression tree "
+"representing a source term. This is necessary for spatial methods where the "
+"mass matrix is not the identity (e.g. finite element formulation with "
+"piecwise linear basis functions). The left child is the symbol representing "
+"the source term and the right child is the symbol of the equation variable "
+"(currently, the finite element formulation in PyBaMM assumes all functions "
+"are constructed using the same basis, and the matrix here is constructed "
+"accoutning for the boundary conditions of the right child). The method "
+"returns the matrix-vector product of the mass matrix (adjusted to account "
+"for any Dirichlet boundary conditions imposed the the right symbol) and the "
+"discretised left symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.source:12
+msgid ""
+"The left child node, which represents the expression for the source term."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.source:14
+msgid ""
+"The right child node. This is the symbol whose boundary conditions are "
+"accounted for in the construction of the mass matrix."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/binary_operators.py:docstring
+#: of pybamm.expression_tree.binary_operators.source:17
+msgid ""
+"If True, then the mass matrix should is assembled over the boundary, "
+"corresponding to a source term which only acts on the boundary of the "
+"domain. If False (default), the matrix is assembled over the entire domain, "
+"corresponding to a source term in the bulk."
+msgstr ""

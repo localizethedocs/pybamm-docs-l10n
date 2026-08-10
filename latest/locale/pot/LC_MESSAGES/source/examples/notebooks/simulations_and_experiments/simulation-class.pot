@@ -1,0 +1,506 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/simulations_and_experiments/simulation-class."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/simulations_and_experiments/simulation-class."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:9
+msgid "A step-by-step look at the Simulation class"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:11
+msgid ""
+"The simplest way to solve a model is to use the ``Simulation`` class. This "
+"automatically processes the model (setting of parameters, setting up the "
+"mesh and discretisation, etc.) for you, and provides built-in functionality "
+"for solving and plotting. Changing things such as parameters in handled by "
+"passing options to the ``Simulation``, as shown in the `Getting Started <../"
+"getting_started/tutorial-1-how-to-run-a-model.ipynb>`__ guides, `example "
+"notebooks <../../index.rst>`__ and `documentation <https://docs.pybamm.org/"
+"en/latest/source/api/simulation.html>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:14
+msgid ""
+"In this notebook we show how to solve a model using a ``Simulation`` and "
+"compare this to manually handling the different stages of the process, such "
+"as setting parameters, ourselves step-by-step."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:37
+msgid "Simulation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:39
+msgid ""
+"The easiest way to get started is to pick a model and create a simulation "
+"using that model. For simplicity, we'll use the SPM with all the default "
+"options here."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.SPM()\n"
+"simulation = pybamm.Simulation(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:61
+msgid ""
+"The simulation can then be solved, passing a time interval (in seconds) to "
+"integrate over"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "simulation.solve([0, 3600])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:83
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x2698c4bb3d0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:89
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x2698c4bb3d0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:96
+msgid "<pybamm.solvers.solution.Solution at 0x2698c4bb3d0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:107
+msgid "and the results plotted"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "simulation.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:130
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"8a1f718b449e4d758b42191015d1a26c\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:141
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:473
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:147
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:479
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:154
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:486
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:166
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x2698c4da370&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:172
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x2698c4da370>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:179
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x2698c4da370>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:190
+msgid "Simple!"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:201
+msgid "A GIF of the simulation can also be obtained"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"# using less number of images in the example\n"
+"# for a smoother GIF use more images\n"
+"simulation.create_gif(\n"
+"    number_of_images=5, duration=0.2, output_filename=\"simulation.gif\"\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:226
+msgid "Displaying the GIF using markdown - |plot|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:228
+msgid "plot"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:240
+msgid "Processing the model step-by-step"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:242
+msgid ""
+"One way of gaining more control over the simulation processing is by passing "
+"options, as outlined in the `documentation <https://docs.pybamm.org/en/"
+"latest/source/api/simulation.html>`__. However, you can also process the "
+"model step-by-step yourself. A detailed example of this can be found in the "
+"`SPM notebook <../models/SPM.ipynb>`__, but here we outline the basic steps."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:244
+msgid "First we pick a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "model = pybamm.lithium_ion.SPM()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:265
+msgid ""
+"Next we must set up the geometry. We'll use the default geometry for the "
+"SPM. In all of the following steps we will also use the default settings "
+"provided by the model. For a look at changing these options, see the `change "
+"settings <../change-settings.ipynb>`__ notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "geometry = model.default_geometry"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:286
+msgid ""
+"Both the model and geometry depend on parameters (such as the electrode "
+"thickness, or diffusivity). We'll use the default model parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "param = model.default_parameter_values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:307
+msgid ""
+"Now that we have picked our parameters we can \"process\" the model and "
+"geometry. This just means we look through the model and geometry for any "
+"parameter symbols and replace them with the numeric values (or functions, in "
+"the case of parameters that have functional dependence) defined by our "
+"parameter values."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"param.process_model(model)\n"
+"param.process_geometry(geometry)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:329
+msgid ""
+"Next we must create a mesh on which to solve the discretised equations. This "
+"not only depends on the geometry, but also on the type of submesh (e.g. "
+"uniformly space) and number of mesh points to use."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"mesh = pybamm.Mesh(geometry, model.default_submesh_types, model."
+"default_var_pts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:350
+msgid ""
+"Now that we have defined a mesh we can discretise our model. In order to do "
+"so we must choose a spatial method. The default for the SPM is the Finite "
+"Volume Method. We first define a discretisation, which depends on the mesh "
+"and spatial method, and then use this to process our model. This turns the "
+"variables in the models into a ``StateVector``, and replaces spatial "
+"operators with matrix-vector multiplications, ready to be passed to a time "
+"stepping algorithm."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid ""
+"disc = pybamm.Discretisation(mesh, model.default_spatial_methods)\n"
+"disc.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:373
+msgid ""
+"<pre>\n"
+"&lt;pybamm.models.full_battery_models.lithium_ion.spm.SPM at "
+"0x2699d43f100&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:379
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.models.full\\_battery\\_models.lithium\\_ion.spm.SPM at "
+"0x2699d43f100>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:386
+msgid ""
+"<pybamm.models.full_battery_models.lithium_ion.spm.SPM at 0x2699d43f100>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:397
+msgid ""
+"Finally, we pick a solver to step the problem forward in time. We'll use the "
+"default ODE solver for the SPM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "solver = model.default_solver"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:418
+msgid ""
+"We then integrate in time using the ``solve`` command, as with the "
+"simulation. Note that we now have to pass the model object to the ``solve`` "
+"command, and that we return the solution object so that we can interact with "
+"it later."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "solution = solver.solve(model, [0, 3600])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:439
+msgid ""
+"We can create the default slider plot by passing the solution object to the "
+"``dynamic_plot`` method"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "pybamm.dynamic_plot(solution)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:462
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"daf8dc7b0f524c3eb32b6a3d28f978de\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:498
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x2699064c760&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:504
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x2699064c760>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:511
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x2699064c760>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:523
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:525
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "[15]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:546
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:556
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/simulation-class.ipynb:567
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

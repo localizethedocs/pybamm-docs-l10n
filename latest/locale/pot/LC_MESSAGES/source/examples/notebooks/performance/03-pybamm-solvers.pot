@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/performance/03-pybamm-solvers.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/performance/03-pybamm-solvers.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:9
+msgid "The PyBaMM Solvers"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:11
+msgid ""
+"PyBaMM has a few different solvers that can be used to solve the model "
+"equations. In this notebook we will go through the different solvers and "
+"contrast their features and performance."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import time\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:38
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:44
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:51
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:62
+msgid ""
+"The recommended solver in PyBaMM is the ```pybamm.IDAKLUSolver`` <https://"
+"docs.pybamm.org/en/stable/source/api/solvers/idaklu_solver.html>`__: a "
+"direct wrapper around the Sundials IDAS solver, written and customised by "
+"the PyBaMM team to work well with PyBaMM's models. It is the default solver "
+"for all models and is recommended for essentially all use cases."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:64
+msgid "Two experimental JAX-based solvers are also available:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:66
+msgid ""
+"```pybamm.IDAKLUJax`` <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"idaklu_jax.html>`__ (*experimental*): a `JAX <https://jax.readthedocs.io/en/"
+"latest/index.html>`__ wrapper around the ``IDAKLUSolver`` that allows it to "
+"be used within a JAX model. Recommended for use on Linux or macOS."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:67
+msgid ""
+"```pybamm.JaxSolver`` <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"jax_solver.html>`__ (*experimental*): a pure JAX solver that uses the "
+"``jax`` library to solve the model equations. Recommended for use on Linux "
+"or macOS."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:70
+msgid "Solver features"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:72
+msgid ""
+"**Speed**: The IDAKLU solver is fast both for solving models and for post-"
+"processing output variables."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:73
+msgid ""
+"**Sensitivity analysis**: The IDAKLU solver can compute forward model "
+"sensitivities with respect to input parameters, using the Sundials IDAS "
+"solver."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:74
+msgid ""
+"**Adjoint sensitivity analysis**: Either adjoint sensitivity analysis or "
+"reverse-mode auto differentiation is useful to compute sensitivities when "
+"the number of input parameters is very large (e.g. ML models). Currently "
+"only the pure JAX solver supports reverse-mode auto differentiation; adding "
+"adjoint sensitivity analysis to the IDAKLU solver is a future development "
+"goal."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:75
+msgid ""
+"**Parallelism**: If a list of input parameters is passed to the solver, the "
+"IDAKLU solver can solve the model in parallel for each parameter using "
+"multiple threads via OpenMP (useful, e.g., for parameter sweeps). If enough "
+"threads are available and the model is large enough, it can also parallelise "
+"a single solve using OpenMP and the Sundials NVECTOR_OPENMP implementation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:76
+msgid ""
+"**GPU acceleration**: Currently only the pure JAX solver supports GPU "
+"acceleration. There is some experimental support for GPU acceleration via a "
+"new JAX-based backend for the IDAKLU solver, but this is still in "
+"development."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:77
+msgid ""
+"**Events**: The IDAKLU solver supports events, which trigger an action when "
+"a certain condition is met (the main use case being to stop the solver "
+"between steps of an experiment). It uses the underlying Sundials event "
+"handling, which is fast and robust. The pure JAX solver does not support "
+"events."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:78
+msgid ""
+"**Evaluation and interpolation points**: All solvers take a list of time "
+"points to evaluate the solution (the ``t_eval`` argument), which stops the "
+"solver at each requested point. The IDAKLU solver can additionally take a "
+"list of interpolation points (the ``t_interp`` argument), interpolating the "
+"solution at these points without stopping the solver, speeding up the "
+"calculation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:79
+msgid ""
+"**Other features**: The Sundials solvers have many features that change how "
+"the solver works (tolerances, linear solvers, minimum step sizes, etc.); see "
+"the `Sundials docs <https://sundials.readthedocs.io/en/latest/>`__. Many of "
+"these are exposed and documented in the IDAKLU solver (see the `docs "
+"<https://docs.pybamm.org/en/stable/source/api/solvers/idaklu_solver."
+"html>`__). If PyBaMM does not expose a feature you need, please post an "
+"issue on the `GitHub page <https://github.com/pybamm-team/PyBaMM/issues>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:83
+msgid "Solver timing"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:85
+msgid ""
+"Below we look at the solve time for the ``IDAKLUSolver`` on the SPM, SPMe "
+"and DFN models with their default options, separating the first solve (which "
+"includes solver setup) from subsequent solves."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid ""
+"first_solve_time = np.zeros(3)\n"
+"second_solve_time = np.zeros(3)\n"
+"model_classes = [\n"
+"    pybamm.lithium_ion.SPM,\n"
+"    pybamm.lithium_ion.SPMe,\n"
+"    pybamm.lithium_ion.DFN,\n"
+"]\n"
+"for i, model_cls in enumerate(model_classes):\n"
+"    sim = pybamm.Simulation(model_cls(), solver=pybamm.IDAKLUSolver())\n"
+"    start_time = time.perf_counter()\n"
+"    sol = sim.solve([0, 3600])\n"
+"    voltage = sol[\"Voltage [V]\"](0)\n"
+"    first_solve_time[i] = time.perf_counter() - start_time\n"
+"    start_time = time.perf_counter()\n"
+"    sol = sim.solve([0, 3600])\n"
+"    voltage = sol[\"Voltage [V]\"](0)\n"
+"    second_solve_time[i] = time.perf_counter() - start_time\n"
+"\n"
+"labels = [m.__name__ for m in model_classes]\n"
+"x = np.arange(3)\n"
+"width = 0.35\n"
+"fig, ax = plt.subplots(figsize=(7, 5))\n"
+"ax.bar(x - width / 2, first_solve_time, width, label=\"First solve (incl. "
+"setup)\")\n"
+"ax.bar(x + width / 2, second_solve_time, width, label=\"Second solve\")\n"
+"ax.set_xticks(x)\n"
+"ax.set_xticklabels(labels)\n"
+"ax.set_ylabel(\"Time (s)\")\n"
+"ax.set_title(\"IDAKLUSolver solve time\")\n"
+"ax.legend()\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:144
+msgid ""
+"The \"First solve\" bars include the solver setup time, which for these "
+"relatively small problems is significant. The \"Second solve\" bars exclude "
+"this setup time and give a clearer indication of the solver's speed for (a) "
+"calculating a solution and (b) post-processing the solution to extract the "
+"voltage."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:146
+msgid ""
+"The IDAKLU solver is customised to work well with PyBaMM's models, and its "
+"online (via ``t_eval``) and post-processing interpolation features mean "
+"obtaining output variables is fast."
+msgstr ""

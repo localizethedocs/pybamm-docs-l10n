@@ -1,0 +1,792 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/parameters/parameter_values.rst:2
+msgid "Parameter Values"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:4
+msgid ""
+"The ``ParameterValues`` class is the main interface for managing battery "
+"simulation parameters. It provides methods for storing, updating, and "
+"processing parameters, as well as introspection features for exploring "
+"parameter sets."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:9
+msgid "Features"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:11
+msgid "The ``ParameterValues`` class now includes several helpful features:"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:13
+msgid ""
+"**Parameter Introspection**: Use :meth:`get_info` to get metadata about "
+"parameters including units and category."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:15
+msgid ""
+"**Category Browsing**: Use :meth:`list_by_category` to find parameters by "
+"domain (e.g., \"negative electrode\", \"thermal\")."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:17
+msgid ""
+"**Parameter Comparison**: Use :meth:`diff` to compare two parameter sets and "
+"see what's added, removed, or changed."
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:20
+msgid "Example usage::"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:22
+msgid ""
+"import pybamm\n"
+"\n"
+"# Load a parameter set\n"
+"params = pybamm.ParameterValues(\"Chen2020\")\n"
+"\n"
+"# Get info about a parameter\n"
+"info = params.get_info(\"Maximum concentration in negative electrode [mol."
+"m-3]\")\n"
+"print(f\"Value: {info.value}, Units: {info.units}, Category: {info."
+"category}\")\n"
+"\n"
+"# List parameters by category\n"
+"neg_electrode_params = params.list_by_category(\"negative electrode\")\n"
+"print(f\"Found {len(neg_electrode_params)} negative electrode parameters\")\n"
+"\n"
+"# Compare with another parameter set\n"
+"marquis = pybamm.ParameterValues(\"Marquis2019\")\n"
+"diff = params.diff(marquis)\n"
+"print(f\"Changed parameters: {list(diff.changed.keys())[:5]}\")"
+msgstr ""
+
+#: ../../../source/api/parameters/parameter_values.rst:41
+msgid "API Reference"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues:1
+msgid "The parameter values for a simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues:3
+msgid ""
+"Note that this class does not inherit directly from the python dictionary "
+"class as this causes issues with saving and loading simulations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:0
+#: pybamm.parameters.parameter_values.ParameterValues.diff:0
+#: pybamm.parameters.parameter_values.ParameterValues.evaluate:0
+#: pybamm.parameters.parameter_values.ParameterValues.from_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.get:0
+#: pybamm.parameters.parameter_values.ParameterValues.get_info:0
+#: pybamm.parameters.parameter_values.ParameterValues.list_by_category:0
+#: pybamm.parameters.parameter_values.ParameterValues.print_evaluated_parameters:0
+#: pybamm.parameters.parameter_values.ParameterValues.print_parameters:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_geometry:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_model:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_symbol:0
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_state:0
+#: pybamm.parameters.parameter_values.ParameterValues.to_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.update:0
+#: ../../../source/api/parameters/parameter_values.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues:6
+msgid ""
+"Explicit set of parameters, or reference to an inbuilt parameter set. If "
+"string and matches one of the inbuilt parameter sets, returns that parameter "
+"set."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues:12
+#: pybamm.parameters.parameter_values.ParameterValues.categories:7
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:12
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:21
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:17
+#: pybamm.parameters.parameter_values.ParameterValues.diff:15
+#: pybamm.parameters.parameter_values.ParameterValues.from_json:10
+#: pybamm.parameters.parameter_values.ParameterValues.get:12
+#: pybamm.parameters.parameter_values.ParameterValues.get_info:10
+#: pybamm.parameters.parameter_values.ParameterValues.items:7
+#: pybamm.parameters.parameter_values.ParameterValues.keys:7
+#: pybamm.parameters.parameter_values.ParameterValues.list_by_category:11
+#: pybamm.parameters.parameter_values.ParameterValues.print_evaluated_parameters:9
+#: pybamm.parameters.parameter_values.ParameterValues.print_parameters:16
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:13
+#: pybamm.parameters.parameter_values.ParameterValues.process_geometry:7
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_state:22
+#: pybamm.parameters.parameter_values.ParameterValues.to_json:13
+#: pybamm.parameters.parameter_values.ParameterValues.values:7
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.categories:1
+msgid "Return all parameters grouped by category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.categories:0
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:0
+#: pybamm.parameters.parameter_values.ParameterValues.diff:0
+#: pybamm.parameters.parameter_values.ParameterValues.evaluate:0
+#: pybamm.parameters.parameter_values.ParameterValues.from_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.get:0
+#: pybamm.parameters.parameter_values.ParameterValues.get_info:0
+#: pybamm.parameters.parameter_values.ParameterValues.items:0
+#: pybamm.parameters.parameter_values.ParameterValues.keys:0
+#: pybamm.parameters.parameter_values.ParameterValues.list_by_category:0
+#: pybamm.parameters.parameter_values.ParameterValues.print_parameters:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_model:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_symbol:0
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_state:0
+#: pybamm.parameters.parameter_values.ParameterValues.to_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.values:0
+#: ../../../source/api/parameters/parameter_values.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.categories:3
+msgid "Dictionary mapping category names to lists of parameter names."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.categories:0
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:0
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:0
+#: pybamm.parameters.parameter_values.ParameterValues.diff:0
+#: pybamm.parameters.parameter_values.ParameterValues.evaluate:0
+#: pybamm.parameters.parameter_values.ParameterValues.from_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.get:0
+#: pybamm.parameters.parameter_values.ParameterValues.get_info:0
+#: pybamm.parameters.parameter_values.ParameterValues.items:0
+#: pybamm.parameters.parameter_values.ParameterValues.keys:0
+#: pybamm.parameters.parameter_values.ParameterValues.list_by_category:0
+#: pybamm.parameters.parameter_values.ParameterValues.print_parameters:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_model:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_symbol:0
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_state:0
+#: pybamm.parameters.parameter_values.ParameterValues.to_json:0
+#: pybamm.parameters.parameter_values.ParameterValues.values:0
+#: ../../../source/api/parameters/parameter_values.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:1
+msgid "Check and transform parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:3
+msgid "Dictionary of parameter values to check."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:6
+msgid "Checked and transformed parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:0
+#: pybamm.parameters.parameter_values.ParameterValues.process_model:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.check_parameter_values:9
+msgid "If parameter names contain deprecated or invalid formats."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.copy:1
+msgid "Return a copy of the parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.copy:4
+#: pybamm.parameters.parameter_values.ParameterValues.evaluate:12
+#: pybamm.parameters.parameter_values.ParameterValues.pop:4
+#: pybamm.parameters.parameter_values.ParameterValues.process_model:18
+#: pybamm.parameters.parameter_values.ParameterValues.process_symbol:12
+#: pybamm.parameters.parameter_values.ParameterValues.search:4
+#: pybamm.parameters.parameter_values.ParameterValues.update:13
+msgid "Example"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:1
+msgid "Create ParameterValues from a BPX file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:3
+msgid "The filename of the `BPX <https://bpxstandard.com/>`_ file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:5
+msgid ""
+".. deprecated:: 26.5     Passing ``target_soc`` is deprecated. Initial "
+"concentrations are     set from the BPX ``State`` initial state-of-charge if "
+"provided,     otherwise at 100% SOC (negative phases at their maximum     "
+"stoichiometry, positive phases at their minimum stoichiometry).     Use :"
+"meth:`ParameterValues.set_initial_state` after creation to     set a "
+"different initial SOC. If ``target_soc`` is passed, the     previous "
+"behaviour is preserved for non-blended electrodes;     blended electrodes "
+"raise ``NotImplementedError``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:6
+msgid ""
+"Passing ``target_soc`` is deprecated. Initial concentrations are set from "
+"the BPX ``State`` initial state-of-charge if provided, otherwise at 100% SOC "
+"(negative phases at their maximum stoichiometry, positive phases at their "
+"minimum stoichiometry). Use :meth:`ParameterValues.set_initial_state` after "
+"creation to set a different initial SOC. If ``target_soc`` is passed, the "
+"previous behaviour is preserved for non-blended electrodes; blended "
+"electrodes raise ``NotImplementedError``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:17
+msgid "A parameter values object with the parameters from the BPX file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:26
+#: pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:23
+#: pybamm.parameters.parameter_values.ParameterValues.update:19
+msgid "Notes"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx:27
+msgid ""
+"PyBaMM officially supports ``bpx>=1``. Legacy BPX v0.x files are detected "
+"and converted to the v1.x schema by ``bpx`` itself on a best-effort basis (a "
+"``UserWarning`` is raised describing the conversion's limitations)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:1
+msgid "Create ParameterValues from a BPX dictionary object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:3
+msgid ""
+"A dictionary containing the parameters in the `BPX <https://bpxstandard.com/"
+">`_ format."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:6
+msgid ""
+".. deprecated:: 26.5     See :meth:`ParameterValues.create_from_bpx`. Pass "
+"nothing     (the default) and use :meth:`ParameterValues."
+"set_initial_state`     to set a non-100%-SOC initial state."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:7
+msgid ""
+"See :meth:`ParameterValues.create_from_bpx`. Pass nothing (the default) and "
+"use :meth:`ParameterValues.set_initial_state` to set a non-100%-SOC initial "
+"state."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:13
+msgid "A parameter values object with the parameters in the BPX file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.create_from_bpx_obj:24
+msgid ""
+"PyBaMM officially supports ``bpx>=1``. Legacy BPX v0.x objects are detected "
+"and converted to the v1.x schema by ``bpx`` itself on a best-effort basis (a "
+"``UserWarning`` is raised describing the conversion's limitations). The "
+"passed ``bpx_obj`` is not mutated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.diff:1
+msgid "Compare this ParameterValues with another and return differences."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.diff:3
+msgid "The other parameter values to compare against."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.diff:5
+msgid ""
+"Relative tolerance for numerical comparisons. Differences smaller than "
+"``rtol * max(|a|, |b|)`` are ignored. Default is 0.0 (exact comparison). Set "
+"to e.g. 1e-6 to ignore tiny floating-point differences."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.diff:11
+msgid "Object containing added, removed, and changed parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.diff:22
+msgid "With tolerance:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.evaluate:1
+msgid "Process and evaluate a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.evaluate:3
+msgid "Symbol or Expression tree to evaluate."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.evaluate:5
+msgid "Input parameter values for evaluation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.evaluate:8
+msgid "The evaluated symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.from_json:1
+msgid "Load a ParameterValues object from a JSON file or a dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.from_json:3
+msgid "The filename to load the JSON file from, or a dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.from_json:6
+msgid "The ParameterValues object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get:1
+msgid ""
+"Return item corresponding to key if it exists, otherwise return default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get:3
+msgid "The parameter name to retrieve."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get:5
+msgid "The default value to return if key is not found. Default is None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get:8
+msgid "The parameter value if found, otherwise the default value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get_info:1
+msgid "Get metadata about a parameter."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get_info:3
+msgid "The parameter name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.get_info:6
+msgid "Metadata including value, units, category, and type information."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.items:1
+msgid "Return parameter items."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.items:3
+msgid "The parameter items as (key, value) pairs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.keys:1
+msgid "Return parameter keys."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.keys:3
+msgid "The parameter keys."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.list_by_category:1
+msgid "Return all parameter names in a given category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.list_by_category:3
+msgid ""
+"The category to filter by. Can be a ParameterCategory enum value or a string "
+"like \"negative electrode\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.list_by_category:7
+msgid "List of parameter names in the category."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.pop:1
+msgid "Remove and return a parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.print_evaluated_parameters:1
+msgid "Print a dictionary of evaluated parameters to an output file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.print_evaluated_parameters:3
+#: pybamm.parameters.parameter_values.ParameterValues.print_parameters:12
+msgid "The evaluated parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.print_evaluated_parameters:5
+msgid "The file to print parameters to."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.print_parameters:1
+msgid "Return dictionary of evaluated parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.print_parameters:3
+msgid "Optionally print these evaluated parameters to an output file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.print_parameters:5
+msgid "Class or dictionary containing all the parameters to be evaluated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.print_parameters:7
+msgid ""
+"The file to print parameters to. If None, the parameters are not printed, "
+"and this function simply acts as a test that all the parameters can be "
+"evaluated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:1
+msgid "Process boundary conditions for a model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:3
+msgid ""
+"Boundary conditions are dictionaries {\"left\": left bc, \"right\": right "
+"bc} in general, but may be imposed on the tabs for some variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:6
+msgid "Model whose boundary conditions to process."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of
+#: pybamm.parameters.parameter_values.ParameterValues.process_boundary_conditions:9
+msgid "Processed boundary conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_geometry:1
+msgid "Assign parameter values to a geometry (inplace)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_geometry:3
+msgid "Geometry specs to assign parameter values to."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:1
+msgid "Assign parameter values to a model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:3
+msgid "Model to assign parameter values for."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:5
+msgid ""
+"If True (default), replace parameters in place. If False, return a new model "
+"with parameter values set."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:8
+msgid ""
+"If True, make variable processing a post-processing step. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:12
+msgid "The parameterized model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_model:15
+msgid "If an empty model is passed."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_symbol:1
+msgid "Walk through the symbol and replace any Parameter with a Value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_symbol:3
+msgid "If a symbol has already been processed, the cached value is returned."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_symbol:5
+msgid "Symbol or Expression tree to set parameters for."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.process_symbol:8
+msgid "Symbol with Parameter instances replaced by values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.search:1
+msgid "Search dictionary for keys containing 'key'."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_ocps:1
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_stoichiometries:1
+#: pybamm.parameters.parameter_values.ParameterValues.set_initial_stoichiometry_half_cell:1
+msgid "Deprecated: Use set_initial_state instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:1
+msgid "Set the initial state of the battery."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:3
+msgid "Delegates to chemistry-specific implementation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:5
+msgid "The initial state value (e.g., SOC or voltage)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:7
+msgid "Direction for setting state. Default is None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:9
+msgid "Parameter values to use. Default is None (uses self)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:11
+msgid "If True, modify parameters in place. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:13
+msgid "Model options. Default is None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:15
+msgid "Input parameters. Default is None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.set_initial_state:18
+msgid "Updated parameter values if inplace=False, otherwise None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.to_json:1
+msgid "Convert the parameter values to a JSON-serializable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.to_json:3
+msgid "Optionally saves to a file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.to_json:5
+msgid ""
+"The filename to save the JSON file to. If not provided, the dictionary is "
+"not saved."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.to_json:9
+msgid "The JSON-serializable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.update:1
+msgid "Update parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.update:3
+msgid "Dictionary of parameter values to update."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.update:5
+#: pybamm.parameters.parameter_values.ParameterValues.update:7
+msgid "Deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.update:9
+msgid "Path from which to load functions (legacy parameter)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.update:20
+msgid "The `check_already_exists` parameter is deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.values:1
+msgid "Return parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.ParameterValues.values:3
+msgid "The parameter values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.serialize_parameter_value:1
+msgid "Serialize a single parameter value to a JSON-compatible representation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.serialize_parameter_value:3
+msgid ""
+"The per-value dispatch used by :func:`convert_parameter_values_to_json`: "
+"callables are first traced to a symbolic expression, everything else is "
+"encoded directly."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.serialize_parameter_value:7
+msgid "The parameter name (used only to name a traced callable)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.serialize_parameter_value:9
+msgid "The parameter value: a callable, a :class:`pybamm.Symbol`, or a scalar."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.serialize_parameter_value:12
+msgid "The JSON representation: a dict for symbols, a scalar otherwise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.deserialize_parameter_value:1
+msgid "Reconstruct a single parameter value from its JSON representation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.deserialize_parameter_value:3
+msgid ""
+"Inverse of :func:`serialize_parameter_value`: dicts are decoded back to :"
+"class:`pybamm.Symbol` objects, scalars pass through unchanged."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.deserialize_parameter_value:6
+msgid "The JSON representation of a single parameter value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_values.py:docstring
+#: of pybamm.parameters.parameter_values.deserialize_parameter_value:9
+msgid "The reconstructed value."
+msgstr ""

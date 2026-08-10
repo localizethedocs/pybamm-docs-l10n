@@ -1,0 +1,633 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/compare-lithium-ion.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/compare-lithium-ion.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:9
+msgid "Compare lithium-ion battery models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:20
+msgid ""
+"We compare three one-dimensional lithium-ion battery models: `the Doyle-"
+"Fuller-Newman (DFN) model <./DFN.ipynb>`__, `the single particle model (SPM) "
+"<./SPM.ipynb>`__, and `the single particle model with electrolyte (SPMe) <./"
+"SPMe.ipynb>`__. Further details on these models can be found in `[4] "
+"<#References>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:32
+msgid "Key steps:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:34
+msgid "Comparing models consists of 6 easy steps:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:36
+msgid "Load models and geometry"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:37
+msgid "Process parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:38
+msgid "Mesh the geometry"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:39
+msgid "Discretise models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:40
+msgid "Solve models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:41
+msgid "Plot results"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:43
+msgid "But, as always we first import pybamm and other required modules"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:72
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:78
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:85
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:97
+msgid "1. Load models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:108
+msgid ""
+"Since the three models we want to compare are already implemented in PyBaMM, "
+"they can be easy loaded using:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"dfn = pybamm.lithium_ion.DFN()\n"
+"spme = pybamm.lithium_ion.SPMe()\n"
+"spm = pybamm.lithium_ion.SPM()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:131
+msgid ""
+"To allow us to perform the same operations on each model easily, we create a "
+"dictionary of these three models:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "models = {\"DFN\": dfn, \"SPM\": spm, \"SPMe\": spme}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:152
+msgid "Each model can then be accessed using:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "models[\"DFN\"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:174
+msgid ""
+"<pre>\n"
+"&lt;pybamm.models.full_battery_models.lithium_ion.dfn.DFN at "
+"0x1208c3380&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:180
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.models.full\\_battery\\_models.lithium\\_ion.dfn.DFN at "
+"0x1208c3380>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:187
+msgid "<pybamm.models.full_battery_models.lithium_ion.dfn.DFN at 0x1208c3380>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:198
+msgid ""
+"For each model, we must also provide a cell geometry. The geometry is "
+"different for different models; for example, the SPM has solves for a single "
+"particle in each electrode whereas the DFN solves for many particles. For "
+"simplicity, we use the default geometry associated with each model but note "
+"that this can be easily changed."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"geometry = {\n"
+"    \"DFN\": dfn.default_geometry,\n"
+"    \"SPM\": spm.default_geometry,\n"
+"    \"SPMe\": spme.default_geometry,\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:224
+msgid "2. Process parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:235
+msgid ""
+"For simplicity, we use the default parameters values associated with the DFN "
+"model, but change the current function to be an input so that we can quickly "
+"solve the model with different currents"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"param = dfn.default_parameter_values\n"
+"param[\"Current function [A]\"] = \"[input]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:257
+msgid "It is simple to change this to a different parameter set if desired."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:259
+msgid ""
+"We then process the parameters in each of the models and geometries using "
+"this parameter set:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"for model_name, model in models.items():\n"
+"    param.process_model(model)\n"
+"    param.process_geometry(geometry[model_name])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:283
+msgid "3. Mesh geometry"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:294
+msgid ""
+"We use the defaults mesh properties (the types of meshes and number of "
+"points to be used) for simplicity to generate a mesh of each model geometry. "
+"We store these meshes in a dictionary of similar structure to the geometry "
+"and models dictionaries:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"mesh = {}\n"
+"for model_name, model in models.items():\n"
+"    mesh[model_name] = pybamm.Mesh(\n"
+"        geometry[model_name], model.default_submesh_types, model."
+"default_var_pts\n"
+"    )"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:320
+msgid "4. Discretise model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:331
+msgid ""
+"We now discretise each model using its associated mesh and the default "
+"spatial method associated with the model:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"for model_name, model in models.items():\n"
+"    disc = pybamm.Discretisation(mesh[model_name], model."
+"default_spatial_methods)\n"
+"    disc.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:355
+msgid "5. Solve model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:366
+msgid ""
+"We now solve each model using the default solver associated with each model:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"timer = pybamm.Timer()\n"
+"solutions = {}\n"
+"t_eval = [0, 3600]  # time in seconds\n"
+"for model_name, model in models.items():\n"
+"    solver = pybamm.IDAKLUSolver()\n"
+"    timer.reset()\n"
+"    solution = solver.solve(model, t_eval, inputs={\"Current function [A]\": "
+"1})\n"
+"    print(f\"Solved the {model.name} in {timer.time()}\")\n"
+"    solutions[model_name] = solution"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:395
+msgid ""
+"<pre>\n"
+"Solved the Doyle-Fuller-Newman model in 68.203 ms\n"
+"Solved the Single Particle Model in 15.638 ms\n"
+"Solved the Single Particle Model with electrolyte in 32.645 ms\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:403
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Solved the Doyle-Fuller-Newman model in 68.203 ms\n"
+"Solved the Single Particle Model in 15.638 ms\n"
+"Solved the Single Particle Model with electrolyte in 32.645 ms\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:412
+msgid ""
+"Solved the Doyle-Fuller-Newman model in 68.203 ms\n"
+"Solved the Single Particle Model in 15.638 ms\n"
+"Solved the Single Particle Model with electrolyte in 32.645 ms"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:426
+msgid "6. Plot results"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:437
+msgid ""
+"To plot results, we extract the variables from the solutions dictionary. "
+"Matplotlib can then be used to plot the voltage predictions of each models "
+"as follows:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"for model_name, model in models.items():\n"
+"    time_solution = solutions[model_name][\"Time [s]\"].entries\n"
+"    time = np.linspace(time_solution[0], time_solution[-1], 100)\n"
+"    voltage = solutions[model_name][\"Voltage [V]\"](time)\n"
+"    plt.plot(time, voltage, lw=2, label=model.name)\n"
+"plt.xlabel(\"Time [s]\", fontsize=15)\n"
+"plt.ylabel(\"Voltage [V]\", fontsize=15)\n"
+"plt.legend(fontsize=15)\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:474
+msgid ""
+"Alternatively the inbuilt ``QuickPlot`` functionality can be employed to "
+"compare a set of variables over the discharge. We must first create a list "
+"of the solutions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "list_of_solutions = list(solutions.values())"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:495
+msgid "And then employ ``QuickPlot``:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"quick_plot = pybamm.QuickPlot(list_of_solutions)\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:518
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1365f895ede14450957eee9069ed8dc1\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:528
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=2439.957097927674, step=24.399570979276742),…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:534
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=2439.957097927674, step=24.399570979276742),…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:541
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=2439.957097927674, step=24.399570979276742),…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:553
+msgid "Changing parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:564
+msgid ""
+"Since we have made current an input, it is easy to change it and then "
+"perform the calculations again:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid ""
+"# update parameter values and solve again\n"
+"# simulate for shorter time\n"
+"t_eval = [0, 800]\n"
+"for model_name, model in models.items():\n"
+"    solutions[model_name] = model.default_solver.solve(\n"
+"        model, t_eval, inputs={\"Current function [A]\": 3}\n"
+"    )\n"
+"\n"
+"# Plot\n"
+"list_of_solutions = list(solutions.values())\n"
+"quick_plot = pybamm.QuickPlot(list_of_solutions)\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:597
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"20ddc102548e42c48eb00eecfbf2178f\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:607
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=761.7791004203578, step=7.617791004203578), …\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:613
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=761.7791004203578, step=7.617791004203578), …\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:620
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=761.7791004203578, step=7.617791004203578), …"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:631
+msgid ""
+"By increasing the current we observe less agreement between the models, as "
+"expected."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:643
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:645
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "[15]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:666
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:680
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/compare-lithium-ion.ipynb:695
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

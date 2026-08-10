@@ -1,0 +1,504 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/initialize-model-with-solution.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/initialize-model-with-solution.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:9
+msgid "Initializing a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:20
+msgid "Example showing how to initialize a model with another model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[19]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"\n"
+"import os\n"
+"\n"
+"import pandas as pd\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:49
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">25.0.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">25.1.1</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:58
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{25.0.1} -> \\textcolor{ansi-green}{25.1.1}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:68
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m25.0.1[0m[39;49m -> [0m[32;49m25.1.1[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:83
+msgid "Solve a model with a drive cycle"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:94
+msgid "Load model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[20]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "model = pybamm.lithium_ion.DFN()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:115
+msgid "Set up drive cycle"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[21]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"# import drive cycle from file\n"
+"data_loader = pybamm.DataLoader()\n"
+"drive_cycle = pd.read_csv(\n"
+"    f\"{data_loader.get_data('US06.csv')}\", comment=\"#\", header=None\n"
+").to_numpy()\n"
+"# create interpolant\n"
+"param = model.default_parameter_values\n"
+"current_interpolant = pybamm.Interpolant(drive_cycle[:, 0], drive_cycle[:, "
+"1], pybamm.t)\n"
+"# set drive cycle\n"
+"param[\"Current function [A]\"] = current_interpolant"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:145
+msgid "Create and run simulation with the updated parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[22]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"sim_US06_1 = pybamm.Simulation(model, parameter_values=param)\n"
+"sol_US06_1 = sim_US06_1.solve()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:168
+msgid "Update initial conditions based on a solution and solve again"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:179
+msgid ""
+"Starting with an initial SOC of 0%, pre-charge with CCCV, update the initial "
+"conditions, and solve again with the US06 drive cycle"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[23]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"experiment = pybamm.Experiment(\n"
+"    [\"Charge at 1 A until 3.9 V\", \"Hold at 3.9 V until 50 mA\"],\n"
+")\n"
+"sim_cccv = pybamm.Simulation(model, experiment=experiment)\n"
+"sol_cccv = sim_cccv.solve(initial_soc=0)\n"
+"\n"
+"# MODEL RE-INITIALIZATION: "
+"#############################################################\n"
+"# Now initialize the model with the solution of the charge, and then "
+"discharge with\n"
+"# the US06 drive cycle\n"
+"# We could also do this inplace by setting inplace to True, which modifies "
+"the original\n"
+"# model in place\n"
+"new_model = model.set_initial_conditions_from(sol_cccv, inplace=False)\n"
+"########################################################################################\n"
+"\n"
+"sim_US06_2 = pybamm.Simulation(new_model, parameter_values=param)\n"
+"sol_US06_2 = sim_US06_2.solve()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:215
+msgid ""
+"Plot both solutions, we can clearly see the difference now that initial "
+"conditions have been updated"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[24]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(\n"
+"    [sol_US06_1, sol_US06_2], labels=[\"Default initial conditions\", "
+"\"Fully charged\"]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:240
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"b9e0da98949846e58d0024f32baf61cc\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:251
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:387
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=600.0, step=6.0), Output()), _dom_classes=(&#39;…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:257
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:393
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=600.0, "
+"step=6.0), Output()), \\_dom\\_classes=('…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:264
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:400
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=600.0, "
+"step=6.0), Output()), _dom_classes=('…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:276
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x16fa6b4d0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:282
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x16fa6b4d0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:289
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x16fa6b4d0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:301
+msgid "Initialize using a different model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:312
+msgid ""
+"We can also initialize the model using the solution of a different model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[25]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"spm = pybamm.lithium_ion.SPM()\n"
+"sim_spm_cccv = pybamm.Simulation(spm, experiment=experiment)\n"
+"sol_spm_cccv = sim_spm_cccv.solve(initial_soc=0)\n"
+"\n"
+"# MODEL RE-INITIALIZATION: "
+"#############################################################\n"
+"# Now initialize the model with the solution of the charge, and then "
+"discharge with\n"
+"# the US06 drive cycle\n"
+"# We could also do this inplace by setting inplace to True, which modifies "
+"the original\n"
+"# model in place\n"
+"new_dfn = model.set_initial_conditions_from(sol_spm_cccv, inplace=False)\n"
+"########################################################################################\n"
+"\n"
+"sim_US06_3 = pybamm.Simulation(new_dfn, parameter_values=param)\n"
+"sol_US06_3 = sim_US06_3.solve()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:346
+msgid ""
+"Now the model initialized by the DFN and the model initialized by the SPM "
+"give the same solution"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[26]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(\n"
+"    [sol_US06_1, sol_US06_2, sol_US06_3],\n"
+"    labels=[\n"
+"        \"Default initial conditions\",\n"
+"        \"Fully charged (from DFN)\",\n"
+"        \"Fully charged (from SPM)\",\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:376
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"0ae4a1fba9c641a69fa6b5795889c59a\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:412
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x3777e3ad0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:418
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x3777e3ad0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:425
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x3777e3ad0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:437
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:439
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[27]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:460
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[11] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:477
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[11] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:495
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[11] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023."
+msgstr ""
+
+#: ../../../source/examples/notebooks/initialize-model-with-solution.ipynb:-1
+msgid "[ ]:"
+msgstr ""

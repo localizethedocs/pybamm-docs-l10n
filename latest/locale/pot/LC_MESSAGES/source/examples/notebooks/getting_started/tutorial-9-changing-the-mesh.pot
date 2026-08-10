@@ -1,0 +1,586 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:9
+msgid "Tutorial 9 - Changing the mesh"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:11
+msgid ""
+"In `Tutorial 8 <./tutorial-8-solver-options.ipynb>`__ we saw how to change "
+"the solver options. In this tutorial we will change the mesh used in the "
+"simulation, and show how to investigate the influence of the mesh on the "
+"solution."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:13
+msgid ""
+"All models in PyBaMM have a default number of mesh points used in a "
+"simulation. However, depending on aspects like the operating conditions or "
+"the parameters, you may find you need to increase the number points in the "
+"mesh to obtain an accurate solution. On the other hand, you may find that "
+"you are able to decrease the number of mesh points and still obtain a "
+"solution with an acceptable degree of accuracy but with a lower "
+"computational time."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:15
+msgid ""
+"It is always good practice to conduct a mesh refinement study, where you "
+"simulate the same problem with a finer mesh and compare the results. Here "
+"will show how to do this graphically, but in practice you may wish to do a "
+"more detailed calculation of the relative error."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:38
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.3.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">24.0</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:47
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.3.1} -> \\textcolor{ansi-green}{24.0}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:57
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.3.1[0m[39;49m -> [0m[32;49m24.0[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:72
+msgid ""
+"<pre>\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:78
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:85
+msgid ""
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:97
+msgid "Changing the number of points in the mesh"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:99
+msgid "First we load a model, in this case the SPMe"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "model = pybamm.lithium_ion.SPMe()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:120
+msgid ""
+"We can then look at the number of points that the models uses by default, "
+"which are stored as a dictionary whose keys are the variables for each "
+"domain:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "model.default_var_pts"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:142
+msgid ""
+"<pre>\n"
+"{&#39;x_n&#39;: 20,\n"
+" &#39;x_s&#39;: 20,\n"
+" &#39;x_p&#39;: 20,\n"
+" &#39;r_n&#39;: 20,\n"
+" &#39;r_p&#39;: 20,\n"
+" &#39;r_n_prim&#39;: 20,\n"
+" &#39;r_p_prim&#39;: 20,\n"
+" &#39;r_n_sec&#39;: 20,\n"
+" &#39;r_p_sec&#39;: 20,\n"
+" &#39;y&#39;: 10,\n"
+" &#39;z&#39;: 10,\n"
+" &#39;R_n&#39;: 30,\n"
+" &#39;R_p&#39;: 30}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:160
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\\{'x\\_n': 20,\n"
+" 'x\\_s': 20,\n"
+" 'x\\_p': 20,\n"
+" 'r\\_n': 20,\n"
+" 'r\\_p': 20,\n"
+" 'r\\_n\\_prim': 20,\n"
+" 'r\\_p\\_prim': 20,\n"
+" 'r\\_n\\_sec': 20,\n"
+" 'r\\_p\\_sec': 20,\n"
+" 'y': 10,\n"
+" 'z': 10,\n"
+" 'R\\_n': 30,\n"
+" 'R\\_p': 30\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:179
+msgid ""
+"{'x_n': 20,\n"
+" 'x_s': 20,\n"
+" 'x_p': 20,\n"
+" 'r_n': 20,\n"
+" 'r_p': 20,\n"
+" 'r_n_prim': 20,\n"
+" 'r_p_prim': 20,\n"
+" 'r_n_sec': 20,\n"
+" 'r_p_sec': 20,\n"
+" 'y': 10,\n"
+" 'z': 10,\n"
+" 'R_n': 30,\n"
+" 'R_p': 30}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:202
+msgid ""
+"Note how the number of points is a dictionary where the key is the name of "
+"the spatial variable, and the value the number of points in the "
+"discretisation of that variable. To run a simulation with a different number "
+"of points we can define our own dictionary"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid ""
+"# create our dictionary\n"
+"var_pts = {\n"
+"    \"x_n\": 10,  # negative electrode\n"
+"    \"x_s\": 10,  # separator\n"
+"    \"x_p\": 10,  # positive electrode\n"
+"    \"r_n\": 10,  # negative particle\n"
+"    \"r_p\": 10,  # positive particle\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:230
+msgid "and pass it as a keyword argument when creating a simulation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "sim = pybamm.Simulation(model, var_pts=var_pts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:251
+msgid "We can then solve and plot the simulation as usual:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid ""
+"sim.solve([0, 3600])\n"
+"sim.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:275
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"57f6977be6e3499c85e6749f58cd75fa\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:286
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:430
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:292
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:436
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:299
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:443
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:311
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7efd0c200410&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:317
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7efd0c200410>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:324
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7efd0c200410>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:336
+msgid "Conducting a mesh refinement study"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:338
+msgid ""
+"In order to investigate the influence of the mesh on the solution we must "
+"solve the model multiple times, increasing the mesh resolution as we go. We "
+"first create a list of the number of points per domain we would like to use"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "npts = [4, 8, 16, 32, 64]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:359
+msgid ""
+"and now we can loop over the list, creating and solving simulations as we "
+"go. The solutions are stored in the list ``solutions``, similar to what we "
+"did in `Tutorial 2 <./tutorial-2-compare-models.ipynb>`__ for the various "
+"models."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid ""
+"# choose model and parameters\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"parameter_values = pybamm.ParameterValues(\"Ecker2015\")\n"
+"\n"
+"# loop over number of mesh points\n"
+"solutions = []\n"
+"for N in npts:\n"
+"    var_pts = {\n"
+"        \"x_n\": N,  # negative electrode\n"
+"        \"x_s\": N,  # separator\n"
+"        \"x_p\": N,  # positive electrode\n"
+"        \"r_n\": N,  # negative particle\n"
+"        \"r_p\": N,  # positive particle\n"
+"    }\n"
+"    sim = pybamm.Simulation(model, parameter_values=parameter_values, "
+"var_pts=var_pts)\n"
+"    sim.solve([0, 3600])\n"
+"    solutions.append(sim.solution)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:396
+msgid ""
+"We can now pass our list of solutions to the dynamic plot method, allowing "
+"use to see the influence of the mesh on the computed voltage. We pass our "
+"list of points using the ``labels`` keyword so that the plots are labeled "
+"with the number of points used in the simulation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "pybamm.dynamic_plot(solutions, [\"Voltage [V]\"], labels=npts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:419
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"875e8b946c8240c6933ba12767118950\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:455
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7efca8f58150&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:461
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7efca8f58150>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:468
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7efca8f58150>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:479
+msgid ""
+"This notebook concludes the \"Getting Started\" series, that demonstrated "
+"all the main features of PyBaMM. You may now want to explore more advanced "
+"features, so take a look at all the `examples available <https://docs.pybamm."
+"org/en/stable/source/examples/index.html>`__ in our website."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:491
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:493
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:514
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Madeleine Ecker, Stefan Käbitz, Izaro Laresgoiti, and Dirk Uwe Sauer. "
+"Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: II. "
+"Model Validation. Journal of The Electrochemical Society, 162(9):A1849–"
+"A1857, 2015. doi:10.1149/2.0541509jes.\n"
+"[4] Madeleine Ecker, Thi Kim Dung Tran, Philipp Dechent, Stefan Käbitz, "
+"Alexander Warnecke, and Dirk Uwe Sauer. Parameterization of a Physico-"
+"Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters. "
+"Journal of the Electrochemical Society, 162(9):A1836–A1848, 2015. "
+"doi:10.1149/2.0551509jes.\n"
+"[5] Alastair Hales, Laura Bravo Diaz, Mohamed Waseem Marzook, Yan Zhao, "
+"Yatish Patel, and Gregory Offer. The cell cooling coefficient: a standard to "
+"define heat rejection from lithium-ion batteries. Journal of The "
+"Electrochemical Society, 166(12):A2383, 2019.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Giles Richardson, Ivan Korotkin, Rahifa Ranom, Michael Castle, and Jamie "
+"M. Foster. Generalised single particle models for high-rate operation of "
+"graded lithium-ion electrodes: systematic derivation and validation. "
+"Electrochimica Acta, 339:135862, 2020. doi:10.1016/j.electacta.2020.135862.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Yan Zhao, Yatish Patel, Teng Zhang, and Gregory J Offer. Modeling the "
+"effects of thermal gradients induced by tab and surface cooling on lithium "
+"ion cell performance. Journal of The Electrochemical Society, 165(13):A3169, "
+"2018.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:530
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Madeleine Ecker, Stefan Käbitz, Izaro Laresgoiti, and Dirk Uwe Sauer. "
+"Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: II. "
+"Model Validation. Journal of The Electrochemical Society, 162(9):A1849–"
+"A1857, 2015. doi:10.1149/2.0541509jes.\n"
+"[4] Madeleine Ecker, Thi Kim Dung Tran, Philipp Dechent, Stefan Käbitz, "
+"Alexander Warnecke, and Dirk Uwe Sauer. Parameterization of a Physico-"
+"Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters. "
+"Journal of the Electrochemical Society, 162(9):A1836–A1848, 2015. "
+"doi:10.1149/2.0551509jes.\n"
+"[5] Alastair Hales, Laura Bravo Diaz, Mohamed Waseem Marzook, Yan Zhao, "
+"Yatish Patel, and Gregory Offer. The cell cooling coefficient: a standard to "
+"define heat rejection from lithium-ion batteries. Journal of The "
+"Electrochemical Society, 166(12):A2383, 2019.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Giles Richardson, Ivan Korotkin, Rahifa Ranom, Michael Castle, and Jamie "
+"M. Foster. Generalised single particle models for high-rate operation of "
+"graded lithium-ion electrodes: systematic derivation and validation. "
+"Electrochimica Acta, 339:135862, 2020. doi:10.1016/j.electacta.2020.135862.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Yan Zhao, Yatish Patel, Teng Zhang, and Gregory J Offer. Modeling the "
+"effects of thermal gradients induced by tab and surface cooling on lithium "
+"ion cell performance. Journal of The Electrochemical Society, 165(13):A3169, "
+"2018.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-9-changing-the-mesh.ipynb:547
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Madeleine Ecker, Stefan Käbitz, Izaro Laresgoiti, and Dirk Uwe Sauer. "
+"Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: II. "
+"Model Validation. Journal of The Electrochemical Society, 162(9):A1849–"
+"A1857, 2015. doi:10.1149/2.0541509jes.\n"
+"[4] Madeleine Ecker, Thi Kim Dung Tran, Philipp Dechent, Stefan Käbitz, "
+"Alexander Warnecke, and Dirk Uwe Sauer. Parameterization of a Physico-"
+"Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters. "
+"Journal of the Electrochemical Society, 162(9):A1836–A1848, 2015. "
+"doi:10.1149/2.0551509jes.\n"
+"[5] Alastair Hales, Laura Bravo Diaz, Mohamed Waseem Marzook, Yan Zhao, "
+"Yatish Patel, and Gregory Offer. The cell cooling coefficient: a standard to "
+"define heat rejection from lithium-ion batteries. Journal of The "
+"Electrochemical Society, 166(12):A2383, 2019.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Giles Richardson, Ivan Korotkin, Rahifa Ranom, Michael Castle, and Jamie "
+"M. Foster. Generalised single particle models for high-rate operation of "
+"graded lithium-ion electrodes: systematic derivation and validation. "
+"Electrochimica Acta, 339:135862, 2020. doi:10.1016/j.electacta.2020.135862.\n"
+"[9] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[10] Yan Zhao, Yatish Patel, Teng Zhang, and Gregory J Offer. Modeling the "
+"effects of thermal gradients induced by tab and surface cooling on lithium "
+"ion cell performance. Journal of The Electrochemical Society, 165(13):A3169, "
+"2018."
+msgstr ""
