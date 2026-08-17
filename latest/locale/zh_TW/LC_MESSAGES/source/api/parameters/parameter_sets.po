@@ -185,7 +185,7 @@ msgstr ""
 
 #: ../../../source/api/parameters/parameter_sets.rst:90
 msgid "Lead-acid Parameter Sets"
-msgstr ""
+msgstr "鉛酸參數集"
 
 #: ../../../source/api/parameters/parameter_sets.rst:92
 msgid ""
@@ -193,6 +193,9 @@ msgid ""
 "{{k}} ---------------------------- {{ parameter_sets.get_docstring(k) }} {% "
 "endfor %}"
 msgstr ""
+"{% for k,v in parameter_sets.items() if v.chemistry == \"lead_acid\" %} "
+"{{k}} ---------------------------- {{ parameter_sets.get_docstring(k) }} {% "
+"endfor %}"
 
 #: ../../../source/api/parameters/parameter_sets.rst:99
 msgid "Lithium-ion Parameter Sets"
