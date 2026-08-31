@@ -1,0 +1,304 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/performance/07-multithreading.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/performance/07-multithreading.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:9
+msgid "Running many simulations in parallel using OpenMP"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import time\n"
+"\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:35
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:48
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:59
+msgid ""
+"Workflows such as parameter sweeps require running many identical "
+"simulations with different input parameters. PyBaMM provides a way to run "
+"many simulations in parallel using OpenMP using the IDAKLU solver. Looking "
+"at the `API docs <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"idaklu_solver.html#pybamm.IDAKLUSolver>`__ for this solver, we see a "
+"``num_threads`` argument that can be used to set the number of threads to "
+"use when creating the solver, like so:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "solver = pybamm.IDAKLUSolver(options={\"num_threads\": 2})"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:80
+msgid ""
+"This option will have no effect if you try to solve a single simulation, but "
+"if use an input parameter in your model and pass in a list of values for "
+"that parameter, PyBaMM will automatically distribute the simulations across "
+"the number of threads you specify. For example,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"params = model.default_parameter_values\n"
+"params[\"Current function [A]\"] = \"[input]\"\n"
+"sim = pybamm.Simulation(model, parameter_values=params, solver=solver)\n"
+"sim.solve(\n"
+"    [0, 3600], inputs=[{\"Current function [A]\": 1}, {\"Current function "
+"[A]\": 0.5}]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:108
+msgid ""
+"<pre>\n"
+"[&lt;pybamm.solvers.solution.Solution at 0x7d2a1418dfc0&gt;,\n"
+" &lt;pybamm.solvers.solution.Solution at 0x7d2a1418e170&gt;]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:115
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[<pybamm.solvers.solution.Solution at 0x7d2a1418dfc0>,\n"
+" <pybamm.solvers.solution.Solution at 0x7d2a1418e170>]\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:123
+msgid ""
+"[<pybamm.solvers.solution.Solution at 0x7d2a1418dfc0>,\n"
+" <pybamm.solvers.solution.Solution at 0x7d2a1418e170>]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:135
+msgid ""
+"The previous code will then run the 2 simulations in parallel on 2 threads. "
+"Since we are solving such a small number of simulations, the overhead of "
+"parallelization will not be worth it and it is likely that this will be "
+"slower than solving in serial. Below we show an example of solving 1000 "
+"simulations in parallel, varying the number of threads used to see the "
+"effect on the runtime."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid ""
+"n = 1e3\n"
+"current_inputs = [\n"
+"    {\"Current function [A]\": current} for current in np.linspace(0, 0.6, "
+"int(n))\n"
+"]\n"
+"num_threads_list = [1, 2, 4, 8, 16, 32]\n"
+"for num_threads in reversed(num_threads_list):\n"
+"    model = pybamm.lithium_ion.DFN()\n"
+"    params = model.default_parameter_values\n"
+"    params.update(\n"
+"        {\n"
+"            \"Current function [A]\": \"[input]\",\n"
+"        }\n"
+"    )\n"
+"    solver = pybamm.IDAKLUSolver(options={\"num_threads\": num_threads})\n"
+"    sim = pybamm.Simulation(model, solver=solver, parameter_values=params)\n"
+"    start_time = time.perf_counter()\n"
+"    sol = sim.solve([0, 3600], inputs=current_inputs)\n"
+"    end_time = time.perf_counter()\n"
+"    print(\n"
+"        f\"Time taken to solve 1000 DFN simulation for {num_threads} "
+"threads: {end_time - start_time:.2f} s\"\n"
+"    )"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:176
+msgid ""
+"<pre>\n"
+"Time taken to solve 1000 DFN simulation for 32 threads: 2.65 s\n"
+"Time taken to solve 1000 DFN simulation for 16 threads: 3.72 s\n"
+"Time taken to solve 1000 DFN simulation for 8 threads: 6.07 s\n"
+"Time taken to solve 1000 DFN simulation for 4 threads: 10.11 s\n"
+"Time taken to solve 1000 DFN simulation for 2 threads: 17.73 s\n"
+"Time taken to solve 1000 DFN simulation for 1 threads: 26.46 s\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:187
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Time taken to solve 1000 DFN simulation for 32 threads: 2.65 s\n"
+"Time taken to solve 1000 DFN simulation for 16 threads: 3.72 s\n"
+"Time taken to solve 1000 DFN simulation for 8 threads: 6.07 s\n"
+"Time taken to solve 1000 DFN simulation for 4 threads: 10.11 s\n"
+"Time taken to solve 1000 DFN simulation for 2 threads: 17.73 s\n"
+"Time taken to solve 1000 DFN simulation for 1 threads: 26.46 s\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:199
+msgid ""
+"Time taken to solve 1000 DFN simulation for 32 threads: 2.65 s\n"
+"Time taken to solve 1000 DFN simulation for 16 threads: 3.72 s\n"
+"Time taken to solve 1000 DFN simulation for 8 threads: 6.07 s\n"
+"Time taken to solve 1000 DFN simulation for 4 threads: 10.11 s\n"
+"Time taken to solve 1000 DFN simulation for 2 threads: 17.73 s\n"
+"Time taken to solve 1000 DFN simulation for 1 threads: 26.46 s"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:215
+msgid ""
+"You can see that the speed-up from using more threads starts to diminish "
+"after a certain point (about 20-30 threads), and this effect will be more "
+"pronounced for smaller numbers of simulations, or if the simulations are "
+"very quick to solve (e.g. an SPM model). Below we show the same example, but "
+"this time using the SPM model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:-1
+msgid ""
+"n = 1e3\n"
+"current_inputs = [\n"
+"    {\"Current function [A]\": current} for current in np.linspace(0, 0.6, "
+"int(n))\n"
+"]\n"
+"num_threads_list = [1, 2, 4, 8, 16, 32]\n"
+"for num_threads in reversed(num_threads_list):\n"
+"    model = pybamm.lithium_ion.SPM()\n"
+"    params = model.default_parameter_values\n"
+"    params.update(\n"
+"        {\n"
+"            \"Current function [A]\": \"[input]\",\n"
+"        }\n"
+"    )\n"
+"    solver = pybamm.IDAKLUSolver(options={\"num_threads\": num_threads})\n"
+"    sim = pybamm.Simulation(model, solver=solver, parameter_values=params)\n"
+"    start_time = time.perf_counter()\n"
+"    sol = sim.solve([0, 3600], inputs=current_inputs)\n"
+"    end_time = time.perf_counter()\n"
+"    print(\n"
+"        f\"Time taken to solve 1000 SPM simulation for {num_threads} "
+"threads: {end_time - start_time:.2f} s\"\n"
+"    )"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:256
+msgid ""
+"<pre>\n"
+"Time taken to solve 1000 SPM simulation for 32 threads: 0.42 s\n"
+"Time taken to solve 1000 SPM simulation for 16 threads: 0.70 s\n"
+"Time taken to solve 1000 SPM simulation for 8 threads: 0.43 s\n"
+"Time taken to solve 1000 SPM simulation for 4 threads: 0.53 s\n"
+"Time taken to solve 1000 SPM simulation for 2 threads: 0.90 s\n"
+"Time taken to solve 1000 SPM simulation for 1 threads: 0.86 s\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:267
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Time taken to solve 1000 SPM simulation for 32 threads: 0.42 s\n"
+"Time taken to solve 1000 SPM simulation for 16 threads: 0.70 s\n"
+"Time taken to solve 1000 SPM simulation for 8 threads: 0.43 s\n"
+"Time taken to solve 1000 SPM simulation for 4 threads: 0.53 s\n"
+"Time taken to solve 1000 SPM simulation for 2 threads: 0.90 s\n"
+"Time taken to solve 1000 SPM simulation for 1 threads: 0.86 s\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:279
+msgid ""
+"Time taken to solve 1000 SPM simulation for 32 threads: 0.42 s\n"
+"Time taken to solve 1000 SPM simulation for 16 threads: 0.70 s\n"
+"Time taken to solve 1000 SPM simulation for 8 threads: 0.43 s\n"
+"Time taken to solve 1000 SPM simulation for 4 threads: 0.53 s\n"
+"Time taken to solve 1000 SPM simulation for 2 threads: 0.90 s\n"
+"Time taken to solve 1000 SPM simulation for 1 threads: 0.86 s"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/07-multithreading.ipynb:295
+msgid ""
+"So in this case the speed-up for using multiple threads to solve 1000 SPM "
+"simulations is much less than for the DFN simulations, and above 4 threads "
+"no speed-up is observed at all."
+msgstr ""

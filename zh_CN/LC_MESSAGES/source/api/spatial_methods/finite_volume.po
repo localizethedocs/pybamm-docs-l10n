@@ -1,0 +1,720 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/finite_volume.rst:2
+msgid "Finite Volume"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:1
+msgid ""
+"A class which implements the steps specific to the finite volume method "
+"during discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:4
+msgid ""
+"For broadcast and mass_matrix, we follow the default behaviour from "
+"SpatialMethod."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:0
+#: ../../../source/api/spatial_methods/finite_volume.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:6
+msgid ""
+"A dictionary of options to be passed to the spatial method. The only option "
+"currently available is \"extrapolation\", which has options for \"order\" "
+"and \"use_bcs\". It sets the order separately for `pybamm.BoundaryValue` and "
+"`pybamm.BoundaryGradient`. Default is \"linear\" for the value and quadratic "
+"for the gradient."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:12
+msgid ""
+"**Extends:** :class:`pybamm.spatial_methods.spatial_method.SpatialMethod`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:1
+msgid "Add ghost nodes to a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:3
+msgid ""
+"For Dirichlet bcs, for a boundary condition \"y = a at the left-hand "
+"boundary\", we concatenate a ghost node to the start of the vector y with "
+"value \"2*a - y1\" where y1 is the value of the first node. Similarly for "
+"the right-hand boundary condition."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:8
+msgid ""
+"For Neumann bcs no ghost nodes are added. Instead, the exact value provided "
+"by the boundary condition is used at the cell edge when calculating the "
+"gradient (see :meth:`pybamm.FiniteVolume.add_neumann_values`)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:12
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:7
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:5
+msgid "The variable to be discretised"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:14
+msgid "Contains the discretised variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:16
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:11
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:9
+msgid ""
+"Dictionary (with keys \"left\" and \"right\") of boundary conditions. Each "
+"boundary condition consists of a value and a flag indicating its type (e.g. "
+"\"Dirichlet\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:0
+#: ../../../source/api/spatial_methods/finite_volume.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:21
+msgid ""
+"`Matrix @ discretised_symbol + bcs_vector`. When evaluated, this gives the "
+"discretised_symbol, with appropriate ghost nodes concatenated at each end."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:0
+#: ../../../source/api/spatial_methods/finite_volume.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:23
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:21
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:23
+msgid ":class:`pybamm.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:1
+msgid ""
+"Add the known values of the gradient from Neumann boundary conditions to the "
+"discretised gradient."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:4
+msgid ""
+"Dirichlet bcs are implemented using ghost nodes, see :meth:`pybamm."
+"FiniteVolume.add_ghost_nodes`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:9
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:7
+msgid "Contains the discretised gradient of symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:15
+msgid "The domain of the gradient of the symbol (may include ghost nodes)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:18
+msgid ""
+"`Matrix @ discretised_gradient + bcs_vector`. When evaluated, this gives the "
+"discretised_gradient, with the values of the Neumann boundary conditions "
+"concatenated at each end (if given)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.boundary_value_or_flux:1
+msgid ""
+"Uses extrapolation to get the boundary value or flux of a variable in the "
+"Finite Volume Method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.boundary_value_or_flux:4
+msgid "See :meth:`pybamm.SpatialMethod.boundary_value`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.concatenation:1
+msgid ""
+"Discrete concatenation, taking `edge_to_node` for children that evaluate on "
+"edges. See :meth:`pybamm.SpatialMethod.concatenation`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:1
+msgid ""
+"Matrix for finite-volume implementation of the definite integral in the "
+"primary dimension"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:4
+msgid ""
+"I = \\int_{a}^{b}\\!f(s)\\,ds\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:7
+msgid ""
+"for where :math:`a` and :math:`b` are the left-hand and right-hand "
+"boundaries of the domain respectively"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:10
+msgid "The symbol being integrated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:12
+msgid ""
+"Whether to return a row or column vector in the primary dimension (default "
+"is row)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:15
+msgid "The dimension in which to integrate (default is \"primary\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:18
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:10
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:11
+msgid "The finite volume integral matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:19
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:8
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:8
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:11
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:12
+msgid ":class:`pybamm.Matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.delta_function:1
+msgid ""
+"Delta function. Implemented as a vector whose only non-zero element is the "
+"first (if symbol.side = \"left\") or last (if symbol.side = \"right\"), with "
+"appropriate value so that the integral of the delta function across the "
+"whole domain is the same as the integral of the discretised symbol across "
+"the whole domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.delta_function:7
+msgid "See :meth:`pybamm.SpatialMethod.delta_function`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence:1
+msgid ""
+"Matrix-vector multiplication to implement the divergence operator. See :meth:"
+"`pybamm.SpatialMethod.divergence`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:1
+msgid ""
+"Divergence matrix for finite volumes in the appropriate domain. Equivalent "
+"to div(N) = (N[1:] - N[:-1])/dx"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:4
+msgid ""
+"The domain(s) and auxiliary domain in which to compute the divergence matrix"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:7
+msgid "The (sparse) finite volume divergence matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.edge_to_node:1
+msgid ""
+"Convert a discretised symbol evaluated on the cell edges to a discretised "
+"symbol evaluated on the cell nodes. See :meth:`pybamm.FiniteVolume.shift`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:1
+msgid "Returns the symbol evaluated at a given position in space."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:3
+msgid "The boundary value or flux symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:5
+msgid "The discretised variable from which to calculate the boundary value"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:7
+msgid "The point in one-dimensional space at which to evaluate the symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:10
+msgid "The variable representing the value at the given point."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.evaluate_at:11
+msgid ":class:`pybamm.MatrixMultiplication`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient:1
+msgid ""
+"Matrix-vector multiplication to implement the gradient operator. See :meth:"
+"`pybamm.SpatialMethod.gradient`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:1
+msgid ""
+"Gradient matrix for finite volumes in the appropriate domain. Equivalent to "
+"grad(y) = (y[1:] - y[:-1])/dx"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:4
+msgid ""
+"The domain in which to compute the gradient matrix, including ghost nodes"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:7
+msgid "The (sparse) finite volume gradient matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral:1
+msgid "Implementation of the indefinite integral operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:1
+msgid ""
+"Matrix for finite-volume implementation of the indefinite integral where the "
+"integrand is evaluated on mesh edges (shape (n+1, 1)). The integral will "
+"then be evaluated on mesh nodes (shape (n, 1))."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:5
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:6
+msgid "The domain(s) and auxiliary domains of integration"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:7
+msgid "The direction of integration (forward or backward). See notes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:14
+msgid "Notes"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:15
+msgid "**Forward integral**"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:17
+msgid ""
+"F(x) = \\int_0^x\\!f(u)\\,du\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:20
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:44
+msgid "The indefinite integral must satisfy the following conditions:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:22
+msgid ":math:`F(0) = 0`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:23
+msgid ":math:`f(x) = \\frac{dF}{dx}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:25
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:49
+msgid "or, in discrete form,"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:27
+msgid "`BoundaryValue(F, \"left\") = 0`, i.e. :math:`3*F_0 - F_1 = 0`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:28
+msgid ":math:`f_{i+1/2} = (F_{i+1} - F_i) / dx_{i+1/2}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:30
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:54
+msgid "Hence we must have"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:32
+msgid ":math:`F_0 = du_{1/2} * f_{1/2} / 2`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:33
+msgid ":math:`F_{i+1} = F_i + du_{i+1/2} * f_{i+1/2}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:35
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:59
+msgid ""
+"Note that :math:`f_{-1/2}` and :math:`f_{end+1/2}` are included in the "
+"discrete integrand vector `f`, so we add a column of zeros at each end of "
+"the indefinite integral matrix to ignore these."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:39
+msgid "**Backward integral**"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:41
+msgid ""
+"F(x) = \\int_x^{end}\\!f(u)\\,du\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:46
+msgid ":math:`F(end) = 0`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:47
+msgid ":math:`f(x) = -\\frac{dF}{dx}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:51
+msgid ""
+"`BoundaryValue(F, \"right\") = 0`, i.e. :math:`3*F_{end} - F_{end-1} = 0`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:52
+msgid ":math:`f_{i+1/2} = -(F_{i+1} - F_i) / dx_{i+1/2}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:56
+msgid ":math:`F_{end} = du_{end+1/2} * f_{end-1/2} / 2`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:57
+msgid ":math:`F_{i-1} = F_i + du_{i-1/2} * f_{i-1/2}`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:1
+msgid ""
+"Matrix for finite-volume implementation of the (backward) indefinite "
+"integral where the integrand is evaluated on mesh nodes (shape (n, 1)). The "
+"integral will then be evaluated on mesh edges (shape (n+1, 1)). This is just "
+"a straightforward (backward) cumulative sum of the integrand"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:8
+msgid "The direction of integration (forward or backward)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.integral:1
+msgid "Vector-vector dot product to implement the integral operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.internal_neumann_condition:1
+msgid ""
+"A method to find the internal Neumann conditions between two symbols on "
+"adjacent subdomains."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.internal_neumann_condition:4
+msgid "The discretised symbol on the left subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.internal_neumann_condition:6
+msgid "The discretised symbol on the right subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.internal_neumann_condition:8
+msgid "The mesh on the left subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.internal_neumann_condition:10
+msgid "The mesh on the right subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.laplacian:1
+msgid ""
+"Laplacian operator, implemented as div(grad(.)) See :meth:`pybamm."
+"SpatialMethod.laplacian`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.node_to_edge:1
+msgid ""
+"Convert a discretised symbol evaluated on the cell nodes to a discretised "
+"symbol evaluated on the cell edges. See :meth:`pybamm.FiniteVolume.shift`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:1
+msgid ""
+"Discretise binary operators in model equations.  Performs appropriate "
+"averaging of diffusivities if one of the children is a gradient operator, so "
+"that discretised sizes match up. For this averaging we use the harmonic mean "
+"[1]."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:6
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:7
+msgid ""
+"[1] Recktenwald, Gerald. \"The control-volume finite-difference "
+"approximation to the diffusion equation.\" (2012)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:9
+msgid "Binary operator to discretise"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:11
+msgid "The left child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:13
+msgid "The right child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:15
+msgid "The discretised left child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:17
+msgid "The discretised right child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:20
+msgid "Discretised binary operator"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:21
+msgid ":class:`pybamm.BinaryOperator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:1
+msgid ""
+"Convert a discretised symbol evaluated at edges/nodes, to a discretised "
+"symbol evaluated at nodes/edges. Can be the arithmetic mean or the harmonic "
+"mean."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:4
+msgid ""
+"Note: when computing fluxes at cell edges it is better to take the harmonic "
+"mean based on [1]."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:10
+msgid ""
+"Symbol to be averaged. When evaluated, this symbol returns either a scalar "
+"or an array of shape (n,) or (n+1,), where n is the number of points in the "
+"mesh for the symbol's domain (n = self.mesh[symbol.domain].npts)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:14
+msgid ""
+"Whether to shift from nodes to edges (\"node to edge\"), or from edges to "
+"nodes (\"edge to node\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:17
+msgid "Whether to use the \"arithmetic\" or \"harmonic\" mean"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:20
+msgid ""
+"Averaged symbol. When evaluated, this returns either a scalar or an array of "
+"shape (n+1,) (if `shift_key = \"node to edge\"`) or (n,) (if `shift_key = "
+"\"edge to node\"`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.spatial_variable:1
+msgid ""
+"Creates a discretised spatial variable compatible with the FiniteVolume "
+"method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.spatial_variable:4
+msgid "The spatial variable to be discretised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.spatial_variable:7
+msgid "Contains the discretised spatial variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.spatial_variable:8
+msgid ":class:`pybamm.Vector`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:1
+msgid ""
+"Implement an upwinding operator. Currently, this requires the symbol to have "
+"a Dirichlet boundary condition on the left side (for upwinding) or right "
+"side (for downwinding)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:13
+msgid "Direction in which to apply the operator (upwind or downwind)"
+msgstr ""
