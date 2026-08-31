@@ -1,0 +1,1490 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Tutorial 3 - Basic plotting &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/getting_started/tutorial-3-basic-plotting';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/getting_started/tutorial-3-basic-plotting.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Tutorial 4 - Setting parameter values" href="tutorial-4-setting-parameter-values.html" />
+    <link rel="prev" title="Tutorial 2 - Compare models" href="tutorial-2-compare-models.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/contributing.html">Contributing to PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/release.html">PyBaMM Release Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../user_guide/index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Tutorial 3 - Basic plotting</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/getting_started/tutorial-3-basic-plotting.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/getting_started/tutorial-3-basic-plotting.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Tutorial-3---Basic-plotting">
+<h1>Tutorial 3 - Basic plotting<a class="headerlink" href="#Tutorial-3---Basic-plotting" title="Link to this heading">#</a></h1>
+<p>In <a class="reference internal" href="tutorial-2-compare-models.html"><span class="doc">Tutorial 2</span></a>, we made use of PyBaMM’s automatic plotting function when comparing models. This gave a good quick overview of many of the key variables in the model. However, by passing in just a few arguments it is easy to plot any of the many other variables that may be of interest to you. We start by building and solving a model as before:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> A new release of pip is available: <span class="ansi-red-fg">23.3.1</span> -&gt; <span class="ansi-green-fg">23.3.2</span>
+<span class="ansi-bold">[</span><span class="ansi-blue-fg">notice</span><span class="ansi-bold">]</span> To update, run: <span class="ansi-green-fg">pip install --upgrade pip</span>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.solvers.solution.Solution at 0x7fe14bc6cb90&gt;
+</pre></div></div>
+</div>
+<p>There are many more variables available from PyBaMM models than those in the default plots. One can see a full list of the available variables by just calling the <code class="docutils literal notranslate"><span class="pre">variable_names</span></code> method:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">variable_names</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;Time [s]&#39;,
+ &#39;Time [min]&#39;,
+ &#39;Time [h]&#39;,
+ &#39;x [m]&#39;,
+ &#39;x_n [m]&#39;,
+ &#39;x_s [m]&#39;,
+ &#39;x_p [m]&#39;,
+ &#39;r_n [m]&#39;,
+ &#39;r_p [m]&#39;,
+ &#39;Current variable [A]&#39;,
+ &#39;Total current density [A.m-2]&#39;,
+ &#39;Current [A]&#39;,
+ &#39;C-rate&#39;,
+ &#39;Discharge capacity [A.h]&#39;,
+ &#39;Throughput capacity [A.h]&#39;,
+ &#39;Discharge energy [W.h]&#39;,
+ &#39;Throughput energy [W.h]&#39;,
+ &#39;Porosity&#39;,
+ &#39;Negative electrode porosity&#39;,
+ &#39;X-averaged negative electrode porosity&#39;,
+ &#39;Separator porosity&#39;,
+ &#39;X-averaged separator porosity&#39;,
+ &#39;Positive electrode porosity&#39;,
+ &#39;X-averaged positive electrode porosity&#39;,
+ &#39;Porosity change&#39;,
+ &#39;Negative electrode porosity change [s-1]&#39;,
+ &#39;X-averaged negative electrode porosity change [s-1]&#39;,
+ &#39;Separator porosity change [s-1]&#39;,
+ &#39;X-averaged separator porosity change [s-1]&#39;,
+ &#39;Positive electrode porosity change [s-1]&#39;,
+ &#39;X-averaged positive electrode porosity change [s-1]&#39;,
+ &#39;Negative electrode interface utilisation variable&#39;,
+ &#39;X-averaged negative electrode interface utilisation variable&#39;,
+ &#39;Negative electrode interface utilisation&#39;,
+ &#39;X-averaged negative electrode interface utilisation&#39;,
+ &#39;Positive electrode interface utilisation variable&#39;,
+ &#39;X-averaged positive electrode interface utilisation variable&#39;,
+ &#39;Positive electrode interface utilisation&#39;,
+ &#39;X-averaged positive electrode interface utilisation&#39;,
+ &#39;Negative particle crack length [m]&#39;,
+ &#39;X-averaged negative particle crack length [m]&#39;,
+ &#39;Negative particle cracking rate [m.s-1]&#39;,
+ &#39;X-averaged negative particle cracking rate [m.s-1]&#39;,
+ &#39;Positive particle crack length [m]&#39;,
+ &#39;X-averaged positive particle crack length [m]&#39;,
+ &#39;Positive particle cracking rate [m.s-1]&#39;,
+ &#39;X-averaged positive particle cracking rate [m.s-1]&#39;,
+ &#39;Negative electrode active material volume fraction&#39;,
+ &#39;X-averaged negative electrode active material volume fraction&#39;,
+ &#39;Negative electrode capacity [A.h]&#39;,
+ &#39;Negative particle radius&#39;,
+ &#39;Negative particle radius [m]&#39;,
+ &#39;X-averaged negative particle radius [m]&#39;,
+ &#39;Negative electrode surface area to volume ratio [m-1]&#39;,
+ &#39;X-averaged negative electrode surface area to volume ratio [m-1]&#39;,
+ &#39;Negative electrode active material volume fraction change [s-1]&#39;,
+ &#39;X-averaged negative electrode active material volume fraction change [s-1]&#39;,
+ &#39;Loss of lithium due to loss of active material in negative electrode [mol]&#39;,
+ &#39;Positive electrode active material volume fraction&#39;,
+ &#39;X-averaged positive electrode active material volume fraction&#39;,
+ &#39;Positive electrode capacity [A.h]&#39;,
+ &#39;Positive particle radius&#39;,
+ &#39;Positive particle radius [m]&#39;,
+ &#39;X-averaged positive particle radius [m]&#39;,
+ &#39;Positive electrode surface area to volume ratio [m-1]&#39;,
+ &#39;X-averaged positive electrode surface area to volume ratio [m-1]&#39;,
+ &#39;Positive electrode active material volume fraction change [s-1]&#39;,
+ &#39;X-averaged positive electrode active material volume fraction change [s-1]&#39;,
+ &#39;Loss of lithium due to loss of active material in positive electrode [mol]&#39;,
+ &#39;Separator pressure [Pa]&#39;,
+ &#39;X-averaged separator pressure [Pa]&#39;,
+ &#39;negative electrode transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;X-averaged negative electrode transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;separator transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;X-averaged separator transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;positive electrode transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;X-averaged positive electrode transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;Transverse volume-averaged velocity [m.s-1]&#39;,
+ &#39;negative electrode transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged negative electrode transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;separator transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged separator transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;positive electrode transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged positive electrode transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;Transverse volume-averaged acceleration [m.s-2]&#39;,
+ &#39;Negative electrode volume-averaged velocity [m.s-1]&#39;,
+ &#39;Negative electrode volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged negative electrode volume-averaged acceleration [m.s-2]&#39;,
+ &#39;Negative electrode pressure [Pa]&#39;,
+ &#39;X-averaged negative electrode pressure [Pa]&#39;,
+ &#39;Positive electrode volume-averaged velocity [m.s-1]&#39;,
+ &#39;Positive electrode volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged positive electrode volume-averaged acceleration [m.s-2]&#39;,
+ &#39;Positive electrode pressure [Pa]&#39;,
+ &#39;X-averaged positive electrode pressure [Pa]&#39;,
+ &#39;Negative particle concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative particle concentration [mol.m-3]&#39;,
+ &#39;R-averaged negative particle concentration [mol.m-3]&#39;,
+ &#39;Average negative particle concentration [mol.m-3]&#39;,
+ &#39;Negative particle surface concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative particle surface concentration [mol.m-3]&#39;,
+ &#39;Minimum negative particle concentration [mol.m-3]&#39;,
+ &#39;Maximum negative particle concentration [mol.m-3]&#39;,
+ &#39;Minimum negative particle Minimum negative particle surface concentration [mol.m-3]&#39;,
+ &#39;Maximum negative particle surface concentration [mol.m-3]&#39;,
+ &#39;Negative particle concentration&#39;,
+ &#39;X-averaged negative particle concentration&#39;,
+ &#39;R-averaged negative particle concentration&#39;,
+ &#39;Average negative particle concentration&#39;,
+ &#39;Negative particle surface concentration&#39;,
+ &#39;X-averaged negative particle surface concentration&#39;,
+ &#39;Minimum negative particle concentration&#39;,
+ &#39;Maximum negative particle concentration&#39;,
+ &#39;Minimum negative particle surface concentration&#39;,
+ &#39;Maximum negative particle surface concentration&#39;,
+ &#39;Negative particle stoichiometry&#39;,
+ &#39;X-averaged negative particle stoichiometry&#39;,
+ &#39;R-averaged negative particle stoichiometry&#39;,
+ &#39;Average negative particle stoichiometry&#39;,
+ &#39;Negative particle surface stoichiometry&#39;,
+ &#39;X-averaged negative particle surface stoichiometry&#39;,
+ &#39;Minimum negative particle stoichiometry&#39;,
+ &#39;Maximum negative particle stoichiometry&#39;,
+ &#39;Minimum negative particle surface stoichiometry&#39;,
+ &#39;Maximum negative particle surface stoichiometry&#39;,
+ &#39;Negative electrode extent of lithiation&#39;,
+ &#39;X-averaged negative electrode extent of lithiation&#39;,
+ &#39;Positive particle concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive particle concentration [mol.m-3]&#39;,
+ &#39;R-averaged positive particle concentration [mol.m-3]&#39;,
+ &#39;Average positive particle concentration [mol.m-3]&#39;,
+ &#39;Positive particle surface concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive particle surface concentration [mol.m-3]&#39;,
+ &#39;Minimum positive particle concentration [mol.m-3]&#39;,
+ &#39;Maximum positive particle concentration [mol.m-3]&#39;,
+ &#39;Minimum positive particle Minimum positive particle surface concentration [mol.m-3]&#39;,
+ &#39;Maximum positive particle surface concentration [mol.m-3]&#39;,
+ &#39;Positive particle concentration&#39;,
+ &#39;X-averaged positive particle concentration&#39;,
+ &#39;R-averaged positive particle concentration&#39;,
+ &#39;Average positive particle concentration&#39;,
+ &#39;Positive particle surface concentration&#39;,
+ &#39;X-averaged positive particle surface concentration&#39;,
+ &#39;Minimum positive particle concentration&#39;,
+ &#39;Maximum positive particle concentration&#39;,
+ &#39;Minimum positive particle surface concentration&#39;,
+ &#39;Maximum positive particle surface concentration&#39;,
+ &#39;Positive particle stoichiometry&#39;,
+ &#39;X-averaged positive particle stoichiometry&#39;,
+ &#39;R-averaged positive particle stoichiometry&#39;,
+ &#39;Average positive particle stoichiometry&#39;,
+ &#39;Positive particle surface stoichiometry&#39;,
+ &#39;X-averaged positive particle surface stoichiometry&#39;,
+ &#39;Minimum positive particle stoichiometry&#39;,
+ &#39;Maximum positive particle stoichiometry&#39;,
+ &#39;Minimum positive particle surface stoichiometry&#39;,
+ &#39;Maximum positive particle surface stoichiometry&#39;,
+ &#39;Positive electrode extent of lithiation&#39;,
+ &#39;X-averaged positive electrode extent of lithiation&#39;,
+ &#39;Negative electrode potential [V]&#39;,
+ &#39;X-averaged negative electrode potential [V]&#39;,
+ &#39;Negative electrode ohmic losses [V]&#39;,
+ &#39;X-averaged negative electrode ohmic losses [V]&#39;,
+ &#39;Gradient of negative electrode potential [V.m-1]&#39;,
+ &#39;Positive electrode potential [V]&#39;,
+ &#39;X-averaged positive electrode potential [V]&#39;,
+ &#39;Positive electrode ohmic losses [V]&#39;,
+ &#39;X-averaged positive electrode ohmic losses [V]&#39;,
+ &#39;Gradient of positive electrode potential [V.m-1]&#39;,
+ &#39;Porosity times concentration [mol.m-3]&#39;,
+ &#39;Negative electrode porosity times concentration [mol.m-3]&#39;,
+ &#39;Separator porosity times concentration [mol.m-3]&#39;,
+ &#39;Positive electrode porosity times concentration [mol.m-3]&#39;,
+ &#39;Total lithium in electrolyte [mol]&#39;,
+ &#39;Electrolyte potential [V]&#39;,
+ &#39;X-averaged electrolyte potential [V]&#39;,
+ &#39;X-averaged electrolyte overpotential [V]&#39;,
+ &#39;Gradient of electrolyte potential [V.m-1]&#39;,
+ &#39;Negative electrolyte potential [V]&#39;,
+ &#39;X-averaged negative electrolyte potential [V]&#39;,
+ &#39;Gradient of negative electrolyte potential [V.m-1]&#39;,
+ &#39;Separator electrolyte potential [V]&#39;,
+ &#39;X-averaged separator electrolyte potential [V]&#39;,
+ &#39;Gradient of separator electrolyte potential [V.m-1]&#39;,
+ &#39;Positive electrolyte potential [V]&#39;,
+ &#39;X-averaged positive electrolyte potential [V]&#39;,
+ &#39;Gradient of positive electrolyte potential [V.m-1]&#39;,
+ &#39;Ambient temperature [K]&#39;,
+ &#39;Volume-averaged ambient temperature [K]&#39;,
+ &#39;Cell temperature [K]&#39;,
+ &#39;Negative current collector temperature [K]&#39;,
+ &#39;Positive current collector temperature [K]&#39;,
+ &#39;X-averaged cell temperature [K]&#39;,
+ &#39;Volume-averaged cell temperature [K]&#39;,
+ &#39;Negative electrode temperature [K]&#39;,
+ &#39;X-averaged negative electrode temperature [K]&#39;,
+ &#39;Separator temperature [K]&#39;,
+ &#39;X-averaged separator temperature [K]&#39;,
+ &#39;Positive electrode temperature [K]&#39;,
+ &#39;X-averaged positive electrode temperature [K]&#39;,
+ &#39;Ambient temperature [C]&#39;,
+ &#39;Volume-averaged ambient temperature [C]&#39;,
+ &#39;Cell temperature [C]&#39;,
+ &#39;Negative current collector temperature [C]&#39;,
+ &#39;Positive current collector temperature [C]&#39;,
+ &#39;X-averaged cell temperature [C]&#39;,
+ &#39;Volume-averaged cell temperature [C]&#39;,
+ &#39;Negative electrode temperature [C]&#39;,
+ &#39;X-averaged negative electrode temperature [C]&#39;,
+ &#39;Separator temperature [C]&#39;,
+ &#39;X-averaged separator temperature [C]&#39;,
+ &#39;Positive electrode temperature [C]&#39;,
+ &#39;X-averaged positive electrode temperature [C]&#39;,
+ &#39;Negative current collector potential [V]&#39;,
+ &#39;Negative inner SEI thickness [m]&#39;,
+ &#39;Negative outer SEI thickness [m]&#39;,
+ &#39;X-averaged negative inner SEI thickness [m]&#39;,
+ &#39;X-averaged negative outer SEI thickness [m]&#39;,
+ &#39;Negative SEI [m]&#39;,
+ &#39;Negative total SEI thickness [m]&#39;,
+ &#39;X-averaged negative SEI thickness [m]&#39;,
+ &#39;X-averaged negative total SEI thickness [m]&#39;,
+ &#39;X-averaged negative electrode resistance [Ohm.m2]&#39;,
+ &#39;Negative electrode inner SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode inner SEI interfacial current density [A.m-2]&#39;,
+ &#39;Negative electrode outer SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode outer SEI interfacial current density [A.m-2]&#39;,
+ &#39;Negative electrode SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode SEI interfacial current density [A.m-2]&#39;,
+ &#39;Positive inner SEI thickness [m]&#39;,
+ &#39;Positive outer SEI thickness [m]&#39;,
+ &#39;X-averaged positive inner SEI thickness [m]&#39;,
+ &#39;X-averaged positive outer SEI thickness [m]&#39;,
+ &#39;Positive SEI [m]&#39;,
+ &#39;Positive total SEI thickness [m]&#39;,
+ &#39;X-averaged positive SEI thickness [m]&#39;,
+ &#39;X-averaged positive total SEI thickness [m]&#39;,
+ &#39;X-averaged positive electrode resistance [Ohm.m2]&#39;,
+ &#39;Positive electrode inner SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode inner SEI interfacial current density [A.m-2]&#39;,
+ &#39;Positive electrode outer SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode outer SEI interfacial current density [A.m-2]&#39;,
+ &#39;Positive electrode SEI interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode SEI interfacial current density [A.m-2]&#39;,
+ &#39;Negative inner SEI on cracks thickness [m]&#39;,
+ &#39;Negative outer SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged negative inner SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged negative outer SEI on cracks thickness [m]&#39;,
+ &#39;Negative SEI on cracks [m]&#39;,
+ &#39;Negative total SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged negative SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged negative total SEI on cracks thickness [m]&#39;,
+ &#39;Negative electrode inner SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode inner SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Negative electrode outer SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode outer SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Negative electrode SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Positive inner SEI on cracks thickness [m]&#39;,
+ &#39;Positive outer SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged positive inner SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged positive outer SEI on cracks thickness [m]&#39;,
+ &#39;Positive SEI on cracks [m]&#39;,
+ &#39;Positive total SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged positive SEI on cracks thickness [m]&#39;,
+ &#39;X-averaged positive total SEI on cracks thickness [m]&#39;,
+ &#39;Positive electrode inner SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode inner SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Positive electrode outer SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode outer SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Positive electrode SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode SEI on cracks interfacial current density [A.m-2]&#39;,
+ &#39;Negative lithium plating concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative lithium plating concentration [mol.m-3]&#39;,
+ &#39;Negative dead lithium concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative dead lithium concentration [mol.m-3]&#39;,
+ &#39;Negative lithium plating thickness [m]&#39;,
+ &#39;X-averaged negative lithium plating thickness [m]&#39;,
+ &#39;Negative dead lithium thickness [m]&#39;,
+ &#39;X-averaged negative dead lithium thickness [m]&#39;,
+ &#39;Loss of lithium to negative lithium plating [mol]&#39;,
+ &#39;Loss of capacity to negative lithium plating [A.h]&#39;,
+ &#39;Negative electrode lithium plating reaction overpotential [V]&#39;,
+ &#39;X-averaged negative electrode lithium plating reaction overpotential [V]&#39;,
+ &#39;Negative lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;Positive lithium plating concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive lithium plating concentration [mol.m-3]&#39;,
+ &#39;Positive dead lithium concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive dead lithium concentration [mol.m-3]&#39;,
+ &#39;Positive lithium plating thickness [m]&#39;,
+ &#39;X-averaged positive lithium plating thickness [m]&#39;,
+ &#39;Positive dead lithium thickness [m]&#39;,
+ &#39;X-averaged positive dead lithium thickness [m]&#39;,
+ &#39;Loss of lithium to positive lithium plating [mol]&#39;,
+ &#39;Loss of capacity to positive lithium plating [A.h]&#39;,
+ &#39;Positive electrode lithium plating reaction overpotential [V]&#39;,
+ &#39;X-averaged positive electrode lithium plating reaction overpotential [V]&#39;,
+ &#39;Positive lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;Negative crack surface to volume ratio [m-1]&#39;,
+ &#39;Negative electrode roughness ratio&#39;,
+ &#39;X-averaged negative electrode roughness ratio&#39;,
+ &#39;Positive crack surface to volume ratio [m-1]&#39;,
+ &#39;Positive electrode roughness ratio&#39;,
+ &#39;X-averaged positive electrode roughness ratio&#39;,
+ &#39;Electrolyte transport efficiency&#39;,
+ &#39;Negative electrolyte transport efficiency&#39;,
+ &#39;X-averaged negative electrolyte transport efficiency&#39;,
+ &#39;Separator electrolyte transport efficiency&#39;,
+ &#39;X-averaged separator electrolyte transport efficiency&#39;,
+ &#39;Positive electrolyte transport efficiency&#39;,
+ &#39;X-averaged positive electrolyte transport efficiency&#39;,
+ &#39;Electrode transport efficiency&#39;,
+ &#39;Negative electrode transport efficiency&#39;,
+ &#39;X-averaged negative electrode transport efficiency&#39;,
+ &#39;Separator electrode transport efficiency&#39;,
+ &#39;X-averaged separator electrode transport efficiency&#39;,
+ &#39;Positive electrode transport efficiency&#39;,
+ &#39;X-averaged positive electrode transport efficiency&#39;,
+ &#39;Separator volume-averaged velocity [m.s-1]&#39;,
+ &#39;Separator volume-averaged acceleration [m.s-2]&#39;,
+ &#39;X-averaged separator volume-averaged acceleration [m.s-2]&#39;,
+ &#39;Volume-averaged velocity [m.s-1]&#39;,
+ &#39;Volume-averaged acceleration [m.s-1]&#39;,
+ &#39;X-averaged volume-averaged acceleration [m.s-1]&#39;,
+ &#39;Pressure [Pa]&#39;,
+ &#39;Negative electrode stoichiometry&#39;,
+ &#39;Negative electrode volume-averaged concentration&#39;,
+ &#39;Negative electrode volume-averaged concentration [mol.m-3]&#39;,
+ &#39;Total lithium in primary phase in negative electrode [mol]&#39;,
+ &#39;Positive electrode stoichiometry&#39;,
+ &#39;Positive electrode volume-averaged concentration&#39;,
+ &#39;Positive electrode volume-averaged concentration [mol.m-3]&#39;,
+ &#39;Total lithium in primary phase in positive electrode [mol]&#39;,
+ &#39;Negative electrode effective conductivity&#39;,
+ &#39;Negative electrode current density [A.m-2]&#39;,
+ &#39;Positive electrode effective conductivity&#39;,
+ &#39;Positive electrode current density [A.m-2]&#39;,
+ &#39;Electrode current density [A.m-2]&#39;,
+ &#39;Positive current collector potential [V]&#39;,
+ &#39;Local voltage [V]&#39;,
+ &#39;Terminal voltage [V]&#39;,
+ &#39;Voltage [V]&#39;,
+ &#39;Contact overpotential [V]&#39;,
+ &#39;Electrolyte concentration concatenation [mol.m-3]&#39;,
+ &#39;Negative electrolyte concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative electrolyte concentration [mol.m-3]&#39;,
+ &#39;Separator electrolyte concentration [mol.m-3]&#39;,
+ &#39;X-averaged separator electrolyte concentration [mol.m-3]&#39;,
+ &#39;Positive electrolyte concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive electrolyte concentration [mol.m-3]&#39;,
+ &#39;Negative electrolyte concentration [Molar]&#39;,
+ &#39;X-averaged negative electrolyte concentration [Molar]&#39;,
+ &#39;Separator electrolyte concentration [Molar]&#39;,
+ &#39;X-averaged separator electrolyte concentration [Molar]&#39;,
+ &#39;Positive electrolyte concentration [Molar]&#39;,
+ &#39;X-averaged positive electrolyte concentration [Molar]&#39;,
+ &#39;Electrolyte concentration [mol.m-3]&#39;,
+ &#39;X-averaged electrolyte concentration [mol.m-3]&#39;,
+ &#39;Electrolyte concentration [Molar]&#39;,
+ &#39;X-averaged electrolyte concentration [Molar]&#39;,
+ &#39;Electrolyte current density [A.m-2]&#39;,
+ &#39;X-averaged concentration overpotential [V]&#39;,
+ &#39;X-averaged electrolyte ohmic losses [V]&#39;,
+ &#39;Negative electrode surface potential difference [V]&#39;,
+ &#39;Negative electrode surface potential difference at separator interface [V]&#39;,
+ &#39;X-averaged negative electrode surface potential difference [V]&#39;,
+ &#39;Positive electrode surface potential difference [V]&#39;,
+ &#39;Positive electrode surface potential difference at separator interface [V]&#39;,
+ &#39;X-averaged positive electrode surface potential difference [V]&#39;,
+ &#39;Ohmic heating [W.m-3]&#39;,
+ &#39;X-averaged Ohmic heating [W.m-3]&#39;,
+ &#39;Volume-averaged Ohmic heating [W.m-3]&#39;,
+ &#39;Irreversible electrochemical heating [W.m-3]&#39;,
+ &#39;X-averaged irreversible electrochemical heating [W.m-3]&#39;,
+ &#39;Volume-averaged irreversible electrochemical heating [W.m-3]&#39;,
+ &#39;Reversible heating [W.m-3]&#39;,
+ &#39;X-averaged reversible heating [W.m-3]&#39;,
+ &#39;Volume-averaged reversible heating [W.m-3]&#39;,
+ &#39;Total heating [W.m-3]&#39;,
+ &#39;X-averaged total heating [W.m-3]&#39;,
+ &#39;Volume-averaged total heating [W.m-3]&#39;,
+ &#39;Current collector current density [A.m-2]&#39;,
+ &#39;Negative inner SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative inner SEI concentration [mol.m-3]&#39;,
+ &#39;Negative outer SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative outer SEI concentration [mol.m-3]&#39;,
+ &#39;Negative SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative SEI concentration [mol.m-3]&#39;,
+ &#39;Loss of lithium to negative SEI [mol]&#39;,
+ &#39;Loss of capacity to negative SEI [A.h]&#39;,
+ &#39;Negative electrode SEI volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged negative electrode SEI volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive inner SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive inner SEI concentration [mol.m-3]&#39;,
+ &#39;Positive outer SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive outer SEI concentration [mol.m-3]&#39;,
+ &#39;Positive SEI concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive SEI concentration [mol.m-3]&#39;,
+ &#39;Loss of lithium to positive SEI [mol]&#39;,
+ &#39;Loss of capacity to positive SEI [A.h]&#39;,
+ &#39;Positive electrode SEI volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged positive electrode SEI volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative inner SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative inner SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Negative outer SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative outer SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Negative SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged negative SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Loss of lithium to negative SEI on cracks [mol]&#39;,
+ &#39;Loss of capacity to negative SEI on cracks [A.h]&#39;,
+ &#39;Negative electrode SEI on cracks volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged negative electrode SEI on cracks volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive inner SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive inner SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Positive outer SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive outer SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Positive SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;X-averaged positive SEI on cracks concentration [mol.m-3]&#39;,
+ &#39;Loss of lithium to positive SEI on cracks [mol]&#39;,
+ &#39;Loss of capacity to positive SEI on cracks [A.h]&#39;,
+ &#39;Positive electrode SEI on cracks volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged positive electrode SEI on cracks volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative electrode lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;Negative lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged negative lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative electrode lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged negative electrode lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive electrode lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode lithium plating interfacial current density [A.m-2]&#39;,
+ &#39;Positive lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged positive lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive electrode lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged positive electrode lithium plating volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative electrode open-circuit potential [V]&#39;,
+ &#39;X-averaged negative electrode open-circuit potential [V]&#39;,
+ &#39;Negative electrode bulk open-circuit potential [V]&#39;,
+ &#39;Negative particle concentration overpotential [V]&#39;,
+ &#39;Negative electrode entropic change [V.K-1]&#39;,
+ &#39;X-averaged negative electrode entropic change [V.K-1]&#39;,
+ &#39;Positive electrode open-circuit potential [V]&#39;,
+ &#39;X-averaged positive electrode open-circuit potential [V]&#39;,
+ &#39;Positive electrode bulk open-circuit potential [V]&#39;,
+ &#39;Positive particle concentration overpotential [V]&#39;,
+ &#39;Positive electrode entropic change [V.K-1]&#39;,
+ &#39;X-averaged positive electrode entropic change [V.K-1]&#39;,
+ &#39;Negative electrode interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode total interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode total volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative electrode exchange current density [A.m-2]&#39;,
+ &#39;X-averaged negative electrode exchange current density [A.m-2]&#39;,
+ &#39;Negative electrode reaction overpotential [V]&#39;,
+ &#39;X-averaged negative electrode reaction overpotential [V]&#39;,
+ &#39;Negative electrode volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged negative electrode volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Negative electrode SEI film overpotential [V]&#39;,
+ &#39;X-averaged negative electrode SEI film overpotential [V]&#39;,
+ &#39;Positive electrode interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode total interfacial current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode total volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive electrode exchange current density [A.m-2]&#39;,
+ &#39;X-averaged positive electrode exchange current density [A.m-2]&#39;,
+ &#39;Positive electrode reaction overpotential [V]&#39;,
+ &#39;X-averaged positive electrode reaction overpotential [V]&#39;,
+ &#39;Positive electrode volumetric interfacial current density [A.m-3]&#39;,
+ &#39;X-averaged positive electrode volumetric interfacial current density [A.m-3]&#39;,
+ &#39;Positive electrode SEI film overpotential [V]&#39;,
+ &#39;X-averaged positive electrode SEI film overpotential [V]&#39;,
+ &#39;Negative particle rhs [mol.m-3.s-1]&#39;,
+ &#39;Negative particle bc [mol.m-4]&#39;,
+ &#39;Negative particle effective diffusivity [m2.s-1]&#39;,
+ &#39;X-averaged negative particle effective diffusivity [m2.s-1]&#39;,
+ &#39;Volume-averaged negative particle effective diffusivity [m2.s-1]&#39;,
+ &#39;Negative particle flux [mol.m-2.s-1]&#39;,
+ &#39;Positive particle rhs [mol.m-3.s-1]&#39;,
+ &#39;Positive particle bc [mol.m-4]&#39;,
+ &#39;Positive particle effective diffusivity [m2.s-1]&#39;,
+ &#39;X-averaged positive particle effective diffusivity [m2.s-1]&#39;,
+ &#39;Volume-averaged positive particle effective diffusivity [m2.s-1]&#39;,
+ &#39;Positive particle flux [mol.m-2.s-1]&#39;,
+ &#39;Electrolyte flux [mol.m-2.s-1]&#39;,
+ &#39;Electrolyte diffusion flux [mol.m-2.s-1]&#39;,
+ &#39;Electrolyte migration flux [mol.m-2.s-1]&#39;,
+ &#39;Electrolyte convection flux [mol.m-2.s-1]&#39;,
+ &#39;Sum of negative electrode electrolyte reaction source terms [A.m-3]&#39;,
+ &#39;Sum of x-averaged negative electrode electrolyte reaction source terms [A.m-3]&#39;,
+ &#39;Sum of negative electrode volumetric interfacial current densities [A.m-3]&#39;,
+ &#39;Sum of x-averaged negative electrode volumetric interfacial current densities [A.m-3]&#39;,
+ &#39;Sum of positive electrode electrolyte reaction source terms [A.m-3]&#39;,
+ &#39;Sum of x-averaged positive electrode electrolyte reaction source terms [A.m-3]&#39;,
+ &#39;Sum of positive electrode volumetric interfacial current densities [A.m-3]&#39;,
+ &#39;Sum of x-averaged positive electrode volumetric interfacial current densities [A.m-3]&#39;,
+ &#39;Interfacial current density [A.m-2]&#39;,
+ &#39;Exchange current density [A.m-2]&#39;,
+ &#39;Sum of volumetric interfacial current densities [A.m-3]&#39;,
+ &#39;Sum of electrolyte reaction source terms [A.m-3]&#39;,
+ &#39;Surface open-circuit voltage [V]&#39;,
+ &#39;Bulk open-circuit voltage [V]&#39;,
+ &#39;Particle concentration overpotential [V]&#39;,
+ &#39;X-averaged reaction overpotential [V]&#39;,
+ &#39;X-averaged SEI film overpotential [V]&#39;,
+ &#39;X-averaged solid phase ohmic losses [V]&#39;,
+ &#39;Battery open-circuit voltage [V]&#39;,
+ &#39;Battery negative electrode bulk open-circuit potential [V]&#39;,
+ &#39;Battery positive electrode bulk open-circuit potential [V]&#39;,
+ &#39;Battery particle concentration overpotential [V]&#39;,
+ &#39;Battery negative particle concentration overpotential [V]&#39;,
+ &#39;Battery positive particle concentration overpotential [V]&#39;,
+ &#39;X-averaged battery reaction overpotential [V]&#39;,
+ &#39;X-averaged battery negative reaction overpotential [V]&#39;,
+ &#39;X-averaged battery positive reaction overpotential [V]&#39;,
+ &#39;X-averaged battery solid phase ohmic losses [V]&#39;,
+ &#39;X-averaged battery negative solid phase ohmic losses [V]&#39;,
+ &#39;X-averaged battery positive solid phase ohmic losses [V]&#39;,
+ &#39;X-averaged battery electrolyte ohmic losses [V]&#39;,
+ &#39;X-averaged battery concentration overpotential [V]&#39;,
+ &#39;Battery voltage [V]&#39;,
+ &#39;Local ECM resistance [Ohm]&#39;,
+ &#39;Terminal power [W]&#39;,
+ &#39;Power [W]&#39;,
+ &#39;Resistance [Ohm]&#39;,
+ &#39;Total lithium in negative electrode [mol]&#39;,
+ &#39;LAM_ne [%]&#39;,
+ &#39;Loss of active material in negative electrode [%]&#39;,
+ &#39;Total lithium in positive electrode [mol]&#39;,
+ &#39;LAM_pe [%]&#39;,
+ &#39;Loss of active material in positive electrode [%]&#39;,
+ &#39;LLI [%]&#39;,
+ &#39;Loss of lithium inventory [%]&#39;,
+ &#39;Loss of lithium inventory, including electrolyte [%]&#39;,
+ &#39;Total lithium [mol]&#39;,
+ &#39;Total lithium in particles [mol]&#39;,
+ &#39;Total lithium capacity [A.h]&#39;,
+ &#39;Total lithium capacity in particles [A.h]&#39;,
+ &#39;Total lithium lost [mol]&#39;,
+ &#39;Total lithium lost from particles [mol]&#39;,
+ &#39;Total lithium lost from electrolyte [mol]&#39;,
+ &#39;Total lithium lost to side reactions [mol]&#39;,
+ &#39;Total capacity lost to side reactions [A.h]&#39;]
+</pre></div></div>
+</div>
+<p>There are a <em>lot</em> of variables, however. You can also search the list of variables for a particular string (e.g. “electrolyte”), by calling:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;electrolyte&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Electrolyte concentration [Molar]
+Electrolyte concentration [mol.m-3]
+Electrolyte concentration concatenation [mol.m-3]
+Electrolyte convection flux [mol.m-2.s-1]
+Electrolyte current density [A.m-2]
+Electrolyte diffusion flux [mol.m-2.s-1]
+Electrolyte flux [mol.m-2.s-1]
+Electrolyte migration flux [mol.m-2.s-1]
+Electrolyte potential [V]
+Electrolyte transport efficiency
+Gradient of electrolyte potential [V.m-1]
+Gradient of negative electrolyte potential [V.m-1]
+Gradient of positive electrolyte potential [V.m-1]
+Gradient of separator electrolyte potential [V.m-1]
+Loss of lithium inventory, including electrolyte [%]
+Negative electrolyte concentration [Molar]
+Negative electrolyte concentration [mol.m-3]
+Negative electrolyte potential [V]
+Negative electrolyte transport efficiency
+Positive electrolyte concentration [Molar]
+Positive electrolyte concentration [mol.m-3]
+Positive electrolyte potential [V]
+Positive electrolyte transport efficiency
+Separator electrolyte concentration [Molar]
+Separator electrolyte concentration [mol.m-3]
+Separator electrolyte potential [V]
+Separator electrolyte transport efficiency
+Sum of electrolyte reaction source terms [A.m-3]
+Sum of negative electrode electrolyte reaction source terms [A.m-3]
+Sum of positive electrode electrolyte reaction source terms [A.m-3]
+Sum of x-averaged negative electrode electrolyte reaction source terms [A.m-3]
+Sum of x-averaged positive electrode electrolyte reaction source terms [A.m-3]
+Total lithium in electrolyte [mol]
+Total lithium lost from electrolyte [mol]
+X-averaged battery electrolyte ohmic losses [V]
+X-averaged electrolyte concentration [Molar]
+X-averaged electrolyte concentration [mol.m-3]
+X-averaged electrolyte ohmic losses [V]
+X-averaged electrolyte overpotential [V]
+X-averaged electrolyte potential [V]
+X-averaged negative electrolyte concentration [Molar]
+X-averaged negative electrolyte concentration [mol.m-3]
+X-averaged negative electrolyte potential [V]
+X-averaged negative electrolyte transport efficiency
+X-averaged positive electrolyte concentration [Molar]
+X-averaged positive electrolyte concentration [mol.m-3]
+X-averaged positive electrolyte potential [V]
+X-averaged positive electrolyte transport efficiency
+X-averaged separator electrolyte concentration [Molar]
+X-averaged separator electrolyte concentration [mol.m-3]
+X-averaged separator electrolyte potential [V]
+X-averaged separator electrolyte transport efficiency
+</pre></div></div>
+</div>
+<p>As a first example, we choose to plot only electrolyte concentration and voltage. We assemble a list of the variable names to plot and then pass this list to the <code class="docutils literal notranslate"><span class="pre">plot</span></code> method of our simulation as the <code class="docutils literal notranslate"><span class="pre">output_variables</span></code> keyword argument:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Electrolyte concentration [mol.m-3]&quot;</span><span class="p">,</span> <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output_variables</span><span class="o">=</span><span class="n">output_variables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6c80d973ac814f59b28580292f1b7bb2", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fe14bd4c310&gt;
+</pre></div></div>
+</div>
+<p>Note that, if we want to plot only a single variable, we still need to pass it as a list:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">output_variables</span><span class="o">=</span><span class="n">output_variables</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "830e2e38bc5949b399c23d123437a77e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fe14bed6250&gt;
+</pre></div></div>
+</div>
+<p>You can also plot multiple variables on the same plot by nesting lists. For example, if we want to plot electrode and electrolyte current densities in the same plot and voltage next to them, we can write:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;Electrode current density [A.m-2]&quot;</span><span class="p">,</span> <span class="s2">&quot;Electrolyte current density [A.m-2]&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "75b63940c93d4aa6b0386a77ad05f52a", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fe14998aa90&gt;
+</pre></div></div>
+</div>
+<p>PyBaMM also allows you to produce a voltage plot showing the contribution of the various overpotentials and losses by calling the <code class="docutils literal notranslate"><span class="pre">plot_votage_components</span></code> method and passing the <code class="docutils literal notranslate"><span class="pre">solution</span></code> object of the simulation as argument:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">plot_voltage_components</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_getting_started_tutorial-3-basic-plotting_14_0.png" src="../../../../_images/source_examples_notebooks_getting_started_tutorial-3-basic-plotting_14_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&lt;Figure size 800x400 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;Time [h]&#39;&gt;)
+</pre></div></div>
+</div>
+<p>The contributions can also be split by electrode by setting the keyword argument <code class="docutils literal notranslate"><span class="pre">split_by_electrode</span></code> to <code class="docutils literal notranslate"><span class="pre">True</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span><span class="o">.</span><span class="n">plot_voltage_components</span><span class="p">(</span><span class="n">split_by_electrode</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_getting_started_tutorial-3-basic-plotting_16_0.png" src="../../../../_images/source_examples_notebooks_getting_started_tutorial-3-basic-plotting_16_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&lt;Figure size 800x400 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;Time [h]&#39;&gt;)
+</pre></div></div>
+</div>
+<p>In this tutorial we have seen how to use the in-built plotting functionality in PyBaMM. In <a class="reference internal" href="tutorial-4-setting-parameter-values.html"><span class="doc">Tutorial 4</span></a> we show how to change parameter values.</p>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">#</a></h2>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic charge and discharge of the lithium/polymer/insertion cell. Journal of the Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.
+[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, 2019. doi:10.1149/2.0341915jes.
+[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tutorial-2-compare-models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial 2 - Compare models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="tutorial-4-setting-parameter-values.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 4 - Setting parameter values</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/getting_started/tutorial-3-basic-plotting.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-11.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

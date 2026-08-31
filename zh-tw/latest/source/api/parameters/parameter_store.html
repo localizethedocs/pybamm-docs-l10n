@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Parameter Store &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/parameters/parameter_store';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/api/parameters/parameter_store.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="next" title="Parameter Substitutor" href="parameter_substitutor.html" />
+    <link rel="prev" title="Parameter Values" href="parameter_values.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/index.html">Expression Tree</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="parameter_values.html">Parameter Values</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parameter Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_substitutor.html">Parameter Substitutor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="geometric_parameters.html">Geometric Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="electrical_parameters.html">Electrical Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thermal_parameters.html">Thermal Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lithium_ion_parameters.html">Lithium-ion Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lead_acid_parameters.html">鉛酸參數</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_sets.html">Parameters Sets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="process_parameter_data.html">Process Parameter Data</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshes/index.html">Meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/index.html">Discretisation and spatial methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/index.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiment/index.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Batch Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM Data</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API 文件</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Parameters</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Parameter Store</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="parameter-store">
+<h1>Parameter Store<a class="headerlink" href="#parameter-store" title="連結到這個標頭">#</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">ParameterStore</span></code> class provides clean parameter storage with FuzzyDict lookup
+and explicit control over update behavior.</p>
+<section id="parameterstore">
+<h2>ParameterStore<a class="headerlink" href="#parameterstore" title="連結到這個標頭">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.parameters.</span></span><span class="sig-name descname"><span class="pre">ParameterStore</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">initial_data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore" title="連結到這個定義">#</a></dt>
+<dd><p>Manages parameter key-value storage with FuzzyDict lookup.</p>
+<p>This class provides a clean interface for storing and retrieving parameters
+with explicit control over update behavior.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>initial_data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> | </em><em>None</em>) -- Initial parameter data. If None, starts empty.</p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">:</span> <span class="mf">298.15</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="p">[</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">]</span>
+<span class="go">298.15</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;New param&quot;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="n">allow_new</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">)</span>
+<span class="go">ParameterInfo(name=&#39;Temperature [K]&#39;, value=298.15, units=&#39;K&#39;, ...)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.categories">
+<span class="sig-name descname"><span class="pre">categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.categories"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.categories" title="連結到這個定義">#</a></dt>
+<dd><p>Return all parameters grouped by category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">回傳<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Dictionary mapping category names to lists of parameter names.</p>
+</dd>
+<dt class="field-even">回傳型別<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]]</p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">:</span> <span class="mf">298.15</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cats</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;thermal&quot;</span> <span class="ow">in</span> <span class="n">cats</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybamm.parameters.ParameterStore" title="pybamm.parameters.parameter_store.ParameterStore"><span class="pre">ParameterStore</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.copy"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.copy" title="連結到這個定義">#</a></dt>
+<dd><p>Return a shallow copy of the store.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store_copy</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store_copy</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">]</span>  <span class="c1"># Original unchanged</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybamm.parameters.ParameterStore" title="pybamm.parameters.parameter_store.ParameterStore"><span class="pre">ParameterStore</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">rtol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.0</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybamm.parameters.ParameterDiff" title="pybamm.parameters.parameter_store.ParameterDiff"><span class="pre">ParameterDiff</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.diff"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.diff" title="連結到這個定義">#</a></dt>
+<dd><p>Compare this store with another and return differences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>other</strong> (<a class="reference internal" href="#pybamm.parameters.ParameterStore" title="pybamm.parameters.ParameterStore"><em>ParameterStore</em></a>) -- The other parameter store to compare against.</p></li>
+<li><p><strong>rtol</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a><em>, </em><em>optional</em>) -- Relative tolerance for numerical comparisons. Differences smaller
+than <code class="docutils literal notranslate"><span class="pre">rtol</span> <span class="pre">*</span> <span class="pre">max(|a|,</span> <span class="pre">|b|)</span></code> are ignored. Default is 0.0 (exact
+comparison). Set to e.g. 1e-6 to ignore tiny floating-point
+differences.</p></li>
+</ul>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>Object containing added, removed, and changed parameters.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.parameters.ParameterDiff" title="pybamm.parameters.ParameterDiff">ParameterDiff</a></p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store1</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store2</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span> <span class="o">=</span> <span class="n">store1</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">store2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="o">.</span><span class="n">added</span>
+<span class="go">{&#39;c&#39;: 4}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="o">.</span><span class="n">removed</span>
+<span class="go">{&#39;a&#39;: 1}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="o">.</span><span class="n">changed</span>
+<span class="go">{&#39;b&#39;: (2, 3)}</span>
+</pre></div>
+</div>
+<p>With tolerance to ignore small differences:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store1</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store2</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="mf">1.0</span> <span class="o">+</span> <span class="mf">1e-10</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span> <span class="o">=</span> <span class="n">store1</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">store2</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">diff</span><span class="o">.</span><span class="n">changed</span>  <span class="c1"># Empty because difference is within tolerance</span>
+<span class="go">{}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.get"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.get" title="連結到這個定義">#</a></dt>
+<dd><p>Get a parameter value, returning default if not found.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;missing&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.get_info">
+<span class="sig-name descname"><span class="pre">get_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybamm.parameters.ParameterInfo" title="pybamm.parameters.parameter_store.ParameterInfo"><span class="pre">ParameterInfo</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.get_info"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.get_info" title="連結到這個定義">#</a></dt>
+<dd><p>Get metadata about a parameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The parameter name.</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>Metadata including value, units, category, and type information.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.parameters.ParameterInfo" title="pybamm.parameters.ParameterInfo">ParameterInfo</a></p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;Maximum concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mi">51765</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span> <span class="o">=</span> <span class="n">store</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="s2">&quot;Maximum concentration [mol.m-3]&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="o">.</span><span class="n">units</span>
+<span class="go">&#39;mol.m-3&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">info</span><span class="o">.</span><span class="n">is_function</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.items">
+<span class="sig-name descname"><span class="pre">items</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.items"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.items" title="連結到這個定義">#</a></dt>
+<dd><p>Return parameter items.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.keys">
+<span class="sig-name descname"><span class="pre">keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.keys"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.keys" title="連結到這個定義">#</a></dt>
+<dd><p>Return parameter keys.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.list_by_category">
+<span class="sig-name descname"><span class="pre">list_by_category</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybamm.parameters.ParameterCategory" title="pybamm.parameters.parameter_store.ParameterCategory"><span class="pre">ParameterCategory</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.list_by_category"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.list_by_category" title="連結到這個定義">#</a></dt>
+<dd><p>Return all parameter names in a given category.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>category</strong> (<a class="reference internal" href="#pybamm.parameters.ParameterCategory" title="pybamm.parameters.ParameterCategory"><em>ParameterCategory</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The category to filter by. Can be a ParameterCategory enum value
+or a string like &quot;negative electrode&quot;.</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>List of parameter names in the category.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>]</p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;Negative electrode thickness [m]&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">list_by_category</span><span class="p">(</span><span class="s2">&quot;negative electrode&quot;</span><span class="p">)</span>
+<span class="go">[&#39;Negative electrode thickness [m]&#39;]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.pop">
+<span class="sig-name descname"><span class="pre">pop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.pop"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.pop" title="連結到這個定義">#</a></dt>
+<dd><p>Remove and return a parameter value.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="s2">&quot;a&quot;</span> <span class="ow">in</span> <span class="n">store</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.search">
+<span class="sig-name descname"><span class="pre">search</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">print_values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.search"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.search" title="連結到這個定義">#</a></dt>
+<dd><p>Search for parameters containing the given key.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">:</span> <span class="mf">298.15</span><span class="p">,</span> <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">:</span> <span class="mf">3.7</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="s2">&quot;Temperature&quot;</span><span class="p">,</span> <span class="n">print_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="go">Results for &#39;Temperature&#39;: ...</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.set">
+<span class="sig-name descname"><span class="pre">set</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">key</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_new</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.set"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.set" title="連結到這個定義">#</a></dt>
+<dd><p>Set a parameter value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>key</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Parameter name.</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) -- Parameter value.</p></li>
+<li><p><strong>allow_new</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) -- If False, raises KeyError when key doesn't exist.
+If True (default), allows adding new parameters.</p></li>
+</ul>
+</dd>
+<dt class="field-even">引發<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> -- If allow_new=False and the key doesn't exist.</p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Update existing</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>   <span class="c1"># Add new (allow_new=True by default)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.to_dict">
+<span class="sig-name descname"><span class="pre">to_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.to_dict"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.to_dict" title="連結到這個定義">#</a></dt>
+<dd><p>Return a plain dictionary copy of the parameters.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+<span class="go">{&#39;a&#39;: 1, &#39;b&#39;: 2}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Mapping</span><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Any</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">allow_new</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conflict</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'raise'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'warn'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'ignore'</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'ignore'</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.update"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.update" title="連結到這個定義">#</a></dt>
+<dd><p>Bulk update parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>values</strong> (<em>Mapping</em><em>[</em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>Any</em><em>]</em>) -- Dictionary of parameter values to update.</p></li>
+<li><p><strong>allow_new</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a>) -- If False, raises KeyError for unknown parameters.
+If True (default), allows adding new parameters.</p></li>
+<li><p><strong>conflict</strong> (<em>{&quot;raise&quot;</em><em>, </em><em>&quot;warn&quot;</em><em>, </em><em>&quot;ignore&quot;}</em>) -- How to handle conflicts when a parameter already exists with a
+different value:
+- &quot;raise&quot;: Raise ValueError
+- &quot;warn&quot;: Emit a warning and update
+- &quot;ignore&quot;: Silently update (default)</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">store</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">],</span> <span class="n">store</span><span class="p">[</span><span class="s2">&quot;c&quot;</span><span class="p">]</span>
+<span class="go">(10, 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterStore.values">
+<span class="sig-name descname"><span class="pre">values</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterStore.values"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterStore.values" title="連結到這個定義">#</a></dt>
+<dd><p>Return parameter values.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="parameterinfo">
+<h2>ParameterInfo<a class="headerlink" href="#parameterinfo" title="連結到這個標頭">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.parameters.</span></span><span class="sig-name descname"><span class="pre">ParameterInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">units</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">category</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">is_input</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterInfo"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterInfo" title="連結到這個定義">#</a></dt>
+<dd><p>Metadata about a parameter.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.name" title="連結到這個定義">#</a></dt>
+<dd><p>The parameter name (key).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.value">
+<span class="sig-name descname"><span class="pre">value</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.value" title="連結到這個定義">#</a></dt>
+<dd><p>The parameter value.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.units">
+<span class="sig-name descname"><span class="pre">units</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.units" title="連結到這個定義">#</a></dt>
+<dd><p>Units parsed from the parameter name (e.g., &quot;K&quot; from &quot;Temperature [K]&quot;).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.category">
+<span class="sig-name descname"><span class="pre">category</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.category" title="連結到這個定義">#</a></dt>
+<dd><p>Category of the parameter (e.g., &quot;negative electrode&quot;, &quot;thermal&quot;).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a> | None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.is_function">
+<span class="sig-name descname"><span class="pre">is_function</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.is_function" title="連結到這個定義">#</a></dt>
+<dd><p>True if the value is callable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterInfo.is_input">
+<span class="sig-name descname"><span class="pre">is_input</span></span><a class="headerlink" href="#pybamm.parameters.ParameterInfo.is_input" title="連結到這個定義">#</a></dt>
+<dd><p>True if the value is an InputParameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="parameterdiff">
+<h2>ParameterDiff<a class="headerlink" href="#parameterdiff" title="連結到這個標頭">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterDiff">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.parameters.</span></span><span class="sig-name descname"><span class="pre">ParameterDiff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">added</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">removed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">changed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterDiff"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterDiff" title="連結到這個定義">#</a></dt>
+<dd><p>Result of comparing two parameter sets.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterDiff.added">
+<span class="sig-name descname"><span class="pre">added</span></span><a class="headerlink" href="#pybamm.parameters.ParameterDiff.added" title="連結到這個定義">#</a></dt>
+<dd><p>Parameters in <cite>other</cite> but not in <cite>self</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterDiff.removed">
+<span class="sig-name descname"><span class="pre">removed</span></span><a class="headerlink" href="#pybamm.parameters.ParameterDiff.removed" title="連結到這個定義">#</a></dt>
+<dd><p>Parameters in <cite>self</cite> but not in <cite>other</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, Any]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterDiff.changed">
+<span class="sig-name descname"><span class="pre">changed</span></span><a class="headerlink" href="#pybamm.parameters.ParameterDiff.changed" title="連結到這個定義">#</a></dt>
+<dd><p>Parameters with different values: (self_value, other_value).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a>[<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a>, <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)">tuple</a>[Any, Any]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="parametercategory">
+<h2>ParameterCategory<a class="headerlink" href="#parametercategory" title="連結到這個標頭">#</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.parameters.</span></span><span class="sig-name descname"><span class="pre">ParameterCategory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/parameters/parameter_store.html#ParameterCategory"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.parameters.ParameterCategory" title="連結到這個定義">#</a></dt>
+<dd><p>Categories for grouping battery parameters.</p>
+<p><strong>Extends:</strong> <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">enum.Enum</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.ELECTRICAL">
+<span class="sig-name descname"><span class="pre">ELECTRICAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'electrical'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.ELECTRICAL" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.ELECTROLYTE">
+<span class="sig-name descname"><span class="pre">ELECTROLYTE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'electrolyte'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.ELECTROLYTE" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.GEOMETRIC">
+<span class="sig-name descname"><span class="pre">GEOMETRIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'geometric'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.GEOMETRIC" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.KINETIC">
+<span class="sig-name descname"><span class="pre">KINETIC</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'kinetic'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.KINETIC" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.NEGATIVE_ELECTRODE">
+<span class="sig-name descname"><span class="pre">NEGATIVE_ELECTRODE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'negative</span> <span class="pre">electrode'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.NEGATIVE_ELECTRODE" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.OTHER">
+<span class="sig-name descname"><span class="pre">OTHER</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'other'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.OTHER" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.POSITIVE_ELECTRODE">
+<span class="sig-name descname"><span class="pre">POSITIVE_ELECTRODE</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'positive</span> <span class="pre">electrode'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.POSITIVE_ELECTRODE" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.SEPARATOR">
+<span class="sig-name descname"><span class="pre">SEPARATOR</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'separator'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.SEPARATOR" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.parameters.ParameterCategory.THERMAL">
+<span class="sig-name descname"><span class="pre">THERMAL</span></span><span class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'thermal'</span></span><a class="headerlink" href="#pybamm.parameters.ParameterCategory.THERMAL" title="連結到這個定義">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="parameter_values.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Parameter Values</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parameter_substitutor.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Parameter Substitutor</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterstore">ParameterStore</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore"><code class="docutils literal notranslate"><span class="pre">ParameterStore</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.categories"><code class="docutils literal notranslate"><span class="pre">ParameterStore.categories()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.copy"><code class="docutils literal notranslate"><span class="pre">ParameterStore.copy()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.diff"><code class="docutils literal notranslate"><span class="pre">ParameterStore.diff()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.get"><code class="docutils literal notranslate"><span class="pre">ParameterStore.get()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.get_info"><code class="docutils literal notranslate"><span class="pre">ParameterStore.get_info()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.items"><code class="docutils literal notranslate"><span class="pre">ParameterStore.items()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.keys"><code class="docutils literal notranslate"><span class="pre">ParameterStore.keys()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.list_by_category"><code class="docutils literal notranslate"><span class="pre">ParameterStore.list_by_category()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.pop"><code class="docutils literal notranslate"><span class="pre">ParameterStore.pop()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.search"><code class="docutils literal notranslate"><span class="pre">ParameterStore.search()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.set"><code class="docutils literal notranslate"><span class="pre">ParameterStore.set()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.to_dict"><code class="docutils literal notranslate"><span class="pre">ParameterStore.to_dict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.update"><code class="docutils literal notranslate"><span class="pre">ParameterStore.update()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterStore.values"><code class="docutils literal notranslate"><span class="pre">ParameterStore.values()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterinfo">ParameterInfo</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo"><code class="docutils literal notranslate"><span class="pre">ParameterInfo</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.name"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.name</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.value"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.value</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.units"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.units</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.category"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.category</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.is_function"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.is_function</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterInfo.is_input"><code class="docutils literal notranslate"><span class="pre">ParameterInfo.is_input</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameterdiff">ParameterDiff</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterDiff"><code class="docutils literal notranslate"><span class="pre">ParameterDiff</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterDiff.added"><code class="docutils literal notranslate"><span class="pre">ParameterDiff.added</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterDiff.removed"><code class="docutils literal notranslate"><span class="pre">ParameterDiff.removed</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterDiff.changed"><code class="docutils literal notranslate"><span class="pre">ParameterDiff.changed</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parametercategory">ParameterCategory</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory"><code class="docutils literal notranslate"><span class="pre">ParameterCategory</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.ELECTRICAL"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.ELECTRICAL</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.ELECTROLYTE"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.ELECTROLYTE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.GEOMETRIC"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.GEOMETRIC</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.KINETIC"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.KINETIC</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.NEGATIVE_ELECTRODE"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.NEGATIVE_ELECTRODE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.OTHER"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.OTHER</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.POSITIVE_ELECTRODE"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.POSITIVE_ELECTRODE</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.SEPARATOR"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.SEPARATOR</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.parameters.ParameterCategory.THERMAL"><code class="docutils literal notranslate"><span class="pre">ParameterCategory.THERMAL</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/api/parameters/parameter_store.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-06-11。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

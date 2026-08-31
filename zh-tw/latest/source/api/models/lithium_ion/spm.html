@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-17T13:52:36+00:00" />
+    <title>Single Particle Model (SPM) &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/models/lithium_ion/spm';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/api/models/lithium_ion/spm.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="next" title="Single Particle Model with Electrolyte (SPMe)" href="spme.html" />
+    <link rel="prev" title="Base Lithium-ion Model" href="base_lithium_ion_model.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-17"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../expression_tree/index.html">Expression Tree</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../base_models/index.html">Base Models</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Lithium-ion Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="base_lithium_ion_model.html">Base Lithium-ion Model</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Single Particle Model (SPM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spme.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mpm.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dfn.html">Doyle-Fuller-Newman (DFN)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="newman_tobias.html">Newman-Tobias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="msmr.html">Multi-Species Multi-Reaction (MSMR) Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="yang2017.html">Yang et al 2017</a></li>
+<li class="toctree-l3"><a class="reference internal" href="electrode_soh.html">Electrode SOH models</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ecm_split_ocv.html">Equivalent Circuit Model with Split OCV (SplitOCVR)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../lead_acid/index.html">鉛酸模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equivalent_circuit/index.html">Equivalent Circuit Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../submodels/index.html">Submodels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parameters/index.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meshes/index.html">Meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spatial_methods/index.html">Discretisation and spatial methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solvers/index.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experiment/index.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../batch_study.html">Batch Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pybamm_data.html">PyBaMM Data</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">API 文件</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Models</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Lithium-ion Models</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Single Particle Model (SPM)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="single-particle-model-spm">
+<h1>Single Particle Model (SPM)<a class="headerlink" href="#single-particle-model-spm" title="連結到這個標頭">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.lithium_ion.SPM">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.lithium_ion.</span></span><span class="sig-name descname"><span class="pre">SPM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Single</span> <span class="pre">Particle</span> <span class="pre">Model'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">build</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/lithium_ion/spm.html#SPM"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.lithium_ion.SPM" title="連結到這個定義">#</a></dt>
+<dd><p>Single Particle Model (SPM) of a lithium-ion battery, from
+Marquis <em>et al.</em><a class="footnote-reference brackets" href="#footcite-marquis2019" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.
+See <a class="reference internal" href="base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel" title="pybamm.lithium_ion.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.lithium_ion.BaseModel</span></code></a> for more details.</p>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">name</span>
+<span class="go">&#39;Single Particle Model&#39;</span>
+</pre></div>
+</div>
+<p><strong>Extends:</strong> <a class="reference internal" href="base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel" title="pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel</span></code></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-text-info sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header sd-align-major-center sd-fs-6">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-eye" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span class="sd-summary-text">View inheritance diagram for this model</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><div class="graphviz"><object data="../../../../_images/inheritance-fe00d9c8786351e35a1ab9bd033f43cbc667a114.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of pybamm.models.full_battery_models.lithium_ion.spm.SPM</p></object></div>
+</div></blockquote>
+</div>
+</details></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.lithium_ion.BasicSPM">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.lithium_ion.</span></span><span class="sig-name descname"><span class="pre">BasicSPM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Single</span> <span class="pre">Particle</span> <span class="pre">Model'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/lithium_ion/basic_spm.html#BasicSPM"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.lithium_ion.BasicSPM" title="連結到這個定義">#</a></dt>
+<dd><p>Single Particle Model (SPM) model of a lithium-ion battery, from
+Marquis <em>et al.</em><a class="footnote-reference brackets" href="#footcite-marquis2019" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>This class differs from the <a class="reference internal" href="#pybamm.lithium_ion.SPM" title="pybamm.lithium_ion.SPM"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.lithium_ion.SPM</span></code></a> model class in that it
+shows the whole model in a single class. This comes at the cost of flexibility in
+combining different physical effects, and in general the main SPM class should be
+used instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- The name of the model.</p>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel" title="pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel</span></code></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-text-info sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header sd-align-major-center sd-fs-6">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-eye" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span class="sd-summary-text">View inheritance diagram for this model</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><div class="graphviz"><object data="../../../../_images/inheritance-6ba9332a97e4a07b96d986c3a5730a1993485993.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of pybamm.models.full_battery_models.lithium_ion.basic_spm.BasicSPM</p></object></div>
+</div></blockquote>
+</div>
+</details></dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.lithium_ion.Basic3DThermalSPM">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.lithium_ion.</span></span><span class="sig-name descname"><span class="pre">Basic3DThermalSPM</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'SPM</span> <span class="pre">with</span> <span class="pre">Separate</span> <span class="pre">Cell</span> <span class="pre">Domain'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/lithium_ion/basic_spm_with_3d_thermal.html#Basic3DThermalSPM"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.lithium_ion.Basic3DThermalSPM" title="連結到這個定義">#</a></dt>
+<dd><p>Single Particle Model (SPM) model of a lithium-ion battery, from
+Marquis <em>et al.</em><a class="footnote-reference brackets" href="#footcite-marquis2019" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>This class differs from the <a class="reference internal" href="#pybamm.lithium_ion.SPM" title="pybamm.lithium_ion.SPM"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.lithium_ion.SPM</span></code></a> model class in that it
+shows the whole model in a single class. This comes at the cost of flexibility in
+combining different physical effects, and in general the main SPM class should be
+used instead.</p>
+<p>The model is based on the SPM, but with a separate cell domain for the temperature
+variable. This allows for a more detailed treatment of the thermal effects in the
+cell, as the temperature can vary independently of the other variables in the
+model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- The name of the model.</p>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel" title="pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model.BaseModel</span></code></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-text-info sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header sd-align-major-center sd-fs-6">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-eye" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span class="sd-summary-text">View inheritance diagram for this model</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><div class="graphviz"><object data="../../../../_images/inheritance-fa25d8ab7ba773a9178d0cab9f2e1d0f2e6f93b5.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of pybamm.models.full_battery_models.lithium_ion.basic_spm_with_3d_thermal.Basic3DThermalSPM</p></object></div>
+</div></blockquote>
+</div>
+</details></dd></dl>
+
+<p class="rubric">References</p>
+<div class="docutils container" id="id4">
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="footcite-marquis2019" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id3">3</a>)</span>
+<p>Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. <em>Journal of The Electrochemical Society</em>, 166(15):A3693–A3706, 2019. <a class="reference external" href="https://doi.org/10.1149/2.0341915jes">doi:10.1149/2.0341915jes</a>.</p>
+</aside>
+</aside>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="base_lithium_ion_model.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Base Lithium-ion Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="spme.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Single Particle Model with Electrolyte (SPMe)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.lithium_ion.SPM"><code class="docutils literal notranslate"><span class="pre">SPM</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.lithium_ion.BasicSPM"><code class="docutils literal notranslate"><span class="pre">BasicSPM</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.lithium_ion.Basic3DThermalSPM"><code class="docutils literal notranslate"><span class="pre">Basic3DThermalSPM</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/api/models/lithium_ion/spm.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-06-17。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

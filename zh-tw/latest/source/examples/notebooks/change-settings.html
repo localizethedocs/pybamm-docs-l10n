@@ -1,0 +1,1315 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-07-22T14:11:49+00:00" />
+    <title>Changing settings when solving PyBaMM models &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/change-settings';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/change-settings.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="next" title="Initializing a model" href="initialize-model-with-solution.html" />
+    <link rel="prev" title="Comparisons using the BatchStudy class" href="batch_study.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-07-22"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">開始使用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">創建模型</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">效能</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="models/basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="models/compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/electrode-state-of-health.html">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="models/lithium-plating-composite.html">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="models/MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/saving_models.html">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="models/tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="models/Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulations_and_experiments/simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="solvers/dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvers/ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvers/idaklu-jax-interface.html">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solvers/instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Changing settings when solving PyBaMM models</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/change-settings.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/change-settings.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Changing-settings-when-solving-PyBaMM-models">
+<h1>Changing settings when solving PyBaMM models<a class="headerlink" href="#Changing-settings-when-solving-PyBaMM-models" title="連結到這個標頭">#</a></h1>
+<p><a class="reference internal" href="models/SPM.html"><span class="doc">This</span></a> example notebook showed how to run an SPM battery model, using the default parameters, discretisation and solvers that were defined for that particular model. Naturally we would like the ability to alter these options on a case by case basis, and this notebook gives an example of how to do this, again using the SPM model. In this notebook we explicitly handle all the stages of setting up, processing and solving the model in order to explain them in detail. However,
+it is often simpler in practice to use the <code class="docutils literal notranslate"><span class="pre">Simulation</span></code> class, which handles many of the stages automatically, as shown <a class="reference internal" href="simulations_and_experiments/simulation-class.html"><span class="doc">here</span></a>.</p>
+<section id="Table-of-Contents">
+<h2>Table of Contents<a class="headerlink" href="#Table-of-Contents" title="連結到這個標頭">#</a></h2>
+<ol class="arabic simple">
+<li><p>Default SPM model</p></li>
+<li><p>Changing the parameters</p></li>
+<li><p>Changing the discretisation</p></li>
+<li><p>Changing the solver</p></li>
+</ol>
+<section id="The-default-SPM-model">
+<h3>The default SPM model<a class="headerlink" href="#The-default-SPM-model" title="連結到這個標頭">#</a></h3>
+<p>Below is the code to define and run the default SPM model included in PyBaMM (if this is unfamiliar to you, please see <a class="reference internal" href="models/SPM.html"><span class="doc">this</span></a> notebook for more details)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">__path__</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;/..&quot;</span><span class="p">)</span>
+
+<span class="c1"># create the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+
+<span class="c1"># set the default model geometry</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_geometry</span>
+
+<span class="c1"># set the default model parameters</span>
+<span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+
+<span class="c1"># set the parameters for the model and the geometry</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="c1"># mesh the domains</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+
+<span class="c1"># discretise the model equations</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Solve the model at the given time points</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_solver</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<p>To verify the solution, we can look at a plot of the Voltage over time</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">voltage</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/source_examples_notebooks_change-settings_4_0.png" src="../../../_images/source_examples_notebooks_change-settings_4_0.png" />
+</div>
+</div>
+</section>
+<section id="Changing-the-model-parameters">
+<h3>Changing the model parameters<a class="headerlink" href="#Changing-the-model-parameters" title="連結到這個標頭">#</a></h3>
+<p>The parameters are defined using the <code class="docutils literal notranslate"><span class="pre">`pybamm.ParameterValues</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/parameters/parameter_values.html">https://docs.pybamm.org/en/latest/source/api/parameters/parameter_values.html</a>&gt;`__ class, which takes either a python dictionary or CSV file with the mapping between parameter names and values.</p>
+<p>First lets have a look at the default parameters that are included with the SPM model:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span><span class="o">.</span><span class="n">items</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;bound method ParameterValues.items of {&#39;Ambient temperature [K]&#39;: 298.15,
+ &#39;Bulk solvent concentration [mol.m-3]&#39;: 2636.0,
+ &#39;Cation transference number&#39;: 0.4,
+ &#39;Cell cooling surface area [m2]&#39;: 0.0569,
+ &#39;Cell volume [m3]&#39;: 7.8e-06,
+ &#39;Contact resistance [Ohm]&#39;: 0,
+ &#39;Current function [A]&#39;: 0.680616,
+ &#39;EC diffusivity [m2.s-1]&#39;: 2e-18,
+ &#39;EC initial concentration in electrolyte [mol.m-3]&#39;: 4541.0,
+ &#39;Edge heat transfer coefficient [W.m-2.K-1]&#39;: 0.3,
+ &#39;Electrode height [m]&#39;: 0.137,
+ &#39;Electrode width [m]&#39;: 0.207,
+ &#39;Electrolyte conductivity [S.m-1]&#39;: &lt;function electrolyte_conductivity_Capiglia1999 at 0x1598bcf40&gt;,
+ &#39;Electrolyte diffusivity [m2.s-1]&#39;: &lt;function electrolyte_diffusivity_Capiglia1999 at 0x1598bd080&gt;,
+ &#39;Initial SEI thickness [m]&#39;: 5e-09,
+ &#39;Initial concentration in electrolyte [mol.m-3]&#39;: 1000.0,
+ &#39;Initial concentration in negative electrode [mol.m-3]&#39;: 19986.609595075,
+ &#39;Initial concentration in positive electrode [mol.m-3]&#39;: 30730.7554385565,
+ &#39;Initial temperature [K]&#39;: 298.15,
+ &#39;Lithium interstitial reference concentration [mol.m-3]&#39;: 15.0,
+ &#39;Lower voltage cut-off [V]&#39;: 3.105,
+ &#39;Maximum concentration in negative electrode [mol.m-3]&#39;: 24983.2619938437,
+ &#39;Maximum concentration in positive electrode [mol.m-3]&#39;: 51217.9257309275,
+ &#39;Negative current collector conductivity [S.m-1]&#39;: 59600000.0,
+ &#39;Negative current collector density [kg.m-3]&#39;: 8954.0,
+ &#39;Negative current collector specific heat capacity [J.kg-1.K-1]&#39;: 385.0,
+ &#39;Negative current collector surface heat transfer coefficient [W.m-2.K-1]&#39;: 0.0,
+ &#39;Negative current collector thermal conductivity [W.m-1.K-1]&#39;: 401.0,
+ &#39;Negative current collector thickness [m]&#39;: 2.5e-05,
+ &#39;Negative electrode Bruggeman coefficient (electrode)&#39;: 1.5,
+ &#39;Negative electrode Bruggeman coefficient (electrolyte)&#39;: 1.5,
+ &#39;Negative electrode OCP [V]&#39;: &lt;function graphite_mcmb2528_ocp_Dualfoil1998 at 0x159a1dda0&gt;,
+ &#39;Negative electrode OCP entropic change [V.K-1]&#39;: &lt;function graphite_entropic_change_Moura2016 at 0x159a1e160&gt;,
+ &#39;Negative electrode active material volume fraction&#39;: 0.6,
+ &#39;Negative electrode charge transfer coefficient&#39;: 0.5,
+ &#39;Negative electrode conductivity [S.m-1]&#39;: 100.0,
+ &#39;Negative electrode density [kg.m-3]&#39;: 1657.0,
+ &#39;Negative electrode double-layer capacity [F.m-2]&#39;: 0.2,
+ &#39;Negative electrode exchange-current density [A.m-2]&#39;: &lt;function graphite_electrolyte_exchange_current_density_Dualfoil1998 at 0x159a1e020&gt;,
+ &#39;Negative electrode porosity&#39;: 0.3,
+ &#39;Negative electrode reaction-driven LAM factor [m3.mol-1]&#39;: 0.0,
+ &#39;Negative electrode specific heat capacity [J.kg-1.K-1]&#39;: 700.0,
+ &#39;Negative electrode thermal conductivity [W.m-1.K-1]&#39;: 1.7,
+ &#39;Negative electrode thickness [m]&#39;: 0.0001,
+ &#39;Negative particle diffusivity [m2.s-1]&#39;: &lt;function graphite_mcmb2528_diffusivity_Dualfoil1998 at 0x159a1dbc0&gt;,
+ &#39;Negative particle radius [m]&#39;: 1e-05,
+ &#39;Negative tab centre y-coordinate [m]&#39;: 0.06,
+ &#39;Negative tab centre z-coordinate [m]&#39;: 0.137,
+ &#39;Negative tab heat transfer coefficient [W.m-2.K-1]&#39;: 10.0,
+ &#39;Negative tab width [m]&#39;: 0.04,
+ &#39;Nominal cell capacity [A.h]&#39;: 0.680616,
+ &#39;Number of cells connected in series to make a battery&#39;: 1.0,
+ &#39;Number of electrodes connected in parallel to make a cell&#39;: 1.0,
+ &#39;Open-circuit voltage at 0% SOC [V]&#39;: 3.105,
+ &#39;Open-circuit voltage at 100% SOC [V]&#39;: 4.1,
+ &#39;Positive current collector conductivity [S.m-1]&#39;: 35500000.0,
+ &#39;Positive current collector density [kg.m-3]&#39;: 2707.0,
+ &#39;Positive current collector specific heat capacity [J.kg-1.K-1]&#39;: 897.0,
+ &#39;Positive current collector surface heat transfer coefficient [W.m-2.K-1]&#39;: 0.0,
+ &#39;Positive current collector thermal conductivity [W.m-1.K-1]&#39;: 237.0,
+ &#39;Positive current collector thickness [m]&#39;: 2.5e-05,
+ &#39;Positive electrode Bruggeman coefficient (electrode)&#39;: 1.5,
+ &#39;Positive electrode Bruggeman coefficient (electrolyte)&#39;: 1.5,
+ &#39;Positive electrode OCP [V]&#39;: &lt;function lico2_ocp_Dualfoil1998 at 0x159577100&gt;,
+ &#39;Positive electrode OCP entropic change [V.K-1]&#39;: &lt;function lico2_entropic_change_Moura2016 at 0x1598bd8a0&gt;,
+ &#39;Positive electrode active material volume fraction&#39;: 0.5,
+ &#39;Positive electrode charge transfer coefficient&#39;: 0.5,
+ &#39;Positive electrode conductivity [S.m-1]&#39;: 10.0,
+ &#39;Positive electrode density [kg.m-3]&#39;: 3262.0,
+ &#39;Positive electrode double-layer capacity [F.m-2]&#39;: 0.2,
+ &#39;Positive electrode exchange-current density [A.m-2]&#39;: &lt;function lico2_electrolyte_exchange_current_density_Dualfoil1998 at 0x1598bd940&gt;,
+ &#39;Positive electrode porosity&#39;: 0.3,
+ &#39;Positive electrode reaction-driven LAM factor [m3.mol-1]&#39;: 0.0,
+ &#39;Positive electrode specific heat capacity [J.kg-1.K-1]&#39;: 700.0,
+ &#39;Positive electrode thermal conductivity [W.m-1.K-1]&#39;: 2.1,
+ &#39;Positive electrode thickness [m]&#39;: 0.0001,
+ &#39;Positive particle diffusivity [m2.s-1]&#39;: &lt;function lico2_diffusivity_Dualfoil1998 at 0x159a1e200&gt;,
+ &#39;Positive particle radius [m]&#39;: 1e-05,
+ &#39;Positive tab centre y-coordinate [m]&#39;: 0.147,
+ &#39;Positive tab centre z-coordinate [m]&#39;: 0.137,
+ &#39;Positive tab heat transfer coefficient [W.m-2.K-1]&#39;: 10.0,
+ &#39;Positive tab width [m]&#39;: 0.04,
+ &#39;Ratio of lithium moles to SEI moles&#39;: 2.0,
+ &#39;Reference temperature [K]&#39;: 298.15,
+ &#39;SEI electron conductivity [S.m-1]&#39;: 8.95e-14,
+ &#39;SEI growth activation energy [J.mol-1]&#39;: 0.0,
+ &#39;SEI growth transfer coefficient&#39;: 0.5,
+ &#39;SEI kinetic rate constant [m.s-1]&#39;: 1e-12,
+ &#39;SEI lithium interstitial diffusivity [m2.s-1]&#39;: 1e-20,
+ &#39;SEI open-circuit potential [V]&#39;: 0.4,
+ &#39;SEI partial molar volume [m3.mol-1]&#39;: 9.585e-05,
+ &#39;SEI reaction exchange current density [A.m-2]&#39;: 1.5e-07,
+ &#39;SEI resistivity [Ohm.m]&#39;: 200000.0,
+ &#39;SEI solvent diffusivity [m2.s-1]&#39;: 2.5e-22,
+ &#39;Separator Bruggeman coefficient (electrolyte)&#39;: 1.5,
+ &#39;Separator density [kg.m-3]&#39;: 397.0,
+ &#39;Separator porosity&#39;: 1.0,
+ &#39;Separator specific heat capacity [J.kg-1.K-1]&#39;: 700.0,
+ &#39;Separator thermal conductivity [W.m-1.K-1]&#39;: 0.16,
+ &#39;Separator thickness [m]&#39;: 2.5e-05,
+ &#39;Thermodynamic factor&#39;: 1.0,
+ &#39;Total heat transfer coefficient [W.m-2.K-1]&#39;: 10.0,
+ &#39;Upper voltage cut-off [V]&#39;: 4.1,
+ &#39;citations&#39;: [&#39;Marquis2019&#39;]}&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">format_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:&lt;75}</span><span class="s2">  </span><span class="si">{:&gt;20}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">format_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;PARAMETER&quot;</span><span class="p">,</span> <span class="s2">&quot;VALUE&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">97</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">format_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">format_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="fm">__str__</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+PARAMETER                                                                                   VALUE
+-------------------------------------------------------------------------------------------------
+Ratio of lithium moles to SEI moles                                                           2.0
+SEI partial molar volume [m3.mol-1]                                                     9.585e-05
+SEI growth transfer coefficient                                                               0.5
+SEI reaction exchange current density [A.m-2]                                             1.5e-07
+SEI resistivity [Ohm.m]                                                                  200000.0
+SEI solvent diffusivity [m2.s-1]                                                          2.5e-22
+Bulk solvent concentration [mol.m-3]                                                       2636.0
+SEI open-circuit potential [V]                                                                0.4
+SEI electron conductivity [S.m-1]                                                        8.95e-14
+SEI lithium interstitial diffusivity [m2.s-1]                                               1e-20
+Lithium interstitial reference concentration [mol.m-3]                                       15.0
+Initial SEI thickness [m]                                                                   5e-09
+EC initial concentration in electrolyte [mol.m-3]                                          4541.0
+EC diffusivity [m2.s-1]                                                                     2e-18
+SEI kinetic rate constant [m.s-1]                                                           1e-12
+SEI growth activation energy [J.mol-1]                                                        0.0
+Negative electrode reaction-driven LAM factor [m3.mol-1]                                      0.0
+Positive electrode reaction-driven LAM factor [m3.mol-1]                                      0.0
+Negative current collector thickness [m]                                                  2.5e-05
+Negative electrode thickness [m]                                                           0.0001
+Separator thickness [m]                                                                   2.5e-05
+Positive electrode thickness [m]                                                           0.0001
+Positive current collector thickness [m]                                                  2.5e-05
+Electrode height [m]                                                                        0.137
+Electrode width [m]                                                                         0.207
+Negative tab width [m]                                                                       0.04
+Negative tab centre y-coordinate [m]                                                         0.06
+Negative tab centre z-coordinate [m]                                                        0.137
+Positive tab width [m]                                                                       0.04
+Positive tab centre y-coordinate [m]                                                        0.147
+Positive tab centre z-coordinate [m]                                                        0.137
+Cell cooling surface area [m2]                                                             0.0569
+Cell volume [m3]                                                                          7.8e-06
+Negative current collector conductivity [S.m-1]                                        59600000.0
+Positive current collector conductivity [S.m-1]                                        35500000.0
+Negative current collector density [kg.m-3]                                                8954.0
+Positive current collector density [kg.m-3]                                                2707.0
+Negative current collector specific heat capacity [J.kg-1.K-1]                              385.0
+Positive current collector specific heat capacity [J.kg-1.K-1]                              897.0
+Negative current collector thermal conductivity [W.m-1.K-1]                                 401.0
+Positive current collector thermal conductivity [W.m-1.K-1]                                 237.0
+Nominal cell capacity [A.h]                                                              0.680616
+Current function [A]                                                                     0.680616
+Contact resistance [Ohm]                                                                        0
+Negative electrode conductivity [S.m-1]                                                     100.0
+Maximum concentration in negative electrode [mol.m-3]                            24983.2619938437
+Negative particle diffusivity [m2.s-1]                                       &lt;function graphite_mcmb2528_diffusivity_Dualfoil1998 at 0x159a1dbc0&gt;
+Negative electrode OCP [V]                                                   &lt;function graphite_mcmb2528_ocp_Dualfoil1998 at 0x159a1dda0&gt;
+Negative electrode porosity                                                                   0.3
+Negative electrode active material volume fraction                                            0.6
+Negative particle radius [m]                                                                1e-05
+Negative electrode Bruggeman coefficient (electrolyte)                                        1.5
+Negative electrode Bruggeman coefficient (electrode)                                          1.5
+Negative electrode charge transfer coefficient                                                0.5
+Negative electrode double-layer capacity [F.m-2]                                              0.2
+Negative electrode exchange-current density [A.m-2]                          &lt;function graphite_electrolyte_exchange_current_density_Dualfoil1998 at 0x159a1e020&gt;
+Negative electrode density [kg.m-3]                                                        1657.0
+Negative electrode specific heat capacity [J.kg-1.K-1]                                      700.0
+Negative electrode thermal conductivity [W.m-1.K-1]                                           1.7
+Negative electrode OCP entropic change [V.K-1]                               &lt;function graphite_entropic_change_Moura2016 at 0x159a1e160&gt;
+Positive electrode conductivity [S.m-1]                                                      10.0
+Maximum concentration in positive electrode [mol.m-3]                            51217.9257309275
+Positive particle diffusivity [m2.s-1]                                       &lt;function lico2_diffusivity_Dualfoil1998 at 0x159a1e200&gt;
+Positive electrode OCP [V]                                                   &lt;function lico2_ocp_Dualfoil1998 at 0x159577100&gt;
+Positive electrode porosity                                                                   0.3
+Positive electrode active material volume fraction                                            0.5
+Positive particle radius [m]                                                                1e-05
+Positive electrode Bruggeman coefficient (electrolyte)                                        1.5
+Positive electrode Bruggeman coefficient (electrode)                                          1.5
+Positive electrode charge transfer coefficient                                                0.5
+Positive electrode double-layer capacity [F.m-2]                                              0.2
+Positive electrode exchange-current density [A.m-2]                          &lt;function lico2_electrolyte_exchange_current_density_Dualfoil1998 at 0x1598bd940&gt;
+Positive electrode density [kg.m-3]                                                        3262.0
+Positive electrode specific heat capacity [J.kg-1.K-1]                                      700.0
+Positive electrode thermal conductivity [W.m-1.K-1]                                           2.1
+Positive electrode OCP entropic change [V.K-1]                               &lt;function lico2_entropic_change_Moura2016 at 0x1598bd8a0&gt;
+Separator porosity                                                                            1.0
+Separator Bruggeman coefficient (electrolyte)                                                 1.5
+Separator density [kg.m-3]                                                                  397.0
+Separator specific heat capacity [J.kg-1.K-1]                                               700.0
+Separator thermal conductivity [W.m-1.K-1]                                                   0.16
+Initial concentration in electrolyte [mol.m-3]                                             1000.0
+Cation transference number                                                                    0.4
+Thermodynamic factor                                                                          1.0
+Electrolyte diffusivity [m2.s-1]                                             &lt;function electrolyte_diffusivity_Capiglia1999 at 0x1598bd080&gt;
+Electrolyte conductivity [S.m-1]                                             &lt;function electrolyte_conductivity_Capiglia1999 at 0x1598bcf40&gt;
+Reference temperature [K]                                                                  298.15
+Ambient temperature [K]                                                                    298.15
+Negative current collector surface heat transfer coefficient [W.m-2.K-1]                      0.0
+Positive current collector surface heat transfer coefficient [W.m-2.K-1]                      0.0
+Negative tab heat transfer coefficient [W.m-2.K-1]                                           10.0
+Positive tab heat transfer coefficient [W.m-2.K-1]                                           10.0
+Edge heat transfer coefficient [W.m-2.K-1]                                                    0.3
+Total heat transfer coefficient [W.m-2.K-1]                                                  10.0
+Number of electrodes connected in parallel to make a cell                                     1.0
+Number of cells connected in series to make a battery                                         1.0
+Lower voltage cut-off [V]                                                                   3.105
+Upper voltage cut-off [V]                                                                     4.1
+Open-circuit voltage at 0% SOC [V]                                                          3.105
+Open-circuit voltage at 100% SOC [V]                                                          4.1
+Initial concentration in negative electrode [mol.m-3]                             19986.609595075
+Initial concentration in positive electrode [mol.m-3]                            30730.7554385565
+Initial temperature [K]                                                                    298.15
+citations                                                                         [&#39;Marquis2019&#39;]
+</pre></div></div>
+</div>
+<p>Most of the parameters in this list have numerical values. Some have string values, that point to particular python functions within PyBaMM. These denote parameters that vary over time and/or space, in a manner defined by the given python function. For the moment we will ignore these, and focus on altering one of the numerical parameters.</p>
+<p>The class <code class="docutils literal notranslate"><span class="pre">`pybamm.ParameterValues</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/parameters/parameter_values.html">https://docs.pybamm.org/en/latest/source/api/parameters/parameter_values.html</a>&gt;`__ acts like the normal python <code class="docutils literal notranslate"><span class="pre">dict</span></code> data structure, so you can read or write individual parameters accordingly:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variable</span> <span class="o">=</span> <span class="s2">&quot;Current function [A]&quot;</span>
+<span class="n">old_value</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span>
+<span class="n">param</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.4</span>
+<span class="n">new_value</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="s2">&quot;was&quot;</span><span class="p">,</span> <span class="n">old_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="s2">&quot;now is&quot;</span><span class="p">,</span> <span class="n">param</span><span class="p">[</span><span class="n">variable</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Current function [A] was 0.680616
+Current function [A] now is 1.4
+</pre></div></div>
+</div>
+<p>In order to compare solutions with different parameter values, parameters must be changed to <code class="docutils literal notranslate"><span class="pre">InputParameter</span></code> objects, whose value can then be specified when solving. For example, we can compare the Voltage calculated using both the old and new current values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set up</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_solver</span>
+<span class="n">param</span><span class="p">[</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;[input]&quot;</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Solution with current = 0.68</span>
+<span class="n">old_solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">:</span> <span class="mf">0.68</span><span class="p">})</span>
+<span class="n">old_time</span> <span class="o">=</span> <span class="n">old_solution</span><span class="p">[</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+<span class="n">old_voltage</span> <span class="o">=</span> <span class="n">old_solution</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+
+<span class="c1"># Solution with current = 1.4</span>
+<span class="n">new_solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">:</span> <span class="mf">1.4</span><span class="p">})</span>
+<span class="n">new_time</span> <span class="o">=</span> <span class="n">new_solution</span><span class="p">[</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+<span class="n">new_voltage</span> <span class="o">=</span> <span class="n">new_solution</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">old_time</span><span class="p">,</span> <span class="n">old_voltage</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Current = 0.68&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new_time</span><span class="p">,</span> <span class="n">new_voltage</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Current = 1.4&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/source_examples_notebooks_change-settings_11_0.png" src="../../../_images/source_examples_notebooks_change-settings_11_0.png" />
+</div>
+</div>
+<p>Note that there is a small number of parameters for which this is not possible, since the discretisation depends on them (for example, <em>Negative electrode thickness</em>). In this case you would need to remesh the geometry as the relative length of the electrodes would have altered. This would in turn require you to re-discretise the model equations.</p>
+</section>
+<section id="Changing-the-discretisation">
+<h3>Changing the discretisation<a class="headerlink" href="#Changing-the-discretisation" title="連結到這個標頭">#</a></h3>
+<p>The chosen spatial discretisation method to use for each domain is passed into the <code class="docutils literal notranslate"><span class="pre">`pybamm.Discretisation</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/spatial_methods/discretisation.html">https://docs.pybamm.org/en/latest/source/api/spatial_methods/discretisation.html</a>&gt;`__ class as one of its arguments. The default spatial methods for the SPM class are given as:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">format_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;DOMAIN&quot;</span><span class="p">,</span> <span class="s2">&quot;DISCRETISED BY&quot;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">82</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">format_str</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DOMAIN                                                                             DISCRETISED BY
+----------------------------------------------------------------------------------
+macroscale                                                                           FiniteVolume
+negative particle                                                                    FiniteVolume
+positive particle                                                                    FiniteVolume
+negative primary particle                                                            FiniteVolume
+positive primary particle                                                            FiniteVolume
+negative secondary particle                                                          FiniteVolume
+positive secondary particle                                                          FiniteVolume
+negative particle size                                                               FiniteVolume
+positive particle size                                                               FiniteVolume
+negative primary particle size                                                       FiniteVolume
+positive primary particle size                                                       FiniteVolume
+negative secondary particle size                                                     FiniteVolume
+positive secondary particle size                                                     FiniteVolume
+current collector                                                            ZeroDimensionalSpatialMethod
+</pre></div></div>
+</div>
+<p>To change the discretisation for a particular domain, you can update the spatial methods <code class="docutils literal notranslate"><span class="pre">dict</span></code> with the new discretiation class that you wish to use, for example:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spatial_methods</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span>
+<span class="n">spatial_methods</span><span class="p">[</span><span class="s2">&quot;negative particle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpectralVolume</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>You can also update the submeshes (meshes used for each domain) in a similar way. We’ll generate a spectral mesh to use with our spectral volume method in the negative particle</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">submesh_types</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span>
+<span class="n">submesh_types</span><span class="p">[</span><span class="s2">&quot;negative particle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">MeshGenerator</span><span class="p">(</span>
+    <span class="n">pybamm</span><span class="o">.</span><span class="n">SpectralVolume1DSubMesh</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now that we have set the new discretisation method, we can proceed to re-discretise and then solve the model. Note that in this case we need to regenerate the model using <code class="docutils literal notranslate"><span class="pre">pybamm.lithium_ion.SPM</span></code>, as the original model information was lost when we discretised it <a class="reference internal" href="#The-default-SPM-model"><span class="std std-ref">above</span></a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># re-generate the model and set parameters (with fixed current function this time)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_solver</span>
+<span class="n">param</span><span class="p">[</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.68</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># re-discretise the model with the new mesh...</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">submesh_types</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># ... and finally solve it</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+<span class="n">pybamm</span><span class="o">.</span><span class="n">QuickPlot</span><span class="p">(</span><span class="n">solution</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/source_examples_notebooks_change-settings_20_0.png" src="../../../_images/source_examples_notebooks_change-settings_20_0.png" />
+</div>
+</div>
+</section>
+<section id="Changing-the-solver">
+<h3>Changing the solver<a class="headerlink" href="#Changing-the-solver" title="連結到這個標頭">#</a></h3>
+<p>Which method you use to integrate the discretised model in time can also be changed. PyBaMM has a number of different solvers available, all of which are described in the <a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/solvers/index.html">documentation</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Default solver for SPM model:&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">default_solver</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default solver for SPM model: IDAKLUSolver
+</pre></div></div>
+</div>
+<p>To change this, simply create a new solver using one of the available classes and use it to solve your discretised model. The default <code class="docutils literal notranslate"><span class="pre">IDAKLUSolver</span></code> is recommended for essentially all use cases.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">new_solution</span> <span class="o">=</span> <span class="n">new_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+<span class="n">pybamm</span><span class="o">.</span><span class="n">QuickPlot</span><span class="p">(</span><span class="n">new_solution</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../_images/source_examples_notebooks_change-settings_24_0.png" src="../../../_images/source_examples_notebooks_change-settings_24_0.png" />
+</div>
+</div>
+</section>
+<section id="References">
+<h3>References<a class="headerlink" href="#References" title="連結到這個標頭">#</a></h3>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–664, 1935.
+[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.
+[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear and differential/algebraic equation solvers. ACM Transactions on Mathematical Software (TOMS), 31(3):363–396, 2005. doi:10.1145/1089014.1089020.
+[6] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, 2019. doi:10.1149/2.0341915jes.
+[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+[8] Z. J. Wang. Spectral (finite) volume method for conservation laws on unstructured grids. Journal of Computational Physics, 178(1):210–251, 2002. doi:10.1006/jcph.2002.7041.
+
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="batch_study.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Comparisons using the BatchStudy class</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="initialize-model-with-solution.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Initializing a model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Table-of-Contents">Table of Contents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#The-default-SPM-model">The default SPM model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Changing-the-model-parameters">Changing the model parameters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Changing-the-discretisation">Changing the discretisation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#Changing-the-solver">Changing the solver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/change-settings.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-07-22。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Base Battery Model &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/models/base_models/base_battery_model';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/api/models/base_models/base_battery_model.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Event" href="event.html" />
+    <link rel="prev" title="Base Model" href="base_model.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../expression_tree/index.html">Expression Tree</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Base Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="base_model.html">Base Model</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Base Battery Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbol_processor.html">Symbol Processor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../lithium_ion/index.html">Lithium-ion Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lead_acid/index.html">Lead Acid Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equivalent_circuit/index.html">Equivalent Circuit Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../submodels/index.html">Submodels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parameters/index.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meshes/index.html">Meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spatial_methods/index.html">Discretisation and spatial methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solvers/index.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experiment/index.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../batch_study.html">Batch Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pybamm_data.html">PyBaMM Data</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">API documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Models</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Base Models</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Base Battery Model</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="base-battery-model">
+<span id="id1"></span><h1>Base Battery Model<a class="headerlink" href="#base-battery-model" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BaseBatteryModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Unnamed</span> <span class="pre">battery</span> <span class="pre">model'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel" title="Link to this definition">#</a></dt>
+<dd><p>Base model class with some default settings and required variables</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>options</strong> (<em>dict-like</em><em>, </em><em>optional</em>) – A dictionary of options to be passed to the model. If this is a dict (and not
+a subtype of dict), it will be processed by <a class="reference internal" href="#pybamm.BatteryModelOptions" title="pybamm.BatteryModelOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BatteryModelOptions</span></code></a>
+to ensure that the options are valid. If this is a subtype of dict, it is
+assumed that the options have already been processed and are valid. This allows
+for the use of custom options classes. The default options are given by
+<a class="reference internal" href="#pybamm.BatteryModelOptions" title="pybamm.BatteryModelOptions"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BatteryModelOptions</span></code></a>.</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) – The name of the model. The default is “Unnamed battery model”.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="base_model.html#pybamm.BaseModel" title="pybamm.models.base_model.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.models.base_model.BaseModel</span></code></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-text-info sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header sd-align-major-center sd-fs-6">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-eye" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span class="sd-summary-text">View inheritance diagram for this model</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><div class="graphviz"><object data="../../../../_images/inheritance-80183cb91ef9c5f34db02b1f233e175862e7c043.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of pybamm.models.full_battery_models.base_battery_model.BaseBatteryModel</p></object></div>
+</div></blockquote>
+</div>
+</details><dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.default_geometry">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_geometry</span></span><a class="headerlink" href="#pybamm.BaseBatteryModel.default_geometry" title="Link to this definition">#</a></dt>
+<dd><p>Returns a  dictionary of the default geometry for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.default_spatial_methods">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_spatial_methods</span></span><a class="headerlink" href="#pybamm.BaseBatteryModel.default_spatial_methods" title="Link to this definition">#</a></dt>
+<dd><p>Returns a dictionary of the default spatial methods for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.default_submesh_types">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_submesh_types</span></span><a class="headerlink" href="#pybamm.BaseBatteryModel.default_submesh_types" title="Link to this definition">#</a></dt>
+<dd><p>Returns a dictionary of the default submesh types for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.default_var_pts">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_var_pts</span></span><a class="headerlink" href="#pybamm.BaseBatteryModel.default_var_pts" title="Link to this definition">#</a></dt>
+<dd><p>Returns a dictionary of the default variable points for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.deserialise">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel.deserialise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel.deserialise" title="Link to this definition">#</a></dt>
+<dd><p>Create a model instance from a serialised object.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#pybamm.BaseBatteryModel.options" title="Link to this definition">#</a></dt>
+<dd><p>Returns the model options dictionary that allows customization of the model’s behavior.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel.save_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel.save_model" title="Link to this definition">#</a></dt>
+<dd><p>Write out a discretised model to a JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>provided</strong> (<em>The desired name</em><em> of </em><em>the JSON file. If no name is</em>)</p></li>
+<li><p><strong>created</strong> (<em>one will be</em>)</p></li>
+<li><p><strong>name</strong> (<em>based on the model</em>)</p></li>
+<li><p><strong>datetime.</strong> (<em>and the current</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.set_degradation_variables">
+<span class="sig-name descname"><span class="pre">set_degradation_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel.set_degradation_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel.set_degradation_variables" title="Link to this definition">#</a></dt>
+<dd><p>Set variables that quantify degradation.
+This function is overriden by the base battery models</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.set_external_circuit_submodel">
+<span class="sig-name descname"><span class="pre">set_external_circuit_submodel</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel.set_external_circuit_submodel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel.set_external_circuit_submodel" title="Link to this definition">#</a></dt>
+<dd><p>Define how the external circuit defines the boundary conditions for the model,
+e.g. (not necessarily constant-) current, voltage, etc</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseBatteryModel.set_soc_variables">
+<span class="sig-name descname"><span class="pre">set_soc_variables</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BaseBatteryModel.set_soc_variables"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BaseBatteryModel.set_soc_variables" title="Link to this definition">#</a></dt>
+<dd><p>Set variables relating to the state of charge.
+This function is overriden by the base battery models</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BatteryModelOptions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra_options</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BatteryModelOptions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BatteryModelOptions" title="Link to this definition">#</a></dt>
+<dd><dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions.options">
+<span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#pybamm.BatteryModelOptions.options" title="Link to this definition">#</a></dt>
+<dd><p>A dictionary of options to be passed to the model. The options that can
+be set are listed below. Note that not all of the options are compatible with
+each other and with all of the models implemented in PyBaMM. Each option is
+optional and takes a default value if not provided.
+In general, the option provided must be a string, but there are some cases
+where a 2-tuple of strings can be provided instead to indicate a different
+option for the negative and positive electrodes.</p>
+<blockquote>
+<div><ul>
+<li><dl class="simple">
+<dt>“calculate discharge energy”: str</dt><dd><p>Whether to calculate the discharge energy, throughput energy and
+throughput capacity in addition to discharge capacity. Must be one of
+“true” or “false”. “false” is the default, since calculating discharge
+energy can be computationally expensive for simple models like SPM.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“cell geometry”<span class="classifier">str</span></dt><dd><p>Sets the geometry of the cell. Can be “arbitrary” (default) or
+“pouch”. The arbitrary geometry option solves a 1D electrochemical
+model with prescribed cell volume and cross-sectional area, and
+(if thermal effects are included) solves a lumped thermal model
+with prescribed surface area for cooling.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“calculate heat source for isothermal models”<span class="classifier">str</span></dt><dd><p>Whether to calculate the heat source terms during isothermal operation.
+Can be “true” or “false”. If “false”, the heat source terms are set
+to zero. Default is “false” since this option may require additional
+parameters not needed by the electrochemical model.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“contact resistance”<span class="classifier">str</span></dt><dd><p>Whether to include an additional series resistance, added to the
+terminal voltage and contributing Ohmic (I^2 R) heating. Can be
+“false” (default) or “true”. Set via the parameter “Contact
+resistance [Ohm]”, which may be a constant or a function of the
+volume-averaged cell temperature.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“convection”<span class="classifier">str</span></dt><dd><p>Whether to include the effects of convection in the model. Can be
+“none” (default), “uniform transverse” or “full transverse”.
+Must be “none” for lithium-ion models.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“current collector”<span class="classifier">str</span></dt><dd><p>Sets the current collector model to use. Can be “uniform” (default),
+“potential pair” or “potential pair quite conductive”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“diffusivity”<span class="classifier">str</span></dt><dd><p>Sets the model for the diffusivity. Can be “single”
+(default) or “current sigmoid”. A 2-tuple can be provided for different
+behaviour in negative and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“dimensionality”<span class="classifier">int</span></dt><dd><p>Sets the dimension of the current collector problem. Can be 0
+(default), 1 or 2.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“electrolyte conductivity”<span class="classifier">str</span></dt><dd><p>Can be “default” (default), “full”, “leading order”, “composite” or
+“integrated”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“exchange-current density”<span class="classifier">str</span></dt><dd><p>Sets the model for the exchange-current density. Can be “single”
+(default) or “current sigmoid”. A 2-tuple can be provided for different
+behaviour in negative and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“hydrolysis”<span class="classifier">str</span></dt><dd><p>Whether to include hydrolysis in the model. Only implemented for
+lead-acid models. Can be “false” (default) or “true”. If “true”, then
+“surface form” cannot be ‘false’.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“intercalation kinetics”<span class="classifier">str</span></dt><dd><p>Model for intercalation kinetics. Can be “symmetric Butler-Volmer”
+(default), “asymmetric Butler-Volmer”, “linear”, “Marcus”,
+“Marcus-Hush-Chidsey” (which uses the asymptotic form from Zeng 2014),
+or “MSMR” (which uses the form from Baker 2018). A 2-tuple can be
+provided for different behaviour in negative and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“interface utilisation”: str</dt><dd><p>Can be “full” (default), “constant”, or “current-driven”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“lithium plating”<span class="classifier">str</span></dt><dd><p>Sets the model for lithium plating. Can be “none” (default),
+“reversible”, “partially reversible”, or “irreversible”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“lithium plating porosity change”<span class="classifier">str</span></dt><dd><p>Whether to include porosity change due to lithium plating, can be
+“false” (default) or “true”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“loss of active material”<span class="classifier">str</span></dt><dd><p>Sets the model for loss of active material. Can be “none” (default),
+“stress-driven”, “asymmetric stress-driven”, “reaction-driven”,
+“current-driven”, “stress and reaction-driven”, or
+“asymmetric stress and reaction-driven”.
+A 2-tuple can be provided for different behaviour in negative and
+positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“number of MSMR reactions”<span class="classifier">str</span></dt><dd><p>Sets the number of reactions to use in the MSMR model in each electrode.
+A 2-tuple can be provided to give a different number of reactions in
+the negative and positive electrodes. Default is “none”. Can be any
+2-tuple of strings of integers. For example, set to (“6”, “4”) for a
+negative electrode with 6 reactions and a positive electrode with 4
+reactions.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“open-circuit potential”<span class="classifier">str</span></dt><dd><p>Sets the model for the open circuit potential. Can be “single”
+(default), “current sigmoid”, “one-state hysteresis”, “one-state differential capacity hysteresis”, or “MSMR”.
+If “MSMR” then the “particle” option must also be “MSMR”.
+A 2-tuple can be provided for different behaviour in negative
+and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“operating mode”<span class="classifier">str</span></dt><dd><p>Sets the operating mode for the model. This determines how the current
+is set. Can be:</p>
+<ul class="simple">
+<li><p>“current” (default) : the current is explicity supplied</p></li>
+<li><p>“voltage”/”power”/”resistance” : solve an algebraic equation for                     current such that voltage/power/resistance is correct</p></li>
+<li><p>“differential power”/”differential resistance” : solve a                     differential equation for the power or resistance</p></li>
+<li><p>“explicit power”/”explicit resistance” : current is defined in terms                     of the voltage such that power/resistance is correct</p></li>
+<li><p>“CCCV”: a special implementation of the common constant-current                     constant-voltage charging protocol, via an ODE for the current</p></li>
+<li><p>callable : if a callable is given as this option, the function                     defines the residual of an algebraic equation. The applied current                     will be solved for such that the algebraic constraint is satisfied.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“particle”<span class="classifier">str</span></dt><dd><p>Sets the submodel to use to describe behaviour within the particle.
+Can be “Fickian diffusion” (default), “uniform profile”,
+“quadratic profile”, “quartic profile”, or “MSMR”. If “MSMR” then the
+“open-circuit potential” option must also be “MSMR”. A 2-tuple can be
+provided for different behaviour in negative and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“particle mechanics”<span class="classifier">str</span></dt><dd><p>Sets the model to account for mechanical effects such as particle
+swelling and cracking. Can be “none” (default), “swelling only”,
+or “swelling and cracking”.
+A 2-tuple can be provided for different behaviour in negative and
+positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“particle phases”: str</dt><dd><p>Number of phases present in the electrode. A 2-tuple can be provided for
+different behaviour in negative and positive electrodes.
+For example, set to (“2”, “1”) for a negative electrode with 2 phases,
+e.g. graphite and silicon.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“particle shape”<span class="classifier">str</span></dt><dd><p>Sets the model shape of the electrode particles. This is used to
+calculate the surface area to volume ratio. Can be “spherical”
+(default), or “no particles”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“particle size”<span class="classifier">str</span></dt><dd><p>Sets the model to include a single active particle size or a
+distribution of sizes at any macroscale location. Can be “single”
+(default) or “distribution”. Option applies to both electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“SEI”<span class="classifier">str</span></dt><dd><p>Set the SEI submodel to be used. Options are:</p>
+<ul class="simple">
+<li><p>“none”: <a class="reference internal" href="../submodels/interface/sei/no_sei.html#pybamm.sei.NoSEI" title="pybamm.sei.NoSEI"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.sei.NoSEI</span></code></a> (no SEI growth)</p></li>
+<li><p>“constant”: <code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.sei.Constant</span></code> (constant SEI thickness)</p></li>
+<li><p>“reaction limited”, “reaction limited (asymmetric)”,                     “solvent-diffusion limited”, “electron-migration limited”,                     “interstitial-diffusion limited”, “ec reaction limited” ,                       “VonKolzenberg2020”, “tunnelling limited”,                    or “ec reaction limited (asymmetric)”: <a class="reference internal" href="../submodels/interface/sei/sei_growth.html#pybamm.sei.SEIGrowth" title="pybamm.sei.SEIGrowth"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.sei.SEIGrowth</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>“SEI film resistance”<span class="classifier">str</span></dt><dd><p>Set the submodel for additional term in the overpotential due to SEI.
+The default value is “none” if the “SEI” option is “none”, and
+“distributed” otherwise. This is because the “distributed” model is more
+complex than the model with no additional resistance, which adds
+unnecessary complexity if there is no SEI in the first place</p>
+<ul>
+<li><dl>
+<dt>“none”: no additional resistance</dt><dd><div class="math notranslate nohighlight">
+\[\eta_r = \frac{F}{RT} * (\phi_s - \phi_e - U)\]</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>“distributed”: properly included additional resistance term</dt><dd><div class="math notranslate nohighlight">
+\[\eta_r = \frac{F}{RT}
+* (\phi_s - \phi_e - U - R_{sei} * L_{sei} * j)\]</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>“average”: constant additional resistance term (approximation to the                     true model). This model can give similar results to the                     “distributed” case without needing to make j an algebraic state</dt><dd><div class="math notranslate nohighlight">
+\[\eta_r = \frac{F}{RT}
+* (\phi_s - \phi_e - U - R_{sei} * L_{sei} * \frac{I}{aL})\]</div>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“SEI on cracks”<span class="classifier">str</span></dt><dd><p>Whether to include SEI growth on particle cracks, can be “false”
+(default) or “true”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“SEI porosity change”<span class="classifier">str</span></dt><dd><p>Whether to include porosity change due to SEI formation, can be “false”
+(default) or “true”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“stress-induced diffusion”<span class="classifier">str</span></dt><dd><p>Whether to include stress-induced diffusion, can be “false” or “true”.
+The default is “false” if “particle mechanics” is “none” and “true”
+otherwise. A 2-tuple can be provided for different behaviour in negative
+and positive electrodes.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“surface form”<span class="classifier">str</span></dt><dd><p>Whether to use the surface formulation of the problem. Can be “false”
+(default), “differential” or “algebraic”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“surface temperature”<span class="classifier">str</span></dt><dd><p>Sets the surface temperature model to use. Can be “ambient” (default),
+which sets the surface temperature equal to the ambient temperature, or
+“lumped”, which adds an ODE for the surface temperature (e.g. to model
+internal heating of a thermal chamber).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“thermal”<span class="classifier">str</span></dt><dd><p>Sets the thermal model to use. Can be “isothermal” (default), “lumped”,
+“x-lumped”, or “x-full”. The ‘cell geometry’ option must be set to
+‘pouch’ for ‘x-lumped’ or ‘x-full’ to be valid. Using the ‘x-lumped’
+option with ‘dimensionality’ set to 0 is equivalent to using the
+‘lumped’ option.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“total interfacial current density as a state”<span class="classifier">str</span></dt><dd><p>Whether to make a state for the total interfacial current density and
+solve an algebraic equation for it. Default is “false”, unless “SEI film
+resistance” is distributed in which case it is automatically set to
+“true”.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“voltage as a state”<span class="classifier">str</span></dt><dd><p>Whether to promote voltage to an algebraic state variable.
+Can be “false” (default) or “true”, unless the operating mode
+is “explicit power” or “explicit resistance”, in which case it
+is automatically set to “true”. When “true”, the model is a DAE
+and requires a DAE-capable solver (e.g. the default
+IDAKLUSolver). When “false”, voltage is computed as an
+expression. Note that setting this to “false” only removes the
+voltage algebraic equation; SPM/SPMe with <code class="docutils literal notranslate"><span class="pre">surface</span>
+<span class="pre">form=&quot;false&quot;</span></code> become pure ODE models, but DFN retains other
+algebraic states (electrode/electrolyte potentials) regardless
+of this option.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“working electrode”<span class="classifier">str</span></dt><dd><p>Can be “both” (default) for a standard battery or “positive” for a
+half-cell where the negative electrode is replaced with a lithium metal
+counter electrode.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“x-average side reactions”: str</dt><dd><p>Whether to average the side reactions (SEI growth, lithium plating and
+the respective porosity change) over the x-axis in Single Particle
+Models, can be “false” or “true”. Default is “false” for SPMe and
+“true” for SPM.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>“use lumped thermal capacity”<span class="classifier">str</span></dt><dd><p>Whether to use a lumped capacity model for the thermal model. Can be
+“false” (default) or “true”. This is only available for the lumped
+thermal model.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<p><strong>Extends:</strong> <a class="reference internal" href="../../util.html#pybamm.FuzzyDict" title="pybamm.util.FuzzyDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.util.FuzzyDict</span></code></a></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3 sd-text-info sd-fade-in-slide-down">
+<summary class="sd-summary-title sd-card-header sd-align-major-center sd-fs-6">
+<span class="sd-summary-icon"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-eye" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span class="sd-summary-text">View inheritance diagram for this model</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<blockquote>
+<div><div class="graphviz"><object data="../../../../_images/inheritance-ff14025fd3bb21e0696886072a524cee3afb2524.svg" type="image/svg+xml" class="inheritance graphviz">
+<p class="warning">Inheritance diagram of pybamm.models.full_battery_models.base_battery_model.BatteryModelOptions</p></object></div>
+</div></blockquote>
+</div>
+</details><dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions.negative">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">negative</span></span><a class="headerlink" href="#pybamm.BatteryModelOptions.negative" title="Link to this definition">#</a></dt>
+<dd><p>Returns the options for the negative electrode</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions.positive">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">positive</span></span><a class="headerlink" href="#pybamm.BatteryModelOptions.positive" title="Link to this definition">#</a></dt>
+<dd><p>Returns the options for the positive electrode</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions.print_detailed_options">
+<span class="sig-name descname"><span class="pre">print_detailed_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BatteryModelOptions.print_detailed_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BatteryModelOptions.print_detailed_options" title="Link to this definition">#</a></dt>
+<dd><p>Print the docstring for Options</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BatteryModelOptions.print_options">
+<span class="sig-name descname"><span class="pre">print_options</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/full_battery_models/base_battery_model.html#BatteryModelOptions.print_options"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pybamm.BatteryModelOptions.print_options" title="Link to this definition">#</a></dt>
+<dd><p>Print the possible options with the ones currently selected</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="base_model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Base Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="event.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Event</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.default_geometry"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.default_geometry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.default_spatial_methods"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.default_spatial_methods</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.default_submesh_types"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.default_submesh_types</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.default_var_pts"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.default_var_pts</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.deserialise"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.deserialise()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.options"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.save_model"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.save_model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.set_degradation_variables"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.set_degradation_variables()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.set_external_circuit_submodel"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.set_external_circuit_submodel()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseBatteryModel.set_soc_variables"><code class="docutils literal notranslate"><span class="pre">BaseBatteryModel.set_soc_variables()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions.options"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions.options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions.negative"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions.negative</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions.positive"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions.positive</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions.print_detailed_options"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions.print_detailed_options()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BatteryModelOptions.print_options"><code class="docutils literal notranslate"><span class="pre">BatteryModelOptions.print_options()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/api/models/base_models/base_battery_model.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-11.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

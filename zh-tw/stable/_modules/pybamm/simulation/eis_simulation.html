@@ -1,0 +1,819 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.simulation.eis_simulation &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=6c9e8f96"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/simulation/eis_simulation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/simulation/eis_simulation.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.simulation.eis_simulation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.simulation.eis_simulation 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csc_matrix</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse.linalg</span><span class="w"> </span><span class="kn">import</span> <span class="n">spsolve</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_simulation</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSimulation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.eis_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SymbolReplacer</span>
+
+
+<div class="viewcode-block" id="EISSimulation">
+<a class="viewcode-back" href="../../../source/api/simulation/eis_simulation.html#pybamm.EISSimulation">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EISSimulation</span><span class="p">(</span><span class="n">BaseSimulation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Frequency-domain EIS simulation built on :class:`BaseSimulation`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : :class:`pybamm.BaseModel`</span>
+<span class="sd">        The model to be simulated.</span>
+<span class="sd">    parameter_values : :class:`pybamm.ParameterValues`, optional</span>
+<span class="sd">        Parameters and their corresponding numerical values.</span>
+<span class="sd">    geometry : :class:`pybamm.Geometry`, optional</span>
+<span class="sd">        The geometry upon which to solve the model.</span>
+<span class="sd">    submesh_types : dict, optional</span>
+<span class="sd">        A dictionary of the types of submesh to use on each subdomain.</span>
+<span class="sd">    var_pts : dict, optional</span>
+<span class="sd">        A dictionary of the number of points used by each spatial variable.</span>
+<span class="sd">    spatial_methods : dict, optional</span>
+<span class="sd">        A dictionary of the types of spatial method to use on each domain.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">parameter_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">submesh_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">var_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">spatial_methods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">name</span>
+
+        <span class="n">parameter_values</span> <span class="o">=</span> <span class="n">parameter_values</span> <span class="ow">or</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+
+        <span class="c1"># Validate required variables and surface form before any processing</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_validate_model_for_eis</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Setting up </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> for EIS&quot;</span><span class="p">)</span>
+        <span class="n">eis_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_model_for_eis</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+        <span class="c1"># Compute impedance scale factor after model transformation: the</span>
+        <span class="c1"># external-circuit FunctionControl swap rescales &quot;Current [A]&quot; by</span>
+        <span class="c1"># the nominal cell capacity, which must be reflected in z = V/I.</span>
+        <span class="n">V_scale</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">eis_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">],</span> <span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">I_scale</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">eis_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Current [A]&quot;</span><span class="p">],</span> <span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_z_scale</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">V_scale</span> <span class="o">/</span> <span class="n">I_scale</span><span class="p">)</span>
+
+        <span class="n">parameter_values</span><span class="p">[</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">eis_model</span><span class="p">,</span>
+            <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">,</span>
+            <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span>
+            <span class="n">submesh_types</span><span class="o">=</span><span class="n">submesh_types</span><span class="p">,</span>
+            <span class="n">var_pts</span><span class="o">=</span><span class="n">var_pts</span><span class="p">,</span>
+            <span class="n">spatial_methods</span><span class="o">=</span><span class="n">spatial_methods</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_up_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Finished setting up </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> for EIS &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;(set-up time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">set_up_time</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Hallemans2025&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_validate_model_for_eis</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Validate that a model is suitable for frequency-domain EIS.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the model is missing required variables or options.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">required_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span> <span class="s2">&quot;Current [A]&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">required_vars</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">var</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Model must contain variable &#39;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&#39; for EIS simulation&quot;</span>
+                <span class="p">)</span>
+
+        <span class="n">surface_form</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;surface form&quot;</span><span class="p">,</span> <span class="s2">&quot;false&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">surface_form</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;differential&quot;</span><span class="p">,</span> <span class="s2">&quot;algebraic&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;EIS simulation requires &#39;surface form&#39; model option to be &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;differential&#39; or &#39;algebraic&#39;, got &#39;</span><span class="si">{</span><span class="n">surface_form</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Use e.g. pybamm.lithium_ion.SPM(&quot;</span>
+                <span class="sa">f</span><span class="s1">&#39;options=</span><span class="se">{{</span><span class="s1">&quot;surface form&quot;: &quot;differential&quot;</span><span class="se">}}</span><span class="s1">)&#39;</span>
+            <span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_up_model_for_eis</span><span class="p">(</span><span class="n">model</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Prepare a model for frequency-domain EIS.</span>
+
+<span class="sd">        Creates a copy of the model with voltage and current as algebraic</span>
+<span class="sd">        state variables, suitable for extracting the mass matrix and Jacobian</span>
+<span class="sd">        needed by the frequency-domain solver.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            Original model.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        new_model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            Modified model copy.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">new_model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">new_copy</span><span class="p">()</span>
+
+        <span class="c1"># Add voltage as an algebraic state variable</span>
+        <span class="n">V_cell</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;Voltage variable [V]&quot;</span><span class="p">)</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Voltage variable [V]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_cell</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">algebraic</span><span class="p">[</span><span class="n">V_cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">V_cell</span> <span class="o">-</span> <span class="n">V</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">initial_conditions</span><span class="p">[</span><span class="n">V_cell</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">ocv_init</span>
+
+        <span class="c1"># Replace current with a FunctionControl variable</span>
+        <span class="n">external_circuit_variables</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">FunctionControl</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">control</span><span class="o">=</span><span class="s2">&quot;algebraic&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">get_fundamental_variables</span><span class="p">()</span>
+
+        <span class="n">symbol_replacement_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="n">name</span><span class="p">]:</span> <span class="n">variable</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">variable</span> <span class="ow">in</span> <span class="n">external_circuit_variables</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span>
+        <span class="p">}</span>
+        <span class="n">replacer</span> <span class="o">=</span> <span class="n">SymbolReplacer</span><span class="p">(</span>
+            <span class="n">symbol_replacement_map</span><span class="p">,</span> <span class="n">process_initial_conditions</span><span class="o">=</span><span class="kc">False</span>
+        <span class="p">)</span>
+        <span class="n">replacer</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">new_model</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Add algebraic equation for current: I = I_applied (= 0 at equilibrium)</span>
+        <span class="n">I_var</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Current variable [A]&quot;</span><span class="p">]</span>
+        <span class="n">I_</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Current [A]&quot;</span><span class="p">]</span>
+        <span class="n">I_applied</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">(</span>
+            <span class="s2">&quot;Current function [A]&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;Time [s]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">t</span><span class="p">}</span>
+        <span class="p">)</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">algebraic</span><span class="p">[</span><span class="n">I_var</span><span class="p">]</span> <span class="o">=</span> <span class="n">I_</span> <span class="o">-</span> <span class="n">I_applied</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">initial_conditions</span><span class="p">[</span><span class="n">I_var</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">return</span> <span class="n">new_model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_matrix_problem</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Build the mass matrix, Jacobian, and forcing vector.</span>
+
+<span class="sd">        The mass matrix ``M`` and forcing vector ``b`` are cached after the</span>
+<span class="sd">        first call because they do not depend on the operating point.  Only</span>
+<span class="sd">        the Jacobian is re-evaluated when initial conditions change (e.g.</span>
+<span class="sd">        different SOC).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        inputs_dict : dict, optional</span>
+<span class="sd">            Input parameters to pass to the model.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        M : scipy.sparse.csc_matrix</span>
+<span class="sd">            Mass matrix in CSC format.</span>
+<span class="sd">        neg_J : scipy.sparse.csc_matrix</span>
+<span class="sd">            Negated Jacobian in CSC format (pre-negated for the solve loop).</span>
+<span class="sd">        b : np.ndarray</span>
+<span class="sd">            Forcing vector with unit perturbation on the current variable.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span>
+        <span class="n">inputs_dict</span> <span class="o">=</span> <span class="n">inputs_dict</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="c1"># Convert inputs to casadi format for Jacobian evaluation</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">convert_to_format</span> <span class="o">==</span> <span class="s2">&quot;casadi&quot;</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">casadi</span><span class="w"> </span><span class="kn">import</span> <span class="n">vertcat</span>
+
+            <span class="n">casadi_inputs</span> <span class="o">=</span> <span class="n">vertcat</span><span class="p">(</span><span class="o">*</span><span class="n">inputs_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="k">if</span> <span class="n">inputs_dict</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">casadi_inputs</span> <span class="o">=</span> <span class="n">inputs_dict</span>
+
+        <span class="c1"># Only compile Jacobian/model functions on first call; the compiled</span>
+        <span class="c1"># functions persist on the model and work with any inputs/y0 values.</span>
+        <span class="k">if</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;jac_rhs_algebraic_eval&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseSolver</span><span class="p">()</span>
+            <span class="n">solver</span><span class="o">.</span><span class="n">set_up</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs_dict</span><span class="p">)</span>
+
+        <span class="n">y0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">concatenated_initial_conditions</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs_dict</span><span class="p">)</span>
+        <span class="n">J_sparse</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">jac_rhs_algebraic_eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">casadi_inputs</span><span class="p">)</span><span class="o">.</span><span class="n">sparse</span><span class="p">()</span>
+        <span class="n">neg_J</span> <span class="o">=</span> <span class="o">-</span><span class="n">J_sparse</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">J_sparse</span><span class="p">,</span> <span class="n">csc_matrix</span><span class="p">)</span> <span class="k">else</span> <span class="o">-</span><span class="n">csc_matrix</span><span class="p">(</span><span class="n">J_sparse</span><span class="p">)</span>
+
+        <span class="c1"># M and b are independent of operating point and cached after first call,</span>
+        <span class="c1"># but we have a defensive guard to invalidate it if the state vector size changes</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">y0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_cached_M&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_b</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">n</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_M</span> <span class="o">=</span> <span class="n">csc_matrix</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">mass_matrix</span><span class="o">.</span><span class="n">entries</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_M</span><span class="p">,</span> <span class="n">neg_J</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_b</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_impedance</span><span class="p">(</span><span class="n">frequency</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">neg_J</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Calculate impedance at a single frequency.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        frequency : float</span>
+<span class="sd">            Frequency in Hz.</span>
+<span class="sd">        M : scipy.sparse.csc_matrix</span>
+<span class="sd">            Mass matrix.</span>
+<span class="sd">        neg_J : scipy.sparse.csc_matrix</span>
+<span class="sd">            Negated Jacobian.</span>
+<span class="sd">        b : np.ndarray</span>
+<span class="sd">            Forcing vector.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        z : complex</span>
+<span class="sd">            Complex impedance value (unscaled).</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="mf">1.0</span><span class="n">j</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">M</span> <span class="o">+</span> <span class="n">neg_J</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">spsolve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="c1"># Voltage is penultimate, current is last (by construction in</span>
+        <span class="c1"># _set_up_model_for_eis)</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<div class="viewcode-block" id="EISSimulation.solve">
+<a class="viewcode-back" href="../../../source/api/simulation/eis_simulation.html#pybamm.EISSimulation.solve">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">frequencies</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">initial_soc</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute impedance at the given frequencies.</span>
+
+<span class="sd">        Solves the linear system ``(i*omega*M - J) x = b`` at each frequency</span>
+<span class="sd">        using a direct sparse solver.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        frequencies : array-like</span>
+<span class="sd">            Frequencies in Hz at which to compute impedance.</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            Input parameters to pass to the model.</span>
+<span class="sd">        initial_soc : float or str, optional</span>
+<span class="sd">            Initial State of Charge. If given, the model is rebuilt with the</span>
+<span class="sd">            new SOC before solving.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.EISSolution`</span>
+<span class="sd">            Solution containing frequencies and complex impedance values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">name</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start calculating impedance for </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">initial_soc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">initial_soc</span><span class="o">=</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+        <span class="n">M</span><span class="p">,</span> <span class="n">neg_J</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_matrix_problem</span><span class="p">(</span><span class="n">inputs_dict</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="n">zs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_calculate_impedance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">neg_J</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">frequencies</span><span class="p">]</span>
+        <span class="n">impedance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">zs</span><span class="p">)</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_z_scale</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EISSolution</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">impedance</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">set_up_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_up_time</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">solve_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">solve_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">solve_time</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Finished calculating impedance for </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s2"> &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;(solve time: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">solve_time</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span></div>
+
+
+<div class="viewcode-block" id="EISSimulation.nyquist_plot">
+<a class="viewcode-back" href="../../../source/api/simulation/eis_simulation.html#pybamm.EISSimulation.nyquist_plot">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">nyquist_plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate a Nyquist plot from the most recent solution.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Keyword arguments forwarded to :func:`pybamm.nyquist_plot`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        fig : matplotlib.figure.Figure or None</span>
+<span class="sd">        ax : matplotlib.axes.Axes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;EIS simulation has not been solved yet. Call solve() before plotting.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

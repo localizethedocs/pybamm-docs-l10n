@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>概览：模块代码 &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../_static/documentation_options.js?v=06885765"></script>
+    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../_static/translations.js?v=540d3cec"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/index.html" />
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../_static/searchtools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../searchindex.js"></script>
+  
+<script type="text/javascript" src="../ltd-provenance.js"></script>
+<script type="text/javascript" src="../ltd-current.js"></script>
+<script type="text/javascript" src="../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">概览：模块代码</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>代码可用的所有模块</h1>
+<ul><li><a href="pybamm/batch_study.html">pybamm.batch_study</a></li>
+<li><a href="pybamm/callbacks.html">pybamm.callbacks</a></li>
+<li><a href="pybamm/citations.html">pybamm.citations</a></li>
+<li><a href="pybamm/codegen/compilation.html">pybamm.codegen.compilation</a></li>
+<li><a href="pybamm/discretisations/discretisation.html">pybamm.discretisations.discretisation</a></li>
+<li><a href="pybamm/dispatch/entry_points.html">pybamm.dispatch.entry_points</a></li>
+<li><a href="pybamm/experiment/experiment.html">pybamm.experiment.experiment</a></li>
+<li><a href="pybamm/experiment/step/base_step.html">pybamm.experiment.step.base_step</a></li>
+<li><a href="pybamm/experiment/step/step_termination.html">pybamm.experiment.step.step_termination</a></li>
+<li><a href="pybamm/experiment/step/steps.html">pybamm.experiment.step.steps</a></li>
+<li><a href="pybamm/expression_tree/array.html">pybamm.expression_tree.array</a></li>
+<li><a href="pybamm/expression_tree/averages.html">pybamm.expression_tree.averages</a></li>
+<li><a href="pybamm/expression_tree/binary_operators.html">pybamm.expression_tree.binary_operators</a></li>
+<li><a href="pybamm/expression_tree/broadcasts.html">pybamm.expression_tree.broadcasts</a></li>
+<li><a href="pybamm/expression_tree/concatenations.html">pybamm.expression_tree.concatenations</a></li>
+<li><a href="pybamm/expression_tree/functions.html">pybamm.expression_tree.functions</a></li>
+<li><a href="pybamm/expression_tree/independent_variable.html">pybamm.expression_tree.independent_variable</a></li>
+<li><a href="pybamm/expression_tree/input_parameter.html">pybamm.expression_tree.input_parameter</a></li>
+<li><a href="pybamm/expression_tree/interpolant.html">pybamm.expression_tree.interpolant</a></li>
+<li><a href="pybamm/expression_tree/matrix.html">pybamm.expression_tree.matrix</a></li>
+<li><a href="pybamm/expression_tree/operations/evaluate_python.html">pybamm.expression_tree.operations.evaluate_python</a></li>
+<li><a href="pybamm/expression_tree/operations/jacobian.html">pybamm.expression_tree.operations.jacobian</a></li>
+<li><a href="pybamm/expression_tree/operations/serialise.html">pybamm.expression_tree.operations.serialise</a></li>
+<li><a href="pybamm/expression_tree/operations/unpack_symbols.html">pybamm.expression_tree.operations.unpack_symbols</a></li>
+<li><a href="pybamm/expression_tree/parameter.html">pybamm.expression_tree.parameter</a></li>
+<li><a href="pybamm/expression_tree/scalar.html">pybamm.expression_tree.scalar</a></li>
+<li><a href="pybamm/expression_tree/state_vector.html">pybamm.expression_tree.state_vector</a></li>
+<li><a href="pybamm/expression_tree/symbol.html">pybamm.expression_tree.symbol</a></li>
+<li><a href="pybamm/expression_tree/unary_operators.html">pybamm.expression_tree.unary_operators</a></li>
+<li><a href="pybamm/expression_tree/variable.html">pybamm.expression_tree.variable</a></li>
+<li><a href="pybamm/expression_tree/vector.html">pybamm.expression_tree.vector</a></li>
+<li><a href="pybamm/geometry/battery_geometry.html">pybamm.geometry.battery_geometry</a></li>
+<li><a href="pybamm/geometry/geometry.html">pybamm.geometry.geometry</a></li>
+<li><a href="pybamm/logger.html">pybamm.logger</a></li>
+<li><a href="pybamm/meshes/meshes.html">pybamm.meshes.meshes</a></li>
+<li><a href="pybamm/meshes/one_dimensional_submeshes.html">pybamm.meshes.one_dimensional_submeshes</a></li>
+<li><a href="pybamm/meshes/scikit_fem_submeshes.html">pybamm.meshes.scikit_fem_submeshes</a></li>
+<li><a href="pybamm/meshes/scikit_fem_submeshes_3d.html">pybamm.meshes.scikit_fem_submeshes_3d</a></li>
+<li><a href="pybamm/meshes/unstructured_submesh.html">pybamm.meshes.unstructured_submesh</a></li>
+<li><a href="pybamm/meshes/zero_dimensional_submesh.html">pybamm.meshes.zero_dimensional_submesh</a></li>
+<li><a href="pybamm/models/base_model.html">pybamm.models.base_model</a></li>
+<li><a href="pybamm/models/event.html">pybamm.models.event</a></li>
+<li><a href="pybamm/models/full_battery_models/base_battery_model.html">pybamm.models.full_battery_models.base_battery_model</a></li>
+<li><a href="pybamm/models/full_battery_models/equivalent_circuit/thevenin.html">pybamm.models.full_battery_models.equivalent_circuit.thevenin</a></li>
+<li><a href="pybamm/models/full_battery_models/lead_acid/base_lead_acid_model.html">pybamm.models.full_battery_models.lead_acid.base_lead_acid_model</a></li>
+<li><a href="pybamm/models/full_battery_models/lead_acid/basic_full.html">pybamm.models.full_battery_models.lead_acid.basic_full</a></li>
+<li><a href="pybamm/models/full_battery_models/lead_acid/full.html">pybamm.models.full_battery_models.lead_acid.full</a></li>
+<li><a href="pybamm/models/full_battery_models/lead_acid/loqs.html">pybamm.models.full_battery_models.lead_acid.loqs</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/Yang2017.html">pybamm.models.full_battery_models.lithium_ion.Yang2017</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/base_lithium_ion_model.html">pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_dfn.html">pybamm.models.full_battery_models.lithium_ion.basic_dfn</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_dfn_composite.html">pybamm.models.full_battery_models.lithium_ion.basic_dfn_composite</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_dfn_half_cell.html">pybamm.models.full_battery_models.lithium_ion.basic_dfn_half_cell</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_splitOCVR.html">pybamm.models.full_battery_models.lithium_ion.basic_splitOCVR</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_spm.html">pybamm.models.full_battery_models.lithium_ion.basic_spm</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/basic_spm_with_3d_thermal.html">pybamm.models.full_battery_models.lithium_ion.basic_spm_with_3d_thermal</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/dfn.html">pybamm.models.full_battery_models.lithium_ion.dfn</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/electrode_soh.html">pybamm.models.full_battery_models.lithium_ion.electrode_soh</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/mpm.html">pybamm.models.full_battery_models.lithium_ion.mpm</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/msmr.html">pybamm.models.full_battery_models.lithium_ion.msmr</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/newman_tobias.html">pybamm.models.full_battery_models.lithium_ion.newman_tobias</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/spm.html">pybamm.models.full_battery_models.lithium_ion.spm</a></li>
+<li><a href="pybamm/models/full_battery_models/lithium_ion/spme.html">pybamm.models.full_battery_models.lithium_ion.spme</a></li>
+<li><a href="pybamm/models/submodels/active_material/base_active_material.html">pybamm.models.submodels.active_material.base_active_material</a></li>
+<li><a href="pybamm/models/submodels/active_material/constant_active_material.html">pybamm.models.submodels.active_material.constant_active_material</a></li>
+<li><a href="pybamm/models/submodels/active_material/loss_active_material.html">pybamm.models.submodels.active_material.loss_active_material</a></li>
+<li><a href="pybamm/models/submodels/base_submodel.html">pybamm.models.submodels.base_submodel</a></li>
+<li><a href="pybamm/models/submodels/convection/base_convection.html">pybamm.models.submodels.convection.base_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/through_cell/base_through_cell_convection.html">pybamm.models.submodels.convection.through_cell.base_through_cell_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/through_cell/explicit_convection.html">pybamm.models.submodels.convection.through_cell.explicit_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/through_cell/full_convection.html">pybamm.models.submodels.convection.through_cell.full_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/through_cell/no_convection.html">pybamm.models.submodels.convection.through_cell.no_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/transverse/base_transverse_convection.html">pybamm.models.submodels.convection.transverse.base_transverse_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/transverse/full_convection.html">pybamm.models.submodels.convection.transverse.full_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/transverse/no_convection.html">pybamm.models.submodels.convection.transverse.no_convection</a></li>
+<li><a href="pybamm/models/submodels/convection/transverse/uniform_convection.html">pybamm.models.submodels.convection.transverse.uniform_convection</a></li>
+<li><a href="pybamm/models/submodels/current_collector/base_current_collector.html">pybamm.models.submodels.current_collector.base_current_collector</a></li>
+<li><a href="pybamm/models/submodels/current_collector/effective_resistance_current_collector.html">pybamm.models.submodels.current_collector.effective_resistance_current_collector</a></li>
+<li><a href="pybamm/models/submodels/current_collector/homogeneous_current_collector.html">pybamm.models.submodels.current_collector.homogeneous_current_collector</a></li>
+<li><a href="pybamm/models/submodels/current_collector/potential_pair.html">pybamm.models.submodels.current_collector.potential_pair</a></li>
+<li><a href="pybamm/models/submodels/electrode/base_electrode.html">pybamm.models.submodels.electrode.base_electrode</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/base_ohm.html">pybamm.models.submodels.electrode.ohm.base_ohm</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/composite_ohm.html">pybamm.models.submodels.electrode.ohm.composite_ohm</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/full_ohm.html">pybamm.models.submodels.electrode.ohm.full_ohm</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/leading_ohm.html">pybamm.models.submodels.electrode.ohm.leading_ohm</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/li_metal.html">pybamm.models.submodels.electrode.ohm.li_metal</a></li>
+<li><a href="pybamm/models/submodels/electrode/ohm/surface_form_ohm.html">pybamm.models.submodels.electrode.ohm.surface_form_ohm</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/base_electrolyte_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.base_electrolyte_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/composite_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.composite_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/full_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.full_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/integrated_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.integrated_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/leading_order_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.leading_order_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/surface_potential_form/explicit_surface_form_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.surface_potential_form.explicit_surface_form_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/surface_potential_form/full_surface_form_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.surface_potential_form.full_surface_form_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_conductivity/surface_potential_form/leading_surface_form_conductivity.html">pybamm.models.submodels.electrolyte_conductivity.surface_potential_form.leading_surface_form_conductivity</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_diffusion/base_electrolyte_diffusion.html">pybamm.models.submodels.electrolyte_diffusion.base_electrolyte_diffusion</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_diffusion/constant_concentration.html">pybamm.models.submodels.electrolyte_diffusion.constant_concentration</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_diffusion/full_diffusion.html">pybamm.models.submodels.electrolyte_diffusion.full_diffusion</a></li>
+<li><a href="pybamm/models/submodels/electrolyte_diffusion/leading_order_diffusion.html">pybamm.models.submodels.electrolyte_diffusion.leading_order_diffusion</a></li>
+<li><a href="pybamm/models/submodels/equivalent_circuit_elements/ocv_element.html">pybamm.models.submodels.equivalent_circuit_elements.ocv_element</a></li>
+<li><a href="pybamm/models/submodels/equivalent_circuit_elements/rc_element.html">pybamm.models.submodels.equivalent_circuit_elements.rc_element</a></li>
+<li><a href="pybamm/models/submodels/equivalent_circuit_elements/resistor_element.html">pybamm.models.submodels.equivalent_circuit_elements.resistor_element</a></li>
+<li><a href="pybamm/models/submodels/equivalent_circuit_elements/thermal.html">pybamm.models.submodels.equivalent_circuit_elements.thermal</a></li>
+<li><a href="pybamm/models/submodels/equivalent_circuit_elements/voltage_model.html">pybamm.models.submodels.equivalent_circuit_elements.voltage_model</a></li>
+<li><a href="pybamm/models/submodels/external_circuit/discharge_throughput.html">pybamm.models.submodels.external_circuit.discharge_throughput</a></li>
+<li><a href="pybamm/models/submodels/external_circuit/explicit_control_external_circuit.html">pybamm.models.submodels.external_circuit.explicit_control_external_circuit</a></li>
+<li><a href="pybamm/models/submodels/external_circuit/function_control_external_circuit.html">pybamm.models.submodels.external_circuit.function_control_external_circuit</a></li>
+<li><a href="pybamm/models/submodels/interface/base_interface.html">pybamm.models.submodels.interface.base_interface</a></li>
+<li><a href="pybamm/models/submodels/interface/interface_utilisation/base_utilisation.html">pybamm.models.submodels.interface.interface_utilisation.base_utilisation</a></li>
+<li><a href="pybamm/models/submodels/interface/interface_utilisation/constant_utilisation.html">pybamm.models.submodels.interface.interface_utilisation.constant_utilisation</a></li>
+<li><a href="pybamm/models/submodels/interface/interface_utilisation/current_driven_utilisation.html">pybamm.models.submodels.interface.interface_utilisation.current_driven_utilisation</a></li>
+<li><a href="pybamm/models/submodels/interface/interface_utilisation/full_utilisation.html">pybamm.models.submodels.interface.interface_utilisation.full_utilisation</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/base_kinetics.html">pybamm.models.submodels.interface.kinetics.base_kinetics</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/butler_volmer.html">pybamm.models.submodels.interface.kinetics.butler_volmer</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/diffusion_limited.html">pybamm.models.submodels.interface.kinetics.diffusion_limited</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/inverse_kinetics/base_inverse.html">pybamm.models.submodels.interface.kinetics.inverse_kinetics.base_inverse</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/inverse_kinetics/inverse_butler_volmer.html">pybamm.models.submodels.interface.kinetics.inverse_kinetics.inverse_butler_volmer</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/inverse_kinetics/inverse_linear.html">pybamm.models.submodels.interface.kinetics.inverse_kinetics.inverse_linear</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/linear.html">pybamm.models.submodels.interface.kinetics.linear</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/marcus.html">pybamm.models.submodels.interface.kinetics.marcus</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/msmr_butler_volmer.html">pybamm.models.submodels.interface.kinetics.msmr_butler_volmer</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/no_reaction.html">pybamm.models.submodels.interface.kinetics.no_reaction</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/tafel.html">pybamm.models.submodels.interface.kinetics.tafel</a></li>
+<li><a href="pybamm/models/submodels/interface/kinetics/total_main_kinetics.html">pybamm.models.submodels.interface.kinetics.total_main_kinetics</a></li>
+<li><a href="pybamm/models/submodels/interface/lithium_plating/base_plating.html">pybamm.models.submodels.interface.lithium_plating.base_plating</a></li>
+<li><a href="pybamm/models/submodels/interface/lithium_plating/no_plating.html">pybamm.models.submodels.interface.lithium_plating.no_plating</a></li>
+<li><a href="pybamm/models/submodels/interface/lithium_plating/plating.html">pybamm.models.submodels.interface.lithium_plating.plating</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/base_hysteresis_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.base_hysteresis_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/base_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.base_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/current_sigmoid_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.current_sigmoid_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/msmr_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.msmr_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/one_state_hysteresis_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.one_state_hysteresis_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/open_circuit_potential/single_ocp.html">pybamm.models.submodels.interface.open_circuit_potential.single_ocp</a></li>
+<li><a href="pybamm/models/submodels/interface/sei/base_sei.html">pybamm.models.submodels.interface.sei.base_sei</a></li>
+<li><a href="pybamm/models/submodels/interface/sei/constant_sei.html">pybamm.models.submodels.interface.sei.constant_sei</a></li>
+<li><a href="pybamm/models/submodels/interface/sei/no_sei.html">pybamm.models.submodels.interface.sei.no_sei</a></li>
+<li><a href="pybamm/models/submodels/interface/sei/sei_growth.html">pybamm.models.submodels.interface.sei.sei_growth</a></li>
+<li><a href="pybamm/models/submodels/interface/sei/total_sei.html">pybamm.models.submodels.interface.sei.total_sei</a></li>
+<li><a href="pybamm/models/submodels/interface/total_interfacial_current.html">pybamm.models.submodels.interface.total_interfacial_current</a></li>
+<li><a href="pybamm/models/submodels/oxygen_diffusion/base_oxygen_diffusion.html">pybamm.models.submodels.oxygen_diffusion.base_oxygen_diffusion</a></li>
+<li><a href="pybamm/models/submodels/oxygen_diffusion/full_oxygen_diffusion.html">pybamm.models.submodels.oxygen_diffusion.full_oxygen_diffusion</a></li>
+<li><a href="pybamm/models/submodels/oxygen_diffusion/leading_oxygen_diffusion.html">pybamm.models.submodels.oxygen_diffusion.leading_oxygen_diffusion</a></li>
+<li><a href="pybamm/models/submodels/oxygen_diffusion/no_oxygen.html">pybamm.models.submodels.oxygen_diffusion.no_oxygen</a></li>
+<li><a href="pybamm/models/submodels/particle/base_particle.html">pybamm.models.submodels.particle.base_particle</a></li>
+<li><a href="pybamm/models/submodels/particle/fickian_diffusion.html">pybamm.models.submodels.particle.fickian_diffusion</a></li>
+<li><a href="pybamm/models/submodels/particle/msmr_diffusion.html">pybamm.models.submodels.particle.msmr_diffusion</a></li>
+<li><a href="pybamm/models/submodels/particle/polynomial_profile.html">pybamm.models.submodels.particle.polynomial_profile</a></li>
+<li><a href="pybamm/models/submodels/particle/total_particle_concentration.html">pybamm.models.submodels.particle.total_particle_concentration</a></li>
+<li><a href="pybamm/models/submodels/particle/x_averaged_polynomial_profile.html">pybamm.models.submodels.particle.x_averaged_polynomial_profile</a></li>
+<li><a href="pybamm/models/submodels/particle_mechanics/base_mechanics.html">pybamm.models.submodels.particle_mechanics.base_mechanics</a></li>
+<li><a href="pybamm/models/submodels/particle_mechanics/crack_propagation.html">pybamm.models.submodels.particle_mechanics.crack_propagation</a></li>
+<li><a href="pybamm/models/submodels/particle_mechanics/swelling_only.html">pybamm.models.submodels.particle_mechanics.swelling_only</a></li>
+<li><a href="pybamm/models/submodels/porosity/base_porosity.html">pybamm.models.submodels.porosity.base_porosity</a></li>
+<li><a href="pybamm/models/submodels/porosity/constant_porosity.html">pybamm.models.submodels.porosity.constant_porosity</a></li>
+<li><a href="pybamm/models/submodels/porosity/reaction_driven_porosity.html">pybamm.models.submodels.porosity.reaction_driven_porosity</a></li>
+<li><a href="pybamm/models/submodels/porosity/reaction_driven_porosity_ode.html">pybamm.models.submodels.porosity.reaction_driven_porosity_ode</a></li>
+<li><a href="pybamm/models/submodels/thermal/base_thermal.html">pybamm.models.submodels.thermal.base_thermal</a></li>
+<li><a href="pybamm/models/submodels/thermal/isothermal.html">pybamm.models.submodels.thermal.isothermal</a></li>
+<li><a href="pybamm/models/submodels/thermal/lumped.html">pybamm.models.submodels.thermal.lumped</a></li>
+<li><a href="pybamm/models/submodels/thermal/pouch_cell/pouch_cell_1D_current_collectors.html">pybamm.models.submodels.thermal.pouch_cell.pouch_cell_1D_current_collectors</a></li>
+<li><a href="pybamm/models/submodels/thermal/pouch_cell/pouch_cell_2D_current_collectors.html">pybamm.models.submodels.thermal.pouch_cell.pouch_cell_2D_current_collectors</a></li>
+<li><a href="pybamm/models/submodels/thermal/pouch_cell/x_full.html">pybamm.models.submodels.thermal.pouch_cell.x_full</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/base_transport_efficiency.html">pybamm.models.submodels.transport_efficiency.base_transport_efficiency</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/bruggeman.html">pybamm.models.submodels.transport_efficiency.bruggeman</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/cation_exchange_membrane.html">pybamm.models.submodels.transport_efficiency.cation_exchange_membrane</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/heterogeneous_catalyst.html">pybamm.models.submodels.transport_efficiency.heterogeneous_catalyst</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/hyperbola_of_revolution.html">pybamm.models.submodels.transport_efficiency.hyperbola_of_revolution</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/ordered_packing.html">pybamm.models.submodels.transport_efficiency.ordered_packing</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/overlapping_spheres.html">pybamm.models.submodels.transport_efficiency.overlapping_spheres</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/random_overlapping_cylinders.html">pybamm.models.submodels.transport_efficiency.random_overlapping_cylinders</a></li>
+<li><a href="pybamm/models/submodels/transport_efficiency/tortuosity_factor.html">pybamm.models.submodels.transport_efficiency.tortuosity_factor</a></li>
+<li><a href="pybamm/models/symbol_processor.html">pybamm.models.symbol_processor</a></li>
+<li><a href="pybamm/parameters/electrical_parameters.html">pybamm.parameters.electrical_parameters</a></li>
+<li><a href="pybamm/parameters/geometric_parameters.html">pybamm.parameters.geometric_parameters</a></li>
+<li><a href="pybamm/parameters/lead_acid_parameters.html">pybamm.parameters.lead_acid_parameters</a></li>
+<li><a href="pybamm/parameters/lithium_ion_parameters.html">pybamm.parameters.lithium_ion_parameters</a></li>
+<li><a href="pybamm/parameters/parameter_store.html">pybamm.parameters.parameter_store</a></li>
+<li><a href="pybamm/parameters/parameter_substitutor.html">pybamm.parameters.parameter_substitutor</a></li>
+<li><a href="pybamm/parameters/parameter_values.html">pybamm.parameters.parameter_values</a></li>
+<li><a href="pybamm/parameters/process_parameter_data.html">pybamm.parameters.process_parameter_data</a></li>
+<li><a href="pybamm/parameters/thermal_parameters.html">pybamm.parameters.thermal_parameters</a></li>
+<li><a href="pybamm/plotting/dynamic_plot.html">pybamm.plotting.dynamic_plot</a></li>
+<li><a href="pybamm/plotting/plot.html">pybamm.plotting.plot</a></li>
+<li><a href="pybamm/plotting/plot2D.html">pybamm.plotting.plot2D</a></li>
+<li><a href="pybamm/plotting/plot_3d_cross_section.html">pybamm.plotting.plot_3d_cross_section</a></li>
+<li><a href="pybamm/plotting/plot_3d_heatmap.html">pybamm.plotting.plot_3d_heatmap</a></li>
+<li><a href="pybamm/plotting/plot_summary_variables.html">pybamm.plotting.plot_summary_variables</a></li>
+<li><a href="pybamm/plotting/plot_voltage_components.html">pybamm.plotting.plot_voltage_components</a></li>
+<li><a href="pybamm/plotting/quick_plot.html">pybamm.plotting.quick_plot</a></li>
+<li><a href="pybamm/pybamm_data.html">pybamm.pybamm_data</a></li>
+<li><a href="pybamm/simulation/base_simulation.html">pybamm.simulation.base_simulation</a></li>
+<li><a href="pybamm/simulation/eis_simulation.html">pybamm.simulation.eis_simulation</a></li>
+<li><a href="pybamm/simulation/simulation.html">pybamm.simulation.simulation</a></li>
+<li><a href="pybamm/solvers/algebraic_solver.html">pybamm.solvers.algebraic_solver</a></li>
+<li><a href="pybamm/solvers/base_solver.html">pybamm.solvers.base_solver</a></li>
+<li><a href="pybamm/solvers/casadi_algebraic_solver.html">pybamm.solvers.casadi_algebraic_solver</a></li>
+<li><a href="pybamm/solvers/casadi_solver.html">pybamm.solvers.casadi_solver</a></li>
+<li><a href="pybamm/solvers/dummy_solver.html">pybamm.solvers.dummy_solver</a></li>
+<li><a href="pybamm/solvers/idaklu_jax.html">pybamm.solvers.idaklu_jax</a></li>
+<li><a href="pybamm/solvers/idaklu_solver.html">pybamm.solvers.idaklu_solver</a></li>
+<li><a href="pybamm/solvers/jax_bdf_solver.html">pybamm.solvers.jax_bdf_solver</a></li>
+<li><a href="pybamm/solvers/jax_solver.html">pybamm.solvers.jax_solver</a></li>
+<li><a href="pybamm/solvers/processed_variable.html">pybamm.solvers.processed_variable</a></li>
+<li><a href="pybamm/solvers/scipy_solver.html">pybamm.solvers.scipy_solver</a></li>
+<li><a href="pybamm/solvers/solution.html">pybamm.solvers.solution</a></li>
+<li><a href="pybamm/solvers/summary_variable.html">pybamm.solvers.summary_variable</a></li>
+<li><a href="pybamm/spatial_methods/finite_volume.html">pybamm.spatial_methods.finite_volume</a></li>
+<li><a href="pybamm/spatial_methods/scikit_finite_element.html">pybamm.spatial_methods.scikit_finite_element</a></li>
+<li><a href="pybamm/spatial_methods/scikit_finite_element_3d.html">pybamm.spatial_methods.scikit_finite_element_3d</a></li>
+<li><a href="pybamm/spatial_methods/spatial_method.html">pybamm.spatial_methods.spatial_method</a></li>
+<li><a href="pybamm/spatial_methods/spectral_volume.html">pybamm.spatial_methods.spectral_volume</a></li>
+<li><a href="pybamm/spatial_methods/zero_dimensional_method.html">pybamm.spatial_methods.zero_dimensional_method</a></li>
+<li><a href="pybamm/util.html">pybamm.util</a></li>
+</ul>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

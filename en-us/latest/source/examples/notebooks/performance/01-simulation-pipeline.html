@@ -1,0 +1,972 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Understanding the PyBaMM pipeline and performance profile of the Simulation class &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/performance/01-simulation-pipeline';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/performance/01-simulation-pipeline.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Using Input Parameters to efficiently re-run simulations with different parameters" href="02-input-parameters.html" />
+    <link rel="prev" title="Creating a Simple Model for SEI Growth" href="../creating_models/6-a-simple-SEI-model.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/contributing.html">Contributing to PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/release.html">PyBaMM Release Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../user_guide/index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Understanding the PyBaMM pipeline and performance profile of the Simulation class</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/performance/01-simulation-pipeline.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/performance/01-simulation-pipeline.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Understanding-the-PyBaMM-pipeline-and-performance-profile-of-the-Simulation-class">
+<h1>Understanding the PyBaMM pipeline and performance profile of the Simulation class<a class="headerlink" href="#Understanding-the-PyBaMM-pipeline-and-performance-profile-of-the-Simulation-class" title="Link to this heading">#</a></h1>
+<p>This notebook discusses the main steps that PyBaMM performs to go from an initial model to a final solution, and how you can use this information to optimise the performance of your simulations. We will also discuss the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class, which is a convenience class that wraps up the entire pipeline into a single class, and how you can use this class most efficiently to run your simulations, taking into account the performance characteristics of the different steps of the pipeline and
+the caching behaviour of the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<section id="The-PyBaMM-Pipeline">
+<h2>The PyBaMM Pipeline<a class="headerlink" href="#The-PyBaMM-Pipeline" title="Link to this heading">#</a></h2>
+<p>The PyBaMM pipeline is a series of steps that are taken to go from a model to a final solution. At the start of the pipeline, a pybamm model consists of a set of equations make up of symbols arranged in an <a class="reference external" href="https://docs.pybamm.org/en/stable/source/examples/notebooks/expression_tree/expression-tree.html">expression tree</a>. Each symbol could be a parameter (<code class="docutils literal notranslate"><span class="pre">pybamm.Parameter</span></code>), a variable (<code class="docutils literal notranslate"><span class="pre">pybamm.Variable</span></code>), a binary operator (<code class="docutils literal notranslate"><span class="pre">pybamm.Addition</span></code>, <code class="docutils literal notranslate"><span class="pre">pybamm.Multiplication</span></code>, etc.), or a
+unary operator (<code class="docutils literal notranslate"><span class="pre">pybamm.Negate</span></code>, <code class="docutils literal notranslate"><span class="pre">pybamm.Gradient</span></code>). You can see all the possible symbols in the API docs <a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/expression_tree/index.html">here</a>. The pipeline is a series of steps that first transforms this expression tree into a form that can be solved by a numerical solver, and then solves the equations to get the solution.</p>
+<p>The pipeline is as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Parameter replacement</strong> - The first step of the pipeline is performed by the <code class="docutils literal notranslate"><span class="pre">`pybamm.ParameterValues</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/parameters/parameter_values.html#pybamm.ParameterValues">https://docs.pybamm.org/en/stable/source/api/parameters/parameter_values.html#pybamm.ParameterValues</a>&gt;`__ class, which (a) replaces all <code class="docutils literal notranslate"><span class="pre">pybamm.Parameter</span></code> symbols with their corresponding values (e.g. using <code class="docutils literal notranslate"><span class="pre">pybamm.Scalar</span></code>), and (b) replaces all <code class="docutils literal notranslate"><span class="pre">pybamm.FunctionParameter</span></code> symbols with either a <code class="docutils literal notranslate"><span class="pre">pybamm.Scalar</span></code>, <code class="docutils literal notranslate"><span class="pre">pybamm.Interpolant</span></code>, or <code class="docutils literal notranslate"><span class="pre">pybamm.Function</span></code> object.</p></li>
+<li><p><strong>Discretisation</strong> - The next step is to discretise the model equations. This is done by the <code class="docutils literal notranslate"><span class="pre">`pybamm.Discretisation</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/spatial_methods/discretisation.html">https://docs.pybamm.org/en/stable/source/api/spatial_methods/discretisation.html</a>&gt;`__ class, which replaces all the symbols representing spatial derivatives (e.g. <code class="docutils literal notranslate"><span class="pre">pybamm.Gradient</span></code>) with a matrix that can be used to solve the equations numerically.</p></li>
+<li><p><strong>Solver setup</strong> - The next step is to set up the numerical solver. This is done by the <code class="docutils literal notranslate"><span class="pre">`pybamm.BaseSolver</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/solvers/base_solver.html#pybamm.BaseSolver">https://docs.pybamm.org/en/stable/source/api/solvers/base_solver.html#pybamm.BaseSolver</a>&gt;`__ class, which transforms the expression trees into a form that can be evaluated by the numerical solver. PyBaMM has a few different forms that can be used, but generally, this means that each expression tree is transformed into a CasADi function that can be evaluated at a given time and state.</p></li>
+<li><p><strong>Solver solve</strong> - The next step is to solve the equations. This is done by the numerical solver, which in most cases is one of the solvers provided by the <a class="reference external" href="https://sundials.readthedocs.io/en/latest/#">Sundials</a> suite of solvers. The solver takes the CasADi functions generated in the previous step and uses them to solve the equations numerically.</p></li>
+<li><p><strong>Post-processing</strong> - The output of the previous step is the solution to the equations at a set of time points. The final step is to post-process this solution to get the variables of interest. This is done by the <code class="docutils literal notranslate"><span class="pre">`pybamm.Solution</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/solvers/solution.html">https://docs.pybamm.org/en/stable/source/api/solvers/solution.html</a>&gt;`__ and <code class="docutils literal notranslate"><span class="pre">`pybamm.ParameterValues</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/parameters/parameter_values.html#pybamm.ParameterValues">https://docs.pybamm.org/en/stable/source/api/parameters/parameter_values.html#pybamm.ParameterValues</a>&gt;`__ classes, which take the solution and the parameter
+values and return the variables of interest interpolated at the desired time points.</p></li>
+</ol>
+<p>For every simulation you run with PyBaMM, these steps are always performed in order to generate each solution, even if they are hidden from you by various convenience classes like <code class="docutils literal notranslate"><span class="pre">`pybamm.Simulation</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/stable/source/api/simulation/simulation.html">https://docs.pybamm.org/en/stable/source/api/simulation/simulation.html</a>&gt;`__ . Understanding the pipeline is important because it can help you identify where the performance bottlenecks are in your simulations, and how you can optimise them to get the best performance.</p>
+<p>Below is a simple example that demonstrates the different parts of the pipeline, using the DFN model. While you probably have seen something similar to this script before, the one difference is that we have split the solver setup (step 3) and solve (step 4) parts of the pipeline into two separate steps. Often these are combined into the first call to the solver, but we have split them here to make it clear that they are separate steps.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+
+<span class="c1"># Step 1: Parameter replacement</span>
+<span class="n">parameter_values</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_geometry</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Discretisation</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Solver setup</span>
+<span class="c1">#    The `set_up` method is normally called by the `solve` method if not called explicitly.</span>
+<span class="c1">#    We also need to update `_model_set_up` to include the initial conditions or the solver</span>
+<span class="c1">#    will call `set_up` again during `solve`.</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_up</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">_model_set_up</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">model</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;initial conditions&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">concatenated_initial_conditions</span><span class="p">}}</span>
+<span class="p">)</span>
+
+<span class="c1"># Step 4: Solver solve</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+
+<span class="c1"># Step 5: Post-processing</span>
+<span class="n">t_evals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Terminal voltage [V]&quot;</span><span class="p">](</span><span class="n">t_evals</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_evals</span><span class="p">,</span> <span class="n">voltage</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [s]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_performance_01-simulation-pipeline_3_0.png" src="../../../../_images/source_examples_notebooks_performance_01-simulation-pipeline_3_0.png" />
+</div>
+</div>
+<p>Now we’ll instrument this script to time each part of the pipeline, using the high-resolution timer provided by the <code class="docutils literal notranslate"><span class="pre">time</span></code> module in Python. This will allow us to see how long each part of the pipeline takes, and where the performance bottlenecks are.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="c1"># load model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+
+<span class="c1"># Step 1: Parameter replacement</span>
+<span class="n">total_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">parameter_values</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_geometry</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter replacement took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Discretisation</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Discretisation took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 3: Solver setup</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">set_up</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">solver</span><span class="o">.</span><span class="n">_model_set_up</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="n">model</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;initial conditions&quot;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">concatenated_initial_conditions</span><span class="p">}}</span>
+<span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solver setup took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 4: Solver solve</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solver solve took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Post-processing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">t_evals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Terminal voltage [V]&quot;</span><span class="p">](</span><span class="n">t_evals</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-processing took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+<span class="n">total_end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total time taken: </span><span class="si">{</span><span class="n">total_end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">total_start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Parameter replacement took 0.073 seconds
+Discretisation took 0.238 seconds
+Solver setup took 0.076 seconds
+Solver solve took 0.028 seconds
+Post-processing took 0.002 seconds
+Total time taken: 0.418 seconds
+</pre></div></div>
+</div>
+<p>From this output, we can see that the actual time taken to solve the equations is only a small percentage (less than 10%) of the total time taken to run the simulation. In fact, the most time-consuming step is the discretisation, which takes roughly 50% of the total time to discretise the spatial derivatives of the model. Even when this has all been done, the solver setup takes more than double the time of the actual solve. All of these numbers emphasises the fact that there is significant
+overhead in setting up the equations and the solver before the actual solution can be computed. Therefore, if you are looking to optimise the performance of your simulations, you should take care to ensure that you minimise the time spent in the setup steps of the pipeline, particularly if you are running many simulations with the same model and/or discretisation.</p>
+<p>Note you can also use the logging features in PyBaMM to automatically print out the time taken for the solver setup and solve time. This can be done by setting the logging level to <code class="docutils literal notranslate"><span class="pre">INFO</span></code> before running the simulation, like so:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">set_logging_level</span><span class="p">(</span><span class="s2">&quot;INFO&quot;</span><span class="p">)</span>
+
+<span class="c1"># load model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+
+<span class="c1"># Step 1: Parameter replacement</span>
+<span class="n">parameter_values</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_geometry</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+
+<span class="c1"># Step 2: Discretisation</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">standard_spatial_vars</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Step 3 &amp; 4: Solver setup</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Post-processing</span>
+<span class="n">t_interp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Terminal voltage [V]&quot;</span><span class="p">](</span><span class="n">t_interp</span><span class="p">)</span>
+
+<span class="n">pybamm</span><span class="o">.</span><span class="n">set_logging_level</span><span class="p">(</span><span class="s2">&quot;WARNING&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2025-01-07 17:32:33.236 - [INFO] base_model._build_model(829): Start building Doyle-Fuller-Newman model
+2025-01-07 17:32:33.268 - [INFO] base_battery_model.build_model(1072): Finish building Doyle-Fuller-Newman model
+2025-01-07 17:32:33.269 - [INFO] parameter_values.process_model(463): Start setting parameters for Doyle-Fuller-Newman model
+2025-01-07 17:32:33.340 - [INFO] parameter_values.process_model(532): Finish setting parameters for Doyle-Fuller-Newman model
+2025-01-07 17:32:33.344 - [INFO] discretisation.process_model(142): Start discretising Doyle-Fuller-Newman model
+2025-01-07 17:32:33.581 - [INFO] discretisation.process_model(244): Finish discretising Doyle-Fuller-Newman model
+2025-01-07 17:32:33.582 - [INFO] base_solver.solve(758): Start solving Doyle-Fuller-Newman model with IDA KLU solver
+2025-01-07 17:32:33.584 - [INFO] base_solver.set_up(138): Start solver set-up
+2025-01-07 17:32:33.637 - [INFO] base_solver.set_up(280): Finish solver set-up
+2025-01-07 17:32:33.689 - [INFO] base_solver.solve(979): Finish solving Doyle-Fuller-Newman model (the solver successfully reached the end of the integration interval)
+2025-01-07 17:32:33.690 - [INFO] base_solver.solve(980): Set-up time: 83.762 ms, Solve time: 21.137 ms (of which integration time: 20.928 ms), Total time: 104.899 ms
+</pre></div></div>
+</div>
+</section>
+<section id="The-Simulation-Class">
+<h2>The Simulation Class<a class="headerlink" href="#The-Simulation-Class" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class is a convenience class that wraps up the entire pipeline into a single class that can be used to setup the model equations and solver and run the simulation in a single call. This class is an easy-to-use wrapper for the PyBaMM pipeline, and provides many useful features for initialising simulations and running experiments. However, it is important to understand that the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class still performs all the steps of the pipeline, and so the
+performance characteristics of the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class are the same as the individual steps of the pipeline.</p>
+<p>Lets see how we can use the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class to run the same simulation as above:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create simulation</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+
+<span class="c1"># Post-processing</span>
+<span class="n">t_evals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Terminal voltage [V]&quot;</span><span class="p">](</span><span class="n">t_evals</span><span class="p">)</span>
+
+<span class="c1"># Plot the results</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_evals</span><span class="p">,</span> <span class="n">voltage</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time [s]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_performance_01-simulation-pipeline_9_0.png" src="../../../../_images/source_examples_notebooks_performance_01-simulation-pipeline_9_0.png" />
+</div>
+</div>
+<p>Once again we can instrument this script to time the different parts. In this case, the entire pipeline is performed during the <code class="docutils literal notranslate"><span class="pre">solve</span></code> call, but helpfully the <code class="docutils literal notranslate"><span class="pre">pybamm.Simulation</span></code> class will cache the discretisation and solver setup so that they only need to be performed once. So subsequent calls to <code class="docutils literal notranslate"><span class="pre">solve</span></code> will be faster than the first call and will only include the solver solve step (step 4). So we can time the first call to <code class="docutils literal notranslate"><span class="pre">solve</span></code> and then time subsequent calls to <code class="docutils literal notranslate"><span class="pre">solve</span></code> to see
+the difference.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">)</span>
+
+<span class="c1"># solve</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First solve took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># solve again</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Second solve took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># solve again</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Third solve took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+
+<span class="c1"># Post-processing</span>
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="n">t_evals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">voltage</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Terminal voltage [V]&quot;</span><span class="p">](</span><span class="n">t_evals</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Post-processing took </span><span class="si">{</span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+First solve took 0.411 seconds
+Second solve took 0.026 seconds
+Third solve took 0.026 seconds
+Post-processing took 0.002 seconds
+</pre></div></div>
+</div>
+<p>From this output you can see that the first call to <code class="docutils literal notranslate"><span class="pre">solve</span></code> takes roughly the same amount of time as the entire pipeline, but subsequent calls to <code class="docutils literal notranslate"><span class="pre">solve</span></code> are much faster because the discretisation and solver setup have already been performed.</p>
+</section>
+<section id="Conclusion">
+<h2>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading">#</a></h2>
+<p>The main takeaway from this is that the simulation object is a heavy object that caches many of the intermediate steps of the pipeline, so if you are running many simulations with the same model and discretisation, you should use the same simulation object to avoid the overhead of setting up the simulation each time. For the particular case of varying the parameters of the model, you can use input parameters to keep certain model parameters as symbols rather than concrete values during the 1st
+step of the pipeline, thus allowing you to re-use a particular discretisation and solver setup. This will be discussed in more depth in the next notebook.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../creating_models/6-a-simple-SEI-model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Creating a Simple Model for SEI Growth</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="02-input-parameters.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using Input Parameters to efficiently re-run simulations with different parameters</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-PyBaMM-Pipeline">The PyBaMM Pipeline</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#The-Simulation-Class">The Simulation Class</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/performance/01-simulation-pipeline.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-11.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

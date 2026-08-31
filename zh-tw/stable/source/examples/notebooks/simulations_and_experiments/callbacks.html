@@ -1,0 +1,932 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2024-04-05T01:28:37+00:00" />
+    <title>Callbacks &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../../_static/documentation_options.js?v=6c9e8f96"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/simulations_and_experiments/callbacks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/simulations_and_experiments/callbacks.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="next" title="Custom experiments" href="custom-experiments.html" />
+    <link rel="prev" title="Optimizing geometric parameters" href="../parameterization/geometric_parameters.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="26.5.0" />
+    <meta name="docbuild:last-update" content="2024-04-05"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">開始使用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">創建模型</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">效能</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../models/basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/electrode-state-of-health.html">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/lithium-plating-composite.html">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/saving_models.html">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solvers/dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/idaklu-jax-interface.html">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-settings.html">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Callbacks</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/simulations_and_experiments/callbacks.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/simulations_and_experiments/callbacks.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Callbacks">
+<h1>Callbacks<a class="headerlink" href="#Callbacks" title="連結到這個標頭">#</a></h1>
+<div class="alert alert-block alert-info"><p>WARNING: This is a new, experimental feature, and the API may change in future.</p>
+</div><p>Callbacks provide hooks for users to interact with the different parts of the PyBaMM pipeline, for example to log, save, or visualize outputs of intermediate functions.</p>
+<p>A list of available callbacks can be found in the <a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/callbacks.html">API docs</a>. Any number of callbacks can be provided as a list, and they will each be called in turn in the order provided.</p>
+<p>The base class <code class="docutils literal notranslate"><span class="pre">`pybamm.callbacks.Callback</span></code> &lt;<a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/callbacks.html#pybamm.callbacks.Callback">https://docs.pybamm.org/en/latest/source/api/callbacks.html#pybamm.callbacks.Callback</a>&gt;`__ documents the available callback methods, at which point in the pipeline they are called, and what arguments are passed to them.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;Discharge at C/5 for 10 hours or until 3.3 V&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Charge at 1 A until 4.1 V&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Hold at 4.1 V until 10 mA&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+    <span class="p">]</span>
+    <span class="o">*</span> <span class="mi">3</span>
+<span class="p">)</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<section id="Logging-callback">
+<h2>Logging callback<a class="headerlink" href="#Logging-callback" title="連結到這個標頭">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">LoggingCallback</span></code> can be used to log the progress of the simulation. The default is to print to stdout (this callback is automatically created if no other <code class="docutils literal notranslate"><span class="pre">LoggingCallback</span></code> exists)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">set_logging_level</span><span class="p">(</span><span class="s2">&quot;NOTICE&quot;</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-03-10 10:17:57.074 - [NOTICE] callbacks.on_cycle_start(174): Cycle 1/3 (18.917 ms elapsed) --------------------
+2022-03-10 10:17:57.074 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:17:58.139 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:17:58.505 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:17:58.952 - [NOTICE] callbacks.on_cycle_start(174): Cycle 2/3 (1.898 s elapsed) --------------------
+2022-03-10 10:17:58.953 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:00.203 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:00.464 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:00.675 - [NOTICE] callbacks.on_cycle_start(174): Cycle 3/3 (3.620 s elapsed) --------------------
+2022-03-10 10:18:00.675 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:01.963 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:02.232 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:02.452 - [NOTICE] callbacks.on_experiment_end(222): Finish experiment simulation, took 3.620 s
+</pre></div></div>
+</div>
+<p>or to a separate file</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">callback</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">LoggingCallback</span><span class="p">(</span><span class="s2">&quot;output.log&quot;</span><span class="p">)</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">callbacks</span><span class="o">=</span><span class="n">callback</span><span class="p">)</span>
+
+<span class="c1"># Read the file that has been written, which was saved to callback.logfile</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">callback</span><span class="o">.</span><span class="n">logfile</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+
+<span class="c1"># Remove the log file</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">callback</span><span class="o">.</span><span class="n">logfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2022-03-10 10:18:02.483 - [NOTICE] callbacks.on_cycle_start(174): Cycle 1/3 (24.357 ms elapsed) --------------------
+2022-03-10 10:18:02.483 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:03.799 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:04.065 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:04.394 - [NOTICE] callbacks.on_cycle_start(174): Cycle 2/3 (1.935 s elapsed) --------------------
+2022-03-10 10:18:04.394 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:05.607 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:05.858 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:06.059 - [NOTICE] callbacks.on_cycle_start(174): Cycle 3/3 (3.600 s elapsed) --------------------
+2022-03-10 10:18:06.059 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:07.280 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:07.539 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:07.743 - [NOTICE] callbacks.on_experiment_end(222): Finish experiment simulation, took 3.600 s
+
+</pre></div></div>
+</div>
+</section>
+<section id="Custom-callbacks">
+<h2>Custom callbacks<a class="headerlink" href="#Custom-callbacks" title="連結到這個標頭">#</a></h2>
+<p>Custom callbacks should subclass the class <code class="docutils literal notranslate"><span class="pre">pybamm.callbacks.Callback</span></code> class, and implement a subset of the callback methods <code class="docutils literal notranslate"><span class="pre">on_&lt;event&gt;</span></code>, which all take as input the dictionary <code class="docutils literal notranslate"><span class="pre">logs</span></code>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CustomCallback</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">Callback</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We are at the end of the simulation. Logs are </span><span class="si">{</span><span class="n">logs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Note the default `LoggingCallback` is also called</span>
+<span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">callbacks</span><span class="o">=</span><span class="n">CustomCallback</span><span class="p">());</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-03-10 10:18:07.776 - [NOTICE] callbacks.on_cycle_start(174): Cycle 1/3 (24.415 ms elapsed) --------------------
+2022-03-10 10:18:07.776 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:09.125 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:09.390 - [NOTICE] callbacks.on_step_start(182): Cycle 1/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:09.714 - [NOTICE] callbacks.on_cycle_start(174): Cycle 2/3 (1.963 s elapsed) --------------------
+2022-03-10 10:18:09.714 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:11.025 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:11.288 - [NOTICE] callbacks.on_step_start(182): Cycle 2/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:11.498 - [NOTICE] callbacks.on_cycle_start(174): Cycle 3/3 (3.747 s elapsed) --------------------
+2022-03-10 10:18:11.499 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 1/3: Discharge at C/5 for 10 hours or until 3.3 V
+2022-03-10 10:18:12.748 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 2/3: Charge at 1 A until 4.1 V
+2022-03-10 10:18:13.007 - [NOTICE] callbacks.on_step_start(182): Cycle 3/3, step 3/3: Hold at 4.1 V until 10 mA
+2022-03-10 10:18:13.230 - [NOTICE] callbacks.on_experiment_end(222): Finish experiment simulation, took 3.747 s
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+We are at the end of the simulation of the simulation. Logs are {&#39;stopping conditions&#39;: {&#39;voltage&#39;: None, &#39;capacity&#39;: None}, &#39;cycle number&#39;: (3, 3), &#39;elapsed time&#39;: pybamm.TimerTime(3.7469801669999967), &#39;step number&#39;: (3, 3), &#39;step operating conditions&#39;: &#39;Hold at 4.1 V until 10 mA&#39;, &#39;termination&#39;: &#39;event: Current cut-off (negative) [A] [experiment]&#39;, &#39;summary variables&#39;: {&#39;Minimum measured discharge capacity [A.h]&#39;: -0.16806782223941116, &#39;Maximum measured discharge capacity [A.h]&#39;: 0.6889979156579616, &#39;Measured capacity [A.h]&#39;: 0.8570657378973728, &#39;Minimum voltage [V]&#39;: 3.300010000000005, &#39;Maximum voltage [V]&#39;: 4.100000000000016, &#39;Positive electrode capacity [A.h]&#39;: 1.9464430360887066, &#39;Change in positive electrode capacity [A.h]&#39;: 0.0, &#39;Loss of active material in positive electrode [%]&#39;: 1.1102230246251565e-14, &#39;Change in loss of active material in positive electrode [%]&#39;: 0.0, &#39;Loss of lithium inventory [%]&#39;: -2.220446049250313e-14, &#39;Change in loss of lithium inventory [%]&#39;: 0.0, &#39;Loss of lithium inventory, including electrolyte [%]&#39;: 0.0, &#39;Change in loss of lithium inventory, including electrolyte [%]&#39;: 0.0, &#39;Total lithium [mol]&#39;: 0.0799932053645051, &#39;Change in total lithium [mol]&#39;: 0.0, &#39;Total lithium in electrolyte [mol]&#39;: 0.002410514999999987, &#39;Change in total lithium in electrolyte [mol]&#39;: -2.168404344971009e-18, &#39;Total lithium in positive electrode [mol]&#39;: 0.037303833837759315, &#39;Change in total lithium in positive electrode [mol]&#39;: 6.938893903907228e-18, &#39;Total lithium in particles [mol]&#39;: 0.07758269036450512, &#39;Change in total lithium in particles [mol]&#39;: 0.0, &#39;Total lithium lost [mol]&#39;: 0.0, &#39;Change in total lithium lost [mol]&#39;: 0.0, &#39;Total lithium lost from particles [mol]&#39;: -1.3877787807814457e-17, &#39;Change in total lithium lost from particles [mol]&#39;: 0.0, &#39;Total lithium lost from electrolyte [mol]&#39;: 1.2576745200831851e-17, &#39;Change in total lithium lost from electrolyte [mol]&#39;: 2.168404344971009e-18, &#39;Loss of lithium to SEI [mol]&#39;: 0.0, &#39;Change in loss of lithium to SEI [mol]&#39;: 0.0, &#39;Loss of capacity to SEI [A.h]&#39;: 0.0, &#39;Change in loss of capacity to SEI [A.h]&#39;: 0.0, &#39;Total lithium lost to side reactions [mol]&#39;: 0.0, &#39;Change in total lithium lost to side reactions [mol]&#39;: 0.0, &#39;Total capacity lost to side reactions [A.h]&#39;: 0.0, &#39;Change in total capacity lost to side reactions [A.h]&#39;: 0.0, &#39;Local ECM resistance [Ohm]&#39;: -0.1921801399643974, &#39;Change in local ECM resistance [Ohm]&#39;: -0.3385111526792064, &#39;Negative electrode capacity [A.h]&#39;: 1.139331489107912, &#39;Change in negative electrode capacity [A.h]&#39;: 0.0, &#39;Loss of active material in negative electrode [%]&#39;: -2.220446049250313e-14, &#39;Change in loss of active material in negative electrode [%]&#39;: 0.0, &#39;Total lithium in negative electrode [mol]&#39;: 0.0402788565267458, &#39;Change in total lithium in negative electrode [mol]&#39;: -6.938893903907228e-18, &#39;Loss of lithium to lithium plating [mol]&#39;: 0.0, &#39;Change in loss of lithium to lithium plating [mol]&#39;: 0.0, &#39;Loss of capacity to lithium plating [A.h]&#39;: 0.0, &#39;Change in loss of capacity to lithium plating [A.h]&#39;: 0.0, &#39;x_100&#39;: 0.9493038520218161, &#39;y_100&#39;: 0.5126064431891194, &#39;C&#39;: 0.8728195070455337, &#39;x_0&#39;: 0.18322346594476246, &#39;y_0&#39;: 0.9610241419672079, &#39;Un(x_100)&#39;: 0.07517904666112207, &#39;Un(x_0)&#39;: 0.2527477655253842, &#39;Up(y_100)&#39;: 4.175179046661121, &#39;Up(y_0)&#39;: 3.357747765525383, &#39;Up(y_100) - Un(x_100)&#39;: 4.099999999999999, &#39;Up(y_0) - Un(x_0)&#39;: 3.1049999999999986, &#39;n_Li_100&#39;: 0.07758269036450512, &#39;n_Li_0&#39;: 0.07758269036450512, &#39;n_Li&#39;: 0.07758269036450512, &#39;C_n&#39;: 1.139331489107912, &#39;C_p&#39;: 1.9464430360887066, &#39;C_n * (x_100 - x_0)&#39;: 0.8728195070455337, &#39;C_p * (y_100 - y_0)&#39;: 0.8728195070455337, &#39;Capacity [A.h]&#39;: 0.8728195070455337}}
+</pre></div></div>
+</div>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="連結到這個標頭">#</a></h2>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic charge and discharge of the lithium/polymer/insertion cell. Journal of the Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.
+[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, 2019. doi:10.1149/2.0341915jes.
+[5] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. Towards better estimability of electrode-specific state of health: decoding the cell expansion. Journal of Power Sources, 427:101–111, 2019.
+[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+[7] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature Methods, 17(3):261–272, 2020. doi:10.1038/s41592-019-0686-2.
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../parameterization/geometric_parameters.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Optimizing geometric parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="custom-experiments.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Custom experiments</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Logging-callback">Logging callback</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Custom-callbacks">Custom callbacks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/simulations_and_experiments/callbacks.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2024-04-05。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
