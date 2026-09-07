@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-09-07 14:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -135,7 +136,16 @@ msgstr ""
 msgid ""
 "Boundary conditions are dictionaries {\"left\": left bc, \"right\": right "
 "bc} in general, but may be imposed on the tabs (or *not* on the tab) for a "
-"small number of variables."
+"small number of variables, or on arbitrary named boundary regions of an "
+"unstructured mesh (e.g. Gmsh physical groups)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_substitutor.py:docstring
+#: of
+#: pybamm.parameters.parameter_substitutor.ParameterSubstitutor.process_boundary_conditions:8
+msgid ""
+"Every side present in the model is processed: a fixed list of side names "
+"would silently discard boundary conditions on any other tag."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/parameters/parameter_substitutor.py:docstring

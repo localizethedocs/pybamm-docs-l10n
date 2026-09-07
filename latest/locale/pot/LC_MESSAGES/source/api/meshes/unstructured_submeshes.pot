@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-09-07 14:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -138,6 +139,20 @@ msgstr ""
 
 #: ../../../source/api/meshes/unstructured_submeshes.rst:0
 msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.contains_points:1
+msgid "Boolean mask of ``query_pts`` lying inside the domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.contains_points:3
+msgid ""
+"In 2D the boundary loops are cached on the mesh and containment uses the "
+"even-odd rule, so holes are excluded, disconnected components kept, and on-"
+"boundary points count as inside.  In 3D this is :meth:`contains_points_3d`.  "
+"Returns ``None`` for a 2D mesh without boundary edges."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
@@ -373,6 +388,6 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
 #: of pybamm.meshes.unstructured_submesh.compute_interface_data:20
 msgid ""
-"Keys: ``\"left_cells\"``, ``\"right_cells\"``, ``\"face_areas\"``, "
-"``\"cell_distances\"``."
+"Keys: ``\"left_cells\"``, ``\"right_cells\"``, ``\"left_faces\"``, "
+"``\"right_faces\"``, ``\"face_areas\"``, ``\"cell_distances\"``."
 msgstr ""
