@@ -1,0 +1,160 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.rst:2
+msgid "One State Differential Capacity Hysteresis Open Circuit Potential"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:1
+msgid ""
+"Class for one-state open-circuit hysteresis model based on the approach "
+"outlined by Wycisk :footcite:t:`Wycisk2022`. The hysteresis state variable "
+"`h` is governed by an ODE which depends on the local surface stoichiometry, "
+"volumetric interfacial current density, and differential capacity."
+msgstr ""
+
+#: ../../../source/api/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:5
+msgid "The parameters to use for this submodel"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:7
+msgid "The domain to implement the model, either: 'Negative' or 'Positive'."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:9
+msgid "The name of the reaction being implemented"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:11
+msgid ""
+"A dictionary of options to be passed to the model. See :class:`pybamm."
+"BaseBatteryModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:14
+msgid "Phase of the particle (default is \"primary\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:16
+msgid ""
+"Whether the particle concentration is averaged over the x-direction. Default "
+"is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:19
+msgid ""
+"**Extends:** :class:`pybamm.models.submodels.interface."
+"open_circuit_potential.base_hysteresis_ocp."
+"BaseHysteresisOpenCircuitPotential`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.get_coupled_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"require variables in other submodels to be set first. For example, the "
+"exchange current density requires the concentration in the electrolyte to be "
+"created before it can be created. If a variable can be created independent "
+"of other submodels then it should be created in 'get_fundamental_variables' "
+"instead of this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.get_coupled_variables:8
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.set_rhs:6
+msgid "The variables in the whole model."
+msgstr ""
+
+#: ../../../source/api/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.get_coupled_variables:11
+msgid ""
+"The variables created in this submodel which depend on variables in other "
+"submodels."
+msgstr ""
+
+#: ../../../source/api/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.get_fundamental_variables:1
+msgid ""
+"A public method that creates and returns the variables in a submodel which "
+"can be created independent of other submodels. For example, the electrolyte "
+"concentration variables can be created independent of whether any other "
+"variables have been defined in the model. As a rule, if a variable can be "
+"created without variables from other submodels, then it should be placed in "
+"this method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.get_fundamental_variables:8
+msgid ""
+"The variables created by the submodel which are independent of variables in "
+"other submodels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/interface/open_circuit_potential/one_state_differential_capacity_hysteresis_ocp.py:docstring
+#: of
+#: pybamm.models.submodels.interface.open_circuit_potential.one_state_differential_capacity_hysteresis_ocp.OneStateDifferentialCapacityHysteresisOpenCircuitPotential.set_rhs:1
+msgid ""
+"A method to set the right hand side of the differential equations which "
+"contain a time derivative. Note: this method modifies the state of self.rhs. "
+"Unless overwritten by a submodel, the default behaviour of 'pass' is used as "
+"implemented in :class:`pybamm.BaseSubModel`."
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

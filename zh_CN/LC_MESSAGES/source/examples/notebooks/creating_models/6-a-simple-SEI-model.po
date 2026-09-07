@@ -1,0 +1,860 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:9
+msgid "Creating a Simple Model for SEI Growth"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:11
+msgid ""
+"Before adding a new model, please read the `contribution guidelines <https://"
+"github.com/pybamm-team/PyBaMM/blob/main/CONTRIBUTING.md>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:22
+msgid ""
+"In this notebook, we will run through the steps involved in creating a new "
+"model within pybamm. We will then solve and plot the outputs of the model. "
+"We have chosen to implement a very simple model of SEI growth. We first give "
+"a brief derivation of the model and discuss how to nondimensionalise the "
+"model so that we can show the full process of model conception to solution "
+"within a single notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:33
+msgid ""
+"Note: if you run the entire notebook and then try to evaluate the earlier "
+"cells, you will likely receive an error. This is because the state of "
+"objects is mutated as it is passed through various stages of processing. In "
+"this case, we recommend that you restart the Kernel and then evaluate cells "
+"in turn through the notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:45
+msgid "A Simple Model of Solid Electrolyte Interphase (SEI) Growth"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:56
+msgid ""
+"The SEI is a porous layer that forms on the surfaces of negative electrode "
+"particles from the products of electrochemical reactions which consume "
+"lithium and electrolyte solvents. In the first few cycles of use, a lithium-"
+"ion battery loses a large amount of capacity; this is generally attributed "
+"to lithium being consumed to produce SEI. However, after a few cycles, the "
+"rate of capacity loss slows at a rate often (but not always) reported to "
+"scale with the square root of time. SEI growth is therefore often considered "
+"to be limited in some way by a diffusion process."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:69
+msgid "Dimensional Model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:71
+msgid ""
+"In our simple SEI model, we consider a one-dimensional SEI which extends "
+"from the surface of a planar negative electrode at :math:`x=0` until :math:"
+"`x=L`, where :math:`L` is the thickness of the SEI. Since the SEI is porous, "
+"there is some electrolyte within the region :math:`x\\in[0, L]` and "
+"therefore some concentration of solvent, :math:`c`. Within the porous SEI, "
+"the solvent is transported via a diffusion process according to:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:73
+msgid ""
+"\\frac{\\partial c}{\\partial t} = - \\frac{\\partial N}{\\partial x}, "
+"\\quad N = - D(c) \\frac{\\partial c}{\\partial x} \\label{1}\\\\"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:78
+msgid ""
+"where :math:`t` is the time, :math:`N` is the solvent flux, and :math:`D(c)` "
+"is the effective solvent diffusivity (a function of the solvent "
+"concentration)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:80
+msgid ""
+"On the electrode-SEI surface (:math:`x=0`) the solvent is consumed by the "
+"SEI growth reaction, :math:`R`. We assume that diffusion of solvent in the "
+"bulk electrolyte (:math:`x>L`) is fast so that on the SEI-electrolyte "
+"surface (:math:`x=L`) the concentration of solvent is fixed at the value :"
+"math:`c_{\\infty}`. Therefore, the boundary conditions are"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:82
+msgid "N|_{x=0} = - R, \\quad c|_{x=L} = c_{\\infty},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:87
+msgid ""
+"We also assume that the concentration of solvent within the SEI is initially "
+"uniform and equal to the bulk electrolyte solvent concentration, so that the "
+"initial condition is"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:89
+msgid "c|_{t=0} = c_{\\infty}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:94
+msgid ""
+"Since the SEI is growing, we require an additional equation for the SEI "
+"thickness. The thickness of the SEI grows at a rate proportional to the SEI "
+"growth reaction :math:`R`, where the constant of proportionality is the "
+"partial molar volume of the reaction products, :math:`\\hat{V}`. We also "
+"assume that the SEI is initially of thickness :math:`L_0`. Therefore, we have"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:96
+msgid "\\frac{d L}{d t} = \\hat{V} R, \\quad L|_{t=0} = L_0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:101
+msgid ""
+"Finally, we assume for the sake of simplicity that the SEI growth reaction "
+"is irreversible and that the potential difference across the SEI is "
+"constant. The reaction is also assumed to be proportional to the "
+"concentration of solvent at the electrode-SEI surface (:math:`x=0`). "
+"Therefore, the reaction flux is given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:103
+msgid "R = k c|_{x=0}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:108
+msgid ""
+"where :math:`k` is the reaction rate constant (which is in general dependent "
+"upon the potential difference across the SEI)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:111
+msgid "Fixing the moving boundary"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:113
+msgid ""
+"The model above is a moving boundary problem as it is defined in :math:"
+"`x\\in[0, L]`. In order to solve it, we need to fix the boundary by "
+"introducing the scaling"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:115
+msgid "x = L \\xi."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:120
+msgid "Then, applying the chain rule we have"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:122
+msgid ""
+"\\frac{\\partial}{\\partial x} \\rightarrow \\frac{1}{L} \\frac{\\partial}"
+"{\\partial \\xi}, \\quad \\text{ and } \\quad \\frac{\\partial}{\\partial t} "
+"\\rightarrow \\frac{\\partial}{\\partial t} - \\frac{L'(t)}{L(t)} \\xi "
+"\\frac{\\partial}{\\partial \\xi}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:127
+msgid "Then, (1) can be rewritten as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:129
+msgid ""
+"\\frac{\\partial c}{\\partial t} = \\frac{\\hat{V} R}{L} \\xi "
+"\\frac{\\partial c}{\\partial \\xi} + \\frac{1}{L^2} \\frac{\\partial}"
+"{\\partial \\xi} \\left( D(c) \\frac{\\partial c}{\\partial \\xi}\\right)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:144
+msgid "Entering the Model into PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:155
+msgid ""
+"As always, we begin by importing PyBaMM and changing our working directory "
+"to the root of the ``pybamm/`` folder."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:183
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.0.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">23.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:192
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.0.1} -> \\textcolor{ansi-green}{23.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:202
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.0.1[0m[39;49m -> [0m[32;49m23.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:216
+msgid "A model is defined in six steps:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:218
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:237
+msgid "Initialise model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:219
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:270
+msgid "Define parameters and variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:220
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:337
+msgid "State governing equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:221
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:399
+msgid "State boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:222
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:511
+msgid "State initial conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:223
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:582
+msgid "State output variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:225
+msgid ""
+"We shall proceed through each step to enter our simple SEI growth model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:248
+msgid ""
+"We first initialise the model using the ``BaseModel`` class. This sets up "
+"the required structure for our model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "model = pybamm.BaseModel()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:281
+msgid ""
+"In our SEI model, we have two dimensionless parameters, :math:`k` and :math:"
+"`\\hat{V}`, and one dimensionless function :math:`D(c)`, which are all given "
+"in terms of the dimensional parameters, see (5). In pybamm, inputs are "
+"dimensional, so we first state all the dimensional parameters. We then "
+"define the dimensionless parameters, which are expressed an non-dimensional "
+"groupings of dimensional parameters. To define the dimensional parameters, "
+"we use the ``Parameter`` object to create parameter symbols. Parameters "
+"which are functions are defined using ``FunctionParameter`` object and "
+"should be defined within a python function as shown."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"# dimensional parameters\n"
+"k = pybamm.Parameter(\"Reaction rate constant [m.s-1]\")\n"
+"L_0 = pybamm.Parameter(\"Initial thickness [m]\")\n"
+"V_hat = pybamm.Parameter(\"Partial molar volume [m3.mol-1]\")\n"
+"c_inf = pybamm.Parameter(\"Bulk electrolyte solvent concentration [mol."
+"m-3]\")\n"
+"\n"
+"\n"
+"def D(cc):\n"
+"    return pybamm.FunctionParameter(\n"
+"        \"Diffusivity [m2.s-1]\", {\"Solvent concentration [mol.m-3]\": cc}\n"
+"    )"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:313
+msgid ""
+"We now define the dimensionless variables in our model. Since these are the "
+"variables we solve for directly, we do not need to write them in terms of "
+"the dimensional variables. We simply use ``SpatialVariable`` and "
+"``Variable`` to create the required symbols:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"xi = pybamm.SpatialVariable(\"xi\", domain=\"SEI layer\", "
+"coord_sys=\"cartesian\")\n"
+"c = pybamm.Variable(\"Solvent concentration [mol.m-3]\", domain=\"SEI "
+"layer\")\n"
+"L = pybamm.Variable(\"SEI thickness [m]\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:348
+msgid ""
+"We can now use the symbols we have created for our parameters and variables "
+"to write out our governing equations. Note that before we use the reaction "
+"flux and solvent flux, we must derive new symbols for them from the defined "
+"parameter and variable symbols. Each governing equation must also be stated "
+"in the explicit form ``d/dt = rhs`` since pybamm only stores the right hand "
+"side (rhs) and assumes that the left hand side is the time derivative. The "
+"governing equations are then simply"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"# SEI reaction flux\n"
+"R = k * pybamm.BoundaryValue(c, \"left\")\n"
+"\n"
+"# solvent concentration equation\n"
+"N = -1 / L * D(c) * pybamm.grad(c)\n"
+"dcdt = (V_hat * R) / L * pybamm.inner(xi, pybamm.grad(c)) - 1 / L * pybamm."
+"div(N)\n"
+"\n"
+"# SEI thickness equation\n"
+"dLdt = V_hat * R"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:377
+msgid ""
+"Once we have stated the equations, we can add them to the ``model.rhs`` "
+"dictionary. This is a dictionary whose keys are the variables being solved "
+"for, and whose values correspond right hand sides of the governing equations "
+"for each variable."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "model.rhs = {c: dcdt, L: dLdt}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:410
+msgid ""
+"We only have boundary conditions on the solvent concentration equation. We "
+"must state where a condition is Neumann (on the gradient) or Dirichlet (on "
+"the variable itself)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:412
+msgid "The boundary condition on the electrode-SEI (x=0) boundary is:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:414
+msgid ""
+"N|_{\\xi=0} = - R, \\quad  N|_{\\xi=0} = - D(c|_{\\xi=0} )\\left."
+"\\frac{\\partial c}{\\partial \\xi}\\right|_{\\xi=0}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:419
+msgid ""
+"which is a Neumann condition. To implement this boundary condition in "
+"pybamm, we must first rearrange the equation so that the gradient of the "
+"concentration, :math:`\\nabla c|_{x=0}`, is the subject. Therefore we have"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:421
+msgid ""
+"\\left.\\frac{\\partial c}{\\partial \\xi}\\right|_{\\xi=0} = \\frac{R L}"
+"{D(c|_{\\xi=0} )}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:426
+msgid "which we enter into pybamm as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"D_left = pybamm.BoundaryValue(\n"
+"    D(c), \"left\"\n"
+")  # pybamm requires BoundaryValue(D(c)) and not D(BoundaryValue(c))\n"
+"grad_c_left = R * L / D_left"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:450
+msgid ""
+"On the SEI-electrolyte boundary (:math:`\\xi=1`), we have the boundary "
+"condition"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:452
+msgid "c|_{\\xi=1} = c_∞"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:466
+msgid "which is a Dirichlet condition and is just entered as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "c_right = c_inf"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:487
+msgid ""
+"We now load these boundary conditions into the ``model.boundary_conditions`` "
+"dictionary in the following way, being careful to state the type of boundary "
+"condition:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"model.boundary_conditions = {\n"
+"    c: {\"left\": (grad_c_left, \"Neumann\"), \"right\": (c_right, "
+"\"Dirichlet\")}\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:522
+msgid "There are two initial conditions in our model:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:524
+msgid "c|_{t=0} = c_∞, \\quad L|_{t=0} = L_0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:538
+msgid "which are simply written in pybamm as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"c_init = c_inf\n"
+"L_init = L_0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:560
+msgid "and then included into the ``model.initial_conditions`` dictionary:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "model.initial_conditions = {c: c_init, L: L_init}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:593
+msgid ""
+"We already have everything required in model for the model to be used and "
+"solved, but we have not yet stated what we actually want to output from the "
+"model. PyBaMM allows users to output any combination of symbols as an output "
+"variable therefore allowing the user the flexibility to output important "
+"quantities without further tedious postprocessing steps."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:595
+msgid "Some useful outputs for this simple model are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:597
+msgid "the SEI thickness"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:598
+msgid "the SEI growth rate"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:599
+msgid "the solvent concentration"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:601
+msgid ""
+"These are added to the model by adding entries to the ``model.variables`` "
+"dictionary"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"model.variables = {\n"
+"    \"SEI thickness [m]\": L,\n"
+"    \"SEI growth rate [m]\": dLdt,\n"
+"    \"Solvent concentration [mol.m-3]\": c,\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:626
+msgid ""
+"The model is now fully defined and ready to be used. If you plan on reusing "
+"the model several times, you can additionally set model defaults which may "
+"include: a default geometry to run the model on, a default set of parameter "
+"values, a default solver, etc."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:638
+msgid "Using the Model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:649
+msgid ""
+"The model will now behave in the same way as any of the inbuilt PyBaMM "
+"models. However, to demonstrate that the model works we display the steps "
+"involved in solving the model but we will not go into details within this "
+"notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"# define geometry\n"
+"geometry = pybamm.Geometry(\n"
+"    {\"SEI layer\": {xi: {\"min\": pybamm.Scalar(0), \"max\": pybamm."
+"Scalar(1)}}}\n"
+")\n"
+"\n"
+"\n"
+"def Diffusivity(cc):\n"
+"    return cc * 10 ** (-12)\n"
+"\n"
+"\n"
+"# parameter values (not physically based, for example only!)\n"
+"param = pybamm.ParameterValues(\n"
+"    {\n"
+"        \"Reaction rate constant [m.s-1]\": 1e-6,\n"
+"        \"Initial thickness [m]\": 1e-6,\n"
+"        \"Partial molar volume [m3.mol-1]\": 10,\n"
+"        \"Bulk electrolyte solvent concentration [mol.m-3]\": 1,\n"
+"        \"Diffusivity [m2.s-1]\": Diffusivity,\n"
+"    }\n"
+")\n"
+"\n"
+"# process model and geometry\n"
+"param.process_model(model)\n"
+"param.process_geometry(geometry)\n"
+"\n"
+"# mesh and discretise\n"
+"submesh_types = {\"SEI layer\": pybamm.Uniform1DSubMesh}\n"
+"var_pts = {xi: 100}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)\n"
+"\n"
+"spatial_methods = {\"SEI layer\": pybamm.FiniteVolume()}\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)\n"
+"disc.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:703
+msgid ""
+"<pre>\n"
+"&lt;pybamm.models.base_model.BaseModel at 0x7f3a8005b490&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:709
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.models.base\\_model.BaseModel at 0x7f3a8005b490>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:716
+msgid "<pybamm.models.base_model.BaseModel at 0x7f3a8005b490>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"# solve\n"
+"solver = pybamm.ScipySolver()\n"
+"t = [0, 100]  # solve for 100s\n"
+"solution = solver.solve(model, t)\n"
+"\n"
+"# post-process output variables\n"
+"L_out = solution[\"SEI thickness [m]\"]\n"
+"c_out = solution[\"Solvent concentration [mol.m-3]\"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:744
+msgid ""
+"Using these outputs, we can now plot the SEI thickness as a function of time "
+"and also the solvent concentration profile within the SEI. We use a slider "
+"to plot the concentration profile at different times. Note that, even though "
+"our model is written in nondimensional form, the processed variables are "
+"functions of dimensional space and time (in SI units)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[15]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid ""
+"import matplotlib.pyplot as plt\n"
+"\n"
+"# plot SEI thickness in microns as a function of t in microseconds\n"
+"# and concentration in mol/m3 as a function of x in microns\n"
+"L_0_eval = param.evaluate(L_0)\n"
+"xi = np.linspace(0, 1, 100)  # dimensionless space\n"
+"\n"
+"\n"
+"def plot(t):\n"
+"    _, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))\n"
+"    ax1.plot(solution.t, L_out(solution.t) * 1e6)\n"
+"    ax1.plot(t, L_out(t) * 1e6, \"r.\")\n"
+"    ax1.set_ylabel(r\"SEI thickness [$\\mu$m]\")\n"
+"    ax1.set_xlabel(r\"t [s]\")\n"
+"\n"
+"    ax2.plot(xi * L_out(t) * 1e6, c_out(t, xi))\n"
+"    ax2.set_ylim(0, 1.1)\n"
+"    ax2.set_xlim(0, L_out(solution.t[-1]) * 1e6)\n"
+"    ax2.set_ylabel(\"Solvent concentration [mol.m-3]\")\n"
+"    ax2.set_xlabel(r\"x [$\\mu$m]\")\n"
+"\n"
+"    plt.tight_layout()\n"
+"    plt.show()\n"
+"\n"
+"\n"
+"import ipywidgets as widgets\n"
+"\n"
+"widgets.interact(\n"
+"    plot, t=widgets.FloatSlider(min=0, max=solution.t[-1], step=0.1, "
+"value=0)\n"
+");"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:795
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"0f4941d4712049e494267074dca70b4b\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:805
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;), "
+"Output()), _dom_classes=(&#39;widget-interact&#39;,))\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:811
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t'), Output()), "
+"\\_dom\\_classes=('widget-interact',))\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:818
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t'), Output()), "
+"_dom_classes=('widget-interact',))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:830
+msgid "Formally adding your model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:841
+msgid ""
+"The purpose of this notebook has been to go through the steps involved in "
+"getting a simple model working within PyBaMM. However, if you plan on "
+"reusing your model and want greater flexibility then we recommend that you "
+"create a new class for your model. We have set out instructions on how to do "
+"this in the \"Adding a Model\" tutorial in the documentation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:853
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:855
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "[16]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:876
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:886
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:897
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2."
+msgstr ""

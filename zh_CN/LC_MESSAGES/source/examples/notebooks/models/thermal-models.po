@@ -1,0 +1,918 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/thermal-models.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/thermal-models.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:9
+msgid "Thermal models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:11
+msgid ""
+"There are a number of thermal submodels available in PyBaMM. In this "
+"notebook we give details of each of the models, and highlight any relevant "
+"parameters. At present PyBaMM includes an isothermal and a lumped thermal "
+"model, both of which can be used with any cell geometry, as well as a 1D "
+"thermal model which accounts for the through-cell variation in temperature "
+"in a pouch cell, and \"1+1D\" and \"2+1D\" pouch cell models which assumed "
+"the temperature is uniform through the thickness of the pouch, but accounts "
+"for variations in temperature in the remaining dimensions. Here we give the "
+"governing equations for each model (except the isothermal model, which just "
+"sets the temperature to be equal to to the parameter \"Ambient temperature "
+"[K]\")."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:14
+msgid ""
+"A more comprehensive review of the pouch cell models, including how to "
+"properly compute the effective cooling terms, can be found in references [4] "
+"and [6] at the end of this notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:36
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:42
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:49
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:61
+msgid "Lumped model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:63
+msgid ""
+"The lumped thermal model solves the following ordinary differential equation "
+"for the average temperature, given here in dimensional terms,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:65
+msgid ""
+"\\rho_{eff} \\frac{\\partial T}{\\partial t} = \\bar{Q} - \\frac{hA}{V}(T-"
+"T_{\\infty}),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:70
+msgid ""
+"where :math:`\\rho_{eff}` is effective volumetric heat capacity, :math:`T` "
+"is the temperature, :math:`t` is time, :math:`\\bar{Q}` is the averaged heat "
+"source term, :math:`h` is the heat transfer coefficient, :math:`A` is the "
+"surface area (available for cooling), :math:`V` is the cell volume, and :"
+"math:`T_{\\infty}` is the ambient temperature. An initial temperature :math:"
+"`T_0` must be prescribed."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:72
+msgid "The effective volumetric heat capacity is computed as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:74
+msgid "\\rho_{eff} = \\frac{\\sum_k \\rho_k c_{p,k} L_k}{\\sum_k L_k},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:79
+msgid ""
+"where :math:`\\rho_k` is the density, :math:`c_{p,k}` is the specific heat, "
+"and :math:`L_k` is the thickness of each component. The subscript :math:`k "
+"\\in \\{cn, n, s, p, cp\\}` is used to refer to the components negative "
+"current collector, negative electrode, separator, positive electrode, and "
+"positive current collector."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:81
+msgid ""
+"The heat source term accounts for Ohmic heating :math:`Q_{Ohm,k}` due to "
+"resistance in the solid and electrolyte, irreverisble heating due to "
+"electrochemical reactions :math:`Q_{rxn,k}`, reversible heating due to "
+"entropic changes in the the electrode :math:`Q_{rev,k}`, and heating due to "
+"contact resistance :math:`Q_{cr}`:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:83
+msgid "Q = Q_{Ohm,k}+Q_{rxn,k}+Q_{rev,k}+Q_{cr},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:88
+msgid "with"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:90
+msgid ""
+"Q_{Ohm,k} = -i_k \\nabla \\phi_k, \\quad Q_{rxn,k} = a_k j_k \\eta_k, \\quad "
+"Q_{rev,k} = a_k j_k T_k \\frac{\\partial U}{\\partial T} \\bigg|"
+"_{T=T_{\\infty}}, Q_{cr} = \\frac{R_{cr}}{V_{cell}}i_k^2."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:95
+msgid ""
+"Here :math:`i_k` is the current, :math:`\\phi_k` the potential, :math:`a_k` "
+"the surface area to volume ratio, :math:`j_k` the interfacial current "
+"density, :math:`\\eta_k` the overpotential, :math:`U` the open-circuit "
+"potential, :math:`R_{cr}` is the contact resistance, and :math:`V_{cell}` is "
+"the total cell volume. The averaged heat source term :math:`\\bar{Q}` is "
+"computed by taking the volume-average of :math:`Q`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:106
+msgid ""
+"When using the option ``{\"cell geometry\": \"arbitrary\"}`` the relevant "
+"parameters to specify the cooling conditions are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:108
+msgid "\"Total heat transfer coefficient [W.m-2.K-1]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:109
+msgid "\"Cell cooling surface area [m2]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:110
+msgid "\"Cell volume [m3]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:112
+msgid ""
+"which correspond directly to the parameters :math:`h`, :math:`A` and :math:"
+"`V` in the governing equation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:114
+msgid ""
+"When using the option ``{\"cell geometry\": \"pouch\"}`` the parameter :math:"
+"`A` and :math:`V` are computed automatically from the pouch dimensions, "
+"assuming a single-layer pouch cell, i.e. :math:`A` is the total surface area "
+"of a single-layer pouch cell and :math:`V` is the volume. The parameter :"
+"math:`h` is still set by the \"Total heat transfer coefficient [W.m-2.K-1]\" "
+"parameter."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:116
+msgid ""
+"When using the option ``{\"contact resistance\": \"true\"}`` the parameter "
+"\"Contact resistance [Ohm]\" must be specified to calculate the heating from "
+"contact resistance, which corresponds to :math:`R_{cr}`. \"Cell volume "
+"[m3]\" is :math:`V_{cell}` within the governing equation. The default lumped "
+"model option is ``{\"contact resistance\": \"false\"}``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:118
+msgid "The lumped thermal option can be selected as follows"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\"cell geometry\": \"arbitrary\", \"thermal\": \"lumped\"}\n"
+"arbitrary_lumped_model = pybamm.lithium_ion.DFN(options)\n"
+"# OR\n"
+"options = {\"cell geometry\": \"pouch\", \"thermal\": \"lumped\"}\n"
+"pouch_lumped_model = pybamm.lithium_ion.DFN(options)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:143
+msgid ""
+"If no cell geometry is specified, the \"arbitrary\" cell geometry is used by "
+"default"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\"thermal\": \"lumped\"}\n"
+"model = pybamm.lithium_ion.DFN(options)\n"
+"print(\"Cell geometry:\", model.options[\"cell geometry\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:166
+msgid ""
+"<pre>\n"
+"Cell geometry: arbitrary\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:172
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Cell geometry: arbitrary\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:179
+msgid "Cell geometry: arbitrary"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:190
+msgid "The contact resistance option can be turned on via the following"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\"thermal\": \"lumped\", \"contact resistance\": \"true\"}\n"
+"model = pybamm.lithium_ion.DFN(options)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:212
+msgid ""
+"The default option for the lumped model does not include contact resistance."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\"thermal\": \"lumped\"}\n"
+"model = pybamm.lithium_ion.DFN(options)\n"
+"print(\"contact resistance:\", model.options[\"contact resistance\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:235
+msgid ""
+"<pre>\n"
+"contact resistance: false\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:241
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"contact resistance: false\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:248
+msgid "contact resistance: false"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:260
+msgid "Pouch cell models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:272
+msgid "1D (through-cell) model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:274
+msgid ""
+"The 1D model solves for :math:`T(x,t)`, capturing variations through the "
+"thickness of the cell, but ignoring variations in the other dimensions. The "
+"temperature is found as the solution of a partial differential equation, "
+"given here in dimensional terms"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:276
+msgid ""
+"\\rho_k c_{p,k} \\frac{\\partial T}{\\partial t} = \\lambda_k \\nabla^2 T + "
+"Q(x,t) - Q_{cool}(x,t)\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:278
+msgid "with boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:280
+msgid ""
+"-\\lambda_{cn} \\frac{\\partial T}{\\partial x}\\bigg|_{x=0} = h_{cn}"
+"(T_{\\infty} - T) \\quad -\\lambda_{cp} \\frac{\\partial T}{\\partial "
+"x}\\bigg|_{x=1} = h_{cp}(T-T_{\\infty}),\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:282
+msgid "and initial condition"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:284
+msgid ""
+"T\\big|_{t=0} = T_0.\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:286
+msgid ""
+"Here :math:`\\lambda_k` is the thermal conductivity of component :math:`k`, "
+"and the heat transfer coefficients :math:`h_{cn}` and :math:`h_{cp}` "
+"correspond to heat transfer at the large surface of the pouch on the side of "
+"the negative current collector, heat transfer at the large surface of the "
+"pouch on the side of the positive current collector, respectively. The heat "
+"source term :math:`Q` is as described in the section on lumped models. The "
+"term :math:`Q_cool` accounts for additional heat losses due to heat transfer "
+"at the sides of the pouch, as well as the tabs. This term is computed "
+"automatically by PyBaMM based on the cell geometry and heat transfer "
+"coefficients on the edges and tabs of the cell."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:289
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:355
+msgid ""
+"The relevant heat transfer parameters are: \"Negative current collector "
+"surface heat transfer coefficient [W.m-2.K-1]\" \"Positive current collector "
+"surface heat transfer coefficient [W.m-2.K-1]\" \"Negative tab heat transfer "
+"coefficient [W.m-2.K-1]\" \"Positive tab heat transfer coefficient [W.m-2."
+"K-1]\" \"Edge heat transfer coefficient [W.m-2.K-1]\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:291
+msgid ""
+"The 1D model is termed \"x-full\" (since it fully accounts for variation in "
+"the x direction) and can be selected as follows"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\"thermal\": \"x-full\"}\n"
+"model = pybamm.lithium_ion.DFN(options)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:314
+msgid "Higher dimensional pouch cell models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:316
+msgid ""
+"These pouch cell thermal models ignore any variation in temperature through "
+"the thickness of the cell (x direction), and solve for :math:`T(y,z,t)`. It "
+"is therefore referred to as an \"x-lumped\" model. The temperature is found "
+"as the solution of a partial differential equation, given here in "
+"dimensional terms,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:318
+msgid ""
+"\\rho_{eff} \\frac{\\partial T}{\\partial t} = \\lambda_{eff} "
+"\\nabla_\\perp^2T + \\bar{Q} - \\frac{(h_{cn}+h_{cp})A}{V}(T-T_{\\infty}),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:323
+msgid "along with boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:325
+msgid ""
+"-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = \\frac{L_{cn}"
+"h_{cn} + (L_n+L_s+L_p+L_{cp})h_{edge}}{L_{cn}+L_n+L_s+L_p+L_{cp}}(T-"
+"T_\\infty),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:330
+msgid "at the negative tab,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:332
+msgid ""
+"-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = "
+"\\frac{(L_{cn}+L_n+L_s+L_p)h_{edge}+L_{cp}h_{cp}}{L_{cn}+L_n+L_s+L_p+L_{cp}}"
+"(T-T_\\infty),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:337
+msgid "at the positive tab, and"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:339
+msgid ""
+"-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = h_{edge}(T-"
+"T_\\infty),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:344
+msgid ""
+"elsewhere. Again, an initial temperature :math:`T_0` must be prescribed."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:346
+msgid ""
+"Here the heat source term is averaged in the x direction so that :math:"
+"`\\bar{Q}=\\bar{Q}(y,z)`. The parameter :math:`\\lambda_{eff}` is the "
+"effective thermal conductivity, computed as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:348
+msgid "\\lambda_{eff} = \\frac{\\sum_k \\lambda_k L_k}{\\sum_k L_k}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:353
+msgid ""
+"The heat transfer coefficients :math:`h_{cn}`, :math:`h_{cp}` and :math:"
+"`h_{egde}` correspond to heat transfer at the large surface of the pouch on "
+"the side of the negative current collector, heat transfer at the large "
+"surface of the pouch on the side of the positive current collector, and heat "
+"transfer at the remaining, respectively."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:357
+msgid "The \"2+1D\" model can be selected as follows"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"options = {\n"
+"    \"current collector\": \"potential pair\",\n"
+"    \"dimensionality\": 2,\n"
+"    \"thermal\": \"x-lumped\",\n"
+"}\n"
+"model = pybamm.lithium_ion.DFN(options)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:384
+msgid "Model usage"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:395
+msgid ""
+"Here we compare the \"full\" one-dimensional model with the lumped model for "
+"a pouch cell. We first set up our models, passing the relevant options, and "
+"then show how to adjust the parameters to so that the lumped and full models "
+"give the same behaviour"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"full_thermal_model = pybamm.lithium_ion.SPMe(\n"
+"    {\"thermal\": \"x-full\"}, name=\"full thermal model\"\n"
+")\n"
+"lumped_thermal_model = pybamm.lithium_ion.SPMe(\n"
+"    {\"thermal\": \"lumped\"}, name=\"lumped thermal model\"\n"
+")\n"
+"models = [full_thermal_model, lumped_thermal_model]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:422
+msgid "We then pick our parameter set"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "parameter_values = pybamm.ParameterValues(\"Marquis2019\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:443
+msgid ""
+"For the \"full\" model we use a heat transfer coefficient of :math:`5\\,  "
+"\\text{Wm}^{-2}\\text{K}^{-1}` on the large surfaces of the pouch and zero "
+"heat transfer coefficient on the tabs and edges"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"full_params = parameter_values.copy()\n"
+"full_params.update(\n"
+"    {\n"
+"        \"Negative current collector\"\n"
+"        + \" surface heat transfer coefficient [W.m-2.K-1]\": 5,\n"
+"        \"Positive current collector\"\n"
+"        + \" surface heat transfer coefficient [W.m-2.K-1]\": 5,\n"
+"        \"Negative tab heat transfer coefficient [W.m-2.K-1]\": 0,\n"
+"        \"Positive tab heat transfer coefficient [W.m-2.K-1]\": 0,\n"
+"        \"Edge heat transfer coefficient [W.m-2.K-1]\": 0,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:475
+msgid ""
+"For the lumped model we set the \"Total heat transfer coefficient [W.m-2."
+"K-1]\" parameter as well as the \"Cell cooling surface area [m2]\" "
+"parameter. Since the \"full\" model only accounts for cooling from the large "
+"surfaces of the pouch, we set the \"Surface area for cooling\" parameter to "
+"the area of the large surfaces of the pouch, and the total heat transfer "
+"coefficient to :math:`5\\,  \\text{Wm}^{-2}\\text{K}^{-1}`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"A = parameter_values[\"Electrode width [m]\"] * parameter_values[\"Electrode "
+"height [m]\"]\n"
+"lumped_params = parameter_values.copy()\n"
+"lumped_params.update(\n"
+"    {\n"
+"        \"Total heat transfer coefficient [W.m-2.K-1]\": 5,\n"
+"        \"Cell cooling surface area [m2]\": 2 * A,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:503
+msgid ""
+"Let's run simulations with both options and compare the results. For "
+"demonstration purposes we'll increase the current to amplify the thermal "
+"effects"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"params = [full_params, lumped_params]\n"
+"# loop over the models and solve\n"
+"sols = []\n"
+"for model, param in zip(models, params, strict=False):\n"
+"    param[\"Current function [A]\"] = 3 * 0.68\n"
+"    sim = pybamm.Simulation(model, parameter_values=param)\n"
+"    sim.solve([0, 3600])\n"
+"    sols.append(sim.solution)\n"
+"\n"
+"\n"
+"# plot\n"
+"output_variables = [\n"
+"    \"Voltage [V]\",\n"
+"    \"X-averaged cell temperature [K]\",\n"
+"    \"Cell temperature [K]\",\n"
+"]\n"
+"pybamm.dynamic_plot(sols, output_variables)\n"
+"\n"
+"# plot the results\n"
+"pybamm.dynamic_plot(\n"
+"    sols,\n"
+"    [\n"
+"        \"Volume-averaged cell temperature [K]\",\n"
+"        \"Volume-averaged total heating [W.m-3]\",\n"
+"        \"Current [A]\",\n"
+"        \"Voltage [V]\",\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:553
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"b29f3527b0cb47b888bf748ff800f359\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:564
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:601
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1154.7660708378553, step=11.547660708378553)…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:570
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:607
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=1154.7660708378553, step=11.547660708378553)…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:577
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:614
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=1154.7660708378553, step=11.547660708378553)…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:590
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"7de290974a0c4649b7edddae4562bf90\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:626
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x17f501e90&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:632
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x17f501e90>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:639
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x17f501e90>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:650
+msgid ""
+"For the lumped model, we can compare how the contact resistance affects the "
+"heating. To do so, we must set the ``\"contact resistance\"`` option to "
+"``\"true\"`` and update the ``\"Contact resistance [Ohm]\"`` parameter."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"model_no_contact_resistance = pybamm.lithium_ion.SPMe(\n"
+"    {\"cell geometry\": \"arbitrary\", \"thermal\": \"lumped\", \"contact "
+"resistance\": \"false\"},\n"
+"    name=\"lumped thermal model\",\n"
+")\n"
+"model_contact_resistance = pybamm.lithium_ion.SPMe(\n"
+"    {\"cell geometry\": \"arbitrary\", \"thermal\": \"lumped\", \"contact "
+"resistance\": \"true\"},\n"
+"    name=\"lumped thermal model with contact resistance\",\n"
+")\n"
+"models = [model_no_contact_resistance, model_contact_resistance]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:679
+msgid "We then choose a parameter set."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"parameter_values = pybamm.ParameterValues(\"Marquis2019\")\n"
+"lumped_params = parameter_values.copy()\n"
+"lumped_params_contact_resistance = parameter_values.copy()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:702
+msgid ""
+"For the contact resistance model, we must specify a contact resistance "
+"greater than zero. The default is zero."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"lumped_params_contact_resistance.update(\n"
+"    {\n"
+"        \"Contact resistance [Ohm]\": 0.05,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:727
+msgid "The models and parameters are then used to solve for a 1C discharge."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"params = [lumped_params, lumped_params_contact_resistance]\n"
+"sols = []\n"
+"for model, param in zip(models, params, strict=False):\n"
+"    sim = pybamm.Simulation(model, parameter_values=param)\n"
+"    sim.solve([0, 3600])\n"
+"    sols.append(sim.solution)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:753
+msgid ""
+"We can then compare the voltage and cell temperature and see the impact of "
+"the contact resistance."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid ""
+"output_variables = [\n"
+"    \"Voltage [V]\",\n"
+"    \"X-averaged cell temperature [K]\",\n"
+"    \"Cell temperature [K]\",\n"
+"]\n"
+"pybamm.dynamic_plot(sols, output_variables)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:781
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1254ec88a920400096b25541577ee948\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:792
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:798
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:805
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:817
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x338900950&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:823
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x338900950>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:830
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x338900950>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:842
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:844
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:865
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:877
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:890
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[6] Robert Timms, Scott G Marquis, Valentin Sulzer, Colin P. Please, and S "
+"Jonathan Chapman. Asymptotic Reduction of a Lithium-ion Pouch Cell Model. "
+"SIAM Journal on Applied Mathematics, 81(3):765–788, 2021. "
+"doi:10.1137/20M1336898."
+msgstr ""

@@ -1,0 +1,541 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/experiment/experiment_steps.rst:2
+msgid "Experiment step functions"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:4
+msgid ""
+"The following functions can be used to define steps in an experiment. Note "
+"that the drive cycle must start at t=0"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.string:1
+msgid "Create a step from a string."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.string:3
+msgid ""
+"The string to parse. Each operating condition should be of the form \"Do "
+"this for this long\" or \"Do this until this happens\". For example, "
+"\"Charge at 1 C for 1 hour\", or \"Charge at 1 C until 4.2 V\", or \"Charge "
+"at 1 C for 1 hour or until 4.2 V\". The instructions can be of the form "
+"\"(Dis)charge at x A/C/W\", \"Rest\", or \"Hold at x V until y A\". The "
+"running time should be a time in seconds, minutes or hours, e.g. \"10 "
+"seconds\", \"3 minutes\" or \"1 hour\". The stopping conditions should be a "
+"circuit state, e.g. \"1 A\", \"C/50\" or \"3 V\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.string:12
+msgid "Any other keyword arguments are passed to the step class"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.string:14
+msgid "A step parsed from the string."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.string:15
+msgid ":class:`pybamm.step.BaseStep`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.current:1
+msgid "Current-controlled step, see :class:`pybamm.step.Current`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.voltage:1
+msgid "Voltage-controlled step, see :class:`pybamm.step.Voltage`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.power:1
+msgid "Power-controlled step, see :class:`pybamm.step.Power`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.resistance:1
+msgid "Resistance-controlled step, see :class:`pybamm.step.Resistance`."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:16
+msgid ""
+"These functions return the following step class, which is not intended to be "
+"used directly:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:1
+msgid ""
+"Class representing one step in an experiment. All experiment steps are "
+"functions that return an instance of this class. This class is not intended "
+"to be used directly, but can be subtyped to create a custom experiment step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:6
+msgid ""
+"The value of the step, corresponding to the type of step. Can be a number, a "
+"2-tuple (for cccv_ode), a 2-column array (for drive cycles), or a 1-argument "
+"function of t"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:9
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:11
+#: pybamm.experiment.step.steps.CustomStepImplicit:19
+msgid "The duration of the step in seconds."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:11
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:13
+#: pybamm.experiment.step.steps.CustomStepImplicit:21
+msgid ""
+"A string or list of strings indicating the condition(s) that will terminate "
+"the step. If a list, the step will terminate when any of the conditions are "
+"met."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:14
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:16
+#: pybamm.experiment.step.steps.CustomStepImplicit:24
+msgid ""
+"The period of the step. If a float, the value is in seconds. If a string, "
+"the value should be a valid time string, e.g. \"1 hour\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:17
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:19
+#: pybamm.experiment.step.steps.CustomStepImplicit:27
+msgid ""
+"The temperature of the step. If a float, the value is in Kelvin. If a "
+"string, the value should be a valid temperature string, e.g. \"25 oC\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:20
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:22
+#: pybamm.experiment.step.steps.CustomStepImplicit:30
+msgid ""
+"A string or list of strings indicating the tags associated with the step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:22
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:24
+#: pybamm.experiment.step.steps.CustomStepImplicit:32
+msgid "The start time of the step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:24
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:26
+#: pybamm.experiment.step.steps.CustomStepImplicit:34
+msgid "A description of the step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:26
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit:28
+#: pybamm.experiment.step.steps.CustomStepImplicit:36
+msgid ""
+"The direction of the step, e.g. \"Charge\" or \"Discharge\" or \"Rest\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep:28
+msgid ""
+"If True, the step will be skipped if it is infeasible at the initial "
+"conditions. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.basic_repr:1
+msgid ""
+"Return a basic representation of the step, only with type, value, "
+"termination and temperature, which are the variables involved in processing "
+"the model. Also used for hashing."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.copy:1
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit.copy:1
+#: pybamm.experiment.step.steps.CustomStepImplicit.copy:1
+msgid "Return a copy of the step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.copy:3
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit.copy:3
+#: pybamm.experiment.step.steps.CustomStepImplicit.copy:3
+msgid "A copy of the step."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.copy:4
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: pybamm.experiment.step.steps.CustomStepExplicit.copy:4
+#: pybamm.experiment.step.steps.CustomStepImplicit.copy:4
+msgid ":class:`pybamm.Step`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.default_duration:1
+msgid ""
+"Default duration for the step is one day (24 hours) or the duration of the "
+"drive cycle"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.record_tags:1
+msgid "Record all the args for repr and hash"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.setup_timestepping:1
+msgid "Setup timestepping for the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.setup_timestepping:3
+msgid "The solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.setup_timestepping:5
+msgid "The final time"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.setup_timestepping:7
+msgid "The time points at which to interpolate the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.to_dict:1
+msgid "Convert the step to a dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.experiment.step.base_step.BaseStep.to_dict:3
+msgid "A dictionary containing the step information."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of
+#: pybamm.experiment.step.base_step.BaseStep.value_based_charge_or_discharge:1
+msgid ""
+"Determine whether the step is a charge or discharge step based on the value "
+"of the step. If an operator is provided, the step direction is not used, so "
+"we return None."
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:23
+msgid "Custom steps"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:25
+msgid "Custom steps can be defined using either explicit or implicit control:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:1
+msgid ""
+"Custom step class where the current value is explicitly given as a function "
+"of other variables. When using this class, the user must be careful not to "
+"create an expression that depends on the current itself, as this will lead "
+"to a circular dependency. For example, in some models, the voltage is an "
+"explicit function of the current, so the user should not create a step that "
+"depends on the voltage. An expression that works for one model may not work "
+"for another."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:8
+msgid ""
+"A function that takes in a dictionary of variables and returns the current "
+"value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:32
+#: pybamm.experiment.step.steps.CustomStepImplicit:40
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:33
+msgid ""
+"Control the current to always be equal to a target power divided by voltage "
+"(this is one way to implement a power control step):"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:41
+msgid "Create the step with a 2.5 V termination condition:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepExplicit:45
+msgid "**Extends:** :class:`pybamm.experiment.step.base_step.BaseStepExplicit`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:1
+msgid "Custom step, see :class:`pybamm.step.BaseStep` for arguments."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:3
+msgid ""
+"A function that takes in a dictionary of variables and returns the equation "
+"controlling the current."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:6
+msgid ""
+"Whether the control is algebraic or differential. Default is algebraic, in "
+"which case the equation is  .. math::     0 = f(\\text{{variables}})  where :"
+"math:`f` is the current_rhs_function.  If control is \"differential\", the "
+"equation is  .. math::     \\frac{dI}{dt} = f(\\text{{variables}})"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:6
+msgid ""
+"Whether the control is algebraic or differential. Default is algebraic, in "
+"which case the equation is"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:9
+msgid ""
+"0 = f(\\text{{variables}})\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:12
+msgid "where :math:`f` is the current_rhs_function."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:14
+msgid "If control is \"differential\", the equation is"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:16
+msgid ""
+"\\frac{dI}{dt} = f(\\text{{variables}})\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:41
+msgid ""
+"Control the current so that the voltage is constant (without using the built-"
+"in voltage control):"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:48
+msgid ""
+"Create the step with a duration of 1h. In this case we don't need to specify "
+"that the control is algebraic, as this is the default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:53
+msgid ""
+"Alternatively, control the current by a differential equation to achieve a "
+"target power:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:64
+msgid ""
+"Create the step with a 2.5 V termination condition. Now we need to specify "
+"that the control is differential."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
+#: of pybamm.experiment.step.steps.CustomStepImplicit:71
+msgid "**Extends:** :class:`pybamm.experiment.step.base_step.BaseStepImplicit`"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:34
+msgid "Step terminations"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:36
+msgid ""
+"Standard step termination events are implemented by the following classes, "
+"which are called when the termination is specified by a specific string. "
+"These classes can be either be called directly or via the string format "
+"specified in the class docstring"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CRateTermination:1
+msgid ""
+"Termination based on C-rate, created when a string termination of the C-rate "
+"type (e.g. \"C/10\") is provided"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CRateTermination:4
+#: pybamm.experiment.step.step_termination.CurrentTermination:4
+#: pybamm.experiment.step.step_termination.CustomTermination:23
+#: pybamm.experiment.step.step_termination.VoltageTermination:4
+msgid ""
+"**Extends:** :class:`pybamm.experiment.step.step_termination.BaseTermination`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of
+#: pybamm.experiment.step.step_termination.BaseTermination.get_event_expression:1
+#: pybamm.experiment.step.step_termination.CRateTermination.get_event_expression:1
+#: pybamm.experiment.step.step_termination.CurrentTermination.get_event_expression:1
+#: pybamm.experiment.step.step_termination.CustomTermination.get_event_expression:1
+#: pybamm.experiment.step.step_termination.VoltageTermination.get_event_expression:1
+msgid "Return the symbolic expression corresponding to the termination event."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of
+#: pybamm.experiment.step.step_termination.BaseTermination.get_event_expression:3
+#: pybamm.experiment.step.step_termination.CRateTermination.get_event_expression:3
+#: pybamm.experiment.step.step_termination.CurrentTermination.get_event_expression:3
+#: pybamm.experiment.step.step_termination.CustomTermination.get_event_expression:3
+#: pybamm.experiment.step.step_termination.VoltageTermination.get_event_expression:3
+msgid ""
+"Dictionary of model variables, to be used for selecting the variable(s) that "
+"determine the event"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of
+#: pybamm.experiment.step.step_termination.BaseTermination.get_event_expression:6
+#: pybamm.experiment.step.step_termination.CRateTermination.get_event_expression:6
+#: pybamm.experiment.step.step_termination.CurrentTermination.get_event_expression:6
+#: pybamm.experiment.step.step_termination.CustomTermination.get_event_expression:6
+#: pybamm.experiment.step.step_termination.VoltageTermination.get_event_expression:6
+msgid ""
+"Step for which this is a termination event, to be used in some cases to "
+"determine the sign of the event."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CurrentTermination:1
+msgid ""
+"Termination based on current, created when a string termination of the "
+"current type (e.g. \"1A\") is provided"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.VoltageTermination:1
+msgid ""
+"Termination based on voltage, created when a string termination of the "
+"voltage type (e.g. \"4.2V\") is provided"
+msgstr ""
+
+#: ../../../source/api/experiment/experiment_steps.rst:49
+msgid ""
+"The following classes can be used to define custom terminations for an "
+"experiment step:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.BaseTermination:1
+msgid ""
+"Base class for a termination event for an experiment step. To create a "
+"custom termination, a class must implement `get_event_expression` to return "
+"the symbolic expression for the event. In most cases the class :class:"
+"`pybamm.step.CustomTermination` can be used to assist with this."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.BaseTermination:6
+msgid "The value at which the event is triggered"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CustomTermination:1
+msgid ""
+"Define a custom termination event using a function. This can be used to "
+"create an event based on any variable in the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CustomTermination:4
+msgid "Name of the event"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CustomTermination:6
+msgid ""
+"A function that takes in a dictionary of variables and evaluates the event "
+"value. Must be positive before the event is triggered and zero when the "
+"event is triggered."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CustomTermination:12
+msgid "Example"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
+#: of pybamm.experiment.step.step_termination.CustomTermination:13
+msgid ""
+"Add a cut-off based on negative electrode stoichiometry. The event will "
+"trigger when the negative electrode stoichiometry reaches 10%."
+msgstr ""

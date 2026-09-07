@@ -1,0 +1,412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/plotting/plot-voltage-components.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/plotting/plot-voltage-components.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:9
+msgid "Plot voltage components"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:20
+msgid ""
+"In a 1D model, the voltage of a cell is given by the difference in solid-"
+"phase potentials at the two edges of the domain"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:22
+msgid ""
+"V = \\left.\\phi_\\mathrm{s,p}\\right\\rvert_{x=L}\n"
+"    - \\left.\\phi_\\mathrm{s,n}\\right\\rvert_{x=0}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:28
+msgid ""
+"We can decompose this voltage into constituent components by adding and "
+"subtracting terms and regrouping:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:30
+msgid ""
+"\\begin{align*}\n"
+"V =& \\left(\\left.\\phi_\\mathrm{s,p}\\right\\rvert_{x=L} - \\bar{\\phi}"
+"_\\mathrm{s,p}\\right)\n"
+"&\\quad&\\text{Positive solid phase ohmic losses}\n"
+"\\\\\n"
+"&- \\left(\\left.\\phi_\\mathrm{s,n}\\right\\rvert_{x=L} - \\bar{\\phi}"
+"_\\mathrm{s,n}\\right)\n"
+"&&\\text{Negative solid phase ohmic losses}\n"
+"\\\\\n"
+"&+ \\bar{\\eta}_\\mathrm{p}\n"
+"&&\\text{Positive reaction overpotential}\n"
+"\\\\\n"
+"&- \\bar{\\eta}_\\mathrm{n}\n"
+"&&\\text{Negative reaction overpotential}\n"
+"\\\\\n"
+"&+ \\left(\\bar{\\phi}_\\mathrm{e,p}-\\bar{\\phi}_\\mathrm{e,n}\\right)\n"
+"&&\\text{Electrolyte overpotential}\n"
+"\\\\\n"
+"&+ \\left(\\overline{U(c_\\mathrm{p}^\\mathrm{surf})}-U(\\bar{c}"
+"_\\mathrm{p})\\right)\n"
+"&&\\text{Positive particle overpotential}\n"
+"\\\\\n"
+"&- \\left(\\overline{U(c_\\mathrm{n}^\\mathrm{surf})}-U(\\bar{c}"
+"_\\mathrm{n})\\right)\n"
+"&&\\text{Negative particle overpotential}\n"
+"\\\\\n"
+"&+ U(\\bar{c}_\\mathrm{p})\n"
+"&&\\text{Positive bulk open-circuit potential}\n"
+"\\\\\n"
+"&- U(\\bar{c}_\\mathrm{n})\n"
+"&&\\text{Negative bulk open-circuit potential}\n"
+"\\end{align*}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:62
+msgid "where"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:64
+msgid "\\eta = \\phi_\\mathrm{s} - \\phi_\\mathrm{e} - U(c^\\mathrm{surf})"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:69
+msgid ""
+"and :math:`\\bar{\\cdot}` represents the average value of the variable over "
+"its subdomain."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:80
+msgid ""
+"To demonstrate this, we solve a standard DFN model with the Chen2020 "
+"parameter set and plot the various potentials"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm\n"
+"\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"\n"
+"experiment = pybamm.Experiment([\"Discharge at 1C until 2.5 V\"])\n"
+"\n"
+"sim = pybamm.Simulation(\n"
+"    model, experiment=experiment, parameter_values=pybamm."
+"ParameterValues(\"Chen2020\")\n"
+")\n"
+"sol = sim.solve()\n"
+"\n"
+"sol.plot(\n"
+"    [\n"
+"        \"Negative electrode bulk open-circuit potential [V]\",\n"
+"        \"Positive electrode bulk open-circuit potential [V]\",\n"
+"        \"Negative particle concentration overpotential [V]\",\n"
+"        \"Positive particle concentration overpotential [V]\",\n"
+"        \"X-averaged negative electrode reaction overpotential [V]\",\n"
+"        \"X-averaged positive electrode reaction overpotential [V]\",\n"
+"        \"X-averaged concentration overpotential [V]\",\n"
+"        \"X-averaged electrolyte ohmic losses [V]\",\n"
+"        \"X-averaged negative electrode ohmic losses [V]\",\n"
+"        \"X-averaged positive electrode ohmic losses [V]\",\n"
+"    ],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:127
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:133
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:140
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:153
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"9f5c38b966754ac9902e15cd3356984c\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:164
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=3555.4443163107762, step=35.55444316310776),…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:170
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3555.4443163107762, step=35.55444316310776),…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:177
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3555.4443163107762, step=35.55444316310776),…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:189
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x1339b4620&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:195
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x1339b4620>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:202
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x1339b4620>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:213
+msgid ""
+"A more useful visualization is given by the ``plot_voltage_components`` "
+"function, which can either plot all the individual voltage components"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "sol.plot_voltage_components(split_by_electrode=True)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:244
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:299
+msgid ""
+"<pre>\n"
+"(&lt;Figure size 800x400 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;Time [h]&#39;"
+"&gt;)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:250
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:305
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:257
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:312
+msgid "(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:268
+msgid "or group positive and negative together"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "sol.plot_voltage_components()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:323
+msgid ""
+"Additionally, for a composite particle model, we can choose which phase to "
+"plot the open-circuit potential, concentration and reaction overpotentials "
+"for. This is shown in `the composite particle notebook <../models/"
+"composite_particle.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:334
+msgid ""
+"Note that this function further splits the electrolyte overpotential into "
+"the contribution from the electrolyte gradient and the contribution from "
+"ohmic losses"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:346
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:348
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:369
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O&#39;Regan, Dominika "
+"Gastol, W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:383
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:398
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

@@ -1,0 +1,601 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/tortuosity_models.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/tortuosity_models.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:9
+msgid "Transport efficiency and the models for tortuosity factor"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:20
+msgid ""
+"PyBaMM models utilize a ratio that we refer to as \"transport efficiency\" :"
+"math:`\\mathcal{B}` which can be applied to transport co-efficients such as "
+"the diffusivity in the electrolyte that relates the effective transport "
+"property through a porous media comprised of a conducting and non-conducting "
+"phase to that of the transport through the bulk of the conducting phase:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:22
+msgid "\\mathcal{B} = \\frac{X_{eff}}{X_0} = \\frac{\\epsilon}{\\tau},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:27
+msgid ""
+"Where :math:`\\epsilon` is the volume fraction of the conducting phase, the "
+"porosity of the electrode for diffusion within the electrolyte, and :math:"
+"`\\tau` is the tortuosity factor. A measure of the effect of the increased "
+"pathlength that transported species traverse due to the presence of "
+"obstacles."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:29
+msgid ""
+"The tortuosity and tortuosity factor are often used interchangably but this "
+"can lead to confusion. Tortusosity is a purely geometric concept relating "
+"the length of a winding capillary pathway through a medium with the length "
+"of that medium, whereas tortuosity factor relates the the ratio of the "
+"transport property which may also depend on other factors such as "
+"anisotropic obstacles, boundary conditions of flow and also other physical "
+"phenomena such as the average pore size which could induce Knudsen effects."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:32
+msgid ""
+"Many studies have been devoted to understanding relations between :math:"
+"`\\tau` and :math:`\\epsilon` including those summarized by `Shen & Chen "
+"<https://www.sciencedirect.com/science/article/abs/pii/"
+"S0009250907003144>`__. By far the most common is the Bruggeman relation "
+"which is explored more recently by `Tjaden et al. <http://dx.doi.org/10.1016/"
+"j.coche.2016.02.006>`__ in the context of materials commonly found in "
+"batteries and fuel cells."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:43
+msgid ""
+"A recent study by `Usseglio-Viretta et al. <https://iopscience.iop.org/"
+"article/10.1149/2.0731814jes>`__ found that Bruggeman and similar relations "
+"can significantly underpredict the tortuosity factors. If used at all these "
+"relations are often more suitable for the cathode where particles are more "
+"spherical but should be used with caution for the anode. A more recent trend "
+"is to use numerical methods to calculate tortuosity factors directly from "
+"image data gathered for electrodes in which case a straight-forward relation "
+"with porosity may not exist and is not necessary if factors can be directly "
+"supplied."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:55
+msgid ""
+"The remainder of the notebook demonstrates how to use the different options "
+"for transport efficiency and supply your own tortuosity factor"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"sols = []\n"
+"te_opts = pybamm.BatteryModelOptions({}).possible_options[\"transport "
+"efficiency\"]\n"
+"parameter_values = pybamm.ParameterValues(\"Marquis2019\")\n"
+"print(te_opts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:91
+msgid ""
+"<pre>\n"
+"[&#39;Bruggeman&#39;, &#39;ordered packing&#39;, &#39;hyperbola of "
+"revolution&#39;, &#39;overlapping spheres&#39;, &#39;tortuosity factor&#39;, "
+"&#39;random overlapping cylinders&#39;, &#39;heterogeneous catalyst&#39;, "
+"&#39;cation-exchange membrane&#39;]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:97
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"['Bruggeman', 'ordered packing', 'hyperbola of revolution', 'overlapping "
+"spheres', 'tortuosity factor', 'random overlapping cylinders', "
+"'heterogeneous catalyst', 'cation-exchange membrane']\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:104
+msgid ""
+"['Bruggeman', 'ordered packing', 'hyperbola of revolution', 'overlapping "
+"spheres', 'tortuosity factor', 'random overlapping cylinders', "
+"'heterogeneous catalyst', 'cation-exchange membrane']"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "parameter_values.search(\"porosity\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:125
+msgid ""
+"<pre>\n"
+"Negative electrode porosity     0.3\n"
+"Positive electrode porosity     0.3\n"
+"Separator porosity      1.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:133
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Negative electrode porosity     0.3\n"
+"Positive electrode porosity     0.3\n"
+"Separator porosity      1.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:142
+msgid ""
+"Negative electrode porosity     0.3\n"
+"Positive electrode porosity     0.3\n"
+"Separator porosity      1.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "parameter_values.search(\"Bruggeman\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:165
+msgid ""
+"<pre>\n"
+"Negative electrode Bruggeman coefficient (electrode)    1.5\n"
+"Negative electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Positive electrode Bruggeman coefficient (electrode)    1.5\n"
+"Positive electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Separator Bruggeman coefficient (electrolyte)   1.5\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:175
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Negative electrode Bruggeman coefficient (electrode)    1.5\n"
+"Negative electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Positive electrode Bruggeman coefficient (electrode)    1.5\n"
+"Positive electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Separator Bruggeman coefficient (electrolyte)   1.5\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:186
+msgid ""
+"Negative electrode Bruggeman coefficient (electrode)    1.5\n"
+"Negative electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Positive electrode Bruggeman coefficient (electrode)    1.5\n"
+"Positive electrode Bruggeman coefficient (electrolyte)  1.5\n"
+"Separator Bruggeman coefficient (electrolyte)   1.5"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:201
+msgid "Add tortuosity factors that replicate the Bruggeman values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"parameter_values.update(\n"
+"    {\n"
+"        \"Negative electrode tortuosity factor (electrolyte)\": 0.3 ** "
+"(-0.5),\n"
+"        \"Positive electrode tortuosity factor (electrolyte)\": 0.3 ** "
+"(-0.5),\n"
+"        \"Negative electrode tortuosity factor (electrode)\": 0.7 ** "
+"(-0.5),\n"
+"        \"Positive electrode tortuosity factor (electrode)\": 0.7 ** "
+"(-0.5),\n"
+"        \"Separator tortuosity factor (electrolyte)\": 1.0,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:230
+msgid ""
+"N.B the differences in the exponent constants used to modify the porosity "
+"and solid volume fraction. The existing Bruggeman model applies the exponent "
+"directly to the porosity :math:`\\mathcal{B}=\\epsilon^{b}=\\epsilon^{3/2}`, "
+"the tortuosity factor model applies the tortuosity factor with includes the "
+"relation on porosity in this case :math:`\\mathcal{B}=\\epsilon / \\tau = "
+"\\epsilon / \\epsilon^{-1/2} = \\epsilon^{3/2}`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"for t_label in te_opts:\n"
+"    model = pybamm.lithium_ion.DFN(\n"
+"        options={\"transport efficiency\": t_label}\n"
+"    )  # Doyle-Fuller-Newman model\n"
+"    sim = pybamm.Simulation(model, parameter_values=parameter_values)\n"
+"    sols.append(sim.solve([0, 3600]))  # solve for 1 hour"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "pybamm.dynamic_plot(sols, labels=te_opts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:268
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"2a0d1356fdaf495c8898429e27e30478\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:279
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:440
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:285
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:446
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:292
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:453
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:304
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x105f6705f90&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:310
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x105f6705f90>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:317
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x105f6705f90>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:328
+msgid "The Bruggeman and tortuosity factor results should be identical"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"np.allclose(sols[0][\"Terminal voltage [V]\"].data, sols[4][\"Terminal "
+"voltage [V]\"].data)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:350
+msgid ""
+"<pre>\n"
+"True\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:356
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"True\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:363
+msgid "True"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:374
+msgid ""
+"Now increase the tortuosity factors. N.B this will need to be calculated for "
+"specific electrodes with given porosity. Changing porosity in the model will "
+"not update the tortuosity factor unless a function is supplied for the "
+"parameter."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"parameter_values.update(\n"
+"    {\n"
+"        \"Negative electrode tortuosity factor (electrolyte)\": 4.0,\n"
+"        \"Positive electrode tortuosity factor (electrolyte)\": 4.0,\n"
+"        \"Negative electrode tortuosity factor (electrode)\": 3.0,\n"
+"        \"Positive electrode tortuosity factor (electrode)\": 3.0,\n"
+"        \"Separator tortuosity factor (electrolyte)\": 1.5,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN(\n"
+"    options={\"transport efficiency\": \"tortuosity factor\"}\n"
+")  # Doyle-Fuller-Newman model\n"
+"sim = pybamm.Simulation(model, parameter_values=parameter_values)\n"
+"sols.append(sim.solve([0, 3600]))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(sols, labels=[*te_opts, \"higher tortuosity factor\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:429
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"5292e8b8c6884c199cf5023cf42ea3ac\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:465
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x105f8f85fd0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:471
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x105f8f85fd0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:478
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x105f8f85fd0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:489
+msgid ""
+"The higher tortuosity leads to greater overpotential in the electrolyte and "
+"lower terminal voltage"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:510
+msgid ""
+"<pre>\n"
+"[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
+"in heterogeneous media. Chemical Engineering Science, 42(8):1945–1954, "
+"1987.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] JW Beeckman. Mathematical description of heterogeneous materials. "
+"Chemical engineering science, 45(8):2603–2610, 1990.\n"
+"[4] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[5] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] JS Mackie and P Meares. The diffusion of electrolytes in a cation-"
+"exchange resin membrane i. theoretical. Proceedings of the Royal Society of "
+"London. Series A. Mathematical and Physical Sciences, 232(1191):498–509, "
+"1955.\n"
+"[8] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[9] EE Petersen. Diffusion in a pore of varying cross section. AIChE "
+"Journal, 4(3):343–345, 1958.\n"
+"[10] Lihua Shen and Zhangxin Chen. Critical review of the impact of "
+"tortuosity on diffusion. Chemical Engineering Science, 62(14):3748–3755, "
+"2007.\n"
+"[11] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and "
+"S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of "
+"Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[12] Manolis M Tomadakis and Stratis V Sotirchos. Transport properties of "
+"random arrays of freely overlapping cylinders with various orientation "
+"distributions. The Journal of chemical physics, 98(1):616–626, 1993.\n"
+"[13] Harold L Weissberg. Effective diffusion coefficient in porous media. "
+"Journal of Applied Physics, 34(9):2636–2639, 1963.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:529
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
+"in heterogeneous media. Chemical Engineering Science, 42(8):1945–1954, "
+"1987.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] JW Beeckman. Mathematical description of heterogeneous materials. "
+"Chemical engineering science, 45(8):2603–2610, 1990.\n"
+"[4] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[5] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] JS Mackie and P Meares. The diffusion of electrolytes in a cation-"
+"exchange resin membrane i. theoretical. Proceedings of the Royal Society of "
+"London. Series A. Mathematical and Physical Sciences, 232(1191):498–509, "
+"1955.\n"
+"[8] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[9] EE Petersen. Diffusion in a pore of varying cross section. AIChE "
+"Journal, 4(3):343–345, 1958.\n"
+"[10] Lihua Shen and Zhangxin Chen. Critical review of the impact of "
+"tortuosity on diffusion. Chemical Engineering Science, 62(14):3748–3755, "
+"2007.\n"
+"[11] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and "
+"S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of "
+"Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[12] Manolis M Tomadakis and Stratis V Sotirchos. Transport properties of "
+"random arrays of freely overlapping cylinders with various orientation "
+"distributions. The Journal of chemical physics, 98(1):616–626, 1993.\n"
+"[13] Harold L Weissberg. Effective diffusion coefficient in porous media. "
+"Journal of Applied Physics, 34(9):2636–2639, 1963.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:549
+msgid ""
+"[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
+"in heterogeneous media. Chemical Engineering Science, 42(8):1945–1954, "
+"1987.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] JW Beeckman. Mathematical description of heterogeneous materials. "
+"Chemical engineering science, 45(8):2603–2610, 1990.\n"
+"[4] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[5] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[7] JS Mackie and P Meares. The diffusion of electrolytes in a cation-"
+"exchange resin membrane i. theoretical. Proceedings of the Royal Society of "
+"London. Series A. Mathematical and Physical Sciences, 232(1191):498–509, "
+"1955.\n"
+"[8] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[9] EE Petersen. Diffusion in a pore of varying cross section. AIChE "
+"Journal, 4(3):343–345, 1958.\n"
+"[10] Lihua Shen and Zhangxin Chen. Critical review of the impact of "
+"tortuosity on diffusion. Chemical Engineering Science, 62(14):3748–3755, "
+"2007.\n"
+"[11] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and "
+"S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of "
+"Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[12] Manolis M Tomadakis and Stratis V Sotirchos. Transport properties of "
+"random arrays of freely overlapping cylinders with various orientation "
+"distributions. The Journal of chemical physics, 98(1):616–626, 1993.\n"
+"[13] Harold L Weissberg. Effective diffusion coefficient in porous media. "
+"Journal of Applied Physics, 34(9):2636–2639, 1963."
+msgstr ""

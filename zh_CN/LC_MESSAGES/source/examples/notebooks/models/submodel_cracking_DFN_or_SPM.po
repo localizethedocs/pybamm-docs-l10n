@@ -1,0 +1,422 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:9
+msgid "Using crack submodels in PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:11
+msgid ""
+"In this notebook we show how to use the crack submodel with battery DFN or "
+"SPM models. To see all of the models and submodels available in PyBaMM, "
+"please take a look at the documentation `here <https://docs.pybamm.org/en/"
+"latest/source/api/models/index.html>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:39
+msgid ""
+"Then we load the DFN, SPMe or SPM, by choosing one and commenting the others."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:41
+msgid ""
+"When you load a model in PyBaMM it builds by default. Building the model "
+"sets all of the model variables and sets up any variables which are coupled "
+"between different submodels: this is the process which couples the submodels "
+"together and allows one submodel to access variables from another."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN(\n"
+"    options={\n"
+"        \"particle\": \"Fickian diffusion\",\n"
+"        \"particle mechanics\": \"swelling and cracking\",  # other options "
+"are \"none\", \"swelling only\"\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:67
+msgid ""
+"Load the parameter set Ai2020 which contains mechanical parameters. Other "
+"sets may not contain mechanical parameters should add them manually."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"param = pybamm.ParameterValues(\"Ai2020\")\n"
+"## It can update the speed of crack propagation using the commands below:\n"
+"# param.update({\"Negative electrode Cracking rate\":3.9e-20*10}, )"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:90
+msgid ""
+"We can get the default parameters for the model and update them with the "
+"parameters required by the cracking model. Eventually, we would like these "
+"to be added to their own chemistry (you might need to adjust the path to the "
+"parameters file to your system). Now the model can be processed and solved "
+"in the usual way, and we still have access to model defaults such as the "
+"default geometry and default spatial methods"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:101
+msgid ""
+"Depending on the parameter set being used, the particle cracking model can "
+"require a large number of mesh points inside the particles to be numerically "
+"stable."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"var_pts = {\n"
+"    \"x_n\": 20,  # negative electrode\n"
+"    \"x_s\": 20,  # separator\n"
+"    \"x_p\": 20,  # positive electrode\n"
+"    \"r_n\": 26,  # negative particle\n"
+"    \"r_p\": 26,  # positive particle\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"sim = pybamm.Simulation(\n"
+"    model,\n"
+"    parameter_values=param,\n"
+"    var_pts=var_pts,\n"
+")\n"
+"solution = sim.solve(t_eval=[0, 3600], inputs={\"C-rate\": 1})\n"
+"# plot\n"
+"quick_plot = pybamm.QuickPlot(solution)\n"
+"quick_plot.dynamic_plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:147
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"70c1339268f44ef19ee852fe5bd01653\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:157
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:328
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:163
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:334
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:170
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:341
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:181
+msgid "Plot the results as required."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"# extract voltage\n"
+"E_n = param[\"Negative electrode Young's modulus [Pa]\"]\n"
+"stress_t_n_surf = solution[\"Negative particle surface tangential stress "
+"[Pa]\"]\n"
+"x = solution[\"x [m]\"].entries[0:19, 0]\n"
+"c_s_n = solution[\"Negative particle concentration\"]\n"
+"r_n = solution[\"r_n [m]\"].entries[:, 0, 0]\n"
+"\n"
+"# plot\n"
+"\n"
+"\n"
+"def plot_concentrations(t):\n"
+"    _, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(20, 4))\n"
+"    ax1.plot(x, stress_t_n_surf(t=t, x=x) / E_n)\n"
+"    ax1.set_xlabel(r\"$x_n$ [m]\")\n"
+"    ax1.set_ylabel(\"$\\sigma_t/E_n$\")\n"
+"\n"
+"    (_plot_c_n,) = ax2.plot(\n"
+"        r_n, c_s_n(r=r_n, t=t, x=x[0])\n"
+"    )  # can evaluate at arbitrary x (single representative particle)\n"
+"    ax2.set_ylabel(\"Negative particle concentration\")\n"
+"    ax2.set_xlabel(r\"$r_n$ [m]\")\n"
+"    ax2.set_ylim(0, 1)\n"
+"    ax2.set_title(\"Close to current collector\")\n"
+"    ax2.grid()\n"
+"\n"
+"    (_plot_c_n,) = ax3.plot(\n"
+"        r_n, c_s_n(r=r_n, t=t, x=x[10])\n"
+"    )  # can evaluate at arbitrary x (single representative particle)\n"
+"    ax3.set_ylabel(\"Negative particle concentration\")\n"
+"    ax3.set_xlabel(r\"$r_n$ [m]\")\n"
+"    ax3.set_ylim(0, 1)\n"
+"    ax3.set_title(\"In the middle\")\n"
+"    ax3.grid()\n"
+"\n"
+"    (_plot_c_n,) = ax4.plot(\n"
+"        r_n, c_s_n(r=r_n, t=t, x=x[-1])\n"
+"    )  # can evaluate at arbitrary x (single representative particle)\n"
+"    ax4.set_ylabel(\"Negative particle concentration\")\n"
+"    ax4.set_xlabel(r\"$r_n$ [m]\")\n"
+"    ax4.set_ylim(0, 1)\n"
+"    ax4.set_title(\"Close to separator\")\n"
+"    ax4.grid()\n"
+"    plt.show()\n"
+"\n"
+"\n"
+"import ipywidgets as widgets\n"
+"\n"
+"widgets.interact(\n"
+"    plot_concentrations, t=widgets.FloatSlider(min=0, max=3600, step=10, "
+"value=0)\n"
+");"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:252
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"51b97221822843719c6bea4506288ed3\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:262
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=3600.0, step=10.0), Output()), _dom_classes=…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:268
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
+"step=10.0), Output()), \\_dom\\_classes=…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:275
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
+"step=10.0), Output()), _dom_classes=…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:286
+msgid "Plot results using the default functions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid ""
+"label = [\"Crack model\"]\n"
+"output_variables = [\n"
+"    \"Negative particle crack length [m]\",\n"
+"    \"Positive particle crack length [m]\",\n"
+"    \"X-averaged negative particle crack length [m]\",\n"
+"    \"X-averaged positive particle crack length [m]\",\n"
+"]\n"
+"quick_plot = pybamm.QuickPlot(\n"
+"    solution, output_variables, label, variable_limits=\"tight\"\n"
+")\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:318
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"3a5afe2d4d7a4987af6c97d9f57b5872\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:353
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:355
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:376
+msgid ""
+"<pre>\n"
+"[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
+"Electrochemical thermal-mechanical modelling of stress inhomogeneity in "
+"lithium-ion pouch cells. Journal of The Electrochemical Society, "
+"167(1):013512, 2019. doi:10.1149/2.0122001JES.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] Rutooj Deshpande, Mark Verbrugge, Yang-Tse Cheng, John Wang, and Ping "
+"Liu. Battery cycle life prediction with coupled chemical degradation and "
+"fatigue mechanics. Journal of the Electrochemical Society, 159(10):A1730, "
+"2012. doi:10.1149/2.049210jes.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:387
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
+"Electrochemical thermal-mechanical modelling of stress inhomogeneity in "
+"lithium-ion pouch cells. Journal of The Electrochemical Society, "
+"167(1):013512, 2019. doi:10.1149/2.0122001JES.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] Rutooj Deshpande, Mark Verbrugge, Yang-Tse Cheng, John Wang, and Ping "
+"Liu. Battery cycle life prediction with coupled chemical degradation and "
+"fatigue mechanics. Journal of the Electrochemical Society, 159(10):A1730, "
+"2012. doi:10.1149/2.049210jes.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/submodel_cracking_DFN_or_SPM.ipynb:399
+msgid ""
+"[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
+"Electrochemical thermal-mechanical modelling of stress inhomogeneity in "
+"lithium-ion pouch cells. Journal of The Electrochemical Society, "
+"167(1):013512, 2019. doi:10.1149/2.0122001JES.\n"
+"[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[3] Rutooj Deshpande, Mark Verbrugge, Yang-Tse Cheng, John Wang, and Ping "
+"Liu. Battery cycle life prediction with coupled chemical degradation and "
+"fatigue mechanics. Journal of the Electrochemical Society, 159(10):A1730, "
+"2012. doi:10.1149/2.049210jes.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
