@@ -1,0 +1,1906 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.expression_tree.symbol &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=6c9e8f96"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/expression_tree/symbol';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/expression_tree/symbol.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.expression_tree.symbol</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.expression_tree.symbol 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Base Symbol Class for the expression tree</span>
+<span class="c1">#</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numbers</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">cached_property</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">cast</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">npt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sympy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">issparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.expression_tree.printing.print_name</span><span class="w"> </span><span class="kn">import</span> <span class="n">prettify_print_name</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_optional_dependency</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">casadi</span>
+
+    <span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.type_definitions</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+        <span class="n">AuxiliaryDomainType</span><span class="p">,</span>
+        <span class="n">ChildSymbol</span><span class="p">,</span>
+        <span class="n">ChildValue</span><span class="p">,</span>
+        <span class="n">DomainsType</span><span class="p">,</span>
+        <span class="n">DomainType</span><span class="p">,</span>
+    <span class="p">)</span>
+
+<span class="n">DOMAIN_LEVELS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">,</span> <span class="s2">&quot;secondary&quot;</span><span class="p">,</span> <span class="s2">&quot;tertiary&quot;</span><span class="p">,</span> <span class="s2">&quot;quaternary&quot;</span><span class="p">]</span>
+<span class="n">EMPTY_DOMAINS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">DOMAIN_LEVELS</span><span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">domain_size</span><span class="p">(</span><span class="n">domain</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Get the domain size.</span>
+
+<span class="sd">    Empty domain has size 1.</span>
+<span class="sd">    If the domain falls within the list of standard battery domains, the size is read</span>
+<span class="sd">    from a dictionary of standard domain sizes. Otherwise, the hash of the domain string</span>
+<span class="sd">    is used to generate a `random` domain size.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fixed_domain_sizes</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;current collector&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+        <span class="s2">&quot;negative particle&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="s2">&quot;positive particle&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+        <span class="s2">&quot;negative electrode&quot;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+        <span class="s2">&quot;separator&quot;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span>
+        <span class="s2">&quot;positive electrode&quot;</span><span class="p">:</span> <span class="mi">17</span><span class="p">,</span>
+        <span class="s2">&quot;negative particle size&quot;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+        <span class="s2">&quot;positive particle size&quot;</span><span class="p">:</span> <span class="mi">23</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[[],</span> <span class="kc">None</span><span class="p">]:</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="nb">all</span><span class="p">(</span><span class="n">dom</span> <span class="ow">in</span> <span class="n">fixed_domain_sizes</span> <span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">):</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">fixed_domain_sizes</span><span class="p">[</span><span class="n">dom</span><span class="p">]</span> <span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Add 2 per domain to ensure size is always &gt;= 2 and is additive</span>
+        <span class="n">size</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="mi">2</span> <span class="o">+</span> <span class="nb">hash</span><span class="p">(</span><span class="n">dom</span><span class="p">)</span> <span class="o">%</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">domain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">size</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_object_of_size</span><span class="p">(</span><span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">typ</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return object, consisting of NaNs, of the right shape.&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;vector&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;matrix&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">size</span><span class="p">,</span> <span class="n">size</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">evaluate_for_shape_using_domain</span><span class="p">(</span><span class="n">domains</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span><span class="p">],</span> <span class="n">typ</span><span class="o">=</span><span class="s2">&quot;vector&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Return a vector of the appropriate shape, based on the domains.</span>
+<span class="sd">    Domain &#39;sizes&#39; can clash, but are unlikely to, and won&#39;t cause failures if they do.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domains</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">_domain_sizes</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">([</span><span class="n">domain_size</span><span class="p">(</span><span class="n">dom</span><span class="p">)</span> <span class="k">for</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">domains</span><span class="o">.</span><span class="n">values</span><span class="p">()]))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">_domain_sizes</span> <span class="o">=</span> <span class="n">domain_size</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">create_object_of_size</span><span class="p">(</span><span class="n">_domain_sizes</span><span class="p">,</span> <span class="n">typ</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_constant</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span> <span class="ow">or</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_scalar_x</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant scalar value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">is_constant</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">evaluate_ignoring_errors</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span> <span class="ow">and</span> <span class="n">result</span> <span class="o">==</span> <span class="n">x</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_scalar_zero</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant scalar zero</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_scalar_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_scalar_one</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant scalar one</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_scalar_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_scalar_minus_one</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant scalar minus one</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_scalar_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_x</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant matrix value</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">is_scalar_x</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">child</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="ow">or</span> <span class="n">is_matrix_x</span><span class="p">(</span><span class="n">expr</span><span class="o">.</span><span class="n">child</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">is_constant</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">evaluate_ignoring_errors</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">issparse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">x</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]))</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="p">(</span>
+                    <span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">x</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="n">x</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_zero</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant matrix zero</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_matrix_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_one</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant matrix one</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_matrix_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_matrix_minus_one</span><span class="p">(</span><span class="n">expr</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to test if an expression evaluates to a constant matrix minus one</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">is_matrix_x</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="simplify_if_constant">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.simplify_if_constant">[文件]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">simplify_if_constant</span><span class="p">(</span><span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility function to simplify an expression tree if it evaluates to a constant</span>
+<span class="sd">    scalar, vector or matrix. Also handles TensorField by simplifying each component.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Handle TensorField by simplifying each component</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">TensorField</span><span class="p">):</span>
+        <span class="n">simplified_children</span> <span class="o">=</span> <span class="p">[</span><span class="n">simplify_if_constant</span><span class="p">(</span><span class="n">child</span><span class="p">)</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+        <span class="c1"># Check if any simplification occurred</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="n">s</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">c</span>
+            <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">simplified_children</span><span class="p">,</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">symbol</span><span class="o">.</span><span class="n">create_copy</span><span class="p">(</span><span class="n">new_children</span><span class="o">=</span><span class="n">simplified_children</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">symbol</span>
+
+    <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">evaluate_ignoring_errors</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">result</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">bool_</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="c1"># type-narrow for Scalar</span>
+                <span class="n">new_result</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="nb">float</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="n">new_result</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">or</span> <span class="n">issparse</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Turn matrix of zeros into sparse matrix</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">result</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">symbol</span></div>
+
+
+
+<div class="viewcode-block" id="Symbol">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Symbol</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base node class for the expression tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    name : str</span>
+<span class="sd">        name for the node</span>
+<span class="sd">    children : iterable :class:`Symbol`, optional</span>
+<span class="sd">        children to attach to this node, default to an empty list</span>
+<span class="sd">    domain : iterable of str, or str</span>
+<span class="sd">        list of domains over which the node is valid (empty list indicates the symbol</span>
+<span class="sd">        is valid over all domains)</span>
+<span class="sd">    auxiliary_domains : dict of str</span>
+<span class="sd">        dictionary of auxiliary domains over which the node is valid (empty dictionary</span>
+<span class="sd">        indicates no auxiliary domains). Keys can be &quot;secondary&quot;, &quot;tertiary&quot; or</span>
+<span class="sd">        &quot;quaternary&quot;. The symbol is broadcast over its auxiliary domains.</span>
+<span class="sd">        For example, a symbol might have domain &quot;negative particle&quot;, secondary domain</span>
+<span class="sd">        &quot;separator&quot; and tertiary domain &quot;current collector&quot; (`domain=&quot;negative</span>
+<span class="sd">        particle&quot;, auxiliary_domains={&quot;secondary&quot;: &quot;separator&quot;, &quot;tertiary&quot;: &quot;current</span>
+<span class="sd">        collector&quot;}`).</span>
+<span class="sd">    domains : dict</span>
+<span class="sd">        A dictionary equivalent to {&#39;primary&#39;: domain, auxiliary_domains}. Either</span>
+<span class="sd">        &#39;domain&#39; and &#39;auxiliary_domains&#39;, or just &#39;domains&#39;, should be provided</span>
+<span class="sd">        (not both). In future, the &#39;domain&#39; and &#39;auxiliary_domains&#39; arguments may be</span>
+<span class="sd">        deprecated.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Symbol.__init__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__init__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">children</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">DomainType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">auxiliary_domains</span><span class="p">:</span> <span class="n">AuxiliaryDomainType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">domains</span><span class="p">:</span> <span class="n">DomainsType</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+
+        <span class="k">if</span> <span class="n">children</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">children</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_children</span> <span class="o">=</span> <span class="n">children</span>
+        <span class="c1"># Keep a separate &quot;orphans&quot; attribute for backwards compatibility</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_orphans</span> <span class="o">=</span> <span class="n">children</span>
+
+        <span class="c1"># Set domains (and hence id)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">domains</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_domain_or_domains</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">auxiliary_domains</span><span class="p">,</span> <span class="n">domains</span><span class="p">)</span>
+
+        <span class="c1"># mesh required for solution and processed variables classes</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluates_on_edges</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_print_name</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Test shape on everything but nodes that contain the base Symbol class or</span>
+        <span class="c1"># the base BinaryOperator class</span>
+        <span class="k">if</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">debug_mode</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">Symbol</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BinaryOperator</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_order</span><span class="p">()</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">test_shape</span><span class="p">()</span></div>
+
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_from_json</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">snippet</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Reconstructs a Symbol instance during deserialisation of a JSON file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        snippet: dict</span>
+<span class="sd">            Contains the information needed to reconstruct a specific instance.</span>
+<span class="sd">            At minimum, should contain &quot;name&quot;, &quot;children&quot; and &quot;domains&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span>
+            <span class="n">snippet</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">children</span><span class="o">=</span><span class="n">snippet</span><span class="p">[</span><span class="s2">&quot;children&quot;</span><span class="p">],</span> <span class="n">domains</span><span class="o">=</span><span class="n">snippet</span><span class="p">[</span><span class="s2">&quot;domains&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">children</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns the cached children of this node.</span>
+
+<span class="sd">        Note: it is assumed that children of a node are not modified after initial</span>
+<span class="sd">        creation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;name of the node.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span>
+
+    <span class="nd">@name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> must be of type str&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_name</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">domains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span>
+
+    <span class="nd">@domains</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">domains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">==</span> <span class="n">domains</span>
+                <span class="c1"># accounting for empty domains</span>
+                <span class="ow">or</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="p">[]}</span> <span class="o">==</span> <span class="n">domains</span>
+            <span class="p">):</span>
+                <span class="k">return</span>  <span class="c1"># no change</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="c1"># self._domains has not been set yet</span>
+            <span class="k">pass</span>
+
+        <span class="c1"># Turn dictionary into appropriate form</span>
+        <span class="k">if</span> <span class="n">domains</span> <span class="o">==</span> <span class="p">{</span><span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="p">[]}:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">=</span> <span class="n">EMPTY_DOMAINS</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span>
+            <span class="k">return</span>
+
+        <span class="c1"># Set default domains</span>
+        <span class="n">domains</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">EMPTY_DOMAINS</span><span class="p">,</span> <span class="o">**</span><span class="n">domains</span><span class="p">}</span>
+
+        <span class="c1"># Check domains don&#39;t clash</span>
+        <span class="k">for</span> <span class="n">level</span><span class="p">,</span> <span class="n">dom</span> <span class="ow">in</span> <span class="n">domains</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">DOMAIN_LEVELS</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DomainError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Domain keys must be one of &#39;</span><span class="si">{</span><span class="n">DOMAIN_LEVELS</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">dom</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">dom</span><span class="p">]</span>
+
+        <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">val</span><span class="p">)</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">domains</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="k">if</span> <span class="n">val</span> <span class="o">!=</span> <span class="p">[]]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">values</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DomainError</span><span class="p">(</span><span class="s2">&quot;All domains must be different&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">level</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">DOMAIN_LEVELS</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]:</span>
+                <span class="k">if</span> <span class="n">domains</span><span class="p">[</span><span class="n">DOMAIN_LEVELS</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]]</span> <span class="o">!=</span> <span class="p">[]:</span>
+                    <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DomainError</span><span class="p">(</span><span class="s2">&quot;Domain levels must be filled in order&quot;</span><span class="p">)</span>
+                <span class="c1"># don&#39;t test further if we have already found a missing domain</span>
+                <span class="k">break</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">=</span> <span class="n">domains</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        list of applicable domains.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">            iterable of str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">]</span>
+
+    <span class="nd">@domain</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">domain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;Cannot set domain directly, use domains={&#39;primary&#39;: domain} instead&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">auxiliary_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns auxiliary domains.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;symbol.auxiliary_domains has been deprecated, use symbol.domains instead&quot;</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">secondary_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function to get the secondary domain of a symbol.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span><span class="p">[</span><span class="s2">&quot;secondary&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tertiary_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function to get the tertiary domain of a symbol.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span><span class="p">[</span><span class="s2">&quot;tertiary&quot;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">quaternary_domain</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Helper function to get the quaternary domain of a symbol.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span><span class="p">[</span><span class="s2">&quot;quaternary&quot;</span><span class="p">]</span>
+
+<div class="viewcode-block" id="Symbol.copy_domains">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.copy_domains">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Copy the domains from a given symbol, bypassing checks.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">!=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">_domains</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">_domains</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Symbol.clear_domains">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.clear_domains">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Clear domains, bypassing checks.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">!=</span> <span class="n">EMPTY_DOMAINS</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_domains</span> <span class="o">=</span> <span class="n">EMPTY_DOMAINS</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="Symbol.get_children_domains">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.get_children_domains">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_children_domains</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Symbol</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Combine domains from children, at all levels.&quot;&quot;&quot;</span>
+        <span class="n">domains</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">children</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">level</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]:</span>
+                    <span class="k">pass</span>
+                <span class="k">elif</span> <span class="p">(</span>
+                    <span class="n">level</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">domains</span>
+                    <span class="ow">or</span> <span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="p">[]</span>
+                    <span class="ow">or</span> <span class="n">child</span><span class="o">.</span><span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">==</span> <span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span>
+                <span class="p">):</span>
+                    <span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DomainError</span><span class="p">(</span>
+                        <span class="s2">&quot;children must have same or empty domains, &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;not </span><span class="si">{</span><span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">child</span><span class="o">.</span><span class="n">domains</span><span class="p">[</span><span class="n">level</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">domains</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_domain_or_domains</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">domain</span><span class="p">:</span> <span class="n">DomainType</span><span class="p">,</span>
+        <span class="n">auxiliary_domains</span><span class="p">:</span> <span class="n">AuxiliaryDomainType</span><span class="p">,</span>
+        <span class="n">domains</span><span class="p">:</span> <span class="n">DomainsType</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">domains</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">domain</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">auxiliary_domains</span> <span class="o">=</span> <span class="n">auxiliary_domains</span> <span class="ow">or</span> <span class="p">{}</span>
+
+            <span class="n">domains</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">domain</span><span class="p">,</span> <span class="o">**</span><span class="n">auxiliary_domains</span><span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">domain</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only one of &#39;domain&#39; or &#39;domains&#39; should be provided&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">auxiliary_domains</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Only one of &#39;auxiliary_domains&#39; or &#39;domains&#39; should be provided&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">domains</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span>
+
+<div class="viewcode-block" id="Symbol.set_id">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.set_id">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the immutable &quot;identity&quot; of a variable (e.g. for identifying y_slices).</span>
+
+<span class="sd">        Hashing can be slow, so we set the id when we create the node, and hence only</span>
+<span class="sd">        need to hash once.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                <span class="o">*</span><span class="nb">tuple</span><span class="p">([</span><span class="n">child</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]),</span>
+                <span class="o">*</span><span class="nb">tuple</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">v</span> <span class="o">!=</span> <span class="p">[]]),</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span>
+
+    <span class="nd">@scale</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">scale</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_scale</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">convert_to_symbol</span><span class="p">(</span><span class="n">scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reference</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reference</span>
+
+    <span class="nd">@reference</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">reference</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reference</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_reference</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">convert_to_symbol</span><span class="p">(</span><span class="n">reference</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Symbol.__eq__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__eq__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">_id</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">==</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="n">other</span><span class="p">)</span><span class="o">.</span><span class="n">_id</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__hash__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__hash__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="c1"># Python&#39;s hash() of strings is randomised per process (PYTHONHASHSEED),</span>
+        <span class="c1"># so a Symbol&#39;s cached _id from the pickling process is invalid in the</span>
+        <span class="c1"># unpickling process. Refresh it here so that dicts keyed on Symbols</span>
+        <span class="c1"># (e.g. Discretisation.y_slices) are rebuilt with hashes consistent</span>
+        <span class="c1"># with this process when pickle restores them.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_id</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">orphans</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returning new copies of the children, with parents removed to avoid corrupting</span>
+<span class="sd">        the expression tree internal data</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_orphans</span>
+
+<div class="viewcode-block" id="Symbol.render">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.render">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">render</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print out a visual representation of the tree (this node and its children)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">anytree</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;anytree&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">pre</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">anytree</span><span class="o">.</span><span class="n">RenderTree</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">)</span> <span class="ow">and</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="o">!=</span> <span class="nb">str</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="p">):</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pre</span><span class="si">}{</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.visualise">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.visualise">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">visualise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Produces a .png file of the tree (this node and its children) with the</span>
+<span class="sd">        name filename</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        filename : str</span>
+<span class="sd">            filename to output, must end in &quot;.png&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">DotExporter</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;anytree.exporter&quot;</span><span class="p">,</span> <span class="s2">&quot;DotExporter&quot;</span><span class="p">)</span>
+        <span class="c1"># check that filename ends in .png.</span>
+        <span class="k">if</span> <span class="n">filename</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:]</span> <span class="o">!=</span> <span class="s2">&quot;.png&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;filename should end in .png&quot;</span><span class="p">)</span>
+
+        <span class="n">new_node</span><span class="p">,</span> <span class="n">_counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relabel_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">DotExporter</span><span class="p">(</span>
+                <span class="n">new_node</span><span class="p">,</span> <span class="n">nodeattrfunc</span><span class="o">=</span><span class="k">lambda</span> <span class="n">node</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;label=&quot;</span><span class="si">{</span><span class="n">node</span><span class="o">.</span><span class="n">label</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">to_picture</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">FileNotFoundError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># raise error but only through logger so that test passes</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Please install graphviz&gt;=2.42.2 to use dot exporter&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.relabel_tree">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.relabel_tree">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">relabel_tree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">,</span> <span class="n">counter</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Finds all children of a symbol and assigns them a new id so that they can be</span>
+<span class="sd">        visualised properly using the graphviz output</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">anytree</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;anytree&quot;</span><span class="p">)</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;div&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;nabla;&amp;sdot;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;grad&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;nabla;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;/&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;divide;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;*&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;times;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;minus;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&amp;#43;&quot;</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;**&quot;</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;^&quot;</span>
+
+        <span class="n">new_node</span> <span class="o">=</span> <span class="n">anytree</span><span class="o">.</span><span class="n">Node</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">counter</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="n">new_children</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+            <span class="n">new_child</span><span class="p">,</span> <span class="n">counter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relabel_tree</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">counter</span><span class="p">)</span>
+            <span class="n">new_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_child</span><span class="p">)</span>
+        <span class="n">new_node</span><span class="o">.</span><span class="n">children</span> <span class="o">=</span> <span class="n">new_children</span>
+
+        <span class="k">return</span> <span class="n">new_node</span><span class="p">,</span> <span class="n">counter</span></div>
+
+
+<div class="viewcode-block" id="Symbol.pre_order">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.pre_order">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pre_order</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns an iterable that steps through the tree in pre-order fashion.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+
+<span class="sd">        &gt;&gt;&gt; a = pybamm.Symbol(&#39;a&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; b = pybamm.Symbol(&#39;b&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; for node in (a*b).pre_order():</span>
+<span class="sd">        ...     print(node.name)</span>
+<span class="sd">        *</span>
+<span class="sd">        a</span>
+<span class="sd">        b</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">anytree</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;anytree&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">anytree</span><span class="o">.</span><span class="n">PreOrderIter</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.post_order">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.post_order">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_order</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns an iterable that steps through the tree in post-order fashion.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">anytree</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;anytree&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">anytree</span><span class="o">.</span><span class="n">PostOrderIter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filter_</span><span class="o">=</span><span class="nb">filter</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__str__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__str__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a string representation of the node and its children.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_name</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__repr__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__repr__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;returns the string `__class__(id, name, children, domain)`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">!s}</span><span class="s2">(</span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_name</span><span class="si">!s}</span><span class="s2">, children=</span><span class="si">{</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">child</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]</span><span class="si">!s}</span><span class="s2">, domains=</span><span class="si">{</span><span class="w"> </span><span class="p">({</span><span class="n">k</span><span class="p">:</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="bp">self</span><span class="o">.</span><span class="n">domains</span><span class="o">.</span><span class="n">items</span><span class="p">()</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="p">[]})</span><span class="si">!s}</span><span class="s2">)&quot;</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__add__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__add__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Addition</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return an :class:`Addition` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__radd__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__radd__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__radd__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Addition</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return an :class:`Addition` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__sub__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__sub__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__sub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Subtraction</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Subtraction` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__rsub__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__rsub__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rsub__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Subtraction</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Subtraction` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">subtract</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__mul__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__mul__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Multiplication</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Multiplication` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__rmul__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__rmul__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Multiplication</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Multiplication` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">multiply</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__matmul__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__matmul__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">MatrixMultiplication</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`MatrixMultiplication` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__rmatmul__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__rmatmul__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rmatmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">MatrixMultiplication</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`MatrixMultiplication` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__truediv__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__truediv__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__truediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Division</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Division` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__rtruediv__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__rtruediv__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rtruediv__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Division</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Division` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">divide</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__pow__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__pow__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__pow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ChildSymbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Power</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Power` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">simplified_power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__rpow__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__rpow__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__rpow__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Power</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Power` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">simplified_power</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__lt__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__lt__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__lt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span> <span class="o">|</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">NotEqualHeaviside</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`NotEqualHeaviside` object, or a smooth approximation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">expression_tree</span><span class="o">.</span><span class="n">binary_operators</span><span class="o">.</span><span class="n">_heaviside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__le__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__le__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__le__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EqualHeaviside</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`EqualHeaviside` object, or a smooth approximation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">expression_tree</span><span class="o">.</span><span class="n">binary_operators</span><span class="o">.</span><span class="n">_heaviside</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__gt__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__gt__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__gt__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">NotEqualHeaviside</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`NotEqualHeaviside` object, or a smooth approximation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">expression_tree</span><span class="o">.</span><span class="n">binary_operators</span><span class="o">.</span><span class="n">_heaviside</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__ge__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__ge__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__ge__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EqualHeaviside</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`EqualHeaviside` object, or a smooth approximation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">expression_tree</span><span class="o">.</span><span class="n">binary_operators</span><span class="o">.</span><span class="n">_heaviside</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="bp">self</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__neg__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__neg__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__neg__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Negate</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return a :class:`Negate` object.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Negate</span><span class="p">):</span>
+            <span class="c1"># Double negative is a positive</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">orphans</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">):</span>
+            <span class="c1"># Move negation inside the broadcast</span>
+            <span class="c1"># Apply recursively</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_copy</span><span class="p">([</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">orphans</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Subtraction</span><span class="p">):</span>
+            <span class="c1"># negation flips the subtraction</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">right</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">left</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Concatenation</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">is_constant</span><span class="p">()</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">concatenation</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="o">-</span><span class="n">child</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">orphans</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">simplify_if_constant</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Negate</span><span class="p">(</span><span class="bp">self</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__abs__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__abs__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__abs__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">AbsoluteValue</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return an :class:`AbsoluteValue` object, or a smooth approximation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">AbsoluteValue</span><span class="p">):</span>
+            <span class="c1"># No need to apply abs a second time</span>
+            <span class="k">return</span> <span class="bp">self</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">):</span>
+            <span class="c1"># Move absolute value inside the broadcast</span>
+            <span class="c1"># Apply recursively</span>
+            <span class="n">abs_self_not_broad</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">orphans</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_copy</span><span class="p">([</span><span class="n">abs_self_not_broad</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">k</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">abs_smoothing</span>
+            <span class="c1"># Return exact approximation if that is the setting or the outcome is a</span>
+            <span class="c1"># constant (i.e. no need for smoothing)</span>
+            <span class="k">if</span> <span class="n">k</span> <span class="o">==</span> <span class="s2">&quot;exact&quot;</span> <span class="ow">or</span> <span class="n">is_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">AbsoluteValue</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">smooth_absolute_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">simplify_if_constant</span><span class="p">(</span><span class="n">out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.__mod__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__mod__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__mod__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Modulo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;return an :class:`Modulo` object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">simplify_if_constant</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Modulo</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">))</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__bool__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;Boolean operator not defined for Symbols. You might be seeing this message because you are trying to &quot;</span>
+            <span class="s2">&quot;specify an if statement based on the value of a symbol, e.g.&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">if x &lt; 0:</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">y = 1</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;else:</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">y = 2</span><span class="se">\n</span><span class="s2">&quot;</span>
+            <span class="s2">&quot;In this case, use heaviside functions instead:&quot;</span>
+            <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">y = 1 * (x &lt; 0) + 2 * (x &gt;= 0)&quot;</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Symbol.__array_ufunc__">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.__array_ufunc__">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">__array_ufunc__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ufunc</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        If a numpy ufunc is applied to a symbol, call the corresponding pybamm function</span>
+<span class="sd">        instead.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">pybamm</span><span class="p">,</span> <span class="n">ufunc</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)(</span><span class="o">*</span><span class="n">inputs</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.diff">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.diff">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="n">Symbol</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Differentiate a symbol with respect to a variable. For any symbol that can be</span>
+<span class="sd">        differentiated, return `1` if differentiating with respect to yourself,</span>
+<span class="sd">        `self._diff(variable)` if `variable` is in the expression tree of the symbol,</span>
+<span class="sd">        and zero otherwise.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        variable : :class:`pybamm.Symbol`</span>
+<span class="sd">            The variable with respect to which to differentiate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="bp">self</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span><span class="n">variable</span> <span class="o">==</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_order</span><span class="p">()):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">t</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_symbol_of_classes</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">VariableBase</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">StateVectorBase</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_diff</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Default behaviour for differentiation, overriden by Binary and Unary Operators</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+<div class="viewcode-block" id="Symbol.jac">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.jac">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">jac</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">variable</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span>
+        <span class="n">known_jacs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">clear_domain</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Differentiate a symbol with respect to a (slice of) a StateVector</span>
+<span class="sd">        or StateVectorDot.</span>
+<span class="sd">        See :class:`pybamm.Jacobian`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">jac</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Jacobian</span><span class="p">(</span><span class="n">known_jacs</span><span class="p">,</span> <span class="n">clear_domain</span><span class="o">=</span><span class="n">clear_domain</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">variable</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">StateVector</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">StateVectorDot</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="s2">&quot;Jacobian can only be taken with respect to a &#39;StateVector&#39; &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;or &#39;StateVectorDot&#39;, but </span><span class="si">{</span><span class="n">variable</span><span class="si">}</span><span class="s2"> is a </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">jac</span><span class="o">.</span><span class="n">jac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_jac</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Default behaviour for jacobian, will raise a ``NotImplementedError``</span>
+<span class="sd">        if this member function has not been defined for the node.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_base_evaluate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_dot</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate expression tree.</span>
+
+<span class="sd">        will raise a ``NotImplementedError`` if this member function has not</span>
+<span class="sd">        been defined for the node. For example, :class:`Scalar` returns its</span>
+<span class="sd">        scalar value, but :class:`Variable` will raise ``NotImplementedError``</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        t : float or numeric type, optional</span>
+<span class="sd">            time at which to evaluate (default None)</span>
+
+<span class="sd">        y : numpy.array, optional</span>
+<span class="sd">            array with state values to evaluate when solving (default None)</span>
+
+<span class="sd">        y_dot : numpy.array, optional</span>
+<span class="sd">            array with time derivatives of state values to evaluate when solving</span>
+<span class="sd">            (default None)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;method self.evaluate() not implemented for symbol &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="si">!s}</span><span class="s2"> of type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Symbol.evaluate">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.evaluate">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_dot</span><span class="p">:</span> <span class="n">npt</span><span class="o">.</span><span class="n">NDArray</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ChildValue</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Evaluate expression tree (wrapper to allow using dict of known values).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t : float or numeric type, optional</span>
+<span class="sd">            time at which to evaluate (default None)</span>
+<span class="sd">        y : numpy.array, optional</span>
+<span class="sd">            array with state values to evaluate when solving (default None)</span>
+<span class="sd">        y_dot : numpy.array, optional</span>
+<span class="sd">            array with time derivatives of state values to evaluate when solving</span>
+<span class="sd">            (default None)</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            dictionary of inputs to use when solving (default None)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        number or array</span>
+<span class="sd">            the node evaluated at (t,y)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_evaluate</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.evaluate_for_shape">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.evaluate_for_shape">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_for_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluate expression tree to find its shape.</span>
+
+<span class="sd">        For symbols that cannot be evaluated directly (e.g. `Variable` or `Parameter`),</span>
+<span class="sd">        a vector of the appropriate shape is returned instead, using the symbol&#39;s</span>
+<span class="sd">        domain. See :meth:`pybamm.Symbol.evaluate()`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluate_for_shape</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluate_for_shape</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_for_shape</span><span class="p">()</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluate_for_shape</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_evaluate_for_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;See :meth:`Symbol.evaluate_for_shape`&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Symbol.is_constant">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.is_constant">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_constant</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        returns true if evaluating the expression is not dependent on `t` or `y`</span>
+<span class="sd">        or `inputs`</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        evaluate : evaluate the expression</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Default behaviour is False</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Symbol.evaluate_ignoring_errors">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.evaluate_ignoring_errors">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate_ignoring_errors</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Evaluates the expression. If a node exists in the tree that cannot be evaluated</span>
+<span class="sd">        as a scalar or vector (e.g. Time, Parameter, Variable, StateVector), then None</span>
+<span class="sd">        is returned. If there is an InputParameter in the tree then a 1 is returned.</span>
+<span class="sd">        Otherwise the result of the evaluation is given.</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        evaluate : evaluate the expression</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="s2">&quot;shape test&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>
+            <span class="c1"># return None if NotImplementedError is raised</span>
+            <span class="c1"># (there is a e.g. Parameter, Variable, ... in the tree)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">except</span> <span class="ne">TypeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="c1"># return None if specific TypeError is raised</span>
+            <span class="c1"># (there is a e.g. StateVector in the tree)</span>
+            <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;StateVector cannot evaluate input &#39;y=None&#39;&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;StateVectorDot cannot evaluate input &#39;y_dot=None&#39;&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="k">raise</span> <span class="n">error</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+            <span class="c1"># return None if specific ValueError is raised</span>
+            <span class="c1"># (there is a e.g. Time in the tree)</span>
+            <span class="k">if</span> <span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;t must be provided&quot;</span><span class="p">:</span>
+                <span class="k">return</span> <span class="kc">None</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ShapeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot find shape (original error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>  <span class="c1"># pragma: no cover</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="Symbol.evaluates_to_number">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.evaluates_to_number">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluates_to_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if evaluating the expression returns a number.</span>
+<span class="sd">        Returns False otherwise, including if NotImplementedError or TyperError</span>
+<span class="sd">        is raised.</span>
+<span class="sd">        !Not to be confused with isinstance(self, pybamm.Scalar)!</span>
+
+<span class="sd">        See Also</span>
+<span class="sd">        --------</span>
+<span class="sd">        evaluate : evaluate the expression</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape_for_testing</span> <span class="o">==</span> <span class="p">()</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluates_to_constant_number</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluates_to_number</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_constant</span><span class="p">()</span>
+
+<div class="viewcode-block" id="Symbol.evaluates_on_edges">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.evaluates_on_edges">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluates_on_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span> <span class="o">|</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if a symbol evaluates on an edge, i.e. symbol contains a gradient</span>
+<span class="sd">        operator, but not a divergence operator, and is not an IndefiniteIntegral.</span>
+<span class="sd">        Caches the solution for faster results. If the symbol is a component of a</span>
+<span class="sd">        vector field, returns a string indicating the direction that it evaluates on</span>
+<span class="sd">        edges.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dimension : str</span>
+<span class="sd">            The dimension (primary, secondary, etc) in which to query evaluation on</span>
+<span class="sd">            edges</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        bool</span>
+<span class="sd">            Whether the symbol evaluates on edges (in the finite volume discretisation</span>
+<span class="sd">            sense)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dimension</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluates_on_edges</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluates_on_edges</span><span class="p">[</span><span class="n">dimension</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluates_on_edges</span><span class="p">(</span>
+                <span class="n">dimension</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_saved_evaluates_on_edges</span><span class="p">[</span><span class="n">dimension</span><span class="p">]</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_evaluates_on_edges</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dimension</span><span class="p">):</span>
+        <span class="c1"># Default behaviour: return False</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="Symbol.has_symbol_of_classes">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.has_symbol_of_classes">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">has_symbol_of_classes</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">symbol_classes</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">[</span><span class="n">Symbol</span><span class="p">],</span> <span class="o">...</span><span class="p">]</span> <span class="o">|</span> <span class="nb">type</span><span class="p">[</span><span class="n">Symbol</span><span class="p">]</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns True if equation has a term of the class(es) `symbol_class`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol_classes : pybamm class or iterable of classes</span>
+<span class="sd">            The classes to test the symbol against</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">symbol_classes</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">pre_order</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="Symbol.to_casadi">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.to_casadi">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_casadi</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t</span><span class="p">:</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">:</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">y_dot</span><span class="p">:</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">casadi_symbols</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the expression tree to a CasADi expression tree.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t : :class:`casadi.MX`, optional</span>
+<span class="sd">            A casadi symbol representing time</span>
+<span class="sd">        y : :class:`casadi.MX`, optional</span>
+<span class="sd">            A casadi symbol representing state vectors</span>
+<span class="sd">        y_dot : :class:`casadi.MX`, optional</span>
+<span class="sd">            A casadi symbol representing time derivatives of state vectors</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            A dictionary of casadi symbols representing parameters</span>
+<span class="sd">        casadi_symbols : dict, optional</span>
+<span class="sd">            An optional shared cache mapping Symbol objects to their already-converted</span>
+<span class="sd">            casadi expressions. When converting multiple related expressions over the</span>
+<span class="sd">            same (t, y, y_dot, inputs), pass a single ``{}`` created by the caller so</span>
+<span class="sd">            that shared subgraph nodes are only converted once. The cache is never</span>
+<span class="sd">            stored on the symbol itself — its lifetime is controlled by the caller.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`casadi.MX`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">casadi_symbols</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Andersson2019&quot;</span><span class="p">)</span>
+            <span class="n">casadi_symbols</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casadi_symbols</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;casadi_symbols must be a dict, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">casadi_symbols</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;inputs must be a dict, got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_casadi_inner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">casadi_symbols</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_casadi_inner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">casadi_symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Wrapper around _to_casadi with fixed types for inputs and casadi_symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">_value</span> <span class="o">=</span> <span class="n">casadi_symbols</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">_value</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_to_casadi</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">casadi_symbols</span><span class="p">)</span>
+        <span class="n">casadi_symbols</span><span class="p">[</span><span class="bp">self</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_to_casadi</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t</span><span class="p">,</span>
+        <span class="n">y</span><span class="p">,</span>
+        <span class="n">y_dot</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="n">casadi_symbols</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Internal conversion hook. Override in subclasses to implement CasADi</span>
+<span class="sd">        conversion. Called by :meth:`to_casadi` after cache lookup.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cannot convert symbol of type &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39; to CasADi. Symbols must all be &quot;</span>
+            <span class="s2">&quot;&#39;linear algebra&#39; at this stage.&quot;</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_children_to_casadi</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">casadi_symbols</span><span class="p">:</span> <span class="nb">dict</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert all children to CasADi by calling :meth:`to_casadi` on each,</span>
+<span class="sd">        threading the shared ``casadi_symbols`` cache through every recursive call.</span>
+
+<span class="sd">        Subclasses can call ``super()._children_to_casadi(...)`` to obtain the</span>
+<span class="sd">        list of converted children before applying additional logic.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="n">child</span><span class="o">.</span><span class="n">_to_casadi_inner</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y_dot</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">casadi_symbols</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span>
+        <span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_children_for_copying</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Symbol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gets existing children for a symbol being copied if they aren&#39;t provided.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">children</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">children</span> <span class="o">=</span> <span class="p">[</span><span class="n">child</span><span class="o">.</span><span class="n">create_copy</span><span class="p">()</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">children</span>
+
+<div class="viewcode-block" id="Symbol.create_copy">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.create_copy">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_copy</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">new_children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">perform_simplifications</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Make a new copy of a symbol, to avoid Tree corruption errors while bypassing</span>
+<span class="sd">        copy.deepcopy(), which is slow.</span>
+
+<span class="sd">        If new_children are provided, they are used instead of the existing children.</span>
+
+<span class="sd">        If `perform_simplifications` = True, some classes (e.g. `BinaryOperator`,</span>
+<span class="sd">        `UnaryOperator`, `Concatenation`) will perform simplifications and error checks</span>
+<span class="sd">        based on the new children before copying the symbol. This may result in a</span>
+<span class="sd">        different symbol being returned than the one copied.</span>
+
+<span class="sd">        Turning off this behaviour to ensure the symbol remains unchanged is</span>
+<span class="sd">        discouraged.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">children</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_children_for_copying</span><span class="p">(</span><span class="n">new_children</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">domains</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">new_copy</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">new_children</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">perform_simplifications</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;The &#39;new_copy&#39; function for expression tree symbols is deprecated, use &quot;</span>
+            <span class="s2">&quot;&#39;create_copy&#39; instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_copy</span><span class="p">(</span><span class="n">new_children</span><span class="p">,</span> <span class="n">perform_simplifications</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Symbol.size">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.size">[文件]</a>
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Size of an object, found by evaluating it with appropriate t and y</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Symbol.shape">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.shape">[文件]</a>
+    <span class="nd">@cached_property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shape of an object, found by evaluating it with appropriate t and y.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Default behaviour is to try to evaluate the object directly</span>
+        <span class="c1"># Try with some large y, to avoid having to unpack (slow)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">evaluated_self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="s2">&quot;shape test&quot;</span><span class="p">)</span>
+        <span class="c1"># If that fails, fall back to calculating how big y should really be</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">unpacker</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SymbolUnpacker</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">StateVector</span><span class="p">)</span>
+            <span class="n">state_vectors_in_node</span> <span class="o">=</span> <span class="n">unpacker</span><span class="o">.</span><span class="n">unpack_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+            <span class="n">min_y_size</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span>
+                <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">_evaluation_array</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">state_vectors_in_node</span><span class="p">),</span> <span class="mi">1</span>
+            <span class="p">)</span>
+            <span class="c1"># Pick a y that won&#39;t cause RuntimeWarnings</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">min_y_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">evaluated_self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="s2">&quot;shape test&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Return shape of evaluated object</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evaluated_self</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">evaluated_self</span><span class="o">.</span><span class="n">shape</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">size_for_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Size of an object, based on shape for testing.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_for_testing</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">shape_for_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Shape of an object for cases where it cannot be evaluated directly. If a symbol</span>
+<span class="sd">        cannot be evaluated directly (e.g. it is a `Variable` or `Parameter`), it is</span>
+<span class="sd">        instead given an arbitrary domain-dependent shape.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">evaluated_self</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">evaluated_self</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">evaluated_self</span><span class="o">.</span><span class="n">shape</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">ndim_for_testing</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Number of dimensions of an object,</span>
+<span class="sd">        found by evaluating it with appropriate t and y</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape_for_testing</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Symbol.test_shape">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.test_shape">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">test_shape</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check that the discretised self has a pybamm `shape`, i.e. can be evaluated.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        pybamm.ShapeError</span>
+<span class="sd">            If the shape of the object cannot be found</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">shape_for_testing</span>
+        <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ShapeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot find shape (original error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_print_name</span>
+
+    <span class="nd">@print_name</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_name</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_raw_print_name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_print_name</span> <span class="o">=</span> <span class="n">prettify_print_name</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_equation</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">sympy</span><span class="o">.</span><span class="n">Symbol</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Symbol.to_json">
+<a class="viewcode-back" href="../../../source/api/expression_tree/symbol.html#pybamm.Symbol.to_json">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to serialise a Symbol object into JSON.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+            <span class="s2">&quot;domains&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">domains</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">json_dict</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_to_symbol</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Symbol</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a value to a pybamm.Symbol.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    value : any</span>
+<span class="sd">        The value to convert to a pybamm.Symbol.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    pybamm.Symbol : The converted symbol.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">Symbol</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Try to convert the input to a pybamm.Symbol</span>
+        <span class="k">return</span> <span class="n">value</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Input cannot be converted to a `pybamm.Symbol`&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="kc">None</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

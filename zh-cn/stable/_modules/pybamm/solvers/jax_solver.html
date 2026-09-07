@@ -1,0 +1,850 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.solvers.jax_solver &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=4f37f709"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/solvers/jax_solver';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/solvers/jax_solver.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.solvers.jax_solver</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.solvers.jax_solver 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">onp</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="k">if</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">has_jax</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">jax.extend</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">jax.experimental.ode</span><span class="w"> </span><span class="kn">import</span> <span class="n">odeint</span>
+
+
+<div class="viewcode-block" id="JaxSolver">
+<a class="viewcode-back" href="../../../source/api/solvers/jax_solver.html#pybamm.JaxSolver">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">JaxSolver</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseSolver</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solve a discretised model using a JAX compiled solver.</span>
+
+<span class="sd">    **Note**: this solver will not work with models that have</span>
+<span class="sd">              termination events or are not converted to jax format</span>
+
+<span class="sd">    Raises</span>
+<span class="sd">    ------</span>
+
+<span class="sd">    RuntimeError</span>
+<span class="sd">        if model has any termination events</span>
+
+<span class="sd">    RuntimeError</span>
+<span class="sd">        if `model.convert_to_format != &#39;jax&#39;`</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    method: str, optional (see `jax.experimental.ode.odeint` for details)</span>
+<span class="sd">        * &#39;BDF&#39; (default) uses custom jax_bdf_integrate (see `jax_bdf_integrate.py` for details)</span>
+<span class="sd">        * &#39;RK45&#39; uses jax.experimental.ode.odeint</span>
+<span class="sd">    root_method: str, optional</span>
+<span class="sd">        Method to use to calculate consistent initial conditions. By default, this uses</span>
+<span class="sd">        the newton chord method internal to the jax bdf solver, otherwise choose from</span>
+<span class="sd">        the set of default options defined in docs for pybamm.BaseSolver</span>
+<span class="sd">    rtol : float, optional</span>
+<span class="sd">        The relative tolerance for the solver (default is 1e-6).</span>
+<span class="sd">    atol : float, optional</span>
+<span class="sd">        The absolute tolerance for the solver (default is 1e-6).</span>
+<span class="sd">    extrap_tol : float, optional</span>
+<span class="sd">        The tolerance to assert whether extrapolation occurs or not (default is 0).</span>
+<span class="sd">    on_extrapolation : str, optional</span>
+<span class="sd">        What to do if the solver is extrapolating. Options are &quot;warn&quot;, &quot;error&quot;, or &quot;ignore&quot;.</span>
+<span class="sd">        Default is &quot;warn&quot;.</span>
+<span class="sd">    extra_options : dict, optional</span>
+<span class="sd">        Any options to pass to the solver.</span>
+<span class="sd">        Please consult `JAX documentation</span>
+<span class="sd">        &lt;https://github.com/jax-ml/jax/blob/master/jax/experimental/ode.py&gt;`_</span>
+<span class="sd">        for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;BDF&quot;</span><span class="p">,</span>
+        <span class="n">root_method</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">extrap_tol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_extrapolation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">store_first_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">has_jax</span><span class="p">():</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">raise_jax_not_found</span><span class="p">()</span>
+
+        <span class="c1"># note: bdf solver itself calculates consistent initial conditions so can set</span>
+        <span class="c1"># root_method to none, allow user to override this behavior</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span>
+            <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span>
+            <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+            <span class="n">root_method</span><span class="o">=</span><span class="n">root_method</span><span class="p">,</span>
+            <span class="n">extrap_tol</span><span class="o">=</span><span class="n">extrap_tol</span><span class="p">,</span>
+            <span class="n">on_extrapolation</span><span class="o">=</span><span class="n">on_extrapolation</span><span class="p">,</span>
+            <span class="n">store_first_last</span><span class="o">=</span><span class="n">store_first_last</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">method_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;RK45&quot;</span><span class="p">,</span> <span class="s2">&quot;BDF&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">method</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">method_options</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;method must be one of </span><span class="si">{</span><span class="n">method_options</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ode_solver</span> <span class="o">=</span> <span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;RK45&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_options</span> <span class="o">=</span> <span class="n">extra_options</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;JAX solver (</span><span class="si">{</span><span class="n">method</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;jax2018&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="JaxSolver.get_solve">
+<a class="viewcode-back" href="../../../source/api/solvers/jax_solver.html#pybamm.JaxSolver.get_solve">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a compiled JAX function that solves an ode model with input arguments.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        t_eval : :class:`numpy.array`, size (k,)</span>
+<span class="sd">            The times at which to compute the solution</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        function</span>
+<span class="sd">            A function with signature `f(inputs, y0)`, where inputs are a dict containing</span>
+<span class="sd">            any input parameters to pass to the model when solving, and y0 is the initial state vector</span>
+<span class="sd">            (i.e. one entry from model.y0_list)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_set_up</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                    <span class="s2">&quot;Model is not set up for solving, run`solver.solve(model)` first&quot;</span>
+                <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="JaxSolver.create_solve">
+<a class="viewcode-back" href="../../../source/api/solvers/jax_solver.html#pybamm.JaxSolver.create_solve">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a compiled JAX function that solves an ode model with input arguments.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        t_eval : :class:`numpy.array`, size (k,)</span>
+<span class="sd">            The times at which to compute the solution</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        function</span>
+<span class="sd">            A function with signature `f(inputs, y0)`, where inputs are a dict containing</span>
+<span class="sd">            any input parameters to pass to the model when solving, and y0 is the initial state vector</span>
+<span class="sd">            (i.e. one entry from model.y0_list)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">convert_to_format</span> <span class="o">!=</span> <span class="s2">&quot;jax&quot;</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Model must be converted to JAX to use this solver&quot;</span>
+                <span class="s2">&quot; (i.e. `model.convert_to_format = &#39;jax&#39;)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">terminate_events_eval</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+                <span class="s2">&quot;Terminate events not supported for this solver.&quot;</span>
+                <span class="s2">&quot; Model has the following events:&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">events</span><span class="si">}</span><span class="s2">.</span><span class="se">\n</span><span class="s2">You can remove events using `model.events = []`.&quot;</span>
+                <span class="s2">&quot; It might be useful to first solve the model using a&quot;</span>
+                <span class="s2">&quot; different solver to obtain the time of the event, then&quot;</span>
+                <span class="s2">&quot; re-solve using no events and a fixed&quot;</span>
+                <span class="s2">&quot; end-time&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">mass</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;BDF&quot;</span><span class="p">:</span>
+            <span class="n">mass</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">mass_matrix</span><span class="o">.</span><span class="n">entries</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">rhs_ode</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">rhs_eval</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">),)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">rhs_dae</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">rhs_eval</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">),</span> <span class="n">model</span><span class="o">.</span><span class="n">algebraic_eval</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)]</span>
+            <span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">solve_model_rk45</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]):</span>
+            <span class="c1"># Initial conditions, make sure they are an 0D array</span>
+            <span class="n">y0</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">odeint</span><span class="p">(</span>
+                <span class="n">rhs_ode</span><span class="p">,</span>
+                <span class="n">y0</span><span class="p">,</span>
+                <span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">,</span>
+                <span class="n">rtol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtol</span><span class="p">,</span>
+                <span class="n">atol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">atol</span><span class="p">,</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">solve_model_bdf</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]):</span>
+            <span class="c1"># Initial conditions, make sure they are an 0D array</span>
+            <span class="n">y0</span> <span class="o">=</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">jax_bdf_integrate</span><span class="p">(</span>
+                <span class="n">rhs_dae</span><span class="p">,</span>
+                <span class="n">y0</span><span class="p">,</span>
+                <span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="p">,</span>
+                <span class="n">rtol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">rtol</span><span class="p">,</span>
+                <span class="n">atol</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">atol</span><span class="p">,</span>
+                <span class="n">mass</span><span class="o">=</span><span class="n">mass</span><span class="p">,</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;RK45&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">solve_model_rk45</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">solve_model_bdf</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_integrate</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="p">,</span>
+        <span class="n">inputs_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">t_interp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">nproc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Solve a model defined by dydt with initial conditions y0.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        t_eval : :class:`numpy.array`, size (k,)</span>
+<span class="sd">            The times at which to compute the solution</span>
+<span class="sd">        inputs_list : list[dict], optional</span>
+<span class="sd">            Any input parameters to pass to the model when solving</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list of `pybamm.Solution`</span>
+<span class="sd">            An object containing the times and values of the solution, as well as</span>
+<span class="sd">            various diagnostic messages.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs_list</span> <span class="ow">or</span> <span class="p">[{}]</span>
+
+        <span class="n">y0_list</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y0_list</span>
+
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+
+        <span class="n">platform</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">extend</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">](</span><span class="n">y0_list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+        <span class="k">elif</span> <span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">):</span>
+            <span class="c1"># cpu execution runs faster when multithreaded</span>
+            <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">solve_model_for_inputs</span><span class="p">():</span>
+                <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">solve_model_async</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">](</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span><span class="p">)</span>
+
+                <span class="n">coro</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">y0_list</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                    <span class="n">coro</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span><span class="n">solve_model_async</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span><span class="p">)))</span>
+                <span class="k">return</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">coro</span><span class="p">)</span>
+
+            <span class="n">y</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">solve_model_for_inputs</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="p">(</span>
+            <span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;gpu&quot;</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;tpu&quot;</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="n">platform</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;metal&quot;</span><span class="p">)</span>
+        <span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># gpu execution runs faster when parallelised with vmap</span>
+            <span class="c1"># (see also comment below regarding single-program multiple-data</span>
+            <span class="c1">#  execution (SPMD) using pmap on multiple XLAs)</span>
+
+            <span class="c1"># convert inputs (array of dict) to a dict of arrays for vmap</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">inputs_v</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">key</span><span class="p">:</span> <span class="n">jnp</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">dic</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">dic</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">}</span>
+            <span class="n">y0</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">y0_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">inputs</span><span class="p">))])</span>
+            <span class="n">y</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">])(</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># Unknown platform, use serial execution as fallback</span>
+            <span class="nb">print</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;Unknown platform requested: &quot;</span><span class="si">{</span><span class="n">platform</span><span class="si">}</span><span class="s1">&quot;, &#39;</span>
+                <span class="s2">&quot;falling back to serial execution&quot;</span>
+            <span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">inputs_v</span><span class="p">,</span> <span class="n">y0</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">y0_list</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+                <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cached_solves</span><span class="p">[</span><span class="n">model</span><span class="p">](</span><span class="n">y0</span><span class="p">,</span> <span class="n">inputs_v</span><span class="p">))</span>
+
+        <span class="c1"># This code block implements single-program multiple-data execution</span>
+        <span class="c1"># using pmap across multiple XLAs. It is currently commented out</span>
+        <span class="c1"># because it produces bus errors for even moderate-sized models.</span>
+        <span class="c1"># It is suspected that this is due to either a bug in JAX, insufficient</span>
+        <span class="c1"># sparse matrix support in JAX resulting in high memory usage, or a bug</span>
+        <span class="c1"># in the BDF solver.</span>
+        <span class="c1">#</span>
+        <span class="c1"># This issue on GitHub appears related:</span>
+        <span class="c1"># https://github.com/jax-ml/jax/discussions/13930</span>
+        <span class="c1">#</span>
+        <span class="c1">#     # Split input list based on the number of available xla devices</span>
+        <span class="c1">#     device_count = jax.local_device_count()</span>
+        <span class="c1">#     inputs_listoflists = [inputs[x:x + device_count]</span>
+        <span class="c1">#                           for x in range(0, len(inputs), device_count)]</span>
+        <span class="c1">#     if len(inputs_listoflists) &gt; 1:</span>
+        <span class="c1">#         print(f&quot;{len(inputs)} parameter sets were provided, &quot;</span>
+        <span class="c1">#               f&quot;but only {device_count} XLA devices are available&quot;)</span>
+        <span class="c1">#         print(f&quot;Parameter sets split into {len(inputs_listoflists)} &quot;</span>
+        <span class="c1">#               &quot;lists for parallel processing&quot;)</span>
+        <span class="c1">#     y = []</span>
+        <span class="c1">#     for k, inputs_list in enumerate(inputs_listoflists):</span>
+        <span class="c1">#         if len(inputs_listoflists) &gt; 1:</span>
+        <span class="c1">#             print(f&quot; Solving list {k+1} of {len(inputs_listoflists)} &quot;</span>
+        <span class="c1">#                   f&quot;({len(inputs_list)} parameter sets)&quot;)</span>
+        <span class="c1">#         # convert inputs to a dict of arrays for pmap</span>
+        <span class="c1">#         inputs_v = {key: jnp.array([dic[key] for dic in inputs_list])</span>
+        <span class="c1">#                     for key in inputs_list[0]}</span>
+        <span class="c1">#         y.extend(jax.pmap(self._cached_solves[model])(inputs_v))</span>
+
+        <span class="n">integration_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+        <span class="c1"># convert to a normal numpy array</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">termination</span> <span class="o">=</span> <span class="s2">&quot;final time&quot;</span>
+        <span class="n">t_event</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">y_event</span> <span class="o">=</span> <span class="n">onp</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># Extract solutions from y with their associated input dicts</span>
+        <span class="n">solutions</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">inputs_dict</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+            <span class="n">sol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+                <span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">jnp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">k</span><span class="p">,],</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">inputs_dict</span><span class="p">,</span>
+                <span class="n">t_event</span><span class="p">,</span>
+                <span class="n">y_event</span><span class="p">,</span>
+                <span class="n">termination</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">sol</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="n">integration_time</span>
+            <span class="n">solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">solutions</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1228 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.spatial_methods.spectral_volume &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/spatial_methods/spectral_volume';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/spatial_methods/spectral_volume.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.spatial_methods.spectral_volume</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.spatial_methods.spectral_volume 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.sparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">coo_matrix</span><span class="p">,</span> <span class="n">csr_matrix</span><span class="p">,</span> <span class="n">diags</span><span class="p">,</span> <span class="n">eye</span><span class="p">,</span> <span class="n">kron</span><span class="p">,</span> <span class="n">lil_matrix</span><span class="p">,</span> <span class="n">vstack</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<div class="viewcode-block" id="SpectralVolume">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SpectralVolume</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A class which implements the steps specific to the Spectral Volume</span>
+<span class="sd">    discretisation. It is implemented in such a way that it is very</span>
+<span class="sd">    similar to FiniteVolume; that comes at the cost that it is only</span>
+<span class="sd">    compatible with the SpectralVolume1DSubMesh (which is a certain</span>
+<span class="sd">    subdivision of any 1D mesh, so it shouldn&#39;t be a problem).</span>
+
+<span class="sd">    For broadcast and mass_matrix, we follow the default behaviour from</span>
+<span class="sd">    SpatialMethod. For spatial_variable,</span>
+<span class="sd">    divergence, divergence_matrix, laplacian, integral,</span>
+<span class="sd">    definite_integral_matrix, indefinite_integral,</span>
+<span class="sd">    indefinite_integral_matrix, indefinite_integral_matrix_nodes,</span>
+<span class="sd">    indefinite_integral_matrix_edges, delta_function</span>
+<span class="sd">    we follow the behaviour from FiniteVolume. This is possible since</span>
+<span class="sd">    the node values are integral averages with Spectral Volume, just</span>
+<span class="sd">    as with Finite Volume. delta_function assigns the integral value</span>
+<span class="sd">    to a CV instead of a SV this way, but that doesn&#39;t matter too much.</span>
+<span class="sd">    Additional methods that are inherited by FiniteVolume which</span>
+<span class="sd">    technically are not suitable for Spectral Volume are</span>
+<span class="sd">    boundary_value_or_flux, process_binary_operators, concatenation,</span>
+<span class="sd">    node_to_edge, edge_to_node and shift. While node_to_edge (as well as</span>
+<span class="sd">    boundary_value_or_flux and process_binary_operators)</span>
+<span class="sd">    could utilize the reconstruction approach of Spectral Volume, the</span>
+<span class="sd">    inverse edge_to_node would still have to fall back to the Finite</span>
+<span class="sd">    Volume behaviour. So these are simply inherited for consistency.</span>
+<span class="sd">    boundary_value_or_flux might not benefit from the reconstruction</span>
+<span class="sd">    approach at all, as it seems to only preprocess symbols.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mesh : :class:`pybamm.Mesh`</span>
+<span class="sd">        Contains all the submeshes for discretisation</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Wang2002&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpectralVolume.chebyshev_collocation_points">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.chebyshev_collocation_points">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">chebyshev_collocation_points</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noe</span><span class="p">,</span> <span class="n">a</span><span class="o">=-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates Chebyshev collocation points in descending order.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        noe: integer</span>
+<span class="sd">            The number of the collocation points. &quot;number of edges&quot;</span>
+<span class="sd">        a: float</span>
+<span class="sd">            Left end of the interval on which the Chebyshev collocation</span>
+<span class="sd">            points are constructed. Default is -1.</span>
+<span class="sd">        b: float</span>
+<span class="sd">            Right end of the interval on which the Chebyshev collocation</span>
+<span class="sd">            points are constructed. Default is 1.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`numpy.array`</span>
+<span class="sd">        Chebyshev collocation points on [a,b].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="mi">1</span>
+            <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+                <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([(</span><span class="n">noe</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">noe</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span><span class="p">)])</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.cv_boundary_reconstruction_sub_matrix">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.cv_boundary_reconstruction_sub_matrix">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cv_boundary_reconstruction_sub_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Coefficients for reconstruction of a function through averages.</span>
+<span class="sd">        The resulting matrix is scale-invariant :footcite:t:`Wang2002`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># While Spectral Volume in general may use any point</span>
+        <span class="c1"># distribution for CVs, the Chebyshev nodes are the most stable.</span>
+        <span class="c1"># The differentiation matrices are only implemented for those.</span>
+        <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chebyshev_collocation_points</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="c1"># Nomenclature in the reference:</span>
+        <span class="c1"># c[j,l] are the coefficients from the reference.</span>
+        <span class="c1"># The index of the CV boundaries j ranges from 0 to self.order.</span>
+        <span class="c1"># The index of the CVs themselves l ranges from 1 to self.order.</span>
+        <span class="c1"># l ranges from 0 to self.order - 1 here.</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">])</span>
+        <span class="c1"># h[l] are the lengths of the CVs.</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="n">edges</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)]</span>
+
+        <span class="c1"># Optimised derivative of the &quot;Lagrange polynomial denominator&quot;.</span>
+        <span class="c1"># It is equivalent to d_omega_d_x(x) at x = x_{j+1/2}.</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">d_omega_d_x</span><span class="p">(</span><span class="n">j</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span>
+                <span class="n">edges</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">,</span>
+                <span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="n">j</span> <span class="o">+</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">j</span><span class="p">),</span>
+            <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">ell</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">):</span>
+                <span class="n">c</span><span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="n">ell</span><span class="p">]</span> <span class="o">=</span> <span class="n">h</span><span class="p">[</span><span class="n">ell</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="mf">1.0</span>
+                        <span class="o">/</span> <span class="n">d_omega_d_x</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+                        <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span>
+                            <span class="p">[</span>
+                                <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span>
+                                    <span class="n">edges</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">,</span>
+                                    <span class="n">where</span><span class="o">=</span><span class="p">[</span>
+                                        <span class="n">q</span> <span class="o">!=</span> <span class="n">r</span> <span class="ow">and</span> <span class="n">q</span> <span class="o">!=</span> <span class="n">m</span> <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                                    <span class="p">],</span>
+                                <span class="p">)</span>
+                                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                            <span class="p">],</span>
+                            <span class="n">where</span><span class="o">=</span><span class="p">[</span><span class="n">m</span> <span class="o">!=</span> <span class="n">r</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span>
+                        <span class="p">)</span>
+                        <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ell</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">c</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.cv_boundary_reconstruction_matrix">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.cv_boundary_reconstruction_matrix">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cv_boundary_reconstruction_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        &quot;Broadcasts&quot; the basic edge value reconstruction matrix to the</span>
+<span class="sd">        actual shape of the discretised symbols. Note that the product</span>
+<span class="sd">        of this and a discretised symbol is a vector which represents</span>
+<span class="sd">        duplicate values for all inner SV edges. These are the</span>
+<span class="sd">        reconstructed values from both sides.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domains : dict</span>
+<span class="sd">            The domains in which to compute the gradient matrix</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Matrix`</span>
+<span class="sd">            The (sparse) CV reconstruction matrix for the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">submesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">[</span><span class="n">domains</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">]]</span>
+
+        <span class="c1"># Obtain the basic reconstruction matrix.</span>
+        <span class="n">recon_sub_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cv_boundary_reconstruction_sub_matrix</span><span class="p">()</span>
+
+        <span class="c1"># Create 1D matrix using submesh</span>
+        <span class="c1"># n is the number of SVs, submesh.npts is the number of CVs</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">submesh</span><span class="o">.</span><span class="n">npts</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+        <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">recon_sub_matrix</span><span class="p">))</span>
+
+        <span class="c1"># number of repeats</span>
+        <span class="n">second_dim_repeats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_auxiliary_domain_repeats</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="c1"># generate full matrix from the submatrix</span>
+        <span class="c1"># Convert to csr_matrix so that we can take the index</span>
+        <span class="c1"># (row-slicing), which is not supported by the default kron</span>
+        <span class="c1"># format. Note that this makes column-slicing inefficient,</span>
+        <span class="c1"># but this should not be an issue.</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sub_matrix</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.chebyshev_differentiation_matrices">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.chebyshev_differentiation_matrices">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">chebyshev_differentiation_matrices</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noe</span><span class="p">,</span> <span class="n">dod</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Chebyshev differentiation matrices, from</span>
+<span class="sd">        :footcite:t:`Baltensperger2003`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        noe: integer</span>
+<span class="sd">            The number of the collocation points. &quot;number of edges&quot;</span>
+<span class="sd">        dod: integer</span>
+<span class="sd">            The maximum order of differentiation for which a</span>
+<span class="sd">            differentiation matrix shall be calculated. Note that it has</span>
+<span class="sd">            to be smaller than &#39;noe&#39;. &quot;degrees of differentiation&quot;</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list(:class:`numpy.array`)</span>
+<span class="sd">            The differentiation matrices in ascending order of</span>
+<span class="sd">            differentiation order. With exact arithmetic, the diff.</span>
+<span class="sd">            matrix of order p would just be the pth matrix power of</span>
+<span class="sd">            the diff. matrix of order 1. This method computes the higher</span>
+<span class="sd">            orders in a more numerically stable way.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">dod</span> <span class="o">&gt;=</span> <span class="n">noe</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Too many degrees of differentiation. At most &quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">noe</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot; are possible for &quot;</span>
+                <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">noe</span><span class="p">)</span>
+                <span class="o">+</span> <span class="s2">&quot; edges.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">edges</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">chebyshev_collocation_points</span><span class="p">(</span><span class="n">noe</span><span class="p">)</span>
+
+        <span class="c1"># These matrices tend to be dense, thus numpy arrays are used.</span>
+        <span class="n">prefactors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[[(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">-</span> <span class="p">(</span><span class="n">i</span> <span class="o">-</span> <span class="n">j</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span><span class="p">)]</span>
+        <span class="p">)</span>
+        <span class="n">prefactors</span> <span class="o">=</span> <span class="p">(</span><span class="n">prefactors</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">2</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span>
+        <span class="n">prefactors</span> <span class="o">=</span> <span class="n">prefactors</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span> <span class="o">+</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">])</span>
+
+        <span class="n">inverse_difference</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">)]</span>
+                <span class="o">+</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+                <span class="o">+</span> <span class="p">[</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">edges</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">edges</span><span class="p">[</span><span class="n">j</span><span class="p">])</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">noe</span><span class="p">)]</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="n">differentiation_matrices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># This matrix changes in each of the following iterations.</span>
+        <span class="n">temp_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">noe</span><span class="p">)</span>
+
+        <span class="c1"># The calculation here makes extensive use of the element-wise</span>
+        <span class="c1"># multiplication of numpy.arrays. The * are intentionally not @!</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dod</span><span class="p">):</span>
+            <span class="n">temp</span> <span class="o">=</span> <span class="p">(</span><span class="n">prefactors</span><span class="o">.</span><span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">temp_diff</span><span class="p">))</span><span class="o">.</span><span class="n">T</span> <span class="o">-</span> <span class="n">temp_diff</span>
+            <span class="n">temp_diff</span> <span class="o">=</span> <span class="p">(</span><span class="n">p</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">inverse_difference</span> <span class="o">*</span> <span class="n">temp</span>
+            <span class="c1"># Negative sum trick: the rows of the exact matrices sum to</span>
+            <span class="c1"># zero. The diagonal gets less accurate with this, but the</span>
+            <span class="c1"># approximation of the differential will be better overall.</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">noe</span><span class="p">):</span>
+                <span class="n">temp_diff</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">temp_diff</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">i</span><span class="p">))</span>
+            <span class="n">differentiation_matrices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_diff</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+
+        <span class="k">return</span> <span class="n">differentiation_matrices</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.gradient">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.gradient">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gradient</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">discretised_symbol</span><span class="p">,</span> <span class="n">boundary_conditions</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Matrix-vector multiplication to implement the gradient</span>
+<span class="sd">        operator. See :meth:`pybamm.SpatialMethod.gradient`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Reconstruct edge values from node values.</span>
+        <span class="n">reconstructed_symbol</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cv_boundary_reconstruction_matrix</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span> <span class="o">@</span> <span class="n">discretised_symbol</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Add Dirichlet boundary conditions, if defined</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">boundary_conditions</span><span class="p">:</span>
+            <span class="n">bcs</span> <span class="o">=</span> <span class="n">boundary_conditions</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Dirichlet&quot;</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">bcs</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                <span class="c1"># add ghost nodes and update domain</span>
+                <span class="n">reconstructed_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace_dirichlet_values</span><span class="p">(</span>
+                    <span class="n">symbol</span><span class="p">,</span> <span class="n">reconstructed_symbol</span><span class="p">,</span> <span class="n">bcs</span>
+                <span class="p">)</span>
+
+        <span class="c1"># note in 1D cartesian, cylindrical and spherical grad are the same</span>
+        <span class="n">gradient_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gradient_matrix</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">domain</span><span class="p">,</span> <span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+        <span class="n">penalty_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">penalty_matrix</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="c1"># Multiply by gradient matrix</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">gradient_matrix</span> <span class="o">@</span> <span class="n">reconstructed_symbol</span> <span class="o">+</span> <span class="n">penalty_matrix</span> <span class="o">@</span> <span class="n">discretised_symbol</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Add Neumann boundary conditions, if defined</span>
+        <span class="k">if</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">boundary_conditions</span><span class="p">:</span>
+            <span class="n">bcs</span> <span class="o">=</span> <span class="n">boundary_conditions</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">bc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Neumann&quot;</span> <span class="k">for</span> <span class="n">bc</span> <span class="ow">in</span> <span class="n">bcs</span><span class="o">.</span><span class="n">values</span><span class="p">()):</span>
+                <span class="n">out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">replace_neumann_values</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">bcs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">out</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.gradient_matrix">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.gradient_matrix">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">gradient_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Gradient matrix for Spectral Volume in the appropriate domain.</span>
+<span class="sd">        Note that it contains the averaging of the duplicate SV edge</span>
+<span class="sd">        gradient values, such that the product of it and a reconstructed</span>
+<span class="sd">        discretised symbol simply represents CV edge values.</span>
+<span class="sd">        On its own, it only works on non-concatenated domains, since</span>
+<span class="sd">        only then the boundary conditions ensure correct behaviour.</span>
+<span class="sd">        More generally, it only works if gradients are a result of</span>
+<span class="sd">        boundary conditions rather than continuity conditions.</span>
+<span class="sd">        For example, two adjacent SVs with gradient zero in each of them</span>
+<span class="sd">        but with different variable values will have zero gradient</span>
+<span class="sd">        between them. This is fixed with &quot;penalty_matrix&quot;.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domains : dict</span>
+<span class="sd">            The domains in which to compute the gradient matrix</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Matrix`</span>
+<span class="sd">            The (sparse) Spectral Volume gradient matrix for the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">submesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+
+        <span class="c1"># Obtain the Chebyshev differentiation matrix.</span>
+        <span class="c1"># Flip it, since it is defined for the Chebyshev</span>
+        <span class="c1"># collocation points in descending order.</span>
+        <span class="n">chebdiff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">chebyshev_differentiation_matrices</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Create 1D matrix using submesh</span>
+        <span class="c1"># submesh.npts is the number of CVs and n the number of SVs</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">submesh</span><span class="o">.</span><span class="n">npts</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+        <span class="c1"># Compute the lengths of the Spectral Volumes.</span>
+        <span class="n">d_sv_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">submesh</span><span class="o">.</span><span class="n">d_edges</span><span class="p">[</span><span class="n">d</span> <span class="o">*</span> <span class="n">i</span> <span class="p">:</span> <span class="n">d</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">d</span><span class="p">])</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">submesh</span><span class="o">.</span><span class="n">d_edges</span><span class="p">)</span> <span class="o">//</span> <span class="n">d</span><span class="p">)</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+        <span class="c1"># The 2 scales from [-1,1] (Chebyshev default) to [0,1].</span>
+        <span class="c1"># e = 2 / submesh.d_sv_edges</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">d_sv_edges</span>
+        <span class="c1"># This factor scales the contribution of the reconstructed</span>
+        <span class="c1"># gradient to the finite difference at the SV edges.</span>
+        <span class="c1"># 0.0 is the value that makes it work with the &quot;penalty_matrix&quot;.</span>
+        <span class="c1"># 0.5 is the value that makes it work without it, but remember,</span>
+        <span class="c1"># that effectively removes any implicit continuity conditions.</span>
+        <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="c1"># Here, the differentials are scaled to the SV.</span>
+        <span class="n">sub_matrix_raw</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">diags</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">chebdiff</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">sub_matrix_raw</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">lil_matrix</span><span class="p">((</span><span class="n">n</span> <span class="o">*</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+            <span class="n">sub_matrix</span><span class="p">[:</span><span class="n">d</span><span class="p">,</span> <span class="p">:</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">sub_matrix_raw</span><span class="p">[:</span><span class="n">d</span><span class="p">,</span> <span class="p">:</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">sub_matrix</span><span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="p">:</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">sub_matrix_raw</span><span class="p">[</span><span class="n">d</span><span class="p">,</span> <span class="p">:</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="c1"># for loop of shame (optimisation potential via vectorisation)</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">sub_matrix</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">f</span> <span class="o">*</span> <span class="n">sub_matrix_raw</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+                <span class="p">)</span>
+                <span class="n">sub_matrix</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">d</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">sub_matrix_raw</span><span class="p">[</span>
+                        <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+                        <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+                <span class="n">sub_matrix</span><span class="p">[(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">f</span> <span class="o">*</span> <span class="n">sub_matrix_raw</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">d</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+                <span class="p">)</span>
+            <span class="n">sub_matrix</span><span class="p">[</span><span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">sub_matrix_raw</span><span class="p">[</span><span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:]</span>
+            <span class="n">sub_matrix</span><span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="p">:,</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">sub_matrix_raw</span><span class="p">[</span><span class="o">-</span><span class="n">d</span><span class="p">:,</span> <span class="o">-</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">:]</span>
+
+        <span class="c1"># number of repeats</span>
+        <span class="n">second_dim_repeats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_auxiliary_domain_repeats</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="c1"># generate full matrix from the submatrix</span>
+        <span class="c1"># Convert to csr_matrix so that we can take the index</span>
+        <span class="c1"># (row-slicing), which is not supported by the default kron</span>
+        <span class="c1"># format. Note that this makes column-slicing inefficient,</span>
+        <span class="c1"># but this should not be an issue.</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sub_matrix</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.penalty_matrix">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.penalty_matrix">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">penalty_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">domains</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Penalty matrix for Spectral Volume in the appropriate domain.</span>
+<span class="sd">        This works the same as the &quot;gradient_matrix&quot; of FiniteVolume</span>
+<span class="sd">        does, just between SVs and not between CVs. Think of it as a</span>
+<span class="sd">        continuity penalty.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        domains : dict</span>
+<span class="sd">            The domains in which to compute the gradient matrix</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Matrix`</span>
+<span class="sd">            The (sparse) Spectral Volume penalty matrix for the domain</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">submesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">[</span><span class="n">domains</span><span class="p">[</span><span class="s2">&quot;primary&quot;</span><span class="p">]]</span>
+
+        <span class="c1"># Create 1D matrix using submesh</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">submesh</span><span class="o">.</span><span class="n">npts</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>
+        <span class="n">e</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">e</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">::</span> <span class="n">d</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">submesh</span><span class="o">.</span><span class="n">d_nodes</span><span class="p">[</span><span class="n">d</span> <span class="o">-</span> <span class="mi">1</span> <span class="p">::</span> <span class="n">d</span><span class="p">]</span>
+        <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">vstack</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span>
+                <span class="n">diags</span><span class="p">([</span><span class="o">-</span><span class="n">e</span><span class="p">,</span> <span class="n">e</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># number of repeats</span>
+        <span class="n">second_dim_repeats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_auxiliary_domain_repeats</span><span class="p">(</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="c1"># generate full matrix from the submatrix</span>
+        <span class="c1"># Convert to csr_matrix so that we can take the index</span>
+        <span class="c1"># (row-slicing), which is not supported by the default kron</span>
+        <span class="c1"># format. Note that this makes column-slicing inefficient, but</span>
+        <span class="c1"># this should not be an issue.</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sub_matrix</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span></div>
+
+
+    <span class="c1"># def spectral_volume_internal_neumann_condition(</span>
+    <span class="c1">#    self, left_symbol_disc, right_symbol_disc, left_mesh, right_mesh</span>
+    <span class="c1"># ):</span>
+    <span class="c1">#    &quot;&quot;&quot;</span>
+    <span class="c1">#    A method to find the internal neumann conditions between two</span>
+    <span class="c1">#    symbols on adjacent subdomains. This method is never called,</span>
+    <span class="c1">#    it&#39;s just here to show how a reconstructed gradient-based</span>
+    <span class="c1">#    internal neumann_condition would look like.</span>
+    <span class="c1">#    Parameters</span>
+    <span class="c1">#    ----------</span>
+    <span class="c1">#    left_symbol_disc : :class:`pybamm.Symbol`</span>
+    <span class="c1">#        The discretised symbol on the left subdomain</span>
+    <span class="c1">#    right_symbol_disc : :class:`pybamm.Symbol`</span>
+    <span class="c1">#        The discretised symbol on the right subdomain</span>
+    <span class="c1">#    left_mesh : list</span>
+    <span class="c1">#        The mesh on the left subdomain</span>
+    <span class="c1">#    right_mesh : list</span>
+    <span class="c1">#        The mesh on the right subdomain</span>
+    <span class="c1">#    &quot;&quot;&quot;</span>
+    <span class="c1">#</span>
+    <span class="c1">#    second_dim_repeats = self._get_auxiliary_domain_repeats(</span>
+    <span class="c1">#        left_symbol_disc.domains</span>
+    <span class="c1">#    )</span>
+    <span class="c1">#</span>
+    <span class="c1">#    if second_dim_repeats != self._get_auxiliary_domain_repeats(</span>
+    <span class="c1">#        right_symbol_disc.domains</span>
+    <span class="c1">#    ):</span>
+    <span class="c1">#        raise pybamm.DomainError(</span>
+    <span class="c1">#            &quot;Number of secondary points in subdomains do not match&quot;</span>
+    <span class="c1">#        )</span>
+    <span class="c1">#</span>
+    <span class="c1">#    # Use the Spectral Volume reconstruction and differentiation.</span>
+    <span class="c1">#    left_reconstruction_matrix = self.cv_boundary_reconstruction_matrix(</span>
+    <span class="c1">#        left_symbol_disc.domain,</span>
+    <span class="c1">#        left_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    )</span>
+    <span class="c1">#    left_gradient_matrix = self.gradient_matrix(</span>
+    <span class="c1">#        left_symbol_disc.domain,</span>
+    <span class="c1">#        left_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    ).entries[-1]</span>
+    <span class="c1">#    left_matrix = left_gradient_matrix @ left_reconstruction_matrix</span>
+    <span class="c1">#</span>
+    <span class="c1">#    right_reconstruction_matrix = self.cv_boundary_reconstruction_matrix(</span>
+    <span class="c1">#        right_symbol_disc.domain,</span>
+    <span class="c1">#        right_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    )</span>
+    <span class="c1">#    right_gradient_matrix = self.gradient_matrix(</span>
+    <span class="c1">#        right_symbol_disc.domain,</span>
+    <span class="c1">#        right_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    ).entries[0]</span>
+    <span class="c1">#    right_matrix = right_gradient_matrix @ right_reconstruction_matrix</span>
+    <span class="c1">#</span>
+    <span class="c1">#    # Remove domains to avoid clash</span>
+    <span class="c1">#    left_domain = left_symbol_disc.domain</span>
+    <span class="c1">#    right_domain = right_symbol_disc.domain</span>
+    <span class="c1">#    left_auxiliary_domains = left_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    right_auxiliary_domains = right_symbol_disc.auxiliary_domains</span>
+    <span class="c1">#    left_symbol_disc.clear_domains()</span>
+    <span class="c1">#    right_symbol_disc.clear_domains()</span>
+    <span class="c1">#</span>
+    <span class="c1">#    # Spectral Volume derivative (i.e., the mean of the two</span>
+    <span class="c1">#    # reconstructed gradients from each side)</span>
+    <span class="c1">#    # Note that this is the version without &quot;penalty_matrix&quot;.</span>
+    <span class="c1">#    dy_dx = 0.5 * (right_matrix @ right_symbol_disc</span>
+    <span class="c1">#                   + left_matrix @ left_symbol_disc)</span>
+    <span class="c1">#</span>
+    <span class="c1">#    # Change domains back</span>
+    <span class="c1">#    left_symbol_disc.domain = left_domain</span>
+    <span class="c1">#    right_symbol_disc.domain = right_domain</span>
+    <span class="c1">#    left_symbol_disc.auxiliary_domains = left_auxiliary_domains</span>
+    <span class="c1">#    right_symbol_disc.auxiliary_domains = right_auxiliary_domains</span>
+    <span class="c1">#</span>
+    <span class="c1">#    return dy_dx</span>
+
+<div class="viewcode-block" id="SpectralVolume.replace_dirichlet_values">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.replace_dirichlet_values">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace_dirichlet_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">discretised_symbol</span><span class="p">,</span> <span class="n">bcs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace the reconstructed value at Dirichlet boundaries with the</span>
+<span class="sd">        boundary condition.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : :class:`pybamm.SpatialVariable`</span>
+<span class="sd">            The variable to be discretised</span>
+<span class="sd">        discretised_symbol : :class:`pybamm.Vector`</span>
+<span class="sd">            Contains the discretised variable</span>
+<span class="sd">        bcs : dict of tuples (:class:`pybamm.Scalar`, str)</span>
+<span class="sd">            Dictionary (with keys &quot;left&quot; and &quot;right&quot;) of boundary</span>
+<span class="sd">            conditions. Each boundary condition consists of a value and</span>
+<span class="sd">            a flag indicating its type (e.g. &quot;Dirichlet&quot;)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Symbol`</span>
+<span class="sd">            `Matrix @ discretised_symbol + bcs_vector`. When evaluated,</span>
+<span class="sd">            this gives the discretised_symbol, with its boundary values</span>
+<span class="sd">            replaced by the Dirichlet boundary conditions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># get relevant grid points</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">domain</span>
+        <span class="n">submesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+
+        <span class="c1"># Prepare sizes</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="p">(</span><span class="n">submesh</span><span class="o">.</span><span class="n">npts</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">second_dim_repeats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_auxiliary_domain_repeats</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="n">lbc_value</span><span class="p">,</span> <span class="n">lbc_type</span> <span class="o">=</span> <span class="n">bcs</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span>
+        <span class="n">rbc_value</span><span class="p">,</span> <span class="n">rbc_type</span> <span class="o">=</span> <span class="n">bcs</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span>
+
+        <span class="c1"># write boundary values into vectors of according shape</span>
+        <span class="k">if</span> <span class="n">lbc_type</span> <span class="o">==</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">:</span>
+            <span class="n">lbc_sub_matrix</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">lbc_matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span>
+                <span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">lbc_sub_matrix</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">lbc_value</span><span class="o">.</span><span class="n">evaluates_to_number</span><span class="p">():</span>
+                <span class="n">left_bc</span> <span class="o">=</span> <span class="n">lbc_value</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">left_bc</span> <span class="o">=</span> <span class="n">lbc_value</span>
+            <span class="n">lbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">lbc_matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">left_bc</span>
+        <span class="k">elif</span> <span class="n">lbc_type</span> <span class="o">==</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">:</span>
+            <span class="n">lbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">second_dim_repeats</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;boundary condition must be Dirichlet or Neumann, not &#39;</span><span class="si">{</span><span class="n">lbc_type</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">rbc_type</span> <span class="o">==</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">:</span>
+            <span class="n">rbc_sub_matrix</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">([</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">rbc_matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span>
+                <span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">rbc_sub_matrix</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">rbc_value</span><span class="o">.</span><span class="n">evaluates_to_number</span><span class="p">():</span>
+                <span class="n">right_bc</span> <span class="o">=</span> <span class="n">rbc_value</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">right_bc</span> <span class="o">=</span> <span class="n">rbc_value</span>
+            <span class="n">rbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">rbc_matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">right_bc</span>
+        <span class="k">elif</span> <span class="n">rbc_type</span> <span class="o">==</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">:</span>
+            <span class="n">rbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">second_dim_repeats</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;boundary condition must be Dirichlet or Neumann, not &#39;</span><span class="si">{</span><span class="n">rbc_type</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">bcs_vector</span> <span class="o">=</span> <span class="n">lbc_vector</span> <span class="o">+</span> <span class="n">rbc_vector</span>
+        <span class="c1"># Need to match the domain. E.g. in the case of the boundary</span>
+        <span class="c1"># condition on the particle, the gradient has domain particle</span>
+        <span class="c1"># but the bcs_vector has domain electrode, since it is a</span>
+        <span class="c1"># function of the macroscopic variables</span>
+        <span class="n">bcs_vector</span><span class="o">.</span><span class="n">copy_domains</span><span class="p">(</span><span class="n">discretised_symbol</span><span class="p">)</span>
+
+        <span class="c1"># Make matrix which makes &quot;gaps&quot; at the boundaries into which</span>
+        <span class="c1"># the known Dirichlet values will be added. If the boundary</span>
+        <span class="c1"># condition is not Dirichlet, it acts as identity.</span>
+        <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">diags</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">lbc_type</span> <span class="o">!=</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">)]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="mf">1.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">rbc_type</span> <span class="o">!=</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">)],</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># repeat matrix for secondary dimensions</span>
+        <span class="c1"># Convert to csr_matrix so that we can take the index</span>
+        <span class="c1"># (row-slicing), which is not supported by the default kron</span>
+        <span class="c1"># format. Note that this makes column-slicing inefficient, but</span>
+        <span class="c1"># this should not be an issue.</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sub_matrix</span><span class="p">))</span>
+
+        <span class="n">new_symbol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">discretised_symbol</span> <span class="o">+</span> <span class="n">bcs_vector</span>
+
+        <span class="k">return</span> <span class="n">new_symbol</span></div>
+
+
+<div class="viewcode-block" id="SpectralVolume.replace_neumann_values">
+<a class="viewcode-back" href="../../../source/api/spatial_methods/spectral_volume.html#pybamm.SpectralVolume.replace_neumann_values">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">replace_neumann_values</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">discretised_gradient</span><span class="p">,</span> <span class="n">bcs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Replace the known values of the gradient from Neumann boundary</span>
+<span class="sd">        conditions into the discretised gradient.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : :class:`pybamm.SpatialVariable`</span>
+<span class="sd">            The variable to be discretised</span>
+<span class="sd">        discretised_gradient : :class:`pybamm.Vector`</span>
+<span class="sd">            Contains the discretised gradient of symbol</span>
+<span class="sd">        bcs : dict of tuples (:class:`pybamm.Scalar`, str)</span>
+<span class="sd">            Dictionary (with keys &quot;left&quot; and &quot;right&quot;) of boundary</span>
+<span class="sd">            conditions. Each boundary condition consists of a value and</span>
+<span class="sd">            a flag indicating its type (e.g. &quot;Dirichlet&quot;)</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Symbol`</span>
+<span class="sd">            `Matrix @ discretised_gradient + bcs_vector`. When</span>
+<span class="sd">            evaluated, this gives the discretised_gradient, with its</span>
+<span class="sd">            boundary values replaced by the Neumann boundary conditions.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># get relevant grid points</span>
+        <span class="n">domain</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">domain</span>
+        <span class="n">submesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mesh</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+
+        <span class="c1"># Prepare sizes</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">submesh</span><span class="o">.</span><span class="n">npts</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="n">second_dim_repeats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_auxiliary_domain_repeats</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">domains</span><span class="p">)</span>
+
+        <span class="n">lbc_value</span><span class="p">,</span> <span class="n">lbc_type</span> <span class="o">=</span> <span class="n">bcs</span><span class="p">[</span><span class="s2">&quot;left&quot;</span><span class="p">]</span>
+        <span class="n">rbc_value</span><span class="p">,</span> <span class="n">rbc_type</span> <span class="o">=</span> <span class="n">bcs</span><span class="p">[</span><span class="s2">&quot;right&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Add any values from Neumann boundary conditions to the bcs vector</span>
+        <span class="k">if</span> <span class="n">lbc_type</span> <span class="o">==</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">:</span>
+            <span class="n">lbc_sub_matrix</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">([</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">lbc_matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span>
+                <span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">lbc_sub_matrix</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">lbc_value</span><span class="o">.</span><span class="n">evaluates_to_number</span><span class="p">():</span>
+                <span class="n">left_bc</span> <span class="o">=</span> <span class="n">lbc_value</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">left_bc</span> <span class="o">=</span> <span class="n">lbc_value</span>
+            <span class="n">lbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">lbc_matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">left_bc</span>
+        <span class="k">elif</span> <span class="n">lbc_type</span> <span class="o">==</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">:</span>
+            <span class="n">lbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">second_dim_repeats</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;boundary condition must be Dirichlet or Neumann, not &#39;</span><span class="si">{</span><span class="n">lbc_type</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">rbc_type</span> <span class="o">==</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">:</span>
+            <span class="n">rbc_sub_matrix</span> <span class="o">=</span> <span class="n">coo_matrix</span><span class="p">(([</span><span class="mf">1.0</span><span class="p">],</span> <span class="p">([</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+            <span class="n">rbc_matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span>
+                <span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">rbc_sub_matrix</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">rbc_value</span><span class="o">.</span><span class="n">evaluates_to_number</span><span class="p">():</span>
+                <span class="n">right_bc</span> <span class="o">=</span> <span class="n">rbc_value</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">right_bc</span> <span class="o">=</span> <span class="n">rbc_value</span>
+            <span class="n">rbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">rbc_matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">right_bc</span>
+        <span class="k">elif</span> <span class="n">rbc_type</span> <span class="o">==</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">:</span>
+            <span class="n">rbc_vector</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">*</span> <span class="n">second_dim_repeats</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;boundary condition must be Dirichlet or Neumann, not &#39;</span><span class="si">{</span><span class="n">rbc_type</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">bcs_vector</span> <span class="o">=</span> <span class="n">lbc_vector</span> <span class="o">+</span> <span class="n">rbc_vector</span>
+        <span class="c1"># Need to match the domain. E.g. in the case of the boundary</span>
+        <span class="c1"># condition on the particle, the gradient has domain particle</span>
+        <span class="c1"># but the bcs_vector has domain electrode, since it is a</span>
+        <span class="c1"># function of the macroscopic variables</span>
+        <span class="n">bcs_vector</span><span class="o">.</span><span class="n">copy_domains</span><span class="p">(</span><span class="n">discretised_gradient</span><span class="p">)</span>
+
+        <span class="c1"># Make matrix which makes &quot;gaps&quot; at the boundaries into which</span>
+        <span class="c1"># the known Neumann values will be added. If the boundary</span>
+        <span class="c1"># condition is not Neumann, it acts as identity.</span>
+        <span class="n">sub_matrix</span> <span class="o">=</span> <span class="n">diags</span><span class="p">(</span>
+            <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">lbc_type</span> <span class="o">!=</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">)]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="mf">1.0</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)]</span>
+            <span class="o">+</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">rbc_type</span> <span class="o">!=</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">)],</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># repeat matrix for secondary dimensions</span>
+        <span class="c1"># Convert to csr_matrix so that we can take the index</span>
+        <span class="c1"># (row-slicing), which is not supported by the default kron</span>
+        <span class="c1"># format. Note that this makes column-slicing inefficient, but</span>
+        <span class="c1"># this should not be an issue.</span>
+        <span class="n">matrix</span> <span class="o">=</span> <span class="n">csr_matrix</span><span class="p">(</span><span class="n">kron</span><span class="p">(</span><span class="n">eye</span><span class="p">(</span><span class="n">second_dim_repeats</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">),</span> <span class="n">sub_matrix</span><span class="p">))</span>
+
+        <span class="n">new_gradient</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Matrix</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="o">@</span> <span class="n">discretised_gradient</span> <span class="o">+</span> <span class="n">bcs_vector</span>
+
+        <span class="k">return</span> <span class="n">new_gradient</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

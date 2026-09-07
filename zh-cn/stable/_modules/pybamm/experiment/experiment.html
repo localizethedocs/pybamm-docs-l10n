@@ -1,0 +1,803 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.experiment.experiment &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=4f37f709"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/experiment/experiment';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/experiment/experiment.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.experiment.experiment</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.experiment.experiment 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.step.base_step</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">BaseStep</span><span class="p">,</span>
+    <span class="n">_convert_temperature_to_kelvin</span><span class="p">,</span>
+    <span class="n">_convert_time_to_seconds</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="Experiment">
+<a class="viewcode-back" href="../../../source/api/experiment/experiment.html#pybamm.Experiment">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Experiment</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for experimental conditions under which to run the model. In general, a</span>
+<span class="sd">    list of operating conditions should be passed in. Each operating condition should</span>
+<span class="sd">    be either a `pybamm.step.BaseStep` class, which can be created using one of the</span>
+<span class="sd">    methods `pybamm.step.current`, `pybamm.step.c_rate`, `pybamm.step.voltage`</span>
+<span class="sd">    , `pybamm.step.power`, `pybamm.step.resistance`, or</span>
+<span class="sd">    `pybamm.step.string`, or a string, in which case the string is passed to</span>
+<span class="sd">    `pybamm.step.string`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    operating_conditions : list[str]</span>
+<span class="sd">        List of strings representing the operating conditions.</span>
+<span class="sd">    period : str, optional</span>
+<span class="sd">        Period (1/frequency) at which to record outputs. Default is 1 minute. Can be</span>
+<span class="sd">        overwritten by individual operating conditions.</span>
+<span class="sd">    temperature : float or string, optional</span>
+<span class="sd">        The temperature of the experiment. If a float, the value is in Kelvin. If a string,</span>
+<span class="sd">        the value should be a valid temperature string, e.g. &quot;25 oC&quot;. Default is None whereby</span>
+<span class="sd">        the ambient temperature is taken from the parameter set. This value is overwritten if</span>
+<span class="sd">        the temperature is specified in a step.</span>
+<span class="sd">    termination : list[str], optional</span>
+<span class="sd">        List of strings representing the conditions to terminate the experiment. Default is None.</span>
+<span class="sd">        This is different from the termination for individual steps. Termination for</span>
+<span class="sd">        individual steps is specified in the step itself, and the simulation moves to</span>
+<span class="sd">        the next step when the termination condition is met</span>
+<span class="sd">        (e.g. 2.5V discharge cut-off). Termination for the</span>
+<span class="sd">        experiment as a whole is specified here, and the simulation stops when the</span>
+<span class="sd">        termination condition is met (e.g. 80% capacity).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">operating_conditions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="n">BaseStep</span><span class="p">],</span>
+        <span class="n">period</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">temperature</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">termination</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="c1"># Save arguments for copying</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">operating_conditions</span><span class="p">,</span>
+            <span class="n">period</span><span class="p">,</span>
+            <span class="n">temperature</span><span class="p">,</span>
+            <span class="n">termination</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">cycles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="n">operating_conditions</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">cycle</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="n">cycle</span> <span class="o">=</span> <span class="p">(</span><span class="n">cycle</span><span class="p">,)</span>
+            <span class="n">cycles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="n">cycles</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycle_lengths</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">cycle</span><span class="p">)</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="n">cycles</span><span class="p">]</span>
+
+        <span class="n">steps_unprocessed</span> <span class="o">=</span> <span class="p">[</span><span class="n">cond</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="n">cycles</span> <span class="k">for</span> <span class="n">cond</span> <span class="ow">in</span> <span class="n">cycle</span><span class="p">]</span>
+
+        <span class="c1"># Convert strings to pybamm.step.BaseStep objects</span>
+        <span class="c1"># We only do this once per unique step, to avoid unnecessary conversions</span>
+        <span class="c1"># Assign experiment period and temperature if not specified in step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">_convert_time_to_seconds</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">_convert_temperature_to_kelvin</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span>
+
+        <span class="n">processed_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_steps</span><span class="p">(</span>
+            <span class="n">steps_unprocessed</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">period</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">temperature</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="p">[</span><span class="n">processed_steps</span><span class="p">[</span><span class="nb">repr</span><span class="p">(</span><span class="n">step</span><span class="p">)]</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">steps_unprocessed</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_next_start_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span>
+
+        <span class="c1"># Save the processed unique steps and the processed operating conditions</span>
+        <span class="c1"># for every step</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_steps</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">processed_steps</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="c1"># Allocate experiment global variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_start_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">start_time</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">initial_start_time</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;When using experiments with `start_time`, the first step must have a &quot;</span>
+                <span class="s2">&quot;`start_time`.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">termination_string</span> <span class="o">=</span> <span class="n">termination</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">read_termination</span><span class="p">(</span><span class="n">termination</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_steps</span><span class="p">(</span><span class="n">unprocessed_steps</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">temp</span><span class="p">):</span>
+        <span class="n">processed_steps</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">unprocessed_steps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">repr</span><span class="p">(</span><span class="n">step</span><span class="p">)</span> <span class="ow">in</span> <span class="n">processed_steps</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="n">processed_step</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">string</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="p">):</span>
+                <span class="c1"># Copy the step to avoid modifying the original with the period and</span>
+                <span class="c1"># temperature and any other changes</span>
+                <span class="n">processed_step</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Operating conditions must be a Step object or string.&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">processed_step</span><span class="o">.</span><span class="n">period</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">processed_step</span><span class="o">.</span><span class="n">period</span> <span class="o">=</span> <span class="n">period</span>
+            <span class="k">if</span> <span class="n">processed_step</span><span class="o">.</span><span class="n">temperature</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">processed_step</span><span class="o">.</span><span class="n">temperature</span> <span class="o">=</span> <span class="n">temp</span>
+
+            <span class="n">processed_steps</span><span class="p">[</span><span class="nb">repr</span><span class="p">(</span><span class="n">step</span><span class="p">)]</span> <span class="o">=</span> <span class="n">processed_step</span>
+
+        <span class="k">return</span> <span class="n">processed_steps</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">Experiment</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;pybamm.Experiment(</span><span class="si">{</span><span class="bp">self</span><span class="si">!s}</span><span class="s2">)&quot;</span>
+
+<div class="viewcode-block" id="Experiment.read_termination">
+<a class="viewcode-back" href="../../../source/api/experiment/experiment.html#pybamm.Experiment.read_termination">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">read_termination</span><span class="p">(</span><span class="n">termination</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Read the termination reason. If this condition is hit, the experiment will stop.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        termination : str or list[str], optional</span>
+<span class="sd">           A single string, or a list of strings, representing the conditions to terminate the experiment.</span>
+<span class="sd">           Only capacity or voltage can be provided as a termination reason.</span>
+<span class="sd">           e.g. &#39;4 Ah capacity&#39; or [&#39;80% capacity&#39;, &#39;2.5 V&#39;]</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">           A dictionary of the termination conditions.</span>
+<span class="sd">           e.g. {&#39;capacity&#39;: (4.0, &#39;Ah&#39;)} or</span>
+<span class="sd">           {&#39;capacity&#39;: (80.0, &#39;%&#39;), &#39;voltage&#39;: (2.5, &#39;V&#39;)}</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">termination</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{}</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">termination</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">termination</span> <span class="o">=</span> <span class="p">[</span><span class="n">termination</span><span class="p">]</span>
+
+        <span class="n">termination_dict</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">termination</span><span class="p">:</span>
+            <span class="n">term_list</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">term_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;capacity&quot;</span><span class="p">:</span>
+                <span class="n">end_discharge</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">term_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">end_discharge</span> <span class="o">=</span> <span class="n">end_discharge</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;A.h&quot;</span><span class="p">,</span> <span class="s2">&quot;Ah&quot;</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">end_discharge</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">):</span>
+                    <span class="n">end_discharge_percent</span> <span class="o">=</span> <span class="n">end_discharge</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">termination_dict</span><span class="p">[</span><span class="s2">&quot;capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">end_discharge_percent</span><span class="p">),</span> <span class="s2">&quot;%&quot;</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">end_discharge</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;Ah&quot;</span><span class="p">):</span>
+                    <span class="n">end_discharge_Ah</span> <span class="o">=</span> <span class="n">end_discharge</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;Ah&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">termination_dict</span><span class="p">[</span><span class="s2">&quot;capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">end_discharge_Ah</span><span class="p">),</span> <span class="s2">&quot;Ah&quot;</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Capacity termination must be given in the form &quot;</span>
+                        <span class="s2">&quot;&#39;80%&#39;, &#39;4Ah&#39;, or &#39;4A.h&#39;&quot;</span>
+                    <span class="p">)</span>
+            <span class="k">elif</span> <span class="n">term</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">):</span>
+                <span class="n">end_discharge_V</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">termination_dict</span><span class="p">[</span><span class="s2">&quot;voltage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">end_discharge_V</span><span class="p">),</span> <span class="s2">&quot;V&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">any</span><span class="p">(</span>
+                <span class="p">[</span>
+                    <span class="n">term</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">[</span>
+                        <span class="s2">&quot;hour&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;hours&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;h&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;hr&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;minute&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;minutes&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;m&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;min&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;second&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;seconds&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;s&quot;</span><span class="p">,</span>
+                        <span class="s2">&quot;sec&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+                <span class="p">]</span>
+            <span class="p">):</span>
+                <span class="n">termination_dict</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">_convert_time_to_seconds</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Only capacity or voltage can be provided as a termination reason, &quot;</span>
+                    <span class="s2">&quot;e.g. &#39;80</span><span class="si">% c</span><span class="s2">apacity&#39;, &#39;4 Ah capacity&#39;, or &#39;2.5 V&#39;&quot;</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">termination_dict</span></div>
+
+
+<div class="viewcode-block" id="Experiment.to_config">
+<a class="viewcode-back" href="../../../source/api/experiment/experiment.html#pybamm.Experiment.to_config">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_config</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert this experiment to a JSON-serialisable config dict.</span>
+
+<span class="sd">        Returns ``{&quot;cycles&quot;: [[step_config, ...], ...]}`` suitable for</span>
+<span class="sd">        passing back to :meth:`from_config`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Config dict with key ``&quot;cycles&quot;``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.expression_tree.operations.serialise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Serialise</span>
+
+        <span class="k">return</span> <span class="n">Serialise</span><span class="o">.</span><span class="n">serialise_experiment</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Experiment.from_config">
+<a class="viewcode-back" href="../../../source/api/experiment/experiment.html#pybamm.Experiment.from_config">[文档]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_config</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Experiment</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create an :class:`Experiment` from a config dict.</span>
+
+<span class="sd">        Accepts ``{&quot;cycles&quot;: [[step_config, ...], ...]}`` (new format) or</span>
+<span class="sd">        ``{&quot;steps&quot;: [step_config, ...]}`` (legacy flat format).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        data : dict</span>
+<span class="sd">            Config dict as produced by :meth:`to_config`.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`Experiment`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.expression_tree.operations.serialise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Serialise</span>
+
+        <span class="k">return</span> <span class="n">Serialise</span><span class="o">.</span><span class="n">deserialise_experiment</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Experiment.search_tag">
+<a class="viewcode-back" href="../../../source/api/experiment/experiment.html#pybamm.Experiment.search_tag">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for a tag in the experiment and return the cycles in which it appears.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        tag : str</span>
+<span class="sd">            The tag to search for</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">            A list of cycles in which the tag appears</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cycles</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">cycle</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">tags</span><span class="p">:</span>
+                    <span class="n">cycles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+                    <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">cycles</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_next_start_time</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+        <span class="n">end_time</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">next_start_time</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Loop over the steps in reverse order, setting the end time of each step to the</span>
+        <span class="c1"># start time of the next step</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+            <span class="n">step</span><span class="o">.</span><span class="n">next_start_time</span> <span class="o">=</span> <span class="n">next_start_time</span>
+            <span class="n">step</span><span class="o">.</span><span class="n">end_time</span> <span class="o">=</span> <span class="n">end_time</span>
+
+            <span class="n">next_start_time</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">start_time</span>
+            <span class="k">if</span> <span class="n">next_start_time</span><span class="p">:</span>
+                <span class="n">end_time</span> <span class="o">=</span> <span class="n">next_start_time</span>
+
+        <span class="k">return</span> <span class="n">steps</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

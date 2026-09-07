@@ -1,0 +1,1073 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-04-29T15:44:27+00:00" />
+    <title>Installation &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/user_guide/installation/index';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/user_guide/installation/index.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="next" title="GNU/Linux &amp; macOS" href="gnu-linux-mac.html" />
+    <link rel="prev" title="PyBaMM user guide" href="../index.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+    <meta name="docbuild:last-update" content="2026-04-29"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Installation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="gnu-linux-mac.html">GNU/Linux &amp; macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="windows-wsl.html">Install from source (Windows Subsystem for Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-source.html">Install from source (GNU Linux and macOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-docker.html">Install from source (Docker)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to PyBaMM</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Installation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link to this heading">#</a></h1>
+<p>PyBaMM is available on GNU/Linux, MacOS and Windows.
+It can be installed using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, <code class="docutils literal notranslate"><span class="pre">pip</span></code>, or <code class="docutils literal notranslate"><span class="pre">conda</span></code>, or from source.</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--1">uv</label><div class="tab-content docutils">
+<p>PyBaMM can be installed via <a class="reference external" href="https://docs.astral.sh/uv/">uv</a> from <a class="reference external" href="https://pypi.org/project/pybamm">PyPI</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pybamm
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--2">pip</label><div class="tab-content docutils">
+<p>PyBaMM can be installed via pip from <a class="reference external" href="https://pypi.org/project/pybamm">PyPI</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>pybamm
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--0-input--3" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--3">conda</label><div class="tab-content docutils">
+<p>PyBaMM is available as a <code class="docutils literal notranslate"><span class="pre">conda</span></code> package through the conda-forge channel.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> package on conda-forge installs PyBaMM with all the <a class="reference internal" href="#dependencies"><span class="std std-ref">required and optional dependencies</span></a> available on conda-forge.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pybamm
+
+<span class="w">  </span>The<span class="w"> </span><span class="sb">``</span>pybamm-base<span class="sb">``</span><span class="w"> </span>package<span class="w"> </span>installs<span class="w"> </span>PyBaMM<span class="w"> </span>only<span class="w"> </span>with<span class="w"> </span>its<span class="w"> </span><span class="sb">`</span>required<span class="w"> </span>dependencies<span class="w"> </span>&lt;<span class="c1">#install-required-dependencies&gt;`_.</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pybamm-base
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The PyBaMM Conda recipe is not currently maintained and lags several releases behind.
+As a result, installations via Conda will provide an outdated version.
+To access the latest version, consider installing PyBaMM using pip.</p>
+</div>
+<section id="optional-solvers">
+<h2>Optional solvers<a class="headerlink" href="#optional-solvers" title="Link to this heading">#</a></h2>
+<p>The following solver is optionally available:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">jax</a> -based solver, see <a class="reference internal" href="gnu-linux-mac.html#optional-jaxsolver"><span class="std std-ref">Optional - JaxSolver</span></a> .</p></li>
+</ul>
+</section>
+<section id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">#</a></h2>
+<p>PyBaMM requires the following dependencies:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The list of dependencies below might be outdated. Users are advised to manually check the <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/pyproject.toml">pyproject.toml</a> file to find out supported versions.</p>
+</div>
+<section id="required-dependencies">
+<span id="install-required-dependencies"></span><h3>Required dependencies<a class="headerlink" href="#required-dependencies" title="Link to this heading">#</a></h3>
+<p>PyBaMM requires the following dependencies.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Supported version(s)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/pybamm-team/pybammsolvers">PyBaMM solvers</a></p></td>
+<td><p>&gt;= 0.8.0, &lt;0.9.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://numpy.org">NumPy</a></p></td>
+<td><p>Whatever recent versions work</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/">SciPy</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 1.9.3</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://web.casadi.org/docs/">CasADi</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 3.7.2</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.xarray.dev/en/stable/">Xarray</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 2022.6.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://anytree.readthedocs.io/en/stable/">Anytree</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 2.8.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.sympy.org/latest/index.html">SymPy</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 1.9.3</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/typing-extensions/">typing-extensions</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 4.10.0</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/pandas/">pandas</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 1.5.0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://www.fatiando.org/pooch/">pooch</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 1.8.1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://posthog.com/">posthog</a></p></td>
+<td><p>Whatever recent versions work. &gt;= 3.6.5</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pyyaml.org/">pyyaml</a></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://platformdirs.readthedocs.io/en/latest/">platformdirs</a></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="optional-dependencies">
+<span id="install-optional-dependencies"></span><h3>Optional Dependencies<a class="headerlink" href="#optional-dependencies" title="Link to this heading">#</a></h3>
+<p>PyBaMM has a number of optional dependencies for different functionalities.
+If the optional dependency is not installed, PyBaMM will raise an ImportError when the method requiring that dependency is called.</p>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">pip</span></code>, optional PyBaMM dependencies can be installed or managed in a file (e.g., setup.py, or pyproject.toml)
+as optional extras (e.g.,``pybamm[dev,plot]``). All optional dependencies can be installed with <code class="docutils literal notranslate"><span class="pre">pybamm[all]</span></code>,
+and specific sets of dependencies are listed in the sections below.</p>
+<section id="plot-dependencies">
+<span id="install-plot-dependencies"></span><h4>Plot dependencies<a class="headerlink" href="#plot-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[plot]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://matplotlib.org/stable/">matplotlib</a></p></td>
+<td><p>3.6.0</p></td>
+<td><p>plot</p></td>
+<td><p>To plot various battery models, and analyzing battery performance.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="docs-dependencies">
+<span id="install-docs-dependencies"></span><h4>Docs dependencies<a class="headerlink" href="#docs-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[docs]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://www.sphinx-doc.org/en/master/">sphinx</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Sphinx makes it easy to create intelligent and beautiful documentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/sphinx-rtd-theme/">sphinx_rtd_theme</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>This Sphinx theme provides a great reader experience for documentation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pydata-sphinx-theme.readthedocs.io/en/stable/">pydata-sphinx-theme</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>A clean, Bootstrap-based Sphinx theme.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://sphinx-design.readthedocs.io/en/latest/">sphinx_design</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>A sphinx extension for designing.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinx-copybutton.readthedocs.io/en/latest/">sphinx-copybutton</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>To copy codeblocks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">myst-parser</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>For technical &amp; scientific documentation.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinx-inline-tabs.readthedocs.io/en/latest/">sphinx-inline-tabs</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Add inline tabbed content to your Sphinx documentation.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://sphinxcontrib-bibtex.readthedocs.io/en/latest/">sphinxcontrib-bibtex</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>For BibTeX citations.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinx-extensions.readthedocs.io/en/latest/sphinx-autobuild.html">sphinx-autobuild</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>For re-building docs once triggered.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/sphinx-last-updated-by-git/">sphinx-last-updated-by-git</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>To get the “last updated” time for each Sphinx page from Git.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://nbsphinx.readthedocs.io/en/0.9.5/">nbsphinx</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Sphinx extension that provides a source parser for .ipynb files</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/ipykernel/">ipykernel</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Provides the IPython kernel for Jupyter.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://ipywidgets.readthedocs.io/en/latest/">ipywidgets</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Interactive HTML widgets for Jupyter notebooks and the IPython kernel.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/sphinx-gallery/">sphinx-gallery</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>Builds an HTML gallery of examples from any set of Python scripts.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://sphinx-docsearch.readthedocs.io/">sphinx-docsearch</a></p></td>
+<td><p>-</p></td>
+<td><p>docs</p></td>
+<td><p>To replaces Sphinx’s built-in search with Algolia DocSearch.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="examples-dependencies">
+<span id="install-examples-dependencies"></span><h4>Examples dependencies<a class="headerlink" href="#examples-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[examples]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.jupyter.org/en/latest/">jupyter</a></p></td>
+<td><p>-</p></td>
+<td><p>examples</p></td>
+<td><p>For example notebooks rendering.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="dev-dependencies">
+<span id="install-dev-dependencies"></span><h4>Dev dependencies<a class="headerlink" href="#dev-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[dev]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pre-commit.com/index.html">pre-commit</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For managing and maintaining multi-language pre-commit hooks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://beta.ruff.rs/docs/">ruff</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For code formatting.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://nox.thea.codes/en/stable/">nox</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For running testing sessions in multiple environments.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pytest-cov.readthedocs.io/en/stable/">pytest-cov</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For calculating test coverage.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a></p></td>
+<td><p>9.0.0</p></td>
+<td><p>dev</p></td>
+<td><p>For running the test suites (includes subtests support).</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://github.com/scientific-python/pytest-doctestplus">pytest-doctestplus</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For running doctests.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://pytest-xdist.readthedocs.io/en/latest/">pytest-xdist</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>For running tests in parallel across distributed workers.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pytest-mock.readthedocs.io/en/latest/index.html">pytest-mock</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>Provides a mocker fixture.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://github.com/treebeardtech/nbmake/">nbmake</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>A <code class="docutils literal notranslate"><span class="pre">pytest</span></code> plugin for executing Jupyter notebooks.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/importlib-metadata/">importlib-metadata</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>Used to read metadata from Python packages.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://hypothesis.readthedocs.io/en/latest/">hypothesis</a></p></td>
+<td><p>-</p></td>
+<td><p>dev</p></td>
+<td><p>Used to perform property based testing.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="cite-dependencies">
+<span id="install-cite-dependencies"></span><h4>Cite dependencies<a class="headerlink" href="#cite-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[cite]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.pybtex.org/">pybtex</a></p></td>
+<td><p>0.24.0</p></td>
+<td><p>cite</p></td>
+<td><p>BibTeX-compatible bibliography processor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="bpx-dependencies">
+<span id="install-bpx-dependencies"></span><h4>bpx dependencies<a class="headerlink" href="#bpx-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[bpx]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://pypi.org/project/bpx/">bpx</a></p></td>
+<td><p>-</p></td>
+<td><p>bpx</p></td>
+<td><p>Battery Parameter eXchange</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="tqdm-dependencies">
+<span id="install-tqdm-dependencies"></span><h4>tqdm dependencies<a class="headerlink" href="#tqdm-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[tqdm]&quot;</span></code></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://tqdm.github.io/">tqdm</a></p></td>
+<td><p>-</p></td>
+<td><p>tqdm</p></td>
+<td><p>For logging loops.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="jax-dependencies">
+<span id="install-jax-dependencies"></span><h4>Jax dependencies<a class="headerlink" href="#jax-dependencies" title="Link to this heading">#</a></h4>
+<p>Installable with <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">&quot;pybamm[jax]&quot;</span></code>, currently supported on Python 3.10-3.14.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Dependency</p></th>
+<th class="head"><p>Minimum Version</p></th>
+<th class="head"><p>pip extra</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://jax.readthedocs.io/en/latest/notebooks/quickstart.html">JAX</a></p></td>
+<td><p>0.4.20</p></td>
+<td><p>jax</p></td>
+<td><p>For the JAX solver</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://pypi.org/project/jaxlib/">jaxlib</a></p></td>
+<td><p>0.4.20</p></td>
+<td><p>jax</p></td>
+<td><p>Support library for JAX</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+<section id="full-installation-guide">
+<h2>Full installation guide<a class="headerlink" href="#full-installation-guide" title="Link to this heading">#</a></h2>
+<p>Installing a specific version? Installing from source? Check the advanced installation pages below</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="gnu-linux-mac.html">GNU/Linux &amp; macOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windows-wsl.html">Install from source (Windows Subsystem for Linux)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-from-source.html">Install from source (GNU Linux and macOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install-from-docker.html">Install from source (Docker)</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">PyBaMM user guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="gnu-linux-mac.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">GNU/Linux &amp; macOS</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-solvers">Optional solvers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies">Dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#required-dependencies">Required dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-dependencies">Optional Dependencies</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-dependencies">Plot dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#docs-dependencies">Docs dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-dependencies">Examples dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dev-dependencies">Dev dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cite-dependencies">Cite dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bpx-dependencies">bpx dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#tqdm-dependencies">tqdm dependencies</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jax-dependencies">Jax dependencies</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-installation-guide">Full installation guide</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/user_guide/installation/index.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-04-29.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

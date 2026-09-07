@@ -1,0 +1,1552 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Base Model &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/models/base_models/base_model';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/api/models/base_models/base_model.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="next" title="Base Battery Model" href="base_battery_model.html" />
+    <link rel="prev" title="Base Models" href="index.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../expression_tree/index.html">Expression Tree</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html">Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html">Base Models</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Base Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="base_battery_model.html">Base Battery Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">Event</a></li>
+<li class="toctree-l3"><a class="reference internal" href="symbol_processor.html">Symbol Processor</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../lithium_ion/index.html">Lithium-ion Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../lead_acid/index.html">鉛酸模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../equivalent_circuit/index.html">Equivalent Circuit Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../submodels/index.html">Submodels</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../parameters/index.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../meshes/index.html">Meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../spatial_methods/index.html">Discretisation and spatial methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../solvers/index.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../experiment/index.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../util.html">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../batch_study.html">Batch Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pybamm_data.html">PyBaMM Data</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">API 文件</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Models</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Base Models</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Base Model</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="base-model">
+<h1>Base Model<a class="headerlink" href="#base-model" title="連結到這個標頭">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BaseModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BaseModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Unnamed</span> <span class="pre">model'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel" title="連結到這個定義">#</a></dt>
+<dd><p>Base model class for other models to extend.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.name">
+<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#pybamm.BaseModel.name" title="連結到這個定義">#</a></dt>
+<dd><p>A string representing the name of the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.submodels">
+<span class="sig-name descname"><span class="pre">submodels</span></span><a class="headerlink" href="#pybamm.BaseModel.submodels" title="連結到這個定義">#</a></dt>
+<dd><p>A dictionary of submodels that the model is composed of.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.use_jacobian">
+<span class="sig-name descname"><span class="pre">use_jacobian</span></span><a class="headerlink" href="#pybamm.BaseModel.use_jacobian" title="連結到這個定義">#</a></dt>
+<dd><p>Whether to use the Jacobian when solving the model (default is True).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.convert_to_format">
+<span class="sig-name descname"><span class="pre">convert_to_format</span></span><a class="headerlink" href="#pybamm.BaseModel.convert_to_format" title="連結到這個定義">#</a></dt>
+<dd><p>Specifies the format to convert the expression trees representing the RHS,
+algebraic equations, Jacobian, and events.
+Options are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>None: retain PyBaMM expression tree structure.</p></li>
+<li><p>&quot;python&quot;: convert to Python code for evaluating <cite>evaluate(t, y)</cite> on expressions.</p></li>
+<li><p>&quot;casadi&quot;: convert to CasADi expression tree for Jacobian calculation.</p></li>
+<li><p>&quot;jax&quot;: convert to JAX expression tree.</p></li>
+</ul>
+</div></blockquote>
+<p>Default is &quot;casadi&quot;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)">str</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.is_discretised">
+<span class="sig-name descname"><span class="pre">is_discretised</span></span><a class="headerlink" href="#pybamm.BaseModel.is_discretised" title="連結到這個定義">#</a></dt>
+<dd><p>Indicates whether the model has been discretised (default is False).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)">bool</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pybamm.BaseModel.y_slices">
+<span class="sig-name descname"><span class="pre">y_slices</span></span><a class="headerlink" href="#pybamm.BaseModel.y_slices" title="連結到這個定義">#</a></dt>
+<dd><p>Slices of the concatenated state vector after discretisation, used to track
+different submodels in the full concatenated solution vector.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None or <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.algebraic">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">algebraic</span></span><a class="headerlink" href="#pybamm.BaseModel.algebraic" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping expressions (variables) to expressions that represent
+the algebraic equations of the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.apply_builtin_overrides">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">apply_builtin_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#pybamm.BaseModel" title="pybamm.models.base_model.BaseModel"><span class="pre">BaseModel</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.apply_builtin_overrides"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.apply_builtin_overrides" title="連結到這個定義">#</a></dt>
+<dd><p>Apply variable and event overrides from a built-in config.</p>
+<p>This is the inverse of
+<a class="reference internal" href="#pybamm.BaseModel.serialise_builtin_overrides" title="pybamm.BaseModel.serialise_builtin_overrides"><code class="xref py py-meth docutils literal notranslate"><span class="pre">serialise_builtin_overrides()</span></code></a>.  It mutates <em>model</em>
+in-place.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>model</strong> (<a class="reference internal" href="#pybamm.BaseModel" title="pybamm.BaseModel"><em>BaseModel</em></a>) -- A freshly-constructed built-in model.</p></li>
+<li><p><strong>data</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- The config dictionary, which may contain
+<code class="docutils literal notranslate"><span class="pre">custom_variables</span></code>, <code class="docutils literal notranslate"><span class="pre">removed_variables</span></code>, and/or
+<code class="docutils literal notranslate"><span class="pre">events</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.boundary_conditions">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">boundary_conditions</span></span><a class="headerlink" href="#pybamm.BaseModel.boundary_conditions" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping expressions (variables) to expressions representing
+the boundary conditions of the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.build_casadi_jacobian">
+<span class="sig-name descname"><span class="pre">build_casadi_jacobian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expression</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.build_casadi_jacobian"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.build_casadi_jacobian" title="連結到這個定義">#</a></dt>
+<dd><p>Build the CasADi jacobian of a converted model <code class="docutils literal notranslate"><span class="pre">expression</span></code> w.r.t. <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<p>The solver calls this for every model in place of a bare <code class="docutils literal notranslate"><span class="pre">casadi.jacobian</span></code>. It
+is plain AD, except for the full rhs+algebraic jacobian of a model that has a
+<em>switching control</em> equation -- a <code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Conditional</span></code> over per-step
+control laws, recorded in <code class="xref py py-attr docutils literal notranslate"><span class="pre">switching_control_variables</span></code> by the unified
+experiment setup. CasADi turns that <code class="docutils literal notranslate"><span class="pre">Conditional</span></code> into a <code class="docutils literal notranslate"><span class="pre">Switch</span></code> and
+differentiates it as a dense, full-bandwidth row inside the combined sweep.</p>
+<p>Such a control residual is written against state variables (the current, and --
+with &quot;voltage as a state&quot; -- the voltage), so its jacobian can only be nonzero in
+those state columns. We differentiate those rows on their own and restrict them to
+exactly those columns, and differentiate the physics block-wise (rhs and algebraic
+separately, which CasADi handles efficiently). The result is identical to plain
+AD -- only sparse on the control rows and cheaper to evaluate.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.build_initial_state_mapper">
+<span class="sig-name descname"><span class="pre">build_initial_state_mapper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">from_model</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.build_initial_state_mapper"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.build_initial_state_mapper" title="連結到這個定義">#</a></dt>
+<dd><p>Build a mapper that maps a final state vector from a discretised model to
+this model's discretised initial conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>from_model</strong> (<a class="reference internal" href="#pybamm.BaseModel" title="pybamm.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BaseModel</span></code></a>) -- The discretised model that provides the final state vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.built">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">built</span></span><a class="headerlink" href="#pybamm.BaseModel.built" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a boolean for the model built status.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.calc_esoh">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">calc_esoh</span></span><a class="headerlink" href="#pybamm.BaseModel.calc_esoh" title="連結到這個定義">#</a></dt>
+<dd><p>Whether to include eSOH variables in the summary variables.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.can_process_symbols">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">can_process_symbols</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#pybamm.BaseModel.can_process_symbols" title="連結到這個定義">#</a></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the model has a symbol processor that is
+capable of processing symbols.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_algebraic_equations">
+<span class="sig-name descname"><span class="pre">check_algebraic_equations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_discretisation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_algebraic_equations"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_algebraic_equations" title="連結到這個定義">#</a></dt>
+<dd><p>Check that the algebraic equations are well-posed. After discretisation,
+there must be at least one StateVector in each algebraic equation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_discretised_or_discretise_inplace_if_0D">
+<span class="sig-name descname"><span class="pre">check_discretised_or_discretise_inplace_if_0D</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_discretised_or_discretise_inplace_if_0D"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_discretised_or_discretise_inplace_if_0D" title="連結到這個定義">#</a></dt>
+<dd><p>Discretise model if it isn't already discretised
+This only works with purely 0D models, as otherwise the mesh and spatial
+method should be specified by the user</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_ics_bcs">
+<span class="sig-name descname"><span class="pre">check_ics_bcs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_ics_bcs"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_ics_bcs" title="連結到這個定義">#</a></dt>
+<dd><p>Check that the initial and boundary conditions are well-posed.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_no_repeated_keys">
+<span class="sig-name descname"><span class="pre">check_no_repeated_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_no_repeated_keys"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_no_repeated_keys" title="連結到這個定義">#</a></dt>
+<dd><p>Check that no equation keys are repeated.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_well_determined">
+<span class="sig-name descname"><span class="pre">check_well_determined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_discretisation</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_well_determined"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_well_determined" title="連結到這個定義">#</a></dt>
+<dd><p>Check that the model is not under- or over-determined.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.check_well_posedness">
+<span class="sig-name descname"><span class="pre">check_well_posedness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">post_discretisation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.check_well_posedness"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.check_well_posedness" title="連結到這個定義">#</a></dt>
+<dd><p>Check that the model is well-posed by executing the following tests:
+- Model is not over- or underdetermined, by comparing keys and equations in rhs
+and algebraic. Overdetermined if more equations than variables, underdetermined
+if more variables than equations.
+- There is an initial condition in self.initial_conditions for each
+variable/equation pair in self.rhs
+- There are appropriate boundary conditions in self.boundary_conditions for each
+variable/equation pair in self.rhs and self.algebraic</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>post_discretisation</strong> (<em>boolean</em>) -- A flag indicating tests to be skipped after discretisation</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.concatenated_algebraic">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">concatenated_algebraic</span></span><a class="headerlink" href="#pybamm.BaseModel.concatenated_algebraic" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the concatenated algebraic equations for the model after discretisation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.concatenated_initial_conditions">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">concatenated_initial_conditions</span></span><a class="headerlink" href="#pybamm.BaseModel.concatenated_initial_conditions" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the initial conditions for all variables after discretization, providing the
+initial values for the state variables.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.concatenated_rhs">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">concatenated_rhs</span></span><a class="headerlink" href="#pybamm.BaseModel.concatenated_rhs" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the concatenated right-hand side (RHS) expressions for the model after discretisation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.coupled_variables">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">coupled_variables</span></span><a class="headerlink" href="#pybamm.BaseModel.coupled_variables" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping strings to expressions representing variables needed by the model but whose equations were set by other models.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_geometry">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_geometry</span></span><a class="headerlink" href="#pybamm.BaseModel.default_geometry" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a  dictionary of the default geometry for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_parameter_values">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_parameter_values</span></span><a class="headerlink" href="#pybamm.BaseModel.default_parameter_values" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the default parameter values for the model (an empty set of parameters by default).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_quick_plot_variables">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_quick_plot_variables</span></span><a class="headerlink" href="#pybamm.BaseModel.default_quick_plot_variables" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the default variables for quick plotting (None by default).</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_solver">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_solver</span></span><a class="headerlink" href="#pybamm.BaseModel.default_solver" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the default solver for the model, based on whether it is an ODE/DAE or algebraic model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_spatial_methods">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_spatial_methods</span></span><a class="headerlink" href="#pybamm.BaseModel.default_spatial_methods" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary of the default spatial methods for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_submesh_types">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_submesh_types</span></span><a class="headerlink" href="#pybamm.BaseModel.default_submesh_types" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary of the default submesh types for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.default_var_pts">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">default_var_pts</span></span><a class="headerlink" href="#pybamm.BaseModel.default_var_pts" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary of the default variable points for the model, which is empty by default.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.deserialise">
+<span class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">deserialise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">properties</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.deserialise"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.deserialise" title="連結到這個定義">#</a></dt>
+<dd><p>Create a model instance from a serialised object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.disable_solution_observability">
+<span class="sig-name descname"><span class="pre">disable_solution_observability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelSolutionObservability</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.disable_solution_observability"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.disable_solution_observability" title="連結到這個定義">#</a></dt>
+<dd><p>Disable observing the solution with <code class="docutils literal notranslate"><span class="pre">solution.observe(symbol)</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reason</strong> (<em>ModelSolutionObservability</em>) -- The reason why the solution is or is not observable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.disable_symbol_processing">
+<span class="sig-name descname"><span class="pre">disable_symbol_processing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reason</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ModelSolutionObservability</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.disable_symbol_processing"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.disable_symbol_processing" title="連結到這個定義">#</a></dt>
+<dd><p>Disable custom symbol processing by the model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>reason</strong> (<em>ModelSolutionObservability</em><em>, </em><em>optional</em>) -- The reason why symbol processing is being disabled.
+Defaults to ModelSolutionObservability.DISABLED.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.events">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">events</span></span><a class="headerlink" href="#pybamm.BaseModel.events" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping expressions (variables) to expressions that represent
+the initial conditions for the state variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.export_casadi_objects">
+<span class="sig-name descname"><span class="pre">export_casadi_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_parameter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.export_casadi_objects"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.export_casadi_objects" title="連結到這個定義">#</a></dt>
+<dd><p>Export the constituent parts of the model (rhs, algebraic, initial conditions,
+etc) as casadi objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) -- Variables to be exported alongside the model structure</p></li>
+<li><p><strong>input_parameter_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>, </em><em>optional</em>) -- Order in which the input parameters should be stacked.
+If input_parameter_order=None and len(self.input_parameters) &gt; 1, a
+ValueError is raised (this helps to avoid accidentally using the wrong
+order)</p></li>
+</ul>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>casadi_dict</strong> -- Dictionary of {str: casadi object} pairs representing the model in casadi
+format</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.fixed_input_parameters">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">fixed_input_parameters</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#set" title="(in Python v3.14)"><span class="pre">set</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a><span class="p"><span class="pre">]</span></span></span><a class="headerlink" href="#pybamm.BaseModel.fixed_input_parameters" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a set of all fixed input parameter symbols used in the parameter values.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.from_config">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybamm.BaseModel" title="pybamm.models.base_model.BaseModel"><span class="pre">BaseModel</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.from_config"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.from_config" title="連結到這個定義">#</a></dt>
+<dd><p>Load a model from a config dict, raw model dict, or file path.</p>
+<p>Accepts:</p>
+<ol class="arabic simple">
+<li><p>Built-in config: <code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;SPM&quot;,</span> <span class="pre">&quot;module&quot;:</span> <span class="pre">&quot;lithium_ion&quot;}</span></code></p></li>
+<li><p>Custom config: <code class="docutils literal notranslate"><span class="pre">{&quot;type&quot;:</span> <span class="pre">&quot;custom&quot;,</span> <span class="pre">&quot;model&quot;:</span> <span class="pre">...}</span></code></p></li>
+<li><p>Raw model dict from <a class="reference internal" href="#pybamm.BaseModel.to_json" title="pybamm.BaseModel.to_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json()</span></code></a></p></li>
+<li><p>A path to a JSON file in any of the above formats</p></li>
+</ol>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- Config or model dictionary, or path to a JSON file.</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>The reconstructed symbolic model.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.BaseModel" title="pybamm.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BaseModel</span></code></a> or subclass</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.from_json">
+<span class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#pybamm.BaseModel" title="pybamm.models.base_model.BaseModel"><span class="pre">BaseModel</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.from_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.from_json" title="連結到這個定義">#</a></dt>
+<dd><p>Load a custom (symbolic) model from a JSON file or dictionary.</p>
+<p>Use this for models saved with <a class="reference internal" href="#pybamm.BaseModel.to_json" title="pybamm.BaseModel.to_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json()</span></code></a>. For discretised models
+saved with <a class="reference internal" href="#pybamm.BaseModel.save_model" title="pybamm.BaseModel.save_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_model()</span></code></a>, use <code class="xref py py-func docutils literal notranslate"><span class="pre">pybamm.load_model()</span></code> instead.
+For the wrapped config format (from <a class="reference internal" href="#pybamm.BaseModel.to_config" title="pybamm.BaseModel.to_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_config()</span></code></a>), use
+<a class="reference internal" href="#pybamm.BaseModel.from_config" title="pybamm.BaseModel.from_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">from_config()</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- Path to a JSON file containing the saved model, or a dictionary
+(e.g. from <a class="reference internal" href="#pybamm.BaseModel.to_json" title="pybamm.BaseModel.to_json"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_json()</span></code></a>).</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>The reconstructed symbolic model.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.BaseModel" title="pybamm.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BaseModel</span></code></a> or subclass</p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">loaded</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="s2">&quot;model.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variable_names</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_parameter_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cg_options</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.generate"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.generate" title="連結到這個定義">#</a></dt>
+<dd><p>Generate the model in C, using CasADi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Name of the file to which to save the code</p></li>
+<li><p><strong>variable_names</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) -- Variables to be exported alongside the model structure</p></li>
+<li><p><strong>input_parameter_order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em>, </em><em>optional</em>) -- Order in which the input parameters should be stacked.
+If input_parameter_order=None and len(self.input_parameters) &gt; 1, a
+ValueError is raised (this helps to avoid accidentally using the wrong
+order)</p></li>
+<li><p><strong>cg_options</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- Options to pass to the code generator.
+See <a class="reference external" href="https://web.casadi.org/docs/#generating-c-code">https://web.casadi.org/docs/#generating-c-code</a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.geometry">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">geometry</span></span><a class="headerlink" href="#pybamm.BaseModel.geometry" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the geometry of the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.get_parameter_info">
+<span class="sig-name descname"><span class="pre">get_parameter_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_submodel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.get_parameter_info"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.get_parameter_info" title="連結到這個定義">#</a></dt>
+<dd><p>Extracts the parameter information and returns it as a dictionary.
+To get a list of all parameter-like objects without extra information,
+use <code class="xref py py-attr docutils literal notranslate"><span class="pre">model.parameters</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>by_submodel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to return the parameter info sub-model wise or not (default False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.get_processed_variable">
+<span class="sig-name descname"><span class="pre">get_processed_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.get_processed_variable"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.get_processed_variable" title="連結到這個定義">#</a></dt>
+<dd><p>Get a processed variable by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The name of the variable to get.</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed variable.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.Symbol">pybamm.Symbol</a></p>
+</dd>
+<dt class="field-even">引發<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> -- If the variable is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.get_processed_variable_or_event">
+<span class="sig-name descname"><span class="pre">get_processed_variable_or_event</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.get_processed_variable_or_event"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.get_processed_variable_or_event" title="連結到這個定義">#</a></dt>
+<dd><p>Get a processed variable or event by name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The name of the variable or event to get.</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>The processed variable or event expression.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.Symbol">pybamm.Symbol</a></p>
+</dd>
+<dt class="field-even">引發<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/exceptions.html#KeyError" title="(in Python v3.14)"><strong>KeyError</strong></a> -- If the variable or event is not found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.get_processed_variables_dict">
+<span class="sig-name descname"><span class="pre">get_processed_variables_dict</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.get_processed_variables_dict"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.get_processed_variables_dict" title="連結到這個定義">#</a></dt>
+<dd><p>Get a dictionary of processed variables.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.info">
+<span class="sig-name descname"><span class="pre">info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.info"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.info" title="連結到這個定義">#</a></dt>
+<dd><p>Provides helpful summary information for a symbol.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.initial_conditions">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">initial_conditions</span></span><a class="headerlink" href="#pybamm.BaseModel.initial_conditions" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping expressions (variables) to expressions that represent
+the initial conditions for the state variables.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.input_parameters">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">input_parameters</span></span><a class="headerlink" href="#pybamm.BaseModel.input_parameters" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a list of all input parameter symbols used in the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.is_processed">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_processed</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#pybamm.BaseModel.is_processed" title="連結到這個定義">#</a></dt>
+<dd><p>Returns True if the model is processed by <cite>Discretisation.process_model</cite> or <cite>ParameterValues.process_model</cite>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.is_standard_form_dae">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">is_standard_form_dae</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#pybamm.BaseModel.is_standard_form_dae" title="連結到這個定義">#</a></dt>
+<dd><p>Check if the model is a DAE in standard form with a mass matrix that is all
+zeros except for along the diagonal, which is either ones or zeros.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.jacobian">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">jacobian</span></span><a class="headerlink" href="#pybamm.BaseModel.jacobian" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the Jacobian matrix for the model, computed automatically if <cite>use_jacobian</cite> is True.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.jacobian_algebraic">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">jacobian_algebraic</span></span><a class="headerlink" href="#pybamm.BaseModel.jacobian_algebraic" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the Jacobian matrix for the algebraic part of the model, computed automatically
+during solver setup if <cite>use_jacobian</cite> is True.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.jacobian_rhs">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">jacobian_rhs</span></span><a class="headerlink" href="#pybamm.BaseModel.jacobian_rhs" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the Jacobian matrix for the right-hand side (RHS) part of the model, computed
+if <cite>use_jacobian</cite> is True.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.latexify">
+<span class="sig-name descname"><span class="pre">latexify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">newline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_variables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.latexify"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.latexify" title="連結到這個定義">#</a></dt>
+<dd><p>Converts all model equations in latex.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> (</em><em>optional</em><em>)</em>) -- Accepted file formats - any image format, pdf and tex
+Default is None, When None returns all model equations in latex
+If not None, returns all model equations in given file format.</p></li>
+<li><p><strong>newline</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em> (</em><em>optional</em><em>)</em>) -- Default is True, If True, returns every equation in a new line.
+If False, returns the list of all the equations.</p></li>
+<li><p><strong>model</strong> (<em>Load</em>)</p></li>
+<li><p><strong>pybamm.lithium_ion.SPM</strong><strong>(</strong><strong>)</strong> (<em>&gt;&gt;&gt; model =</em>)</p></li>
+<li><p><strong>png</strong> (<em>This will returns all model equations in</em>)</p></li>
+<li><p><strong>doctest</strong> (<em>&gt;&gt;&gt; model.latexify</em><em>(</em><em>newline=False</em><em>) </em><em>#</em>)</p></li>
+<li><p><strong>latex</strong> (<em>This will return all the model equations in</em>)</p></li>
+<li><p><strong>doctest</strong></p></li>
+<li><p><strong>equations</strong> (<em>This will return first five model</em>)</p></li>
+<li><p><strong>doctest</strong></p></li>
+<li><p><strong>equations</strong></p></li>
+<li><p><strong>model.latexify</strong><strong>(</strong><strong>newline=False</strong><strong>)</strong><strong>[</strong><strong>1</strong> (<em>&gt;&gt;&gt;</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.mass_matrix">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">mass_matrix</span></span><a class="headerlink" href="#pybamm.BaseModel.mass_matrix" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the mass matrix for the system of differential equations after discretisation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.new_copy">
+<span class="sig-name descname"><span class="pre">new_copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.new_copy"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.new_copy" title="連結到這個定義">#</a></dt>
+<dd><p>Creates a copy of the model, explicitly copying all the mutable attributes
+to avoid issues with shared objects.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.options">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">options</span></span><a class="headerlink" href="#pybamm.BaseModel.options" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the model options dictionary that allows customization of the model's behavior.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.param">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#pybamm.BaseModel.param" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary to store parameter values for the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.parameters">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">parameters</span></span><a class="headerlink" href="#pybamm.BaseModel.parameters" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a  list of all parameter symbols used in the model.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.print_parameter_info">
+<span class="sig-name descname"><span class="pre">print_parameter_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">by_submodel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.print_parameter_info"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.print_parameter_info" title="連結到這個定義">#</a></dt>
+<dd><p>Print parameter information in a formatted table from a dictionary of parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>by_submodel</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to print the parameter info sub-model wise or not (default False)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.process_and_register_variable">
+<span class="sig-name descname"><span class="pre">process_and_register_variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.process_and_register_variable"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.process_and_register_variable" title="連結到這個定義">#</a></dt>
+<dd><p>Process a variable and store it in _variables_processed.</p>
+<p>This method does NOT modify self.variables - the original variable
+expression is preserved. The processed variable is stored separately
+in _variables_processed.</p>
+<p>CoupledVariables in the symbol are resolved by recursively getting
+the processed version of the referenced variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The name of the variable.</p></li>
+<li><p><strong>symbol</strong> (<a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.Symbol"><em>pybamm.Symbol</em></a>) -- The unprocessed variable symbol.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.process_parameters_and_discretise">
+<span class="sig-name descname"><span class="pre">process_parameters_and_discretise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameter_values</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">disc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.process_parameters_and_discretise"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.process_parameters_and_discretise" title="連結到這個定義">#</a></dt>
+<dd><p>Process parameters and discretise a symbol.</p>
+<p>This method is deprecated. Please process the model first with
+<a class="reference internal" href="../../parameters/parameter_values.html#pybamm.ParameterValues.process_model" title="pybamm.ParameterValues.process_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">ParameterValues.process_model()</span></code></a> and <a class="reference internal" href="../../spatial_methods/discretisation.html#pybamm.Discretisation.process_model" title="pybamm.Discretisation.process_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Discretisation.process_model()</span></code></a>,
+then call <code class="xref py py-meth docutils literal notranslate"><span class="pre">model.process_symbol(symbol)()</span></code>.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.required_input_parameters">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">required_input_parameters</span></span><a class="headerlink" href="#pybamm.BaseModel.required_input_parameters" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a list of all input parameter symbols used in the model.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.rhs">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">rhs</span></span><a class="headerlink" href="#pybamm.BaseModel.rhs" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping expressions (variables) to expressions that represent
+the right-hand side (RHS) of the model's differential equations.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.save_model">
+<span class="sig-name descname"><span class="pre">save_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variables</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.save_model"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.save_model" title="連結到這個定義">#</a></dt>
+<dd><p>Write out a discretised model to a JSON file</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>)</p></li>
+<li><p><strong>provided</strong> (<em>The desired name</em><em> of </em><em>the JSON file. If no name is</em>)</p></li>
+<li><p><strong>created</strong> (<em>one will be</em>)</p></li>
+<li><p><strong>name</strong> (<em>based on the model</em>)</p></li>
+<li><p><strong>datetime.</strong> (<em>and the current</em>)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.serialise_builtin_overrides">
+<span class="sig-name descname"><span class="pre">serialise_builtin_overrides</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.serialise_builtin_overrides"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.serialise_builtin_overrides" title="連結到這個定義">#</a></dt>
+<dd><p>Detect and serialise user modifications to a built-in model.</p>
+<p>Compares the current model's <code class="docutils literal notranslate"><span class="pre">variables</span></code> keys and <code class="docutils literal notranslate"><span class="pre">events</span></code>
+against a freshly-constructed reference model (same class and
+options).  Any differences are written into <em>model_config</em> using
+the following optional keys:</p>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">custom_variables</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">dict[str,</span> <span class="pre">json]</span></code> – variables the user <em>added</em> (keys not
+present in the reference model).  Each value is the symbolic
+expression serialised via
+<code class="xref py py-func docutils literal notranslate"><span class="pre">convert_symbol_to_json()</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">removed_variables</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">list[str]</span></code> – variable names that exist in the reference
+model but have been deleted by the user.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">events</span></code></dt><dd><p><code class="docutils literal notranslate"><span class="pre">list[dict]</span></code> – full serialised events list, included
+<strong>only</strong> when the events differ from the reference model
+(by count or by name set).</p>
+</dd>
+</dl>
+<p>If the model is unmodified, no extra keys are added and the
+config stays identical to the previous compact format.</p>
+<div class="admonition note">
+<p class="admonition-title">備註</p>
+<p>Only added/removed variable <em>keys</em> are tracked.  Overwriting
+an existing variable's expression with a new one is <strong>not</strong>
+detected in this version.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>model_config</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- The compact config dict (mutated in-place).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.set_initial_conditions_from">
+<span class="sig-name descname"><span class="pre">set_initial_conditions_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">solution</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inplace</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">return_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'model'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mesh</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.set_initial_conditions_from"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.set_initial_conditions_from" title="連結到這個定義">#</a></dt>
+<dd><p>Update initial conditions with the final states from a Solution object or from
+a dictionary.
+This assumes that, for each variable in self.initial_conditions, there is a
+corresponding variable in the solution with the same name and size.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>solution</strong> (<a class="reference internal" href="../../solvers/solution.html#pybamm.Solution" title="pybamm.Solution"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Solution</span></code></a>, or dict) -- The solution to use to initialize the model</p></li>
+<li><p><strong>inputs</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- The dictionary of model input parameters.</p></li>
+<li><p><strong>inplace</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to modify the model inplace or create a new model (default True)</p></li>
+<li><p><strong>return_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- Whether to return the model (default) or initial conditions (&quot;ics&quot;)</p></li>
+<li><p><strong>mesh</strong> (<a class="reference internal" href="../../meshes/meshes.html#pybamm.Mesh" title="pybamm.Mesh"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Mesh</span></code></a>, optional) -- The mesh to use to initialize the model</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.solution_observable">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">solution_observable</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><a class="headerlink" href="#pybamm.BaseModel.solution_observable" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the observability state for <code class="docutils literal notranslate"><span class="pre">solution.observe(symbol)</span></code>.</p>
+<p>Returns <code class="docutils literal notranslate"><span class="pre">ModelSolutionObservability.ENABLED</span></code> if observable, otherwise
+returns a reason why the solution is not observable.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.solution_observable_status">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">solution_observable_status</span></span><span class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">ModelSolutionObservability</span></span><a class="headerlink" href="#pybamm.BaseModel.solution_observable_status" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the status of the solution observability as a string.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.to_config">
+<span class="sig-name descname"><span class="pre">to_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.to_config"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.to_config" title="連結到這個定義">#</a></dt>
+<dd><p>Convert the model to a config dictionary.</p>
+<p>Built-in models (those found in <code class="docutils literal notranslate"><span class="pre">pybamm.lithium_ion</span></code>,
+<code class="docutils literal notranslate"><span class="pre">pybamm.lead_acid</span></code>, etc.) produce a compact format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;SPM&quot;</span><span class="p">,</span> <span class="s2">&quot;module&quot;</span><span class="p">:</span> <span class="s2">&quot;lithium_ion&quot;</span><span class="p">,</span> <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span><span class="o">...</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Custom or user-defined models produce the full serialised format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;custom&quot;</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> <span class="o">...</span><span class="p">}</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a><em>, </em><em>optional</em>) -- If provided, save the config dict to this file. Must end with
+<code class="docutils literal notranslate"><span class="pre">.json</span></code>.</p></li>
+<li><p><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- If True, the inner model data is compressed (zlib + base64).
+Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>Config dictionary.</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><span class="pre">Path</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">compress</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a></span></span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Convert the model to a JSON-serialisable dictionary (raw format).</p>
+<p>Optionally saves to a file. Works for custom (non-discretised) models
+that are subclasses of BaseModel. Use <a class="reference internal" href="#pybamm.BaseModel.save_model" title="pybamm.BaseModel.save_model"><code class="xref py py-meth docutils literal notranslate"><span class="pre">save_model()</span></code></a> for discretised
+models. For a wrapped config format (<code class="docutils literal notranslate"><span class="pre">type</span></code> + <code class="docutils literal notranslate"><span class="pre">model</span></code>), use
+<a class="reference internal" href="#pybamm.BaseModel.to_config" title="pybamm.BaseModel.to_config"><code class="xref py py-meth docutils literal notranslate"><span class="pre">to_config()</span></code></a> instead.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/pathlib.html#pathlib.Path" title="(in Python v3.14)"><em>pathlib.Path</em></a><em>, </em><em>optional</em>) -- The filename to save the JSON file to. If not provided, the
+dictionary is not saved. Must end with <code class="docutils literal notranslate"><span class="pre">.json</span></code> if provided.</p></li>
+<li><p><strong>compress</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- If True, the model data will be compressed (zlib + base64) in the
+returned dict and in the file if filename is set. Default is False.</p></li>
+</ul>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>The JSON-serialisable dictionary (optionally compressed).</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)">dict</a></p>
+</dd>
+</dl>
+<p class="rubric">範例</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">param_dict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">to_json</span><span class="p">()</span>  <span class="c1"># Get dictionary only</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="nb">isinstance</span><span class="p">(</span><span class="n">param_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;model.json&quot;</span><span class="p">)</span>  <span class="c1"># Save and return dict</span>
+<span class="go">{&#39;schema_version&#39;: &#39;1.1&#39;, ...}</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">submodels</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.update"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.update" title="連結到這個定義">#</a></dt>
+<dd><p>Update model to add new physics from submodels</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>submodel</strong> (iterable of <a class="reference internal" href="#pybamm.BaseModel" title="pybamm.BaseModel"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BaseModel</span></code></a>) -- The submodels from which to create new model</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BaseModel.update_processed_variables">
+<span class="sig-name descname"><span class="pre">update_processed_variables</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">processed_vars</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference internal" href="../../expression_tree/symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../../_modules/pybamm/models/base_model.html#BaseModel.update_processed_variables"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BaseModel.update_processed_variables" title="連結到這個定義">#</a></dt>
+<dd><p>Update the _variables_processed dict with new processed variables.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>processed_vars</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a>) -- Either a dictionary of {name: processed_symbol} pairs, or a list of
+names (for backward compatibility, where the processed symbol is
+taken from self.variables).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.variables">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">variables</span></span><a class="headerlink" href="#pybamm.BaseModel.variables" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary mapping strings to expressions representing the model's useful variables.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="pybamm.BaseModel.variables_and_events">
+<span class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></span><span class="sig-name descname"><span class="pre">variables_and_events</span></span><a class="headerlink" href="#pybamm.BaseModel.variables_and_events" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a dictionary containing both models variables and events.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Base Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="base_battery_model.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Base Battery Model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel"><code class="docutils literal notranslate"><span class="pre">BaseModel</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.name"><code class="docutils literal notranslate"><span class="pre">BaseModel.name</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.submodels"><code class="docutils literal notranslate"><span class="pre">BaseModel.submodels</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.use_jacobian"><code class="docutils literal notranslate"><span class="pre">BaseModel.use_jacobian</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.convert_to_format"><code class="docutils literal notranslate"><span class="pre">BaseModel.convert_to_format</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.is_discretised"><code class="docutils literal notranslate"><span class="pre">BaseModel.is_discretised</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.y_slices"><code class="docutils literal notranslate"><span class="pre">BaseModel.y_slices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.algebraic"><code class="docutils literal notranslate"><span class="pre">BaseModel.algebraic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.apply_builtin_overrides"><code class="docutils literal notranslate"><span class="pre">BaseModel.apply_builtin_overrides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.boundary_conditions"><code class="docutils literal notranslate"><span class="pre">BaseModel.boundary_conditions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.build_casadi_jacobian"><code class="docutils literal notranslate"><span class="pre">BaseModel.build_casadi_jacobian()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.build_initial_state_mapper"><code class="docutils literal notranslate"><span class="pre">BaseModel.build_initial_state_mapper()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.built"><code class="docutils literal notranslate"><span class="pre">BaseModel.built</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.calc_esoh"><code class="docutils literal notranslate"><span class="pre">BaseModel.calc_esoh</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.can_process_symbols"><code class="docutils literal notranslate"><span class="pre">BaseModel.can_process_symbols</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_algebraic_equations"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_algebraic_equations()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_discretised_or_discretise_inplace_if_0D"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_discretised_or_discretise_inplace_if_0D()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_ics_bcs"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_ics_bcs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_no_repeated_keys"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_no_repeated_keys()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_well_determined"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_well_determined()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.check_well_posedness"><code class="docutils literal notranslate"><span class="pre">BaseModel.check_well_posedness()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.concatenated_algebraic"><code class="docutils literal notranslate"><span class="pre">BaseModel.concatenated_algebraic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.concatenated_initial_conditions"><code class="docutils literal notranslate"><span class="pre">BaseModel.concatenated_initial_conditions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.concatenated_rhs"><code class="docutils literal notranslate"><span class="pre">BaseModel.concatenated_rhs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.coupled_variables"><code class="docutils literal notranslate"><span class="pre">BaseModel.coupled_variables</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_geometry"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_geometry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_parameter_values"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_parameter_values</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_quick_plot_variables"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_quick_plot_variables</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_solver"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_solver</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_spatial_methods"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_spatial_methods</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_submesh_types"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_submesh_types</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.default_var_pts"><code class="docutils literal notranslate"><span class="pre">BaseModel.default_var_pts</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.deserialise"><code class="docutils literal notranslate"><span class="pre">BaseModel.deserialise()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.disable_solution_observability"><code class="docutils literal notranslate"><span class="pre">BaseModel.disable_solution_observability()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.disable_symbol_processing"><code class="docutils literal notranslate"><span class="pre">BaseModel.disable_symbol_processing()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.events"><code class="docutils literal notranslate"><span class="pre">BaseModel.events</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.export_casadi_objects"><code class="docutils literal notranslate"><span class="pre">BaseModel.export_casadi_objects()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.fixed_input_parameters"><code class="docutils literal notranslate"><span class="pre">BaseModel.fixed_input_parameters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.from_config"><code class="docutils literal notranslate"><span class="pre">BaseModel.from_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.from_json"><code class="docutils literal notranslate"><span class="pre">BaseModel.from_json()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.generate"><code class="docutils literal notranslate"><span class="pre">BaseModel.generate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.geometry"><code class="docutils literal notranslate"><span class="pre">BaseModel.geometry</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.get_parameter_info"><code class="docutils literal notranslate"><span class="pre">BaseModel.get_parameter_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.get_processed_variable"><code class="docutils literal notranslate"><span class="pre">BaseModel.get_processed_variable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.get_processed_variable_or_event"><code class="docutils literal notranslate"><span class="pre">BaseModel.get_processed_variable_or_event()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.get_processed_variables_dict"><code class="docutils literal notranslate"><span class="pre">BaseModel.get_processed_variables_dict()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.info"><code class="docutils literal notranslate"><span class="pre">BaseModel.info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.initial_conditions"><code class="docutils literal notranslate"><span class="pre">BaseModel.initial_conditions</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.input_parameters"><code class="docutils literal notranslate"><span class="pre">BaseModel.input_parameters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.is_processed"><code class="docutils literal notranslate"><span class="pre">BaseModel.is_processed</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.is_standard_form_dae"><code class="docutils literal notranslate"><span class="pre">BaseModel.is_standard_form_dae</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.jacobian"><code class="docutils literal notranslate"><span class="pre">BaseModel.jacobian</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.jacobian_algebraic"><code class="docutils literal notranslate"><span class="pre">BaseModel.jacobian_algebraic</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.jacobian_rhs"><code class="docutils literal notranslate"><span class="pre">BaseModel.jacobian_rhs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.latexify"><code class="docutils literal notranslate"><span class="pre">BaseModel.latexify()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.mass_matrix"><code class="docutils literal notranslate"><span class="pre">BaseModel.mass_matrix</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.new_copy"><code class="docutils literal notranslate"><span class="pre">BaseModel.new_copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.options"><code class="docutils literal notranslate"><span class="pre">BaseModel.options</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.param"><code class="docutils literal notranslate"><span class="pre">BaseModel.param</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.parameters"><code class="docutils literal notranslate"><span class="pre">BaseModel.parameters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.print_parameter_info"><code class="docutils literal notranslate"><span class="pre">BaseModel.print_parameter_info()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.process_and_register_variable"><code class="docutils literal notranslate"><span class="pre">BaseModel.process_and_register_variable()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.process_parameters_and_discretise"><code class="docutils literal notranslate"><span class="pre">BaseModel.process_parameters_and_discretise()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.required_input_parameters"><code class="docutils literal notranslate"><span class="pre">BaseModel.required_input_parameters</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.rhs"><code class="docutils literal notranslate"><span class="pre">BaseModel.rhs</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.save_model"><code class="docutils literal notranslate"><span class="pre">BaseModel.save_model()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.serialise_builtin_overrides"><code class="docutils literal notranslate"><span class="pre">BaseModel.serialise_builtin_overrides()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.set_initial_conditions_from"><code class="docutils literal notranslate"><span class="pre">BaseModel.set_initial_conditions_from()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.solution_observable"><code class="docutils literal notranslate"><span class="pre">BaseModel.solution_observable</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.solution_observable_status"><code class="docutils literal notranslate"><span class="pre">BaseModel.solution_observable_status</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.to_config"><code class="docutils literal notranslate"><span class="pre">BaseModel.to_config()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.to_json"><code class="docutils literal notranslate"><span class="pre">BaseModel.to_json()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.update"><code class="docutils literal notranslate"><span class="pre">BaseModel.update()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.update_processed_variables"><code class="docutils literal notranslate"><span class="pre">BaseModel.update_processed_variables()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.variables"><code class="docutils literal notranslate"><span class="pre">BaseModel.variables</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BaseModel.variables_and_events"><code class="docutils literal notranslate"><span class="pre">BaseModel.variables_and_events</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/api/models/base_models/base_model.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-06-11。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

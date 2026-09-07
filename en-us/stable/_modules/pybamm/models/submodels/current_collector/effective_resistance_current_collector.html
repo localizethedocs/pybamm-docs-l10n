@@ -1,0 +1,902 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.models.submodels.current_collector.effective_resistance_current_collector &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/models/submodels/current_collector/effective_resistance_current_collector';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/models/submodels/current_collector/effective_resistance_current_collector.html" />
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.models.submodels.current_collector.effective_resistance_current_collector</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.models.submodels.current_collector.effective_resistance_current_collector</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Classes for calcuting the effective resistance of current collectors in a pouch cell</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseEffectiveResistance</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;Marquis2019&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">geometry</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">geometry</span><span class="p">[</span><span class="s2">&quot;current collector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">L_z</span><span class="p">},</span>
+                <span class="s2">&quot;tabs&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;z_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">centre_z_tab</span><span class="p">},</span>
+                    <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;z_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">centre_z_tab</span><span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">geometry</span><span class="p">[</span><span class="s2">&quot;current collector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">L_y</span><span class="p">},</span>
+                <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">L_z</span><span class="p">},</span>
+                <span class="s2">&quot;tabs&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;y_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">centre_y_tab</span><span class="p">,</span>
+                        <span class="s2">&quot;z_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">centre_z_tab</span><span class="p">,</span>
+                        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L_tab</span><span class="p">,</span>
+                    <span class="p">},</span>
+                    <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;y_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">centre_y_tab</span><span class="p">,</span>
+                        <span class="s2">&quot;z_centre&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">centre_z_tab</span><span class="p">,</span>
+                        <span class="s2">&quot;width&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">L_tab</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_var_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span> <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="mi">32</span><span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_submesh_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;current collector&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Uniform1DSubMesh</span><span class="p">}</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;current collector&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">MeshGenerator</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">ScikitUniform2DSubMesh</span><span class="p">)</span>
+            <span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_spatial_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;current collector&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">()}</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;current collector&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ScikitFiniteElement</span><span class="p">()}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_options</span>
+
+    <span class="nd">@options</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_options</span><span class="p">):</span>
+        <span class="n">default_options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+        <span class="n">extra_options</span> <span class="o">=</span> <span class="n">extra_options</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="n">options</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FuzzyDict</span><span class="p">(</span><span class="n">default_options</span><span class="p">)</span>
+        <span class="c1"># any extra options overwrite the default options</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">extra_options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">default_options</span><span class="p">:</span>
+                <span class="n">options</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Option &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; not recognised. Best matches are </span><span class="si">{</span><span class="n">options</span><span class="o">.</span><span class="n">get_best_matches</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
+                <span class="s2">&quot;Dimension of current collectors must be 1 or 2, not </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_options</span> <span class="o">=</span> <span class="n">options</span>
+
+
+<div class="viewcode-block" id="EffectiveResistance">
+<a class="viewcode-back" href="../../../../../source/api/models/submodels/current_collector/effective_resistance_current_collector.html#pybamm.current_collector.EffectiveResistance">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EffectiveResistance</span><span class="p">(</span><span class="n">BaseEffectiveResistance</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A model which calculates the effective Ohmic resistance of the current</span>
+<span class="sd">    collectors in the limit of large electrical conductivity. For details see</span>
+<span class="sd">    :footcite:t:`Timms2021`.</span>
+<span class="sd">    Note that this formulation assumes uniform *potential* across the tabs. See</span>
+<span class="sd">    :class:`pybamm.AlternativeEffectiveResistance2D` for the formulation that</span>
+<span class="sd">    assumes a uniform *current density* at the tabs (in 1D the two formulations</span>
+<span class="sd">    are equivalent).</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    options: dict</span>
+<span class="sd">        A dictionary of options to be passed to the model. The options that can</span>
+<span class="sd">        be set are listed below.</span>
+
+<span class="sd">            * &quot;dimensionality&quot; : int, optional</span>
+<span class="sd">                Sets the dimension of the current collector problem. Can be 1</span>
+<span class="sd">                (default) or 2.</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        The name of the model.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Effective resistance in current collector model&quot;</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Timms2021&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">LithiumIonParameters</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_fundamental_variables</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_algebraic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_initial_conditions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Timms2021&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_fundamental_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Get necessary parameters</span>
+        <span class="n">L_cn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L_cc</span>
+        <span class="n">L_cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">L_cc</span>
+        <span class="n">sigma_cn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">sigma_cc</span>
+        <span class="n">sigma_cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">sigma_cc</span>
+
+        <span class="c1"># Set model variables: Note: we solve using a scaled version that is</span>
+        <span class="c1"># better conditioned</span>
+        <span class="n">R_cn_scaled</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="s2">&quot;Scaled negative current collector resistance [Ohm]&quot;</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;current collector&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">R_cp_scaled</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="s2">&quot;Scaled positive current collector resistance [Ohm]&quot;</span><span class="p">,</span>
+            <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;current collector&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">R_cn</span> <span class="o">=</span> <span class="n">R_cn_scaled</span> <span class="o">/</span> <span class="p">(</span><span class="n">L_cn</span> <span class="o">*</span> <span class="n">sigma_cn</span><span class="p">)</span>
+        <span class="n">R_cp</span> <span class="o">=</span> <span class="n">R_cp_scaled</span> <span class="o">/</span> <span class="p">(</span><span class="n">L_cp</span> <span class="o">*</span> <span class="n">sigma_cp</span><span class="p">)</span>
+
+        <span class="c1"># Define effective current collector resistance</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">R_cc_n</span> <span class="o">=</span> <span class="o">-</span><span class="n">pybamm</span><span class="o">.</span><span class="n">z_average</span><span class="p">(</span><span class="n">R_cn</span><span class="p">)</span>
+            <span class="n">R_cc_p</span> <span class="o">=</span> <span class="o">-</span><span class="n">pybamm</span><span class="o">.</span><span class="n">z_average</span><span class="p">(</span><span class="n">R_cp</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">R_cc_n</span> <span class="o">=</span> <span class="o">-</span><span class="n">pybamm</span><span class="o">.</span><span class="n">yz_average</span><span class="p">(</span><span class="n">R_cn</span><span class="p">)</span>
+            <span class="n">R_cc_p</span> <span class="o">=</span> <span class="o">-</span><span class="n">pybamm</span><span class="o">.</span><span class="n">yz_average</span><span class="p">(</span><span class="n">R_cp</span><span class="p">)</span>
+        <span class="n">R_cc</span> <span class="o">=</span> <span class="n">R_cc_n</span> <span class="o">+</span> <span class="n">R_cc_p</span>
+
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Scaled negative current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cn_scaled</span><span class="p">,</span>
+            <span class="s2">&quot;Negative current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cn</span><span class="p">,</span>
+            <span class="s2">&quot;Scaled positive current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cp_scaled</span><span class="p">,</span>
+            <span class="s2">&quot;Positive current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cp</span><span class="p">,</span>
+            <span class="s2">&quot;Effective current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc</span><span class="p">,</span>
+            <span class="s2">&quot;Effective negative current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc_n</span><span class="p">,</span>
+            <span class="s2">&quot;Effective positive current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc_p</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Add spatial variables</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">standard_spatial_vars</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;z [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">z</span><span class="p">})</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;y [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;z [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">z</span><span class="p">})</span>
+
+        <span class="k">return</span> <span class="n">variables</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_algebraic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+        <span class="n">R_cn_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled negative current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="n">R_cp_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled positive current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">R_cn_scaled</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">R_cn_scaled</span><span class="p">)</span> <span class="o">-</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R_cn_scaled</span><span class="p">),</span>
+            <span class="n">R_cp_scaled</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">R_cp_scaled</span><span class="p">)</span> <span class="o">-</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">R_cp_scaled</span><span class="p">),</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+        <span class="n">R_cn_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled negative current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="n">R_cp_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled positive current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundary_conditions</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">R_cn_scaled</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;negative tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;no tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="n">R_cp_scaled</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;positive tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;no tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">boundary_conditions</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">R_cn_scaled</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;negative tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;positive tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+                <span class="p">},</span>
+                <span class="n">R_cp_scaled</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;positive tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span>
+                    <span class="s2">&quot;negative tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">variables</span><span class="p">):</span>
+        <span class="n">R_cn_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled negative current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="n">R_cp_scaled</span> <span class="o">=</span> <span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Scaled positive current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">R_cn_scaled</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+            <span class="n">R_cp_scaled</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+<div class="viewcode-block" id="EffectiveResistance.post_process">
+<a class="viewcode-back" href="../../../../../source/api/models/submodels/current_collector/effective_resistance_current_collector.html#pybamm.current_collector.EffectiveResistance.post_process">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">param_values</span><span class="p">,</span> <span class="n">V_av</span><span class="p">,</span> <span class="n">I_av</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the potentials in the current collector and the terminal</span>
+<span class="sd">        voltage given the average voltage and current.</span>
+<span class="sd">        Note: This takes in the *processed* V_av and I_av from a 1D simulation</span>
+<span class="sd">        representing the average cell behaviour and returns a dictionary of</span>
+<span class="sd">        processed potentials.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Process resistances</span>
+        <span class="n">R_cn</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Negative current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="n">R_cp</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Positive current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+        <span class="n">R_cc</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Effective current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Create callable combination of ProcessedVariable objects for potentials</span>
+        <span class="c1"># and voltage</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+            <span class="s2">&quot;Account for effective current collector resistance&quot;</span>
+            <span class="k">return</span> <span class="n">V_av</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">R_cc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">phi_s_cn</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">R_cn</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">phi_s_cp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">V</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">R_cp</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">V_cc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">phi_s_cp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi_s_cn</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+        <span class="n">processed_vars</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Negative current collector potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_s_cn</span><span class="p">,</span>
+            <span class="s2">&quot;Positive current collector potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_s_cp</span><span class="p">,</span>
+            <span class="s2">&quot;Local current collector potential difference [V]&quot;</span><span class="p">:</span> <span class="n">V_cc</span><span class="p">,</span>
+            <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">:</span> <span class="n">V</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">processed_vars</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="AlternativeEffectiveResistance2D">
+<a class="viewcode-back" href="../../../../../source/api/models/submodels/current_collector/effective_resistance_current_collector.html#pybamm.current_collector.AlternativeEffectiveResistance2D">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AlternativeEffectiveResistance2D</span><span class="p">(</span><span class="n">BaseEffectiveResistance</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A model which calculates the effective Ohmic resistance of the 2D current</span>
+<span class="sd">    collectors in the limit of large electrical conductivity. This model assumes</span>
+<span class="sd">    a uniform *current density* at the tabs and the solution is computed by first</span>
+<span class="sd">    solving and auxilliary problem which is the related to the resistances.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Effective resistance in current collector model (2D)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">LithiumIonParameters</span><span class="p">()</span>
+
+        <span class="c1"># Get necessary parameters</span>
+        <span class="n">L_cn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L_cc</span>
+        <span class="n">L_cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">L_cc</span>
+        <span class="n">L_tab_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">L_tab</span>
+        <span class="n">A_tab_p</span> <span class="o">=</span> <span class="n">L_cp</span> <span class="o">*</span> <span class="n">L_tab_p</span>
+        <span class="n">sigma_cn</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">sigma_cc</span>
+        <span class="n">sigma_cp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">sigma_cc</span>
+
+        <span class="c1"># Set model variables -- we solve a auxilliary problem in each current collector</span>
+        <span class="c1"># then relate this to the potentials and resistances later</span>
+        <span class="n">f_n</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="s2">&quot;Unit solution in negative current collector&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;current collector&quot;</span>
+        <span class="p">)</span>
+        <span class="n">f_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+            <span class="s2">&quot;Unit solution in positive current collector&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;current collector&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Governing equations -- we impose that the average of f_p is zero</span>
+        <span class="c1"># by introducing a Lagrange multiplier</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;Lagrange multiplier&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">f_n</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">f_n</span><span class="p">)</span> <span class="o">+</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">f_n</span><span class="p">),</span>
+            <span class="n">f_p</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">laplacian</span><span class="p">(</span><span class="n">f_p</span><span class="p">)</span>
+            <span class="o">-</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">source</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">f_p</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DefiniteIntegralVector</span><span class="p">(</span><span class="n">f_p</span><span class="p">,</span> <span class="n">vector_type</span><span class="o">=</span><span class="s2">&quot;column&quot;</span><span class="p">),</span>
+            <span class="n">c</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">yz_average</span><span class="p">(</span><span class="n">f_p</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Boundary conditons</span>
+        <span class="n">pos_tab_bc</span> <span class="o">=</span> <span class="n">L_cp</span> <span class="o">/</span> <span class="n">A_tab_p</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boundary_conditions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">f_n</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;negative tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span> <span class="s2">&quot;positive tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">)},</span>
+            <span class="n">f_p</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;negative tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+                <span class="s2">&quot;positive tab&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">pos_tab_bc</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+            <span class="p">},</span>
+        <span class="p">}</span>
+
+        <span class="c1"># &quot;Initial conditions&quot; provides initial guess for solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">f_n</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+            <span class="n">f_p</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+            <span class="n">c</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Define effective current collector resistance</span>
+        <span class="n">R_cc_n</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">yz_average</span><span class="p">(</span><span class="n">f_n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">L_cn</span> <span class="o">*</span> <span class="n">sigma_cn</span><span class="p">)</span>
+        <span class="n">R_cc_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BoundaryIntegral</span><span class="p">(</span><span class="n">f_p</span><span class="p">,</span> <span class="s2">&quot;positive tab&quot;</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">L_cp</span> <span class="o">*</span> <span class="n">sigma_cp</span><span class="p">)</span>
+        <span class="n">R_cc</span> <span class="o">=</span> <span class="n">R_cc_n</span> <span class="o">+</span> <span class="n">R_cc_p</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Unit solution in negative current collector&quot;</span><span class="p">:</span> <span class="n">f_n</span><span class="p">,</span>
+            <span class="s2">&quot;Unit solution in positive current collector&quot;</span><span class="p">:</span> <span class="n">f_p</span><span class="p">,</span>
+            <span class="s2">&quot;Effective current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc</span><span class="p">,</span>
+            <span class="s2">&quot;Effective negative current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc_n</span><span class="p">,</span>
+            <span class="s2">&quot;Effective positive current collector resistance [Ohm]&quot;</span><span class="p">:</span> <span class="n">R_cc_p</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Add spatial variables</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">standard_spatial_vars</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;y [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s2">&quot;z [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">z</span><span class="p">})</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Timms2021&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="AlternativeEffectiveResistance2D.post_process">
+<a class="viewcode-back" href="../../../../../source/api/models/submodels/current_collector/effective_resistance_current_collector.html#pybamm.current_collector.AlternativeEffectiveResistance2D.post_process">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">post_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">param_values</span><span class="p">,</span> <span class="n">V_av</span><span class="p">,</span> <span class="n">I_av</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculates the potentials in the current collector given</span>
+<span class="sd">        the average voltage and current.</span>
+<span class="sd">        Note: This takes in the *processed* V_av and I_av from a 1D simulation</span>
+<span class="sd">        representing the average cell behaviour and returns a dictionary of</span>
+<span class="sd">        processed potentials.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get evaluated parameters</span>
+        <span class="n">L_cn</span> <span class="o">=</span> <span class="n">param_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L_cc</span><span class="p">)</span>
+        <span class="n">L_cp</span> <span class="o">=</span> <span class="n">param_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">L_cc</span><span class="p">)</span>
+        <span class="n">sigma_cn</span> <span class="o">=</span> <span class="n">param_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">sigma_cc</span><span class="p">)</span>
+        <span class="n">sigma_cp</span> <span class="o">=</span> <span class="n">param_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">sigma_cc</span><span class="p">)</span>
+
+        <span class="c1"># Process unit solutions</span>
+        <span class="n">f_n</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Unit solution in negative current collector&quot;</span><span class="p">]</span>
+        <span class="n">f_p</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Unit solution in positive current collector&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Get effective resistance</span>
+        <span class="n">R_cc</span> <span class="o">=</span> <span class="n">solution</span><span class="p">[</span><span class="s2">&quot;Effective current collector resistance [Ohm]&quot;</span><span class="p">]</span>
+
+        <span class="c1"># Create callable combination of ProcessedVariable objects for potentials</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">V</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+            <span class="s2">&quot;Account for effective current collector resistance&quot;</span>
+            <span class="k">return</span> <span class="n">V_av</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">R_cc</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">phi_s_cn</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+            <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="n">L_cn</span> <span class="o">/</span> <span class="n">sigma_cn</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_n</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">phi_s_cp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">V</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">I_av</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">)</span> <span class="o">/</span> <span class="n">L_cp</span> <span class="o">/</span> <span class="n">sigma_cp</span><span class="p">)</span> <span class="o">*</span> <span class="n">f_p</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="n">z</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">V_cc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">phi_s_cp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">-</span> <span class="n">phi_s_cn</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+
+        <span class="n">processed_vars</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Negative current collector potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_s_cn</span><span class="p">,</span>
+            <span class="s2">&quot;Positive current collector potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_s_cp</span><span class="p">,</span>
+            <span class="s2">&quot;Local current collector potential difference [V]&quot;</span><span class="p">:</span> <span class="n">V_cc</span><span class="p">,</span>
+            <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">:</span> <span class="n">V</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">processed_vars</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

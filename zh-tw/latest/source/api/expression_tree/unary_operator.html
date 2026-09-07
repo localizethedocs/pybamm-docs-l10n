@@ -1,0 +1,1401 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-08-05T18:17:17+00:00" />
+    <title>Unary Operators &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/api/expression_tree/unary_operator';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/api/expression_tree/unary_operator.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="next" title="Concatenations" href="concatenations.html" />
+    <link rel="prev" title="Binary Operators" href="binary_operator.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-08-05"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Expression Tree</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="symbol.html">Symbol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter.html">Parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="variable.html">Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="independent_variable.html">Independent Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar.html">Scalar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array.html">Array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrix.html">Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vector.html">Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state_vector.html">State Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="binary_operator.html">Binary Operators</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unary Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concatenations.html">Concatenations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="broadcasts.html">Broadcasting Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="functions.html">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input_parameter.html">Input Parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="interpolant.html">Interpolant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="operations/index.html">Operations on expression trees</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/index.html">Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameters/index.html">Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../geometry/index.html">Geometry</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../meshes/index.html">Meshes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/index.html">Discretisation and spatial methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/index.html">Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../codegen/index.html">Code generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiment/index.html">Experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulation/index.html">Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/index.html">Plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../util.html">Utility functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Batch Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM Data</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">API 文件</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Expression Tree</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Unary Operators</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="unary-operators">
+<h1>Unary Operators<a class="headerlink" href="#unary-operators" title="連結到這個標頭">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.UnaryOperator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">UnaryOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">child</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UnaryOperator"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UnaryOperator" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a unary operator
+(e.g. '-', grad, div)</p>
+<p>Derived classes will specify the particular operator</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- name of the node</p></li>
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- child node</p></li>
+<li><p><strong>domains</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- A dictionary equivalent to {'primary': domain, auxiliary_domains}.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.symbol.Symbol</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.UnaryOperator.create_copy">
+<span class="sig-name descname"><span class="pre">create_copy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_children</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">perform_simplifications</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UnaryOperator.create_copy"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UnaryOperator.create_copy" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.new_copy" title="pybamm.Symbol.new_copy"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.new_copy()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.UnaryOperator.evaluate">
+<span class="sig-name descname"><span class="pre">evaluate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.5)"><span class="pre">dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_dot</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.5)"><span class="pre">ndarray</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Any" title="(in Python v3.14)"><span class="pre">Any</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="p"><span class="pre">...</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.dtype.html#numpy.dtype" title="(in NumPy v2.5)"><span class="pre">dtype</span></a><span class="p"><span class="pre">[</span></span><span class="pre">float64</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">inputs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UnaryOperator.evaluate"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UnaryOperator.evaluate" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.evaluate" title="pybamm.Symbol.evaluate"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.evaluate()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.UnaryOperator.is_constant">
+<span class="sig-name descname"><span class="pre">is_constant</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UnaryOperator.is_constant"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UnaryOperator.is_constant" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.is_constant" title="pybamm.Symbol.is_constant"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.is_constant()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.UnaryOperator.to_equation">
+<span class="sig-name descname"><span class="pre">to_equation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UnaryOperator.to_equation"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UnaryOperator.to_equation" title="連結到這個定義">#</a></dt>
+<dd><p>Convert the node and its subtree into a SymPy equation.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Negate">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Negate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Negate"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Negate" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a <cite>-</cite> negation operator.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.AbsoluteValue">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">AbsoluteValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#AbsoluteValue"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.AbsoluteValue" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an <cite>abs</cite> operator.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.AbsoluteValue.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#AbsoluteValue.diff"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.AbsoluteValue.diff" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.diff" title="pybamm.Symbol.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.diff()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Sign">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Sign"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Sign" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a <cite>sign</cite> operator.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.Sign.diff">
+<span class="sig-name descname"><span class="pre">diff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Sign.diff"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Sign.diff" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.diff" title="pybamm.Symbol.diff"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.diff()</span></code></a>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Index">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">check_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Index"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Index" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree, which stores the index that should be
+extracted from its child after the child has been evaluated.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The symbol of which to take the index</p></li>
+<li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> or </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#slice" title="(in Python v3.14)"><em>slice</em></a>) -- The index (if int) or indices (if slice) to extract from the symbol</p></li>
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- The name of the symbol</p></li>
+<li><p><strong>check_size</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><em>bool</em></a><em>, </em><em>optional</em>) -- Whether to check if the slice size exceeds the child size. Default is True.
+This should always be True when creating a new symbol so that the appropriate
+check is performed, but should be False for creating a new copy to avoid
+unnecessarily repeating the check.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.Index.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Index.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Index.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.Index.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Index.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Index.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Method to serialise an Index object into JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.SpatialOperator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">SpatialOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">child</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">domains</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><span class="pre">dict</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#SpatialOperator"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.SpatialOperator" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a unary spatial operator
+(e.g. grad, div)</p>
+<p>Derived classes will specify the particular operator</p>
+<p>This type of node will be replaced by the <a class="reference internal" href="../spatial_methods/discretisation.html#pybamm.Discretisation" title="pybamm.Discretisation"><code class="xref py py-class docutils literal notranslate"><span class="pre">Discretisation</span></code></a>
+class with a <a class="reference internal" href="matrix.html#pybamm.Matrix" title="pybamm.Matrix"><code class="xref py py-class docutils literal notranslate"><span class="pre">Matrix</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- name of the node</p></li>
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- child node</p></li>
+<li><p><strong>domains</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#dict" title="(in Python v3.14)"><em>dict</em></a>) -- A dictionary equivalent to {'primary': domain, auxiliary_domains}.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.SpatialOperator.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#SpatialOperator.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.SpatialOperator.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Method to serialise a Symbol object into JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Gradient">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Gradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Gradient"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Gradient" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a grad operator.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Divergence">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Divergence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Divergence"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Divergence" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a div operator.</p>
+<p>For vector fields (rank-1 tensors), returns a scalar.
+For tensor fields (rank-2 tensors), returns a vector field.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Laplacian">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Laplacian"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Laplacian" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a Laplacian operator. This is
+currently only implemeted in the weak form for finite element formulations.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.GradientSquared">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">GradientSquared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#GradientSquared"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.GradientSquared" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing a the inner product of the grad
+operator with itself. In particular, this is useful in the finite element
+formualtion where we only require the (sclar valued) square of the gradient,
+and not the gradient itself.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Mass">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Mass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Mass"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Mass" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the mass matrix for a given symbol, accounting for Dirchlet boundary
+conditions where necessary (e.g. in the finite element formualtion)</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BoundaryMass">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BoundaryMass</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryMass"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryMass" title="連結到這個定義">#</a></dt>
+<dd><p>Returns the mass matrix for a given symbol assembled over the boundary of
+the domain, accounting for Dirchlet boundary conditions where necessary
+(e.g. in the finite element formualtion)</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Integral">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Integral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integration_variable</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="independent_variable.html#pybamm.IndependentVariable" title="pybamm.expression_tree.independent_variable.IndependentVariable"><span class="pre">IndependentVariable</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="independent_variable.html#pybamm.IndependentVariable" title="pybamm.expression_tree.independent_variable.IndependentVariable"><span class="pre">IndependentVariable</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Integral"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Integral" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an integral operator.</p>
+<div class="math notranslate nohighlight">
+\[I = \int_{u_{min}}^{u_{max}}\!f(u)\,dq,\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\in\text{domain}\)</span> is a spatial variable, <span class="math notranslate nohighlight">\(u_{min}\)</span> and <span class="math notranslate nohighlight">\(u_{max}\)</span> are the values of
+<span class="math notranslate nohighlight">\(u\)</span> at the left-hand and right-hand boundaries of the domain respectively, and <span class="math notranslate nohighlight">\(dq\)</span> is given by,</p>
+<p><span class="math notranslate nohighlight">\(dq=du\)</span> for cartesian coordinates,</p>
+<p><span class="math notranslate nohighlight">\(dq=2\pi udu\)</span> for cylindrical coordinates,</p>
+<p><span class="math notranslate nohighlight">\(dq=4\pi u^2 du\)</span> for spherical coordinates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be integrated (will become self.children[0])</p></li>
+<li><p><strong>integration_variable</strong> (<a class="reference internal" href="independent_variable.html#pybamm.IndependentVariable" title="pybamm.IndependentVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.IndependentVariable</span></code></a>) -- The variable over which to integrate</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.Integral.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Integral.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Integral.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.IndefiniteIntegral">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">IndefiniteIntegral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">integration_variable</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#IndefiniteIntegral"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.IndefiniteIntegral" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an indefinite integral operator.</p>
+<div class="math notranslate nohighlight">
+\[I = \int_{x_    ext{min}}^{x}\!f(u)\,du\]</div>
+<p>where <span class="math notranslate nohighlight">\(u\in\text{domain}\)</span> which can represent either a
+spatial or temporal variable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be integrated (will become self.children[0])</p></li>
+<li><p><strong>integration_variable</strong> (<a class="reference internal" href="independent_variable.html#pybamm.IndependentVariable" title="pybamm.IndependentVariable"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.IndependentVariable</span></code></a>) -- The variable over which to integrate</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.BaseIndefiniteIntegral</span></code></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.DefiniteIntegralVector">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">DefiniteIntegralVector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vector_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'row'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DefiniteIntegralVector"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DefiniteIntegralVector" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an integral of the basis used
+for discretisation</p>
+<div class="math notranslate nohighlight">
+\[I = \int_{a}^{b}\!\psi(x)\,dx,\]</div>
+<p>where <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are the left-hand and right-hand boundaries of
+the domain respectively and <span class="math notranslate nohighlight">\(\psi\)</span> is the basis function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable whose basis will be integrated over the entire domain (will
+become self.children[0])</p></li>
+<li><p><strong>vector_type</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- Whether to return a row or column vector (default is row)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.DefiniteIntegralVector.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DefiniteIntegralVector.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DefiniteIntegralVector.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BoundaryIntegral">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BoundaryIntegral</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">region</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'entire'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryIntegral"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryIntegral" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an integral operator over the
+boundary of a domain</p>
+<div class="math notranslate nohighlight">
+\[I = \int_{\partial a}\!f(u)\,du,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\partial a\)</span> is the boundary of the domain, and
+<span class="math notranslate nohighlight">\(u\in\text{domain boundary}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be integrated (will become self.children[0])</p></li>
+<li><p><strong>region</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) -- The region of the boundary over which to integrate. If region is <cite>entire</cite>
+(default) the integration is carried out over the entire boundary. If
+region is <cite>negative tab</cite> or <cite>positive tab</cite> then the integration is only
+carried out over the appropriate part of the boundary corresponding to
+the tab.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BoundaryIntegral.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryIntegral.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryIntegral.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.DeltaFunction">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">DeltaFunction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">domain</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DeltaFunction"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DeltaFunction" title="連結到這個定義">#</a></dt>
+<dd><p>Delta function. Currently can only be implemented at the edge of a domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable that sets the strength of the delta function</p></li>
+<li><p><strong>side</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Which side of the domain to implement the delta function on</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.DeltaFunction.evaluate_for_shape">
+<span class="sig-name descname"><span class="pre">evaluate_for_shape</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DeltaFunction.evaluate_for_shape"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DeltaFunction.evaluate_for_shape" title="連結到這個定義">#</a></dt>
+<dd><p>See <code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.evaluate_for_shape_using_domain()</span></code></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.DeltaFunction.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DeltaFunction.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DeltaFunction.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.DeltaFunction.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#DeltaFunction.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.DeltaFunction.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Method to serialise a Symbol object into JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BoundaryOperator">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BoundaryOperator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryOperator"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryOperator" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree which gets the boundary value of a variable on its
+primary domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- The name of the symbol</p></li>
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable whose boundary value to take</p></li>
+<li><p><strong>side</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Which side to take the boundary value on (&quot;left&quot; or &quot;right&quot;)</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.BoundaryOperator.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryOperator.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryOperator.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BoundaryValue">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BoundaryValue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryValue"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryValue" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree which gets the boundary value of a variable on its
+primary domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable whose boundary value to take</p></li>
+<li><p><strong>side</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Which side to take the boundary value on (&quot;left&quot; or &quot;right&quot;)</p></li>
+<li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>None</em>) -- The order of the boundary gradient. If None, the order is determined by the
+spatial method. Can be &quot;constant&quot;, &quot;linear&quot; or &quot;quadratic&quot;.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.BoundaryOperator" title="pybamm.expression_tree.unary_operators.BoundaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.BoundaryOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.BoundaryGradient">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">BoundaryGradient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#BoundaryGradient"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.BoundaryGradient" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree which gets the boundary flux of a variable on its
+primary domain.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable whose boundary flux to take</p></li>
+<li><p><strong>side</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Which side to take the boundary flux on (&quot;left&quot; or &quot;right&quot;)</p></li>
+<li><p><strong>order</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>None</em>) -- The order of the boundary gradient. If None, the order is determined by the
+spatial method. Can be &quot;constant&quot;, &quot;linear&quot; or &quot;quadratic&quot;.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.BoundaryOperator" title="pybamm.expression_tree.unary_operators.BoundaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.BoundaryOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.EvaluateAt">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">EvaluateAt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#EvaluateAt"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.EvaluateAt" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree which evaluates a symbol at a given position in space
+in its primary domain. Currently this is only implemented for 1D primary domains.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The variable to evaluate</p></li>
+<li><p><strong>position</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The position in space on the symbol's primary domain at which to evaluate
+the symbol.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.EvaluateAt.set_id">
+<span class="sig-name descname"><span class="pre">set_id</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#EvaluateAt.set_id"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.EvaluateAt.set_id" title="連結到這個定義">#</a></dt>
+<dd><p>See <a class="reference internal" href="symbol.html#pybamm.Symbol.set_id" title="pybamm.Symbol.set_id"><code class="xref py py-meth docutils literal notranslate"><span class="pre">pybamm.Symbol.set_id()</span></code></a></p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.EvaluateAt.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#EvaluateAt.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.EvaluateAt.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Method to serialise a Symbol object into JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.UpwindDownwind">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">UpwindDownwind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#UpwindDownwind"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.UpwindDownwind" title="連結到這個定義">#</a></dt>
+<dd><p>A node in the expression tree representing an upwinding or downwinding operator.
+Usually to be used for better stability in convection-dominated equations.</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.SpatialOperator" title="pybamm.expression_tree.unary_operators.SpatialOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.SpatialOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Upwind">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Upwind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Upwind"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Upwind" title="連結到這個定義">#</a></dt>
+<dd><p>Upwinding operator. To be used if flow velocity is positive (left to right).</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UpwindDownwind" title="pybamm.expression_tree.unary_operators.UpwindDownwind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UpwindDownwind</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Downwind">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Downwind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Downwind"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Downwind" title="連結到這個定義">#</a></dt>
+<dd><p>Downwinding operator. To be used if flow velocity is negative (right to left).</p>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UpwindDownwind" title="pybamm.expression_tree.unary_operators.UpwindDownwind"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UpwindDownwind</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Component">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Component</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">index</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Component"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Component" title="連結到這個定義">#</a></dt>
+<dd><p>Extract component <em>index</em> from a VectorField.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- A VectorField symbol.</p></li>
+<li><p><strong>index</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) -- Zero-based component index.</p></li>
+</ul>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pybamm.Component.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Component.to_json"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Component.to_json" title="連結到這個定義">#</a></dt>
+<dd><p>Method to serialise a Symbol object into JSON.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="pybamm.Norm">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">Norm</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">child</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#Norm"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.Norm" title="連結到這個定義">#</a></dt>
+<dd><p>Euclidean norm of a VectorField: <code class="docutils literal notranslate"><span class="pre">sqrt(sum(comp_i</span> <span class="pre">**</span> <span class="pre">2))</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>child</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- A VectorField symbol.</p>
+</dd>
+</dl>
+<p><strong>Extends:</strong> <a class="reference internal" href="#pybamm.UnaryOperator" title="pybamm.expression_tree.unary_operators.UnaryOperator"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.expression_tree.unary_operators.UnaryOperator</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.grad">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">grad</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#grad"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.grad" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.Gradient" title="pybamm.Gradient"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gradient</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- the gradient will be performed on this sub-symbol</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the gradient of <code class="docutils literal notranslate"><span class="pre">symbol</span></code></p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.Gradient" title="pybamm.Gradient"><code class="xref py py-class docutils literal notranslate"><span class="pre">Gradient</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.div">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">div</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#div"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.div" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.Divergence" title="pybamm.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- the divergence will be performed on this sub-symbol</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the divergence of <code class="docutils literal notranslate"><span class="pre">symbol</span></code></p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.Divergence" title="pybamm.Divergence"><code class="xref py py-class docutils literal notranslate"><span class="pre">Divergence</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.laplacian">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">laplacian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#laplacian"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.laplacian" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.Laplacian" title="pybamm.Laplacian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Laplacian</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- the Laplacian will be performed on this sub-symbol</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the Laplacian of <code class="docutils literal notranslate"><span class="pre">symbol</span></code></p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.Laplacian" title="pybamm.Laplacian"><code class="xref py py-class docutils literal notranslate"><span class="pre">Laplacian</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.grad_squared">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">grad_squared</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#grad_squared"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.grad_squared" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.GradientSquared" title="pybamm.GradientSquared"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientSquared</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a>) -- the inner product of the gradient with itself will be performed on this
+sub-symbol</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>inner product of the gradient of <code class="docutils literal notranslate"><span class="pre">symbol</span></code> with itself</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.GradientSquared" title="pybamm.GradientSquared"><code class="xref py py-class docutils literal notranslate"><span class="pre">GradientSquared</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.surf">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">surf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#surf"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.surf" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a right <a class="reference internal" href="#pybamm.BoundaryValue" title="pybamm.BoundaryValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryValue</span></code></a>, usually in the
+spherical geometry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- the surface value of this symbol will be returned</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the surface value of <code class="docutils literal notranslate"><span class="pre">symbol</span></code></p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.BoundaryValue" title="pybamm.BoundaryValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BoundaryValue</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.x_average">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">x_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/averages.html#x_average"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.x_average" title="連結到這個定義">#</a></dt>
+<dd><p>Convenience function for creating an average in the x-direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be averaged</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new averaged symbol</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.r_average">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">r_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/averages.html#r_average"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.r_average" title="連結到這個定義">#</a></dt>
+<dd><p>Convenience function for creating an average in the r-direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be averaged</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new averaged symbol</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.size_average">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">size_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">f_a_dist</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/averages.html#size_average"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.size_average" title="連結到這個定義">#</a></dt>
+<dd><p>Convenience function for averaging over particle size R using the area-weighted
+particle-size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be averaged</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new averaged symbol</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.z_average">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">z_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/averages.html#z_average"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.z_average" title="連結到這個定義">#</a></dt>
+<dd><p>Convenience function for creating an average in the z-direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be averaged</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new averaged symbol</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.yz_average">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">yz_average</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.expression_tree.symbol.Symbol"><span class="pre">Symbol</span></a></span></span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/averages.html#yz_average"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.yz_average" title="連結到這個定義">#</a></dt>
+<dd><p>Convenience function for creating an average in the y-z-direction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>symbol</strong> (<a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.Symbol</span></code></a>) -- The function to be averaged</p>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new averaged symbol</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="symbol.html#pybamm.Symbol" title="pybamm.Symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">Symbol</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.boundary_value">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">boundary_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">side</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#boundary_value"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.boundary_value" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.BoundaryValue" title="pybamm.BoundaryValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">pybamm.BoundaryValue</span></code></a></p>
+<dl class="field-list simple">
+<dt class="field-odd">參數<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>symbol</strong> (<cite>pybamm.Symbol</cite>) -- The symbol whose boundary value to take</p></li>
+<li><p><strong>side</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) -- Which side to take the boundary value on (&quot;left&quot; or &quot;right&quot;)</p></li>
+</ul>
+</dd>
+<dt class="field-even">回傳<span class="colon">:</span></dt>
+<dd class="field-even"><p>the new integrated expression tree</p>
+</dd>
+<dt class="field-odd">回傳型別<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#pybamm.BoundaryValue" title="pybamm.BoundaryValue"><code class="xref py py-class docutils literal notranslate"><span class="pre">BoundaryValue</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.smooth_absolute_value">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">smooth_absolute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">k</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#smooth_absolute_value"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.smooth_absolute_value" title="連結到這個定義">#</a></dt>
+<dd><p>Smooth approximation to the absolute value function. k is the smoothing parameter,
+set by <cite>pybamm.settings.abs_smoothing</cite>. The recommended value is k=10.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.sign">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">sign</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#sign"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.sign" title="連結到這個定義">#</a></dt>
+<dd><p>Returns a <a class="reference internal" href="#pybamm.Sign" title="pybamm.Sign"><code class="xref py py-class docutils literal notranslate"><span class="pre">Sign</span></code></a> object.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.upwind">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">upwind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#upwind"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.upwind" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.Upwind" title="pybamm.Upwind"><code class="xref py py-class docutils literal notranslate"><span class="pre">Upwind</span></code></a></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="pybamm.downwind">
+<span class="sig-prename descclassname"><span class="pre">pybamm.</span></span><span class="sig-name descname"><span class="pre">downwind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">symbol</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/pybamm/expression_tree/unary_operators.html#downwind"><span class="viewcode-link"><span class="pre">[原始碼]</span></span></a><a class="headerlink" href="#pybamm.downwind" title="連結到這個定義">#</a></dt>
+<dd><p>convenience function for creating a <a class="reference internal" href="#pybamm.Downwind" title="pybamm.Downwind"><code class="xref py py-class docutils literal notranslate"><span class="pre">Downwind</span></code></a></p>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="binary_operator.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Binary Operators</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="concatenations.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Concatenations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UnaryOperator"><code class="docutils literal notranslate"><span class="pre">UnaryOperator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UnaryOperator.create_copy"><code class="docutils literal notranslate"><span class="pre">UnaryOperator.create_copy()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UnaryOperator.evaluate"><code class="docutils literal notranslate"><span class="pre">UnaryOperator.evaluate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UnaryOperator.is_constant"><code class="docutils literal notranslate"><span class="pre">UnaryOperator.is_constant()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UnaryOperator.to_equation"><code class="docutils literal notranslate"><span class="pre">UnaryOperator.to_equation()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Negate"><code class="docutils literal notranslate"><span class="pre">Negate</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.AbsoluteValue"><code class="docutils literal notranslate"><span class="pre">AbsoluteValue</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.AbsoluteValue.diff"><code class="docutils literal notranslate"><span class="pre">AbsoluteValue.diff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Sign"><code class="docutils literal notranslate"><span class="pre">Sign</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Sign.diff"><code class="docutils literal notranslate"><span class="pre">Sign.diff()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Index"><code class="docutils literal notranslate"><span class="pre">Index</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Index.set_id"><code class="docutils literal notranslate"><span class="pre">Index.set_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Index.to_json"><code class="docutils literal notranslate"><span class="pre">Index.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.SpatialOperator"><code class="docutils literal notranslate"><span class="pre">SpatialOperator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.SpatialOperator.to_json"><code class="docutils literal notranslate"><span class="pre">SpatialOperator.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Gradient"><code class="docutils literal notranslate"><span class="pre">Gradient</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Divergence"><code class="docutils literal notranslate"><span class="pre">Divergence</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Laplacian"><code class="docutils literal notranslate"><span class="pre">Laplacian</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.GradientSquared"><code class="docutils literal notranslate"><span class="pre">GradientSquared</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Mass"><code class="docutils literal notranslate"><span class="pre">Mass</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryMass"><code class="docutils literal notranslate"><span class="pre">BoundaryMass</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Integral"><code class="docutils literal notranslate"><span class="pre">Integral</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Integral.set_id"><code class="docutils literal notranslate"><span class="pre">Integral.set_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.IndefiniteIntegral"><code class="docutils literal notranslate"><span class="pre">IndefiniteIntegral</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DefiniteIntegralVector"><code class="docutils literal notranslate"><span class="pre">DefiniteIntegralVector</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DefiniteIntegralVector.set_id"><code class="docutils literal notranslate"><span class="pre">DefiniteIntegralVector.set_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryIntegral"><code class="docutils literal notranslate"><span class="pre">BoundaryIntegral</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryIntegral.set_id"><code class="docutils literal notranslate"><span class="pre">BoundaryIntegral.set_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DeltaFunction"><code class="docutils literal notranslate"><span class="pre">DeltaFunction</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DeltaFunction.evaluate_for_shape"><code class="docutils literal notranslate"><span class="pre">DeltaFunction.evaluate_for_shape()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DeltaFunction.set_id"><code class="docutils literal notranslate"><span class="pre">DeltaFunction.set_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.DeltaFunction.to_json"><code class="docutils literal notranslate"><span class="pre">DeltaFunction.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryOperator"><code class="docutils literal notranslate"><span class="pre">BoundaryOperator</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryOperator.set_id"><code class="docutils literal notranslate"><span class="pre">BoundaryOperator.set_id()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryValue"><code class="docutils literal notranslate"><span class="pre">BoundaryValue</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.BoundaryGradient"><code class="docutils literal notranslate"><span class="pre">BoundaryGradient</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.EvaluateAt"><code class="docutils literal notranslate"><span class="pre">EvaluateAt</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.EvaluateAt.set_id"><code class="docutils literal notranslate"><span class="pre">EvaluateAt.set_id()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.EvaluateAt.to_json"><code class="docutils literal notranslate"><span class="pre">EvaluateAt.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.UpwindDownwind"><code class="docutils literal notranslate"><span class="pre">UpwindDownwind</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Upwind"><code class="docutils literal notranslate"><span class="pre">Upwind</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Downwind"><code class="docutils literal notranslate"><span class="pre">Downwind</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Component"><code class="docutils literal notranslate"><span class="pre">Component</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Component.to_json"><code class="docutils literal notranslate"><span class="pre">Component.to_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.Norm"><code class="docutils literal notranslate"><span class="pre">Norm</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.grad"><code class="docutils literal notranslate"><span class="pre">grad()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.div"><code class="docutils literal notranslate"><span class="pre">div()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.laplacian"><code class="docutils literal notranslate"><span class="pre">laplacian()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.grad_squared"><code class="docutils literal notranslate"><span class="pre">grad_squared()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.surf"><code class="docutils literal notranslate"><span class="pre">surf()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.x_average"><code class="docutils literal notranslate"><span class="pre">x_average()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.r_average"><code class="docutils literal notranslate"><span class="pre">r_average()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.size_average"><code class="docutils literal notranslate"><span class="pre">size_average()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.z_average"><code class="docutils literal notranslate"><span class="pre">z_average()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.yz_average"><code class="docutils literal notranslate"><span class="pre">yz_average()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.boundary_value"><code class="docutils literal notranslate"><span class="pre">boundary_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.smooth_absolute_value"><code class="docutils literal notranslate"><span class="pre">smooth_absolute_value()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.sign"><code class="docutils literal notranslate"><span class="pre">sign()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.upwind"><code class="docutils literal notranslate"><span class="pre">upwind()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pybamm.downwind"><code class="docutils literal notranslate"><span class="pre">downwind()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/api/expression_tree/unary_operator.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-08-05。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

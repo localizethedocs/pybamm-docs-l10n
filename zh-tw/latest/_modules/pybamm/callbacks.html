@@ -1,0 +1,835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.callbacks &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/callbacks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/callbacks.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.callbacks</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.callbacks 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<div class="viewcode-block" id="setup_callbacks">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.setup_callbacks">[文件]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_callbacks</span><span class="p">(</span><span class="n">callbacks</span><span class="p">):</span>
+    <span class="n">callbacks</span> <span class="o">=</span> <span class="n">callbacks</span> <span class="ow">or</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">callbacks</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span><span class="n">callbacks</span><span class="p">]</span>
+
+    <span class="c1"># Check if there is a logging callback already, if not add the default one</span>
+    <span class="n">has_logging_callback</span> <span class="o">=</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">cb</span><span class="p">,</span> <span class="n">LoggingCallback</span><span class="p">)</span> <span class="k">for</span> <span class="n">cb</span> <span class="ow">in</span> <span class="n">callbacks</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">has_logging_callback</span><span class="p">:</span>
+        <span class="n">callbacks</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LoggingCallback</span><span class="p">())</span>
+
+    <span class="k">return</span> <span class="n">CallbackList</span><span class="p">(</span><span class="n">callbacks</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="Callback">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Callback</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Base class for callbacks, for documenting callback methods.</span>
+
+<span class="sd">    Callbacks are used to perform actions (e.g. logging, saving) at certain points in</span>
+<span class="sd">    the simulation. Each callback method is named `on_&lt;event&gt;`, where `&lt;event&gt;`</span>
+<span class="sd">    describes the point at which the callback is called. For example, the callback</span>
+<span class="sd">    `on_experiment_start` is called at the start of an experiment simulation. In</span>
+<span class="sd">    general, callbacks take a single argument, `logs`, which is a dictionary of</span>
+<span class="sd">    information about the simulation. Each callback method should return `None`</span>
+<span class="sd">    (the output of the method is ignored).</span>
+
+<span class="sd">    **EXPERIMENTAL** - this class is experimental and the callback interface may</span>
+<span class="sd">    change in future releases.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Callback.on_experiment_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_experiment_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the start of an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_cycle_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_cycle_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_cycle_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the start of each cycle in an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_step_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_step_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_step_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the start of each step in an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_step_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_step_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_step_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the end of each step in an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_cycle_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_cycle_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_cycle_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the end of each cycle in an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_experiment_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_experiment_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called at the end of an experiment simulation.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_experiment_error">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_experiment_error">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called when a SolverError occurs during an experiment simulation.</span>
+
+<span class="sd">        For example, this could be used to send an error alert with a bug report when</span>
+<span class="sd">        running batch simulations in the cloud.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_experiment_infeasible_time">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_experiment_infeasible_time">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_infeasible_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called when an experiment simulation is infeasible due to reaching maximum time.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="Callback.on_experiment_infeasible_event">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.Callback.on_experiment_infeasible_event">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_infeasible_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Called when an experiment simulation is infeasible due to an event.</span>
+<span class="sd">        &quot;&quot;&quot;</span></div>
+</div>
+
+
+
+<span class="c1">########################################################################################</span>
+<div class="viewcode-block" id="CallbackList">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.CallbackList">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CallbackList</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Container abstracting a list of callbacks, so that they can be called in a</span>
+<span class="sd">    single step e.g. `callbacks.on_simulation_end(...)`.</span>
+
+<span class="sd">    This is done without having to redefine the method each time by using the</span>
+<span class="sd">    `callback_loop_decorator` decorator, which is applied to every method that starts</span>
+<span class="sd">    with `on_`, using the `inspect` module.</span>
+
+<span class="sd">    If better control over how the callbacks are called is required, it might be better</span>
+<span class="sd">    to be more explicit with the for loop.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">callbacks</span> <span class="o">=</span> <span class="n">callbacks</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">callbacks</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">callbacks</span><span class="p">[</span><span class="n">index</span><span class="p">]</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">callback_loop_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A decorator to call the function on every callback in `self.callbacks`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapper</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">callback</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">callbacks</span><span class="p">:</span>
+            <span class="c1"># call the function on the callback</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="n">callback</span><span class="p">,</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">wrapper</span>
+
+
+<span class="c1"># inspect.getmembers finds all the methods in the Callback class</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="n">inspect</span><span class="o">.</span><span class="n">getmembers</span><span class="p">(</span><span class="n">CallbackList</span><span class="p">,</span> <span class="n">inspect</span><span class="o">.</span><span class="n">isfunction</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;on_&quot;</span><span class="p">):</span>
+        <span class="c1"># Replaces each function with the decorated version</span>
+        <span class="nb">setattr</span><span class="p">(</span><span class="n">CallbackList</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">callback_loop_decorator</span><span class="p">(</span><span class="n">func</span><span class="p">))</span>
+
+<span class="c1">########################################################################################</span>
+
+
+<div class="viewcode-block" id="LoggingCallback">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LoggingCallback</span><span class="p">(</span><span class="n">Callback</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Logging callback, implements methods to log progress of the simulation.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    logfile : str, optional</span>
+<span class="sd">        Where to send the log output. If None, uses pybamm&#39;s logger.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logfile</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="o">=</span> <span class="n">logfile</span>
+        <span class="k">if</span> <span class="n">logfile</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Use pybamm&#39;s logger, which prints to command line</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Use a custom logger, this will have its own level so set it to the same</span>
+            <span class="c1"># level as the pybamm logger (users can override this)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">get_new_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">logfile</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">level</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LoggingCallback.on_experiment_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_experiment_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="c1"># Clear the log file</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Start running experiment&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">logfile</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">logfile</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_cycle_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_cycle_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_cycle_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">cycle_num</span><span class="p">,</span> <span class="n">num_cycles</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;cycle number&quot;</span><span class="p">]</span>
+        <span class="n">total_time</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;elapsed time&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cycle </span><span class="si">{</span><span class="n">cycle_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_cycles</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">total_time</span><span class="si">}</span><span class="s2"> elapsed) &quot;</span> <span class="o">+</span> <span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">20</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_step_start">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_step_start">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_step_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">cycle_num</span><span class="p">,</span> <span class="n">num_cycles</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;cycle number&quot;</span><span class="p">]</span>
+        <span class="n">step_num</span><span class="p">,</span> <span class="n">cycle_length</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step number&quot;</span><span class="p">]</span>
+        <span class="n">operating_conditions</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step operating conditions&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Cycle </span><span class="si">{</span><span class="n">cycle_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_cycles</span><span class="si">}</span><span class="s2">, step </span><span class="si">{</span><span class="n">step_num</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">cycle_length</span><span class="si">}</span><span class="s2">: &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">operating_conditions</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_step_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_step_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_step_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">time_stop</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">][</span><span class="s2">&quot;time&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">time_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">time_now</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;experiment time&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">time_now</span> <span class="o">&lt;</span> <span class="n">time_stop</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Time is now </span><span class="si">{</span><span class="n">time_now</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s, will stop at </span><span class="si">{</span><span class="n">time_stop</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Stopping experiment since time (</span><span class="si">{</span><span class="n">time_now</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s) &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;has reached stopping time (</span><span class="si">{</span><span class="n">time_stop</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> s).&quot;</span>
+                <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_cycle_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_cycle_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_cycle_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">cap_stop</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;capacity&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">cap_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">cap_now</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;summary variables&quot;</span><span class="p">][</span><span class="s2">&quot;Capacity [A.h]&quot;</span><span class="p">]</span>
+            <span class="n">cap_start</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;start capacity&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">cap_now</span><span class="p">)</span> <span class="ow">or</span> <span class="n">cap_now</span> <span class="o">&gt;</span> <span class="n">cap_stop</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Capacity is now </span><span class="si">{</span><span class="n">cap_now</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Ah (originally </span><span class="si">{</span><span class="n">cap_start</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Ah, &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;will stop at </span><span class="si">{</span><span class="n">cap_stop</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Ah)&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Stopping experiment since capacity (</span><span class="si">{</span><span class="n">cap_now</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Ah) &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;is below stopping capacity (</span><span class="si">{</span><span class="n">cap_stop</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> Ah).&quot;</span>
+                <span class="p">)</span>
+
+        <span class="n">voltage_stop</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">][</span><span class="s2">&quot;voltage&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">voltage_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">min_voltage</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;Minimum voltage [V]&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">min_voltage</span> <span class="o">&gt;</span> <span class="n">voltage_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Minimum voltage is now </span><span class="si">{</span><span class="n">min_voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> V &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;(will stop at </span><span class="si">{</span><span class="n">voltage_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> V)&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Stopping experiment since minimum voltage (</span><span class="si">{</span><span class="n">min_voltage</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> V) &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;is below stopping voltage (</span><span class="si">{</span><span class="n">voltage_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> V).&quot;</span>
+                <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_experiment_end">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_experiment_end">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_end</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;elapsed time&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">notice</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finish experiment simulation, took </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_experiment_error">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_experiment_error">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Simulation error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_experiment_infeasible_time">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_experiment_infeasible_time">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_infeasible_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step duration&quot;</span><span class="p">]</span>
+        <span class="n">cycle_num</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;cycle number&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">step_num</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step number&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">operating_conditions</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step operating conditions&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n\t</span><span class="s2">Experiment is infeasible: default duration (</span><span class="si">{</span><span class="n">duration</span><span class="si">}</span><span class="s2"> seconds) &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;was reached during &#39;</span><span class="si">{</span><span class="n">operating_conditions</span><span class="si">}</span><span class="s2">&#39;. The returned solution only &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;contains up to step </span><span class="si">{</span><span class="n">step_num</span><span class="si">}</span><span class="s2"> of cycle </span><span class="si">{</span><span class="n">cycle_num</span><span class="si">}</span><span class="s2">. &quot;</span>
+            <span class="s2">&quot;Please specify a duration in the step instructions.&quot;</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LoggingCallback.on_experiment_infeasible_event">
+<a class="viewcode-back" href="../../source/api/callbacks.html#pybamm.callbacks.LoggingCallback.on_experiment_infeasible_event">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">on_experiment_infeasible_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">logs</span><span class="p">):</span>
+        <span class="n">termination</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;termination&quot;</span><span class="p">]</span>
+        <span class="n">cycle_num</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;cycle number&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">step_num</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step number&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">operating_conditions</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step operating conditions&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n\n\t</span><span class="s2">Experiment is infeasible: &#39;</span><span class="si">{</span><span class="n">termination</span><span class="si">}</span><span class="s2">&#39; was &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;triggered during &#39;</span><span class="si">{</span><span class="n">operating_conditions</span><span class="si">}</span><span class="s2">&#39;. The returned solution only &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;contains up to step </span><span class="si">{</span><span class="n">step_num</span><span class="si">}</span><span class="s2"> of cycle </span><span class="si">{</span><span class="n">cycle_num</span><span class="si">}</span><span class="s2">. &quot;</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

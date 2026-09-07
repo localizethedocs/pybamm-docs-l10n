@@ -1,0 +1,1113 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/models/full_battery_models/lithium_ion/base_lithium_ion_model';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/models/full_battery_models/lithium_ion/base_lithium_ion_model.html" />
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.models.full_battery_models.lithium_ion.base_lithium_ion_model 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Lithium-ion base model class</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<div class="viewcode-block" id="BaseModel">
+<a class="viewcode-back" href="../../../../../source/api/models/lithium_ion/base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseModel</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseBatteryModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Overwrites default parameters from Base Model with default parameters for</span>
+<span class="sd">    lithium-ion models</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    options : dict-like, optional</span>
+<span class="sd">        A dictionary of options to be passed to the model. If this is a dict (and not</span>
+<span class="sd">        a subtype of dict), it will be processed by :class:`pybamm.BatteryModelOptions`</span>
+<span class="sd">        to ensure that the options are valid. If this is a subtype of dict, it is</span>
+<span class="sd">        assumed that the options have already been processed and are valid. This allows</span>
+<span class="sd">        for the use of custom options classes. The default options are given by</span>
+<span class="sd">        :class:`pybamm.BatteryModelOptions`.</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        The name of the model. The default is &quot;Unnamed battery model&quot;.</span>
+<span class="sd">    build : bool, optional</span>
+<span class="sd">        Whether to build the model on instantiation. Default is True. Setting this</span>
+<span class="sd">        option to False allows users to change any number of the submodels before</span>
+<span class="sd">        building the complete model (submodels cannot be changed after the model is</span>
+<span class="sd">        built).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Unnamed lithium-ion model&quot;</span><span class="p">,</span> <span class="n">build</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_standard_output_variables</span><span class="p">()</span>
+
+        <span class="c1"># Li models should calculate esoh by default</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_esoh</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_rebuild_param</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># param is options-derived, so rebuild it whenever options are</span>
+        <span class="c1"># (re)assigned: at construction and on deserialisation.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">LithiumIonParameters</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">build</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_external_circuit_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_porosity_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_interface_utilisation_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_crack_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_active_material_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_transport_efficiency_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_convection_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_open_circuit_potential_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_intercalation_kinetics_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_particle_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_solid_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_electrolyte_concentration_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_electrolyte_potential_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_thermal_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_surface_temperature_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_collector_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_sei_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_sei_on_cracks_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lithium_plating_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_li_metal_counter_electrode_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_total_interface_submodel</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">build</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_model</span><span class="p">()</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span> <span class="o">==</span> <span class="p">[</span>
+            <span class="s2">&quot;negative electrode&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;separator&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;positive electrode&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;Marquis2019&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;Xu2019&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_quick_plot_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span> <span class="o">==</span> <span class="p">[</span><span class="s2">&quot;separator&quot;</span><span class="p">,</span> <span class="s2">&quot;positive electrode&quot;</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="s2">&quot;Electrolyte concentration [mol.m-3]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Positive particle surface concentration [mol.m-3]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Electrolyte potential [V]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span>
+                <span class="s2">&quot;Negative particle surface concentration [mol.m-3]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Electrolyte concentration [mol.m-3]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Positive particle surface concentration [mol.m-3]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Negative electrode potential [V]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Electrolyte potential [V]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_esoh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Whether to include eSOH variables in the summary variables.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;particle phases&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">)]</span>
+            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;working electrode&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;both&quot;</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_calc_esoh</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc_esoh</span>
+
+    <span class="nd">@calc_esoh</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">calc_esoh</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set whether to include eSOH variables in the summary variables.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;`calc_esoh` arg needs to be a bool&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_calc_esoh</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_standard_output_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">set_standard_output_variables</span><span class="p">()</span>
+
+        <span class="c1"># Particle concentration position</span>
+        <span class="n">var</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">standard_spatial_vars</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;r_n [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">r_n</span><span class="p">})</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;r_p [m]&quot;</span><span class="p">:</span> <span class="n">var</span><span class="o">.</span><span class="n">r_p</span><span class="p">})</span>
+
+<div class="viewcode-block" id="BaseModel.set_degradation_variables">
+<a class="viewcode-back" href="../../../../../source/api/models/lithium_ion/base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel.set_degradation_variables">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_degradation_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Sets variables that quantify degradation (LAM, LLI, etc)&quot;&quot;&quot;</span>
+
+        <span class="n">domains</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="s2">&quot;separator&quot;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains</span><span class="p">:</span>
+            <span class="n">Domain</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Total lithium in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [mol]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Total lithium in </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [mol]&quot;</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="p">)</span>
+
+            <span class="c1"># LAM</span>
+            <span class="n">Q_k</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Domain</span><span class="si">}</span><span class="s2"> capacity [A.h]&quot;</span><span class="p">]</span>
+            <span class="n">domain_param</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># param.n or param.p</span>
+            <span class="n">LAM_k</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Q_k</span> <span class="o">/</span> <span class="n">domain_param</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="sa">f</span><span class="s2">&quot;LAM_</span><span class="si">{</span><span class="n">domain</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">e [%]&quot;</span><span class="p">:</span> <span class="n">LAM_k</span><span class="p">,</span>
+                    <span class="sa">f</span><span class="s2">&quot;Loss of active material in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [%]&quot;</span><span class="p">:</span> <span class="n">LAM_k</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Per-phase LAM (only registered for composite electrodes)</span>
+            <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="n">Q_k_phase</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase capacity [A.h]&quot;</span><span class="p">]</span>
+                    <span class="n">Q_k_phase_init</span> <span class="o">=</span> <span class="n">domain_param</span><span class="o">.</span><span class="n">phase_params</span><span class="p">[</span><span class="n">phase</span><span class="p">]</span><span class="o">.</span><span class="n">Q_init</span>
+                    <span class="n">LAM_k_phase</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">Q_k_phase</span> <span class="o">/</span> <span class="n">Q_k_phase_init</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of active material in </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [%]&quot;</span>
+                    <span class="p">]</span> <span class="o">=</span> <span class="n">LAM_k_phase</span>
+
+        <span class="c1"># LLI</span>
+        <span class="n">n_Li_e</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Total lithium in electrolyte [mol]&quot;</span><span class="p">]</span>
+        <span class="n">n_Li_particles</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Total lithium in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [mol]&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains</span>
+        <span class="p">)</span>
+        <span class="n">n_Li</span> <span class="o">=</span> <span class="n">n_Li_particles</span> <span class="o">+</span> <span class="n">n_Li_e</span>
+
+        <span class="c1"># LLI is usually defined based only on the percentage lithium lost from</span>
+        <span class="c1"># particles</span>
+        <span class="n">LLI</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">n_Li_particles</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n_Li_particles_init</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+        <span class="n">LLI_tot</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">n_Li</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n_Li_init</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;LLI [%]&quot;</span><span class="p">:</span> <span class="n">LLI</span><span class="p">,</span>
+                <span class="s2">&quot;Loss of lithium inventory [%]&quot;</span><span class="p">:</span> <span class="n">LLI</span><span class="p">,</span>
+                <span class="s2">&quot;Loss of lithium inventory, including electrolyte [%]&quot;</span><span class="p">:</span> <span class="n">LLI_tot</span><span class="p">,</span>
+                <span class="c1"># Total lithium</span>
+                <span class="s2">&quot;Total lithium [mol]&quot;</span><span class="p">:</span> <span class="n">n_Li</span><span class="p">,</span>
+                <span class="s2">&quot;Total lithium in particles [mol]&quot;</span><span class="p">:</span> <span class="n">n_Li_particles</span><span class="p">,</span>
+                <span class="s2">&quot;Total lithium capacity [A.h]&quot;</span><span class="p">:</span> <span class="n">n_Li</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">F</span> <span class="o">/</span> <span class="mi">3600</span><span class="p">,</span>
+                <span class="s2">&quot;Total lithium capacity in particles [A.h]&quot;</span><span class="p">:</span> <span class="n">n_Li_particles</span>
+                <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">F</span>
+                <span class="o">/</span> <span class="mi">3600</span><span class="p">,</span>
+                <span class="c1"># Lithium lost</span>
+                <span class="s2">&quot;Total lithium lost [mol]&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n_Li_init</span> <span class="o">-</span> <span class="n">n_Li</span><span class="p">,</span>
+                <span class="s2">&quot;Total lithium lost from particles [mol]&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n_Li_particles_init</span>
+                <span class="o">-</span> <span class="n">n_Li_particles</span><span class="p">,</span>
+                <span class="s2">&quot;Total lithium lost from electrolyte [mol]&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n_Li_e_init</span>
+                <span class="o">-</span> <span class="n">n_Li_e</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Lithium lost to side reactions</span>
+        <span class="c1"># Different way of measuring LLI but should give same value</span>
+        <span class="n">n_Li_lost_neg_sei</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Loss of lithium to negative SEI [mol]&quot;</span><span class="p">]</span>
+        <span class="n">n_Li_lost_pos_sei</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Loss of lithium to positive SEI [mol]&quot;</span><span class="p">]</span>
+        <span class="n">n_Li_lost_reactions</span> <span class="o">=</span> <span class="n">n_Li_lost_neg_sei</span> <span class="o">+</span> <span class="n">n_Li_lost_pos_sei</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="n">domains</span><span class="p">:</span>
+            <span class="n">dom</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+            <span class="n">n_Li_lost_sei_cracks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> SEI on cracks [mol]&quot;</span>
+            <span class="p">]</span>
+            <span class="n">n_Li_lost_pl</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> lithium plating [mol]&quot;</span>
+            <span class="p">]</span>
+            <span class="n">n_Li_lost_reactions</span> <span class="o">+=</span> <span class="n">n_Li_lost_sei_cracks</span> <span class="o">+</span> <span class="n">n_Li_lost_pl</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Total lithium lost to side reactions [mol]&quot;</span><span class="p">:</span> <span class="n">n_Li_lost_reactions</span><span class="p">,</span>
+                <span class="s2">&quot;Total capacity lost to side reactions [A.h]&quot;</span><span class="p">:</span> <span class="n">n_Li_lost_reactions</span>
+                <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">F</span>
+                <span class="o">/</span> <span class="mi">3600</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseModel.set_default_summary_variables">
+<a class="viewcode-back" href="../../../../../source/api/models/lithium_ion/base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel.set_default_summary_variables">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_default_summary_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets the default summary variables.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">summary_variables</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;Time [s]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Time [h]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Throughput capacity [A.h]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Throughput energy [W.h]&quot;</span><span class="p">,</span>
+            <span class="c1"># LAM, LLI</span>
+            <span class="s2">&quot;Loss of lithium inventory [%]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Loss of lithium inventory, including electrolyte [%]&quot;</span><span class="p">,</span>
+            <span class="c1"># Total lithium</span>
+            <span class="s2">&quot;Total lithium [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total lithium in electrolyte [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total lithium in particles [mol]&quot;</span><span class="p">,</span>
+            <span class="c1"># Lithium lost</span>
+            <span class="s2">&quot;Total lithium lost [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total lithium lost from particles [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total lithium lost from electrolyte [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Loss of lithium to negative SEI [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Loss of capacity to negative SEI [A.h]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Loss of lithium to positive SEI [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Loss of capacity to positive SEI [A.h]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total lithium lost to side reactions [mol]&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Total capacity lost to side reactions [A.h]&quot;</span><span class="p">,</span>
+            <span class="c1"># Resistance</span>
+            <span class="s2">&quot;Local ECM resistance [Ohm]&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span> <span class="k">if</span> <span class="n">d</span> <span class="o">!=</span> <span class="s2">&quot;separator&quot;</span><span class="p">]:</span>
+            <span class="n">Domain</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span>
+            <span class="n">dom</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">summary_variables</span> <span class="o">+=</span> <span class="p">[</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Domain</span><span class="si">}</span><span class="s2"> capacity [A.h]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of active material in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [%]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Total lithium in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [mol]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> lithium plating [mol]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of capacity to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> lithium plating [A.h]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> SEI on cracks [mol]&quot;</span><span class="p">,</span>
+                <span class="sa">f</span><span class="s2">&quot;Loss of capacity to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> SEI on cracks [A.h]&quot;</span><span class="p">,</span>
+            <span class="p">]</span>
+            <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">dom</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="n">summary_variables</span> <span class="o">+=</span> <span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">Domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase capacity [A.h]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of active material in </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [%]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Total lithium in </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> phase in </span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> [mol]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> SEI [mol]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of capacity to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> SEI [A.h]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> SEI on cracks [mol]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of capacity to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> SEI on cracks [A.h]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of lithium to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> lithium plating [mol]&quot;</span><span class="p">,</span>
+                        <span class="sa">f</span><span class="s2">&quot;Loss of capacity to </span><span class="si">{</span><span class="n">dom</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> lithium plating [A.h]&quot;</span><span class="p">,</span>
+                    <span class="p">]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">summary_variables</span> <span class="o">=</span> <span class="n">summary_variables</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_open_circuit_potential_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span><span class="p">:</span>
+                <span class="n">reaction</span> <span class="o">=</span> <span class="s2">&quot;lithium-ion main&quot;</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;planar&quot;</span><span class="p">:</span>
+                <span class="n">reaction</span> <span class="o">=</span> <span class="s2">&quot;lithium metal plating&quot;</span>
+            <span class="n">domain_options</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]:</span>
+                <span class="n">ocp_option</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">domain_options</span><span class="p">,</span> <span class="n">phase</span><span class="p">)[</span><span class="s2">&quot;open-circuit potential&quot;</span><span class="p">]</span>
+                <span class="n">ocp_submodels</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">open_circuit_potential</span>
+                <span class="k">if</span> <span class="n">ocp_option</span> <span class="o">==</span> <span class="s2">&quot;single&quot;</span><span class="p">:</span>
+                    <span class="n">ocp_model</span> <span class="o">=</span> <span class="n">ocp_submodels</span><span class="o">.</span><span class="n">SingleOpenCircuitPotential</span>
+                <span class="k">elif</span> <span class="n">ocp_option</span> <span class="o">==</span> <span class="s2">&quot;current sigmoid&quot;</span><span class="p">:</span>
+                    <span class="n">ocp_model</span> <span class="o">=</span> <span class="n">ocp_submodels</span><span class="o">.</span><span class="n">CurrentSigmoidOpenCircuitPotential</span>
+                <span class="k">elif</span> <span class="n">ocp_option</span> <span class="o">==</span> <span class="s2">&quot;one-state hysteresis&quot;</span><span class="p">:</span>
+                    <span class="n">ocp_model</span> <span class="o">=</span> <span class="n">ocp_submodels</span><span class="o">.</span><span class="n">OneStateHysteresisOpenCircuitPotential</span>
+                <span class="k">elif</span> <span class="n">ocp_option</span> <span class="o">==</span> <span class="s2">&quot;one-state differential capacity hysteresis&quot;</span><span class="p">:</span>
+                    <span class="n">ocp_model</span> <span class="o">=</span> <span class="n">ocp_submodels</span><span class="o">.</span><span class="n">OneStateDifferentialCapacityHysteresisOpenCircuitPotential</span>
+                <span class="k">elif</span> <span class="n">ocp_option</span> <span class="o">==</span> <span class="s2">&quot;MSMR&quot;</span><span class="p">:</span>
+                    <span class="n">ocp_model</span> <span class="o">=</span> <span class="n">ocp_submodels</span><span class="o">.</span><span class="n">MSMROpenCircuitPotential</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> open-circuit potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ocp_model</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">reaction</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_average</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_sei_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">]:</span>
+            <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+            <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                <span class="n">sei_option</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">),</span> <span class="n">phase</span><span class="p">)[</span><span class="s2">&quot;SEI&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">sei_option</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                    <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">NoSEI</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="p">)</span>
+                <span class="k">elif</span> <span class="n">sei_option</span> <span class="o">==</span> <span class="s2">&quot;constant&quot;</span><span class="p">:</span>
+                    <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">ConstantSEI</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">SEIGrowth</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                        <span class="n">domain</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                        <span class="n">phase</span><span class="p">,</span>
+                        <span class="n">cracks</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> sei&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> sei thickness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">SEIThickness</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">cracks</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> total sei&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">TotalSEI</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_sei_on_cracks_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Do not set &quot;sei on cracks&quot; submodel for a planar electrode. For porous</span>
+        <span class="c1"># electrodes, &quot;sei on cracks&quot; submodel must be set, even if it is zero</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">domain</span> <span class="o">!=</span> <span class="s2">&quot;separator&quot;</span><span class="p">:</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">sei_option</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">)[</span><span class="s2">&quot;SEI&quot;</span><span class="p">]</span>
+                <span class="n">sei_on_cracks_option</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">)[</span><span class="s2">&quot;SEI on cracks&quot;</span><span class="p">]</span>
+                <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="n">sei_option</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span>
+                        <span class="ow">or</span> <span class="n">sei_on_cracks_option</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span>
+                    <span class="p">):</span>
+                        <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">NoSEI</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="p">,</span> <span class="n">cracks</span><span class="o">=</span><span class="kc">True</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">SEIGrowth</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                            <span class="n">domain</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                            <span class="n">phase</span><span class="p">,</span>
+                            <span class="n">cracks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> sei on cracks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> sei on cracks thickness&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">SEIThickness</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                            <span class="n">domain</span><span class="p">,</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                            <span class="n">phase</span><span class="p">,</span>
+                            <span class="n">cracks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> total sei on cracks&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">sei</span><span class="o">.</span><span class="n">TotalSEI</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">cracks</span><span class="o">=</span><span class="kc">True</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_lithium_plating_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Do not set &quot;lithium plating&quot; submodel for a planar electrode. For porous</span>
+        <span class="c1"># electrodes, &quot;lithium plating&quot; submodel must be set, even if it is zero</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">domain</span> <span class="o">!=</span> <span class="s2">&quot;separator&quot;</span><span class="p">:</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="n">lithium_plating_opt</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">),</span> <span class="n">phase</span><span class="p">)[</span>
+                        <span class="s2">&quot;lithium plating&quot;</span>
+                    <span class="p">]</span>
+                    <span class="k">if</span> <span class="n">lithium_plating_opt</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                        <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_plating</span><span class="o">.</span><span class="n">NoPlating</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">x_average</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;x-average side reactions&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+                        <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_plating</span><span class="o">.</span><span class="n">Plating</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">x_average</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span>
+                        <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> lithium plating&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> total lithium plating&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_plating</span><span class="o">.</span><span class="n">TotalLithiumPlating</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_total_interface_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;total interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">interface</span><span class="o">.</span><span class="n">TotalInterfacialCurrent</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;lithium-ion&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_crack_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">whole_cell_domains</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">domain</span> <span class="o">!=</span> <span class="s2">&quot;separator&quot;</span><span class="p">:</span>
+                <span class="n">domain</span> <span class="o">=</span> <span class="n">domain</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+                <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="n">crack</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">)[</span><span class="s2">&quot;particle mechanics&quot;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">crack</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">particle mechanics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">particle_mechanics</span><span class="o">.</span><span class="n">NoMechanics</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">crack</span> <span class="o">==</span> <span class="s2">&quot;swelling only&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">particle mechanics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">particle_mechanics</span><span class="o">.</span><span class="n">SwellingOnly</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="n">phase</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">crack</span> <span class="o">==</span> <span class="s2">&quot;swelling and cracking&quot;</span><span class="p">:</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">particle mechanics&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">particle_mechanics</span><span class="o">.</span><span class="n">CrackPropagation</span><span class="p">(</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                                <span class="n">domain</span><span class="p">,</span>
+                                <span class="bp">self</span><span class="o">.</span><span class="n">x_average</span><span class="p">,</span>
+                                <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                                <span class="n">phase</span><span class="o">=</span><span class="n">phase</span><span class="p">,</span>
+                            <span class="p">)</span>
+                        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_active_material_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span><span class="p">:</span>
+                <span class="n">lam</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">domain</span><span class="p">)[</span><span class="s2">&quot;loss of active material&quot;</span><span class="p">]</span>
+                <span class="n">phases</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">phases</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">phases</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">lam</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+                        <span class="n">submod</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">active_material</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">phase</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">submod</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">active_material</span><span class="o">.</span><span class="n">LossActiveMaterial</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">x_average</span><span class="p">,</span> <span class="n">phase</span>
+                        <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2"> active material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submod</span>
+
+                <span class="c1"># Submodel for the total active material, summing up each phase</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> total active material&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">active_material</span><span class="o">.</span><span class="n">Total</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_porosity_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;SEI porosity change&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;lithium plating porosity change&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;porosity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">porosity</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;SEI porosity change&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;lithium plating porosity change&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+        <span class="p">):</span>
+            <span class="n">x_average</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;x-average side reactions&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;porosity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">porosity</span><span class="o">.</span><span class="n">ReactionDriven</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">x_average</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_li_metal_counter_electrode_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">]:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="n">domain</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span><span class="p">:</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;SEI&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;constant&quot;</span><span class="p">]</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;intercalation kinetics&quot;</span><span class="p">]</span>
+                <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="s2">&quot;symmetric Butler-Volmer&quot;</span><span class="p">]</span>
+                <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;surface form&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span>
+            <span class="p">):</span>
+                <span class="c1"># only symmetric Butler-Volmer or linear kinetics can be inverted</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">electrode</span><span class="o">.</span><span class="n">ohm</span><span class="o">.</span><span class="n">LithiumMetalExplicit</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;intercalation kinetics&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;symmetric Butler-Volmer&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">InverseButlerVolmer</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="s2">&quot;lithium metal plating&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">InverseLinear</span><span class="p">(</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="s2">&quot;lithium metal plating&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode interface current&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">CurrentForInverseKineticsLithiumMetal</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="s2">&quot;lithium metal plating&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">electrode</span><span class="o">.</span><span class="n">ohm</span><span class="o">.</span><span class="n">LithiumMetalSurfaceForm</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+                <span class="n">neg_intercalation_kinetics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_intercalation_kinetics</span><span class="p">(</span><span class="n">domain</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> electrode interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">neg_intercalation_kinetics</span><span class="p">(</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                        <span class="n">domain</span><span class="p">,</span>
+                        <span class="s2">&quot;lithium metal plating&quot;</span><span class="p">,</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                        <span class="s2">&quot;primary&quot;</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_convection_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;transverse convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">transverse</span><span class="o">.</span><span class="n">NoConvection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;through-cell convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">through_cell</span><span class="o">.</span><span class="n">NoConvection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="BaseModel.insert_reference_electrode">
+<a class="viewcode-back" href="../../../../../source/api/models/lithium_ion/base_lithium_ion_model.html#pybamm.lithium_ion.BaseModel.insert_reference_electrode">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">insert_reference_electrode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Insert a reference electrode to measure the electrolyte potential at a given</span>
+<span class="sd">        position in space. Adds model variables for the electrolyte potential at the</span>
+<span class="sd">        reference electrode and for the potential difference between the electrode</span>
+<span class="sd">        potentials measured at the electrode/current collector interface and the</span>
+<span class="sd">        reference electrode. Only implemented for 1D models (i.e. where the</span>
+<span class="sd">        &#39;dimensionality&#39; option is 0).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        position : :class:`pybamm.Symbol`, optional</span>
+<span class="sd">            The position in space at which to measure the electrolyte potential. If</span>
+<span class="sd">            None, defaults to the mid-point of the separator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Reference electrode can only be inserted for models where &quot;</span>
+                <span class="s2">&quot;&#39;dimensionality&#39; is 0. For other models, please add a reference &quot;</span>
+                <span class="s2">&quot;electrode manually.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">position</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">L</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="n">phi_e_ref</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EvaluateAt</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Electrolyte potential [V]&quot;</span><span class="p">],</span> <span class="n">position</span>
+        <span class="p">)</span>
+        <span class="n">phi_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">boundary_value</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">],</span> <span class="s2">&quot;right&quot;</span>
+        <span class="p">)</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;Positive electrode 3E potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_p</span> <span class="o">-</span> <span class="n">phi_e_ref</span><span class="p">,</span>
+            <span class="s2">&quot;Reference electrode potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_e_ref</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;working electrode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;both&quot;</span><span class="p">:</span>
+            <span class="n">phi_n</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">boundary_value</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s2">&quot;Negative electrode potential [V]&quot;</span><span class="p">],</span> <span class="s2">&quot;left&quot;</span>
+            <span class="p">)</span>
+            <span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;Negative electrode 3E potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_n</span> <span class="o">-</span> <span class="n">phi_e_ref</span><span class="p">,</span>
+                <span class="p">}</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

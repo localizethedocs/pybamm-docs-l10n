@@ -1,0 +1,930 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-18T08:53:15+00:00" />
+    <title>Install from source (GNU Linux and macOS) &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/user_guide/installation/install-from-source';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/user_guide/installation/install-from-source.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="next" title="Install from source (Docker)" href="install-from-docker.html" />
+    <link rel="prev" title="Install from source (Windows Subsystem for Linux)" href="windows-wsl.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-18"/>
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Installation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="windows-wsl.html">Install from source (Windows Subsystem for Linux)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Install from source (GNU Linux and macOS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="install-from-docker.html">Install from source (Docker)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing.html">Contributing to PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release.html">PyBaMM Release Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/notebooks/performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Installation</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Install from source (GNU Linux and macOS)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="install-from-source-gnu-linux-and-macos">
+<span id="install-from-source"></span><h1><a class="toc-backref" href="#id1" role="doc-backlink">Install from source (GNU Linux and macOS)</a><a class="headerlink" href="#install-from-source-gnu-linux-and-macos" title="Link to this heading">#</a></h1>
+<nav class="contents" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#install-from-source-gnu-linux-and-macos" id="id1">Install from source (GNU Linux and macOS)</a></p>
+<ul>
+<li><p><a class="reference internal" href="#prerequisites" id="id2">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#installing-pybamm" id="id3">Installing PyBaMM</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-uv-recommended" id="id4">Using <code class="docutils literal notranslate"><span class="pre">uv</span></code> (recommended)</a></p></li>
+<li><p><a class="reference internal" href="#using-nox" id="id5">Using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a></p></li>
+<li><p><a class="reference internal" href="#manual-install-pip" id="id6">Manual install (pip)</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#running-the-tests" id="id7">Running the tests</a></p>
+<ul>
+<li><p><a class="reference internal" href="#using-nox-recommended" id="id8">Using Nox (recommended)</a></p></li>
+<li><p><a class="reference internal" href="#using-pytest" id="id9">Using pytest</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#how-to-build-the-pybamm-documentation" id="id10">How to build the PyBaMM documentation</a></p></li>
+<li><p><a class="reference internal" href="#doctests-examples-and-coverage" id="id11">Doctests, examples, and coverage</a></p></li>
+<li><p><a class="reference internal" href="#extra-tips-while-using-nox" id="id12">Extra tips while using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting" id="id13">Troubleshooting</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<p>This page describes the build and installation of PyBaMM from the source code, available on GitHub. Note that this is <strong>not the recommended approach for most users</strong> and should be reserved to people wanting to participate in the development of PyBaMM, or people who really need to use bleeding-edge feature(s) not yet available in the latest released version. If you do not fall in the two previous categories, you would be better off installing PyBaMM using pip or conda.</p>
+<p>Lastly, familiarity with the Python ecosystem is recommended (pip or uv, virtualenvs).
+Here is a gentle introduction/refresher: <a class="reference external" href="https://realpython.com/python-virtual-environments-a-primer/">Python Virtual Environments: A Primer</a>.</p>
+<section id="prerequisites">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Prerequisites</a><a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>The following instructions are valid for both GNU/Linux distributions and MacOS.
+If you are running Windows, consider using the <a class="reference external" href="https://learn.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux (WSL)</a>.</p>
+<p>To obtain the PyBaMM source code, clone the GitHub repository</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>--recurse-submodules<span class="w"> </span>https://github.com/pybamm-team/PyBaMM.git
+</pre></div>
+</div>
+<p>or download the source archive on the repository’s homepage. The
+<code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code> flag fetches the SUNDIALS and SuiteSparse sources used
+to build the in-repo IDAKLU solver (<code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code>); if you already cloned
+without it, run <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span></code>.</p>
+<p>To install PyBaMM, you will need:</p>
+<ul class="simple">
+<li><p>Python 3 (PyBaMM supports versions 3.10 — 3.14)</p></li>
+<li><p>The Python headers file for your current Python version.</p></li>
+<li><p>A BLAS library (for instance <a class="reference external" href="https://www.openblas.net/">openblas</a>).</p></li>
+<li><p>A C compiler (ex: <code class="docutils literal notranslate"><span class="pre">gcc</span></code>).</p></li>
+<li><p>A Fortran compiler (ex: <code class="docutils literal notranslate"><span class="pre">gfortran</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">graphviz</span></code> (optional), if you wish to build the documentation locally.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pandoc</span></code> (optional) to convert the example Jupyter notebooks when building the documentation.</p></li>
+</ul>
+<p>You can install the above with</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--1">Ubuntu/Debian</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3.X<span class="w"> </span>python3.X-dev<span class="w"> </span>libopenblas-dev<span class="w"> </span>gcc<span class="w"> </span>gfortran<span class="w"> </span>graphviz<span class="w"> </span>cmake<span class="w"> </span>make<span class="w"> </span>pandoc
+</pre></div>
+</div>
+<p>Where <code class="docutils literal notranslate"><span class="pre">X</span></code> is the version sub-number.</p>
+</div>
+<input class="tab-input" id="tab-set--0-input--2" name="tab-set--0" type="radio" /><label class="tab-label" for="tab-set--0-input--2">MacOS</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>python<span class="w"> </span>openblas<span class="w"> </span>gcc<span class="w"> </span>gfortran<span class="w"> </span>graphviz<span class="w"> </span>libomp<span class="w"> </span>cmake<span class="w"> </span>pandoc
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using some other linux distribution you can install the equivalent packages for <code class="docutils literal notranslate"><span class="pre">python3,</span> <span class="pre">cmake,</span> <span class="pre">gcc,</span> <span class="pre">gfortran,</span> <span class="pre">openblas,</span> <span class="pre">pandoc</span></code>.</p>
+<p>On Windows, you can install <code class="docutils literal notranslate"><span class="pre">graphviz</span></code> using the <a class="reference external" href="https://chocolatey.org/">Chocolatey</a> package manager, or follow the instructions on the <a class="reference external" href="https://graphviz.org/download/">graphviz website</a>.</p>
+</div>
+<p>Finally, we recommend using <a class="reference external" href="https://nox.thea.codes/en/stable/">Nox</a> for running tests.
+You can install it with</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--1-input--1" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--1">uv</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>nox
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--1-input--2" name="tab-set--1" type="radio" /><label class="tab-label" for="tab-set--1-input--2">pip</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3.X<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--user<span class="w"> </span>nox
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that running <code class="docutils literal notranslate"><span class="pre">nox</span></code> will create new virtual environments for you to use, so you do not need to create one yourself.</p>
+<p>Depending on your operating system, you may or may not have <code class="docutils literal notranslate"><span class="pre">pip</span></code> installed along Python.
+If <code class="docutils literal notranslate"><span class="pre">pip</span></code> is not found, you probably want to install the <code class="docutils literal notranslate"><span class="pre">python3-pip</span></code> package.</p>
+</section>
+<section id="installing-pybamm">
+<span id="pybamm-install"></span><h2><a class="toc-backref" href="#id3" role="doc-backlink">Installing PyBaMM</a><a class="headerlink" href="#installing-pybamm" title="Link to this heading">#</a></h2>
+<p>You should now have everything ready to build and install PyBaMM successfully.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> and <code class="docutils literal notranslate"><span class="pre">nox</span></code> build the in-repo IDAKLU solver (<code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code>)
+from source. The first such build compiles the vendored SUNDIALS and
+SuiteSparse into <code class="docutils literal notranslate"><span class="pre">packages/pybammsolvers/.idaklu</span></code> automatically — this
+takes a few minutes the first time, then is cached. You only need the
+submodules present (fetched by <code class="docutils literal notranslate"><span class="pre">--recurse-submodules</span></code> above, or
+<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">submodule</span> <span class="pre">update</span> <span class="pre">--init</span></code>) and <code class="docutils literal notranslate"><span class="pre">make</span></code>, <code class="docutils literal notranslate"><span class="pre">cmake</span></code>, and a C/Fortran
+compiler installed.</p>
+<p>To use a system SUNDIALS/SuiteSparse instead of the vendored build, set
+<code class="docutils literal notranslate"><span class="pre">SUNDIALS_ROOT</span></code> and <code class="docutils literal notranslate"><span class="pre">SuiteSparse_ROOT</span></code>. The manual <code class="docutils literal notranslate"><span class="pre">pip</span></code> install below
+and the released <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybamm</span></code> both pull a prebuilt
+<code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> wheel from PyPI, so they skip this build entirely.</p>
+</div>
+<section id="using-uv-recommended">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Using <code class="docutils literal notranslate"><span class="pre">uv</span></code> (recommended)</a><a class="headerlink" href="#using-uv-recommended" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://docs.astral.sh/uv/">uv</a> is a fast Python package manager that supports lockfile-based installs.
+PyBaMM includes a <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> file to ensure reproducible environments.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># in the PyBaMM/ directory</span>
+uv<span class="w"> </span>sync<span class="w"> </span>--extra<span class="w"> </span>all<span class="w"> </span>--group<span class="w"> </span>dev<span class="w"> </span>--group<span class="w"> </span>docs
+</pre></div>
+</div>
+<p>This creates a virtual environment <code class="docutils literal notranslate"><span class="pre">.venv/</span></code> inside the <code class="docutils literal notranslate"><span class="pre">PyBaMM/</span></code> directory with
+PyBaMM installed in editable mode, all optional dependencies, and development tools.</p>
+<p>You can now activate the environment with</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--2-input--1" name="tab-set--2" type="radio" /><label class="tab-label" for="tab-set--2-input--1">GNU/Linux and MacOS (bash)</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--2-input--2" name="tab-set--2" type="radio" /><label class="tab-label" for="tab-set--2-input--2">Windows</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>.venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
+</pre></div>
+</div>
+</div>
+</div>
+<p>and run the tests to check your installation.</p>
+</section>
+<section id="using-nox">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a><a class="headerlink" href="#using-nox" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># in the PyBaMM/ directory</span>
+nox<span class="w"> </span>-s<span class="w"> </span>dev
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is recommended to use <code class="docutils literal notranslate"><span class="pre">--verbose</span></code> or <code class="docutils literal notranslate"><span class="pre">-v</span></code> to see outputs of all commands run.</p>
+</div>
+<p>This creates a virtual environment <code class="docutils literal notranslate"><span class="pre">venv/</span></code> inside the <code class="docutils literal notranslate"><span class="pre">PyBaMM/</span></code> directory.
+It comes ready with PyBaMM and some useful development tools like <a class="reference external" href="https://pre-commit.com/">pre-commit</a> and <a class="reference external" href="https://beta.ruff.rs/docs/">ruff</a>.</p>
+<p>You can now activate the environment with</p>
+<div class="tab-set docutils">
+<input checked="True" class="tab-input" id="tab-set--3-input--1" name="tab-set--3" type="radio" /><label class="tab-label" for="tab-set--3-input--1">GNU/Linux and MacOS (bash)</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+</pre></div>
+</div>
+</div>
+<input class="tab-input" id="tab-set--3-input--2" name="tab-set--3" type="radio" /><label class="tab-label" for="tab-set--3-input--2">Windows</label><div class="tab-content docutils">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>venv<span class="se">\S</span>cripts<span class="se">\a</span>ctivate.bat
+</pre></div>
+</div>
+</div>
+</div>
+<p>and run the tests to check your installation.</p>
+</section>
+<section id="manual-install-pip">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">Manual install (pip)</a><a class="headerlink" href="#manual-install-pip" title="Link to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> package lives at <code class="docutils literal notranslate"><span class="pre">packages/pybamm</span></code> within the repository. From
+the <code class="docutils literal notranslate"><span class="pre">PyBaMM/</span></code> directory, you can install it using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>./packages/pybamm
+</pre></div>
+</div>
+<p>If you intend to contribute to the development of PyBaMM, it is convenient to
+install in “editable mode”, along with all the optional dependencies and useful
+tools for development and documentation. The <code class="docutils literal notranslate"><span class="pre">dev</span></code> and <code class="docutils literal notranslate"><span class="pre">docs</span></code> dependency
+groups live in the package’s <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, so reference them by path:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span>./packages/pybamm<span class="o">[</span>all<span class="o">]</span><span class="w"> </span>--group<span class="w"> </span>packages/pybamm/pyproject.toml:dev<span class="w"> </span>--group<span class="w"> </span>packages/pybamm/pyproject.toml:docs
+</pre></div>
+</div>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">zsh</span></code> or <code class="docutils literal notranslate"><span class="pre">tcsh</span></code>, you would need to quote the extras to avoid pattern matching:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;./packages/pybamm[all]&#39;</span><span class="w"> </span>--group<span class="w"> </span>packages/pybamm/pyproject.toml:dev<span class="w"> </span>--group<span class="w"> </span>packages/pybamm/pyproject.toml:docs
+</pre></div>
+</div>
+<p>Before you start contributing to PyBaMM, please read the <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/CONTRIBUTING.md">contributing
+guidelines</a>.</p>
+</section>
+</section>
+<section id="running-the-tests">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Running the tests</a><a class="headerlink" href="#running-the-tests" title="Link to this heading">#</a></h2>
+<section id="using-nox-recommended">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">Using Nox (recommended)</a><a class="headerlink" href="#using-nox-recommended" title="Link to this heading">#</a></h3>
+<p>You can use <code class="docutils literal notranslate"><span class="pre">Nox</span></code> to run the unit tests and example notebooks in isolated virtual environments.</p>
+<p>The default command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox
+</pre></div>
+</div>
+<p>will run pre-commit, install <code class="docutils literal notranslate"><span class="pre">Linux</span></code> and <code class="docutils literal notranslate"><span class="pre">macOS</span></code> dependencies, and run the unit tests.
+This can take several minutes.</p>
+<p>To just run the unit tests, use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>Similarly, to run the integration tests, use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>integration
+</pre></div>
+</div>
+<p>Finally, to run the unit and the integration suites sequentially, use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>tests
+</pre></div>
+</div>
+</section>
+<section id="using-pytest">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">Using pytest</a><a class="headerlink" href="#using-pytest" title="Link to this heading">#</a></h3>
+<p>You can run unit tests for PyBaMM using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># in the PyBaMM/ directory</span>
+pytest<span class="w"> </span>-m<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>The above uses pytest (in your current
+Python environment) to run the unit tests. This can take a few minutes.</p>
+<p>You can also use pytest to run the doctests:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--doctest-plus<span class="w"> </span>src
+</pre></div>
+</div>
+<p>Refer to the <a class="reference external" href="https://docs.pybamm.org/en/stable/source/user_guide/contributing.html#testing">testing</a> docs to find out more ways to test PyBaMM using pytest.</p>
+</section>
+</section>
+<section id="how-to-build-the-pybamm-documentation">
+<h2><a class="toc-backref" href="#id10" role="doc-backlink">How to build the PyBaMM documentation</a><a class="headerlink" href="#how-to-build-the-pybamm-documentation" title="Link to this heading">#</a></h2>
+<p>The documentation is built using</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>docs
+</pre></div>
+</div>
+<p>This will build the documentation and serve it locally (thanks to <a class="reference external" href="https://github.com/GaretJax/sphinx-autobuild">sphinx-autobuild</a>) for preview.
+The preview will be updated automatically following changes.</p>
+</section>
+<section id="doctests-examples-and-coverage">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">Doctests, examples, and coverage</a><a class="headerlink" href="#doctests-examples-and-coverage" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">Nox</span></code> can also be used to run doctests, run examples, and generate a coverage report using:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">examples</span></code>: Run the Jupyter notebooks in <code class="docutils literal notranslate"><span class="pre">docs/source/examples/notebooks/</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">examples</span> <span class="pre">--</span> <span class="pre">&lt;path-to-notebook-1.ipynb&gt;</span> <span class="pre">&lt;path-to_notebook-2.ipynb&gt;</span></code>: Run specific Jupyter notebooks.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">scripts</span></code>: Run the example scripts in <code class="docutils literal notranslate"><span class="pre">examples/scripts/</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">doctests</span></code>: Run doctests.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">coverage</span></code>: Measure current test coverage and generate a coverage report.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">quick</span></code>: Run integration tests, unit tests, and doctests sequentially.</p></li>
+</ul>
+</section>
+<section id="extra-tips-while-using-nox">
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">Extra tips while using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a><a class="headerlink" href="#extra-tips-while-using-nox" title="Link to this heading">#</a></h2>
+<p>Here are some additional useful commands you can run with <code class="docutils literal notranslate"><span class="pre">Nox</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--verbose</span> <span class="pre">or</span> <span class="pre">-v</span></code>: Enables verbose mode, providing more detailed output during the execution of Nox sessions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--list</span> <span class="pre">or</span> <span class="pre">-l</span></code>: Lists all available Nox sessions and their descriptions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--stop-on-first-error</span></code>: Stops the execution of Nox sessions immediately after the first error or failure occurs.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--envdir</span> <span class="pre">&lt;path&gt;</span></code>: Specifies the directory where Nox creates and manages the virtual environments used by the sessions. In this case, the directory is set to <code class="docutils literal notranslate"><span class="pre">&lt;path&gt;</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--install-only</span></code>: Skips the test execution and only performs the installation step defined in the Nox sessions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--nocolor</span></code>: Disables the color output in the console during the execution of Nox sessions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--report</span> <span class="pre">output.json</span></code>: Generates a JSON report of the Nox session execution and saves it to the specified file, in this case, “output.json”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">docs</span> <span class="pre">--non-interactive</span></code>: Builds the documentation without serving it locally (using <code class="docutils literal notranslate"><span class="pre">sphinx-build</span></code> instead of <code class="docutils literal notranslate"><span class="pre">sphinx-autobuild</span></code>).</p></li>
+</ul>
+</section>
+<section id="troubleshooting">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Troubleshooting</a><a class="headerlink" href="#troubleshooting" title="Link to this heading">#</a></h2>
+<p><strong>Problem:</strong> I have made edits to source files in PyBaMM, but these are
+not being used when I run my Python script.</p>
+<p><strong>Solution:</strong> Make sure you have installed PyBaMM in editable mode.
+If using <code class="docutils literal notranslate"><span class="pre">uv</span></code>, run <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">sync</span></code> (editable by default). If using <code class="docutils literal notranslate"><span class="pre">pip</span></code>,
+use the <code class="docutils literal notranslate"><span class="pre">-e</span></code> flag: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">./packages/pybamm</span></code>. This sets the installed location
+of the source files to your current directory.</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="windows-wsl.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Install from source (Windows Subsystem for Linux)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="install-from-docker.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Install from source (Docker)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-pybamm">Installing PyBaMM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-uv-recommended">Using <code class="docutils literal notranslate"><span class="pre">uv</span></code> (recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nox">Using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manual-install-pip">Manual install (pip)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-tests">Running the tests</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-nox-recommended">Using Nox (recommended)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-pytest">Using pytest</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-build-the-pybamm-documentation">How to build the PyBaMM documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doctests-examples-and-coverage">Doctests, examples, and coverage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-tips-while-using-nox">Extra tips while using <code class="docutils literal notranslate"><span class="pre">Nox</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/user_guide/installation/install-from-source.rst">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-18.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
