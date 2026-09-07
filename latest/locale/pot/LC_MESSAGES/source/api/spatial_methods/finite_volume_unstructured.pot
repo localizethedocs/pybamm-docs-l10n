@@ -1,0 +1,390 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-07 14:26+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/finite_volume_unstructured.rst:2
+msgid "Unstructured Finite Volume"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:1
+msgid "Cell-centered finite volume method on unstructured meshes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:3
+msgid ""
+"Supports triangles and quadrilaterals (2D), tetrahedra and hexahedra (3D).  "
+"Operators:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:6
+msgid ""
+"**Laplacian** – Two-Point Flux Approximation (TPFA) with an implicit non-"
+"orthogonal correction: the face normal is split as :math:`\\hat n = \\alpha "
+"\\hat e + \\mathbf{k}` along the unit centroid-to-centroid direction :math:"
+"`\\hat e`, so the normal derivative is :math:`\\alpha (u_j - u_i)/d + "
+"\\mathbf{k}\\cdot\\nabla u_f` with the cross term taken from the Green-Gauss "
+"gradient.  On orthogonal meshes :math:`\\mathbf{k} = 0` and this is plain "
+"TPFA."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:13
+msgid "**Gradient** – Green-Gauss cell-centroid reconstruction"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:14
+msgid "**Divergence** – face-flux summation (adjoint of gradient)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:15
+msgid ""
+"**Boundary conditions** – ghost-cell (Dirichlet) / direct injection (Neumann)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:17
+msgid ""
+"Neumann boundary values on the named axis sides (``\"left\"``/``\"right\"``, "
+"``\"front\"``/``\"back\"``, ``\"bottom\"``/``\"top\"``) are coordinate-"
+"direction derivatives (:math:`\\partial u/\\partial x`, etc.), matching :"
+"class:`pybamm.FiniteVolume`; e.g. ``u = x`` takes value ``+1`` on both "
+"``\"left\"`` and ``\"right\"``.  Values on any other face tag (Gmsh region "
+"names, ``\"iface_*\"``) are outward-normal derivatives :math:`\\partial u/"
+"\\partial n`."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/finite_volume_unstructured.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:25
+msgid ""
+"Passed through to :class:`pybamm.SpatialMethod`.  Additionally ``\"non-"
+"orthogonal correction\"`` selects the decomposition of the face normal: "
+"``\"over-relaxed\"`` (default, :math:`\\alpha = 1/\\cos \\theta`, favouring "
+"diagonal dominance) or ``\"minimum\"`` (:math:`\\alpha = \\cos\\theta`, the "
+"smallest cross term).  Both are exact on linear fields."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured:33
+msgid ""
+"**Extends:** :class:`pybamm.spatial_methods.spatial_method.SpatialMethod`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.boundary_integral:1
+msgid ""
+"Integral of the owner-cell values of ``child`` over the boundary faces of "
+"``region`` (``\"entire\"`` = all exterior faces)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.boundary_value_or_flux:1
+msgid ""
+"Owner-cell values on a boundary side (zeroth-order boundary value); corner "
+"sides return the single closest boundary cell."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.broadcast:1
+msgid "See :meth:`pybamm.SpatialMethod.broadcast`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.build:1
+msgid "See :meth:`pybamm.SpatialMethod.build`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.concatenation:1
+msgid "See :meth:`pybamm.SpatialMethod.concatenation`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.definite_integral_matrix:1
+msgid ""
+"Cell-volume weights of the primary domain as a :class:`pybamm.Matrix`, one "
+"block per auxiliary-domain repeat."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.definite_integral_matrix:4
+msgid "The symbol being integrated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.definite_integral_matrix:6
+msgid "``\"row\"`` (default) or ``\"column\"``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.definite_integral_matrix:8
+msgid ""
+"Only ``\"primary\"`` is supported: cells have no secondary structure to "
+"integrate over."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/finite_volume_unstructured.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.definite_integral_matrix:12
+msgid "For a non-primary ``integration_dimension``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.delta_function:1
+msgid ""
+"Implements the delta function on the approriate side for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.delta_function:3
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:3
+msgid "The symbol to which is being integrated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.delta_function:5
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:5
+msgid "The discretised symbol of the correct size"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.div_D_grad:1
+msgid "Discretise ``div(D * grad(u))`` as a single TPFA operation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.div_D_grad:3
+msgid ""
+"Fully symbolic — works for both constant and state-dependent scalar ``D``. "
+"Internal-face fluxes use the distance-weighted harmonic mean of ``D`` "
+"(resistances in series, as :class:`pybamm.FiniteVolume` does for "
+"coefficients of a gradient, so material interfaces carry the exact two-cell "
+"flux) and the two-point normal derivative plus its non-orthogonal cross term "
+"(see :meth:`_tpfa_matrix`).  ``D`` must be strictly positive."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.div_D_grad:11
+msgid ""
+"This method is only reached when the expression is written as ``div(D * "
+"grad(u))`` (a single product, matched syntactically during discretisation); "
+"other flux forms go through the generic :meth:`gradient`/:meth:`divergence` "
+"operators, which cannot apply boundary conditions conservatively and raise "
+"instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.divergence:1
+msgid "Face-flux divergence of a cell-centred vector field."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.divergence:3
+msgid ""
+"Boundary faces use zeroth-order flux extrapolation, so fluxes built from BC-"
+"carrying gradients are rejected (see the raise below)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.gradient:1
+msgid ""
+"Least-squares cell-centroid gradient, returned as a :class:`pybamm."
+"VectorField` with one component per dimension."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.gradient:4
+msgid ""
+"Exact on linear fields for any cell shape: every face contributes one "
+"directional-derivative equation — towards the neighbour centroid (internal "
+"faces), towards the face centroid holding the prescribed value (Dirichlet), "
+"or the normal derivative itself (Neumann).  Boundary faces without a "
+"condition contribute nothing."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.gradient_squared:1
+msgid "Pointwise ``|grad u|^2`` via :meth:`gradient`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:1
+msgid "Implements the indefinite integral for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:7
+msgid "The direction of integration"
+msgstr ""
+
+#: ../../../source/api/spatial_methods/finite_volume_unstructured.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:10
+msgid ""
+"Contains the result of acting the discretised indefinite integral on the "
+"child discretised_symbol"
+msgstr ""
+
+#: ../../../source/api/spatial_methods/finite_volume_unstructured.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.indefinite_integral:12
+msgid "class: `pybamm.Array`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.integral:1
+msgid "Volume integral over the primary domain (cell-volume weights)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.internal_neumann_condition:1
+msgid ""
+"Normal gradient across the interface between two submeshes, one value per "
+"interface face (outward from ``left_mesh``)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.internal_neumann_condition:4
+msgid ""
+"On unstructured meshes this is the two-point difference plus the non-"
+"orthogonal cross term (see :meth:`_tpfa_matrix`), whose face gradient is "
+"fitted on both sides with the interface faces as cross-mesh rows.  "
+"``left_bcs``/``right_bcs`` are the external boundary conditions of each "
+"side, used by that fit."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.laplacian:1
+msgid ""
+"Laplacian ``Matrix @ discretised_symbol + bc_rhs``: the two-point flux plus "
+"the non-orthogonal cross term, which is built from the BC-aware Green-Gauss "
+"gradient so it stays fully implicit."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.process_binary_operators:1
+msgid ""
+"Apply a binary operator componentwise when either operand is a :class:"
+"`pybamm.VectorField`, lifting scalars to N components."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.set_internal_bcs_for_concat:1
+msgid ""
+"Build internal BC dict for each ``Concatenation`` child by walking its "
+"mesh's ``interface_data`` graph instead of assuming consecutive 1D-stack "
+"pairs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.set_internal_bcs_for_concat:5
+msgid ""
+"Returns ``None`` when no ``iface_<other>`` face buckets exist in any child "
+"mesh — that means there's no graph-discovered topology, so the caller should "
+"fall through to the legacy 1D-stack pairwise routine."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.set_internal_bcs_for_concat:10
+msgid "For each child ``T_a`` on submesh ``mesh_a`` (graph case):"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.set_internal_bcs_for_concat:11
+msgid ""
+"Pass through any user-supplied ``outer_bcs`` whose tag matches an external "
+"boundary tag present in ``mesh_a.boundary_faces``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.set_internal_bcs_for_concat:13
+msgid ""
+"For each interface ``mesh_a ↔ mesh_b`` (one entry per neighbor in ``mesh_a."
+"interface_data``), set ``iface_<b>`` to the discretised internal Neumann "
+"gradient between ``T_a`` and the matching child ``T_b``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume_unstructured.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume_unstructured.FiniteVolumeUnstructured.spatial_variable:1
+msgid ""
+"Return a vector of cell-centroid coordinates for ``symbol``'s direction (or "
+"its leading name token, e.g. ``x_n`` -> ``x``), tiled over auxiliary "
+"domains.  Raises :class:`pybamm.DomainError` rather than guessing when "
+"neither identifies a coordinate."
+msgstr ""
