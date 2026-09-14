@@ -1,0 +1,965 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:2
+msgid "Serialise"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:4
+msgid ""
+"PyBaMM serialises expression trees, discretised models, meshes, solvers and "
+"related objects through a single encode/decode kernel (``pybamm."
+"expression_tree.operations.serialise_kernel``). The kernel is **safe-or-"
+"loud**: a value either round-trips, or encoding raises "
+"``SerialisationError`` naming the offending class and field. It never "
+"silently drops data. There is one canonical wire format (each node carries a "
+"``$type`` tag holding its dotted ``module.ClassName`` path), and a read-only "
+"compatibility layer keeps files written by older PyBaMM versions loading."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:14
+msgid "Wire format"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:16
+msgid ""
+"``encode`` produces plain JSON. Native values (``None``, booleans, integers, "
+"strings, finite floats) pass through unchanged, lists and dicts stay JSON "
+"arrays/objects, and every other object becomes a tagged node: its class-"
+"specific fields plus a ``\"$type\"`` key holding the dotted ``module."
+"ClassName`` path. Child symbols (and other serialisable sub-objects) are "
+"recursively encoded under ``\"children\"``. For example, ``pybamm."
+"Index(pybamm.StateVector(slice(0, 2)), 0)`` encodes as:"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:24
+msgid ""
+"{\n"
+"  \"name\": \"Index[0]\",\n"
+"  \"index\": {\"start\": 0, \"stop\": 1, \"step\": null},\n"
+"  \"check_size\": false,\n"
+"  \"children\": [\n"
+"    {\n"
+"      \"name\": \"y[0:2]\",\n"
+"      \"domains\": {\"primary\": [], \"secondary\": [], \"tertiary\": [], "
+"\"quaternary\": []},\n"
+"      \"y_slice\": [{\"start\": 0, \"stop\": 2, \"step\": null}],\n"
+"      \"evaluation_array\": [true, true],\n"
+"      \"$type\": \"pybamm.expression_tree.state_vector.StateVector\"\n"
+"    }\n"
+"  ],\n"
+"  \"$type\": \"pybamm.expression_tree.unary_operators.Index\"\n"
+"}"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:42
+msgid ""
+"On decode the ``\"$type\"`` path is resolved with ``importlib``, so classes "
+"defined outside the ``pybamm`` package round-trip too. Apart from "
+"``\"$type\"`` and ``\"children\"``, the keys of a node belong to the class "
+"(its constructor parameters, or whatever its ``to_json`` hook emits)."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:47
+msgid ""
+"A few non-class values the kernel encodes itself use reserved ``\"$type\"`` "
+"tags:"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:52
+msgid "Value"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:53
+msgid "Encoding"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:54
+msgid "``nan``, ``inf``, ``-inf``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:55
+msgid ""
+"``{\"$type\": \"builtins.float\", \"value\": \"NaN\"}`` (or "
+"``\"Infinity\"`` / ``\"-Infinity\"``)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:56
+msgid "``numpy.ndarray``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:57
+msgid ""
+"``{\"$type\": \"numpy.ndarray\", \"data\": [...], \"dtype\": \"float64\"}``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:58
+msgid "``slice``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:59
+msgid ""
+"``{\"$type\": \"builtins.slice\", \"start\": 0, \"stop\": 1, \"step\": null}"
+"``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:60
+msgid "``tuple``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:61
+msgid ""
+"``{\"$type\": \"builtins.tuple\", \"items\": [...]}`` (so it does not decode "
+"back as a list)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:62
+msgid "a class itself (not an instance)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:63
+msgid "``{\"$type\": \"type\", \"class\": \"module.ClassName\"}``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:66
+msgid "Legacy formats (read-only)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:68
+msgid ""
+"Files written by older PyBaMM versions used three different shapes. All "
+"three still load: ``decode`` passes every dict through ``normalise_legacy``, "
+"which maps them onto the canonical tag. New files are always written in the "
+"canonical format; the legacy shapes are never written."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:76
+msgid "Legacy shape"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:77
+msgid "Previously written by"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:78
+msgid "Normalisation"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:79
+msgid "``{\"py/object\": \"dotted.path\", \"py/id\": 1, ...}``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:80
+msgid "discretised-model files"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:81
+msgid "``py/object`` becomes ``$type``; ``py/id`` is dropped"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:82
+msgid "``{\"type\": \"ClassName\", ...}``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:83
+msgid "symbol, parameter-values and experiment files"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:84
+msgid "bare class names resolve as ``pybamm.ClassName``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:85
+msgid "``{\"class\": \"ClassName\", \"module\": \"some.module\"}``"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:86
+msgid "submesh and spatial-method type references"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:87
+msgid "becomes a ``{\"$type\": \"type\"}`` class reference"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:90
+msgid "Making a class serialisable"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:92
+msgid ""
+"**Usually you do nothing.** A new ``Symbol`` (or other serialisable) "
+"subclass is encoded automatically by the introspection ``DefaultCodec``: it "
+"reads each ``__init__`` parameter back off the instance (by the same name, "
+"or the ``_``-prefixed private attribute) and emits it. If your class stores "
+"its constructor arguments as same-named attributes, it round-trips with no "
+"extra code."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:99
+msgid ""
+"**The safe-or-loud contract tells you when you must act.** If a stored or "
+"required ``__init__`` parameter is *not* captured, ``encode`` raises "
+"``SerialisationError`` naming the class and the parameter the first time the "
+"class is serialised. The strategy-coverage meta-tests (``tests/unit/"
+"test_serialisation/test_symbol_strategy_coverage.py`` and "
+"``test_base_strategy_coverage.py``) turn a new concrete subclass with no "
+"round-trip coverage into a CI failure. So a gap is a loud failure, never a "
+"silent one."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:108
+msgid ""
+"**Add a hook when reconstruction is irregular.** Define ``to_json`` / "
+"``_from_json`` on the class when it cannot be rebuilt by simply replaying "
+"its ``__init__`` parameters, for example when a constructor argument is "
+"itself a ``Symbol`` or another serialisable object. The kernel only recurses "
+"the ``children`` list, so **any ``Symbol``-valued argument must travel "
+"through ``children``**; every other field a hook emits must already be JSON-"
+"native."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:115
+msgid ""
+"class MyEvent(pybamm.Symbol):\n"
+"    def __init__(self, name, expression):\n"
+"        super().__init__(name, children=[expression])\n"
+"\n"
+"    def to_json(self):\n"
+"        # ``expression`` is a Symbol, so it rides in children; the kernel\n"
+"        # recurses children and reconstructs it for us.\n"
+"        return {\"name\": self.name, \"children\": [self.children[0]]}\n"
+"\n"
+"    @classmethod\n"
+"    def _from_json(cls, snippet):\n"
+"        return cls(snippet[\"name\"], snippet[\"children\"][0])"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:130
+msgid ""
+"**Opt out genuinely derived fields explicitly.** If a constructor parameter "
+"is re-derived on construction (so it need not be stored) or is a non-"
+"serialisable transient, list its name in the class's "
+"``_serialise_derived_params`` frozenset. This is a reviewed, in-diff "
+"decision that the coverage guard honours; it is not a runtime skip. See "
+"``Mesh``, ``SubMesh`` and ``DomainConcatenation`` for existing examples "
+"(each waives construction inputs it rebuilds from other serialised fields on "
+"decode)."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:138
+msgid ""
+"class MySubMesh(pybamm.SubMesh):\n"
+"    # ``builder`` is only used to compute ``edges`` in __init__; the mesh "
+"is\n"
+"    # reconstructed from ``edges``, so ``builder`` is never serialised.\n"
+"    _serialise_derived_params = frozenset({\"builder\"})"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:145
+msgid ""
+"**Register round-trip coverage.** Add (or extend) a strategy under ``tests/"
+"strategies/`` so your class is exercised by the round-trip property tests, "
+"or -- if it is intentionally not independently round-trippable -- add it to "
+"the relevant base's exemption set in the coverage meta-test with a one-line "
+"reason. The meta-test will tell you exactly which classes are uncovered."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:152
+msgid "Class references"
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:154
+msgid ""
+"A bare class (rather than an instance) is serialised through the kernel's "
+"class-reference codec as ``{\"$type\": \"type\", \"class\": \"module."
+"ClassName\"}`` (used for submesh types and spatial methods). The legacy "
+"``{\"class\": ..., \"module\": ...}`` shape is still read on decode."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:160
+msgid "API"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise:1
+msgid "Converts a discretised model to and from a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_experiment:1
+msgid "Convert a config dict to a :class:`pybamm.Experiment`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_experiment:3
+msgid ""
+"Accepts ``{\"cycles\": [[step_config, ...], ...]}`` (new format) or "
+"``{\"steps\": [step_config, ...]}`` (legacy flat format)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:0
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:0
+#: ../../../source/api/expression_tree/operations/serialise.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_experiment:6
+msgid "Config dict as produced by :meth:`serialise_experiment`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:0
+#: ../../../source/api/expression_tree/operations/serialise.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_experiment:9
+msgid ":class:`pybamm.Experiment`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_solver:1
+msgid "Convert a config dict to a :class:`pybamm.BaseSolver` instance."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_solver:3
+msgid ""
+"Handles ``CompositeSolver`` by recursively deserialising ``sub_solvers``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_solver:5
+msgid "Config dict as produced by :meth:`serialise_solver`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_solver:8
+msgid ":class:`pybamm.BaseSolver`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_spatial_method_item:1
+msgid ""
+"Deserialise a spatial method from either the kernel class_reference shape or "
+"the legacy {class, module} shape."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.deserialise_submesh_item:1
+msgid ""
+"Deserialise a SubMesh class / MeshGenerator from either the kernel "
+"class_reference shape or the legacy {class, module} shape."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_geometry:1
+msgid "Loads a custom PyBaMM geometry from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_geometry:3
+msgid ""
+"Path to the JSON file containing the saved geometry, or a dictionary "
+"containing the serialised geometry data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:0
+#: ../../../source/api/expression_tree/operations/serialise.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_geometry:7
+msgid "The reconstructed geometry object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_geometry:8
+msgid ":class:`pybamm.Geometry`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:1
+msgid "Loads a custom (symbolic) PyBaMM model from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:3
+msgid ""
+"Reconstructs a model saved using `save_custom_model`, including its rhs, "
+"algebraic equations, initial and boundary conditions, events, and variables. "
+"Returns a fully symbolic model ready for further processing or "
+"discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:7
+msgid ""
+"Automatically detects and decompresses data that was serialised with "
+"compression enabled (compress=True in serialise_custom_model)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:10
+msgid ""
+"Path to the JSON file containing the saved model, or a dictionary containing "
+"the serialised model data (optionally compressed)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:14
+msgid "The reconstructed symbolic PyBaMM model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:15
+msgid ":class:`pybamm.BaseModel` or subclass"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_custom_model:18
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:17
+msgid "Example"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:1
+msgid "Loads a discretised, ready to solve model into PyBaMM."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:3
+msgid ""
+"A new pybamm battery model instance will be created, which can be solved and "
+"the results plotted as usual."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:6
+msgid ""
+"Currently only available for pybamm models which have previously been "
+"written out using the `save_model()` option."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:9
+msgid ""
+"Warning: This only loads in discretised models. If you wish to make edits to "
+"the model or initial conditions, a new model will need to be constructed "
+"seperately."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:12
+msgid ""
+"Path to the JSON file containing the serialised model file, or a dictionary "
+"containing the serialised model data"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:15
+msgid ""
+"PyBaMM model to be created (e.g. pybamm.lithium_ion.SPM), which will "
+"override any model names within the file. If None, the function will look "
+"for the saved object path, present if the original model came from PyBaMM."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:20
+msgid ""
+"A PyBaMM model object, of type specified either in the JSON or in "
+"`battery_model`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:22
+msgid ":class:`pybamm.BaseModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_parameters:1
+msgid ""
+"Load a JSON file of parameters (either from Serialise.save_parameters or "
+"from a standard pybamm.ParameterValues.save), and return a pybamm."
+"ParameterValues object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_parameters:5
+msgid ""
+"If a value is a dict with a \"$type\" (kernel) or legacy \"type\" key, "
+"deserialize it as a PyBaMM symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_parameters:7
+msgid ""
+"Otherwise (float, int, bool, str, list, dict-without-type), leave it as-is."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_spatial_methods:1
+msgid "Loads spatial methods from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_spatial_methods:3
+msgid ""
+"Path to the JSON file containing the saved spatial methods, or a dictionary "
+"containing the serialised spatial methods data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_spatial_methods:7
+#: pybamm.expression_tree.operations.serialise.Serialise.save_spatial_methods:3
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_spatial_methods:3
+msgid "Dictionary mapping domain names to spatial method instances."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_submesh_types:1
+msgid "Loads submesh types from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_submesh_types:3
+msgid ""
+"Path to the JSON file containing the saved submesh types, or a dictionary "
+"containing the serialised submesh types data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.load_submesh_types:7
+msgid "Dictionary mapping domain names to MeshGenerator objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_var_pts:1
+msgid "Loads var_pts from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_var_pts:3
+msgid ""
+"Path to the JSON file containing the saved var_pts, or a dictionary "
+"containing the serialised var_pts data."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_var_pts:7
+msgid ""
+"Dictionary mapping spatial variable names (strings) to number of points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_geometry:1
+msgid "Saves a custom PyBaMM geometry to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_geometry:3
+msgid "The geometry object to be saved."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_geometry:5
+#: pybamm.expression_tree.operations.serialise.Serialise.save_spatial_methods:5
+#: pybamm.expression_tree.operations.serialise.Serialise.save_submesh_types:5
+#: pybamm.expression_tree.operations.serialise.Serialise.save_var_pts:5
+msgid ""
+"The desired name of the JSON file. If not provided, a name will be generated "
+"using current datetime."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:1
+msgid ""
+"Saves a custom (non-discretised) PyBaMM model to a JSON file. Works for user "
+"defined models that are subclasses of BaseModel."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:3
+msgid ""
+"This includes symbolic expressions for rhs, algebraic, initial and boundary "
+"conditions, events, and variables. Useful for storing or sharing models "
+"before discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:7
+msgid "The custom symbolic model to be saved."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:9
+msgid ""
+"The desired name of the JSON file. If not provided, a name will be generated "
+"from the model name and current datetime."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_custom_model:12
+msgid ""
+"If True, the model data will be compressed using zlib before saving. This "
+"can significantly reduce file size. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:1
+msgid "Saves a discretised model to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:3
+msgid ""
+"As the model is discretised and ready to solve, only the right hand side, "
+"algebraic and initial condition variables are saved."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:6
+msgid "The discretised model to be saved"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:8
+msgid ""
+"The mesh the model has been discretised over. Not neccesary to solve the "
+"model when read in, but required to use pybamm's plotting tools."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:11
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_model:11
+msgid "This parameter is deprecated and enabled by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_model:13
+msgid ""
+"The desired name of the JSON file. If no name is provided, one will be "
+"created based on the model name, and the current datetime."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_parameters:1
+msgid ""
+"Serializes a dictionary of parameters to a JSON file. The values can be "
+"numbers, PyBaMM symbols, or callables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_parameters:4
+msgid ""
+"A dictionary of parameter names and values. Values can be numeric, PyBaMM "
+"symbols, or callables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_parameters:7
+msgid "If given, saves the serialized parameters to this file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_spatial_methods:1
+msgid "Saves spatial methods to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_submesh_types:1
+msgid "Saves submesh types to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.save_submesh_types:3
+msgid "Dictionary mapping domain names to submesh classes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_var_pts:1
+msgid "Saves var_pts to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.save_var_pts:3
+msgid "Dictionary mapping spatial variable names to number of points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_geometry:1
+msgid "Converts a custom PyBaMM geometry to a JSON-serialisable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_geometry:3
+msgid "The geometry object to be serialised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_geometry:6
+msgid "A JSON-serialisable dictionary representation of the geometry"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:1
+msgid ""
+"Converts a custom (non-discretised) PyBaMM model to a JSON-serialisable "
+"dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:3
+msgid ""
+"This includes symbolic expressions for rhs, algebraic, initial and boundary "
+"conditions, events, and variables. Works for user defined models that are "
+"subclasses of BaseModel."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:7
+msgid "The custom symbolic model to be serialised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:9
+msgid ""
+"If True, the resulting dictionary will be compressed using zlib and encoded "
+"as base64. The output will contain a \"compressed\" flag set to True and a "
+"\"data\" field with the compressed payload. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:14
+msgid ""
+"A JSON-serialisable dictionary representation of the model. If compress is "
+"True, returns {\"compressed\": True, \"data\": <base64-encoded-zlib-data>}."
+msgstr ""
+
+#: ../../../source/api/expression_tree/operations/serialise.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_custom_model:18
+msgid "If the model is missing required sections"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_experiment:1
+msgid "Convert a :class:`pybamm.Experiment` to a JSON-serialisable dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_experiment:3
+msgid ""
+"Returns ``{\"cycles\": [[step_config, ...], ...]}``, grouping steps into "
+"cycles according to ``experiment.cycle_lengths``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_experiment:6
+msgid "The experiment to serialise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_experiment:9
+msgid "Config dict with key ``\"cycles\"``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_experiment:12
+msgid ""
+"If a step uses a custom callable (``CustomTermination``,     "
+"``CustomStepExplicit``, ``CustomStepImplicit``); these have no     JSON "
+"representation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_model:1
+msgid "Converts a discretised model to a JSON-serialisable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_model:3
+msgid ""
+"As the model is discretised and ready to solve, only the right hand side, "
+"algebraic and initial condition variables are serialised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_model:6
+msgid "The discretised model to be serialised"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_model:8
+msgid ""
+"The mesh the model has been discretised over. Not necessary to solve the "
+"model when read in, but required to use pybamm's plotting tools."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_model:14
+msgid "A JSON-serialisable dictionary representation of the model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_solver:1
+msgid ""
+"Convert a :class:`pybamm.BaseSolver` to a JSON-serialisable config dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_solver:3
+msgid ""
+"Uses ``inspect.signature`` to discover ``__init__`` parameters, reads the "
+"corresponding attribute values from the instance (trying both ``solver."
+"<name>`` and ``solver._<name>``), and filters out values that are not JSON-"
+"serialisable.  Handles ``CompositeSolver`` recursively."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_solver:8
+msgid "The solver to serialise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_solver:11
+msgid ""
+"Config dict with a ``\"type\"`` key and one key per serialisable init "
+"parameter."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_spatial_method_item:1
+msgid ""
+"Serialise a spatial method. The class is encoded via the kernel's "
+"class_reference codec; its options ride alongside under \"options\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_spatial_methods:1
+msgid ""
+"Converts a dictionary of spatial methods to a JSON-serialisable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_spatial_methods:6
+msgid "A JSON-serialisable dictionary representation of the spatial methods"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_submesh_item:1
+msgid ""
+"Serialise a SubMesh class or MeshGenerator. The class is encoded via the "
+"kernel's class_reference codec ({\"$type\": \"type\", \"class\": dotted-"
+"path}); a MeshGenerator's params ride alongside under \"submesh_params\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_submesh_types:1
+msgid ""
+"Converts a dictionary of submesh types to a JSON-serialisable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_submesh_types:3
+msgid ""
+"Dictionary mapping domain names to submesh classes or MeshGenerator objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of
+#: pybamm.expression_tree.operations.serialise.Serialise.serialise_submesh_types:6
+msgid "A JSON-serialisable dictionary representation of the submesh types"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_var_pts:1
+msgid "Converts a var_pts dictionary to a JSON-serialisable dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_var_pts:3
+msgid ""
+"Dictionary mapping spatial variable names (str or SpatialVariable) to number "
+"of points (int)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
+#: of pybamm.expression_tree.operations.serialise.Serialise.serialise_var_pts:7
+msgid "A JSON-serialisable dictionary representation of var_pts"
+msgstr ""

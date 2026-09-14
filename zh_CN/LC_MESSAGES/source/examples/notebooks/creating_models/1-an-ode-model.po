@@ -1,0 +1,400 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/creating_models/1-an-ode-model.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/creating_models/1-an-ode-model.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:9
+msgid "Creating a simple ODE model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:11
+msgid ""
+"In this series of notebooks, we will run through the steps involved in "
+"creating a new model within pybamm. Before using pybamm we recommend "
+"following the `Getting Started <../getting_started/tutorial-1-how-to-run-a-"
+"model.ipynb>`__ guides."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:13
+msgid "In this notebook we create and solve the following simple ODE model:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:15
+msgid "\\frac{\\textrm{d}x}{\\textrm{d} t} = 4x - 2y, \\quad x(0) = 1,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:20
+msgid "\\frac{\\textrm{d}y}{\\textrm{d} t} = 3x - y, \\quad y(0) = 2."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:25
+msgid ""
+"We begin by importing the PyBaMM library into this notebook, along with "
+"NumPy and Matplotlib, which we use for plotting:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:50
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:56
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:63
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:75
+msgid "Setting up the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:86
+msgid ""
+"We first initialise the model using the ``BaseModel`` class. This sets up "
+"the required structure for our model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "model = pybamm.BaseModel()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:107
+msgid ""
+"Next, we define the variables in the model using the ``Variable`` class. In "
+"more complicated models we can give the variables more informative string "
+"names, but here we simply name the variables \"x\" and \"y\""
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"x = pybamm.Variable(\"x\")\n"
+"y = pybamm.Variable(\"y\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:129
+msgid ""
+"We can now use the symbols we have created for our variables to write out "
+"our governing equations. Note that the governing equations must be provied "
+"in the explicit form ``d/dt = rhs`` since pybamm only stores the right hand "
+"side (rhs) and assumes that the left hand side is the time derivative."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"dxdt = 4 * x - 2 * y\n"
+"dydt = 3 * x - y"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:151
+msgid ""
+"The governing equations must then be added to the dictionary ``model.rhs``. "
+"The dictionary stores key and item pairs, where the key is the variable "
+"which is governed by the equation stored in the corresponding item. Note "
+"that the keys are the symbols that represent the variables and are not the "
+"variable names (e.g. the key is ``x``, not the string \"x\")."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "model.rhs = {x: dxdt, y: dydt}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:172
+msgid ""
+"The initial conditions are also stored in a dictionary, ``model."
+"initial_conditions``, which again uses the variable as the key"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "model.initial_conditions = {x: pybamm.Scalar(1), y: pybamm.Scalar(2)}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:193
+msgid ""
+"Finally, we can add any variables of interest to our model. Note that these "
+"can be things other than the variables that are solved for. For example, we "
+"may want to store the variable defined by :math:`z=x+4y` as a model output. "
+"Variables are added to the model using the ``model.variables`` dictionary as "
+"follows:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "model.variables = {\"x\": x, \"y\": y, \"z\": x + 4 * y}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:214
+msgid ""
+"Note that the keys of this dictionary are strings (i.e. the names of the "
+"variables). The string names can be different from the variable symbol, and "
+"should in general be something informative. The model is now completely "
+"defined and is ready to be discretised and solved!"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:226
+msgid "Using the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:237
+msgid ""
+"We first discretise the model using the ``pybamm.Discretisation`` class. "
+"Calling the method ``process_model`` turns the model variables into a "
+"``pybamm.StateVector`` object that can be passed to a solver. Since the "
+"model is a system of ODEs we do not need to provide a mesh or worry about "
+"any spatial dependence, so we can use the default discretisation. Details on "
+"how to provide a mesh will be covered in the following notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"disc = pybamm.Discretisation()  # use the default discretisation\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:259
+msgid ""
+"Now that the model has been discretised it is ready to be solved. Here we "
+"use ``pybamm.IDAKLUSolver`` and solve, returning the solution at 20 time "
+"points in the interval :math:`t \\in [0, 1]`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"solver = pybamm.IDAKLUSolver()\n"
+"t = [0, 1]\n"
+"solution = solver.solve(model, t)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:282
+msgid ""
+"After solving, we can extract the variables from the solution. These are "
+"automatically post-processed so that the solutions can be called at any "
+"time :math:`t` using interpolation. The times at which the model was solved "
+"at are stored in ``solution.t`` and the statevectors at those times are "
+"stored in ``solution.y``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"t_sol, y_sol = solution.t, solution.y  # get solution times and states\n"
+"x = solution[\"x\"]  # extract and process x from the solution\n"
+"y = solution[\"y\"]  # extract and process y from the solution"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:305
+msgid "We then plot the numerical solution against the exact solution."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid ""
+"t_fine = np.linspace(0, t[-1], 1000)\n"
+"\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"ax1.plot(t_fine, 2 * np.exp(t_fine) - np.exp(2 * t_fine), t_sol, x(t_sol), "
+"\"o\")\n"
+"ax1.set_xlabel(\"t\")\n"
+"ax1.legend([\"2*exp(t) - exp(2*t)\", \"x\"], loc=\"best\")\n"
+"\n"
+"ax2.plot(t_fine, 3 * np.exp(t_fine) - np.exp(2 * t_fine), t_sol, y(t_sol), "
+"\"o\")\n"
+"ax2.set_xlabel(\"t\")\n"
+"ax2.legend([\"3*exp(t) - exp(2*t)\", \"y\"], loc=\"best\")\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:346
+msgid ""
+"In the `next notebook <./2-a-pde-model.ipynb>`__ we show how to create, "
+"discretise and solve a PDE model in pybamm."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:358
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:360
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:381
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:392
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/1-an-ode-model.ipynb:404
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
