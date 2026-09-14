@@ -1,0 +1,391 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/getting_started/tutorial-8-solver-options."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:9
+msgid "Tutorial 8 - Solver options"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:11
+msgid ""
+"In `Tutorial 7 <./tutorial-7-model-options.ipynb>`__ we saw how to change "
+"the model options. In this tutorial we will show how to modify the solver "
+"options. All models in PyBaMM have a default solver which is typically "
+"different depending on whether the discretised model results in a system of "
+"algebraic equations, ordinary differential equations (ODEs) or differential "
+"algebraic equations (DAEs)."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:13
+msgid ""
+"One of the most common options one might want to change is the solver "
+"tolerances. By default, the relative tolerance is set to :math:`10^{-4}` and "
+"the absolute tolerance is set to :math:`10^{-6}`. However, depending on your "
+"simulation, you may find you want to tighten the tolerances to obtain a more "
+"accurate solution, or you may want to loosen the tolerances to reduce the "
+"solve time. It is good practice to conduct a tolerance study, where you "
+"simulate the same problem with a tighter tolerances and compare the results. "
+"We do not show how to do this here, but we give an example of a mesh "
+"resolution study in the `next tutorial <./tutorial-9-changing-the-mesh."
+"ipynb>`__, which is conducted in a similar way."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:36
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:42
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:49
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:60
+msgid ""
+"Here we will change the absolute and relative tolerances of the "
+"``IDAKLUSolver``, which is the default solver in PyBaMM. For a list of all "
+"the solver options please consult the `documentation <https://docs.pybamm."
+"org/en/latest/source/api/solvers/index.html>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:62
+msgid ""
+"We will solve the DFN with all the default options using the \"baseline\" "
+"solver and a \"high-accuracy\" solver. For demonstration purposes we change "
+"the cut-off voltage to 3.6 V so we can observe the different behaviour of "
+"the two solver modes."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN()\n"
+"param = model.default_parameter_values\n"
+"param[\"Lower voltage cut-off [V]\"] = 3.6"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:85
+msgid ""
+"Next we define two instances of the solver, one using the \"baseline\" mode "
+"and the other using the \"high-accuracy\" mode. Note how we also pass the "
+"tolerances as keyword arguments."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid ""
+"solver_baseline = pybamm.IDAKLUSolver(rtol=1e-4, atol=1e-6)\n"
+"solver_high_accuracy = pybamm.IDAKLUSolver(rtol=1e-8, atol=1e-12)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:107
+msgid ""
+"Then we can create two different simulations (one for each model, where this "
+"is set using the ``solver`` keyword argument) and we solve them. We then "
+"plot the results and print the solve time for each simulation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid ""
+"# create simulations\n"
+"sim_baseline = pybamm.Simulation(model, parameter_values=param, "
+"solver=solver_baseline)\n"
+"sim_high_accuracy = pybamm.Simulation(\n"
+"    model, parameter_values=param, solver=solver_high_accuracy\n"
+")\n"
+"\n"
+"# solve\n"
+"sim_baseline.solve([0, 3600])\n"
+"print(f\"Baseline mode solve time: {sim_baseline.solution.solve_time}\")\n"
+"sim_high_accuracy.solve([0, 3600])\n"
+"print(f\"High accuracy mode solve time: {sim_high_accuracy.solution."
+"solve_time}\")\n"
+"\n"
+"# plot solutions\n"
+"pybamm.dynamic_plot(\n"
+"    [sim_baseline, sim_high_accuracy],\n"
+"    labels=[\"Baseline\", \"High accuracy\"],\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:145
+msgid ""
+"<pre>\n"
+"Baseline mode solve time: 18.530 ms\n"
+"High accuracy mode solve time: 72.792 ms\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:152
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Baseline mode solve time: 18.530 ms\n"
+"High accuracy mode solve time: 72.792 ms\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:160
+msgid ""
+"Baseline mode solve time: 18.530 ms\n"
+"High accuracy mode solve time: 72.792 ms"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:174
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"5c64beb9c0844c2cb825dcdc9d1d485f\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:185
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=2131.2942345359825, step=21.312942345359826)…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:191
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=2131.2942345359825, step=21.312942345359826)…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:198
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=2131.2942345359825, step=21.312942345359826)…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:210
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x17370e250&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:216
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x17370e250>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:223
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x17370e250>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:234
+msgid ""
+"We see that both solvers give very similar solutions and that the \"high "
+"accuracy\" solver, as the name suggests, runs more slowly."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:236
+msgid ""
+"Usually the default solver options provide a good combination of speed and "
+"accuracy, but we encourage you to investigate different solvers and options "
+"to find the best combination for your problem."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:238
+msgid ""
+"In the `next tutorial <./tutorial-9-changing-the-mesh.ipynb>`__ we show how "
+"to change the mesh."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:250
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:252
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:273
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:287
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-8-solver-options.ipynb:302
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

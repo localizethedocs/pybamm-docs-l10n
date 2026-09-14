@@ -1,0 +1,406 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/solvers/base_solver.rst:2
+msgid "Base Solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:1
+msgid "Solve a discretised model."
+msgstr ""
+
+#: ../../../source/api/solvers/base_solver.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:3
+msgid "The method to use for integration, specific to each solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:5
+msgid "The relative tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:7
+msgid "The absolute tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:9
+msgid ""
+"The method to use to find initial conditions (for DAE solvers). Default is "
+"\"nonlinear_solver\", which uses a custom Newton solver for consistent "
+"initial conditions (recommended). If \"casadi\", the solver uses casadi's "
+"Newton rootfinding algorithm as a fallback. Otherwise, the solver uses "
+"'scipy.optimize.root' with method specified by 'root_method' (e.g. \"lm\", "
+"\"hybr\", ...)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:16
+msgid "The tolerance for the initial-condition solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:18
+msgid ""
+"The tolerance to assert whether extrapolation occurs or not. Default is 0."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:20
+msgid ""
+"List of variables to calculate and return. If none are specified then the "
+"complete state vector is returned (can be very large) (default is [])"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:23
+msgid ""
+"What to do if the solver is extrapolating. Options are \"warn\", \"error\", "
+"or \"ignore\". Default is \"warn\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:26
+msgid ""
+"What to do if a solver error flag occurs. Options are \"warn\", \"error\", "
+"or \"ignore\". Default is \"error\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver:29
+msgid ""
+"If True, only the first and last sample of each integration window are "
+"stored (one experiment step in :meth:`pybamm.Simulation.solve`, or the full "
+"``[t_eval[0], t_eval[-1]]`` window in :meth:`solve`). Intended for memory-"
+"light long experiments whose post-processing only reads per-step first/last "
+"values. Only has effect on solvers that support intra-solve interpolation (e."
+"g. :class:`pybamm.IDAKLUSolver`); a warning is issued otherwise. Note: when "
+"this flag is on, intra-step interpolation falls back to linear across the "
+"whole step, so it is **not** appropriate when post-processing queries a non-"
+"endpoint time within a step. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:1
+msgid ""
+"Calculate consistent state for the algebraic equations through root-finding. "
+"model.y0_list is used as the initial guess for rootfinding"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:4
+msgid "The model for which to calculate initial conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:6
+msgid "The time at which to calculate the initial conditions"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:8
+#: pybamm.solvers.base_solver.BaseSolver.set_up:6
+#: pybamm.solvers.base_solver.BaseSolver.step:18
+msgid "Any input parameters to pass to the model when solving"
+msgstr ""
+
+#: ../../../source/api/solvers/base_solver.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:11
+msgid ""
+"**y0_consistent** -- Initial conditions that are consistent with the "
+"algebraic equations (roots of the algebraic equations). If self.root_method "
+"== None then returns model.y0_list."
+msgstr ""
+
+#: ../../../source/api/solvers/base_solver.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.check_extrapolation:1
+msgid ""
+"Check if extrapolation occurred for any of the interpolants. Note that with "
+"the current approach (evaluating all the events at the solution times) some "
+"extrapolations might not be found if they only occurred for a small period "
+"of time."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.check_extrapolation:6
+#: pybamm.solvers.base_solver.BaseSolver.get_termination_reason:8
+msgid "The solution object"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.check_extrapolation:8
+#: pybamm.solvers.base_solver.BaseSolver.get_termination_reason:10
+msgid "Dictionary of events"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.copy:1
+msgid "Returns a copy of the solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.filter_discontinuities:1
+msgid ""
+"Filter the discontinuities to only include the unique and sorted values "
+"within the t_eval range (non-exclusive of end points)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.filter_discontinuities:4
+msgid "The list of all possible discontinuity times."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.filter_discontinuities:6
+msgid "The integration time points."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.filter_discontinuities:9
+msgid "The filtered list of discontinuities within the range of t_eval."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.from_config:1
+msgid "Create a solver from a config dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.from_config:3
+msgid ""
+"Config dict as produced by :meth:`to_config`, with a ``\"type\"`` key and "
+"solver-specific keyword arguments."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.from_config:7
+msgid ":class:`BaseSolver`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.get_termination_reason:1
+msgid ""
+"Identify the cause for termination. In particular, if the solver terminated "
+"due to an event, (try to) pinpoint which event was responsible. If an event "
+"occurs the event time and state are added to the solution object. Note that "
+"the current approach (evaluating all the events and then finding which one "
+"is smallest at the final timestep) is pretty crude, but is the easiest one "
+"that works for all the different solvers."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.set_up:1
+msgid "Unpack model, perform checks, and calculate jacobian."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.set_up:3
+#: pybamm.solvers.base_solver.BaseSolver.step:7
+msgid ""
+"The model whose solution to calculate. Must have attributes rhs and "
+"initial_conditions"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.set_up:8
+msgid ""
+"The times at which to stop the integration due to a discontinuity in time."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:1
+msgid ""
+"Execute the solver setup and calculate the solution of the model at "
+"specified times."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:4
+msgid ""
+"The model whose solution to calculate. Must have attributes rhs and "
+"initial_conditions. All calls to solve must pass in the same model or an "
+"error is raised"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:8
+msgid ""
+"The times (in seconds) at which to compute the solution. Defaults to None."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:10
+msgid ""
+"A dictionary or list of dictionaries describing any input parameters to pass "
+"to the model when solving"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:13
+msgid ""
+"Number of processes to use when solving for more than one set of input "
+"parameters. Defaults to value returned by \"os.cpu_count()\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:16
+msgid ""
+"Whether the solver calculates sensitivities of all input parameters. "
+"Defaults to False. If only a subset of sensitivities are required, can also "
+"pass a list of input parameter names.  **Limitations**: sensitivities are "
+"not calculated up to numerical tolerances so are not guarenteed to be within "
+"the tolerances set by the solver, please raise an issue if you require this "
+"functionality. Also, when using this feature with `pybamm.Experiment`, the "
+"sensitivities do not take into account the movement of step-transitions wrt "
+"input parameters, so do not use this feature if the timings of your "
+"experimental protocol change rapidly with respect to your input parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:24
+#: pybamm.solvers.base_solver.BaseSolver.step:30
+msgid ""
+"The times (in seconds) at which to interpolate the solution. Defaults to "
+"None. Only valid for solvers that support intra-solve interpolation "
+"(`IDAKLUSolver`)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:28
+msgid ""
+"If type of `inputs` is `list`, return a list of corresponding :class:`pybamm."
+"Solution` objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:30
+msgid ":class:`pybamm.Solution` or list of :class:`pybamm.Solution` objects."
+msgstr ""
+
+#: ../../../source/api/solvers/base_solver.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:32
+msgid ""
+"If an empty model is passed (`model.rhs = {}` and `model.algebraic={}` "
+"and     `model.variables = {}`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:33
+msgid "If multiple calls to `solve` pass in different models"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:1
+msgid ""
+"Step the solution of the model forward by a given time increment. The first "
+"time this method is called it executes the necessary setup by calling `self."
+"set_up(model)`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:5
+msgid ""
+"The previous solution to be added to. If `None`, a new solution is created."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:10
+msgid "The timestep (in seconds) over which to step the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:12
+msgid ""
+"An array of times at which to stop the simulation and return the solution "
+"during the step (Note: t_eval is the time measured from the start of the "
+"step, so should start at 0 and end at dt). By default, the solution is "
+"returned at t0 and t0 + dt."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:20
+msgid "Save solution with all previous timesteps. Defaults to True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:22
+msgid ""
+"Whether the solver calculates sensitivities of all input parameters. "
+"Defaults to False. If only a subset of sensitivities are required, can also "
+"pass a list of input parameter names. **Limitations**: sensitivities are not "
+"calculated up to numerical tolerances so are not guaranteed to be within the "
+"tolerances set by the solver, please raise an issue if you require this "
+"functionality. Also, when using this feature with `pybamm.Experiment`, the "
+"sensitivities do not take into account the movement of step-transitions wrt "
+"input parameters, so do not use this feature if the timings of your "
+"experimental protocol change rapidly with respect to your input parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:33
+msgid ""
+"A tuple containing a function and its Jacobians to map the state from the "
+"old solution to the new solution. `function`, `jacobian_y` and `jacobian_p` "
+"are casadi/jax/python functions that have been processed using `BaseSolver."
+"process`. If not provided, then `BaseModel.set_initial_conditions_from` is "
+"used to map the state from the old solution to the new solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:38
+msgid ""
+"If an empty model is passed (`model.rhs = {}` and `model.algebraic = {}` "
+"and     `model.variables = {}`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.to_config:1
+msgid "Convert this solver to a JSON-serialisable config dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.to_config:3
+msgid ""
+"Returns a dict with a ``\"type\"`` key (the solver class name) and one key "
+"per serialisable ``__init__`` parameter.  ``CompositeSolver`` instances "
+"include a ``\"sub_solvers\"`` key with nested config dicts."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.to_config:7
+msgid "Config dict suitable for passing back to :meth:`from_config`."
+msgstr ""
