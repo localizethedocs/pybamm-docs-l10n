@@ -1,0 +1,1097 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-04-24T07:20:02+00:00" />
+    <title>Contributing to PyBaMM &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=6c9e8f96"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/user_guide/contributing';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/user_guide/contributing.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="next" title="Tutorial 1 - How to run a model" href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html" />
+    <link rel="prev" title="Public API" href="fundamentals/public_api.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="26.5.0" />
+    <meta name="docbuild:last-update" content="2026-04-24"/>
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="#">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">開始使用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">開始使用</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">貢獻指南</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Contributing to PyBaMM</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">開始使用</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">創建模型</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">效能</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">PyBaMM 使用者指南</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Contributing to PyBaMM</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!-- a stub file to add CONTRIBUTING.md from the root directory
+to the hosted docs -->
+<section id="contributing-to-pybamm">
+<h1>Contributing to PyBaMM<a class="headerlink" href="#contributing-to-pybamm" title="連結到這個標頭">#</a></h1>
+<p>If you'd like to contribute to PyBaMM (thanks!), please have a look at the <a class="reference internal" href="#workflow"><span class="std std-ref">guidelines below</span></a>.</p>
+<p>If you're already familiar with our workflow, maybe have a quick look at the <a class="reference internal" href="#pre-commit-checks"><span class="std std-ref">pre-commit checks</span></a> directly below.</p>
+<section id="pre-commit-checks">
+<h2>Pre-commit checks<a class="headerlink" href="#pre-commit-checks" title="連結到這個標頭">#</a></h2>
+<p>Before you commit any code, please perform the following checks:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#testing"><span class="std std-ref">All tests pass</span></a>: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">unit</span></code></p></li>
+<li><p><a class="reference internal" href="#building-the-documentation"><span class="std std-ref">The documentation builds</span></a>: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">nox</span> <span class="pre">-s</span> <span class="pre">docs</span></code></p></li>
+</ul>
+<section id="installing-and-using-pre-commit">
+<h3>Installing and using pre-commit<a class="headerlink" href="#installing-and-using-pre-commit" title="連結到這個標頭">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">PyBaMM</span></code> uses a set of <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> hooks and the <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> bot to format and prettify the codebase. The hooks can be installed locally using -</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using uv</span>
+uvx<span class="w"> </span>pre-commit<span class="w"> </span>install
+
+<span class="c1"># Or using pip</span>
+pip<span class="w"> </span>install<span class="w"> </span>pre-commit
+pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<p>This would run the checks every time a commit is created locally. The checks will only run on the files modified by that commit, but the checks can be triggered for all the files using -</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all-files
+</pre></div>
+</div>
+<p>If you would like to skip the failing checks and push the code for further discussion, use the <code class="docutils literal notranslate"><span class="pre">--no-verify</span></code> option with <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code>.</p>
+</section>
+</section>
+<section id="workflow">
+<h2>Workflow<a class="headerlink" href="#workflow" title="連結到這個標頭">#</a></h2>
+<p>We use <a class="reference external" href="https://en.wikipedia.org/wiki/Git">GIT</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/GitHub">GitHub</a> to coordinate our work. When making any kind of update, we try to follow the procedure below.</p>
+<section id="a-before-you-begin">
+<h3>A. Before you begin<a class="headerlink" href="#a-before-you-begin" title="連結到這個標頭">#</a></h3>
+<ol class="arabic simple">
+<li><p>Create an <a class="reference external" href="https://guides.github.com/features/issues/">issue</a> where new proposals can be discussed before any coding is done.</p></li>
+<li><p>Create a <a class="reference external" href="https://help.github.com/articles/creating-and-deleting-branches-within-your-repository/">branch</a> of this repo (ideally on your own <a class="reference external" href="https://help.github.com/articles/fork-a-repo/">fork</a>), where all changes will be made</p></li>
+<li><p>Download the source code onto your local system, by <a class="reference external" href="https://help.github.com/articles/cloning-a-repository/">cloning</a> the repository (or your fork of the repository).</p></li>
+<li><p><a class="reference external" href="https://docs.pybamm.org/en/latest/source/user_guide/installation/install-from-source.html">Install</a> PyBaMM with the developer options.</p></li>
+<li><p><a class="reference internal" href="#testing"><span class="std std-ref">Test</span></a> if your installation worked, using pytest: <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">pytest</span> <span class="pre">-m</span> <span class="pre">unit</span></code>.</p></li>
+</ol>
+<p>You now have everything you need to start making changes!</p>
+</section>
+<section id="b-writing-your-code">
+<h3>B. Writing your code<a class="headerlink" href="#b-writing-your-code" title="連結到這個標頭">#</a></h3>
+<ol class="arabic simple" start="6">
+<li><p>PyBaMM is developed in <a class="reference external" href="https://www.python.org">Python</a>, and makes heavy use of <a class="reference external" href="https://numpy.org/">NumPy</a>.</p></li>
+<li><p>Make sure to follow our <a class="reference internal" href="#coding-style-guidelines"><span class="std std-ref">coding style guidelines</span></a>.</p></li>
+<li><p>Commit your changes to your branch with <a class="reference external" href="https://cbea.ms/git-commit/">useful, descriptive commit messages</a>: Remember these are
+publicly visible and should still make sense a few months ahead in time.
+While developing, you can keep using the GitHub issue you're working on
+as a place for discussion.</p></li>
+<li><p>If you want to add a dependency on another library, or re-use code you found somewhere else, have a look at <a class="reference internal" href="#dependencies-and-reusing-code"><span class="std std-ref">these guidelines</span></a>.</p></li>
+</ol>
+</section>
+<section id="c-merging-your-changes-with-pybamm">
+<h3>C. Merging your changes with PyBaMM<a class="headerlink" href="#c-merging-your-changes-with-pybamm" title="連結到這個標頭">#</a></h3>
+<ol class="arabic simple" start="10">
+<li><p><a class="reference internal" href="#testing"><span class="std std-ref">Test your code!</span></a></p></li>
+<li><p>PyBaMM has online documentation at http://docs.pybamm.org/. To make sure any new methods or classes you added show up there, please read the <a class="reference internal" href="#documentation"><span class="std std-ref">documentation</span></a> section.</p></li>
+<li><p>If you added a major new feature, perhaps it should be showcased in an <a class="reference internal" href="#example-notebooks"><span class="std std-ref">example notebook</span></a>.</p></li>
+<li><p>When you feel your code is finished, or at least warrants serious discussion, run the <a class="reference internal" href="#pre-commit-checks"><span class="std std-ref">pre-commit checks</span></a> and then create a <a class="reference external" href="https://help.github.com/articles/about-pull-requests/">pull request</a> (PR) on <a class="reference external" href="https://github.com/pybamm-team/PyBaMM">PyBaMM's GitHub page</a>.</p></li>
+<li><p>Once a PR has been created, it will be reviewed by any member of the community. Changes might be suggested which you can make by simply adding new commits to the branch. When everything's finished, someone with the right GitHub permissions will merge your changes into PyBaMM main repository.</p></li>
+</ol>
+<p>Finally, if you really, really, <em>really</em> love developing PyBaMM, have a look at the current <a class="reference internal" href="#infrastructure"><span class="std std-ref">project infrastructure</span></a>.</p>
+</section>
+</section>
+<section id="coding-style-guidelines">
+<h2>Coding style guidelines<a class="headerlink" href="#coding-style-guidelines" title="連結到這個標頭">#</a></h2>
+<p>PyBaMM follows the <a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP8 recommendations</a> for coding style. These are very common guidelines, and community tools have been developed to check how well projects implement them. We recommend using pre-commit hooks to check your code before committing it. See <a class="reference internal" href="#installing-and-using-pre-commit"><span class="std std-ref">installing and using pre-commit</span></a> section for more details.</p>
+<section id="ruff">
+<h3>Ruff<a class="headerlink" href="#ruff" title="連結到這個標頭">#</a></h3>
+<p>We use <a class="reference external" href="https://github.com/astral-sh/ruff">ruff</a> to check our PEP8 adherence. To try this on your system, navigate to the PyBaMM directory in a console and type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using uv</span>
+uvx<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>ruff
+
+<span class="c1"># Or using pip</span>
+pip<span class="w"> </span>install<span class="w"> </span>pre-commit
+pre-commit<span class="w"> </span>run<span class="w"> </span>ruff
+</pre></div>
+</div>
+<p>ruff is configured inside the file <code class="docutils literal notranslate"><span class="pre">pre-commit-config.yaml</span></code>, allowing us to ignore some errors. If you think this should be added or removed, please submit an <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/issues">issue</a></p>
+<p>When you commit your changes they will be checked against ruff automatically (see <a class="reference internal" href="#pre-commit-checks"><span class="std std-ref">Pre-commit checks</span></a>).</p>
+</section>
+<section id="naming">
+<h3>Naming<a class="headerlink" href="#naming" title="連結到這個標頭">#</a></h3>
+<p>Naming is hard. In general, we aim for descriptive class, method, and argument names. Avoid abbreviations when possible without making names overly long, so <code class="docutils literal notranslate"><span class="pre">mean</span></code> is better than <code class="docutils literal notranslate"><span class="pre">mu</span></code>, but a class name like <code class="docutils literal notranslate"><span class="pre">MyClass</span></code> is fine.</p>
+<p>Class names are CamelCase, and start with an upper case letter, for example <code class="docutils literal notranslate"><span class="pre">MyOtherClass</span></code>. Method and variable names are lower case, and use underscores for word separation, for example <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">iteration_count</span></code>.</p>
+</section>
+</section>
+<section id="dependencies-and-reusing-code">
+<h2>Dependencies and reusing code<a class="headerlink" href="#dependencies-and-reusing-code" title="連結到這個標頭">#</a></h2>
+<p>While it's a bad idea for developers to &quot;reinvent the wheel&quot;, it's important for users to get a <em>reasonably sized download and an easy install</em>. In addition, external libraries can sometimes cease to be supported, and when they contain bugs it might take a while before fixes become available as automatic downloads to PyBaMM users.
+For these reasons, all dependencies in PyBaMM should be thought about carefully, and discussed on GitHub.</p>
+<p>Direct inclusion of code from other packages is possible, as long as their
+license permits it and is compatible with ours, but again should be
+considered carefully and discussed in the group. Snippets from blogs and
+stackoverflow can often be included without attribution, but if they solve a
+particularly nasty problem (or are very hard to read) it's often a good idea to
+attribute (and document) them, by making a comment with a link in the source code.</p>
+<section id="separating-dependencies">
+<h3>Separating dependencies<a class="headerlink" href="#separating-dependencies" title="連結到這個標頭">#</a></h3>
+<p>On the other hand... We <em>do</em> want to compare several tools, to generate documentation, and to speed up development. For this reason, the dependency structure is split into 4 parts:</p>
+<ol class="arabic simple">
+<li><p>Core PyBaMM: A minimal set, including things like NumPy, SciPy, etc. All infrastructure should run against this set of dependencies, as well as any numerical methods we implement ourselves.</p></li>
+<li><p>Extras: Other inference packages and their dependencies. Methods we don't want to implement ourselves, but do want to provide an interface to can have their dependencies added here.</p></li>
+<li><p>Documentation generating code: Everything you need to generate and work on the docs.</p></li>
+<li><p>Development code: Everything you need to do PyBaMM development (so all of the above packages, plus ruff and other testing tools).</p></li>
+</ol>
+<p>Only 'core pybamm' is installed by default. The others have to be specified explicitly when running the installation command.</p>
+</section>
+<section id="managing-optional-dependencies-and-their-imports">
+<h3>Managing Optional Dependencies and Their Imports<a class="headerlink" href="#managing-optional-dependencies-and-their-imports" title="連結到這個標頭">#</a></h3>
+<p>PyBaMM utilizes optional dependencies to allow users to choose which additional libraries they want to use. Managing these optional dependencies and their imports is essential to provide flexibility to PyBaMM users.</p>
+<p>PyBaMM provides a utility function <code class="docutils literal notranslate"><span class="pre">import_optional_dependency</span></code>, to check for the availability of optional dependencies within methods. This function can be used to conditionally import optional dependencies only if they are available. Here's how to use it:</p>
+<p>Optional dependencies should never be imported at the module level, but always inside methods. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">use_pybtex</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">pybtex</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;pybtex&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>While importing a specific module instead of an entire package/library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">use_parse_file</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="n">parse_file</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;pybtex.database&quot;</span><span class="p">,</span> <span class="s2">&quot;parse_file&quot;</span><span class="p">)</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>This allows people to (1) use PyBaMM without importing optional dependencies by default and (2) configure module-dependent functionalities in their scripts, which <em>must</em> be done before e.g. <code class="docutils literal notranslate"><span class="pre">print_citations</span></code> method is first imported.</p>
+<p><strong>Writing Tests for Optional Dependencies</strong></p>
+<p>Below, we list the currently available test functions to provide an overview. If you find it useful to add new test cases please do so within <code class="docutils literal notranslate"><span class="pre">tests/unit/test_util.py</span></code>.</p>
+<p>Currently, there are three functions to test what concerns optional dependencies:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">test_import_optional_dependency</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_pybamm_import</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_optional_dependencies</span></code></p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_import_optional_dependency</span></code> function extracts the optional dependencies installed in the setup environment, makes them unimportable (by setting them to <code class="docutils literal notranslate"><span class="pre">None</span></code> among the <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code>), and tests that the <code class="docutils literal notranslate"><span class="pre">pybamm.util.import_optional_dependency</span></code> function throws a <code class="docutils literal notranslate"><span class="pre">ModuleNotFoundError</span></code> exception when their import is attempted.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_pybamm_import</span></code> function extracts the optional dependencies installed in the setup environment and makes them unimportable (by setting them to <code class="docutils literal notranslate"><span class="pre">None</span></code> among the <code class="docutils literal notranslate"><span class="pre">sys.modules</span></code>), unloads <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> and its sub-modules, and finally tests that <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> can be imported successfully. In fact, it is essential that the <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> package is importable with only the mandatory dependencies.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">test_optional_dependencies</span></code> function extracts <code class="docutils literal notranslate"><span class="pre">pybamm</span></code> mandatory distribution packages and verifies that they are not present in the optional distribution packages list in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>. This test is crucial for ensuring the consistency of the released package information and potential updates to dependencies during development.</p>
+</section>
+</section>
+<section id="testing">
+<h2>Testing<a class="headerlink" href="#testing" title="連結到這個標頭">#</a></h2>
+<p>All code requires testing. We use the <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a> package for our tests. (These tests typically just check that the code runs without error, and so, are more <em>debugging</em> than <em>testing</em> in a strict sense. Nevertheless, they are very useful to have!)</p>
+<p>We use following plugins for various needs:</p>
+<p><a class="reference external" href="https://github.com/treebeardtech/nbmake/">nbmake</a> : plugins to test the example notebooks.</p>
+<p><a class="reference external" href="https://pypi.org/project/pytest-xdist/">pytest-xdist</a> : plugins to run tests in parallel.</p>
+<p>To run unit tests using <code class="docutils literal notranslate"><span class="pre">nox</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using uv</span>
+uv<span class="w"> </span>run<span class="w"> </span>nox<span class="w"> </span>-s<span class="w"> </span>unit
+
+<span class="c1"># Or with nox installed directly</span>
+nox<span class="w"> </span>-s<span class="w"> </span>unit
+</pre></div>
+</div>
+<p>Alternatively, you can run tests directly with <code class="docutils literal notranslate"><span class="pre">pytest</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>-m<span class="w"> </span>unit
+</pre></div>
+</div>
+<section id="writing-tests">
+<h3>Writing tests<a class="headerlink" href="#writing-tests" title="連結到這個標頭">#</a></h3>
+<p>Every new feature should have its own test. To create ones, have a look at the <code class="docutils literal notranslate"><span class="pre">test</span></code> directory and see if there's a test for a similar method. Copy-pasting this is a good way to start.</p>
+<p>Next, add some simple (and speedy!) tests of your main features. If these run without exceptions that's a good start! Next, check the output of your methods using <a class="reference external" href="https://docs.pytest.org/en/7.1.x/how-to/assert.html">assert statements</a>.</p>
+</section>
+<section id="running-more-tests">
+<h3>Running more tests<a class="headerlink" href="#running-more-tests" title="連結到這個標頭">#</a></h3>
+<p>The tests are divided into <code class="docutils literal notranslate"><span class="pre">unit</span></code> tests, whose aim is to check individual bits of code (e.g. discretising a gradient operator, or solving a simple ODE), and <code class="docutils literal notranslate"><span class="pre">integration</span></code> tests, which check how parts of the program interact as a whole (e.g. solving a full model).
+If you want to check integration tests as well as unit tests, type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>tests
+</pre></div>
+</div>
+<p>or, alternatively, you can use posargs to pass the path to the test to <code class="docutils literal notranslate"><span class="pre">nox</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>tests<span class="w"> </span>--<span class="w"> </span>tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::test_simple_ode_model
+</pre></div>
+</div>
+<p>When you commit anything to PyBaMM, these checks will also be run automatically (see <a class="reference internal" href="#infrastructure"><span class="std std-ref">infrastructure</span></a>).</p>
+</section>
+<section id="testing-the-example-notebooks">
+<h3>Testing the example notebooks<a class="headerlink" href="#testing-the-example-notebooks" title="連結到這個標頭">#</a></h3>
+<p>To test all the example notebooks in the <code class="docutils literal notranslate"><span class="pre">docs/source/examples/</span></code> folder with <code class="docutils literal notranslate"><span class="pre">pytest</span></code> and <code class="docutils literal notranslate"><span class="pre">nbmake</span></code>, type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>examples
+</pre></div>
+</div>
+<p>Alternatively, you may use <code class="docutils literal notranslate"><span class="pre">pytest</span></code> directly with the <code class="docutils literal notranslate"><span class="pre">--nbmake</span></code> flag:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--nbmake<span class="w"> </span>docs/source/examples/
+</pre></div>
+</div>
+<p>which runs all the notebooks in the <code class="docutils literal notranslate"><span class="pre">docs/source/examples/notebooks/</span></code> folder in parallel by default, using the <code class="docutils literal notranslate"><span class="pre">pytest-xdist</span></code> plugin.</p>
+<p>Sometimes, debugging a notebook can be a hassle. To run a single notebook, pass the path to it to <code class="docutils literal notranslate"><span class="pre">pytest</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>--nbmake<span class="w"> </span>docs/source/examples/notebooks/notebook-name.ipynb
+</pre></div>
+</div>
+<p>or, alternatively, you can use posargs to pass the path to the notebook to <code class="docutils literal notranslate"><span class="pre">nox</span></code>. For example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>examples<span class="w"> </span>--<span class="w"> </span>docs/source/examples/notebooks/notebook-name.ipynb
+</pre></div>
+</div>
+<p>You may also test multiple notebooks this way. Passing the path to a folder will run all the notebooks in that folder:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>examples<span class="w"> </span>--<span class="w"> </span>docs/source/examples/notebooks/models/
+</pre></div>
+</div>
+<p>You may also use an appropriate <a class="reference external" href="https://docs.python.org/3/library/glob.html">glob pattern</a> to run all notebooks matching a particular folder or name pattern.</p>
+<p>To edit the structure and how the Jupyter notebooks get rendered in the Sphinx documentation (using <code class="docutils literal notranslate"><span class="pre">nbsphinx</span></code>), install <a class="reference external" href="https://pandoc.org/installing.html">Pandoc</a> on your system, either using <code class="docutils literal notranslate"><span class="pre">conda</span></code> (through the <code class="docutils literal notranslate"><span class="pre">conda-forge</span></code> channel)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pandoc
+</pre></div>
+</div>
+<p>or refer to the <a class="reference external" href="https://pandoc.org/installing.html">Pandoc installation instructions</a> specific to your platform.</p>
+</section>
+<section id="testing-the-example-scripts">
+<h3>Testing the example scripts<a class="headerlink" href="#testing-the-example-scripts" title="連結到這個標頭">#</a></h3>
+<p>To test all the example scripts in the <code class="docutils literal notranslate"><span class="pre">examples/</span></code> folder, type</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nox<span class="w"> </span>-s<span class="w"> </span>scripts
+</pre></div>
+</div>
+</section>
+<section id="debugging">
+<h3>Debugging<a class="headerlink" href="#debugging" title="連結到這個標頭">#</a></h3>
+<p>Often, the code you write won't pass the tests straight away, at which stage it will become necessary to debug.
+The key to successful debugging is to isolate the problem by finding the smallest possible example that causes the bug.
+In practice, there are a few tricks to help you to do this, which we give below.
+Once you've isolated the issue, it's a good idea to add a unit test that replicates this issue, so that you can easily check whether it's been fixed, and make sure that it's easily picked up if it crops up again.
+This also means that, if you can't fix the bug yourself, it will be much easier to ask for help (by opening a <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/issues/new?template=bug_report.md">bug-report issue</a>).</p>
+<ol class="arabic">
+<li><p>Run individual test scripts instead of the whole test suite:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/unit/path/to/test
+</pre></div>
+</div>
+<p>You can also run an individual test from a particular script, e.g.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pytest<span class="w"> </span>tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::test_simple_ode_model
+</pre></div>
+</div>
+<p>If you want to run several, but not all, the tests from a script, you can restrict which tests are run from a particular script by using the skipping decorator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nd">@pytest</span><span class="o">.</span><span class="n">mark</span><span class="o">.</span><span class="n">skip</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">test_bit_of_code</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<p>or by just commenting out all the tests you don't want to run.</p>
+</li>
+<li><p>Set break points, either in your IDE or using the Python debugging module. To use the latter, add the following line where you want to set the break point</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>
+
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will start the <a class="reference external" href="https://gist.github.com/mono0926/6326015">Python interactive debugger</a>. If you want to be able to use magic commands from <code class="docutils literal notranslate"><span class="pre">ipython</span></code>, such as <code class="docutils literal notranslate"><span class="pre">%timeit</span></code>, then set</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
+
+<span class="n">embed</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>
+
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>at the break point instead.
+Figuring out where to start the debugger is the real challenge. Some good ways to set debugging break points are:</p>
+<ol class="arabic">
+<li><p>Try-except blocks. Suppose the line <code class="docutils literal notranslate"><span class="pre">do_something_complicated()</span></code> is raising a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>. Then you can put a try-except block around that line as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">do_something_complicated</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>
+
+    <span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will start the debugger at the point where the <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> was raised, and allow you to investigate further. Sometimes, it is more informative to put the try-except block further up the call stack than exactly where the error is raised.</p>
+</li>
+<li><p>Warnings. If functions are raising warnings instead of errors, it can be hard to pinpoint where this is coming from. Here, you can use the <code class="docutils literal notranslate"><span class="pre">warnings</span></code> module to convert warnings to errors:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then you can use a try-except block, as in a., but with, for example, <code class="docutils literal notranslate"><span class="pre">RuntimeWarning</span></code> instead of <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>.</p>
+</li>
+<li><p>Stepping through the expression tree. Most calls in PyBaMM are operations on <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/expression_tree/expression-tree.ipynb">expression trees</a>. To view an expression tree in ipython, you can use the <code class="docutils literal notranslate"><span class="pre">render</span></code> command:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">expression_tree</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You can then step through the expression tree, using the <code class="docutils literal notranslate"><span class="pre">children</span></code> attribute, to pinpoint exactly where a bug is coming from. For example, if <code class="docutils literal notranslate"><span class="pre">expression_tree.jac(y)</span></code> is failing, you can check <code class="docutils literal notranslate"><span class="pre">expression_tree.children[0].jac(y)</span></code>, then <code class="docutils literal notranslate"><span class="pre">expression_tree.children[0].children[0].jac(y)</span></code>, etc.</p>
+</li>
+</ol>
+</li>
+<li><p>To isolate whether a bug is in a model, its Jacobian or its simplified version, you can set the <code class="docutils literal notranslate"><span class="pre">use_jacobian</span></code> and/or <code class="docutils literal notranslate"><span class="pre">use_simplify</span></code> attributes of the model to <code class="docutils literal notranslate"><span class="pre">False</span></code> (they are both <code class="docutils literal notranslate"><span class="pre">True</span></code> by default for most models).</p></li>
+<li><p>If a model isn't giving the answer you expect, you can try comparing it to other models. For example, you can investigate parameter limits in which two models should give the same answer by setting some parameters to be small or zero. The <code class="docutils literal notranslate"><span class="pre">StandardOutputComparison</span></code> class can be used to compare some standard outputs from battery models.</p></li>
+<li><p>To get more information about what is going on under the hood, and hence understand what is causing the bug, you can set the <a class="reference external" href="https://realpython.com/python-logging/">logging</a> level to <code class="docutils literal notranslate"><span class="pre">DEBUG</span></code> by adding the following line to your test or script:</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">set_logging_level</span><span class="p">(</span><span class="s2">&quot;DEBUG&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>In models that inherit from <code class="docutils literal notranslate"><span class="pre">pybamm.BaseBatteryModel</span></code> (i.e. any battery model), you can use <code class="docutils literal notranslate"><span class="pre">self.process_symbol</span></code> to process a symbol with a fully built model to see what it will look like.</p></li>
+</ol>
+</section>
+<section id="profiling">
+<h3>Profiling<a class="headerlink" href="#profiling" title="連結到這個標頭">#</a></h3>
+<p>Sometimes, a bit of code will take much longer than you expect to run. In this case, you can set</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
+
+<span class="n">embed</span><span class="p">()</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ipdb</span>
+
+<span class="n">ipdb</span><span class="o">.</span><span class="n">set_trace</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>as above, and then use some of the profiling tools. In order of increasing detail:</p>
+<ol class="arabic">
+<li><p>Simple timer. In ipython, the command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">time</span> <span class="n">command_to_time</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>tells you how long the line <code class="docutils literal notranslate"><span class="pre">command_to_time()</span></code> takes. You can use <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> instead to run the command several times and obtain more accurate timings.</p>
+</li>
+<li><p>Simple profiler. Using <code class="docutils literal notranslate"><span class="pre">%prun</span></code> instead of <code class="docutils literal notranslate"><span class="pre">%time</span></code> will give a brief profiling report 3. Detailed profiler. You can install the detailed profiler <code class="docutils literal notranslate"><span class="pre">snakeviz</span></code> through pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>snakeviz
+</pre></div>
+</div>
+<p>and then, in ipython, run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">load_ext</span> <span class="n">snakeviz</span>
+<span class="o">%</span><span class="n">snakeviz</span> <span class="n">command_to_time</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This will open a window in your browser with detailed profiling information.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="連結到這個標頭">#</a></h2>
+<p>PyBaMM is documented in several ways.</p>
+<p>First and foremost, every method and every class should have a <a class="reference external" href="https://www.python.org/dev/peps/pep-0257/">docstring</a> that describes in plain terms what it does, and what the expected input and output is.</p>
+<p>These docstrings can be fairly simple, but can also make use of
+<code class="docutils literal notranslate"><span class="pre">reStructuredText</span></code>, a markup language designed specifically for writing
+technical documentation. For example, you can link to other classes and methods
+by writing <code class="docutils literal notranslate"><span class="pre">:class:`pybamm.Model`</span> </code> and <code class="docutils literal notranslate"><span class="pre">:meth:`run()`</span> </code>.</p>
+<p>In addition, we write a (very) small bit of documentation in separate reStructuredText files in the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory. Most of what these files do is simply import docstrings from the source code. But they also do things like add tables and indexes. If you've added a new class to a module, search the <code class="docutils literal notranslate"><span class="pre">docs</span></code> directory for that module's <code class="docutils literal notranslate"><span class="pre">.rst</span></code> file and add your class (in alphabetical order) to its index. If you've added a whole new module, copy-paste another module's file and add a link to your new file in the appropriate <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> file.</p>
+<p>Using <a class="reference external" href="http://www.sphinx-doc.org/en/stable/">Sphinx</a> the documentation in <code class="docutils literal notranslate"><span class="pre">docs</span></code> can be converted to HTML, PDF, and other formats. In particular, we use it to generate the documentation on http://docs.pybamm.org/</p>
+<section id="building-the-documentation">
+<h3>Building the documentation<a class="headerlink" href="#building-the-documentation" title="連結到這個標頭">#</a></h3>
+<p>To test and debug the documentation, it's best to build it locally. To do this, navigate to your PyBaMM directory in a console, and then type (on GNU/Linux, macOS, and Windows):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nox</span> <span class="o">-</span><span class="n">s</span> <span class="n">docs</span>
+</pre></div>
+</div>
+<p>And then visit the webpage served at <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:8000</span></code>. Each time a change to the documentation source is detected, the HTML is rebuilt and the browser automatically reloaded. In CI, the docs are built and tested using the <code class="docutils literal notranslate"><span class="pre">docs</span></code> session in the <code class="docutils literal notranslate"><span class="pre">noxfile.py</span></code> file with warnings turned into errors, to fail the build. The warnings can be removed or ignored by adding the appropriate warning identifier to the <code class="docutils literal notranslate"><span class="pre">suppress_warnings</span></code> list in <code class="docutils literal notranslate"><span class="pre">docs/conf.py</span></code>.</p>
+</section>
+<section id="example-notebooks">
+<h3>Example notebooks<a class="headerlink" href="#example-notebooks" title="連結到這個標頭">#</a></h3>
+<p>Major PyBaMM features are showcased in <a class="reference external" href="https://jupyter.org/">Jupyter notebooks</a> stored in the <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/tree/main/docs/source/examples">docs/source/examples directory</a>. Which features are &quot;major&quot; is of course wholly subjective, so please discuss on GitHub first!</p>
+<p>All example notebooks should be listed in <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/index.rst">docs/source/examples/index.rst</a>. Please follow the (naming and writing) style of existing notebooks where possible.</p>
+<p>All the notebooks are tested daily.</p>
+</section>
+</section>
+<section id="citations">
+<h2>Citations<a class="headerlink" href="#citations" title="連結到這個標頭">#</a></h2>
+<p>We aim to recognize all contributions by automatically generating citations to the relevant papers on which different parts of the code are built.
+These will change depending on what models and solvers you use.
+Adding the command</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>to the end of a script will print all citations that were used by that script. This will print BibTeX information to the terminal; passing a filename to <code class="docutils literal notranslate"><span class="pre">print_citations</span></code> will print the BibTeX information to the specified file instead.</p>
+<p>When you contribute code to PyBaMM, you can add your own papers that you would like to be cited if that code is used. First, add the BibTeX for your paper to <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/src/pybamm/CITATIONS.bib">CITATIONS.bib</a>. Then, add the line</p>
+<div class="highlight-python3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;your_paper_bibtex_identifier&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>wherever code is called that uses that citation (for example, in functions or in the <code class="docutils literal notranslate"><span class="pre">__init__</span></code> method of a class such as a model or solver).</p>
+</section>
+<section id="infrastructure">
+<h2>Infrastructure<a class="headerlink" href="#infrastructure" title="連結到這個標頭">#</a></h2>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="連結到這個標頭">#</a></h3>
+<p>Installation of PyBaMM and its dependencies is handled via <a class="reference external" href="https://docs.astral.sh/uv/">uv</a> or <a class="reference external" href="https://pip.pypa.io/en/stable/">pip</a>.
+A <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> lockfile is maintained in version control to ensure reproducible environments.
+Dependabot keeps the locked dependencies up to date via weekly PRs.</p>
+<p>Configuration files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pyproject</span><span class="o">.</span><span class="n">toml</span>
+<span class="n">uv</span><span class="o">.</span><span class="n">lock</span>
+</pre></div>
+</div>
+</section>
+<section id="continuous-integration-using-github-actions">
+<h3>Continuous Integration using GitHub Actions<a class="headerlink" href="#continuous-integration-using-github-actions" title="連結到這個標頭">#</a></h3>
+<p>Each change pushed to the PyBaMM GitHub repository will trigger the test and benchmark suites to be run, using <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a>.</p>
+<p>Tests are run for different operating systems, and for all Python versions officially supported by PyBaMM. If you opened a Pull Request, feedback is directly available on the corresponding page. If all tests pass, a green tick will be displayed next to the corresponding test run. If one or more test(s) fail, a red cross will be displayed instead.</p>
+<p>Similarly, the benchmark suite is automatically run for the most recently pushed commit. Benchmark results are compared to the results available for the latest commit on the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch. Should any significant performance regression be found, a red cross will be displayed next to the benchmark run.</p>
+<p>In all cases, more details can be obtained by clicking on a specific run.</p>
+<p>Configuration files for various GitHub actions workflow can be found in <code class="docutils literal notranslate"><span class="pre">.github/worklfows</span></code>.</p>
+</section>
+<section id="codecov">
+<h3>Codecov<a class="headerlink" href="#codecov" title="連結到這個標頭">#</a></h3>
+<p>Code coverage (how much of our code is actually seen by the (linux) unit tests) is tested using <a class="reference external" href="https://docs.codecov.io/">Codecov</a>, a report is visible on https://codecov.io/gh/pybamm-team/PyBaMM.</p>
+<p>Configuration files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">coveragerc</span>
+</pre></div>
+</div>
+</section>
+<section id="read-the-docs">
+<h3>Read the Docs<a class="headerlink" href="#read-the-docs" title="連結到這個標頭">#</a></h3>
+<p>Documentation is built using https://readthedocs.org/ and published on http://docs.pybamm.org/.</p>
+</section>
+<section id="google-colab">
+<h3>Google Colab<a class="headerlink" href="#google-colab" title="連結到這個標頭">#</a></h3>
+<p>Editable notebooks are made available using <a class="reference external" href="https://colab.research.google.com/notebooks/intro.ipynb">Google Colab</a> <a class="reference external" href="https://colab.research.google.com/github/pybamm-team/PyBaMM/blob/main/">here</a>.</p>
+</section>
+<section id="github">
+<h3>GitHub<a class="headerlink" href="#github" title="連結到這個標頭">#</a></h3>
+<p>GitHub does some magic with particular filenames. In particular:</p>
+<ul class="simple">
+<li><p>The first page people see when they go to <a class="reference external" href="https://github.com/pybamm-team/PyBaMM">our GitHub page</a> displays the contents of <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/README.md">README.md</a>, which is written in the <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> format. Some guidelines can be found <a class="reference external" href="https://docs.github.com/articles/about-readmes/">here</a>.</p></li>
+<li><p>The license for using PyBaMM is stored in <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/LICENSE.txt">LICENSE</a>, and <a class="reference external" href="https://docs.github.com/articles/adding-a-license-to-a-repository/">automatically</a> linked to by GitHub.</p></li>
+<li><p>This file, <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/CONTRIBUTING.md">CONTRIBUTING.md</a> is recognised as the contribution guidelines and a link is <a class="reference external" href="https://github.com/blog/1184-contributing-guidelines">automatically</a> displayed when new issues or pull requests are created.</p></li>
+</ul>
+</section>
+</section>
+<section id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="連結到這個標頭">#</a></h2>
+<p>This CONTRIBUTING.md file, along with large sections of the code infrastructure,
+was copied from the excellent <a class="reference external" href="https://github.com/pints-team/pints">Pints GitHub repo</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="fundamentals/public_api.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一頁</p>
+        <p class="prev-next-title">Public API</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一頁</p>
+        <p class="prev-next-title">Tutorial 1 - How to run a model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-commit-checks">Pre-commit checks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-and-using-pre-commit">Installing and using pre-commit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#workflow">Workflow</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-before-you-begin">A. Before you begin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-writing-your-code">B. Writing your code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-merging-your-changes-with-pybamm">C. Merging your changes with PyBaMM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-style-guidelines">Coding style guidelines</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ruff">Ruff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming">Naming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependencies-and-reusing-code">Dependencies and reusing code</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#separating-dependencies">Separating dependencies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#managing-optional-dependencies-and-their-imports">Managing Optional Dependencies and Their Imports</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-tests">Writing tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#running-more-tests">Running more tests</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-example-notebooks">Testing the example notebooks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-example-scripts">Testing the example scripts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#debugging">Debugging</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling">Profiling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the documentation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-notebooks">Example notebooks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#citations">Citations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#infrastructure">Infrastructure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-integration-using-github-actions">Continuous Integration using GitHub Actions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codecov">Codecov</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-the-docs">Read the Docs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#google-colab">Google Colab</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github">GitHub</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acknowledgements">Acknowledgements</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/user_guide/contributing.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最後更新於 2026-04-24。
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

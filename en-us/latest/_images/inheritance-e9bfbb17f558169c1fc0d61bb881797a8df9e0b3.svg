@@ -1,0 +1,60 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="494pt" height="184pt" viewBox="0.00 0.00 494.00 184.00">
+<ns0:g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
+<ns0:title>inheritance7d38f68fcb</ns0:title>
+<ns0:polygon fill="white" stroke="none" points="-4,4 -4,-180 490.25,-180 490.25,4 -4,4" />
+
+<ns0:g id="node1" class="node">
+<ns0:title>base_electrolyte_conductivity.BaseElectrolyteConductivity</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="../source/api/models/submodels/electrolyte_conductivity/base_electrolyte_conductivity.html#pybamm.electrolyte_conductivity.BaseElectrolyteConductivity" ns1:title="Base class for conservation of charge in the electrolyte." target="_top">
+<ns0:polygon fill="white" stroke="black" points="486.25,-75.5 0,-75.5 0,-50.25 486.25,-50.25 486.25,-75.5" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243.12" y="-58.2" font-family="monospace" font-size="14.00">base_electrolyte_conductivity.BaseElectrolyteConductivity</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>integrated_conductivity.Integrated</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="../source/api/models/submodels/electrolyte_conductivity/integrated_conductivity.html#pybamm.electrolyte_conductivity.Integrated" ns1:title="Integrated model for conservation of charge in the electrolyte derived from" target="_top">
+<ns0:polygon fill="white" stroke="black" points="391.38,-25.25 94.88,-25.25 94.88,0 391.38,0 391.38,-25.25" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243.12" y="-7.95" font-family="monospace" font-size="14.00">integrated_conductivity.Integrated</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>base_electrolyte_conductivity.BaseElectrolyteConductivity-&gt;integrated_conductivity.Integrated</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M243.12,-50.2C243.12,-45.41 243.12,-39.72 243.12,-34.27" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="245.75,-33.79 243.13,-26.29 240.5,-33.79 245.75,-33.79" />
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>base_submodel.BaseSubModel</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="../source/api/models/submodels/base_submodel.html#pybamm.BaseSubModel" ns1:title="The base class for all submodels. All submodels inherit from this class and must" target="_top">
+<ns0:polygon fill="white" stroke="black" points="358.38,-125.75 127.88,-125.75 127.88,-100.5 358.38,-100.5 358.38,-125.75" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243.12" y="-108.45" font-family="monospace" font-size="14.00">base_submodel.BaseSubModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>base_submodel.BaseSubModel-&gt;base_electrolyte_conductivity.BaseElectrolyteConductivity</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M243.12,-100.45C243.12,-95.66 243.12,-89.97 243.12,-84.52" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="245.75,-84.04 243.13,-76.54 240.5,-84.04 245.75,-84.04" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>base_model.BaseModel</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="../source/api/models/base_models/base_model.html#pybamm.BaseModel" ns1:title="Base model class for other models to extend." target="_top">
+<ns0:polygon fill="white" stroke="black" points="333.62,-176 152.62,-176 152.62,-150.75 333.62,-150.75 333.62,-176" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="243.12" y="-158.7" font-family="monospace" font-size="14.00">base_model.BaseModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>base_model.BaseModel-&gt;base_submodel.BaseSubModel</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M243.12,-150.7C243.12,-145.91 243.12,-140.22 243.12,-134.77" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="245.75,-134.29 243.13,-126.79 240.5,-134.29 245.75,-134.29" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

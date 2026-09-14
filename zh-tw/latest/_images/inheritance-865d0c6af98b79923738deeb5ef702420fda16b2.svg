@@ -1,0 +1,60 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="313pt" height="184pt" viewBox="0.00 0.00 313.00 184.00">
+<ns0:g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
+<ns0:title>inheritance1e8fcdf64a</ns0:title>
+<ns0:polygon fill="white" stroke="none" points="-4,4 -4,-180 308.75,-180 308.75,4 -4,4" />
+
+<ns0:g id="node1" class="node">
+<ns0:title>base_battery_model.BaseBatteryModel</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="../source/api/models/base_models/base_battery_model.html#pybamm.BaseBatteryModel" ns1:title="Base model class with some default settings and required variables" target="_top">
+<ns0:polygon fill="white" stroke="black" points="304.75,-125.75 0,-125.75 0,-100.5 304.75,-100.5 304.75,-125.75" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="152.38" y="-108.45" font-family="monospace" font-size="14.00">base_battery_model.BaseBatteryModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>base_lead_acid_model.BaseModel</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="../source/api/models/lead_acid/base_lead_acid_model.html#pybamm.lead_acid.BaseModel" ns1:title="Overwrites default parameters from Base Model with default parameters for" target="_top">
+<ns0:polygon fill="white" stroke="black" points="284.12,-75.5 20.62,-75.5 20.62,-50.25 284.12,-50.25 284.12,-75.5" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="152.38" y="-58.2" font-family="monospace" font-size="14.00">base_lead_acid_model.BaseModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>base_battery_model.BaseBatteryModel-&gt;base_lead_acid_model.BaseModel</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M152.38,-100.45C152.38,-95.66 152.38,-89.97 152.38,-84.52" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155,-84.04 152.38,-76.54 149.75,-84.04 155,-84.04" />
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>base_model.BaseModel</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="../source/api/models/base_models/base_model.html#pybamm.BaseModel" ns1:title="Base model class for other models to extend." target="_top">
+<ns0:polygon fill="white" stroke="black" points="242.88,-176 61.88,-176 61.88,-150.75 242.88,-150.75 242.88,-176" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="152.38" y="-158.7" font-family="monospace" font-size="14.00">base_model.BaseModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>base_model.BaseModel-&gt;base_battery_model.BaseBatteryModel</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M152.38,-150.7C152.38,-145.91 152.38,-140.22 152.38,-134.77" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155,-134.29 152.38,-126.79 149.75,-134.29 155,-134.29" />
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>full.Full</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="../source/api/models/lead_acid/full.html#pybamm.lead_acid.Full" ns1:title="Porous electrode model for lead-acid, from :footcite:t:`Sulzer2019asymptotic`," target="_top">
+<ns0:polygon fill="white" stroke="black" points="197.5,-25.25 107.25,-25.25 107.25,0 197.5,0 197.5,-25.25" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="152.38" y="-7.95" font-family="monospace" font-size="14.00">full.Full</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>base_lead_acid_model.BaseModel-&gt;full.Full</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M152.38,-50.2C152.38,-45.41 152.38,-39.72 152.38,-34.27" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="155,-33.79 152.38,-26.29 149.75,-33.79 155,-33.79" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>
