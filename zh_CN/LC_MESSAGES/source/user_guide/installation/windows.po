@@ -1,0 +1,204 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/installation/windows.rst:2
+msgid "Windows"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:4
+msgid "Contents"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:7
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:9
+msgid "To use PyBaMM, you must have Python 3.10 — 3.14 installed."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:11
+msgid ""
+"To install Python 3 download the installation files from `Python’s website "
+"<https://www.python.org/downloads/windows/>`__. Make sure to tick the box on "
+"``Add Python 3.X to PATH``. For more detailed instructions please see the "
+"`official Python on Windows guide <https://docs.python.org/3.9/using/windows."
+"html>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:18
+msgid "Install PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:21
+msgid "User install"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:23
+msgid ""
+"Launch the Command Prompt and go to the directory where you want to install "
+"PyBaMM. You can find a reminder of how to navigate the terminal `here "
+"<http://www.cs.columbia.edu/~sedwards/classes/2015/1102-fall/"
+"Command%20Prompt%20Cheatsheet.pdf>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:27
+msgid ""
+"We recommend to install PyBaMM within a virtual environment, in order not to "
+"alter any distribution python files."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:30
+msgid "To create a virtual environment within your current directory:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:34
+msgid "uv venv"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:38
+msgid ""
+"This creates a ``.venv`` directory. You can then “activate” the environment "
+"using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:40
+msgid ".venv\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:46
+msgid "First install ``virtualenv``:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:48
+msgid "python -m pip install virtualenv"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:52
+msgid "Then create a virtual environment:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:54
+msgid "python -m virtualenv env"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:58
+msgid "You can then “activate” the environment using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:60
+msgid "env\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:64
+msgid ""
+"When you are ready to exit the environment and go back to your original "
+"system, just type:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:66
+msgid "deactivate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:70
+msgid "PyBaMM can be installed via ``uv``, ``pip``, or ``conda``:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:74
+msgid "uv pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:80
+msgid "pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:86
+msgid "conda install -c conda-forge pybamm-base"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:90
+msgid "PyBaMM’s :ref:`required dependencies <install-required-dependencies>`"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:92
+msgid ""
+"(such as ``numpy``, ``casadi``, etc) will be installed automatically when "
+"you install ``pybamm`` using ``pip`` or ``pybamm-base`` using ``conda``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:95
+msgid ""
+"For an introduction to virtual environments, see (https://realpython.com/"
+"python-virtual-environments-a-primer/)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:99
+msgid "Optional - JaxSolver"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:101
+msgid "Users can install ``jax`` and ``jaxlib`` to use the Jax solver."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:105
+msgid "uv pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:111
+msgid "pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:115
+msgid ""
+"This command automatically downloads and installs ``pybamm`` and the "
+"compatible versions of ``jax`` and ``jaxlib`` on your system."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:117
+msgid ""
+"PyBaMM's full `conda-forge distribution <index.rst#installation>`_ "
+"(``pybamm``) includes ``jax`` and ``jaxlib`` by default."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:120
+msgid "Uninstall PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:122
+msgid "PyBaMM can be uninstalled by running"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:124
+msgid "pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:128
+msgid "in your virtual environment."
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:131
+msgid "Installation using WSL"
+msgstr ""
+
+#: ../../../source/user_guide/installation/windows.rst:133
+msgid ""
+"If you want to install the optional PyBaMM solvers, you have to use the "
+"Windows Subsystem for Linux (WSL). You can find the installation "
+"instructions on the `Installation <windows-wsl.rst>`_ page."
+msgstr ""

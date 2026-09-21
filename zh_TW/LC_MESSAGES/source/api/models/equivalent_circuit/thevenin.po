@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/equivalent_circuit/thevenin.rst:2
+msgid "Thevenin Model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:1
+msgid ""
+"The classical Thevenin Equivalent Circuit Model of a battery as described "
+"in, for example, :footcite:t:`Barletta2022thevenin`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:4
+msgid ""
+"This equivalent circuit model consists of an OCV element, a resistor "
+"element, and a number of RC elements (by default 1). The model is coupled to "
+"two lumped thermal models, one for the cell and one for the surrounding jig. "
+"Heat generation terms for each element follow equation (1) of :footcite:t:"
+"`Nieto2012`."
+msgstr ""
+
+#: ../../../source/api/models/equivalent_circuit/thevenin.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:10
+msgid ""
+"The name of the model. The default is \"Thevenin Equivalent Circuit Model\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:13
+msgid ""
+"A dictionary of options to be passed to the model. The default is None. "
+"Possible options are:      * \"number of rc elements\" : str         The "
+"number of RC elements to be added to the model. The default is 1.     * "
+"\"calculate discharge energy\": str         Whether to calculate the "
+"discharge energy, throughput energy and         throughput capacity in "
+"addition to discharge capacity. Must be one of         \"true\" or "
+"\"false\". \"false\" is the default, since calculating discharge         "
+"energy can be computationally expensive for simple models like SPM.     * "
+"\"diffusion element\" : str         Whether to include the diffusion element "
+"to the model. Must be one of         \"true\" or \"false\". \"false\" is the "
+"default.     * \"operating mode\" : str         Sets the operating mode for "
+"the model. This determines how the current         is set. Can be:          "
+"- \"current\" (default) : the current is explicity supplied         - "
+"\"voltage\"/\"power\"/\"resistance\" : solve an algebraic equation "
+"for                     current such that voltage/power/resistance is "
+"correct         - \"differential power\"/\"differential resistance\" : solve "
+"a                     differential equation for the power or "
+"resistance         - \"CCCV\": a special implementation of the common "
+"constant-current                     constant-voltage charging protocol, via "
+"an ODE for the current         - callable : if a callable is given as this "
+"option, the function                     defines the residual of an "
+"algebraic equation. The applied current                     will be solved "
+"for such that the algebraic constraint is satisfied."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:13
+msgid ""
+"A dictionary of options to be passed to the model. The default is None. "
+"Possible options are:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:16
+msgid "\"number of rc elements\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:-1
+msgid "str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:17
+msgid "The number of RC elements to be added to the model. The default is 1."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:18
+msgid "\"calculate discharge energy\": str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:19
+msgid ""
+"Whether to calculate the discharge energy, throughput energy and throughput "
+"capacity in addition to discharge capacity. Must be one of \"true\" or "
+"\"false\". \"false\" is the default, since calculating discharge energy can "
+"be computationally expensive for simple models like SPM."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:23
+msgid "\"diffusion element\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:24
+msgid ""
+"Whether to include the diffusion element to the model. Must be one of "
+"\"true\" or \"false\". \"false\" is the default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:26
+msgid "\"operating mode\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:27
+msgid ""
+"Sets the operating mode for the model. This determines how the current is "
+"set. Can be:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:30
+msgid "\"current\" (default) : the current is explicity supplied"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:31
+msgid ""
+"\"voltage\"/\"power\"/\"resistance\" : solve an algebraic equation "
+"for                     current such that voltage/power/resistance is correct"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:32
+msgid ""
+"\"differential power\"/\"differential resistance\" : solve "
+"a                     differential equation for the power or resistance"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:33
+msgid ""
+"\"CCCV\": a special implementation of the common constant-"
+"current                     constant-voltage charging protocol, via an ODE "
+"for the current"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:34
+msgid ""
+"callable : if a callable is given as this option, the "
+"function                     defines the residual of an algebraic equation. "
+"The applied current                     will be solved for such that the "
+"algebraic constraint is satisfied."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:36
+msgid ""
+"Whether to build the model on instantiation. Default is True. Setting this "
+"option to False allows users to change any number of the submodels before "
+"building the complete model (submodels cannot be changed after the model is "
+"built)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:43
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:48
+msgid "**Extends:** :class:`pybamm.models.base_model.BaseModel`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin:0
+msgid "View inheritance diagram for this model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_geometry:1
+msgid ""
+"Returns a  dictionary of the default geometry for the model, which is empty "
+"by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_parameter_values:1
+msgid ""
+"Returns the default parameter values for the model (an empty set of "
+"parameters by default)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_quick_plot_variables:1
+msgid "Returns the default variables for quick plotting (None by default)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_spatial_methods:1
+msgid ""
+"Returns a dictionary of the default spatial methods for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_submesh_types:1
+msgid ""
+"Returns a dictionary of the default submesh types for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of pybamm.equivalent_circuit.Thevenin.default_var_pts:1
+msgid ""
+"Returns a dictionary of the default variable points for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/full_battery_models/equivalent_circuit/thevenin.py:docstring
+#: of
+#: pybamm.models.full_battery_models.equivalent_circuit.thevenin.Thevenin.set_external_circuit_submodel:1
+msgid ""
+"Define how the external circuit defines the boundary conditions for the "
+"model, e.g. (not necessarily constant-) current, voltage, etc"
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

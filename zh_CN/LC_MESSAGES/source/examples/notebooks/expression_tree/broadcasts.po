@@ -1,0 +1,468 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/expression_tree/broadcasts.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/expression_tree/broadcasts.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:9
+msgid "Broadcasts"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:11
+msgid ""
+"This notebook explains the different types of broadcast available in PyBaMM. "
+"Understanding of the `expression_tree <./expression-tree.ipynb>`__ and "
+"`discretisation <../spatial_methods/finite-volumes.ipynb>`__ notebooks is "
+"assumed."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:35
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:48
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:59
+msgid ""
+"We also explicitly set up the discretisation that is used for this notebook. "
+"We use a small number of points in each domain, in order to easily visualise "
+"the results."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"var = pybamm.standard_spatial_vars\n"
+"geometry = {\n"
+"    \"negative electrode\": {var.x_n: {\"min\": pybamm.Scalar(0), \"max\": "
+"pybamm.Scalar(1)}},\n"
+"    \"negative particle\": {var.r_n: {\"min\": pybamm.Scalar(0), \"max\": "
+"pybamm.Scalar(1)}},\n"
+"}\n"
+"\n"
+"submesh_types = {\n"
+"    \"negative electrode\": pybamm.Uniform1DSubMesh,\n"
+"    \"negative particle\": pybamm.Uniform1DSubMesh,\n"
+"}\n"
+"\n"
+"var_pts = {var.x_n: 5, var.r_n: 3}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)\n"
+"\n"
+"spatial_methods = {\n"
+"    \"negative electrode\": pybamm.FiniteVolume(),\n"
+"    \"negative particle\": pybamm.FiniteVolume(),\n"
+"}\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:99
+msgid "Primary broadcasts"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:110
+msgid ""
+"Primary broadcasts are used to broadcast from a \"larger\" scale to a "
+"\"smaller\" scale, for example broadcasting temperature T(x) from the "
+"electrode to the particles, or broadcasting current collector current i(y, "
+"z) from the current collector to the electrodes. To demonstrate this, we "
+"first create a variable ``T`` on the negative electrode domain, discretise "
+"it, and evaluate it with a simple linear vector"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"T = pybamm.Variable(\"T\", domain=\"negative electrode\")\n"
+"disc.set_variable_slices([T])\n"
+"disc_T = disc.process_symbol(T)\n"
+"disc_T.evaluate(y=np.linspace(0, 1, 5))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:135
+msgid ""
+"<pre>\n"
+"array([[0.  ],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [1.  ]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:145
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[0.  ],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [1.  ]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:156
+msgid ""
+"array([[0.  ],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [1.  ]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:171
+msgid ""
+"We then broadcast ``T`` onto the \"negative particle\" domain (using primary "
+"broadcast as we are going from the larger electrode scale to the smaller "
+"particle scale), and discretise and evaluate the resulting object."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"primary_broad_T = pybamm.PrimaryBroadcast(T, \"negative particle\")\n"
+"disc_T = disc.process_symbol(primary_broad_T)\n"
+"disc_T.evaluate(y=np.linspace(0, 1, 5))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:195
+msgid ""
+"<pre>\n"
+"array([[0.  ],\n"
+"       [0.  ],\n"
+"       [0.  ],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [1.  ],\n"
+"       [1.  ],\n"
+"       [1.  ]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:215
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[0.  ],\n"
+"       [0.  ],\n"
+"       [0.  ],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [1.  ],\n"
+"       [1.  ],\n"
+"       [1.  ]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:236
+msgid ""
+"array([[0.  ],\n"
+"       [0.  ],\n"
+"       [0.  ],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.25],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.5 ],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [0.75],\n"
+"       [1.  ],\n"
+"       [1.  ],\n"
+"       [1.  ]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:261
+msgid ""
+"The broadcasted object makes 3 (since the r-grid has 3 points) copies of "
+"each element of ``T`` and stacks them all up to give an object with size "
+"3x5=15. In the resulting vector, the first 3 entries correspond to the 3 "
+"points in the r-domain at the first x-grid point (where T=0 uniformly in r), "
+"the next 3 entries correspond to the next 3 points in the r-domain at the "
+"second x-grid point (where T=0.25 uniformly in r), etc"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:273
+msgid "Secondary broadcasts"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:284
+msgid ""
+"Secondary broadcasts are used to broadcast from a \"smaller\" scale to a "
+"\"larger\" scale, for example broadcasting SPM particle concentrations "
+"c_s(r) from the particles to the electrodes. Note that this wouldn't be used "
+"to broadcast particle concentrations in the DFN, since these already depend "
+"on both x and r. To demonstrate this, we first create a variable ``c_s`` on "
+"the negative particle domain, discretise it, and evaluate it with a simple "
+"linear vector"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"c_s = pybamm.Variable(\"c_s\", domain=\"negative particle\")\n"
+"disc.set_variable_slices([c_s])\n"
+"disc_c_s = disc.process_symbol(c_s)\n"
+"disc_c_s.evaluate(y=np.linspace(0, 1, 3))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:309
+msgid ""
+"<pre>\n"
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:317
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:326
+msgid ""
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:339
+msgid ""
+"We then broadcast ``c_s`` onto the \"negative electrode\" domain (using "
+"secondary broadcast as we are going from the smaller particle scale to the "
+"large electrode scale), and discretise and evaluate the resulting object."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid ""
+"secondary_broad_c_s = pybamm.SecondaryBroadcast(c_s, \"negative "
+"electrode\")\n"
+"disc_broad_c_s = disc.process_symbol(secondary_broad_c_s)\n"
+"disc_broad_c_s.evaluate(y=np.linspace(0, 1, 3))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:363
+msgid ""
+"<pre>\n"
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:383
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:404
+msgid ""
+"array([[0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ],\n"
+"       [0. ],\n"
+"       [0.5],\n"
+"       [1. ]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:429
+msgid ""
+"The broadcasted object makes 5 (since the x-grid has 5 points) identical "
+"copies of the whole variable ``c_s`` to give an object with size 5x3=15. In "
+"the resulting vector, the first 3 entries correspond to the 3 points in the "
+"r-domain at the first x-grid point (where c_s varies in r), the next 3 "
+"entries correspond to the next 3 points in the r-domain at the second x-grid "
+"point (where c_s varies in r), etc"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:441
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:443
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:464
+msgid ""
+"<pre>\n"
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:472
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/broadcasts.ipynb:481
+msgid ""
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

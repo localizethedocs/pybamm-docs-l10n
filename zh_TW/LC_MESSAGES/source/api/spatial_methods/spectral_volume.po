@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/spectral_volume.rst:2
+msgid "Spectral Volume"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume:1
+msgid ""
+"A class which implements the steps specific to the Spectral Volume "
+"discretisation. It is implemented in such a way that it is very similar to "
+"FiniteVolume; that comes at the cost that it is only compatible with the "
+"SpectralVolume1DSubMesh (which is a certain subdivision of any 1D mesh, so "
+"it shouldn't be a problem)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume:7
+msgid ""
+"For broadcast and mass_matrix, we follow the default behaviour from "
+"SpatialMethod. For spatial_variable, divergence, divergence_matrix, "
+"laplacian, integral, definite_integral_matrix, indefinite_integral, "
+"indefinite_integral_matrix, indefinite_integral_matrix_nodes, "
+"indefinite_integral_matrix_edges, delta_function we follow the behaviour "
+"from FiniteVolume. This is possible since the node values are integral "
+"averages with Spectral Volume, just as with Finite Volume. delta_function "
+"assigns the integral value to a CV instead of a SV this way, but that "
+"doesn't matter too much. Additional methods that are inherited by "
+"FiniteVolume which technically are not suitable for Spectral Volume are "
+"boundary_value_or_flux, process_binary_operators, concatenation, "
+"node_to_edge, edge_to_node and shift. While node_to_edge (as well as "
+"boundary_value_or_flux and process_binary_operators) could utilize the "
+"reconstruction approach of Spectral Volume, the inverse edge_to_node would "
+"still have to fall back to the Finite Volume behaviour. So these are simply "
+"inherited for consistency. boundary_value_or_flux might not benefit from the "
+"reconstruction approach at all, as it seems to only preprocess symbols."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spectral_volume.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume:28
+msgid "Contains all the submeshes for discretisation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume:31
+msgid "**Extends:** :class:`pybamm.spatial_methods.finite_volume.FiniteVolume`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:1
+msgid "Calculates Chebyshev collocation points in descending order."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:3
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_differentiation_matrices:4
+msgid "The number of the collocation points. \"number of edges\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:5
+msgid ""
+"Left end of the interval on which the Chebyshev collocation points are "
+"constructed. Default is -1."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:8
+msgid ""
+"Right end of the interval on which the Chebyshev collocation points are "
+"constructed. Default is 1."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spectral_volume.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:12
+msgid "* :class:`numpy.array` * *Chebyshev collocation points on [a,b].*"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:12
+msgid ":class:`numpy.array`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_collocation_points:13
+msgid "*Chebyshev collocation points on [a,b].*"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_differentiation_matrices:1
+msgid ""
+"Chebyshev differentiation matrices, from :footcite:t:`Baltensperger2003`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_differentiation_matrices:6
+msgid ""
+"The maximum order of differentiation for which a differentiation matrix "
+"shall be calculated. Note that it has to be smaller than 'noe'. \"degrees of "
+"differentiation\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_differentiation_matrices:11
+msgid ""
+"The differentiation matrices in ascending order of differentiation order. "
+"With exact arithmetic, the diff. matrix of order p would just be the pth "
+"matrix power of the diff. matrix of order 1. This method computes the higher "
+"orders in a more numerically stable way."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spectral_volume.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.chebyshev_differentiation_matrices:16
+msgid "list(:class:`numpy.array`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.cv_boundary_reconstruction_matrix:1
+msgid ""
+"\"Broadcasts\" the basic edge value reconstruction matrix to the actual "
+"shape of the discretised symbols. Note that the product of this and a "
+"discretised symbol is a vector which represents duplicate values for all "
+"inner SV edges. These are the reconstructed values from both sides."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.cv_boundary_reconstruction_matrix:7
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.gradient_matrix:13
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.penalty_matrix:6
+msgid "The domains in which to compute the gradient matrix"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.cv_boundary_reconstruction_matrix:10
+msgid "The (sparse) CV reconstruction matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.cv_boundary_reconstruction_matrix:11
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.gradient_matrix:17
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.penalty_matrix:10
+msgid ":class:`pybamm.Matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.cv_boundary_reconstruction_sub_matrix:1
+msgid ""
+"Coefficients for reconstruction of a function through averages. The "
+"resulting matrix is scale-invariant :footcite:t:`Wang2002`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume.gradient:1
+msgid ""
+"Matrix-vector multiplication to implement the gradient operator. See :meth:"
+"`pybamm.SpatialMethod.gradient`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume.gradient_matrix:1
+msgid ""
+"Gradient matrix for Spectral Volume in the appropriate domain. Note that it "
+"contains the averaging of the duplicate SV edge gradient values, such that "
+"the product of it and a reconstructed discretised symbol simply represents "
+"CV edge values. On its own, it only works on non-concatenated domains, since "
+"only then the boundary conditions ensure correct behaviour. More generally, "
+"it only works if gradients are a result of boundary conditions rather than "
+"continuity conditions. For example, two adjacent SVs with gradient zero in "
+"each of them but with different variable values will have zero gradient "
+"between them. This is fixed with \"penalty_matrix\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume.gradient_matrix:16
+msgid "The (sparse) Spectral Volume gradient matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume.penalty_matrix:1
+msgid ""
+"Penalty matrix for Spectral Volume in the appropriate domain. This works the "
+"same as the \"gradient_matrix\" of FiniteVolume does, just between SVs and "
+"not between CVs. Think of it as a continuity penalty."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of pybamm.spatial_methods.spectral_volume.SpectralVolume.penalty_matrix:9
+msgid "The (sparse) Spectral Volume penalty matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:1
+msgid ""
+"Replace the reconstructed value at Dirichlet boundaries with the boundary "
+"condition."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:4
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:4
+msgid "The variable to be discretised"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:6
+msgid "Contains the discretised variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:8
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:8
+msgid ""
+"Dictionary (with keys \"left\" and \"right\") of boundary conditions. Each "
+"boundary condition consists of a value and a flag indicating its type (e.g. "
+"\"Dirichlet\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:13
+msgid ""
+"`Matrix @ discretised_symbol + bcs_vector`. When evaluated, this gives the "
+"discretised_symbol, with its boundary values replaced by the Dirichlet "
+"boundary conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_dirichlet_values:16
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:16
+msgid ":class:`pybamm.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:1
+msgid ""
+"Replace the known values of the gradient from Neumann boundary conditions "
+"into the discretised gradient."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:6
+msgid "Contains the discretised gradient of symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spectral_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.spectral_volume.SpectralVolume.replace_neumann_values:13
+msgid ""
+"`Matrix @ discretised_gradient + bcs_vector`. When evaluated, this gives the "
+"discretised_gradient, with its boundary values replaced by the Neumann "
+"boundary conditions."
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

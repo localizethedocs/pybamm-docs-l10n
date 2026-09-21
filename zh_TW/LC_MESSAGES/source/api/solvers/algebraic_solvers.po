@@ -1,0 +1,182 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/solvers/algebraic_solvers.rst:2
+msgid "Algebraic Solvers"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:1
+msgid ""
+"Solve a discretised model which contains only (time independent) algebraic "
+"equations using a root finding algorithm. Uses scipy.optimize.root. Note: "
+"this solver could be extended for quasi-static models, or models in which "
+"the time derivative is manually discretised and results in a (possibly "
+"nonlinear) algebaric system at each time level."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:0
+#: ../../../source/api/solvers/algebraic_solvers.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:8
+msgid ""
+"The method to use to solve the system (default is \"lm\"). If it starts with "
+"\"lsq\", least-squares minimization is used. The method for least-squares "
+"can be specified in the form \"lsq_methodname\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:12
+msgid "The tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:14
+msgid ""
+"Any options to pass to the rootfinder. Vary depending on which method is "
+"chosen. Please consult `SciPy documentation <https://docs.scipy.org/doc/"
+"scipy/reference/generated/scipy.optimize.show_options.html>`_ for details. "
+"Addititional options to pass to the solver, by default:  .. code-block:: "
+"python      extra_options = {         # Tolerance for termination by the "
+"change of the independent variables.         \"xtol\": 1e-12,         # "
+"Tolerance for termination by the norm of the gradient.         \"gtol\": "
+"1e-12,     }"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:14
+msgid ""
+"Any options to pass to the rootfinder. Vary depending on which method is "
+"chosen. Please consult `SciPy documentation <https://docs.scipy.org/doc/"
+"scipy/reference/generated/scipy.optimize.show_options.html>`_ for details. "
+"Addititional options to pass to the solver, by default:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:19
+msgid ""
+"extra_options = {\n"
+"    # Tolerance for termination by the change of the independent variables.\n"
+"    \"xtol\": 1e-12,\n"
+"    # Tolerance for termination by the norm of the gradient.\n"
+"    \"gtol\": 1e-12,\n"
+"}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver:29
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:28
+msgid "**Extends:** :class:`pybamm.solvers.base_solver.BaseSolver`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver.get_root_solver:1
+msgid "Return a rootfinder object. Not used for `pybamm.AlgebraicSolver`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver.get_root_solver:3
+msgid "The model whose solution to calculate."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver.get_root_solver:5
+msgid "Dictionary of inputs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver.get_root_solver:7
+msgid "The times at which to compute the solution."
+msgstr ""
+
+#: ../../../source/api/solvers/algebraic_solvers.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/algebraic_solver.py:docstring
+#: of pybamm.solvers.algebraic_solver.AlgebraicSolver.get_root_solver:10
+msgid "Not used for `pybamm.AlgebraicSolver`."
+msgstr ""
+
+#: ../../../source/api/solvers/algebraic_solvers.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:1
+msgid ""
+"Solve a discretised model which contains only (time independent) algebraic "
+"equations using CasADi's root finding algorithm."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:4
+msgid ""
+"Note: this solver could be extended for quasi-static models, or models in "
+"which the time derivative is manually discretised and results in a (possibly "
+"nonlinear) algebraic system at each time level."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:8
+msgid "The tolerance for the maximum residual error (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:10
+msgid "The tolerance for the maximum step size (default is 1e-4)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:12
+msgid ""
+"Any options to pass to the CasADi rootfinder. Please consult `CasADi "
+"documentation <https://web.casadi.org/python-api/#rootfinding>`_ for "
+"details. By default:  .. code-block:: python      extra_options = "
+"{         # Whether to throw an error if the solver fails to "
+"converge.         \"error_on_fail\": False,         # Verbosity "
+"level         \"verbose\": False,         # Whether to show warnings when "
+"evaluating the model         \"show_eval_warnings\": False,     }"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:12
+msgid ""
+"Any options to pass to the CasADi rootfinder. Please consult `CasADi "
+"documentation <https://web.casadi.org/python-api/#rootfinding>`_ for "
+"details. By default:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/casadi_algebraic_solver.py:docstring
+#: of pybamm.solvers.casadi_algebraic_solver.CasadiAlgebraicSolver:16
+msgid ""
+"extra_options = {\n"
+"    # Whether to throw an error if the solver fails to converge.\n"
+"    \"error_on_fail\": False,\n"
+"    # Verbosity level\n"
+"    \"verbose\": False,\n"
+"    # Whether to show warnings when evaluating the model\n"
+"    \"show_eval_warnings\": False,\n"
+"}"
+msgstr ""

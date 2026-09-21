@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/getting_started/tutorial-2-compare-models."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:9
+msgid "Tutorial 2 - Compare models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:20
+msgid ""
+"In `Tutorial 1 <./tutorial-1-how-to-run-a-model.ipynb>`__, we saw how to run "
+"a PyBaMM simulation of the DFN model. However, PyBaMM includes other "
+"standard electrochemical models such as the Single Particle Model (SPM) and "
+"the Single Particle Model with electrolyte (SPMe). In this tutorial, we will "
+"see how to simulate and compare these three models."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:22
+msgid "Again, the first step is to import PyBaMM into the notebook:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:45
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.3.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">23.3.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:54
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.3.1} -> \\textcolor{ansi-green}{23.3.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:64
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.3.1[0m[39;49m -> [0m[32;49m23.3.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:79
+msgid ""
+"<pre>\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:85
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:92
+msgid ""
+"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
+"not installed. Falling back to cpu."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:103
+msgid ""
+"As we want to compare various models, we now create a list of all the models "
+"we wish to solve:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid ""
+"models = [\n"
+"    pybamm.lithium_ion.SPM(),\n"
+"    pybamm.lithium_ion.SPMe(),\n"
+"    pybamm.lithium_ion.DFN(),\n"
+"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:128
+msgid ""
+"We will loop over the list, creating and solving simulations as we go (in "
+"the same way we learned in `Tutorial 1 <./tutorial-1-how-to-run-a-model."
+"ipynb>`__), and storing the solved simulations in the list ``sims``:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid ""
+"sims = []\n"
+"for model in models:\n"
+"    sim = pybamm.Simulation(model)\n"
+"    sim.solve([0, 3600])\n"
+"    sims.append(sim)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:153
+msgid ""
+"We can now pass our list of simulations to the ``dynamic_plot`` method, "
+"which has similar syntax to the ``sim.plot()`` method we used earlier and "
+"will plot the different solutions in the same figure:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "pybamm.dynamic_plot(sims)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:176
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"59b0f0a695d34ce8a5360af8d1c45e94\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:187
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=3600.0, step=36.0), Output()), _dom_classes=…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:193
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
+"step=36.0), Output()), \\_dom\\_classes=…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:200
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
+"step=36.0), Output()), _dom_classes=…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:212
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7faf48ed9490&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:218
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7faf48ed9490>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:225
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7faf48ed9490>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:236
+msgid ""
+"In this tutorial we have seen how easy it is to run and compare different "
+"electrochemical models. In `Tutorial 3 <./tutorial-3-basic-plotting."
+"ipynb>`__ we show how to create different plots using PyBaMM's built-in "
+"plotting capability."
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:248
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:250
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:271
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:282
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/getting_started/tutorial-2-compare-models.ipynb:294
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

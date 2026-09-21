@@ -1,0 +1,955 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/base_models/base_model.rst:2
+msgid "Base Model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:1
+msgid "Base model class for other models to extend."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:5
+msgid "A string representing the name of the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:7
+#: pybamm.models.base_model.BaseModel:34
+msgid "str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:11
+msgid "A dictionary of submodels that the model is composed of."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:13
+msgid "dict"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:17
+msgid "Whether to use the Jacobian when solving the model (default is True)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:19
+#: pybamm.models.base_model.BaseModel:40
+msgid "bool"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:23
+msgid ""
+"Specifies the format to convert the expression trees representing the RHS, "
+"algebraic equations, Jacobian, and events. Options are:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:27
+msgid "None: retain PyBaMM expression tree structure."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:28
+msgid ""
+"\"python\": convert to Python code for evaluating `evaluate(t, y)` on "
+"expressions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:29
+msgid "\"casadi\": convert to CasADi expression tree for Jacobian calculation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:30
+msgid "\"jax\": convert to JAX expression tree."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:32
+msgid "Default is \"casadi\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:38
+msgid "Indicates whether the model has been discretised (default is False)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:44
+msgid ""
+"Slices of the concatenated state vector after discretisation, used to track "
+"different submodels in the full concatenated solution vector."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel:47
+msgid "None or list"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.algebraic:1
+msgid ""
+"Returns a dictionary mapping expressions (variables) to expressions that "
+"represent the algebraic equations of the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.apply_builtin_overrides:1
+msgid "Apply variable and event overrides from a built-in config."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.apply_builtin_overrides:3
+msgid ""
+"This is the inverse of :meth:`serialise_builtin_overrides`.  It mutates "
+"*model* in-place."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:0
+#: pybamm.models.base_model.BaseModel.to_json:0
+#: ../../../source/api/models/base_models/base_model.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.apply_builtin_overrides:7
+msgid "A freshly-constructed built-in model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.apply_builtin_overrides:9
+msgid ""
+"The config dictionary, which may contain ``custom_variables``, "
+"``removed_variables``, and/or ``events``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.boundary_conditions:1
+msgid ""
+"Returns a dictionary mapping expressions (variables) to expressions "
+"representing the boundary conditions of the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.build_initial_state_mapper:1
+msgid ""
+"Build a mapper that maps a final state vector from a discretised model to "
+"this model's discretised initial conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.build_initial_state_mapper:4
+msgid "The discretised model that provides the final state vector."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.built:1
+msgid "Returns a boolean for the model built status."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.calc_esoh:1
+msgid "Whether to include eSOH variables in the summary variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.can_process_symbols:1
+msgid ""
+"Returns ``True`` if the model has a symbol processor that is capable of "
+"processing symbols."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_algebraic_equations:1
+msgid ""
+"Check that the algebraic equations are well-posed. After discretisation, "
+"there must be at least one StateVector in each algebraic equation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of
+#: pybamm.models.base_model.BaseModel.check_discretised_or_discretise_inplace_if_0D:1
+msgid ""
+"Discretise model if it isn't already discretised This only works with purely "
+"0D models, as otherwise the mesh and spatial method should be specified by "
+"the user"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_ics_bcs:1
+msgid "Check that the initial and boundary conditions are well-posed."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_no_repeated_keys:1
+msgid "Check that no equation keys are repeated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_well_determined:1
+msgid "Check that the model is not under- or over-determined."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_well_posedness:1
+msgid ""
+"Check that the model is well-posed by executing the following tests: - Model "
+"is not over- or underdetermined, by comparing keys and equations in rhs and "
+"algebraic. Overdetermined if more equations than variables, underdetermined "
+"if more variables than equations. - There is an initial condition in self."
+"initial_conditions for each variable/equation pair in self.rhs - There are "
+"appropriate boundary conditions in self.boundary_conditions for each "
+"variable/equation pair in self.rhs and self.algebraic"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.check_well_posedness:10
+msgid "A flag indicating tests to be skipped after discretisation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.concatenated_algebraic:1
+msgid ""
+"Returns the concatenated algebraic equations for the model after "
+"discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.concatenated_initial_conditions:1
+msgid ""
+"Returns the initial conditions for all variables after discretization, "
+"providing the initial values for the state variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.concatenated_rhs:1
+msgid ""
+"Returns the concatenated right-hand side (RHS) expressions for the model "
+"after discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.coupled_variables:1
+msgid ""
+"Returns a dictionary mapping strings to expressions representing variables "
+"needed by the model but whose equations were set by other models."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_geometry:1
+msgid ""
+"Returns a  dictionary of the default geometry for the model, which is empty "
+"by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_parameter_values:1
+msgid ""
+"Returns the default parameter values for the model (an empty set of "
+"parameters by default)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_quick_plot_variables:1
+msgid "Returns the default variables for quick plotting (None by default)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_solver:1
+msgid ""
+"Returns the default solver for the model, based on whether it is an ODE/DAE "
+"or algebraic model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_spatial_methods:1
+msgid ""
+"Returns a dictionary of the default spatial methods for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_submesh_types:1
+msgid ""
+"Returns a dictionary of the default submesh types for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.default_var_pts:1
+msgid ""
+"Returns a dictionary of the default variable points for the model, which is "
+"empty by default."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.deserialise:1
+msgid "Create a model instance from a serialised object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.disable_solution_observability:1
+msgid "Disable observing the solution with ``solution.observe(symbol)``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.disable_solution_observability:3
+msgid "The reason why the solution is or is not observable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.disable_symbol_processing:1
+msgid "Disable custom symbol processing by the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.disable_symbol_processing:3
+msgid ""
+"The reason why symbol processing is being disabled. Defaults to "
+"ModelSolutionObservability.DISABLED."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.events:1 pybamm.BaseModel.initial_conditions:1
+msgid ""
+"Returns a dictionary mapping expressions (variables) to expressions that "
+"represent the initial conditions for the state variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.export_casadi_objects:1
+msgid ""
+"Export the constituent parts of the model (rhs, algebraic, initial "
+"conditions, etc) as casadi objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.export_casadi_objects:4
+#: pybamm.models.base_model.BaseModel.generate:5
+msgid "Variables to be exported alongside the model structure"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.export_casadi_objects:6
+#: pybamm.models.base_model.BaseModel.generate:7
+msgid ""
+"Order in which the input parameters should be stacked. If "
+"input_parameter_order=None and len(self.input_parameters) > 1, a ValueError "
+"is raised (this helps to avoid accidentally using the wrong order)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:0
+#: pybamm.models.base_model.BaseModel.to_json:0
+#: ../../../source/api/models/base_models/base_model.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.export_casadi_objects:12
+msgid ""
+"**casadi_dict** -- Dictionary of {str: casadi object} pairs representing the "
+"model in casadi format"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:0
+#: pybamm.models.base_model.BaseModel.to_json:0
+#: ../../../source/api/models/base_models/base_model.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.fixed_input_parameters:1
+msgid ""
+"Returns a set of all fixed input parameter symbols used in the parameter "
+"values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:1
+msgid "Load a model from a config dict, raw model dict, or file path."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:3
+msgid "Accepts:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:5
+msgid "Built-in config: ``{\"type\": \"SPM\", \"module\": \"lithium_ion\"}``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:6
+msgid "Custom config: ``{\"type\": \"custom\", \"model\": ...}``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:7
+msgid "Raw model dict from :meth:`to_json`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:8
+msgid "A path to a JSON file in any of the above formats"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:10
+msgid "Config or model dictionary, or path to a JSON file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:13
+#: pybamm.models.base_model.BaseModel.from_json:12
+msgid "The reconstructed symbolic model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_config:14
+#: pybamm.models.base_model.BaseModel.from_json:13
+msgid ":class:`pybamm.BaseModel` or subclass"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:1
+msgid "Load a custom (symbolic) model from a JSON file or dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:3
+msgid ""
+"Use this for models saved with :meth:`to_json`. For discretised models saved "
+"with :meth:`save_model`, use :func:`pybamm.load_model` instead. For the "
+"wrapped config format (from :meth:`to_config`), use :meth:`from_config` "
+"instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:8
+msgid ""
+"Path to a JSON file containing the saved model, or a dictionary (e.g. from :"
+"meth:`to_json`)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.from_json:16
+#: pybamm.models.base_model.BaseModel.to_json:19
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.generate:1
+msgid "Generate the model in C, using CasADi."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.generate:3
+msgid "Name of the file to which to save the code"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.generate:12
+msgid ""
+"Options to pass to the code generator. See https://web.casadi.org/docs/"
+"#generating-c-code"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.geometry:1
+msgid "Returns the geometry of the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_parameter_info:1
+msgid ""
+"Extracts the parameter information and returns it as a dictionary. To get a "
+"list of all parameter-like objects without extra information, use :py:attr:"
+"`model.parameters`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_parameter_info:5
+msgid ""
+"Whether to return the parameter info sub-model wise or not (default False)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable:1
+msgid "Get a processed variable by name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable:3
+msgid "The name of the variable to get."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable:6
+msgid "The processed variable."
+msgstr ""
+
+#: ../../../source/api/models/base_models/base_model.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable:9
+msgid "If the variable is not found."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable_or_event:1
+msgid "Get a processed variable or event by name."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable_or_event:3
+msgid "The name of the variable or event to get."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable_or_event:6
+msgid "The processed variable or event expression."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variable_or_event:9
+msgid "If the variable or event is not found."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.get_processed_variables_dict:1
+msgid "Get a dictionary of processed variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.info:1
+msgid "Provides helpful summary information for a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.input_parameters:1
+#: pybamm.BaseModel.required_input_parameters:1
+msgid "Returns a list of all input parameter symbols used in the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.is_processed:1
+msgid ""
+"Returns True if the model is processed by `Discretisation.process_model` or "
+"`ParameterValues.process_model`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.is_standard_form_dae:1
+msgid ""
+"Check if the model is a DAE in standard form with a mass matrix that is all "
+"zeros except for along the diagonal, which is either ones or zeros."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.jacobian:1
+msgid ""
+"Returns the Jacobian matrix for the model, computed automatically if "
+"`use_jacobian` is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.jacobian_algebraic:1
+msgid ""
+"Returns the Jacobian matrix for the algebraic part of the model, computed "
+"automatically during solver setup if `use_jacobian` is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.jacobian_rhs:1
+msgid ""
+"Returns the Jacobian matrix for the right-hand side (RHS) part of the model, "
+"computed if `use_jacobian` is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.latexify:1
+msgid "Converts all model equations in latex."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.latexify:3
+msgid ""
+"Accepted file formats - any image format, pdf and tex Default is None, When "
+"None returns all model equations in latex If not None, returns all model "
+"equations in given file format."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.latexify:7
+msgid ""
+"Default is True, If True, returns every equation in a new line. If False, "
+"returns the list of all the equations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.mass_matrix:1
+msgid ""
+"Returns the mass matrix for the system of differential equations after "
+"discretisation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.new_copy:1
+msgid ""
+"Creates a copy of the model, explicitly copying all the mutable attributes "
+"to avoid issues with shared objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.options:1
+msgid ""
+"Returns the model options dictionary that allows customization of the "
+"model's behavior."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.param:1
+msgid "Returns a dictionary to store parameter values for the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.parameters:1
+msgid "Returns a  list of all parameter symbols used in the model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.print_parameter_info:1
+msgid ""
+"Print parameter information in a formatted table from a dictionary of "
+"parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.print_parameter_info:3
+msgid ""
+"Whether to print the parameter info sub-model wise or not (default False)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_and_register_variable:1
+msgid "Process a variable and store it in _variables_processed."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_and_register_variable:3
+msgid ""
+"This method does NOT modify self.variables - the original variable "
+"expression is preserved. The processed variable is stored separately in "
+"_variables_processed."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_and_register_variable:7
+msgid ""
+"CoupledVariables in the symbol are resolved by recursively getting the "
+"processed version of the referenced variable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_and_register_variable:10
+msgid "The name of the variable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_and_register_variable:12
+msgid "The unprocessed variable symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_parameters_and_discretise:1
+msgid "Process parameters and discretise a symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.process_parameters_and_discretise:3
+msgid ""
+"This method is deprecated. Please process the model first with :meth:"
+"`ParameterValues.process_model` and :meth:`Discretisation.process_model`, "
+"then call :meth:`model.process_symbol(symbol)`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.rhs:1
+msgid ""
+"Returns a dictionary mapping expressions (variables) to expressions that "
+"represent the right-hand side (RHS) of the model's differential equations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.save_model:1
+msgid "Write out a discretised model to a JSON file"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:1
+msgid "Detect and serialise user modifications to a built-in model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:3
+msgid ""
+"Compares the current model's ``variables`` keys and ``events`` against a "
+"freshly-constructed reference model (same class and options).  Any "
+"differences are written into *model_config* using the following optional "
+"keys:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:8
+msgid "``custom_variables``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:9
+msgid ""
+"``dict[str, json]`` – variables the user *added* (keys not present in the "
+"reference model).  Each value is the symbolic expression serialised via :"
+"func:`convert_symbol_to_json`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:13
+msgid "``removed_variables``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:14
+msgid ""
+"``list[str]`` – variable names that exist in the reference model but have "
+"been deleted by the user."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:16
+msgid "``events``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:17
+msgid ""
+"``list[dict]`` – full serialised events list, included **only** when the "
+"events differ from the reference model (by count or by name set)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:21
+msgid ""
+"If the model is unmodified, no extra keys are added and the config stays "
+"identical to the previous compact format."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:26
+msgid ""
+"Only added/removed variable *keys* are tracked.  Overwriting an existing "
+"variable's expression with a new one is **not** detected in this version."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:30
+msgid "The compact config dict (mutated in-place)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:1
+msgid ""
+"Update initial conditions with the final states from a Solution object or "
+"from a dictionary. This assumes that, for each variable in self."
+"initial_conditions, there is a corresponding variable in the solution with "
+"the same name and size."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:6
+msgid "The solution to use to initialize the model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:8
+msgid "The dictionary of model input parameters."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:10
+msgid ""
+"Whether to modify the model inplace or create a new model (default True)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:12
+msgid "Whether to return the model (default) or initial conditions (\"ics\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:14
+msgid "The mesh to use to initialize the model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.solution_observable:1
+msgid "Returns the observability state for ``solution.observe(symbol)``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.solution_observable:3
+msgid ""
+"Returns ``ModelSolutionObservability.ENABLED`` if observable, otherwise "
+"returns a reason why the solution is not observable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.solution_observable_status:1
+msgid "Returns the status of the solution observability as a string."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:1
+msgid "Convert the model to a config dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:3
+msgid ""
+"Built-in models (those found in ``pybamm.lithium_ion``, ``pybamm."
+"lead_acid``, etc.) produce a compact format::"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:6
+msgid "{\"type\": \"SPM\", \"module\": \"lithium_ion\", \"options\": {...}}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:8
+msgid "Custom or user-defined models produce the full serialised format::"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:10
+msgid "{\"type\": \"custom\", \"model\": ..., \"geometry\": ..., ...}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:12
+msgid ""
+"If provided, save the config dict to this file. Must end with ``.json``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:15
+msgid ""
+"If True, the inner model data is compressed (zlib + base64). Default is "
+"False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_config:19
+msgid "Config dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_json:1
+msgid "Convert the model to a JSON-serialisable dictionary (raw format)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_json:3
+msgid ""
+"Optionally saves to a file. Works for custom (non-discretised) models that "
+"are subclasses of BaseModel. Use :meth:`save_model` for discretised models. "
+"For a wrapped config format (``type`` + ``model``), use :meth:`to_config` "
+"instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_json:8
+msgid ""
+"The filename to save the JSON file to. If not provided, the dictionary is "
+"not saved. Must end with ``.json`` if provided."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_json:11
+msgid ""
+"If True, the model data will be compressed (zlib + base64) in the returned "
+"dict and in the file if filename is set. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.to_json:15
+msgid "The JSON-serialisable dictionary (optionally compressed)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.update:1
+msgid "Update model to add new physics from submodels"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.update:3
+msgid "The submodels from which to create new model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.update_processed_variables:1
+msgid "Update the _variables_processed dict with new processed variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.models.base_model.BaseModel.update_processed_variables:3
+msgid ""
+"Either a dictionary of {name: processed_symbol} pairs, or a list of names "
+"(for backward compatibility, where the processed symbol is taken from self."
+"variables)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.variables:1
+msgid ""
+"Returns a dictionary mapping strings to expressions representing the model's "
+"useful variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
+#: of pybamm.BaseModel.variables_and_events:1
+msgid "Returns a dictionary containing both models variables and events."
+msgstr ""
