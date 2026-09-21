@@ -1,0 +1,921 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/installation/index.rst:2
+msgid "Installation"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:5
+msgid ""
+"PyBaMM is available on GNU/Linux, MacOS and Windows. It can be installed "
+"using ``uv``, ``pip``, or ``conda``, or from source."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:9
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:11
+msgid "To use PyBaMM, you must have Python 3.10 - 3.14 installed."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:15
+msgid ""
+"To install Python 3 on Debian-based distributions (Debian, Ubuntu), open a "
+"terminal and run"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:17
+msgid ""
+"sudo apt-get update\n"
+"sudo apt-get install python3"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:24
+msgid ""
+"On macOS, you can use the ``homebrew`` package manager. First, `install brew "
+"<https://docs.python-guide.org/starting/install3/osx/>`__:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:27
+msgid ""
+"ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/"
+"HEAD/install.sh)\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:31
+msgid ""
+"then follow instructions in the link on adding ``brew`` to path, and run"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:33
+msgid "brew install python"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:39
+msgid ""
+"To install Python 3, download the installation files from `Python's website "
+"<https://www.python.org/downloads/windows/>`__. Make sure to tick the box on "
+"``Add Python 3.X to PATH``. For more detailed instructions please see the "
+"`official Python on Windows guide <https://docs.python.org/3/using/windows."
+"html>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:48
+msgid "Virtual environment"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:50
+msgid ""
+"We recommend installing PyBaMM within a virtual environment, in order not to "
+"alter any distribution Python files."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:53
+msgid "To create a virtual environment within your current directory:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:57
+msgid "uv venv"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:61
+msgid ""
+"This creates a ``.venv`` directory. You can then \"activate\" the "
+"environment using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:65
+msgid "source .venv/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:71
+msgid ".venv\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:79
+msgid "virtualenv env"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:83
+#: ../../../source/user_guide/installation/index.rst:103
+msgid "You can then \"activate\" the environment using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:85
+msgid "source env/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:91
+msgid "First install ``virtualenv``:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:93
+msgid "python -m pip install virtualenv"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:97
+msgid "Then create a virtual environment:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:99
+msgid "python -m virtualenv env"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:105
+msgid "env\\Scripts\\activate.bat"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:109
+msgid ""
+"When you are ready to exit the environment and go back to your original "
+"system, just type:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:111
+msgid "deactivate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:115
+msgid ""
+"For an introduction to virtual environments, see (https://realpython.com/"
+"python-virtual-environments-a-primer/)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:119
+msgid "Install PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:123
+msgid ""
+"PyBaMM can be installed via `uv <https://docs.astral.sh/uv/>`__ from `PyPI "
+"<https://pypi.org/project/pybamm>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:125
+msgid "uv pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:131
+msgid ""
+"PyBaMM can be installed via pip from `PyPI <https://pypi.org/project/"
+"pybamm>`__."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:133
+msgid "pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:139
+msgid ""
+"PyBaMM is available as a ``conda`` package through the conda-forge channel."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:143
+msgid ""
+"PyBaMM versions between 24.11.2 and 25.6 (not including these boundary "
+"versions) are not available on conda-forge."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:145
+msgid ""
+"The ``pybamm-base`` package installs PyBaMM with its :ref:`required "
+"dependencies <install-required-dependencies>` only:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:147
+msgid "conda install -c conda-forge pybamm-base"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:151
+msgid ""
+"The ``pybamm`` package installs PyBaMM with all :ref:`optional dependencies "
+"<install.optional_dependencies>` except jax:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:153
+msgid "conda install -c conda-forge pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:157
+msgid "To optionally install jax, see :ref:`optional-jaxsolver`."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:159
+msgid ""
+"PyBaMM's :ref:`required dependencies <install-required-dependencies>` (such "
+"as ``numpy``, ``casadi``, etc) will be installed automatically when you "
+"install ``pybamm`` using ``pip`` or ``pybamm-base`` using ``conda``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:166
+msgid "Optional - JaxSolver"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:168
+msgid ""
+"Users can install ``pybamm`` with ``jax`` and ``jaxlib`` to use the Jax "
+"solver."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:172
+msgid "uv pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:178
+msgid "pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:184
+msgid "conda install -c conda-forge \"jax>=0.7.0,<0.9.0\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:189
+msgid "Uninstall PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:191
+msgid "PyBaMM can be uninstalled by running"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:195
+msgid "uv pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:201
+msgid "pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:207
+msgid "conda remove pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:211
+msgid "in your virtual environment."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:214
+msgid "Dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:216
+msgid "PyBaMM requires the following dependencies:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:220
+msgid ""
+"The list of dependencies below might be outdated. Users are advised to "
+"manually check the `pyproject.toml`_ file to find out supported versions."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:228
+msgid "Required dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:231
+msgid "PyBaMM requires the following dependencies."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:234
+msgid "Package"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:234
+msgid "Supported version(s)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:236
+msgid "`PyBaMM solvers <https://github.com/pybamm-team/pybammsolvers>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:236
+msgid ">= 0.8.0, <0.9.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:237
+msgid "`NumPy <https://numpy.org>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:237
+msgid "Whatever recent versions work. >= 2.0.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:238
+msgid "`SciPy <https://docs.scipy.org/doc/scipy/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:238
+msgid "Whatever recent versions work. >= 1.11.4"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:239
+msgid "`CasADi <https://web.casadi.org/docs/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:239
+msgid "Whatever recent versions work (transitive via pybammsolvers)"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:240
+msgid "`Xarray <https://docs.xarray.dev/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:240
+msgid "Whatever recent versions work. >= 2022.6.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:241
+msgid "`Anytree <https://anytree.readthedocs.io/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:241
+msgid "Whatever recent versions work. >= 2.8.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:242
+msgid "`SymPy <https://docs.sympy.org/latest/index.html>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:242
+msgid "Whatever recent versions work. >= 1.12"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:243
+msgid "`typing-extensions <https://pypi.org/project/typing-extensions/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:243
+msgid "Whatever recent versions work. >= 4.10.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:244
+msgid "`pandas <https://pypi.org/project/pandas/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:244
+msgid "Whatever recent versions work. >= 1.5.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:245
+msgid "`pooch <https://www.fatiando.org/pooch/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:245
+msgid "Whatever recent versions work. >= 1.8.1"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:246
+msgid "`posthog <https://posthog.com/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:246
+msgid "Whatever recent versions work"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:247
+msgid "`black <https://black.readthedocs.io/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:248
+msgid "`pyyaml <https://pyyaml.org/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:249
+msgid "`platformdirs <https://platformdirs.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:255
+msgid "Optional Dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:257
+msgid ""
+"PyBaMM has a number of optional dependencies for different functionalities. "
+"If the optional dependency is not installed, PyBaMM will raise an "
+"ImportError when the method requiring that dependency is called."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:260
+msgid ""
+"If you are using ``pip``, optional PyBaMM dependencies can be installed or "
+"managed in a file (e.g., pyproject.toml) as optional extras (e.g.,"
+"``pybamm[plot,cite]``). All optional dependencies can be installed with "
+"``pybamm[all]``, and specific sets of dependencies are listed in the "
+"sections below."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:267
+msgid "Plot dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:269
+msgid "Installable with ``pip install \"pybamm[plot]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:272
+#: ../../../source/user_guide/installation/index.rst:285
+#: ../../../source/user_guide/installation/index.rst:312
+#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:348
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:375
+#: ../../../source/user_guide/installation/index.rst:388
+msgid "Dependency"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:272
+#: ../../../source/user_guide/installation/index.rst:285
+#: ../../../source/user_guide/installation/index.rst:312
+#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:348
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:375
+#: ../../../source/user_guide/installation/index.rst:388
+msgid "Minimum Version"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:272
+#: ../../../source/user_guide/installation/index.rst:312
+#: ../../../source/user_guide/installation/index.rst:348
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:375
+#: ../../../source/user_guide/installation/index.rst:388
+msgid "pip extra"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:272
+#: ../../../source/user_guide/installation/index.rst:285
+#: ../../../source/user_guide/installation/index.rst:312
+#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:348
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:375
+#: ../../../source/user_guide/installation/index.rst:388
+msgid "Notes"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:274
+msgid "`matplotlib <https://matplotlib.org/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:274
+msgid "3.6.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:274
+msgid "plot"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:274
+msgid "To plot various battery models, and analyzing battery performance."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:280
+msgid "Docs dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:282
+msgid ""
+"Installable with ``pip install --group docs`` or ``uv sync --group docs``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:285
+#: ../../../source/user_guide/installation/index.rst:325
+msgid "group"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:287
+msgid "`sphinx <https://www.sphinx-doc.org/en/master/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:287
+#: ../../../source/user_guide/installation/index.rst:288
+#: ../../../source/user_guide/installation/index.rst:289
+#: ../../../source/user_guide/installation/index.rst:290
+#: ../../../source/user_guide/installation/index.rst:291
+#: ../../../source/user_guide/installation/index.rst:292
+#: ../../../source/user_guide/installation/index.rst:293
+#: ../../../source/user_guide/installation/index.rst:294
+#: ../../../source/user_guide/installation/index.rst:295
+#: ../../../source/user_guide/installation/index.rst:296
+#: ../../../source/user_guide/installation/index.rst:297
+#: ../../../source/user_guide/installation/index.rst:298
+#: ../../../source/user_guide/installation/index.rst:299
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:301
+#: ../../../source/user_guide/installation/index.rst:314
+#: ../../../source/user_guide/installation/index.rst:327
+#: ../../../source/user_guide/installation/index.rst:328
+#: ../../../source/user_guide/installation/index.rst:329
+#: ../../../source/user_guide/installation/index.rst:330
+#: ../../../source/user_guide/installation/index.rst:332
+#: ../../../source/user_guide/installation/index.rst:333
+#: ../../../source/user_guide/installation/index.rst:334
+#: ../../../source/user_guide/installation/index.rst:335
+#: ../../../source/user_guide/installation/index.rst:336
+#: ../../../source/user_guide/installation/index.rst:337
+#: ../../../source/user_guide/installation/index.rst:377
+msgid "\\-"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:287
+#: ../../../source/user_guide/installation/index.rst:288
+#: ../../../source/user_guide/installation/index.rst:289
+#: ../../../source/user_guide/installation/index.rst:290
+#: ../../../source/user_guide/installation/index.rst:291
+#: ../../../source/user_guide/installation/index.rst:292
+#: ../../../source/user_guide/installation/index.rst:293
+#: ../../../source/user_guide/installation/index.rst:294
+#: ../../../source/user_guide/installation/index.rst:295
+#: ../../../source/user_guide/installation/index.rst:296
+#: ../../../source/user_guide/installation/index.rst:297
+#: ../../../source/user_guide/installation/index.rst:298
+#: ../../../source/user_guide/installation/index.rst:299
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:301
+msgid "docs"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:287
+msgid "Sphinx makes it easy to create intelligent and beautiful documentation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:288
+msgid "`sphinx_rtd_theme <https://pypi.org/project/sphinx-rtd-theme/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:288
+msgid "This Sphinx theme provides a great reader experience for documentation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:289
+msgid ""
+"`pydata-sphinx-theme <https://pydata-sphinx-theme.readthedocs.io/en/stable/"
+">`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:289
+msgid "A clean, Bootstrap-based Sphinx theme."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:290
+msgid "`sphinx_design <https://sphinx-design.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:290
+msgid "A sphinx extension for designing."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:291
+msgid ""
+"`sphinx-copybutton <https://sphinx-copybutton.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:291
+msgid "To copy codeblocks."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:292
+msgid "`myst-parser <https://myst-parser.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:292
+msgid "For technical & scientific documentation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:293
+msgid ""
+"`sphinx-inline-tabs <https://sphinx-inline-tabs.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:293
+msgid "Add inline tabbed content to your Sphinx documentation."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:294
+msgid ""
+"`sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/"
+">`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:294
+msgid "For BibTeX citations."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:295
+msgid ""
+"`sphinx-autobuild <https://sphinx-extensions.readthedocs.io/en/latest/sphinx-"
+"autobuild.html>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:295
+msgid "For re-building docs once triggered."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:296
+msgid ""
+"`sphinx-last-updated-by-git <https://pypi.org/project/sphinx-last-updated-by-"
+"git/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:296
+msgid "To get the \"last updated\" time for each Sphinx page from Git."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:297
+msgid "`nbsphinx <https://nbsphinx.readthedocs.io/en/0.9.5/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:297
+msgid "Sphinx extension that provides a source parser for .ipynb files"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:298
+msgid "`ipykernel <https://pypi.org/project/ipykernel/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:298
+msgid "Provides the IPython kernel for Jupyter."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:299
+msgid "`ipywidgets <https://ipywidgets.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:299
+msgid "Interactive HTML widgets for Jupyter notebooks and the IPython kernel."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:300
+msgid "`sphinx-gallery <https://pypi.org/project/sphinx-gallery/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:300
+msgid "Builds an HTML gallery of examples from any set of Python scripts."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:301
+msgid "`sphinx-docsearch <https://sphinx-docsearch.readthedocs.io/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:301
+msgid "To replaces Sphinx's built-in search with Algolia DocSearch."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:307
+msgid "Examples dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:309
+msgid "Installable with ``pip install \"pybamm[examples]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:314
+msgid "`jupyter <https://docs.jupyter.org/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:314
+msgid "examples"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:314
+msgid "For example notebooks rendering."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:320
+msgid "Dev dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:322
+msgid "Installable with ``pip install --group dev`` or ``uv sync --group dev``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:327
+msgid "`pre-commit <https://pre-commit.com/index.html>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:327
+#: ../../../source/user_guide/installation/index.rst:328
+#: ../../../source/user_guide/installation/index.rst:329
+#: ../../../source/user_guide/installation/index.rst:330
+#: ../../../source/user_guide/installation/index.rst:331
+#: ../../../source/user_guide/installation/index.rst:332
+#: ../../../source/user_guide/installation/index.rst:333
+#: ../../../source/user_guide/installation/index.rst:334
+#: ../../../source/user_guide/installation/index.rst:335
+#: ../../../source/user_guide/installation/index.rst:336
+#: ../../../source/user_guide/installation/index.rst:337
+msgid "dev"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:327
+msgid "For managing and maintaining multi-language pre-commit hooks."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:328
+msgid "`ruff <https://beta.ruff.rs/docs/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:328
+msgid "For code formatting."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:329
+msgid "`nox <https://nox.thea.codes/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:329
+msgid "For running testing sessions in multiple environments."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:330
+msgid "`pytest-cov <https://pytest-cov.readthedocs.io/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:330
+msgid "For calculating test coverage."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:331
+msgid "`pytest <https://docs.pytest.org/en/stable/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:331
+msgid "9.0.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:331
+msgid "For running the test suites (includes subtests support)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:332
+msgid ""
+"`pytest-doctestplus <https://github.com/scientific-python/pytest-"
+"doctestplus>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:332
+msgid "For running doctests."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:333
+msgid "`pytest-xdist <https://pytest-xdist.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:333
+msgid "For running tests in parallel across distributed workers."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:334
+msgid ""
+"`pytest-mock <https://pytest-mock.readthedocs.io/en/latest/index.html>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:334
+msgid "Provides a mocker fixture."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:335
+msgid "`nbmake <https://github.com/treebeardtech/nbmake/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:335
+msgid "A ``pytest`` plugin for executing Jupyter notebooks."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:336
+msgid "`pytest-snapshot <https://github.com/joseph-roitman/pytest-snapshot>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:336
+msgid "For snapshot testing."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:337
+msgid "`hypothesis <https://hypothesis.readthedocs.io/en/latest/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:337
+msgid "Used to perform property based testing."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:343
+msgid "Cite dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:345
+msgid "Installable with ``pip install \"pybamm[cite]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:350
+msgid "`pybtex <https://docs.pybtex.org/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:350
+msgid "0.25.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:350
+msgid "cite"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:350
+msgid "BibTeX-compatible bibliography processor."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:356
+msgid "bpx dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:359
+msgid "Installable with ``pip install \"pybamm[bpx]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:364
+msgid "`bpx <https://pypi.org/project/bpx/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:364
+msgid "1.1.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:364
+msgid "bpx"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:364
+msgid "Battery Parameter eXchange"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:370
+msgid "tqdm dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:372
+msgid "Installable with ``pip install \"pybamm[tqdm]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:377
+msgid "`tqdm <https://tqdm.github.io/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:377
+msgid "tqdm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:377
+msgid "For logging loops."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:383
+msgid "Jax dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:385
+msgid ""
+"Installable with ``pip install \"pybamm[jax]\"``, currently supported on "
+"Python 3.11-3.14."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:390
+msgid ""
+"`JAX <https://jax.readthedocs.io/en/latest/notebooks/quickstart.html>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:390
+msgid "0.7.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:390
+msgid "jax"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:390
+msgid "For the JAX solver"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:394
+msgid "Installing from source"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:396
+msgid ""
+"Installing a specific version? Installing from source? Check the advanced "
+"installation pages below."
+msgstr ""

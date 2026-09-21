@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/citations.rst:2
+msgid "Citations"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations:1
+msgid ""
+"Entry point to citations management. This object may be used to record "
+"BibTeX citation information and then register that a particular citation is "
+"relevant for a particular simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations:5
+msgid ""
+"Citations listed in `pybamm/CITATIONS.bib` can be registered with their "
+"citation key. For all other works provide a BibTeX Citation to :meth:"
+"`register`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations:9 pybamm.citations.Citations.print:21
+msgid "Examples"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:1
+msgid ""
+"Print all citations that were used for running simulations. The verbose "
+"option is provided to print tags for citations in the output such that it "
+"can be seen where the citations were registered due to the use of PyBaMM "
+"models and solvers in the code."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:7
+msgid "If a citation is registered manually, it will not be tagged."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:10
+msgid ""
+"This function will notify the user if a citation that has been previously "
+"registered is invalid or cannot be parsed."
+msgstr ""
+
+#: ../../../source/api/citations.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:13
+msgid ""
+"Filename to which to print citations. If None, citations are printed to the "
+"terminal."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:16
+msgid ""
+"If True, prints the citation tags for the citations that have been "
+"registered. An example of the output is shown below."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:22
+msgid ""
+"pybamm.lithium_ion.SPM()\n"
+"pybamm.Citations.print(verbose=True) or pybamm.print_citations(verbose=True)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:27
+msgid "will append the following at the end of the list of citations:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.print:29
+msgid ""
+"Citations registered:\n"
+"\n"
+"Marquis2019 was cited due to the use of SPM"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.read_citations:1
+msgid ""
+"Reads the citations in `pybamm.CITATIONS.bib`. Other works can be cited by "
+"passing a BibTeX citation to :meth:`register`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.register:1
+msgid ""
+"Register a paper to be cited, one at a time. The intended use is that :meth:"
+"`register` should be called only when the referenced functionality is "
+"actually being used."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.register:6
+msgid ""
+"Registering a BibTeX citation, with the same key as an existing citation, "
+"will overwrite the current citation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.register:9
+msgid ""
+"- The citation key for an entry in `pybamm/CITATIONS.bib` or - A BibTeX "
+"formatted citation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.register:10
+msgid "The citation key for an entry in `pybamm/CITATIONS.bib` or"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.Citations.register:11
+msgid "A BibTeX formatted citation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/citations.py:docstring
+#: of pybamm.citations.print_citations:1
+msgid "See :meth:`Citations.print`"
+msgstr ""

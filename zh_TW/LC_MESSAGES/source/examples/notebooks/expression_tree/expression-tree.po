@@ -1,0 +1,408 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:8
+msgid "Expression trees in PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/expression_tree/expression-tree.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/expression_tree/expression-tree.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"y = pybamm.StateVector(slice(0, 1))\n"
+"t = pybamm.t\n"
+"equation = 2 * y * (1 - y) + t\n"
+"equation.visualise(\"expression_tree1.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:35
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:48
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:59
+msgid "|expression_tree1|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:63
+msgid "expression_tree1"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:61
+msgid ""
+"Once the equation is constructed, we can evaluate it at a given :math:`t=1` "
+"and :math:`\\mathbf{y}=\\begin{pmatrix} 2 \\end{pmatrix}`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "equation.evaluate(1, np.array([2]))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:85
+msgid ""
+"<pre>\n"
+"array([[-3.]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:91
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[-3.]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:98
+msgid "array([[-3.]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:109
+msgid ""
+"We can also calculate the expression tree representing the gradient of the "
+"equation with respect to :math:`t`,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid ""
+"diff_wrt_equation = equation.diff(t)\n"
+"diff_wrt_equation.visualise(\"expression_tree2.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:131
+msgid "|expression_tree2|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:135
+msgid "expression_tree2"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:133
+msgid "...and evaluate this expression,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "diff_wrt_equation.evaluate(t=1, y=np.array([2]), y_dot=np.array([2]))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:157
+msgid ""
+"<pre>\n"
+"array([[-11.]])\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:163
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"array([[-11.]])\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:170
+msgid "array([[-11.]])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:182
+msgid "The PyBaMM Pipeline"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:184
+msgid ""
+"Proposing, parameter setting and discretising a model in PyBaMM is a "
+"pipeline process, consisting of the following steps:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:186
+msgid ""
+"The model is proposed, consisting of equations representing the right-hand-"
+"side of an ordinary differential equation (ODE), and/or algebraic equations "
+"for a differential algebraic equation (DAE), and also associated boundary "
+"condition equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:187
+msgid ""
+"The parameters present in the model are replaced by actual scalar values "
+"from a parameter file, using the ```pybamm.ParameterValues`` <https://docs."
+"pybamm.org/en/latest/source/api/parameters/parameter_values.html>`__ class"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:188
+msgid ""
+"The equations in the model are discretised onto a mesh, any spatial "
+"gradients are replaced with linear algebra expressions and the variables of "
+"the model are replaced with state vector slices. This is done using the "
+"```pybamm.Discretisation`` <https://docs.pybamm.org/en/latest/source/api/"
+"spatial_methods/discretisation.html>`__ class."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:191
+msgid "Stage 1 - Symbolic Expression Trees"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:193
+msgid ""
+"At each stage, the expression tree consists of certain types of nodes. In "
+"the first stage, the model is first proposed using ```pybamm.Parameter`` "
+"<https://docs.pybamm.org/en/latest/source/api/expression_tree/parameter."
+"html>`__, ```pybamm.Variable`` <https://docs.pybamm.org/en/latest/source/api/"
+"expression_tree/variable.html>`__, and other `unary <https://docs.pybamm.org/"
+"en/latest/source/api/expression_tree/unary_operator.html>`__ and `binary "
+"<https://docs.pybamm.org/en/latest/source/api/expression_tree/"
+"binary_operator.html>`__ operators (which also includes spatial operators "
+"such as ```pybamm.Gradient`` <https://docs.pybamm.org/en/latest/source/api/"
+"expression_tree/unary_operator.html#pybamm.Gradient>`__ and ```pybamm."
+"Divergence`` <https://docs.pybamm.org/en/latest/source/api/expression_tree/"
+"unary_operator.html#pybamm.Divergence>`__). For example, the right hand side "
+"of the equation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:196
+msgid ""
+"\\frac{d c}{dt} = D \\nabla \\cdot \\nabla c\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:198
+msgid "can be constructed as an expression tree like so:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid ""
+"D = pybamm.Parameter(\"D\")\n"
+"c = pybamm.Variable(\"c\", domain=[\"negative electrode\"])\n"
+"\n"
+"dcdt = D * pybamm.div(pybamm.grad(c))\n"
+"dcdt.visualise(\"expression_tree3.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:223
+msgid "|expression_tree3|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:225
+msgid "expression_tree3"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:237
+msgid "Stage 2 - Setting parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:239
+msgid ""
+"In the second stage, the ``pybamm.ParameterValues`` class is used to replace "
+"all the parameter nodes with scalar values, according to an input parameter "
+"file. For example, we'll use a this class to set :math:`D = 2`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid ""
+"parameter_values = pybamm.ParameterValues({\"D\": 2})\n"
+"dcdt = parameter_values.process_symbol(dcdt)\n"
+"dcdt.visualise(\"expression_tree4.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:262
+msgid "|expression_tree4|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:271
+msgid "expression_tree4"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:265
+msgid "Stage 3 - Linear Algebra Expression Trees"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:267
+msgid ""
+"The third and final stage uses the ``pybamm.Discretisation`` class to "
+"discretise the spatial gradients and variables over a given mesh. After this "
+"stage the expression tree will encode a linear algebra expression that can "
+"be evaluated given the state vector :math:`\\mathbf{y}` and :math:`t`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:269
+msgid ""
+"**Note:** for demonstration purposes, we use a dummy discretisation below. "
+"For a more complete description of the ``pybamm.Discretisation`` class, see "
+"the example notebook `here <https://github.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/spatial_methods/finite-volumes.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid ""
+"# Here, we import a dummy discretisation from the PyBaMM tests directory.\n"
+"import sys\n"
+"\n"
+"sys.path.insert(0, pybamm.root_dir())\n"
+"from tests import get_discretisation_for_testing\n"
+"\n"
+"disc = get_discretisation_for_testing()\n"
+"disc.y_slices = {c: [slice(0, 40)]}\n"
+"dcdt = disc.process_symbol(dcdt)\n"
+"dcdt.visualise(\"expression_tree5.png\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:301
+msgid "|expression_tree5|"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:305
+msgid "expression_tree5"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:303
+msgid ""
+"After the third stage, our expression tree is now able to be evaluated by "
+"one of the solver classes. Note that we have used a single equation above to "
+"illustrate the different types of expression trees in PyBaMM, but any given "
+"models will consist of many RHS or algebraic equations, along with boundary "
+"conditions. See `here <https://github.com/pybamm-team/PyBaMM/tree/main/docs/"
+"source/examples/notebooks/creating_models/>`__ for more details of PyBaMM "
+"models."
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:317
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:319
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:340
+msgid ""
+"<pre>\n"
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:348
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/expression_tree/expression-tree.ipynb:357
+msgid ""
+"[1] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[2] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

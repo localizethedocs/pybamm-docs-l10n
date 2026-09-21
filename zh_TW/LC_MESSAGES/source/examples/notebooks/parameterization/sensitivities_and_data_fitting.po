@@ -1,0 +1,452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/parameterization/"
+"sensitivities_and_data_fitting.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/parameterization/sensitivities_and_data_fitting."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"# import dependencies\n"
+"import matplotlib.pylab as plt\n"
+"import numpy as np\n"
+"import scipy.optimize\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:25
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:31
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:38
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:50
+msgid "Sensitivities and data fitting using PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:52
+msgid ""
+"PyBaMM input parameters ```pybamm.InputParameter`` <https://docs.pybamm.org/"
+"en/stable/source/api/expression_tree/input_parameter.html>`__ can be used to "
+"run many simulations with varying parameters. Here we will demonstrate "
+"PyBaMM's ability to calculate the senstivities of model outputs with respect "
+"to input parameters."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:54
+msgid ""
+"To be more specific, given a model output :math:`f(a)`, where :math:`a` is "
+"an input parameter, we wish to calculate :math:`\\frac{\\partial f}"
+"{\\partial a}(a)`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:56
+msgid "First we will demonstrate using a toy model, given by the equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:58
+msgid ""
+"\\frac{dy}{dt} = a y\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:60
+msgid ""
+"with a scalar state variable :math:`y` and a scalar parameter :math:`a`, and "
+"initial conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:62
+msgid ""
+"y(0) = 1\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:64
+msgid "We will also define a model output given by :math:`f = y^2`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"# setup a simple test model\n"
+"model = pybamm.BaseModel(\"name\")\n"
+"y = pybamm.Variable(\"y\")\n"
+"a = pybamm.InputParameter(\"a\")\n"
+"model.rhs = {y: a * y}\n"
+"model.initial_conditions = {y: 1}\n"
+"model.variables = {\"y squared\": y**2}\n"
+"\n"
+"solver = pybamm.IDAKLUSolver(rtol=1e-10, atol=1e-10)\n"
+"t_eval = np.linspace(0, 1, 80)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:94
+msgid ""
+"Note that we have used the ```pybamm.IDAKLUSolver`` <https://docs.pybamm.org/"
+"en/stable/source/api/solvers/idaklu_solver.html>`__ solver for this example, "
+"this is currently the recommended solver for calculating sensitivities in "
+"PyBaMM."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:96
+msgid ""
+"We can solve the model using a specific value of :math:`a = 1`. However, now "
+"we will also calculate the forward sensitivities of the model by setting the "
+"argument ``calculate_sensitivies=True``. Note that this argument will also "
+"accept a list of input parameters to calculate the sensitivities for, but "
+"setting it to ``True`` will calculate the sensitivities for **all** input "
+"parameters of the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"solution = solver.solve(model, [0, 1], inputs={\"a\": 1}, "
+"calculate_sensitivities=True)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:117
+msgid ""
+"We can now access the solution as normal, and the sensitivities using the "
+"syntax: ``solution[output_name].sensitivities[input_parameter_name]``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:119
+msgid ""
+"Note that a current restriction to the sensitivity calculation is that it "
+"will only return the sensitivities at the values of ``t_eval`` used to solve "
+"the model. Any interpolation between these values will have to be done "
+"manually"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"fig, axs = plt.subplots(1, 2)\n"
+"axs[0].plot(t_eval, solution[\"y squared\"](t_eval))\n"
+"axs[0].set_ylabel(r\"$y^2$\")\n"
+"axs[0].set_xlabel(r\"$t$\")\n"
+"axs[1].plot(solution.t, solution[\"y squared\"].sensitivities[\"a\"])\n"
+"axs[1].set_ylabel(r\"$\\frac{dy^2}{da}$\")\n"
+"axs[1].set_xlabel(r\"$t$\")\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:157
+msgid "Sensitivities for the DFN model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:159
+msgid ""
+"We can do the same for the DFN model included in PyBaMM. We will setup the "
+"DFN model using \"Current function\" as an input parameter. This is the "
+"parameter we wish to calculate the sensitivities with respect to."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"# now lets do the same for the DFN model\n"
+"\n"
+"# load model\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"\n"
+"# load parameter values and process model and geometry\n"
+"param = model.default_parameter_values\n"
+"\n"
+"# we want to calculate the sensitivities of the \"Current function\" "
+"parameter, so set\n"
+"# this an an input parameter\n"
+"param.update({\"Current function [A]\": \"[input]\"})\n"
+"\n"
+"solver = pybamm.IDAKLUSolver(rtol=1e-3, atol=1e-6)\n"
+"\n"
+"sim = pybamm.Simulation(model, parameter_values=param, solver=solver)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:194
+msgid ""
+"We can now evaluate the senstivities of, for example, the \"Terminal "
+"voltage\" output of the model with respect to the input parameter \"Current "
+"function\"."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"solution = sim.solve(\n"
+"    [0, 3600], inputs={\"Current function [A]\": 0.15652}, "
+"calculate_sensitivities=True\n"
+")\n"
+"plt.plot(\n"
+"    solution.t, solution[\"Terminal voltage [V]\"].sensitivities[\"Current "
+"function [A]\"]\n"
+")\n"
+"\n"
+"plt.xlabel(r\"$t$\")\n"
+"plt.ylabel(\"sensitivities of Terminal voltage wrt Current fuction\")\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:233
+msgid "Sensitivities and data fitting"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:235
+msgid ""
+"Sensitivities are often used to aid data fitting by providing a means to "
+"calculate the gradient of the function to be minimised. Take for example the "
+"data fitting exercise we introduced in the previous notebook. Once again we "
+"will generate some fake data for fitting, like so:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"t_eval = np.linspace(0, 3600, 100)\n"
+"data = sim.solve([0, 3600], inputs={\"Current function [A]\": 0.2222})[\n"
+"    \"Terminal voltage [V]\"\n"
+"](t_eval)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:259
+msgid ""
+"Now we will contruct a function to minimise, but here we will return both "
+"the value of the function, and its gradient with respect to the input "
+"parameter \"Current function\". Note that our objective function is the sum "
+"of squared different between the vector :math:`\\mathbf{f}`, the simulated "
+"\"Terminal voltage\", and :math:`\\mathbf{d}`, the vector of fake data, "
+"given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:261
+msgid ""
+"\\mathcal{O}(a) = \\sum_{i=0}^{i=N} (f_i(a) - d_i)^2\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:263
+msgid ""
+"where :math:`a` is the parameter to be optimised (in this case \"Current "
+"function\"), :math:`f_i` is each element of the vector :math:`\\mathbf{f}`, "
+"and :math:`d_i` is each element of :math:`\\mathbf{d}`. We wish to also find "
+"the gradient of this function wrt the parameter :math:`a`, which is:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:265
+msgid ""
+"\\frac{\\partial \\mathcal{O}}{\\partial a}(a) = 2 \\sum_{i=0}^{i=N} (f_i(a) "
+"- d_i) \\frac{\\partial f_i}{\\partial a}\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:267
+msgid ""
+"Using these equations, we will define a function that takes in as an "
+"argument :math:`a`, and returns :math:`(\\mathcal{O}(a), \\frac{\\partial "
+"\\mathcal{O}}{\\partial a}(a))`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"def sum_of_squares_jac(parameters):\n"
+"    sol = sim.solve(\n"
+"        [0, 3600],\n"
+"        t_interp=t_eval,\n"
+"        inputs={\"Current function [A]\": parameters[0]},\n"
+"        calculate_sensitivities=True,\n"
+"    )\n"
+"    term_voltage = sol[\"Terminal voltage [V]\"].data\n"
+"    term_voltage_sens = sol[\"Terminal voltage [V]\"].sensitivities[\n"
+"        \"Current function [A]\"\n"
+"    ]\n"
+"\n"
+"    f = np.sum((term_voltage - data) ** 2)\n"
+"    g = 2 * np.sum((term_voltage - data) * term_voltage_sens)\n"
+"    print(\n"
+"        f\"evaluating function and jacobian for p = {parameters[0]}, \\tloss "
+"= {f}, grad = {g}\"\n"
+"    )\n"
+"    return f, g"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:305
+msgid ""
+"We can then use this function along with an optimisation algorithm to "
+"recover the value of the Current function that was used to generate the "
+"data. In this case we will use the ``scipy.optimize`` module again. This "
+"module allows the use of a function in the form given above to perform the "
+"minimisation, using both the value of the objective function and its "
+"gradient to find the minimum value of :math:`a` in the least number of steps."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:307
+msgid ""
+"Once again, we will place bounds on \"Current function [A]\" between :math:"
+"`(0.01, 0.6)`, and use a random starting value :math:`x_0` between these "
+"bounds."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:-1
+msgid ""
+"bounds = (0.01, 0.6)\n"
+"x0 = np.random.uniform(low=bounds[0], high=bounds[1])\n"
+"\n"
+"print(\"starting parameter is\", x0)\n"
+"res = scipy.optimize.minimize(sum_of_squares_jac, [x0], bounds=[bounds], "
+"jac=True)\n"
+"print(\"recovered parameter is\", res.x[0])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:333
+msgid ""
+"<pre>\n"
+"starting parameter is 0.4035076613514513\n"
+"evaluating function and jacobian for p = 0.4035076613514513,    loss = "
+"0.358632833514908, grad = 3.7278265436340283\n"
+"evaluating function and jacobian for p = 0.01,  loss = 0.8765036816401419, "
+"grad = -9.691403058800336\n"
+"evaluating function and jacobian for p = 0.23970725060294026,   loss = "
+"0.0036706826105448887, grad = 0.41303112361463107\n"
+"evaluating function and jacobian for p = 0.21929734316448973,   loss = "
+"0.00010628748342624681, grad = -0.07293742235816741\n"
+"evaluating function and jacobian for p = 0.22236059911277223,   loss = "
+"2.5627985467376454e-07, grad = 0.0035066000930420284\n"
+"evaluating function and jacobian for p = 0.22222008304298907,   loss = "
+"7.758859239380127e-09, grad = 2.935984691530423e-05\n"
+"evaluating function and jacobian for p = 0.22221889660489277,   loss = "
+"7.74141508243804e-09, grad = -1.183255640750795e-08\n"
+"recovered parameter is 0.22221889660489277\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:347
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"starting parameter is 0.4035076613514513\n"
+"evaluating function and jacobian for p = 0.4035076613514513,    loss = "
+"0.358632833514908, grad = 3.7278265436340283\n"
+"evaluating function and jacobian for p = 0.01,  loss = 0.8765036816401419, "
+"grad = -9.691403058800336\n"
+"evaluating function and jacobian for p = 0.23970725060294026,   loss = "
+"0.0036706826105448887, grad = 0.41303112361463107\n"
+"evaluating function and jacobian for p = 0.21929734316448973,   loss = "
+"0.00010628748342624681, grad = -0.07293742235816741\n"
+"evaluating function and jacobian for p = 0.22236059911277223,   loss = "
+"2.5627985467376454e-07, grad = 0.0035066000930420284\n"
+"evaluating function and jacobian for p = 0.22222008304298907,   loss = "
+"7.758859239380127e-09, grad = 2.935984691530423e-05\n"
+"evaluating function and jacobian for p = 0.22221889660489277,   loss = "
+"7.74141508243804e-09, grad = -1.183255640750795e-08\n"
+"recovered parameter is 0.22221889660489277\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/sensitivities_and_data_fitting.ipynb:362
+msgid ""
+"starting parameter is 0.4035076613514513\n"
+"evaluating function and jacobian for p = 0.4035076613514513,    loss = "
+"0.358632833514908, grad = 3.7278265436340283\n"
+"evaluating function and jacobian for p = 0.01,  loss = 0.8765036816401419, "
+"grad = -9.691403058800336\n"
+"evaluating function and jacobian for p = 0.23970725060294026,   loss = "
+"0.0036706826105448887, grad = 0.41303112361463107\n"
+"evaluating function and jacobian for p = 0.21929734316448973,   loss = "
+"0.00010628748342624681, grad = -0.07293742235816741\n"
+"evaluating function and jacobian for p = 0.22236059911277223,   loss = "
+"2.5627985467376454e-07, grad = 0.0035066000930420284\n"
+"evaluating function and jacobian for p = 0.22222008304298907,   loss = "
+"7.758859239380127e-09, grad = 2.935984691530423e-05\n"
+"evaluating function and jacobian for p = 0.22221889660489277,   loss = "
+"7.74141508243804e-09, grad = -1.183255640750795e-08\n"
+"recovered parameter is 0.22221889660489277"
+msgstr ""
