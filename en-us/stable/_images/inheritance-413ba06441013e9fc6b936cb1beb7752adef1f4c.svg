@@ -1,0 +1,60 @@
+<ns0:svg xmlns:ns0="http://www.w3.org/2000/svg" xmlns:ns1="http://www.w3.org/1999/xlink" width="395pt" height="184pt" viewBox="0.00 0.00 395.00 184.00">
+<ns0:g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 180)">
+<ns0:title>inheritanced3fbf0feb9</ns0:title>
+<ns0:polygon fill="white" stroke="none" points="-4,4 -4,-180 391.25,-180 391.25,4 -4,4" />
+
+<ns0:g id="node1" class="node">
+<ns0:title>base_model.BaseModel</ns0:title>
+<ns0:g id="a_node1"><ns0:a ns1:href="../source/api/models/base_models/base_model.html#pybamm.BaseModel" ns1:title="Base model class for other models to extend." target="_top">
+<ns0:polygon fill="white" stroke="black" points="284.12,-176 103.12,-176 103.12,-150.75 284.12,-150.75 284.12,-176" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="193.62" y="-158.7" font-family="monospace" font-size="14.00">base_model.BaseModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="node2" class="node">
+<ns0:title>base_submodel.BaseSubModel</ns0:title>
+<ns0:g id="a_node2"><ns0:a ns1:href="../source/api/models/submodels/base_submodel.html#pybamm.BaseSubModel" ns1:title="The base class for all submodels. All submodels inherit from this class and must" target="_top">
+<ns0:polygon fill="white" stroke="black" points="308.88,-125.75 78.38,-125.75 78.38,-100.5 308.88,-100.5 308.88,-125.75" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="193.62" y="-108.45" font-family="monospace" font-size="14.00">base_submodel.BaseSubModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge1" class="edge">
+<ns0:title>base_model.BaseModel-&gt;base_submodel.BaseSubModel</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M193.62,-150.7C193.62,-145.91 193.62,-140.22 193.62,-134.77" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="196.25,-134.29 193.63,-126.79 191,-134.29 196.25,-134.29" />
+</ns0:g>
+
+<ns0:g id="node3" class="node">
+<ns0:title>base_transport_efficiency.BaseModel</ns0:title>
+<ns0:g id="a_node3"><ns0:a ns1:href="../source/api/models/submodels/transport_efficiency/base_transport_efficiency.html#pybamm.transport_efficiency.BaseModel" ns1:title="Base class for transport_efficiency" target="_top">
+<ns0:polygon fill="white" stroke="black" points="346,-75.5 41.25,-75.5 41.25,-50.25 346,-50.25 346,-75.5" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="193.62" y="-58.2" font-family="monospace" font-size="14.00">base_transport_efficiency.BaseModel</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge2" class="edge">
+<ns0:title>base_submodel.BaseSubModel-&gt;base_transport_efficiency.BaseModel</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M193.62,-100.45C193.62,-95.66 193.62,-89.97 193.62,-84.52" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="196.25,-84.04 193.63,-76.54 191,-84.04 196.25,-84.04" />
+</ns0:g>
+
+<ns0:g id="node4" class="node">
+<ns0:title>hyperbola_of_revolution.HyperbolaOfRevolution</ns0:title>
+<ns0:g id="a_node4"><ns0:a ns1:href="../source/api/models/submodels/transport_efficiency/hyperbola_of_revolution.html#pybamm.transport_efficiency.HyperbolaOfRevolution" ns1:title="Submodel for Hyperbola of revolution transport_efficiency" target="_top">
+<ns0:polygon fill="white" stroke="black" points="387.25,-25.25 0,-25.25 0,0 387.25,0 387.25,-25.25" />
+<ns0:text xml:space="preserve" text-anchor="middle" x="193.62" y="-7.95" font-family="monospace" font-size="14.00">hyperbola_of_revolution.HyperbolaOfRevolution</ns0:text>
+</ns0:a>
+</ns0:g>
+</ns0:g>
+
+<ns0:g id="edge3" class="edge">
+<ns0:title>base_transport_efficiency.BaseModel-&gt;hyperbola_of_revolution.HyperbolaOfRevolution</ns0:title>
+<ns0:path fill="none" stroke="black" stroke-width="0.5" d="M193.62,-50.2C193.62,-45.41 193.62,-39.72 193.62,-34.27" />
+<ns0:polygon fill="black" stroke="black" stroke-width="0.5" points="196.25,-33.79 193.63,-26.29 191,-33.79 196.25,-33.79" />
+</ns0:g>
+</ns0:g>
+</ns0:svg>

@@ -1,0 +1,1121 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.parameters.parameter_store &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=06885765"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/parameters/parameter_store';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/parameters/parameter_store.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.parameters.parameter_store</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.parameters.parameter_store 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Literal</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
+
+
+<div class="viewcode-block" id="ParameterCategory">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterCategory">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterCategory</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Categories for grouping battery parameters.&quot;&quot;&quot;</span>
+
+    <span class="n">NEGATIVE_ELECTRODE</span> <span class="o">=</span> <span class="s2">&quot;negative electrode&quot;</span>
+    <span class="n">POSITIVE_ELECTRODE</span> <span class="o">=</span> <span class="s2">&quot;positive electrode&quot;</span>
+    <span class="n">SEPARATOR</span> <span class="o">=</span> <span class="s2">&quot;separator&quot;</span>
+    <span class="n">ELECTROLYTE</span> <span class="o">=</span> <span class="s2">&quot;electrolyte&quot;</span>
+    <span class="n">THERMAL</span> <span class="o">=</span> <span class="s2">&quot;thermal&quot;</span>
+    <span class="n">KINETIC</span> <span class="o">=</span> <span class="s2">&quot;kinetic&quot;</span>
+    <span class="n">GEOMETRIC</span> <span class="o">=</span> <span class="s2">&quot;geometric&quot;</span>
+    <span class="n">ELECTRICAL</span> <span class="o">=</span> <span class="s2">&quot;electrical&quot;</span>
+    <span class="n">OTHER</span> <span class="o">=</span> <span class="s2">&quot;other&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="ParameterInfo">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterInfo">[文档]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterInfo</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Metadata about a parameter.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str</span>
+<span class="sd">        The parameter name (key).</span>
+<span class="sd">    value : Any</span>
+<span class="sd">        The parameter value.</span>
+<span class="sd">    units : str | None</span>
+<span class="sd">        Units parsed from the parameter name (e.g., &quot;K&quot; from &quot;Temperature [K]&quot;).</span>
+<span class="sd">    category : str | None</span>
+<span class="sd">        Category of the parameter (e.g., &quot;negative electrode&quot;, &quot;thermal&quot;).</span>
+<span class="sd">    is_function : bool</span>
+<span class="sd">        True if the value is callable.</span>
+<span class="sd">    is_input : bool</span>
+<span class="sd">        True if the value is an InputParameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">value</span><span class="p">:</span> <span class="n">Any</span>
+    <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">category</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="n">is_function</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="n">is_input</span><span class="p">:</span> <span class="nb">bool</span></div>
+
+
+
+<div class="viewcode-block" id="ParameterDiff">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterDiff">[文档]</a>
+<span class="nd">@dataclass</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterDiff</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Result of comparing two parameter sets.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    added : dict[str, Any]</span>
+<span class="sd">        Parameters in `other` but not in `self`.</span>
+<span class="sd">    removed : dict[str, Any]</span>
+<span class="sd">        Parameters in `self` but not in `other`.</span>
+<span class="sd">    changed : dict[str, tuple[Any, Any]]</span>
+<span class="sd">        Parameters with different values: (self_value, other_value).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">added</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">removed</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="n">changed</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span></div>
+
+
+
+<span class="c1"># Regex to parse units from parameter names like &quot;Temperature [K]&quot;</span>
+<span class="n">_UNITS_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;\[([^\]]+)\]\s*$&quot;</span><span class="p">)</span>
+
+<span class="c1"># Keywords for category detection</span>
+<span class="n">_CATEGORY_KEYWORDS</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">ParameterCategory</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">NEGATIVE_ELECTRODE</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;negative electrode&quot;</span><span class="p">,</span> <span class="s2">&quot;negative particle&quot;</span><span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">POSITIVE_ELECTRODE</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;positive electrode&quot;</span><span class="p">,</span> <span class="s2">&quot;positive particle&quot;</span><span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">SEPARATOR</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;separator&quot;</span><span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">ELECTROLYTE</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;electrolyte&quot;</span><span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">THERMAL</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;thermal&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;temperature&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;heat&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;cooling&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conductivity&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">KINETIC</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;exchange-current&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;reaction&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;kinetic&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;transfer coefficient&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">GEOMETRIC</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;thickness&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;length&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;width&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;height&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;radius&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;area&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;volume&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;porosity&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">ELECTRICAL</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">&quot;conductivity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;current&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;voltage&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;capacity&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;resistance&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_parse_units</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract units from a parameter name like &#39;Temperature [K]&#39; -&gt; &#39;K&#39;.&quot;&quot;&quot;</span>
+    <span class="n">match</span> <span class="o">=</span> <span class="n">_UNITS_RE</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">None</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_detect_category</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detect the category of a parameter based on keywords in its name.&quot;&quot;&quot;</span>
+    <span class="n">name_lower</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">category</span><span class="p">,</span> <span class="n">keywords</span> <span class="ow">in</span> <span class="n">_CATEGORY_KEYWORDS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">keywords</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="n">name_lower</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">category</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">return</span> <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">OTHER</span><span class="o">.</span><span class="n">value</span>
+
+
+<div class="viewcode-block" id="ParameterStore">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterStore</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Manages parameter key-value storage with FuzzyDict lookup.</span>
+
+<span class="sd">    This class provides a clean interface for storing and retrieving parameters</span>
+<span class="sd">    with explicit control over update behavior.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    initial_data : dict | None</span>
+<span class="sd">        Initial parameter data. If None, starts empty.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; store = ParameterStore({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">    &gt;&gt;&gt; store[&quot;Temperature [K]&quot;]</span>
+<span class="sd">    298.15</span>
+<span class="sd">    &gt;&gt;&gt; store.set(&quot;New param&quot;, 42, allow_new=True)</span>
+<span class="sd">    &gt;&gt;&gt; store.get_info(&quot;Temperature [K]&quot;)</span>
+<span class="sd">    ParameterInfo(name=&#39;Temperature [K]&#39;, value=298.15, units=&#39;K&#39;, ...)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_data</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FuzzyDict</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FuzzyDict</span><span class="p">(</span><span class="n">initial_data</span> <span class="ow">or</span> <span class="p">{})</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a parameter value by key.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Re-raise with more context</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; not found. </span><span class="si">{</span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">e</span><span class="o">.</span><span class="n">args</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a parameter value (always allows new parameters).&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a parameter.&quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a parameter exists.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate over parameter keys.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of parameters.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParameterStore.get">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.get">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get a parameter value, returning default if not found.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1})</span>
+<span class="sd">        &gt;&gt;&gt; store.get(&quot;a&quot;)</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; store.get(&quot;missing&quot;, default=0)</span>
+<span class="sd">        0</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">default</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.set">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.set">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">allow_new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set a parameter value.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            Parameter name.</span>
+<span class="sd">        value : Any</span>
+<span class="sd">            Parameter value.</span>
+<span class="sd">        allow_new : bool</span>
+<span class="sd">            If False, raises KeyError when key doesn&#39;t exist.</span>
+<span class="sd">            If True (default), allows adding new parameters.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        KeyError</span>
+<span class="sd">            If allow_new=False and the key doesn&#39;t exist.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1})</span>
+<span class="sd">        &gt;&gt;&gt; store.set(&quot;a&quot;, 10)  # Update existing</span>
+<span class="sd">        &gt;&gt;&gt; store.set(&quot;b&quot;, 2)   # Add new (allow_new=True by default)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_new</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+            <span class="n">best_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get_best_matches</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; does not exist. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Use allow_new=True to add new parameters. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Best matches: </span><span class="si">{</span><span class="n">best_matches</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.update">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.update">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">allow_new</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">conflict</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;raise&quot;</span><span class="p">,</span> <span class="s2">&quot;warn&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ignore&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Bulk update parameters.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        values : Mapping[str, Any]</span>
+<span class="sd">            Dictionary of parameter values to update.</span>
+<span class="sd">        allow_new : bool</span>
+<span class="sd">            If False, raises KeyError for unknown parameters.</span>
+<span class="sd">            If True (default), allows adding new parameters.</span>
+<span class="sd">        conflict : {&quot;raise&quot;, &quot;warn&quot;, &quot;ignore&quot;}</span>
+<span class="sd">            How to handle conflicts when a parameter already exists with a</span>
+<span class="sd">            different value:</span>
+<span class="sd">            - &quot;raise&quot;: Raise ValueError</span>
+<span class="sd">            - &quot;warn&quot;: Emit a warning and update</span>
+<span class="sd">            - &quot;ignore&quot;: Silently update (default)</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1, &quot;b&quot;: 2})</span>
+<span class="sd">        &gt;&gt;&gt; store.update({&quot;a&quot;: 10, &quot;c&quot;: 3})</span>
+<span class="sd">        &gt;&gt;&gt; store[&quot;a&quot;], store[&quot;c&quot;]</span>
+<span class="sd">        (10, 3)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># Check if key exists</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">allow_new</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+                <span class="n">best_matches</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">get_best_matches</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; does not exist. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Use allow_new=True to add new parameters. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Best matches: </span><span class="si">{</span><span class="n">best_matches</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Check for conflicts</span>
+            <span class="k">if</span> <span class="n">conflict</span> <span class="o">!=</span> <span class="s2">&quot;ignore&quot;</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+                <span class="n">existing</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">existing</span> <span class="o">!=</span> <span class="n">value</span><span class="p">:</span>
+                    <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; already exists with value &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">existing</span><span class="si">}</span><span class="s2">&#39;, updating to &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">if</span> <span class="n">conflict</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+                    <span class="k">elif</span> <span class="n">conflict</span> <span class="o">==</span> <span class="s2">&quot;warn&quot;</span><span class="p">:</span>
+                        <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.keys">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.keys">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return parameter keys.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.values">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.values">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return parameter values.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.items">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.items">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return parameter items.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.pop">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.pop">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove and return a parameter value.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1, &quot;b&quot;: 2})</span>
+<span class="sd">        &gt;&gt;&gt; store.pop(&quot;a&quot;)</span>
+<span class="sd">        1</span>
+<span class="sd">        &gt;&gt;&gt; &quot;a&quot; in store</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.copy">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.copy">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterStore</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a shallow copy of the store.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1})</span>
+<span class="sd">        &gt;&gt;&gt; store_copy = store.copy()</span>
+<span class="sd">        &gt;&gt;&gt; store_copy[&quot;a&quot;] = 99</span>
+<span class="sd">        &gt;&gt;&gt; store[&quot;a&quot;]  # Original unchanged</span>
+<span class="sd">        1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">ParameterStore</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">))</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.search">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.search">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">print_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search for parameters containing the given key.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Temperature [K]&quot;: 298.15, &quot;Voltage [V]&quot;: 3.7})</span>
+<span class="sd">        &gt;&gt;&gt; store.search(&quot;Temperature&quot;, print_values=False)</span>
+<span class="sd">        Results for &#39;Temperature&#39;: ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">print_values</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.get_info">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.get_info">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get metadata about a parameter.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            The parameter name.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterInfo</span>
+<span class="sd">            Metadata including value, units, category, and type information.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Maximum concentration [mol.m-3]&quot;: 51765})</span>
+<span class="sd">        &gt;&gt;&gt; info = store.get_info(&quot;Maximum concentration [mol.m-3]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; info.units</span>
+<span class="sd">        &#39;mol.m-3&#39;</span>
+<span class="sd">        &gt;&gt;&gt; info.is_function</span>
+<span class="sd">        False</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">ParameterInfo</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="n">key</span><span class="p">,</span>
+            <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+            <span class="n">units</span><span class="o">=</span><span class="n">_parse_units</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+            <span class="n">category</span><span class="o">=</span><span class="n">_detect_category</span><span class="p">(</span><span class="n">key</span><span class="p">),</span>
+            <span class="n">is_function</span><span class="o">=</span><span class="nb">callable</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
+            <span class="n">is_input</span><span class="o">=</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">),</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.list_by_category">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.list_by_category">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_by_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">ParameterCategory</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all parameter names in a given category.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        category : ParameterCategory or str</span>
+<span class="sd">            The category to filter by. Can be a ParameterCategory enum value</span>
+<span class="sd">            or a string like &quot;negative electrode&quot;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            List of parameter names in the category.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Negative electrode thickness [m]&quot;: 1e-4})</span>
+<span class="sd">        &gt;&gt;&gt; store.list_by_category(&quot;negative electrode&quot;)</span>
+<span class="sd">        [&#39;Negative electrode thickness [m]&#39;]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">category</span><span class="p">,</span> <span class="n">ParameterCategory</span><span class="p">):</span>
+            <span class="n">category_str</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">value</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">category_str</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">[</span><span class="n">key</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="k">if</span> <span class="n">_detect_category</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="o">==</span> <span class="n">category_str</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.categories">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.categories">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all parameters grouped by category.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict[str, list[str]]</span>
+<span class="sd">            Dictionary mapping category names to lists of parameter names.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">        &gt;&gt;&gt; cats = store.categories()</span>
+<span class="sd">        &gt;&gt;&gt; &quot;thermal&quot; in cats</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">:</span>
+            <span class="n">cat</span> <span class="o">=</span> <span class="n">_detect_category</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="ow">or</span> <span class="n">ParameterCategory</span><span class="o">.</span><span class="n">OTHER</span><span class="o">.</span><span class="n">value</span>
+            <span class="k">if</span> <span class="n">cat</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">result</span><span class="p">:</span>
+                <span class="n">result</span><span class="p">[</span><span class="n">cat</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">result</span><span class="p">[</span><span class="n">cat</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.diff">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.diff">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ParameterStore</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rtol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterDiff</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare this store with another and return differences.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : ParameterStore</span>
+<span class="sd">            The other parameter store to compare against.</span>
+<span class="sd">        rtol : float, optional</span>
+<span class="sd">            Relative tolerance for numerical comparisons. Differences smaller</span>
+<span class="sd">            than ``rtol * max(|a|, |b|)`` are ignored. Default is 0.0 (exact</span>
+<span class="sd">            comparison). Set to e.g. 1e-6 to ignore tiny floating-point</span>
+<span class="sd">            differences.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterDiff</span>
+<span class="sd">            Object containing added, removed, and changed parameters.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; store1 = ParameterStore({&quot;a&quot;: 1, &quot;b&quot;: 2})</span>
+<span class="sd">        &gt;&gt;&gt; store2 = ParameterStore({&quot;b&quot;: 3, &quot;c&quot;: 4})</span>
+<span class="sd">        &gt;&gt;&gt; diff = store1.diff(store2)</span>
+<span class="sd">        &gt;&gt;&gt; diff.added</span>
+<span class="sd">        {&#39;c&#39;: 4}</span>
+<span class="sd">        &gt;&gt;&gt; diff.removed</span>
+<span class="sd">        {&#39;a&#39;: 1}</span>
+<span class="sd">        &gt;&gt;&gt; diff.changed</span>
+<span class="sd">        {&#39;b&#39;: (2, 3)}</span>
+
+<span class="sd">        With tolerance to ignore small differences:</span>
+
+<span class="sd">        &gt;&gt;&gt; store1 = ParameterStore({&quot;x&quot;: 1.0})</span>
+<span class="sd">        &gt;&gt;&gt; store2 = ParameterStore({&quot;x&quot;: 1.0 + 1e-10})</span>
+<span class="sd">        &gt;&gt;&gt; diff = store1.diff(store2, rtol=1e-9)</span>
+<span class="sd">        &gt;&gt;&gt; diff.changed  # Empty because difference is within tolerance</span>
+<span class="sd">        {}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">self_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">other_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+        <span class="n">added</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">other_keys</span> <span class="o">-</span> <span class="n">self_keys</span><span class="p">}</span>
+        <span class="n">removed</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">self_keys</span> <span class="o">-</span> <span class="n">other_keys</span><span class="p">}</span>
+
+        <span class="n">changed</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">self_keys</span> <span class="o">&amp;</span> <span class="n">other_keys</span><span class="p">:</span>
+            <span class="n">self_val</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="n">other_val</span> <span class="o">=</span> <span class="n">other</span><span class="o">.</span><span class="n">_data</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">_values_equal</span><span class="p">(</span><span class="n">self_val</span><span class="p">,</span> <span class="n">other_val</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">):</span>
+                <span class="n">changed</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">self_val</span><span class="p">,</span> <span class="n">other_val</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ParameterDiff</span><span class="p">(</span><span class="n">added</span><span class="o">=</span><span class="n">added</span><span class="p">,</span> <span class="n">removed</span><span class="o">=</span><span class="n">removed</span><span class="p">,</span> <span class="n">changed</span><span class="o">=</span><span class="n">changed</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterStore.to_dict">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_store.html#pybamm.parameters.ParameterStore.to_dict">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a plain dictionary copy of the parameters.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;a&quot;: 1, &quot;b&quot;: 2})</span>
+<span class="sd">        &gt;&gt;&gt; store.to_dict()</span>
+<span class="sd">        {&#39;a&#39;: 1, &#39;b&#39;: 2}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span></div>
+</div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_values_equal</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rtol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compare two values for equality, handling special cases.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    a, b : Any</span>
+<span class="sd">        Values to compare.</span>
+<span class="sd">    rtol : float</span>
+<span class="sd">        Relative tolerance for numerical comparisons.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+    <span class="c1"># Handle numpy arrays</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">rtol</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="c1"># Handle numeric types with tolerance</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">rtol</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Check if difference is within relative tolerance</span>
+            <span class="n">max_val</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="nb">abs</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+            <span class="k">if</span> <span class="n">max_val</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+            <span class="k">return</span> <span class="nb">abs</span><span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">rtol</span> <span class="o">*</span> <span class="n">max_val</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+
+    <span class="c1"># Handle callables - compare by identity</span>
+    <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">callable</span><span class="p">(</span><span class="n">b</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
+
+    <span class="c1"># Handle pybamm symbols</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+
+    <span class="c1"># Default comparison</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
+    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

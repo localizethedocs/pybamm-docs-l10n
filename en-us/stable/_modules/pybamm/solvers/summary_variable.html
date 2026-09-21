@@ -1,0 +1,725 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.solvers.summary_variable &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/solvers/summary_variable';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/solvers/summary_variable.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.solvers.summary_variable</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.solvers.summary_variable</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Summary Variable class</span>
+<span class="c1">#</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<div class="viewcode-block" id="SummaryVariables">
+<a class="viewcode-back" href="../../../source/api/solvers/summary_variables.html#pybamm.SummaryVariables">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">SummaryVariables</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class for managing and calculating summary variables from a PyBaMM solution.</span>
+<span class="sd">    Summary variables are only calculated when simulations are run with PyBaMM</span>
+<span class="sd">    Experiments.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    solution : :class:`pybamm.Solution`</span>
+<span class="sd">        The solution object to be used for creating the processed variables.</span>
+<span class="sd">    cycle_summary_variables : list[pybamm.SummaryVariables], optional</span>
+<span class="sd">        A list of cycle summary variables.</span>
+<span class="sd">    esoh_solver : :class:`pybamm.lithium_ion.ElectrodeSOHSolver`, optional</span>
+<span class="sd">        Solver for electrode state-of-health (eSOH) calculations.</span>
+<span class="sd">    user_inputs : dict, optional</span>
+<span class="sd">        Additional user inputs for calculations.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    cycle_number : array[int]</span>
+<span class="sd">        Stores the cycle number for each saved cycle, for use when plotting.</span>
+<span class="sd">        Length is equal to the number of cycles in a solution.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">solution</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">,</span>
+        <span class="n">cycle_summary_variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SummaryVariables</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">esoh_solver</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">user_inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_inputs</span> <span class="o">=</span> <span class="n">user_inputs</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esoh_solver</span> <span class="o">=</span> <span class="n">esoh_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Store computed variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycle_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([])</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">all_models</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_possible_variables</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">summary_variables</span>  <span class="c1"># minus esoh variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_variables</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Store eSOH variable names</span>
+
+        <span class="c1"># Flag if eSOH calculations are needed</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calc_esoh</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">esoh_solver</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="n">model</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">electrode_types</span><span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;porous&quot;</span>
+            <span class="ow">and</span> <span class="s2">&quot;Negative electrode capacity [A.h]&quot;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span>
+            <span class="ow">and</span> <span class="s2">&quot;Positive electrode capacity [A.h]&quot;</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Initialize based on cycle information</span>
+        <span class="k">if</span> <span class="n">cycle_summary_variables</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_initialize_for_cycles</span><span class="p">(</span><span class="n">cycle_summary_variables</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">first_state</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">first_state</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">last_state</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_initialize_for_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cycle_summary_variables</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">SummaryVariables</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize attributes for when multiple cycles are provided.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">first_state</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="n">cycle_summary_variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cycle_number</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">first_cycle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">calc_esoh</span> <span class="o">=</span> <span class="n">first_cycle</span><span class="o">.</span><span class="n">calc_esoh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">esoh_solver</span> <span class="o">=</span> <span class="n">first_cycle</span><span class="o">.</span><span class="n">esoh_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">user_inputs</span> <span class="o">=</span> <span class="n">first_cycle</span><span class="o">.</span><span class="n">user_inputs</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">all_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return names of all possible summary variables, including eSOH variables</span>
+<span class="sd">         if appropriate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_variables</span>
+        <span class="k">except</span> <span class="ne">AttributeError</span><span class="p">:</span>
+            <span class="n">base_vars</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_possible_variables</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">base_vars</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Change in </span><span class="si">{</span><span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_possible_variables</span>
+            <span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_esoh</span><span class="p">:</span>
+                <span class="n">base_vars</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">esoh_variables</span><span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">_all_variables</span> <span class="o">=</span> <span class="n">base_vars</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_all_variables</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">esoh_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return names of all eSOH variables.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_esoh</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_variables</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># assume direction is None</span>
+            <span class="n">esoh_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">esoh_solver</span><span class="o">.</span><span class="n">_get_electrode_soh_sims_full</span><span class="p">(</span>
+                <span class="n">direction</span><span class="o">=</span><span class="kc">None</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">model</span>
+            <span class="n">esoh_vars</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">esoh_model</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_variables</span> <span class="o">=</span> <span class="n">esoh_vars</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_variables</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span> <span class="o">|</span> <span class="nb">list</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Access or compute a summary variable by its name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            The name of the variable</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        float or list[float]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">:</span>
+            <span class="c1"># return it if it exists</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="o">==</span> <span class="s2">&quot;Cycle number&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycle_number</span>
+        <span class="k">elif</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">all_variables</span><span class="p">:</span>
+            <span class="c1"># check it&#39;s listed as a summary variable</span>
+            <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Variable &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; is not a summary variable.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># otherwise create it, save it and then return it</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">calc_esoh</span> <span class="ow">and</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_variables</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update_esoh</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">base_key</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">removeprefix</span><span class="p">(</span><span class="s2">&quot;Change in &quot;</span><span class="p">)</span>
+                <span class="n">base_key</span> <span class="o">=</span> <span class="n">base_key</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="o">+</span> <span class="n">base_key</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+                <span class="c1"># this will create &#39;X&#39; and &#39;Change in x&#39; at the same time</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">base_key</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+
+<div class="viewcode-block" id="SummaryVariables.update">
+<a class="viewcode-back" href="../../../source/api/solvers/summary_variables.html#pybamm.SummaryVariables.update">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute and store a variable and its change.&quot;&quot;&quot;</span>
+        <span class="n">var_lowercase</span> <span class="o">=</span> <span class="n">var</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">+</span> <span class="n">var</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_multiple_cycles</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">var_lowercase</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">var_lowercase</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_multiple_cycles</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">var_lowercase</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates aggregated summary variables for where more than one cycle exists.&quot;&quot;&quot;</span>
+        <span class="n">var_cycle</span> <span class="o">=</span> <span class="p">[</span><span class="n">cycle</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">]</span>
+        <span class="n">change_var_cycle</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">cycle</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Change in </span><span class="si">{</span><span class="n">var_lowercase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span>
+        <span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">var_cycle</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Change in </span><span class="si">{</span><span class="n">var_lowercase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">change_var_cycle</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">var</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">var_lowercase</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create variable `var` for a single cycle.&quot;&quot;&quot;</span>
+        <span class="n">data_first</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_state</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+        <span class="n">data_last</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_last</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Change in </span><span class="si">{</span><span class="n">var_lowercase</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data_last</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">data_first</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<div class="viewcode-block" id="SummaryVariables.update_esoh">
+<a class="viewcode-back" href="../../../source/api/solvers/summary_variables.html#pybamm.SummaryVariables.update_esoh">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update_esoh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create all aggregated eSOH variables&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">var_cycle</span> <span class="o">=</span> <span class="p">[</span><span class="n">cycle</span><span class="o">.</span><span class="n">_get_esoh_variables</span><span class="p">()</span> <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cycles</span><span class="p">]</span>
+            <span class="n">aggregated_vars</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">var_cycle</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()}</span>
+            <span class="k">for</span> <span class="n">cycle</span> <span class="ow">in</span> <span class="n">var_cycle</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">cycle</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                    <span class="n">aggregated_vars</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">aggregated_vars</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_esoh_variables</span><span class="p">())</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_esoh_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute eSOH variables for a single solution.&quot;&quot;&quot;</span>
+        <span class="n">Q_n</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="s2">&quot;Negative electrode capacity [A.h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">Q_p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="s2">&quot;Positive electrode capacity [A.h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">Q_Li</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_state</span><span class="p">[</span><span class="s2">&quot;Total lithium capacity in particles [A.h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">all_inputs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">user_inputs</span><span class="p">,</span> <span class="s2">&quot;Q_n&quot;</span><span class="p">:</span> <span class="n">Q_n</span><span class="p">,</span> <span class="s2">&quot;Q_p&quot;</span><span class="p">:</span> <span class="n">Q_p</span><span class="p">,</span> <span class="s2">&quot;Q_Li&quot;</span><span class="p">:</span> <span class="n">Q_Li</span><span class="p">}</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">esoh_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">esoh_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">all_inputs</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                <span class="s2">&quot;Could not solve for eSOH summary variables&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+
+        <span class="k">return</span> <span class="n">esoh_sol</span>
+
+<div class="viewcode-block" id="SummaryVariables.get_summary_variables">
+<a class="viewcode-back" href="../../../source/api/solvers/summary_variables.html#pybamm.SummaryVariables.get_summary_variables">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_summary_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Computes and returns all the summary values + cycle number, as a dictionary</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">all_variables</span><span class="p">,</span> <span class="s2">&quot;Cycle number&quot;</span><span class="p">]}</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

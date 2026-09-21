@@ -1,0 +1,1736 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.simulation.simulation &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=4f37f709"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/simulation/simulation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/simulation/simulation.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.simulation.simulation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.simulation.simulation 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">timedelta</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numbers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Number</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm.telemetry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.solvers.base_solver</span><span class="w"> </span><span class="kn">import</span> <span class="n">process</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.util</span><span class="w"> </span><span class="kn">import</span> <span class="n">import_optional_dependency</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_simulation</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseSimulation</span>
+
+
+<div class="viewcode-block" id="Simulation">
+<a class="viewcode-back" href="../../../source/api/simulation/simulation.html#pybamm.Simulation">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Simulation</span><span class="p">(</span><span class="n">BaseSimulation</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extends :class:`BaseSimulation` with experiment support.</span>
+
+<span class="sd">    Accepts all parameters from :class:`BaseSimulation`, plus:</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    experiment : :class:`pybamm.Experiment` or string or list (optional)</span>
+<span class="sd">        The experimental conditions under which to solve the model. If a string is</span>
+<span class="sd">        passed, the experiment is constructed as `pybamm.Experiment([experiment])`. If</span>
+<span class="sd">        a list is passed, the experiment is constructed as</span>
+<span class="sd">        `pybamm.Experiment(experiment)`.</span>
+<span class="sd">    experiment_model_mode : str, optional</span>
+<span class="sd">        How to construct experiment models. Options are:</span>
+<span class="sd">        ``&quot;legacy&quot;`` (default), which always uses one model per step; and</span>
+<span class="sd">        ``&quot;unified&quot;``, which requires the shared experiment model path.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">_START_TIME_INPUT</span> <span class="o">=</span> <span class="s2">&quot;start time&quot;</span>
+    <span class="n">_INITIAL_TEMPERATURE_INPUT</span> <span class="o">=</span> <span class="s2">&quot;Initial temperature [K]&quot;</span>
+    <span class="n">_AMBIENT_TEMPERATURE_INPUT</span> <span class="o">=</span> <span class="s2">&quot;Ambient temperature [K]&quot;</span>
+    <span class="n">_PADDING_REST_KEY</span> <span class="o">=</span> <span class="s2">&quot;Rest for padding&quot;</span>
+    <span class="n">_STEP_INDEX_INPUT</span> <span class="o">=</span> <span class="s2">&quot;Experiment step index&quot;</span>
+    <span class="n">_TERMINATION_TIME</span> <span class="o">=</span> <span class="s2">&quot;experiment time limit reached&quot;</span>
+    <span class="n">_TERMINATION_VOLTAGE</span> <span class="o">=</span> <span class="s2">&quot;experiment voltage limit reached&quot;</span>
+    <span class="n">_TERMINATION_CAPACITY</span> <span class="o">=</span> <span class="s2">&quot;experiment capacity limit reached&quot;</span>
+    <span class="n">_TERMINATION_FINAL_TIME</span> <span class="o">=</span> <span class="s2">&quot;final time&quot;</span>
+    <span class="n">_TERMINATION_EXPERIMENT_TAG</span> <span class="o">=</span> <span class="s2">&quot;[experiment]&quot;</span>
+    <span class="n">_COMBINED_TERMINATION_EVENT</span> <span class="o">=</span> <span class="s2">&quot;Combined termination [experiment]&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">experiment</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">parameter_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">submesh_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">var_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">spatial_methods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">C_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">discretisation_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">cache_esoh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">experiment_model_mode</span><span class="o">=</span><span class="s2">&quot;legacy&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">geometry</span><span class="o">=</span><span class="n">geometry</span><span class="p">,</span>
+            <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">,</span>
+            <span class="n">submesh_types</span><span class="o">=</span><span class="n">submesh_types</span><span class="p">,</span>
+            <span class="n">var_pts</span><span class="o">=</span><span class="n">var_pts</span><span class="p">,</span>
+            <span class="n">spatial_methods</span><span class="o">=</span><span class="n">spatial_methods</span><span class="p">,</span>
+            <span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span>
+            <span class="n">output_variables</span><span class="o">=</span><span class="n">output_variables</span><span class="p">,</span>
+            <span class="n">C_rate</span><span class="o">=</span><span class="n">C_rate</span><span class="p">,</span>
+            <span class="n">discretisation_kwargs</span><span class="o">=</span><span class="n">discretisation_kwargs</span><span class="p">,</span>
+            <span class="n">cache_esoh</span><span class="o">=</span><span class="n">cache_esoh</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">experiment</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="p">):</span>
+                <span class="n">experiment</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">([</span><span class="n">experiment</span><span class="p">])</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="n">experiment</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span><span class="n">experiment</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">experiment</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="s2">&quot;experiment must be a pybamm `Experiment` instance, a single &quot;</span>
+                    <span class="s2">&quot;experiment step, or a list of experiment steps&quot;</span>
+                <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITH_EXPERIMENT</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span> <span class="o">=</span> <span class="n">experiment</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="c1"># Initialize experiment-specific built states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_model_state_mappers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_model_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_experiment_model_mode</span><span class="p">(</span>
+            <span class="n">experiment_model_mode</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_unified_model_key</span> <span class="o">=</span> <span class="s2">&quot;Unified experiment&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_step_indices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_padding_rest_index</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return dictionary of picklable items</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__getstate__</span><span class="p">()</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;model_state_mappers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;_compiled_model_state_mappers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;_built_experiment_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;_built_experiment_solver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;steps_to_built_models&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;steps_to_built_solvers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;experiment_unique_steps_to_model&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="c1"># Defaults for backward-compatible unpickling of older Simulation pickles</span>
+    <span class="n">_SETSTATE_DEFAULTS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;model_state_mappers&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="s2">&quot;_compiled_model_state_mappers&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+        <span class="s2">&quot;_built_experiment_model&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;_built_experiment_solver&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;experiment_unique_steps_to_model&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;_experiment_uses_unified_model&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="s2">&quot;_experiment_unified_model_key&quot;</span><span class="p">:</span> <span class="s2">&quot;Unified experiment&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;_experiment_step_indices&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+        <span class="s2">&quot;_experiment_padding_rest_index&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="s2">&quot;_experiment_includes_padding_rest&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Unpickle, restoring unpicklable relationships</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">__setstate__</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">attr</span><span class="p">,</span> <span class="n">default</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_SETSTATE_DEFAULTS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">attr</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">default</span><span class="p">()</span> <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">default</span><span class="p">)</span> <span class="k">else</span> <span class="n">default</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_model_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalise_experiment_model_mode</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;_experiment_model_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;legacy&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_up_and_parameterise_experiment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solve_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pybamm.simulation.set_up_and_parameterise_experiment is deprecated and not meant to be accessed by users.&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_and_parameterise_experiment</span><span class="p">(</span><span class="n">solve_kwargs</span><span class="o">=</span><span class="n">solve_kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_update_experiment_models_for_capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">solve_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the nominal capacity has changed and update the experiment models</span>
+<span class="sd">        if needed. This re-processes the models without rebuilding the mesh and</span>
+<span class="sd">        discretisation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">current_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;Nominal cell capacity [A.h]&quot;</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_nominal_capacity</span> <span class="o">==</span> <span class="n">current_capacity</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Nominal capacity changed from </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_built_nominal_capacity</span><span class="si">}</span><span class="s2"> to &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">current_capacity</span><span class="si">}</span><span class="s2">. Re-processing experiment models.&quot;</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_and_parameterise_experiment</span><span class="p">(</span><span class="n">solve_kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_discretise_experiment_models</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_experiment_state_mappers</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_nominal_capacity</span> <span class="o">=</span> <span class="n">current_capacity</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_discretise_experiment_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Discretise all experiment models and populate solver/model lookup dicts.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span><span class="p">:</span>
+            <span class="n">model_with_set_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span><span class="p">[</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_unified_model_key</span>
+            <span class="p">]</span>
+            <span class="n">built_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+                <span class="n">model_with_set_params</span><span class="p">,</span>
+                <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="o">=</span> <span class="n">built_model</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span> <span class="o">=</span> <span class="n">solver</span>
+            <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">unique_steps</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span> <span class="o">=</span> <span class="n">built_model</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span> <span class="o">=</span> <span class="n">solver</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">for</span> <span class="p">(</span>
+                <span class="n">step</span><span class="p">,</span>
+                <span class="n">model_with_set_params</span><span class="p">,</span>
+            <span class="p">)</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">built_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+                    <span class="n">model_with_set_params</span><span class="p">,</span>
+                    <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                    <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">solver</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">[</span><span class="n">step</span><span class="p">]</span> <span class="o">=</span> <span class="n">built_model</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_experiment_step_index_input_name</span><span class="p">():</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Simulation._experiment_step_index_input_name() is deprecated, &quot;</span>
+            <span class="s2">&quot;use Simulation._STEP_INDEX_INPUT instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">Simulation</span><span class="o">.</span><span class="n">_STEP_INDEX_INPUT</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalise_experiment_model_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;unified&quot;</span><span class="p">,</span> <span class="s2">&quot;legacy&quot;</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;experiment_model_mode must be one of &#39;unified&#39; or &#39;legacy&#39;&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mode</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_unified_experiment_model_blockers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;no experiment is attached to the simulation&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">is_drive_cycle</span><span class="p">:</span>
+                <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;drive-cycle experiment steps are not yet supported&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">step</span><span class="p">,</span>
+                <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStepExplicit</span><span class="p">,</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStepImplicit</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;unsupported experiment step type &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">step</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">]</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">step</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">CustomStepImplicit</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">step</span><span class="o">.</span><span class="n">control</span> <span class="o">!=</span> <span class="s2">&quot;algebraic&quot;</span>
+            <span class="p">):</span>
+                <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;CustomStepImplicit with differential control is not supported&quot;</span><span class="p">]</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">ode_solver</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;unified experiment model requires a DAE-capable solver&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_up_unified_experiment_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_step_indices</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">initial_start_time</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_padding_rest_index</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span>
+            <span class="k">else</span> <span class="kc">None</span>
+        <span class="p">)</span>
+
+        <span class="n">new_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">new_copy</span><span class="p">()</span>
+        <span class="n">new_parameter_values</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="c1"># Temperatures may change between steps, so the unified model must read the</span>
+        <span class="c1"># ambient temperature from step-level inputs instead of baking in one value.</span>
+        <span class="n">new_parameter_values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_AMBIENT_TEMPERATURE_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;[input]&quot;</span>
+
+        <span class="c1"># Build one conditional control residual that selects the active step&#39;s</span>
+        <span class="c1"># control law via the experiment step index input.</span>
+        <span class="n">step_control_builders</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">step</span><span class="o">.</span><span class="n">get_control_residual</span> <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span><span class="p">:</span>
+            <span class="n">padding_rest_step</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">Rest</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">step_control_builders</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">padding_rest_step</span><span class="o">.</span><span class="n">get_control_residual</span><span class="p">)</span>
+        <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">ExperimentFunctionControl</span><span class="p">(</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">new_model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_STEP_INDEX_INPUT</span><span class="p">,</span>
+            <span class="n">step_control_builders</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Reuse the implicit-step wiring so the experiment-wide controller owns the</span>
+        <span class="c1"># current variable in the same way as voltage/power/resistance steps.</span>
+        <span class="n">new_model</span><span class="p">,</span> <span class="n">variables</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStepImplicit</span><span class="o">.</span><span class="n">add_control_submodel</span><span class="p">(</span>
+            <span class="n">new_model</span><span class="p">,</span>
+            <span class="n">submodel</span><span class="p">,</span>
+            <span class="n">new_parameter_values</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Combine each step&#39;s local termination expression into one experiment event,</span>
+        <span class="c1"># selecting the active branch with the step index input.</span>
+        <span class="n">termination_branches</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">step</span><span class="o">.</span><span class="n">get_combined_termination_expression</span><span class="p">(</span><span class="n">variables</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span><span class="p">:</span>
+            <span class="n">termination_branches</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">combined_termination_expression</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Conditional</span><span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_STEP_INDEX_INPUT</span><span class="p">),</span>
+            <span class="o">*</span><span class="n">termination_branches</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">new_model</span><span class="o">.</span><span class="n">events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_COMBINED_TERMINATION_EVENT</span><span class="p">,</span>
+                <span class="n">combined_termination_expression</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="o">.</span><span class="n">update_voltage_safety_events</span><span class="p">(</span><span class="n">new_model</span><span class="p">)</span>
+
+        <span class="n">processed_model</span> <span class="o">=</span> <span class="n">new_parameter_values</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+            <span class="n">new_model</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_unified_model_key</span><span class="p">:</span> <span class="n">processed_model</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># Keep the legacy lookup keys alive even though compatible steps now share one</span>
+        <span class="c1"># processed model instance.</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">unique_steps</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span> <span class="o">=</span> <span class="n">processed_model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_experiment_step_inputs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">user_inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Number</span><span class="p">],</span>
+        <span class="n">step</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="p">,</span>
+        <span class="n">start_time</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+        <span class="n">active_step_index</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">include_temperature</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">user_inputs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_START_TIME_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="n">start_time</span>
+        <span class="k">if</span> <span class="n">include_temperature</span><span class="p">:</span>
+            <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_AMBIENT_TEMPERATURE_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">step</span><span class="o">.</span><span class="n">temperature</span>
+                <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_AMBIENT_TEMPERATURE_INPUT</span><span class="p">]</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span><span class="p">:</span>
+            <span class="n">inputs</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_STEP_INDEX_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="n">active_step_index</span>
+        <span class="k">return</span> <span class="n">inputs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_built_experiment_model</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_or_key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_or_key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">[</span><span class="n">step_or_key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">[</span><span class="n">step_or_key</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_built_experiment_solver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_or_key</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_or_key</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span><span class="p">[</span><span class="n">step_or_key</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span><span class="p">[</span><span class="n">step_or_key</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_evaluate_step_termination_expression_from_solution</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">step</span>
+    <span class="p">):</span>
+        <span class="c1"># Some custom terminations reference symbols that are not directly evaluable</span>
+        <span class="c1"># from the raw event expression, but are available as processed solution</span>
+        <span class="c1"># variables. Rebuild a minimal variables dict from the solved step state and</span>
+        <span class="c1"># re-run the termination expression against that view of the solution.</span>
+        <span class="k">if</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">t_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">step_solution</span><span class="o">.</span><span class="n">t_event</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">step_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="k">class</span><span class="w"> </span><span class="nc">SolutionVariables</span><span class="p">(</span><span class="nb">dict</span><span class="p">):</span>
+            <span class="k">def</span><span class="w"> </span><span class="fm">__missing__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">):</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">step_solution</span><span class="p">[</span><span class="n">key</span><span class="p">](</span><span class="n">t</span><span class="p">)</span>
+                <span class="bp">self</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">return</span> <span class="n">value</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">get_event_expression</span><span class="p">(</span><span class="n">SolutionVariables</span><span class="p">(),</span> <span class="n">step</span><span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">NotImplementedError</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_decode_combined_step_termination</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span> <span class="o">!=</span> <span class="sa">f</span><span class="s2">&quot;event: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_COMBINED_TERMINATION_EVENT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span>
+
+        <span class="n">final_event_values</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">termination</span><span class="p">:</span>
+            <span class="n">event</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">get_event</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">continue</span>
+
+            <span class="c1"># First try the exact symbolic event expression that the unified model used.</span>
+            <span class="c1"># This is the closest match to what the solver just triggered.</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">step_solution</span><span class="o">.</span><span class="n">t_event</span>
+                <span class="k">if</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">t_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">step_solution</span><span class="o">.</span><span class="n">y_event</span>
+                <span class="k">if</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">y_event</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+            <span class="p">)</span>
+
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">expression</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">NotImplementedError</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                <span class="c1"># If the raw expression still contains unevaluated symbols, fall back to</span>
+                <span class="c1"># the processed variables on the solved step. This is slower, but it works</span>
+                <span class="c1"># for custom terminations built from model outputs.</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_step_termination_expression_from_solution</span><span class="p">(</span>
+                    <span class="n">term</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">step</span>
+                <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">final_event_values</span><span class="p">[</span><span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">final_event_values</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span>
+
+        <span class="n">termination_event</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">final_event_values</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">final_event_values</span><span class="o">.</span><span class="n">get</span><span class="p">)</span>
+        <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;event: </span><span class="si">{</span><span class="n">termination_event</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_experiment_input_parameters</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># some parameters are used to control the experiment,</span>
+        <span class="c1"># and should not be input parameters</span>
+        <span class="n">symbol_unpacker</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SymbolUnpacker</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">)</span>
+        <span class="n">pv_input_parameters</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">ip</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">symbol_unpacker</span><span class="o">.</span><span class="n">unpack_parameter_values</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">)</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pv_input_parameters</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">check_keys</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_INITIAL_TEMPERATURE_INPUT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_AMBIENT_TEMPERATURE_INPUT</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">is_implicit</span><span class="p">():</span>
+                <span class="n">check_keys</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">step</span><span class="o">.</span><span class="n">get_parameter_values</span><span class="p">([])</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">check_keys</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">)</span>
+
+        <span class="n">restricted</span> <span class="o">=</span> <span class="n">pv_input_parameters</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">check_keys</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">restricted</span><span class="p">:</span>
+            <span class="n">restricted_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">restricted</span><span class="p">))</span>
+            <span class="n">check_keys_str</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">check_keys</span><span class="p">))</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ModelError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Cannot use &#39;</span><span class="si">{</span><span class="n">restricted_str</span><span class="si">}</span><span class="s2">&#39; as an input parameter in this experiment. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;This experiment is controlled via the following parameters: </span><span class="si">{</span><span class="n">check_keys_str</span><span class="si">}</span><span class="s2">. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;None of these parameters are able to be input parameters.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_up_and_parameterise_experiment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solve_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create and parameterise the models for each step in the experiment.</span>
+
+<span class="sd">        This increases set-up time since several models to be processed, but</span>
+<span class="sd">        reduces simulation time since the model formulation is efficient.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">parameter_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_experiment_input_parameters</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">solve_kwargs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="s2">&quot;calculate_sensitivities&quot;</span> <span class="ow">in</span> <span class="n">solve_kwargs</span>
+            <span class="ow">and</span> <span class="n">solve_kwargs</span><span class="p">[</span><span class="s2">&quot;calculate_sensitivities&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span>
+                    <span class="nb">isinstance</span><span class="p">(</span>
+                        <span class="n">term</span><span class="p">,</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">step_termination</span><span class="o">.</span><span class="n">BaseTermination</span><span class="p">,</span>
+                    <span class="p">)</span>
+                    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">step</span><span class="o">.</span><span class="n">termination</span>
+                <span class="p">):</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Step &#39;</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">&#39; has a termination condition based on an event. Sensitivity calculation will be inaccurate &quot;</span>
+                        <span class="s2">&quot;if the time of each step event changes rapidly with respect to the parameters. &quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">break</span>
+
+        <span class="c1"># Set the initial temperature to be the temperature of the first step</span>
+        <span class="c1"># We can set this globally for all steps since any subsequent steps will either</span>
+        <span class="c1"># start at the temperature at the end of the previous step (if non-isothermal</span>
+        <span class="c1"># model), or will use the &quot;Ambient temperature&quot; input (if isothermal model).</span>
+        <span class="c1"># In either case, the initial temperature is not used for any steps except</span>
+        <span class="c1"># the first.</span>
+        <span class="n">init_temp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">temperature</span>
+        <span class="k">if</span> <span class="n">init_temp</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">parameter_values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_INITIAL_TEMPERATURE_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="n">init_temp</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_model_mode</span> <span class="o">==</span> <span class="s2">&quot;unified&quot;</span><span class="p">:</span>
+            <span class="n">blockers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_unified_experiment_model_blockers</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">blockers</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ModelError</span><span class="p">(</span>
+                    <span class="s2">&quot;Cannot build a unified experiment model: &quot;</span>
+                    <span class="o">+</span> <span class="s2">&quot;; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">blockers</span><span class="p">)</span>
+                    <span class="o">+</span> <span class="s2">&quot;. Use &#39;legacy&#39; mode or a compatible solver/experiment.&quot;</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_unified_experiment_model</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_step_indices</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_padding_rest_index</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_includes_padding_rest</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">unique_steps</span><span class="p">:</span>
+            <span class="n">new_model</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span>
+                <span class="n">parameter_values</span><span class="p">,</span>
+                <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span> <span class="o">=</span> <span class="n">new_model</span>
+
+        <span class="c1"># Set up rest model if experiment has start times</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">initial_start_time</span><span class="p">:</span>
+            <span class="c1"># duration doesn&#39;t matter, we just need the model</span>
+            <span class="n">rest_step</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">Rest</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="c1"># Change ambient temperature to be an input,</span>
+            <span class="c1"># which will be changed at solve time</span>
+            <span class="n">parameter_values</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_AMBIENT_TEMPERATURE_INPUT</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;[input]&quot;</span>
+            <span class="n">new_model</span> <span class="o">=</span> <span class="n">rest_step</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="p">,</span>
+                <span class="n">parameter_values</span><span class="p">,</span>
+                <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment_unique_steps_to_model</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_PADDING_REST_KEY</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_model</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_built_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return list of built models that need IC recomputation.&quot;&quot;&quot;</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_get_built_models</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">return</span> <span class="n">models</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_build_experiment_state_mappers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_model_state_mappers</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span>
+            <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span>
+            <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span>
+        <span class="p">):</span>
+            <span class="k">return</span>
+
+        <span class="n">ordered_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span>
+        <span class="n">previous_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">ordered_steps</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">[</span><span class="n">step</span><span class="o">.</span><span class="n">basic_repr</span><span class="p">()]</span>
+            <span class="k">if</span> <span class="n">previous_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">previous_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">model</span><span class="p">:</span>
+                <span class="n">key</span> <span class="o">=</span> <span class="p">(</span><span class="n">previous_model</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">build_initial_state_mapper</span><span class="p">(</span>
+                        <span class="n">previous_model</span>
+                    <span class="p">)</span>
+            <span class="n">previous_model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="n">rest_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_PADDING_REST_KEY</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rest_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">unique_models</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">unique_models</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="n">rest_model</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">to_rest_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">rest_model</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">to_rest_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">[</span><span class="n">to_rest_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">rest_model</span><span class="o">.</span><span class="n">build_initial_state_mapper</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="n">from_rest_key</span> <span class="o">=</span> <span class="p">(</span><span class="n">rest_model</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">from_rest_key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="p">[</span><span class="n">from_rest_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">model</span><span class="o">.</span><span class="n">build_initial_state_mapper</span><span class="p">(</span><span class="n">rest_model</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="n">previous_model</span><span class="p">,</span> <span class="n">next_model</span><span class="p">),</span> <span class="n">mapper</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_state_mappers</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">ordered_compile_inputs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">name</span><span class="p">:</span> <span class="n">inputs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">ip</span> <span class="ow">in</span> <span class="n">previous_model</span><span class="o">.</span><span class="n">input_parameters</span><span class="p">)</span>
+            <span class="p">}</span>
+            <span class="n">vars_for_processing</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseSolver</span><span class="o">.</span><span class="n">_get_vars_for_processing</span><span class="p">(</span>
+                <span class="n">previous_model</span><span class="p">,</span> <span class="n">ordered_compile_inputs</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">previous_model</span><span class="p">,</span> <span class="s2">&quot;calculate_sensitivities&quot;</span><span class="p">):</span>
+                <span class="n">previous_model</span><span class="o">.</span><span class="n">calculate_sensitivities</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">f</span><span class="p">,</span> <span class="n">jac</span><span class="p">,</span> <span class="n">jacp</span><span class="p">,</span> <span class="n">_jac_action</span> <span class="o">=</span> <span class="n">process</span><span class="p">(</span><span class="n">mapper</span><span class="p">,</span> <span class="s2">&quot;mapper&quot;</span><span class="p">,</span> <span class="n">vars_for_processing</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_model_state_mappers</span><span class="p">[(</span><span class="n">previous_model</span><span class="p">,</span> <span class="n">next_model</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">f</span><span class="p">,</span>
+                <span class="n">jac</span><span class="p">,</span>
+                <span class="n">jacp</span><span class="p">,</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_state_mapper_for_solution</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">solution</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_model_state_mappers</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">solution</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">solution</span><span class="o">.</span><span class="n">all_models</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">from_model</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">all_models</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compiled_model_state_mappers</span><span class="o">.</span><span class="n">get</span><span class="p">((</span><span class="n">from_model</span><span class="p">,</span> <span class="n">model</span><span class="p">))</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_should_save_cycle</span><span class="p">(</span><span class="n">cycle_num</span><span class="p">,</span> <span class="n">num_cycles</span><span class="p">,</span> <span class="n">cycle_offset</span><span class="p">,</span> <span class="n">save_at_cycles</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Determine whether to persist full solution data for this cycle.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">cycle_num</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="ow">or</span> <span class="n">cycle_num</span> <span class="o">==</span> <span class="n">num_cycles</span>
+            <span class="ow">or</span> <span class="n">save_at_cycles</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">or</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">save_at_cycles</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">cycle_num</span> <span class="o">+</span> <span class="n">cycle_offset</span> <span class="ow">in</span> <span class="n">save_at_cycles</span>
+            <span class="p">)</span>
+            <span class="ow">or</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">save_at_cycles</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="p">(</span><span class="n">cycle_num</span> <span class="o">+</span> <span class="n">cycle_offset</span><span class="p">)</span> <span class="o">%</span> <span class="n">save_at_cycles</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_infeasible_steps</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">steps</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">step_str</span><span class="p">,</span> <span class="n">cycle_num</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Raise or skip when all steps in a cycle produced EmptySolution.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">skip_ok</span><span class="p">:</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Step &#39;</span><span class="si">{</span><span class="n">step_str</span><span class="si">}</span><span class="s2">&#39; is infeasible at initial conditions, &quot;</span>
+                    <span class="s2">&quot;but skip_ok is True. Skipping step.&quot;</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">termination</span> <span class="o">=</span> <span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">termination</span>
+                <span class="k">return</span> <span class="kc">True</span>  <span class="c1"># signal: continue to next cycle</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Step &#39;</span><span class="si">{</span><span class="n">step_str</span><span class="si">}</span><span class="s2">&#39; is infeasible &quot;</span>
+                <span class="s2">&quot;due to exceeded bounds at initial conditions. &quot;</span>
+                <span class="s2">&quot;If this step is part of a longer cycle, &quot;</span>
+                <span class="s2">&quot;round brackets should be used to indicate this, &quot;</span>
+                <span class="s2">&quot;e.g.:</span><span class="se">\n</span><span class="s2"> pybamm.Experiment([(</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Discharge at C/5 for 10 hours or until 3.3 V,</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Charge at 1 A until 4.1 V,</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">Hold at 4.1 V until 10 mA</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;)])</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;Otherwise, set skip_ok=True when instantiating the step &quot;</span>
+                <span class="s2">&quot;to skip this step.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">this_cycle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">cycles</span><span class="p">[</span><span class="n">cycle_num</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">all_steps_skipped</span> <span class="o">=</span> <span class="nb">all</span><span class="p">(</span>
+            <span class="n">this_step</span><span class="o">.</span><span class="n">skip_ok</span>
+            <span class="k">for</span> <span class="n">this_step</span> <span class="ow">in</span> <span class="n">this_cycle</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">this_step</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">BaseStep</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;All steps in the cycle </span><span class="si">{</span><span class="n">this_cycle</span><span class="si">}</span><span class="s2"> are infeasible due to exceeded bounds at initial conditions.&quot;</span>
+        <span class="k">if</span> <span class="n">all_steps_skipped</span><span class="p">:</span>
+            <span class="n">msg</span> <span class="o">+=</span> <span class="s2">&quot; skip_ok is True for all steps. Please recheck the experiment.&quot;</span>
+        <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Simulation.build_for_experiment">
+<a class="viewcode-back" href="../../../source/api/simulation/simulation.html#pybamm.Simulation.build_for_experiment">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build_for_experiment</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">initial_soc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">solve_kwargs</span><span class="o">=</span><span class="kc">None</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Similar to :meth:`Simulation.build`, but for the case of simulating an</span>
+<span class="sd">        experiment, where there may be several models and solvers to build.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">initial_soc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_models</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_recompute_initial_conditions</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_update_experiment_models_for_capacity</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">solve_kwargs</span><span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_and_parameterise_experiment</span><span class="p">(</span><span class="n">solve_kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submesh_types</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_pts</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spatial_methods</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_discretisation_kwargs</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_discretise_experiment_models</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">inputs</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_experiment_state_mappers</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_nominal_capacity</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="s2">&quot;Nominal cell capacity [A.h]&quot;</span><span class="p">,</span> <span class="kc">None</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="Simulation.solve">
+<a class="viewcode-back" href="../../../source/api/simulation/simulation.html#pybamm.Simulation.solve">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">save_at_cycles</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">calc_esoh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">starting_solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">initial_soc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">showprogress</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">t_interp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Solve the model, with experiment support.</span>
+
+<span class="sd">        Accepts all parameters from :meth:`BaseSimulation.solve`, plus:</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        save_at_cycles : int or list of ints, optional</span>
+<span class="sd">            Which cycles to save the full sub-solutions for. If None, all cycles are</span>
+<span class="sd">            saved. If int, every multiple of save_at_cycles is saved. If list, every</span>
+<span class="sd">            cycle in the list is saved. The first cycle (cycle 1) is always saved.</span>
+<span class="sd">        starting_solution : :class:`pybamm.Solution`</span>
+<span class="sd">            The solution to start stepping from. If None (default), then self._solution</span>
+<span class="sd">            is used. Must be None if not using an experiment.</span>
+<span class="sd">        showprogress : bool, optional</span>
+<span class="sd">            Whether to show a progress bar for cycling. If true, shows a progress bar</span>
+<span class="sd">            for cycles. Has no effect when not used with an experiment.</span>
+<span class="sd">            Default is False.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITH_EXPERIMENT</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">save_at_cycles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;&#39;save_at_cycles&#39; option can only be used if simulating an &quot;</span>
+                    <span class="s2">&quot;Experiment &quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="n">starting_solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;starting_solution can only be provided if simulating an Experiment&quot;</span>
+                <span class="p">)</span>
+            <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span>
+                <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">solver</span><span class="o">=</span><span class="n">solver</span><span class="p">,</span>
+                <span class="n">calc_esoh</span><span class="o">=</span><span class="n">calc_esoh</span><span class="p">,</span>
+                <span class="n">initial_soc</span><span class="o">=</span><span class="n">initial_soc</span><span class="p">,</span>
+                <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+                <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                <span class="n">t_interp</span><span class="o">=</span><span class="n">t_interp</span><span class="p">,</span>
+                <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Experiment solve path</span>
+        <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_solve</span><span class="p">(</span>
+            <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span>
+        <span class="p">)</span>
+        <span class="n">logs</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">callbacks</span><span class="o">.</span><span class="n">on_experiment_start</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                <span class="s2">&quot;Solving with a list of input sets is not supported with experiments.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Drop the prior solution before build/integration.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="n">starting_solution</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">build_for_experiment</span><span class="p">(</span>
+            <span class="n">initial_soc</span><span class="o">=</span><span class="n">initial_soc</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">solve_kwargs</span><span class="o">=</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;Ignoring t_eval as solution times are specified by the experiment&quot;</span>
+            <span class="p">)</span>
+        <span class="n">user_inputs</span> <span class="o">=</span> <span class="n">inputs</span>
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+
+        <span class="c1"># Set up eSOH solver (for summary variables)</span>
+        <span class="n">esoh_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_esoh_solver</span><span class="p">(</span><span class="n">calc_esoh</span><span class="p">,</span> <span class="n">direction</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">starting_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">starting_solution_cycles</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">starting_solution_summary_variables</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">starting_solution_first_states</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">elif</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">starting_solution</span><span class="p">,</span> <span class="s2">&quot;all_summary_variables&quot;</span><span class="p">):</span>
+            <span class="p">(</span>
+                <span class="n">cycle_solution</span><span class="p">,</span>
+                <span class="n">cycle_sum_vars</span><span class="p">,</span>
+                <span class="n">cycle_first_state</span><span class="p">,</span>
+            <span class="p">)</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">make_cycle_solution</span><span class="p">(</span>
+                <span class="p">[</span><span class="n">starting_solution</span><span class="p">],</span>
+                <span class="n">esoh_solver</span><span class="o">=</span><span class="n">esoh_solver</span><span class="p">,</span>
+                <span class="n">save_this_cycle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="o">=</span><span class="n">user_inputs</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">starting_solution_cycles</span> <span class="o">=</span> <span class="p">[</span><span class="n">cycle_solution</span><span class="p">]</span>
+            <span class="n">starting_solution_summary_variables</span> <span class="o">=</span> <span class="p">[</span><span class="n">cycle_sum_vars</span><span class="p">]</span>
+            <span class="n">starting_solution_first_states</span> <span class="o">=</span> <span class="p">[</span><span class="n">cycle_first_state</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">starting_solution_cycles</span> <span class="o">=</span> <span class="n">starting_solution</span><span class="o">.</span><span class="n">cycles</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="n">starting_solution_summary_variables</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">starting_solution</span><span class="o">.</span><span class="n">all_summary_variables</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="n">starting_solution_first_states</span> <span class="o">=</span> <span class="n">starting_solution</span><span class="o">.</span><span class="n">all_first_states</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+        <span class="n">initial_start_time</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">initial_start_time</span>
+            <span class="k">if</span> <span class="n">starting_solution</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">starting_solution</span><span class="o">.</span><span class="n">initial_start_time</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">initial_start_time</span> <span class="ow">is</span> <span class="kc">None</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">initial_start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;When using experiments with `start_time`, the starting_solution &quot;</span>
+                <span class="s2">&quot;must have a `start_time` too.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">cycle_offset</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">starting_solution_cycles</span><span class="p">)</span>
+        <span class="n">all_cycle_solutions</span> <span class="o">=</span> <span class="n">starting_solution_cycles</span>
+        <span class="n">all_summary_variables</span> <span class="o">=</span> <span class="n">starting_solution_summary_variables</span>
+        <span class="n">all_first_states</span> <span class="o">=</span> <span class="n">starting_solution_first_states</span>
+        <span class="n">current_solution</span> <span class="o">=</span> <span class="n">starting_solution</span> <span class="ow">or</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">()</span>
+
+        <span class="n">voltage_stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">termination</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;voltage&quot;</span><span class="p">)</span>
+        <span class="n">time_stop</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">termination</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;voltage&quot;</span><span class="p">:</span> <span class="n">voltage_stop</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">time_stop</span><span class="p">}</span>
+
+        <span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">num_cycles</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">cycle_lengths</span><span class="p">)</span>
+        <span class="n">feasible</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># simulation will stop if experiment is infeasible</span>
+        <span class="n">stop_experiment</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="n">experiment_termination</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Add initial padding rest if current time is earlier than first start time</span>
+        <span class="c1"># This could be the case when using a starting solution</span>
+        <span class="k">if</span> <span class="n">starting_solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">step</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">rest_time</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">step</span><span class="o">.</span><span class="n">start_time</span>
+                    <span class="o">-</span> <span class="p">(</span>
+                        <span class="n">initial_start_time</span>
+                        <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">current_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="p">)</span>
+                <span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">rest_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_experiment_step_inputs</span><span class="p">(</span>
+                        <span class="n">user_inputs</span><span class="p">,</span>
+                        <span class="n">step</span><span class="p">,</span>
+                        <span class="n">current_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_padding_rest_index</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+                    <span class="n">steps</span> <span class="o">=</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">cycles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">steps</span>
+                    <span class="n">step_solution</span> <span class="o">=</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">cycles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                    <span class="n">step_solution_with_rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_padding_rest</span><span class="p">(</span>
+                        <span class="n">kwargs</span><span class="p">,</span> <span class="n">rest_time</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">inputs</span>
+                    <span class="p">)</span>
+                    <span class="n">steps</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_solution</span> <span class="o">+</span> <span class="n">step_solution_with_rest</span>
+
+                    <span class="n">cycle_solution</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">make_cycle_solution</span><span class="p">(</span>
+                        <span class="n">steps</span><span class="p">,</span> <span class="n">esoh_solver</span><span class="o">=</span><span class="n">esoh_solver</span><span class="p">,</span> <span class="n">save_this_cycle</span><span class="o">=</span><span class="kc">True</span>
+                    <span class="p">)</span>
+                    <span class="n">old_cycles</span> <span class="o">=</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">cycles</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+                    <span class="n">old_cycles</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_solution</span>
+                    <span class="n">current_solution</span> <span class="o">+=</span> <span class="n">step_solution_with_rest</span>
+                    <span class="n">current_solution</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="n">old_cycles</span>
+
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="n">current_solution</span>
+
+        <span class="n">experiment_steps</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">steps</span>
+        <span class="n">uses_unified</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_uses_unified_model</span>
+        <span class="n">step_indices</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_step_indices</span>
+
+        <span class="k">if</span> <span class="n">showprogress</span><span class="p">:</span>
+            <span class="n">tqdm</span> <span class="o">=</span> <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;tqdm&quot;</span><span class="p">)</span>
+            <span class="n">cycle_lengths</span> <span class="o">=</span> <span class="n">tqdm</span><span class="o">.</span><span class="n">tqdm</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">cycle_lengths</span><span class="p">,</span>
+                <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Cycling&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">cycle_lengths</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">cycle_lengths</span>
+
+        <span class="k">for</span> <span class="n">cycle_num</span><span class="p">,</span> <span class="n">cycle_length</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span>
+            <span class="n">cycle_lengths</span><span class="p">,</span>
+            <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;cycle number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">cycle_num</span> <span class="o">+</span> <span class="n">cycle_offset</span><span class="p">,</span>
+                <span class="n">num_cycles</span> <span class="o">+</span> <span class="n">cycle_offset</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;elapsed time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="n">callbacks</span><span class="o">.</span><span class="n">on_cycle_start</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+            <span class="n">steps</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">cycle_solution</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">save_this_cycle</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_should_save_cycle</span><span class="p">(</span>
+                <span class="n">cycle_num</span><span class="p">,</span> <span class="n">num_cycles</span><span class="p">,</span> <span class="n">cycle_offset</span><span class="p">,</span> <span class="n">save_at_cycles</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">step_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">cycle_length</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">step</span> <span class="o">=</span> <span class="n">experiment_steps</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="n">start_time</span> <span class="o">=</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+                <span class="n">dt</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">duration</span>
+                <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">end_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">remaining</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">step</span><span class="o">.</span><span class="n">end_time</span>
+                        <span class="o">-</span> <span class="p">(</span><span class="n">initial_start_time</span> <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">start_time</span><span class="p">)))</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                    <span class="n">dt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">remaining</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">time_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">dt</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">dt</span><span class="p">,</span> <span class="n">time_stop</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="n">dt</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">experiment_termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_TIME</span>
+                        <span class="n">stop_experiment</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="k">break</span>
+
+                <span class="n">step_str</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+                <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_built_experiment_model</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+                <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_built_experiment_solver</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">step_num</span><span class="p">,</span> <span class="n">cycle_length</span><span class="p">)</span>
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step operating conditions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_str</span>
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step duration&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">duration</span>
+                <span class="n">callbacks</span><span class="o">.</span><span class="n">on_step_start</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+                <span class="n">active_step_index</span> <span class="o">=</span> <span class="n">step_indices</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="k">if</span> <span class="n">uses_unified</span> <span class="k">else</span> <span class="kc">None</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_experiment_step_inputs</span><span class="p">(</span>
+                    <span class="n">user_inputs</span><span class="p">,</span>
+                    <span class="n">step</span><span class="p">,</span>
+                    <span class="n">start_time</span><span class="p">,</span>
+                    <span class="n">active_step_index</span><span class="p">,</span>
+                    <span class="n">include_temperature</span><span class="o">=</span><span class="n">uses_unified</span><span class="p">,</span>
+                <span class="p">)</span>
+
+                <span class="n">t_eval</span><span class="p">,</span> <span class="n">t_interp_processed</span> <span class="o">=</span> <span class="n">step</span><span class="o">.</span><span class="n">setup_timestepping</span><span class="p">(</span>
+                    <span class="n">solver</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">t_interp</span>
+                <span class="p">)</span>
+
+                <span class="n">state_mapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state_mapper_for_solution</span><span class="p">(</span>
+                    <span class="n">current_solution</span><span class="p">,</span> <span class="n">model</span>
+                <span class="p">)</span>
+
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">step_solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">(</span>
+                        <span class="n">current_solution</span><span class="p">,</span>
+                        <span class="n">model</span><span class="p">,</span>
+                        <span class="n">dt</span><span class="p">,</span>
+                        <span class="n">t_eval</span><span class="p">,</span>
+                        <span class="n">t_interp</span><span class="o">=</span><span class="n">t_interp_processed</span><span class="p">,</span>
+                        <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                        <span class="n">state_mapper</span><span class="o">=</span><span class="n">state_mapper</span><span class="p">,</span>
+                        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="s2">&quot;non-positive at initial conditions&quot;</span> <span class="ow">in</span> <span class="n">error</span><span class="o">.</span><span class="n">message</span>
+                        <span class="ow">and</span> <span class="s2">&quot;[experiment]&quot;</span> <span class="ow">in</span> <span class="n">error</span><span class="o">.</span><span class="n">message</span>
+                    <span class="p">):</span>
+                        <span class="n">step_solution</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">(</span>
+                            <span class="s2">&quot;Event exceeded in initial conditions&quot;</span><span class="p">,</span>
+                            <span class="n">t</span><span class="o">=</span><span class="n">start_time</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">error</span>
+                        <span class="n">callbacks</span><span class="o">.</span><span class="n">on_experiment_error</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+                        <span class="n">feasible</span> <span class="o">=</span> <span class="kc">False</span>
+                        <span class="c1"># If none of the cycles worked, raise an error</span>
+                        <span class="k">if</span> <span class="n">cycle_num</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">step_num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="k">raise</span> <span class="n">error</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+                        <span class="c1"># Otherwise, just stop this cycle</span>
+                        <span class="k">break</span>
+
+                <span class="k">if</span> <span class="n">uses_unified</span><span class="p">:</span>
+                    <span class="n">step_termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_decode_combined_step_termination</span><span class="p">(</span>
+                        <span class="n">step_solution</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">step_termination</span> <span class="o">=</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span>
+
+                <span class="c1"># Add a padding rest step if necessary</span>
+                <span class="k">if</span> <span class="n">step</span><span class="o">.</span><span class="n">next_start_time</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">rest_time</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">step</span><span class="o">.</span><span class="n">next_start_time</span>
+                        <span class="o">-</span> <span class="p">(</span>
+                            <span class="n">initial_start_time</span>
+                            <span class="o">+</span> <span class="n">timedelta</span><span class="p">(</span><span class="n">seconds</span><span class="o">=</span><span class="nb">float</span><span class="p">(</span><span class="n">step_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                        <span class="p">)</span>
+                    <span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="n">rest_time</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">step_num</span><span class="p">,</span> <span class="n">cycle_length</span><span class="p">)</span>
+                        <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;step operating conditions&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_PADDING_REST_KEY</span>
+                        <span class="n">callbacks</span><span class="o">.</span><span class="n">on_step_start</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+                        <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_experiment_step_inputs</span><span class="p">(</span>
+                            <span class="n">user_inputs</span><span class="p">,</span>
+                            <span class="n">step</span><span class="p">,</span>
+                            <span class="n">step_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                            <span class="bp">self</span><span class="o">.</span><span class="n">_experiment_padding_rest_index</span><span class="p">,</span>
+                        <span class="p">)</span>
+
+                        <span class="n">step_solution_with_rest</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_padding_rest</span><span class="p">(</span>
+                            <span class="n">kwargs</span><span class="p">,</span> <span class="n">rest_time</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span>
+                        <span class="p">)</span>
+                        <span class="n">step_solution</span> <span class="o">+=</span> <span class="n">step_solution_with_rest</span>
+
+                <span class="n">steps</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">step_solution</span><span class="p">)</span>
+
+                <span class="c1"># If there haven&#39;t been any successful steps yet in this cycle, then</span>
+                <span class="c1"># carry the solution over from the previous cycle (but</span>
+                <span class="c1"># `step_solution` should still be an EmptySolution so that in the</span>
+                <span class="c1"># list of returned step solutions we can see which steps were</span>
+                <span class="c1"># skipped)</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">cycle_solution</span> <span class="ow">is</span> <span class="kc">None</span>
+                    <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_solution</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current_solution</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="n">cycle_solution</span> <span class="o">=</span> <span class="n">current_solution</span><span class="o">.</span><span class="n">last_state</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">cycle_solution</span> <span class="o">=</span> <span class="n">cycle_solution</span> <span class="o">+</span> <span class="n">step_solution</span>
+
+                <span class="n">current_solution</span> <span class="o">=</span> <span class="n">cycle_solution</span>
+
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;experiment time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">callbacks</span><span class="o">.</span><span class="n">on_step_end</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;termination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_solution</span><span class="o">.</span><span class="n">termination</span>
+
+                <span class="c1"># Check for some cases that would make the experiment end early</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">step_termination</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_FINAL_TIME</span>
+                    <span class="ow">and</span> <span class="n">step</span><span class="o">.</span><span class="n">uses_default_duration</span>
+                <span class="p">):</span>
+                    <span class="c1"># reached the default duration of a step (typically we should</span>
+                    <span class="c1"># reach an event before the default duration)</span>
+                    <span class="n">callbacks</span><span class="o">.</span><span class="n">on_experiment_infeasible_time</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+                    <span class="n">feasible</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+
+                <span class="k">elif</span> <span class="ow">not</span> <span class="p">(</span>
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">step_solution</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">)</span>
+                    <span class="ow">or</span> <span class="n">step_termination</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_FINAL_TIME</span>
+                    <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_EXPERIMENT_TAG</span> <span class="ow">in</span> <span class="n">step_termination</span>
+                <span class="p">):</span>
+                    <span class="c1"># Step has reached an event that is not specified in the</span>
+                    <span class="c1"># experiment</span>
+                    <span class="n">callbacks</span><span class="o">.</span><span class="n">on_experiment_infeasible_event</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+                    <span class="n">feasible</span> <span class="o">=</span> <span class="kc">False</span>
+                    <span class="k">break</span>
+
+                <span class="k">elif</span> <span class="n">time_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;experiment time&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">time_stop</span><span class="p">:</span>
+                    <span class="n">experiment_termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_TIME</span>
+                    <span class="n">stop_experiment</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="k">if</span> <span class="n">cycle_solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">save_this_cycle</span> <span class="ow">or</span> <span class="n">feasible</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">stop_experiment</span>
+            <span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">+</span> <span class="n">cycle_solution</span>
+
+            <span class="k">if</span> <span class="n">steps</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EmptySolution</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">steps</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_infeasible_steps</span><span class="p">(</span><span class="n">steps</span><span class="p">,</span> <span class="n">step</span><span class="p">,</span> <span class="n">step_str</span><span class="p">,</span> <span class="n">cycle_num</span><span class="p">):</span>
+                        <span class="k">continue</span>
+                <span class="n">cycle_sol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">make_cycle_solution</span><span class="p">(</span>
+                    <span class="n">steps</span><span class="p">,</span>
+                    <span class="n">esoh_solver</span><span class="o">=</span><span class="n">esoh_solver</span><span class="p">,</span>
+                    <span class="n">save_this_cycle</span><span class="o">=</span><span class="n">save_this_cycle</span><span class="p">,</span>
+                    <span class="n">inputs</span><span class="o">=</span><span class="n">user_inputs</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">cycle_solution</span><span class="p">,</span> <span class="n">cycle_sum_vars</span><span class="p">,</span> <span class="n">cycle_first_state</span> <span class="o">=</span> <span class="n">cycle_sol</span>
+                <span class="n">all_cycle_solutions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle_solution</span><span class="p">)</span>
+                <span class="n">all_summary_variables</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle_sum_vars</span><span class="p">)</span>
+                <span class="n">all_first_states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cycle_first_state</span><span class="p">)</span>
+
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;summary variables&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">cycle_sum_vars</span>
+
+            <span class="c1"># Calculate capacity_start using the first cycle</span>
+            <span class="k">if</span> <span class="n">cycle_num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;capacity&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">termination</span><span class="p">:</span>
+                    <span class="n">capacity_start</span> <span class="o">=</span> <span class="n">all_summary_variables</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;Capacity [A.h]&quot;</span><span class="p">]</span>
+                    <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;start capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">capacity_start</span>
+                    <span class="n">value</span><span class="p">,</span> <span class="n">typ</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">experiment</span><span class="o">.</span><span class="n">termination</span><span class="p">[</span><span class="s2">&quot;capacity&quot;</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;Ah&quot;</span><span class="p">:</span>
+                        <span class="n">capacity_stop</span> <span class="o">=</span> <span class="n">value</span>
+                    <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;%&quot;</span><span class="p">:</span>
+                        <span class="n">capacity_stop</span> <span class="o">=</span> <span class="n">value</span> <span class="o">/</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">capacity_start</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">capacity_stop</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">][</span><span class="s2">&quot;capacity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">capacity_stop</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">capacity_stop</span> <span class="o">=</span> <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;stopping conditions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;capacity&quot;</span><span class="p">)</span>
+
+            <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;elapsed time&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+
+            <span class="c1"># Add minimum voltage to summary variable logs if there is a voltage stop</span>
+            <span class="n">min_voltage</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="n">voltage_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">min_voltage</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">cycle_solution</span><span class="p">[</span><span class="s2">&quot;Battery voltage [V]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+                <span class="n">logs</span><span class="p">[</span><span class="s2">&quot;Minimum voltage [V]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">min_voltage</span>
+
+            <span class="n">callbacks</span><span class="o">.</span><span class="n">on_cycle_end</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+            <span class="c1"># Break if stopping conditions are met</span>
+            <span class="c1"># Logging is done in the callbacks</span>
+            <span class="k">if</span> <span class="n">capacity_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">capacity_now</span> <span class="o">=</span> <span class="n">cycle_sum_vars</span><span class="p">[</span><span class="s2">&quot;Capacity [A.h]&quot;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">capacity_now</span><span class="p">)</span> <span class="ow">and</span> <span class="n">capacity_now</span> <span class="o">&lt;=</span> <span class="n">capacity_stop</span><span class="p">:</span>
+                    <span class="n">experiment_termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_CAPACITY</span>
+                    <span class="n">stop_experiment</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">break</span>
+
+            <span class="k">if</span> <span class="n">voltage_stop</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">min_voltage</span> <span class="o">&lt;=</span> <span class="n">voltage_stop</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">experiment_termination</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_TERMINATION_VOLTAGE</span>
+                <span class="n">stop_experiment</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="k">break</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">feasible</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="k">if</span> <span class="n">stop_experiment</span><span class="p">:</span>
+                <span class="k">break</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_cycle_solutions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">cycles</span> <span class="o">=</span> <span class="n">all_cycle_solutions</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">update_summary_variables</span><span class="p">(</span><span class="n">all_summary_variables</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">all_first_states</span> <span class="o">=</span> <span class="n">all_first_states</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">experiment_termination</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">termination</span> <span class="o">=</span> <span class="n">experiment_termination</span>
+
+        <span class="n">callbacks</span><span class="o">.</span><span class="n">on_experiment_end</span><span class="p">(</span><span class="n">logs</span><span class="p">)</span>
+
+        <span class="c1"># record initial_start_time of the solution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="o">.</span><span class="n">initial_start_time</span> <span class="o">=</span> <span class="n">initial_start_time</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">run_padding_rest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">rest_time</span><span class="p">,</span> <span class="n">step_solution</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_built_experiment_model</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_PADDING_REST_KEY</span><span class="p">)</span>
+        <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_built_experiment_solver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_PADDING_REST_KEY</span><span class="p">)</span>
+        <span class="n">state_mapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_state_mapper_for_solution</span><span class="p">(</span><span class="n">step_solution</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+        <span class="c1"># Make sure we take at least 2 timesteps. The period is hardcoded to 10</span>
+        <span class="c1"># minutes,the user can always override it by adding a rest step</span>
+        <span class="n">npts</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">rest_time</span> <span class="o">/</span> <span class="mi">600</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+        <span class="n">step_solution_with_rest</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">(</span>
+            <span class="n">step_solution</span><span class="p">,</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">rest_time</span><span class="p">,</span>
+            <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">rest_time</span><span class="p">,</span> <span class="n">npts</span><span class="p">),</span>
+            <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">state_mapper</span><span class="o">=</span><span class="n">state_mapper</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">step_solution_with_rest</span>
+
+<div class="viewcode-block" id="Simulation.save">
+<a class="viewcode-back" href="../../../source/api/simulation/simulation.html#pybamm.Simulation.save">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">solver</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">steps_to_built_solvers</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="nb">isinstance</span><span class="p">(</span><span class="n">solver</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">CasadiSolver</span><span class="p">)</span>
+                    <span class="ow">and</span> <span class="n">solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">!=</span> <span class="p">{}</span>
+                <span class="p">):</span>
+                    <span class="n">solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">CasadiSolver</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">!=</span> <span class="p">{}</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_experiment_solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Simulation.save_model">
+<a class="viewcode-back" href="../../../source/api/simulation/simulation.html#pybamm.Simulation.save_model">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mesh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">variables</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITH_EXPERIMENT</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Serialising models coupled to experiments is not yet supported.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+            <span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
