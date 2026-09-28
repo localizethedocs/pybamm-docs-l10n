@@ -1,0 +1,584 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/simulations_and_experiments/rpt-experiment."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/simulations_and_experiments/rpt-experiment."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:9
+msgid "Degradation experiments with reference performance tests"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:20
+msgid ""
+"When running degradation experiments in the lab, it is important to use "
+"reference performance tests (RPTs) to measure capacity and other key "
+"metrics, otherwise the experimental contitions will interfere with the "
+"measurement! In PyBaMM, you can run simulations with RPTs using the "
+"``Experiment`` class."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"%pip install pybamm[plot,cite] -q  # install PyBaMM if it is not installed\n"
+"\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:49
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:55
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:62
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:73
+msgid "Load a simple degradation model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.SPM({\"SEI\": \"ec reaction limited\"})\n"
+"parameter_values = pybamm.ParameterValues(\"Mohtat2020\")\n"
+"parameter_values.update({\"SEI kinetic rate constant [m.s-1]\": 1e-14})"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:96
+msgid "Define three different experiments using the Experiment class:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:98
+msgid "cccv_experiment is a cycle ageing experiment"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:99
+msgid "charge_experiment charges to full after N ageing cycles"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:100
+msgid ""
+"rpt_experiment is a C/3 discharge in this case, but can also contain a "
+"charge, GITT, EIS and other procedures"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"N = 10\n"
+"cccv_experiment = pybamm.Experiment(\n"
+"    [\n"
+"        (\n"
+"            \"Charge at 1C until 4.2V\",\n"
+"            \"Hold at 4.2V until C/50\",\n"
+"            \"Discharge at 1C until 3V\",\n"
+"            \"Rest for 1 hour\",\n"
+"        )\n"
+"    ]\n"
+"    * N\n"
+")\n"
+"charge_experiment = pybamm.Experiment(\n"
+"    [\n"
+"        (\n"
+"            \"Charge at 1C until 4.2V\",\n"
+"            \"Hold at 4.2V until C/50\",\n"
+"        )\n"
+"    ]\n"
+")\n"
+"rpt_experiment = pybamm.Experiment([(\"Discharge at C/3 until 3V\",)])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:141
+msgid ""
+"Run the ageing, charge and RPT experiments in order by feeding the previous "
+"solution into the solve command:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"sim = pybamm.Simulation(\n"
+"    model, experiment=cccv_experiment, parameter_values=parameter_values\n"
+")\n"
+"cccv_sol = sim.solve()\n"
+"sim = pybamm.Simulation(\n"
+"    model, experiment=charge_experiment, parameter_values=parameter_values\n"
+")\n"
+"charge_sol = sim.solve(starting_solution=cccv_sol)\n"
+"sim = pybamm.Simulation(\n"
+"    model, experiment=rpt_experiment, parameter_values=parameter_values\n"
+")\n"
+"rpt_sol = sim.solve(starting_solution=charge_sol)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:173
+msgid "Plot detailed current/voltage data for the RPT cycle only:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(rpt_sol.cycles[-1], [\"Current [A]\", \"Voltage [V]\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:196
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"fcfcd6773a1649f6ad6890ca9d6610e6\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:207
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=32.16021213978805, description=&#39;"
+"t&#39;, max=34.910964151192324, min=32.160…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:213
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=32.16021213978805, description='t', "
+"max=34.910964151192324, min=32.160…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:220
+msgid ""
+"interactive(children=(FloatSlider(value=32.16021213978805, description='t', "
+"max=34.910964151192324, min=32.160…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:232
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7ff13da91760&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:238
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7ff13da91760>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:245
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7ff13da91760>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:256
+msgid ""
+"PyBaMM's summary variables track important cell-level degradation veriables "
+"at the end of each cycle. The charge and RPT cycles are also counted, making "
+"a total of 12 cycles:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "pybamm.plot_summary_variables(rpt_sol);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:285
+msgid "Repeat the procedure four times:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"cccv_sols = []\n"
+"charge_sols = []\n"
+"rpt_sols = []\n"
+"M = 5\n"
+"for i in range(M):\n"
+"    if i != 0:  # skip the first set of ageing cycles because it's already "
+"been done\n"
+"        sim = pybamm.Simulation(\n"
+"            model, experiment=cccv_experiment, "
+"parameter_values=parameter_values\n"
+"        )\n"
+"        cccv_sol = sim.solve(starting_solution=rpt_sol)\n"
+"        sim = pybamm.Simulation(\n"
+"            model, experiment=charge_experiment, "
+"parameter_values=parameter_values\n"
+"        )\n"
+"        charge_sol = sim.solve(starting_solution=cccv_sol)\n"
+"        sim = pybamm.Simulation(\n"
+"            model, experiment=rpt_experiment, "
+"parameter_values=parameter_values\n"
+"        )\n"
+"        rpt_sol = sim.solve(starting_solution=charge_sol)\n"
+"    cccv_sols.append(cccv_sol)\n"
+"    charge_sols.append(charge_sol)\n"
+"    rpt_sols.append(rpt_sol)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:326
+msgid "You can plot any RPT cycle. The last one is chosen here."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"pybamm.dynamic_plot(rpt_sols[-1].cycles[-1], [\"Current [A]\", \"Voltage "
+"[V]\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:349
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"36de09f82f3849c982f98497b4cbd5cd\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:360
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=161.47100901868143, description=&#39;"
+"t&#39;, max=163.71508382969813, min=161.4…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:366
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=161.47100901868143, description='t', "
+"max=163.71508382969813, min=161.4…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:373
+msgid ""
+"interactive(children=(FloatSlider(value=161.47100901868143, description='t', "
+"max=163.71508382969813, min=161.4…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:385
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7ff12d79b610&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:391
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7ff12d79b610>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:398
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7ff12d79b610>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:409
+msgid ""
+"One way of demonstrating how useful RPTs are is to plot the discharge "
+"capacity for each cycle. It is convenient to use the final ``rpt_sol`` "
+"because it also contains all previous simulations."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid ""
+"cccv_cycles = []\n"
+"cccv_capacities = []\n"
+"rpt_cycles = []\n"
+"rpt_capacities = []\n"
+"for i in range(M):\n"
+"    for j in range(N):\n"
+"        cccv_cycles.append(i * (N + 2) + j + 1)\n"
+"        start_capacity = (\n"
+"            rpt_sol.cycles[i * (N + 2) + j]\n"
+"            .steps[2][\"Discharge capacity [A.h]\"]\n"
+"            .entries[0]\n"
+"        )\n"
+"        end_capacity = (\n"
+"            rpt_sol.cycles[i * (N + 2) + j]\n"
+"            .steps[2][\"Discharge capacity [A.h]\"]\n"
+"            .entries[-1]\n"
+"        )\n"
+"        cccv_capacities.append(end_capacity - start_capacity)\n"
+"    rpt_cycles.append((i + 1) * (N + 2))\n"
+"    start_capacity = rpt_sol.cycles[(i + 1) * (N + 2) - 1][\n"
+"        \"Discharge capacity [A.h]\"\n"
+"    ].entries[0]\n"
+"    end_capacity = rpt_sol.cycles[(i + 1) * (N + 2) - 1][\n"
+"        \"Discharge capacity [A.h]\"\n"
+"    ].entries[-1]\n"
+"    rpt_capacities.append(end_capacity - start_capacity)\n"
+"plt.scatter(cccv_cycles, cccv_capacities, label=\"Ageing cycles\")\n"
+"plt.scatter(rpt_cycles, rpt_capacities, label=\"RPT cycles\")\n"
+"plt.xlabel(\"Cycle number\")\n"
+"plt.ylabel(\"Discharge capacity [A.h]\")\n"
+"plt.legend()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:462
+msgid ""
+"<pre>\n"
+"&lt;matplotlib.legend.Legend at 0x7ff12d616bb0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:468
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<matplotlib.legend.Legend at 0x7ff12d616bb0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:475
+msgid "<matplotlib.legend.Legend at 0x7ff12d616bb0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:494
+msgid ""
+"The ageing cycles have a higher discharge rate than the RPT cycles and "
+"therefore have a slightly lower discharge capacity. (The charge cycles are "
+"not included because they have no discharge capacity.)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:505
+msgid "Finally, plot the summary variables for the entire experiment run."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:535
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:537
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:558
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Ferran Brosa Planella and W. Dhammika Widanage. Systematic derivation of "
+"a Single Particle Model with Electrolyte and Side Reactions (SPMe+SR) for "
+"degradation of lithium-ion batteries. Submitted for publication, ():, 2022. "
+"doi:.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[6] Peyman Mohtat, Suhak Lee, Valentin Sulzer, Jason B. Siegel, and Anna G. "
+"Stefanopoulou. Differential Expansion and Voltage Model for Li-ion Batteries "
+"at Practical Charging Rates. Journal of The Electrochemical Society, "
+"167(11):110561, 2020. doi:10.1149/1945-7111/aba5d1.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[8] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[9] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"[10] Xiao Guang Yang, Yongjun Leng, Guangsheng Zhang, Shanhai Ge, and Chao "
+"Yang Wang. Modeling of lithium plating induced aging of lithium-ion "
+"batteries: transition from linear to nonlinear aging. Journal of Power "
+"Sources, 360:28–40, 2017. doi:10.1016/j.jpowsour.2017.05.110.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:574
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Ferran Brosa Planella and W. Dhammika Widanage. Systematic derivation of "
+"a Single Particle Model with Electrolyte and Side Reactions (SPMe+SR) for "
+"degradation of lithium-ion batteries. Submitted for publication, ():, 2022. "
+"doi:.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[6] Peyman Mohtat, Suhak Lee, Valentin Sulzer, Jason B. Siegel, and Anna G. "
+"Stefanopoulou. Differential Expansion and Voltage Model for Li-ion Batteries "
+"at Practical Charging Rates. Journal of The Electrochemical Society, "
+"167(11):110561, 2020. doi:10.1149/1945-7111/aba5d1.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[8] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[9] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"[10] Xiao Guang Yang, Yongjun Leng, Guangsheng Zhang, Shanhai Ge, and Chao "
+"Yang Wang. Modeling of lithium plating induced aging of lithium-ion "
+"batteries: transition from linear to nonlinear aging. Journal of Power "
+"Sources, 360:28–40, 2017. doi:10.1016/j.jpowsour.2017.05.110.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/rpt-experiment.ipynb:591
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Ferran Brosa Planella and W. Dhammika Widanage. Systematic derivation of "
+"a Single Particle Model with Electrolyte and Side Reactions (SPMe+SR) for "
+"degradation of lithium-ion batteries. Submitted for publication, ():, 2022. "
+"doi:.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. "
+"Towards better estimability of electrode-specific state of health: decoding "
+"the cell expansion. Journal of Power Sources, 427:101–111, 2019.\n"
+"[6] Peyman Mohtat, Suhak Lee, Valentin Sulzer, Jason B. Siegel, and Anna G. "
+"Stefanopoulou. Differential Expansion and Voltage Model for Li-ion Batteries "
+"at Practical Charging Rates. Journal of The Electrochemical Society, "
+"167(11):110561, 2020. doi:10.1149/1945-7111/aba5d1.\n"
+"[7] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[8] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"[9] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential "
+"voltage analysis for battery manufacturing process control. arXiv preprint "
+"arXiv:2303.07088, 2023.\n"
+"[10] Xiao Guang Yang, Yongjun Leng, Guangsheng Zhang, Shanhai Ge, and Chao "
+"Yang Wang. Modeling of lithium plating induced aging of lithium-ion "
+"batteries: transition from linear to nonlinear aging. Journal of Power "
+"Sources, 360:28–40, 2017. doi:10.1016/j.jpowsour.2017.05.110."
+msgstr ""

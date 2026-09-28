@@ -1,0 +1,330 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/performance/03-pybamm-solvers.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/performance/03-pybamm-solvers.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:9
+msgid "The PyBaMM Solvers"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:11
+msgid ""
+"PyBaMM has a few different solvers that can be used to solve the model "
+"equations. In this notebook we will go through the different solvers and "
+"contrast their features and performance."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import time\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:38
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:44
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:51
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:62
+msgid "The solvers available in PyBaMM are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:64
+msgid ""
+"```pybamm.CasadiSolver`` <https://docs.pybamm.org/en/stable/source/api/"
+"solvers/casadi_solver.html>`__: This is a wrapper around the CasADi solver, "
+"which is a wrapper around the `Sundials solver suite <https://sundials."
+"readthedocs.io/en/latest/>`__. This has been the default solver in PyBaMM "
+"since its inception, but it will soon be replaced as the default solver by "
+"the ``IDAKLUSolver`` described below."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:65
+msgid ""
+"```pybamm.IDAKLUSolver`` <https://docs.pybamm.org/en/stable/source/api/"
+"solvers/idaklu_solver.html>`__: This is a direct wrapper around the Sundials "
+"IDAS solver written by the PyBaMM team. This has been customised to work "
+"well with PyBaMM's models and will soon be the default solver in PyBaMM. It "
+"is often faster than the ``CasadiSolver`` with default model options, but "
+"the ``CasadiSolver`` can still be faster for some models with custom options "
+"so it is worth trying both."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:66
+msgid ""
+"```pybamm.ScipySolver`` <https://docs.pybamm.org/en/stable/source/api/"
+"solvers/scipy_solver.html>`__: This is a wrapper around the ``scipy."
+"integrate.solve_ivp`` solver. This is generally much slower than the other "
+"solvers and is only recommended for very simple problems or for testing."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:67
+msgid ""
+"```pybamm.IDAKLUJax`` <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"idaklu_jax.html>`__ (*experimental*): This is a `JAX <https://jax."
+"readthedocs.io/en/latest/index.html>`__ wrapper around the ``pybamm."
+"IDAKLUSolver`` solver that allows it to be used within a JAX model. This is "
+"still experimental for Windows, so is only recommended for use on Linux or "
+"MacOS."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:68
+msgid ""
+"```pybamm.JaxSolver`` <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"jax_solver.html>`__ (*experimental*): This is a pure JAX solver that uses "
+"the ``jax`` library to solve the model equations instead of the Sundials "
+"solvers. This is also experimental on Windows, so is only recommended for "
+"use on Linux or MacOS."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:70
+msgid ""
+"The two main solvers are the Casadi and IDAKLU solvers. Out of these two, "
+"the IDAKLU solver is generally recommended as it is faster and has more "
+"features. Historically, the Casadi solver has been the default solver in "
+"PyBaMM, but current development is focused on the IDAKLU solver and this is "
+"expected to become the default solver in the near future."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:73
+msgid "Solver features"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:75
+msgid ""
+"**Speed**: The IDAKLU solver is generally faster than the Casadi solver, "
+"both for solving models and also post-processing the ouput variables. "
+"However, for some physics options the Casadi solver can be faster, so it is "
+"worth trying both."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:76
+msgid ""
+"**Sensitivity analysis**: The IDAKLU solver can compute forward model "
+"sensitivities with respect to input parameters. It uses the Sundials IDAS "
+"solver to compute the sensitivities. The Casadi solver can also compute "
+"sensitivities, but it is generally slower than the IDAKLU solver and not "
+"recommended for this purpose."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:77
+msgid ""
+"**Adjoint sensitivity analysis**: Either adjoint sensitivity analysis or "
+"reverse-mode auto differentiation is useful to compute sensitivities if the "
+"number of input parameters is very large (e.g. ML models). Currently only "
+"the pure Jax solver supports reverse mode auto differentiation, but adding "
+"adjoint sensitivity analysis to the IDAKLU solver is a future development "
+"goal."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:78
+msgid ""
+"**Parallelism**: If a list of input parameters are passed to the solver, the "
+"IDAKLU solver can solve the model in parallel for each parameter using "
+"multiple threads via OpenMP. This can be useful, for example for parameter "
+"sweeps. The Casadi solver can also solve models in parallel, but it uses the "
+"Python ``multiprocessing`` library which can be slower than OpenMP. If "
+"enough threads are available and the model is large enough, the IDAKLU "
+"solver can also parallelise a single solve using OpenMP and the Sundials "
+"NVECTOR_OPENMP implementation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:80
+msgid ""
+"**GPU acceleration**: Currently only the pure Jax solver supports GPU "
+"acceleration. We have some experimental support for GPU acceleration via a "
+"new JAX-based backend for the IDAKLU solver, but this is still in "
+"development."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:81
+msgid ""
+"**Events**: The Casadi, IDAKLU and Scipy solvers all support events, which "
+"are used to trigger an action when a certain condition is met. The main use "
+"case for events is to stop the solver between different steps of an "
+"experiment. The pure Jax solver does not support events. The IDAKLU solver "
+"has a faster and more robust event handling than the Casadi solver, as it "
+"uses the underlying Sundials event handling."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:82
+msgid ""
+"**Evaluation and interpolation points**: All the solver take a list of time "
+"points to evaluate the solution (the ``t_eval`` argument). This stops the "
+"solver at each requested time point, slowing down the time-stepping of the "
+"solver. The IDAKLU solver can also take a list of interpolation points (the "
+"``t_interp`` argument) which will interpolate the solution at these points "
+"without stopping the solver, speeding up the calculation of the solution."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:83
+msgid ""
+"**other features**: The Sundials solvers have many custom features that "
+"change the way the solver works (e.g. tolerances, linear solvers, minimum "
+"step sizes, etc.), you can read more about these in the `Sundials docs "
+"<https://sundials.readthedocs.io/en/latest/>`__. Some of these are exposed "
+"in the Casadi solver (see the ``extra_options`` arguments to this solver), "
+"but the IDAKLU solver has generally more features exposed and documented "
+"(see the `docs <https://docs.pybamm.org/en/stable/source/api/solvers/"
+"idaklu_solver.html>`__). If PyBaMM does not expose a feature you need, you "
+"can always post an issue on the `GitHub page <https://github.com/pybamm-team/"
+"PyBaMM/issues>`__ and we will try to add it."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:87
+msgid "Solver Comparison"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:89
+msgid ""
+"Below we will compare three of the main solvers available in PyBaMM: the "
+"Casadi, IDAKLU and Scipy solvers. We will compare the speed of the solvers "
+"for solving the SPM, SPMe and DFN models with their default options, and "
+"compare the result."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:-1
+msgid ""
+"first_solve_time = np.zeros((3, 3))\n"
+"second_solve_time = np.zeros((3, 3))\n"
+"for i, model_cls in enumerate(\n"
+"    [pybamm.lithium_ion.SPM, pybamm.lithium_ion.SPMe, pybamm.lithium_ion."
+"DFN]\n"
+"):\n"
+"    for j, solver_cls in enumerate(\n"
+"        [pybamm.CasadiSolver, pybamm.IDAKLUSolver, pybamm.ScipySolver]\n"
+"    ):\n"
+"        if solver_cls == pybamm.ScipySolver and model_cls == pybamm."
+"lithium_ion.DFN:\n"
+"            first_solve_time[i, j] = np.nan\n"
+"            second_solve_time[i, j] = np.nan\n"
+"            continue\n"
+"        sim = pybamm.Simulation(model_cls(), solver=solver_cls())\n"
+"        start_time = time.perf_counter()\n"
+"        sol = sim.solve([0, 3600])\n"
+"        voltage = sol[\"Terminal voltage [V]\"](0)\n"
+"        end_time = time.perf_counter()\n"
+"        first_solve_time[i, j] = end_time - start_time\n"
+"        start_time = time.perf_counter()\n"
+"        sol = sim.solve([0, 3600])\n"
+"        voltage = sol[\"Terminal voltage [V]\"](0)\n"
+"        end_time = time.perf_counter()\n"
+"        second_solve_time[i, j] = end_time - start_time\n"
+"\n"
+"\n"
+"fig, ax = plt.subplots(1, 2, figsize=(10, 5))\n"
+"for i, model_cls in enumerate(\n"
+"    [pybamm.lithium_ion.SPM, pybamm.lithium_ion.SPMe, pybamm.lithium_ion."
+"DFN]\n"
+"):\n"
+"    ax[0].plot(first_solve_time[i, :], label=model_cls.__name__)\n"
+"    ax[1].plot(second_solve_time[i, :], label=model_cls.__name__)\n"
+"ax[0].set_xticks(np.arange(3))\n"
+"ax[0].set_xticklabels([\"Casadi\", \"IDAKLU\", \"Scipy\"])\n"
+"ax[0].set_ylabel(\"Time (s)\")\n"
+"ax[0].set_title(\"First solve time\")\n"
+"ax[0].legend()\n"
+"ax[1].set_xticks(np.arange(3))\n"
+"ax[1].set_xticklabels([\"Casadi\", \"IDAKLU\", \"Scipy\"])\n"
+"ax[1].set_ylabel(\"Time (s)\")\n"
+"ax[1].set_title(\"Second solve time\")\n"
+"ax[1].legend()\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:160
+msgid ""
+"The \"First solve time\" plot includes the setup time for the solver, which "
+"for this relatively small problem is significant. For SPM and DFN the IDAKLU "
+"solver is the fastest of the three, but for the SPMe the setup time required "
+"for IDAKLU makes this the slowest of the three."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:162
+msgid ""
+"The \"Second solve time\" plot excludes this setup time and is a clearer "
+"indication of the relative speed of the solvers for (a) calculating a "
+"solution and (b) post-processing the solution to extract the voltage. For "
+"all three models, the IDAKLU solver is the fastest of the three."
+msgstr ""
+
+#: ../../../source/examples/notebooks/performance/03-pybamm-solvers.ipynb:164
+msgid ""
+"The Scipy solver is much slower than the other two solvers as it is a Python "
+"solver and not optimised for speed. Both the Casadi and IDAKLU solvers use "
+"the same Sundials solvers under the hood, but the IDAKLU solver is generally "
+"faster as it has been customised to work well with PyBaMM's models. The "
+"IDAKLU solver also has improved online (via ``t_eval``) or post-processing "
+"interpolation features, so obtaining output variables can often be faster "
+"than the Casadi solver."
+msgstr ""
