@@ -1,0 +1,1245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/contributing.md:1
+msgid ""
+"<!-- a stub file to add CONTRIBUTING.md from the root directory\n"
+"to the hosted docs -->\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:2
+msgid "Contributing to PyBaMM"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:4
+msgid ""
+"If you'd like to contribute to PyBaMM (thanks!), please have a look at the "
+"[guidelines below](#workflow)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:6
+msgid ""
+"If you're already familiar with our workflow, maybe have a quick look at the "
+"[pre-commit checks](#pre-commit-checks) directly below."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:8
+msgid "Pre-commit checks"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:10
+msgid "Before you commit any code, please perform the following checks:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:12
+msgid "[All tests pass](#testing): `$ nox -s unit`"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:13
+msgid ""
+"[The documentation builds](#building-the-documentation): `$ nox -s docs`"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:15
+msgid "Installing and using pre-commit"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:17
+msgid ""
+"`PyBaMM` uses a set of `pre-commit` hooks and the `pre-commit` bot to format "
+"and prettify the codebase. The hooks can be installed locally using -"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:19
+msgid ""
+"# Using uv\n"
+"uvx pre-commit install\n"
+"\n"
+"# Or using pip\n"
+"pip install pre-commit\n"
+"pre-commit install\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:28
+msgid ""
+"This would run the checks every time a commit is created locally. The checks "
+"will only run on the files modified by that commit, but the checks can be "
+"triggered for all the files using -"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:30
+msgid "pre-commit run --all-files\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:34
+msgid ""
+"If you would like to skip the failing checks and push the code for further "
+"discussion, use the `--no-verify` option with `git commit`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:36
+msgid "Workflow"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:38
+msgid ""
+"We use [GIT](https://en.wikipedia.org/wiki/Git) and [GitHub](https://en."
+"wikipedia.org/wiki/GitHub) to coordinate our work. When making any kind of "
+"update, we try to follow the procedure below."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:40
+msgid "A. Before you begin"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:42
+msgid ""
+"Create an [issue](https://guides.github.com/features/issues/) where new "
+"proposals can be discussed before any coding is done."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:43
+msgid ""
+"Create a [branch](https://help.github.com/articles/creating-and-deleting-"
+"branches-within-your-repository/) of this repo (ideally on your own [fork]"
+"(https://help.github.com/articles/fork-a-repo/)), where all changes will be "
+"made"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:44
+msgid ""
+"Download the source code onto your local system, by [cloning](https://help."
+"github.com/articles/cloning-a-repository/) the repository (or your fork of "
+"the repository)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:45
+msgid ""
+"[Install](https://docs.pybamm.org/en/latest/source/user_guide/installation/"
+"install-from-source.html) PyBaMM with the developer options."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:46
+msgid ""
+"[Test](#testing) if your installation worked, using pytest: `$ pytest -m "
+"unit`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:48
+msgid "You now have everything you need to start making changes!"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:50
+msgid "B. Writing your code"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:52
+msgid ""
+"PyBaMM is developed in [Python](https://www.python.org), and makes heavy use "
+"of [NumPy](https://numpy.org/)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:53
+msgid ""
+"Make sure to follow our [coding style guidelines](#coding-style-guidelines)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:54
+msgid ""
+"Commit your changes to your branch with [useful, descriptive commit messages]"
+"(https://cbea.ms/git-commit/): Remember these are publicly visible and "
+"should still make sense a few months ahead in time. While developing, you "
+"can keep using the GitHub issue you're working on as a place for discussion."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:58
+msgid ""
+"If you want to add a dependency on another library, or re-use code you found "
+"somewhere else, have a look at [these guidelines](#dependencies-and-reusing-"
+"code)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:60
+msgid "C. Merging your changes with PyBaMM"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:62
+msgid "[Test your code!](#testing)"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:63
+msgid ""
+"PyBaMM has online documentation at http://docs.pybamm.org/. To make sure any "
+"new methods or classes you added show up there, please read the "
+"[documentation](#documentation) section."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:64
+msgid ""
+"If you added a major new feature, perhaps it should be showcased in an "
+"[example notebook](#example-notebooks)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:65
+msgid ""
+"When you feel your code is finished, or at least warrants serious "
+"discussion, run the [pre-commit checks](#pre-commit-checks) and then create "
+"a [pull request](https://help.github.com/articles/about-pull-requests/) (PR) "
+"on [PyBaMM's GitHub page](https://github.com/pybamm-team/PyBaMM)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:66
+msgid ""
+"Once a PR has been created, it will be reviewed by any member of the "
+"community. Changes might be suggested which you can make by simply adding "
+"new commits to the branch. When everything's finished, someone with the "
+"right GitHub permissions will merge your changes into PyBaMM main repository."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:68
+msgid ""
+"Finally, if you really, really, _really_ love developing PyBaMM, have a look "
+"at the current [project infrastructure](#infrastructure)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:70
+msgid "Changelog entries"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:72
+msgid ""
+"Every PR that ships user-visible behaviour must add an entry to the `# "
+"[Unreleased]` section at the top of [`CHANGELOG.md`](https://github.com/"
+"pybamm-team/PyBaMM/blob/main/CHANGELOG.md). Pick the section that matches "
+"the change:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:74
+msgid ""
+"`## Breaking changes` — removing or renaming public API, signature/default/"
+"return-type changes that existing code would notice, default model/solver "
+"changes that move outputs, dropping Python/OS/dependency support, on-disk "
+"format changes without a backward-compatible reader. Include a one-line "
+"migration note."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:75
+msgid ""
+"`## Deprecated` — when you add a `DeprecationWarning` to a public API that "
+"will be removed in a later release. Note when removal is planned."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:76
+msgid ""
+"`## Features` — new functionality (new optional kwargs, new submodels, new "
+"public API, etc.)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:77
+msgid "`## Bug fixes` — corrections to existing behaviour."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:79
+msgid ""
+"If your PR is internal-only (refactor, docs typo, CI tweak, tests), no "
+"changelog entry is needed."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:81
+msgid ""
+"Each entry is a single bullet ending in a PR link, e.g. `([#1234](https://"
+"github.com/pybamm-team/PyBaMM/pull/1234))`. Use the full URL so the rendered "
+"markdown on docs.pybamm.org links correctly."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:83
+msgid ""
+"For the full release policy — what counts as \"public API\", deprecation "
+"horizon, version scheme — see [`RELEASE.md`](https://github.com/pybamm-team/"
+"PyBaMM/blob/main/RELEASE.md)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:85
+msgid "Coding style guidelines"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:87
+msgid ""
+"PyBaMM follows the [PEP8 recommendations](https://www.python.org/dev/peps/"
+"pep-0008/) for coding style. These are very common guidelines, and community "
+"tools have been developed to check how well projects implement them. We "
+"recommend using pre-commit hooks to check your code before committing it. "
+"See [installing and using pre-commit](#installing-and-using-pre-commit) "
+"section for more details."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:89
+msgid "Ruff"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:91
+msgid ""
+"We use [ruff](https://github.com/astral-sh/ruff) to check our PEP8 "
+"adherence. To try this on your system, navigate to the PyBaMM directory in a "
+"console and type"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:93
+msgid ""
+"# Using uv\n"
+"uvx pre-commit run ruff\n"
+"\n"
+"# Or using pip\n"
+"pip install pre-commit\n"
+"pre-commit run ruff\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:102
+msgid ""
+"ruff is configured inside the file `pre-commit-config.yaml`, allowing us to "
+"ignore some errors. If you think this should be added or removed, please "
+"submit an [issue](https://github.com/pybamm-team/PyBaMM/issues)"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:104
+msgid ""
+"When you commit your changes they will be checked against ruff automatically "
+"(see [Pre-commit checks](#pre-commit-checks))."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:106
+msgid "Naming"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:108
+msgid ""
+"Naming is hard. In general, we aim for descriptive class, method, and "
+"argument names. Avoid abbreviations when possible without making names "
+"overly long, so `mean` is better than `mu`, but a class name like `MyClass` "
+"is fine."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:110
+msgid ""
+"Class names are CamelCase, and start with an upper case letter, for example "
+"`MyOtherClass`. Method and variable names are lower case, and use "
+"underscores for word separation, for example `x` or `iteration_count`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:112
+msgid "Dependencies and reusing code"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:114
+msgid ""
+"While it's a bad idea for developers to \"reinvent the wheel\", it's "
+"important for users to get a _reasonably sized download and an easy "
+"install_. In addition, external libraries can sometimes cease to be "
+"supported, and when they contain bugs it might take a while before fixes "
+"become available as automatic downloads to PyBaMM users. For these reasons, "
+"all dependencies in PyBaMM should be thought about carefully, and discussed "
+"on GitHub."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:117
+msgid ""
+"Direct inclusion of code from other packages is possible, as long as their "
+"license permits it and is compatible with ours, but again should be "
+"considered carefully and discussed in the group. Snippets from blogs and "
+"stackoverflow can often be included without attribution, but if they solve a "
+"particularly nasty problem (or are very hard to read) it's often a good idea "
+"to attribute (and document) them, by making a comment with a link in the "
+"source code."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:124
+msgid "Separating dependencies"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:126
+msgid ""
+"On the other hand... We _do_ want to compare several tools, to generate "
+"documentation, and to speed up development. For this reason, the dependency "
+"structure is split into 4 parts:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:128
+msgid ""
+"Core PyBaMM: A minimal set, including things like NumPy, SciPy, etc. All "
+"infrastructure should run against this set of dependencies, as well as any "
+"numerical methods we implement ourselves."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:129
+msgid ""
+"Extras: Other inference packages and their dependencies. Methods we don't "
+"want to implement ourselves, but do want to provide an interface to can have "
+"their dependencies added here."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:130
+msgid ""
+"Documentation generating code: Everything you need to generate and work on "
+"the docs."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:131
+msgid ""
+"Development code: Everything you need to do PyBaMM development (so all of "
+"the above packages, plus ruff and other testing tools)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:133
+msgid ""
+"Only 'core pybamm' is installed by default. The others have to be specified "
+"explicitly when running the installation command."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:135
+msgid "Managing Optional Dependencies and Their Imports"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:137
+msgid ""
+"PyBaMM utilizes optional dependencies to allow users to choose which "
+"additional libraries they want to use. Managing these optional dependencies "
+"and their imports is essential to provide flexibility to PyBaMM users."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:139
+msgid ""
+"PyBaMM provides a utility function `import_optional_dependency`, to check "
+"for the availability of optional dependencies within methods. This function "
+"can be used to conditionally import optional dependencies only if they are "
+"available. Here's how to use it:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:141
+msgid ""
+"Optional dependencies should never be imported at the module level, but "
+"always inside methods. For example:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:143
+msgid ""
+"def use_pybtex(x, y, z):\n"
+"    pybtex = import_optional_dependency(\"pybtex\")\n"
+"    ...\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:149
+msgid "While importing a specific module instead of an entire package/library:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:151
+msgid ""
+"def use_parse_file(x, y, z):\n"
+"    parse_file = import_optional_dependency(\"pybtex.database\", "
+"\"parse_file\")\n"
+"    ...\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:157
+msgid ""
+"This allows people to (1) use PyBaMM without importing optional dependencies "
+"by default and (2) configure module-dependent functionalities in their "
+"scripts, which _must_ be done before e.g. `print_citations` method is first "
+"imported."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:159
+msgid "**Writing Tests for Optional Dependencies**"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:161
+msgid ""
+"Below, we list the currently available test functions to provide an "
+"overview. If you find it useful to add new test cases please do so within "
+"`tests/unit/test_util.py`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:163
+msgid ""
+"Currently, there are three functions to test what concerns optional "
+"dependencies:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:164
+msgid "`test_import_optional_dependency`"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:165
+msgid "`test_pybamm_import`"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:166
+msgid "`test_optional_dependencies`"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:168
+msgid ""
+"The `test_import_optional_dependency` function extracts the optional "
+"dependencies installed in the setup environment, makes them unimportable (by "
+"setting them to `None` among the `sys.modules`), and tests that the `pybamm."
+"util.import_optional_dependency` function throws a `ModuleNotFoundError` "
+"exception when their import is attempted."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:170
+msgid ""
+"The `test_pybamm_import` function extracts the optional dependencies "
+"installed in the setup environment and makes them unimportable (by setting "
+"them to `None` among the `sys.modules`), unloads `pybamm` and its sub-"
+"modules, and finally tests that `pybamm` can be imported successfully. In "
+"fact, it is essential that the `pybamm` package is importable with only the "
+"mandatory dependencies."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:172
+msgid ""
+"The `test_optional_dependencies` function extracts `pybamm` mandatory "
+"distribution packages and verifies that they are not present in the optional "
+"distribution packages list in `pyproject.toml`. This test is crucial for "
+"ensuring the consistency of the released package information and potential "
+"updates to dependencies during development."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:174
+msgid "Testing"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:176
+msgid ""
+"All code requires testing. We use the [pytest](https://docs.pytest.org/en/"
+"stable/) package for our tests. (These tests typically just check that the "
+"code runs without error, and so, are more _debugging_ than _testing_ in a "
+"strict sense. Nevertheless, they are very useful to have!)"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:178
+msgid "We use following plugins for various needs:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:180
+msgid ""
+"[nbmake](https://github.com/treebeardtech/nbmake/) : plugins to test the "
+"example notebooks."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:182
+msgid ""
+"[pytest-xdist](https://pypi.org/project/pytest-xdist/) : plugins to run "
+"tests in parallel."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:184
+msgid "To run unit tests using `nox`:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:186
+msgid ""
+"# Using uv\n"
+"uv run nox -s unit\n"
+"\n"
+"# Or with nox installed directly\n"
+"nox -s unit\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:194
+msgid "Alternatively, you can run tests directly with `pytest`:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:196
+msgid "pytest -m unit\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:200
+msgid "Writing tests"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:202
+msgid ""
+"Every new feature should have its own test. To create ones, have a look at "
+"the `test` directory and see if there's a test for a similar method. Copy-"
+"pasting this is a good way to start."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:204
+msgid ""
+"Next, add some simple (and speedy!) tests of your main features. If these "
+"run without exceptions that's a good start! Next, check the output of your "
+"methods using [assert statements](https://docs.pytest.org/en/7.1.x/how-to/"
+"assert.html)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:206
+msgid "Running more tests"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:208
+msgid ""
+"The tests are divided into `unit` tests, whose aim is to check individual "
+"bits of code (e.g. discretising a gradient operator, or solving a simple "
+"ODE), and `integration` tests, which check how parts of the program interact "
+"as a whole (e.g. solving a full model). If you want to check integration "
+"tests as well as unit tests, type"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:211
+msgid "nox -s tests\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:214
+msgid ""
+"or, alternatively, you can use posargs to pass the path to the test to "
+"`nox`. For example:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:216
+msgid ""
+"nox -s tests -- tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::"
+"test_simple_ode_model\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:220
+msgid ""
+"When you commit anything to PyBaMM, these checks will also be run "
+"automatically (see [infrastructure](#infrastructure))."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:222
+msgid "Testing the example notebooks"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:224
+msgid ""
+"To test all the example notebooks in the `docs/source/examples/` folder with "
+"`pytest` and `nbmake`, type"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:226
+msgid "nox -s examples\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:230
+msgid "Alternatively, you may use `pytest` directly with the `--nbmake` flag:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:232
+msgid "pytest --nbmake docs/source/examples/\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:236
+msgid ""
+"which runs all the notebooks in the `docs/source/examples/notebooks/` folder "
+"in parallel by default, using the `pytest-xdist` plugin."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:238
+msgid ""
+"Sometimes, debugging a notebook can be a hassle. To run a single notebook, "
+"pass the path to it to `pytest`:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:240
+msgid "pytest --nbmake docs/source/examples/notebooks/notebook-name.ipynb\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:244
+msgid ""
+"or, alternatively, you can use posargs to pass the path to the notebook to "
+"`nox`. For example:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:246
+msgid "nox -s examples -- docs/source/examples/notebooks/notebook-name.ipynb\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:250
+msgid ""
+"You may also test multiple notebooks this way. Passing the path to a folder "
+"will run all the notebooks in that folder:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:252
+msgid "nox -s examples -- docs/source/examples/notebooks/models/\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:256
+msgid ""
+"You may also use an appropriate [glob pattern](https://docs.python.org/3/"
+"library/glob.html) to run all notebooks matching a particular folder or name "
+"pattern."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:258
+msgid ""
+"To edit the structure and how the Jupyter notebooks get rendered in the "
+"Sphinx documentation (using `nbsphinx`), install [Pandoc](https://pandoc.org/"
+"installing.html) on your system, either using `conda` (through the `conda-"
+"forge` channel)"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:260
+msgid "conda install -c conda-forge pandoc\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:264
+msgid ""
+"or refer to the [Pandoc installation instructions](https://pandoc.org/"
+"installing.html) specific to your platform."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:266
+msgid "Testing the example scripts"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:268
+msgid "To test all the example scripts in the `examples/` folder, type"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:270
+msgid "nox -s scripts\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:274
+msgid "Debugging"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:276
+msgid ""
+"Often, the code you write won't pass the tests straight away, at which stage "
+"it will become necessary to debug. The key to successful debugging is to "
+"isolate the problem by finding the smallest possible example that causes the "
+"bug. In practice, there are a few tricks to help you to do this, which we "
+"give below. Once you've isolated the issue, it's a good idea to add a unit "
+"test that replicates this issue, so that you can easily check whether it's "
+"been fixed, and make sure that it's easily picked up if it crops up again. "
+"This also means that, if you can't fix the bug yourself, it will be much "
+"easier to ask for help (by opening a [bug-report issue](https://github.com/"
+"pybamm-team/PyBaMM/issues/new?template=bug_report.md))."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:282
+msgid "Run individual test scripts instead of the whole test suite:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:284
+msgid "pytest tests/unit/path/to/test\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:288
+msgid "You can also run an individual test from a particular script, e.g."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:290
+msgid ""
+"pytest tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::"
+"test_simple_ode_model\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:294
+msgid ""
+"If you want to run several, but not all, the tests from a script, you can "
+"restrict which tests are run from a particular script by using the skipping "
+"decorator:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:296
+msgid ""
+"@pytest.mark.skip(\"\")\n"
+"def test_bit_of_code(self):\n"
+"    ...\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:302
+msgid "or by just commenting out all the tests you don't want to run."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:303
+msgid ""
+"Set break points, either in your IDE or using the Python debugging module. "
+"To use the latter, add the following line where you want to set the break "
+"point"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:305
+msgid ""
+"import ipdb\n"
+"\n"
+"ipdb.set_trace()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:311
+msgid ""
+"This will start the [Python interactive debugger](https://gist.github.com/"
+"mono0926/6326015). If you want to be able to use magic commands from "
+"`ipython`, such as `%timeit`, then set"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:313 ../../../../CONTRIBUTING.md:366
+msgid ""
+"from IPython import embed\n"
+"\n"
+"embed()\n"
+"import ipdb\n"
+"\n"
+"ipdb.set_trace()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:322
+msgid ""
+"at the break point instead. Figuring out where to start the debugger is the "
+"real challenge. Some good ways to set debugging break points are:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:325
+msgid ""
+"Try-except blocks. Suppose the line `do_something_complicated()` is raising "
+"a `ValueError`. Then you can put a try-except block around that line as:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:327
+msgid ""
+"try:\n"
+"    do_something_complicated()\n"
+"except ValueError:\n"
+"    import ipdb\n"
+"\n"
+"    ipdb.set_trace()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:336
+msgid ""
+"This will start the debugger at the point where the `ValueError` was raised, "
+"and allow you to investigate further. Sometimes, it is more informative to "
+"put the try-except block further up the call stack than exactly where the "
+"error is raised."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:337
+msgid ""
+"Warnings. If functions are raising warnings instead of errors, it can be "
+"hard to pinpoint where this is coming from. Here, you can use the `warnings` "
+"module to convert warnings to errors:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:339
+msgid ""
+"import warnings\n"
+"\n"
+"warnings.simplefilter(\"error\")\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:345
+msgid ""
+"Then you can use a try-except block, as in a., but with, for example, "
+"`RuntimeWarning` instead of `ValueError`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:346
+msgid ""
+"Stepping through the expression tree. Most calls in PyBaMM are operations on "
+"[expression trees](https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/expression_tree/expression-tree.ipynb). To view an "
+"expression tree in ipython, you can use the `render` command:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:348
+msgid "expression_tree.render()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:352
+msgid ""
+"You can then step through the expression tree, using the `children` "
+"attribute, to pinpoint exactly where a bug is coming from. For example, if "
+"`expression_tree.jac(y)` is failing, you can check `expression_tree."
+"children[0].jac(y)`, then `expression_tree.children[0].children[0].jac(y)`, "
+"etc."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:353
+msgid ""
+"To isolate whether a bug is in a model, its Jacobian or its simplified "
+"version, you can set the `use_jacobian` and/or `use_simplify` attributes of "
+"the model to `False` (they are both `True` by default for most models)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:354
+msgid ""
+"If a model isn't giving the answer you expect, you can try comparing it to "
+"other models. For example, you can investigate parameter limits in which two "
+"models should give the same answer by setting some parameters to be small or "
+"zero. The `StandardOutputComparison` class can be used to compare some "
+"standard outputs from battery models."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:355
+msgid ""
+"To get more information about what is going on under the hood, and hence "
+"understand what is causing the bug, you can set the [logging](https://"
+"realpython.com/python-logging/) level to `DEBUG` by adding the following "
+"line to your test or script:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:357
+msgid "pybamm.set_logging_level(\"DEBUG\")\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:360
+msgid ""
+"In models that inherit from `pybamm.BaseBatteryModel` (i.e. any battery "
+"model), you can use `self.process_symbol` to process a symbol with a fully "
+"built model to see what it will look like."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:362
+msgid "Profiling"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:364
+msgid ""
+"Sometimes, a bit of code will take much longer than you expect to run. In "
+"this case, you can set"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:375
+msgid ""
+"as above, and then use some of the profiling tools. In order of increasing "
+"detail:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:377
+msgid "Simple timer. In ipython, the command"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:379
+msgid "%time command_to_time()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:383
+msgid ""
+"tells you how long the line `command_to_time()` takes. You can use `%timeit` "
+"instead to run the command several times and obtain more accurate timings."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:384
+msgid ""
+"Simple profiler. Using `%prun` instead of `%time` will give a brief "
+"profiling report 3. Detailed profiler. You can install the detailed profiler "
+"`snakeviz` through pip:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:386
+msgid "pip install snakeviz\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:390
+msgid "and then, in ipython, run"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:392
+msgid ""
+"%load_ext snakeviz\n"
+"%snakeviz command_to_time()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:397
+msgid ""
+"This will open a window in your browser with detailed profiling information."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:399
+msgid "Documentation"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:401
+msgid "PyBaMM is documented in several ways."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:403
+msgid ""
+"First and foremost, every method and every class should have a [docstring]"
+"(https://www.python.org/dev/peps/pep-0257/) that describes in plain terms "
+"what it does, and what the expected input and output is."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:405
+msgid ""
+"These docstrings can be fairly simple, but can also make use of "
+"`reStructuredText`, a markup language designed specifically for writing "
+"technical documentation. For example, you can link to other classes and "
+"methods by writing ``:class:`pybamm.Model` `` and ``:meth:`run()` ``."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:410
+msgid ""
+"In addition, we write a (very) small bit of documentation in separate "
+"reStructuredText files in the `docs` directory. Most of what these files do "
+"is simply import docstrings from the source code. But they also do things "
+"like add tables and indexes. If you've added a new class to a module, search "
+"the `docs` directory for that module's `.rst` file and add your class (in "
+"alphabetical order) to its index. If you've added a whole new module, copy-"
+"paste another module's file and add a link to your new file in the "
+"appropriate `index.rst` file."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:412
+msgid ""
+"Using [Sphinx](http://www.sphinx-doc.org/en/stable/) the documentation in "
+"`docs` can be converted to HTML, PDF, and other formats. In particular, we "
+"use it to generate the documentation on http://docs.pybamm.org/"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:414
+msgid "Building the documentation"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:416
+msgid ""
+"To test and debug the documentation, it's best to build it locally. To do "
+"this, navigate to your PyBaMM directory in a console, and then type (on GNU/"
+"Linux, macOS, and Windows):"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:418
+msgid "nox -s docs\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:422
+msgid ""
+"And then visit the webpage served at `http://127.0.0.1:8000`. Each time a "
+"change to the documentation source is detected, the HTML is rebuilt and the "
+"browser automatically reloaded. In CI, the docs are built and tested using "
+"the `docs` session in the `noxfile.py` file with warnings turned into "
+"errors, to fail the build. The warnings can be removed or ignored by adding "
+"the appropriate warning identifier to the `suppress_warnings` list in `docs/"
+"conf.py`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:424
+msgid "Example notebooks"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:426
+msgid ""
+"Major PyBaMM features are showcased in [Jupyter notebooks](https://jupyter."
+"org/) stored in the [docs/source/examples directory](https://github.com/"
+"pybamm-team/PyBaMM/tree/main/docs/source/examples). Which features are "
+"\"major\" is of course wholly subjective, so please discuss on GitHub first!"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:428
+msgid ""
+"All example notebooks should be listed in [docs/source/examples/index.rst]"
+"(https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/index."
+"rst). Please follow the (naming and writing) style of existing notebooks "
+"where possible."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:430
+msgid "All the notebooks are tested daily."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:432
+msgid "Citations"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:434
+msgid ""
+"We aim to recognize all contributions by automatically generating citations "
+"to the relevant papers on which different parts of the code are built. These "
+"will change depending on what models and solvers you use. Adding the command"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:438
+msgid "pybamm.print_citations()\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:442
+msgid ""
+"to the end of a script will print all citations that were used by that "
+"script. This will print BibTeX information to the terminal; passing a "
+"filename to `print_citations` will print the BibTeX information to the "
+"specified file instead."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:444
+msgid ""
+"When you contribute code to PyBaMM, you can add your own papers that you "
+"would like to be cited if that code is used. First, add the BibTeX for your "
+"paper to [CITATIONS.bib](https://github.com/pybamm-team/PyBaMM/blob/main/"
+"packages/pybamm/src/pybamm/CITATIONS.bib). Then, add the line"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:446
+msgid "pybamm.citations.register(\"your_paper_bibtex_identifier\")\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:450
+msgid ""
+"wherever code is called that uses that citation (for example, in functions "
+"or in the `__init__` method of a class such as a model or solver)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:452
+msgid "Infrastructure"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:454
+msgid "Installation"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:456
+msgid ""
+"Installation of PyBaMM and its dependencies is handled via [uv](https://docs."
+"astral.sh/uv/) or [pip](https://pip.pypa.io/en/stable/). A `uv.lock` "
+"lockfile is maintained in version control to ensure reproducible "
+"environments. Dependabot keeps the locked dependencies up to date via weekly "
+"PRs."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:460 ../../../../CONTRIBUTING.md:482
+msgid "Configuration files:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:461
+msgid ""
+"pyproject.toml\n"
+"uv.lock\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:466
+msgid "Continuous Integration using GitHub Actions"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:468
+msgid ""
+"Each change pushed to the PyBaMM GitHub repository will trigger the test and "
+"benchmark suites to be run, using [GitHub Actions](https://github.com/"
+"features/actions)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:470
+msgid ""
+"Tests are run for different operating systems, and for all Python versions "
+"officially supported by PyBaMM. If you opened a Pull Request, feedback is "
+"directly available on the corresponding page. If all tests pass, a green "
+"tick will be displayed next to the corresponding test run. If one or more "
+"test(s) fail, a red cross will be displayed instead."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:472
+msgid ""
+"Similarly, the benchmark suite is automatically run for the most recently "
+"pushed commit. Benchmark results are compared to the results available for "
+"the latest commit on the `main` branch. Should any significant performance "
+"regression be found, a red cross will be displayed next to the benchmark run."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:474
+msgid ""
+"In all cases, more details can be obtained by clicking on a specific run."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:476
+msgid ""
+"Configuration files for various GitHub actions workflow can be found in `."
+"github/worklfows`."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:478
+msgid "Codecov"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:480
+msgid ""
+"Code coverage (how much of our code is actually seen by the (linux) unit "
+"tests) is tested using [Codecov](https://docs.codecov.io/), a report is "
+"visible on https://codecov.io/gh/pybamm-team/PyBaMM."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:484
+msgid ".coveragerc\n"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:488
+msgid "Read the Docs"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:490
+msgid ""
+"Documentation is built using https://readthedocs.org/ and published on "
+"http://docs.pybamm.org/."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:492
+msgid "Google Colab"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:494
+msgid ""
+"Editable notebooks are made available using [Google Colab](https://colab."
+"research.google.com/notebooks/intro.ipynb) [here](https://colab.research."
+"google.com/github/pybamm-team/PyBaMM/blob/main/)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:496
+msgid "GitHub"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:498
+msgid "GitHub does some magic with particular filenames. In particular:"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:500
+msgid ""
+"The first page people see when they go to [our GitHub page](https://github."
+"com/pybamm-team/PyBaMM) displays the contents of [README.md](https://github."
+"com/pybamm-team/PyBaMM/blob/main/README.md), which is written in the "
+"[Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) "
+"format. Some guidelines can be found [here](https://docs.github.com/articles/"
+"about-readmes/)."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:501
+msgid ""
+"The license for using PyBaMM is stored in [LICENSE](https://github.com/"
+"pybamm-team/PyBaMM/blob/main/LICENSE.txt), and [automatically](https://docs."
+"github.com/articles/adding-a-license-to-a-repository/) linked to by GitHub."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:502
+msgid ""
+"This file, [CONTRIBUTING.md](https://github.com/pybamm-team/PyBaMM/blob/main/"
+"CONTRIBUTING.md) is recognised as the contribution guidelines and a link is "
+"[automatically](https://github.com/blog/1184-contributing-guidelines) "
+"displayed when new issues or pull requests are created."
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:504
+msgid "Acknowledgements"
+msgstr ""
+
+#: ../../../../CONTRIBUTING.md:506
+msgid ""
+"This CONTRIBUTING.md file, along with large sections of the code "
+"infrastructure, was copied from the excellent [Pints GitHub repo](https://"
+"github.com/pints-team/pints)"
+msgstr ""

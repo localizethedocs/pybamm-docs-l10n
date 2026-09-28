@@ -1,0 +1,554 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/lead-acid.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/lead-acid.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:9
+msgid "Lead-Acid Models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:20
+msgid ""
+"We compare a standard porous-electrode model for lead-acid batteries with "
+"two asymptotic reductions. For a more in-depth introduction to PyBaMM "
+"models, see the `SPM notebook <./SPM.ipynb>`__. Further details on the "
+"models can be found in `[4] <#References>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:48
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:54
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:61
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:73
+msgid "\"Full\" model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:76
+msgid "Electrolyte Concentration"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:78
+msgid ""
+"\\frac{\\partial }{\\partial t}\\left(\\epsilon c\\right) = -"
+"\\frac{\\partial N}{\\partial x} + sj, \\\\\n"
+"N = -\\frac{\\epsilon^b  D(c)}{\\mathcal{C}_\\text{e}}  \\frac{\\partial c}"
+"{\\partial x}\\\\\n"
+"N\\big|_{x=0}= N\\big|_{x=1}=0, \\\\\n"
+"c\\big|_{t=0} = 1"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:87
+msgid "Porosity"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:89
+msgid ""
+"\\frac{\\partial \\epsilon}{\\partial t} = -\\beta^\\text{surf}j, \\\\\n"
+"\\epsilon\\big|_{t=0} = \\epsilon^0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:96
+msgid "Electrolyte Current"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:98
+msgid ""
+"\\frac{\\partial i_{\\text{e}}}{\\partial x} = j, \\\\\n"
+"\\mathcal{C}_\\text{e} i_{\\text{e}} = \\epsilon_k^b \\kappa(c)\n"
+"    \\left( \\chi \\frac{\\partial}{\\partial x}\\log(c)\n"
+"    - \\frac{\\partial\\phi_{\\text{e}}}{\\partial x}\\right)\\\\\n"
+"i_{\\text{e}}\\big|_{x=0}= i_{\\text{e}}\\big|_{x=1}=0,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:108
+msgid "Electrode Current"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:110
+msgid ""
+"\\frac{\\partial i_{\\text{s}}}{\\partial x} = -j,\\\\\n"
+"i_{\\text{s}} = -\\sigma\\frac{\\partial\\phi_{\\text{s}}}{\\partial x},\\"
+"\\\n"
+"\\phi_{\\text{s}}\\big|_{x=0}\n"
+"    = i_{\\text{s}}\\big|_{x=l_\\text{n}}\n"
+"    = i_{\\text{s}}\\big|_{x=1-l_\\text{p}} = 0, \\\\\n"
+"i_{\\text{s}}\\big|_{x=1}=\\mathcal{I},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:121
+msgid "Interfacial current density"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:123
+msgid ""
+"j = \\begin{cases}\n"
+"    2j_0(c) \\sinh\\left(\\eta\\right), \\quad &0 < x < l_\\text{n} \\\\\n"
+"    0, \\quad &l_\\text{n} < x < 1-l_\\text{p} \\\\\n"
+"    2j_0(c) \\sinh\\left(\\eta\\right), \\quad &1-l_\\text{p} < x < 1\n"
+"\\end{cases}\n"
+"\\\\\n"
+"\\eta = \\phi_{\\text{s}} - \\phi_\\text{e} - U(c),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:134
+msgid "This model is implemented in PyBaMM as the ``Full`` model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "full = pybamm.lead_acid.Full()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:156
+msgid "\"Leading-order\" model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:158
+msgid ""
+"\\frac{\\mathrm{d} }{\\mathrm{d} t}\\left(\\epsilon c\\right) = (s_\\text{n} "
+"- s_\\text{p})\\mathrm{I}, \\\\\n"
+"\\frac{\\mathrm{d} \\epsilon}{\\mathrm{d} t} = -\\beta^\\text{surf}j, \\\\\n"
+"j = \\begin{cases}\n"
+"    \\mathrm{I}/l_\\text{n}, \\quad &0 < x < l_\\text{n} \\\\\n"
+"    0, \\quad &l_\\text{n} < x < 1-l_\\text{p} \\\\\n"
+"    -\\mathrm{I}/l_\\text{p}, \\quad &1-l_\\text{p} < x < 1\n"
+"\\end{cases} \\\\\n"
+"\\phi_\\text{e} = -U_\\text{n}(c) + \\sinh^{-1}\\left(\\frac{\\mathrm{I}}"
+"{2l_\\text{n}j_{0\\text{n}}(c)}\\right) \\\\\n"
+"V = -\\phi_\\text{e} + U_\\text{p}(c) - \\sinh^{-1}\\left(\\frac{\\mathrm{I}}"
+"{2l_\\text{p}j_{0\\text{p}}(c)}\\right) \\\\"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:171
+msgid ""
+"This model is implemented in PyBaMM as ``LOQS`` (leading-order quasi-static)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "loqs = pybamm.lead_acid.LOQS()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:193
+msgid "Solving the models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:204
+msgid ""
+"We load process parameters for each model, using the same set of (default) "
+"parameters for all. In anticipation of changing the current later, we make "
+"current an input parameter"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"# load models\n"
+"models = [loqs, full]\n"
+"\n"
+"# process parameters\n"
+"param = models[0].default_parameter_values\n"
+"param[\"Current function [A]\"] = \"[input]\"\n"
+"for model in models:\n"
+"    param.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:232
+msgid "Then, we discretise the models, using the default settings"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"for model in models:\n"
+"    # load and process default geometry\n"
+"    geometry = model.default_geometry\n"
+"    param.process_geometry(geometry)\n"
+"\n"
+"    # discretise using default settings\n"
+"    mesh = pybamm.Mesh(geometry, model.default_submesh_types, model."
+"default_var_pts)\n"
+"    disc = pybamm.Discretisation(mesh, model.default_spatial_methods)\n"
+"    disc.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:261
+msgid "Finally, we solve each model using CasADi's solver and a current of 1A"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"timer = pybamm.Timer()\n"
+"solutions = {}\n"
+"t_eval = [0, 3600 * 17]  # time in seconds\n"
+"for model in models:\n"
+"    solver = pybamm.IDAKLUSolver()\n"
+"    timer.reset()\n"
+"    solution = solver.solve(model, t_eval, inputs={\"Current function [A]\": "
+"1})\n"
+"    print(f\"Solved the {model.name} in {timer.time()}\")\n"
+"    solutions[model] = solution"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:290
+msgid ""
+"<pre>\n"
+"Solved the LOQS model in 9.057 ms\n"
+"Solved the Full model in 68.144 ms\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:297
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Solved the LOQS model in 9.057 ms\n"
+"Solved the Full model in 68.144 ms\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:305
+msgid ""
+"Solved the LOQS model in 9.057 ms\n"
+"Solved the Full model in 68.144 ms"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:318
+msgid "Results"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:329
+msgid ""
+"To plot the results, the variables are extracted from the solutions "
+"dictionary. For example, we can compare the voltages:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"for model in models:\n"
+"    time = solutions[model][\"Time [h]\"].entries\n"
+"    voltage = solutions[model][\"Voltage [V]\"].entries\n"
+"    plt.plot(time, voltage, lw=2, label=model.name)\n"
+"plt.xlabel(\"Time [h]\", fontsize=15)\n"
+"plt.ylabel(\"Voltage [V]\", fontsize=15)\n"
+"plt.legend(fontsize=15)\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:365
+msgid ""
+"Alternatively, using ``QuickPlot``, we can compare the values of some "
+"variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"solution_values = [solutions[model] for model in models]\n"
+"quick_plot = pybamm.QuickPlot(solution_values)\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:389
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"bdba6061f9954ca486acecd620969829\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:399
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=17.0, step=0.17), Output()), _dom_classes=(&#39;…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:405
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=17.0, "
+"step=0.17), Output()), \\_dom\\_classes=('…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:412
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=17.0, "
+"step=0.17), Output()), _dom_classes=('…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:423
+msgid ""
+"If we update the current, setting it to be 20 A, we observe a greater "
+"discrepancy between the full model and the reduced-order models."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid ""
+"t_eval = [0, 3600]\n"
+"for model in models:\n"
+"    solver = pybamm.IDAKLUSolver()\n"
+"    solutions[model] = solver.solve(model, t_eval, inputs={\"Current "
+"function [A]\": 20})\n"
+"\n"
+"# Plot\n"
+"solution_values = [solutions[model] for model in models]\n"
+"quick_plot = pybamm.QuickPlot(solution_values)\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:453
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1ef834bd0d51483784235cc16db2d02d\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:463
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=3482.558556072935, step=34.82558556072935), …\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:469
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3482.558556072935, step=34.82558556072935), …\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:476
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3482.558556072935, step=34.82558556072935), …"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:488
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:490
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:511
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part I. Physical Model. Journal of The Electrochemical "
+"Society, 166(12):A2363–A2371, 2019. doi:10.1149/2.0301910jes.\n"
+"[7] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part II. Asymptotic Analysis. Journal of The "
+"Electrochemical Society, 166(12):A2372–A2382, 2019. "
+"doi:10.1149/2.0441908jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:525
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part I. Physical Model. Journal of The Electrochemical "
+"Society, 166(12):A2363–A2371, 2019. doi:10.1149/2.0301910jes.\n"
+"[7] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part II. Asymptotic Analysis. Journal of The "
+"Electrochemical Society, 166(12):A2372–A2382, 2019. "
+"doi:10.1149/2.0441908jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:540
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[5] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[6] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part I. Physical Model. Journal of The Electrochemical "
+"Society, 166(12):A2363–A2371, 2019. doi:10.1149/2.0301910jes.\n"
+"[7] Valentin Sulzer, S. Jon Chapman, Colin P. Please, David A. Howey, and "
+"Charles W. Monroe. Faster Lead-Acid Battery Simulations from Porous-"
+"Electrode Theory: Part II. Asymptotic Analysis. Journal of The "
+"Electrochemical Society, 166(12):A2372–A2382, 2019. "
+"doi:10.1149/2.0441908jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

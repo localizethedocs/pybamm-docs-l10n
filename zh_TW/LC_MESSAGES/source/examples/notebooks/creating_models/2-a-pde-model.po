@@ -1,0 +1,446 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/creating_models/2-a-pde-model.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/creating_models/2-a-pde-model.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:9
+msgid "Creating a simple PDE model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:20
+msgid ""
+"In the `previous notebook <./1-an-ode-model.ipynb>`__ we show how to create, "
+"discretise and solve an ODE model in pybamm. In this notebook we show how to "
+"create and solve a PDE problem, which will require meshing of the spatial "
+"domain."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:22
+msgid ""
+"As an example, we consider the problem of linear diffusion on a unit sphere,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:24
+msgid "\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:29
+msgid "with the following boundary and initial conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:31
+msgid ""
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=1} = 2, \\quad "
+"\\left.c\\right\\vert_{t=0} = 1."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:36
+msgid ""
+"As before, we begin by importing the PyBaMM library into this notebook, "
+"along with any other packages we require:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:61
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:67
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:74
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:86
+msgid "Setting up the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:97
+msgid ""
+"As in the previous example, we start with a ``pybamm.BaseModel`` object and "
+"define our model variables. Since we are now solving a PDE we need to tell "
+"pybamm the domain each variable belongs to so that it can be discretised in "
+"space in the correct way. This is done by passing the keyword argument "
+"``domain``, and in this example we choose the domain \"negative particle\"."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"model = pybamm.BaseModel()\n"
+"\n"
+"c = pybamm.Variable(\"Concentration\", domain=\"negative particle\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:120
+msgid ""
+"Note that we have given our variable the (useful) name \"Concentration\", "
+"but the symbol representing this variable is simply ``c``."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:131
+msgid ""
+"We then state out governing equations. Sometime it is useful to define "
+"intermediate quantities in order to express the governing equations more "
+"easily. In this example we define the flux, then define the rhs to be minus "
+"the divergence of the flux. The equation is then added to the dictionary "
+"``model.rhs``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"N = -pybamm.grad(c)  # define the flux\n"
+"dcdt = -pybamm.div(N)  # define the rhs equation\n"
+"\n"
+"model.rhs = {c: dcdt}  # add the equation to rhs dictionary"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:155
+msgid ""
+"Unlike ODE models, PDE models require both initial and boundary conditions. "
+"Similar to initial conditions, boundary conditions can be added using the "
+"dictionary ``model.boundary_conditions``. Boundary conditions for each "
+"variable are provided as a dictionary of the form ``{side: (value, type)``, "
+"where, in 1D, side can be \"left\" or \"right\", value is the value of the "
+"boundary conditions, and type is the type of boundary condition (at present, "
+"this can be \"Dirichlet\" or \"Neumann\")."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"# initial conditions\n"
+"model.initial_conditions = {c: pybamm.Scalar(1)}\n"
+"\n"
+"# boundary conditions\n"
+"lbc = pybamm.Scalar(0)\n"
+"rbc = pybamm.Scalar(2)\n"
+"model.boundary_conditions = {c: {\"left\": (lbc, \"Neumann\"), \"right\": "
+"(rbc, \"Neumann\")}}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:182
+msgid ""
+"Note that in our example the boundary conditions take constant values, but "
+"the value can be any valid pybamm expression."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:184
+msgid ""
+"Finally, we add any variables of interest to the dictionary ``model."
+"variables``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "model.variables = {\"Concentration\": c, \"Flux\": N}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:206
+msgid "Using the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:217
+msgid ""
+"Now the model is now completely defined all that remains is to discretise "
+"and solve. Since this model is a PDE we need to define the geometry on which "
+"it will be solved, and choose how to mesh the geometry and discretise in "
+"space."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:229
+msgid "Defining a geometry and mesh"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:231
+msgid ""
+"We can define spatial variables in a similar way to how we defined model "
+"variables, providing a domain and a coordinate system. The geometry on which "
+"we wish to solve the model is defined using a nested dictionary. The first "
+"key is the domain name (here \"negative particle\") and the entry is a "
+"dictionary giving the limits of the domain."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"# define geometry\n"
+"r = pybamm.SpatialVariable(\n"
+"    \"r\", domain=[\"negative particle\"], coord_sys=\"spherical polar\"\n"
+")\n"
+"geometry = {\n"
+"    \"negative particle\": {r: {\"min\": pybamm.Scalar(0), \"max\": pybamm."
+"Scalar(1)}}\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:258
+msgid "We then create a uniform one-dimensional mesh with 20 points."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"# mesh and discretise\n"
+"submesh_types = {\"negative particle\": pybamm.Uniform1DSubMesh}\n"
+"var_pts = {r: 20}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:282
+msgid ""
+"Example of meshes that do require parameters include the ``pybamm."
+"Exponential1DSubMesh`` which clusters points close to one or both boundaries "
+"using an exponential rule. It takes a parameter which sets how closely the "
+"points are clustered together, and also lets the users select the side on "
+"which more points should be clustered. For example, to create a mesh with "
+"more nodes clustered to the right (i.e. the surface in the particle "
+"problem), using a stretch factor of 2, we pass an instance of the "
+"exponential submesh class and a dictionary of parameters into the "
+"``MeshGenerator`` class as follows: ``pybamm.MeshGenerator(pybamm."
+"Exponential1DSubMesh, submesh_params={\"side\": \"right\", \"stretch\": 2})``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:294
+msgid ""
+"After defining a mesh we choose a spatial method. Here we choose the Finite "
+"Volume Method. We then set up a discretisation by passing the mesh and "
+"spatial methods to the class ``pybamm.Discretisation``. The model is then "
+"processed, turning the variables into (slices of) a statevector, spatial "
+"variables into vector and spatial operators into matrix-vector "
+"multiplications."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"spatial_methods = {\"negative particle\": pybamm.FiniteVolume()}\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:317
+msgid "Now that the model has been discretised we are ready to solve."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:329
+msgid "Solving the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:340
+msgid ""
+"As before, we choose a solver and times at which we want the solution "
+"returned. We then solve, extract the variables we are interested in, and "
+"plot the result."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid ""
+"# solve\n"
+"solver = pybamm.IDAKLUSolver()\n"
+"t = [0, 1]\n"
+"solution = solver.solve(model, t)\n"
+"\n"
+"# post-process, so that the solution can be called at any time t or space r\n"
+"# (using interpolation)\n"
+"c = solution[\"Concentration\"]\n"
+"\n"
+"# plot\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"\n"
+"ax1.plot(solution.t, c(solution.t, r=1))\n"
+"ax1.set_xlabel(\"t\")\n"
+"ax1.set_ylabel(\"Surface concentration\")\n"
+"r = np.linspace(0, 1, 100)\n"
+"ax2.plot(r, c(t=0.5, r=r))\n"
+"ax2.set_xlabel(\"r\")\n"
+"ax2.set_ylabel(\"Concentration at t=0.5\")\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:389
+msgid ""
+"In the `next notebook <./3-negative-particle-problem.ipynb>`__ we build on "
+"the example here to to solve the problem of diffusion in the negative "
+"electrode particle within the single particle model. In doing so we will "
+"also cover how to include parameters in a model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:401
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:403
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:424
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:435
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:447
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

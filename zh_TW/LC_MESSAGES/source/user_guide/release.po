@@ -1,0 +1,653 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/release.md:1
+msgid ""
+"<!-- a stub file to add RELEASE.md from the root directory\n"
+"to the hosted docs -->\n"
+msgstr ""
+
+#: ../../../../RELEASE.md:2
+msgid "PyBaMM Release Policy"
+msgstr ""
+
+#: ../../../../RELEASE.md:4
+msgid ""
+"This document is the source of truth for how PyBaMM is versioned, when "
+"releases happen, what counts as a breaking change, and how breaking changes "
+"and deprecations are communicated. For a quick summary aimed at users, see "
+"the [Versioning section of the README](https://github.com/pybamm-team/PyBaMM/"
+"blob/main/README.md#versioning)."
+msgstr ""
+
+#: ../../../../RELEASE.md:6
+msgid "At a glance"
+msgstr ""
+
+#: ../../../../RELEASE.md:8
+msgid ""
+"**Versioning:** [CalVer](https://calver.org/) in the form `YY.MM.N.P` — "
+"year, month, feature release index within that month, patch level."
+msgstr ""
+
+#: ../../../../RELEASE.md:9
+msgid ""
+"**Cadence:** We release when there's something worth releasing, with no "
+"fixed schedule. Breaking changes target the first feature release of the "
+"month (`YY.MM.0.0`)."
+msgstr ""
+
+#: ../../../../RELEASE.md:10
+msgid ""
+"**Breaking changes:** Documented under `## Breaking changes` in [`CHANGELOG."
+"md`](https://github.com/pybamm-team/PyBaMM/blob/main/CHANGELOG.md). Public "
+"APIs that are removed or renamed ship a `DeprecationWarning` for at least "
+"two prior feature releases first (see the Deprecation policy section for the "
+"documented exceptions)."
+msgstr ""
+
+#: ../../../../RELEASE.md:11
+msgid ""
+"**Pre-announcement:** The `# [Unreleased]` section at the top of `CHANGELOG."
+"md` on `main` is the canonical preview of what's about to ship."
+msgstr ""
+
+#: ../../../../RELEASE.md:13
+msgid "Version scheme"
+msgstr ""
+
+#: ../../../../RELEASE.md:15
+msgid "PyBaMM versions take the form `YY.MM.N.P`:"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Component"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Meaning"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Example"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`YY`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Two-digit year"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`27`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`MM`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Month of release (1–12, no leading zero)"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`1`, `11`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`N`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "Feature release within that month, **0-indexed** — `0` for the first"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`0`, `1`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`P`"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid ""
+"Patch level — `0` for the feature release itself; `1`, `2`, … for patches "
+"off it"
+msgstr ""
+
+#: ../../../source/user_guide/release.md:4
+msgid "`0`, `1`, `2`"
+msgstr ""
+
+#: ../../../../RELEASE.md:24
+msgid "**Worked examples:**"
+msgstr ""
+
+#: ../../../../RELEASE.md:26
+msgid "`27.1.0.0` — first feature release in January 2027."
+msgstr ""
+
+#: ../../../../RELEASE.md:27
+msgid "`27.1.0.1` — first patch off `27.1.0.0`."
+msgstr ""
+
+#: ../../../../RELEASE.md:28
+msgid ""
+"`27.1.1.0` — second feature release in January 2027 (only when two feature "
+"releases land in the same calendar month)."
+msgstr ""
+
+#: ../../../../RELEASE.md:29
+msgid "`27.1.1.1` — first patch off `27.1.1.0`."
+msgstr ""
+
+#: ../../../../RELEASE.md:31
+msgid ""
+"**Cutover.** The first feature release tagged after the policy lands is the "
+"first to use `YY.MM.N.P`. Earlier tags (`v26.x.N`) remain in their original "
+"form; we do not retroactively retag."
+msgstr ""
+
+#: ../../../../RELEASE.md:33
+msgid "Monorepo: independent package releases"
+msgstr ""
+
+#: ../../../../RELEASE.md:35
+msgid ""
+"PyBaMM and `pybammsolvers` live in one repository (a UV workspace under "
+"`packages/`) but release **independently to PyPI**, discriminated by tag "
+"namespace. See `docs/superpowers/specs/2026-06-11-pybamm-monorepo-design.md` "
+"for the full design."
+msgstr ""
+
+#: ../../../../RELEASE.md:40
+msgid ""
+"Each package's publish workflow fires only for its own tag namespace (the "
+"pre-monorepo `github.repository` guard no longer distinguishes them)."
+msgstr ""
+
+#: ../../../../RELEASE.md:42
+msgid "`pybammsolvers` releases use the `pybammsolvers-v*` namespace."
+msgstr ""
+
+#: ../../../../RELEASE.md:43
+msgid ""
+"**Legacy solver tags** (`v0.8.0`, `v0.8.1`, `v0.8.2`) carried over from the "
+"standalone `pybammsolvers` repo are **not** part of PyBaMM's release history "
+"and must not drive PyBaMM's computed version. They are either dropped or re-"
+"tagged under `pybammsolvers-v*` during the migration."
+msgstr ""
+
+#: ../../../../RELEASE.md:47
+msgid ""
+"The migration was integrated with a **merge commit (not a squash)** so the "
+"full commit history of both packages is preserved; PyBaMM's existing commit "
+"SHAs are unchanged (no history rewrite)."
+msgstr ""
+
+#: ../../../../RELEASE.md:51
+msgid "Release cadence"
+msgstr ""
+
+#: ../../../../RELEASE.md:53
+msgid ""
+"We release when there's a meaningful body of work to ship. No fixed monthly "
+"or quarterly schedule."
+msgstr ""
+
+#: ../../../../RELEASE.md:54
+msgid ""
+"Patch releases are cut from the corresponding feature release branch as "
+"fixes warrant."
+msgstr ""
+
+#: ../../../../RELEASE.md:55
+msgid ""
+"Breaking changes target the **first feature release of the month** (`YY."
+"MM.0.0`). Subsequent feature releases in the same month (`YY.MM.1.0`, `YY."
+"MM.2.0`, …) should not contain breaking changes unless absolutely required. "
+"Exceptions must be justified in the PR description and in the `## Breaking "
+"changes` changelog entry, alongside the standard deprecation note."
+msgstr ""
+
+#: ../../../../RELEASE.md:57
+msgid "What counts as a breaking change"
+msgstr ""
+
+#: ../../../../RELEASE.md:59
+msgid "A change is **breaking** if it does any of the following:"
+msgstr ""
+
+#: ../../../../RELEASE.md:61
+msgid "Removes or renames a public Python API."
+msgstr ""
+
+#: ../../../../RELEASE.md:62
+msgid ""
+"Changes the signature, defaults, or return type of a public function in a "
+"way existing user code would notice."
+msgstr ""
+
+#: ../../../../RELEASE.md:63
+msgid ""
+"Changes the **default** model, solver, or option such that an unchanged user "
+"script produces materially different numerical output."
+msgstr ""
+
+#: ../../../../RELEASE.md:64
+msgid ""
+"Drops support for a previously-supported Python version, OS, or core "
+"dependency major version."
+msgstr ""
+
+#: ../../../../RELEASE.md:65
+msgid ""
+"Changes the on-disk format of saved models or solutions without a backward-"
+"compatible reader."
+msgstr ""
+
+#: ../../../../RELEASE.md:67
+msgid "A change is **not** breaking if it:"
+msgstr ""
+
+#: ../../../../RELEASE.md:69
+msgid "Adds new optional kwargs to existing public functions."
+msgstr ""
+
+#: ../../../../RELEASE.md:70
+msgid ""
+"Adds new submodels, solvers, or options that opt-in via explicit "
+"configuration."
+msgstr ""
+
+#: ../../../../RELEASE.md:71
+msgid "Improves performance."
+msgstr ""
+
+#: ../../../../RELEASE.md:72
+msgid "Fixes a bug (corrects behaviour that was previously wrong)."
+msgstr ""
+
+#: ../../../../RELEASE.md:73
+msgid ""
+"Changes numerical output of a *non-default* model or solver. Algorithmic "
+"improvements under the same name and same defaults are not breaking, even if "
+"outputs shift."
+msgstr ""
+
+#: ../../../../RELEASE.md:75
+msgid "\"Public API\" defined"
+msgstr ""
+
+#: ../../../../RELEASE.md:77
+msgid ""
+"**Public API = anything documented at [docs.pybamm.org](https://docs.pybamm."
+"org).**"
+msgstr ""
+
+#: ../../../../RELEASE.md:79
+msgid ""
+"If a class, function, or method appears in the rendered API reference, it is "
+"in PyBaMM's public contract. Anything else — internal modules, leading-"
+"underscore names, undocumented helpers — is private and may change between "
+"any two releases without a `## Breaking changes` entry."
+msgstr ""
+
+#: ../../../../RELEASE.md:81
+msgid ""
+"The rendered docs build is the auditable source of truth. A PR reviewer can "
+"answer \"is this public?\" by checking whether the symbol is reachable from "
+"the API reference index."
+msgstr ""
+
+#: ../../../../RELEASE.md:83
+msgid "Deprecation policy"
+msgstr ""
+
+#: ../../../../RELEASE.md:85
+msgid ""
+"Removing or renaming a public API must ship a `DeprecationWarning` in at "
+"least **two prior feature releases** before the removal release."
+msgstr ""
+
+#: ../../../../RELEASE.md:87
+msgid "The deprecation lands with a `## Deprecated` entry in the changelog."
+msgstr ""
+
+#: ../../../../RELEASE.md:88
+msgid ""
+"The eventual removal lands with a `## Breaking changes` entry that "
+"references the original deprecation."
+msgstr ""
+
+#: ../../../../RELEASE.md:90
+msgid ""
+"**Exceptions.** The two-release floor may be skipped only when one of the "
+"following applies. Each exception must be justified in the PR description "
+"*and* in the `## Breaking changes` changelog entry:"
+msgstr ""
+
+#: ../../../../RELEASE.md:92
+msgid ""
+"(a) The API is fundamentally unsafe or broken — keeping it around for two "
+"releases would cause harm."
+msgstr ""
+
+#: ../../../../RELEASE.md:93
+msgid ""
+"(b) The API was never advertised in the docs — it was reachable but not part "
+"of the public contract."
+msgstr ""
+
+#: ../../../../RELEASE.md:94
+msgid ""
+"(c) Deprecation is technically impossible — for example, removing a required "
+"positional argument, where there is no behaviour to warn from."
+msgstr ""
+
+#: ../../../../RELEASE.md:96
+msgid "Pre-announcement"
+msgstr ""
+
+#: ../../../../RELEASE.md:98
+msgid ""
+"The `# [Unreleased]` section at the top of `CHANGELOG.md` on `main` is the "
+"canonical pre-announcement channel. Downstream package maintainers, users, "
+"and contributors can read that section at any time to see what is about to "
+"ship."
+msgstr ""
+
+#: ../../../../RELEASE.md:100
+msgid ""
+"The following are **not** required by policy but may be chosen by "
+"maintainers for exceptional breaks (e.g. removing a long-standing core "
+"class, dropping a supported Python version):"
+msgstr ""
+
+#: ../../../../RELEASE.md:102
+msgid "Release candidate (RC) tags on PyPI."
+msgstr ""
+
+#: ../../../../RELEASE.md:103
+msgid "Pinned GitHub tracking issues."
+msgstr ""
+
+#: ../../../../RELEASE.md:104
+msgid "`[BREAKING]` prefix on GitHub release titles."
+msgstr ""
+
+#: ../../../../RELEASE.md:105
+msgid "Announcements on Slack or pybamm.org."
+msgstr ""
+
+#: ../../../../RELEASE.md:107
+msgid "Changelog conventions"
+msgstr ""
+
+#: ../../../../RELEASE.md:109
+msgid ""
+"Within each release block (and within `# [Unreleased]`), sections appear in "
+"this order, omitting any that are empty:"
+msgstr ""
+
+#: ../../../../RELEASE.md:111
+msgid ""
+"## Breaking changes\n"
+"## Deprecated\n"
+"## Features\n"
+"## Bug fixes\n"
+msgstr ""
+
+#: ../../../../RELEASE.md:118
+msgid ""
+"The ordering is **scariest first**: anyone scanning the changelog sees "
+"breaks and deprecations before features."
+msgstr ""
+
+#: ../../../../RELEASE.md:120
+msgid "**Entry format.** Each entry is a single bullet ending in a PR link:"
+msgstr ""
+
+#: ../../../../RELEASE.md:122
+msgid ""
+"- Short imperative description of the change. ([#1234](https://github.com/"
+"pybamm-team/PyBaMM/pull/1234))\n"
+msgstr ""
+
+#: ../../../../RELEASE.md:126
+msgid ""
+"Use full GitHub URLs (not bare `#1234`) so the rendered markdown on docs."
+"pybamm.org links correctly. `## Breaking changes` and `## Deprecated` "
+"entries must include a one-line migration note describing how users adapt."
+msgstr ""
+
+#: ../../../../RELEASE.md:128
+msgid ""
+"**Historical entries are not rewritten.** The new section ordering and the "
+"new `## Deprecated` section apply from the next release block forward. "
+"Existing release blocks keep whatever they currently have."
+msgstr ""
+
+#: ../../../../RELEASE.md:130
+msgid "Release-manager checklist"
+msgstr ""
+
+#: ../../../../RELEASE.md:132
+msgid ""
+"The version string in the built distribution is supplied by `hatch-vcs` from "
+"the VCS tag (`pyproject.toml` has `dynamic = [\"version\"]` with `version."
+"source = \"vcs\"`, writing to `src/pybamm/_version.py`). The `scripts/"
+"update_version.py` helper updates `CITATION.cff` and prepends a new dated "
+"heading to `CHANGELOG.md`; its version-string handling is format-agnostic "
+"and accepts the four-component form unchanged."
+msgstr ""
+
+#: ../../../../RELEASE.md:134
+msgid "Cutting a feature release"
+msgstr ""
+
+#: ../../../../RELEASE.md:136
+msgid ""
+"A feature release is `YY.MM.N.0` — the patch component is `0`. The first "
+"feature release in a given calendar month uses `N=0`; subsequent feature "
+"releases in the same month use `N=1`, `N=2`, etc."
+msgstr ""
+
+#: ../../../../RELEASE.md:138
+msgid ""
+"Confirm `# [Unreleased]` in `CHANGELOG.md` accurately reflects what's about "
+"to ship — every breaking change, deprecation, feature, and bug fix has an "
+"entry with a PR link, and entries are grouped under the four sections (`## "
+"Breaking changes`, `## Deprecated`, `## Features`, `## Bug fixes`) in that "
+"order."
+msgstr ""
+
+#: ../../../../RELEASE.md:139
+msgid ""
+"Create and check out a release branch from `main`: `git checkout -b release/"
+"vYY.MM.N.0`."
+msgstr ""
+
+#: ../../../../RELEASE.md:140
+msgid ""
+"Run `uv run python scripts/update_version.py YY.MM.N.0` to update `CITATION."
+"cff` and prepend a dated heading to `CHANGELOG.md`."
+msgstr ""
+
+#: ../../../../RELEASE.md:141
+msgid "Push the branch and open a PR to `main`. Ensure CI passes, then merge."
+msgstr ""
+
+#: ../../../../RELEASE.md:142
+msgid ""
+"From `main` at the merge commit, create a GitHub _release_ with the tag "
+"`pybamm-vYY.MM.N.0`. Copy the relevant `CHANGELOG.md` block into the release "
+"description. This triggers `publish_pypi.yml` and creates the PyPI release "
+"automatically. (Monorepo: PyBaMM release tags use the `pybamm-v` prefix so "
+"they are distinct from `pybammsolvers-v*`; see \"Monorepo: independent "
+"package releases\" above.)"
+msgstr ""
+
+#: ../../../../RELEASE.md:143
+msgid "Verify the release installs cleanly: `pip install pybamm==YY.MM.N.0`."
+msgstr ""
+
+#: ../../../../RELEASE.md:145
+msgid "Cutting a patch release"
+msgstr ""
+
+#: ../../../../RELEASE.md:147
+msgid ""
+"A patch release is `YY.MM.N.P` where `P >= 1`. Patches are cut from the "
+"previous tag in the same feature line so the release contains only the bug "
+"fixes, not unrelated changes that have landed on `main` since the feature "
+"release."
+msgstr ""
+
+#: ../../../../RELEASE.md:149
+msgid "Ensure all bug fixes are merged to `main` first via normal PRs."
+msgstr ""
+
+#: ../../../../RELEASE.md:150
+msgid ""
+"Create a new branch from the previous tag in the same feature line: `git "
+"checkout -b release/vYY.MM.N.P pybamm-vYY.MM.N.{P-1}` (e.g. `release/"
+"v27.1.0.1` from `pybamm-v27.1.0.0`)."
+msgstr ""
+
+#: ../../../../RELEASE.md:151
+msgid ""
+"Cherry-pick the bug fixes onto the new branch, recording the original SHA "
+"with `-x`:"
+msgstr ""
+
+#: ../../../../RELEASE.md:152
+msgid "git cherry-pick -x <commit-sha-from-main>\n"
+msgstr ""
+
+#: ../../../../RELEASE.md:155
+msgid ""
+"Run `uv run python scripts/update_version.py YY.MM.N.P` to update `CITATION."
+"cff` and prepend a dated heading to `CHANGELOG.md`. Commit the result on the "
+"release branch."
+msgstr ""
+
+#: ../../../../RELEASE.md:156
+msgid ""
+"Create a GitHub _release_ with the tag `pybamm-vYY.MM.N.P` from the `release/"
+"vYY.MM.N.P` branch (NOT from `main`). Copy the relevant `CHANGELOG.md` block "
+"into the release description. This triggers `publish_pypi.yml`."
+msgstr ""
+
+#: ../../../../RELEASE.md:157
+msgid "Verify the release installs cleanly: `pip install pybamm==YY.MM.N.P`."
+msgstr ""
+
+#: ../../../../RELEASE.md:158
+msgid ""
+"Update the changelog on `main` separately. **Do not merge the release branch "
+"back to `main`** — that would duplicate commits with new hashes. Instead:"
+msgstr ""
+
+#: ../../../../RELEASE.md:159
+msgid ""
+"git checkout main\n"
+"git checkout -b update-changelog-vYY.MM.N.P\n"
+msgstr ""
+
+#: ../../../../RELEASE.md:163
+msgid ""
+"Edit `CHANGELOG.md` to add the new dated `vYY.MM.N.P` block (moving the "
+"entries out of `# [Unreleased]`), and update `CITATION.cff`. Open a PR to "
+"`main`."
+msgstr ""
+
+#: ../../../../RELEASE.md:164
+msgid "Delete the release branch after tagging — it is no longer needed."
+msgstr ""
+
+#: ../../../../RELEASE.md:166
+msgid "Cutting a `pybammsolvers` release"
+msgstr ""
+
+#: ../../../../RELEASE.md:168
+msgid ""
+"`pybammsolvers` releases independently of PyBaMM. **`packages/pybammsolvers/"
+"src/pybammsolvers/version.py` is the single source of truth for its "
+"published version**, *not* the release tag — the `pybammsolvers-v*` tag "
+"namespace only routes the workflow. The version is a static string (dynamic "
+"VCS versioning is avoided because it would force a build during dependency "
+"resolution, which build-tool-less resolvers like Dependabot cannot do); the "
+"`sync-pybammsolvers-version` pre-commit hook mirrors `version.py` into the "
+"two static copies — `pyproject.toml` (`[project] version`, which stamps the "
+"built distribution) and `vcpkg.json` (`version-string`) — so a bump touches "
+"only one file. Keep the tag and `version.py` in lockstep, or the wrong "
+"version ships."
+msgstr ""
+
+#: ../../../../RELEASE.md:170
+msgid ""
+"Bump `__version__` in `packages/pybammsolvers/src/pybammsolvers/version.py` "
+"(the pre-commit hook mirrors it into `pyproject.toml` and `vcpkg.json`) and "
+"record the change in `CHANGELOG.md`. Open a PR to `main`, ensure CI passes, "
+"then merge."
+msgstr ""
+
+#: ../../../../RELEASE.md:171
+msgid ""
+"From `main` at the merge commit, create a GitHub _release_ with the tag "
+"`pybammsolvers-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new `version."
+"py` value. This triggers `release_solvers.yml`, which builds wheels + sdist "
+"and publishes to PyPI. The `check_version` job in that workflow fails the "
+"release if the tag, `version.py`, or the `pyproject.toml`/`vcpkg.json` "
+"mirrors disagree; PyPI separately rejects a re-upload of an already-"
+"published version."
+msgstr ""
+
+#: ../../../../RELEASE.md:172
+msgid ""
+"Verify the release installs cleanly: `pip install pybammsolvers==X.Y.Z`."
+msgstr ""
+
+#: ../../../../RELEASE.md:174
+msgid "Conda-forge"
+msgstr ""
+
+#: ../../../../RELEASE.md:176
+msgid ""
+"The conda-forge release flow is triggered automatically after a stable PyPI "
+"release: the conda-forge bot opens a PR against [pybamm-feedstock](https://"
+"github.com/conda-forge/pybamm-feedstock), which maintainers review and "
+"approve."
+msgstr ""
+
+#: ../../../../RELEASE.md:178
+msgid ""
+"When a release touches the API, console scripts, entry points, optional "
+"dependencies, supported Python versions, or core project metadata, update "
+"`meta.yaml` in [pybamm-feedstock](https://github.com/conda-forge/pybamm-"
+"feedstock) following [the conda-forge maintainer docs](https://conda-forge."
+"org/docs/maintainer/updating_pkgs/#updating-recipes) and re-render the "
+"recipe. Push updates directly to the bot's automated PR where possible. "
+"Manual PRs must bump the `build` number in `meta.yaml` and be opened from a "
+"personal fork."
+msgstr ""

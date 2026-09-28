@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/meshes/meshes.rst:2
+msgid "Meshes"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh:1
+msgid "Mesh contains a list of submeshes on each subdomain."
+msgstr ""
+
+#: ../../../source/api/meshes/meshes.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh:3
+msgid "contains the geometry of the problem."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh:5
+msgid "contains the types of submeshes to use (e.g. Uniform1DSubMesh)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh:7
+msgid "contains the number of points on each subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh:10
+msgid "**Extends:** :class:`builtins.dict`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh.add_ghost_meshes:1
+msgid ""
+"Create meshes for potential ghost nodes on either side of each submesh, "
+"using self.submeshclass This will be useful for calculating the gradient "
+"with Dirichlet BCs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh.combine_submeshes:1
+msgid ""
+"Combine submeshes into a new submesh, using self.submeshclass Raises pybamm."
+"DomainError if submeshes to be combined do not match up (edges are not "
+"aligned)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh.combine_submeshes:5
+msgid "The names of the submeshes to be combined"
+msgstr ""
+
+#: ../../../source/api/meshes/meshes.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh.combine_submeshes:8
+msgid ""
+"**submesh** -- A new submesh with the class defined by self.submeshclass"
+msgstr ""
+
+#: ../../../source/api/meshes/meshes.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.Mesh.combine_submeshes:9
+msgid ":class:`self.submeshclass`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.SubMesh:1
+msgid ""
+"Base submesh class. Contains the position of the nodes, the number of mesh "
+"points, and (optionally) information about the tab locations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.SubMesh.from_config:1
+msgid "Deserialise a SubMesh class from a dict (class only, not instance)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.SubMesh.to_config:1
+msgid ""
+"Serialise this SubMesh class to a JSON-serialisable dict (for submesh_types)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.MeshGenerator:1
+msgid ""
+"Base class for mesh generator objects that are used to generate submeshes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.MeshGenerator:3
+msgid "The type of submesh to use (e.g. Uniform1DSubMesh)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.MeshGenerator:5
+msgid "Contains any parameters required by the submesh."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.MeshGenerator.from_config:1
+msgid "Deserialise a MeshGenerator from a dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/meshes.py:docstring
+#: of pybamm.meshes.meshes.MeshGenerator.to_config:1
+msgid ""
+"Serialise this MeshGenerator to a JSON-serialisable dict (for submesh_types)."
+msgstr ""

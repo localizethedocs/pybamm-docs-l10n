@@ -1,0 +1,107 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/state_vector.rst:2
+msgid "State Vector"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:1
+msgid ""
+"Node in the expression tree that holds a slice to read from an external "
+"vector type."
+msgstr ""
+
+#: ../../../source/api/expression_tree/state_vector.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:3
+msgid "the slice of an external y to read"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:5
+#: pybamm.expression_tree.state_vector.StateVectorDot:5
+msgid "the name of the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:7
+#: pybamm.expression_tree.state_vector.StateVectorDot:7
+msgid "list of domains the parameter is valid over, defaults to empty list"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:9
+#: pybamm.expression_tree.state_vector.StateVectorDot:9
+msgid "dictionary of auxiliary domains"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:11
+#: pybamm.expression_tree.state_vector.StateVectorDot:11
+msgid ""
+"A dictionary equivalent to {'primary': domain, auxiliary_domains}. Either "
+"'domain' and 'auxiliary_domains', or just 'domains', should be provided (not "
+"both). In future, the 'domain' and 'auxiliary_domains' arguments may be "
+"deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:16
+#: pybamm.expression_tree.state_vector.StateVectorDot:16
+msgid ""
+"List of boolean arrays representing slices. Default is None, in which case "
+"the evaluation_array is computed from y_slices."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector:20
+#: pybamm.expression_tree.state_vector.StateVectorDot:20
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.state_vector.StateVectorBase`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector.diff:1
+#: pybamm.expression_tree.state_vector.StateVectorDot.diff:1
+msgid ""
+"Differentiate a symbol with respect to a variable. For any symbol that can "
+"be differentiated, return `1` if differentiating with respect to yourself, "
+"`self._diff(variable)` if `variable` is in the expression tree of the "
+"symbol, and zero otherwise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVector.diff:6
+#: pybamm.expression_tree.state_vector.StateVectorDot.diff:6
+msgid "The variable with respect to which to differentiate"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVectorDot:1
+msgid "Node in the expression tree that holds a slice to read from the ydot."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/state_vector.py:docstring
+#: of pybamm.expression_tree.state_vector.StateVectorDot:3
+msgid "the slice of an external ydot to read"
+msgstr ""
