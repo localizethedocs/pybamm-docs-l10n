@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-09-28 17:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -462,40 +463,26 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
 #: of pybamm.expression_tree.operations.serialise.Serialise.load_model:1
-msgid "Loads a discretised, ready to solve model into PyBaMM."
+msgid "Load a discretised, ready to solve model written out by `save_model()`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
 #: of pybamm.expression_tree.operations.serialise.Serialise.load_model:3
 msgid ""
-"A new pybamm battery model instance will be created, which can be solved and "
-"the results plotted as usual."
+"The model is already discretised, so it can be solved and plotted as usual "
+"but not edited; changing the model or its initial conditions means "
+"constructing a new model separately."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:6
-msgid ""
-"Currently only available for pybamm models which have previously been "
-"written out using the `save_model()` option."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:9
-msgid ""
-"Warning: This only loads in discretised models. If you wish to make edits to "
-"the model or initial conditions, a new model will need to be constructed "
-"seperately."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:12
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:7
 msgid ""
 "Path to the JSON file containing the serialised model file, or a dictionary "
 "containing the serialised model data"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:15
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:10
 msgid ""
 "PyBaMM model to be created (e.g. pybamm.lithium_ion.SPM), which will "
 "override any model names within the file. If None, the function will look "
@@ -503,14 +490,14 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:20
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:15
 msgid ""
 "A PyBaMM model object, of type specified either in the JSON or in "
 "`battery_model`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/operations/serialise.py:docstring
-#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:22
+#: of pybamm.expression_tree.operations.serialise.Serialise.load_model:17
 msgid ":class:`pybamm.BaseModel`"
 msgstr ""
 
