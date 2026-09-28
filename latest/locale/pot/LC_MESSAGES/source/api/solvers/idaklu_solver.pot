@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-09-28 17:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -346,6 +347,40 @@ msgid "**Extends:** :class:`pybamm.solvers.base_solver.BaseSolver`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.get_jacobian_sparsity:1
+msgid "Get the sparsity pattern of the iteration matrix that IDA factorizes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.get_jacobian_sparsity:3
+msgid ""
+"This is the pattern of ``J - cj * M``, where ``J`` is the Jacobian of the "
+"model residuals with respect to the states, ``M`` is the mass matrix and "
+"``cj`` is IDA's step-size-dependent scalar. It is the union of the patterns "
+"of ``J`` and ``M``, so every differential state has a diagonal entry even "
+"where ``J`` has none."
+msgstr ""
+
+#: ../../../source/api/solvers/idaklu_solver.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.get_jacobian_sparsity:9
+msgid ""
+"The sparsity pattern of ``J - cj * M``, with every stored entry set to 1."
+msgstr ""
+
+#: ../../../source/api/solvers/idaklu_solver.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.get_jacobian_sparsity:10
+msgid ":class:`scipy.sparse.csc_matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
 #: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:1
 msgid "JAXify the solver object"
 msgstr ""
@@ -414,17 +449,9 @@ msgid ""
 "threshold is N * (M-1)^2. Larger values allow more aggressive reduction."
 msgstr ""
 
-#: ../../../source/api/solvers/idaklu_solver.rst:0
-msgid "Returns"
-msgstr ""
-
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
 #: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:17
 msgid "The modified solution."
-msgstr ""
-
-#: ../../../source/api/solvers/idaklu_solver.rst:0
-msgid "Return type"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
@@ -447,4 +474,41 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
 #: of pybamm.solvers.idaklu_solver.IDAKLUSolver.set_up:6
 msgid "Any input parameters to pass to the model when solving"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:1
+msgid ""
+"Plot the sparsity pattern of the Jacobian, delineating differential and "
+"algebraic states."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:4
+msgid "Requires matplotlib (imported on call)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:6
+msgid "Axes to plot on. If ``None``, a new figure is created."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:8
+msgid "Whether to show the plot. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:10
+msgid "Forwarded to :meth:`matplotlib.axes.Axes.spy`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:12
+msgid "**ax**"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.spy:13
+msgid ":class:`matplotlib.axes.Axes`"
 msgstr ""

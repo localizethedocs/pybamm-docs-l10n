@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-28 17:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/tree_util.rst:2
+msgid "Tree utilities"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:4
+msgid ""
+"Tree rewriting accepts a single ``pybamm.Symbol`` root. To rewrite several "
+"expressions with the same mapping, iterate explicitly and share a cache::"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:7
+msgid ""
+"cache = {}\n"
+"equations = {\n"
+"    variable: pybamm.replace(equation, mapping, cache=cache)\n"
+"    for variable, equation in model.rhs.items()\n"
+"}"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:13
+msgid ""
+"The cache belongs to this mapping; use a fresh cache for a different "
+"mapping. Model parameter processing remains available through "
+"``parameter_values.process_model(model)``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:1
+msgid ""
+"The static structure of a symbol: everything needed to rebuild it from its "
+"leaves. Returned by :func:`tree_flatten` and consumed by :func:"
+"`tree_unflatten`."
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:4
+msgid "The symbol class."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:6
+msgid "How many leading leaves are the node's children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:8
+msgid "``list`` or ``tuple``, whichever the node stores its children in."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:10
+msgid "``(field, kind, count, container)`` per extra leaf field, in order."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.TreeDef:12
+msgid "The node's remaining (non-leaf, non-derived) state."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_flatten:1
+msgid ""
+"Split a symbol into its leaves (children and the other symbols it depends "
+"on) and a :class:`TreeDef` describing how to put it back together."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_unflatten:1
+msgid ""
+"Rebuild a symbol from a :class:`TreeDef` and its leaves, without "
+"simplification or validation. The result has no id yet."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.rebuild:1
+msgid "Return ``node`` with its leaves swapped for ``new_leaves``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.rebuild:3
+msgid ""
+"``node`` itself is returned when no leaf changed, so untouched subtrees are "
+"shared rather than copied. When only children changed the node's constructor "
+"is used (so derived names, domains and, if ``simplify``, simplifications are "
+"applied); otherwise the structure is rebuilt as-is with :func:"
+"`tree_unflatten`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:1
+msgid "Rewrite an expression tree bottom-up, out of place."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:3
+msgid ""
+"``fn(node, new_leaves)`` returns the node to use in place of ``node``, given "
+"the already-rewritten leaves. Use :func:`rebuild` for the default \"same "
+"node with new leaves\" behaviour."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:7
+msgid "The root of the expression tree to rewrite."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:9
+msgid ""
+"Memo of ``{original node: rewritten node}``. Shared nodes are rewritten "
+"once; pass the same dict across calls to share work between trees."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:12
+msgid ""
+"``is_leaf(node)`` returning True stops the descent at ``node``: ``fn`` is "
+"then called as ``fn(node, ())`` with nothing below it rewritten."
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.tree_map:16
+msgid "The rewritten symbol. ``tree`` is not modified."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:1
+msgid "Substitute symbols throughout an expression tree, out of place."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:3
+msgid ""
+"Every node equal (by id) to a key of ``mapping`` is replaced by the "
+"corresponding value, which is not itself traversed. All other nodes are "
+"rebuilt with :func:`rebuild` only if something below them changed, so the "
+"result shares every untouched subtree with ``tree``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:8
+msgid "The root of the expression tree to substitute into."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:10
+msgid "``{symbol: replacement}``; replacements may be numbers."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:12
+msgid "Memo shared between calls made with the same ``mapping``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/tree_util.py:docstring
+#: of pybamm.expression_tree.tree_util.replace:14
+msgid ""
+"Whether rebuilt operators apply their usual simplifications (default True)."
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:31
+msgid "Migrating in-place updates"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:33
+msgid ""
+"Public symbol setters and domain/list edits remain available but emit "
+"``SymbolMutationDeprecationWarning``. Prefer constructing replacements::"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:36
+msgid ""
+"updated = variable.create_copy(scale=2, reference=0, bounds=(0, 1))\n"
+"expression = pybamm.replace(expression, {variable: updated})\n"
+"symbol = symbol.with_domains({\"primary\": [\"negative electrode\"]})\n"
+"symbol = symbol.without_domains()\n"
+"symbol = symbol.with_mesh(mesh)"
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:42
+msgid ""
+"For names, scalar values and function inputs, construct a new symbol of the "
+"appropriate class. IDs update automatically; callers need not call "
+"``set_id``."
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:45
+msgid ""
+"Deprecated updates invalidate cached IDs and derived values across live "
+"symbols. This deliberately slow compatibility path adds no per-symbol "
+"tracking to normal replacement. Public domain and child-list views support "
+"deprecated edits while internal storage remains shared. Mutating symbols "
+"already used as dictionary keys cannot repair those dictionaries: use a "
+"fresh replacement memo and rebuild any parameter-processed or discretised "
+"model after legacy edits. Changes to a child's domains do not propagate into "
+"constructor-derived parent domains; reconstruct those expressions as well. "
+"Legacy mutation is rejected while ``gc.freeze()`` is active because frozen "
+"ancestors cannot be discovered for cache invalidation; use out-of-place "
+"replacement or unfreeze the collector first."
+msgstr ""
+
+#: ../../../source/api/expression_tree/tree_util.rst:56
+msgid ""
+"The test suite forbids deprecated mutation even with warnings ignored. Only "
+"isolated compatibility subprocesses exercise the legacy path; notebook "
+"kernels inherit the same guard as other tests."
+msgstr ""

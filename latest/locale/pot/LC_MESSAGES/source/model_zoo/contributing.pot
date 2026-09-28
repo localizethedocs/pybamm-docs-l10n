@@ -1,0 +1,525 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-09-28 17:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/model_zoo/contributing.md:3
+msgid ""
+"<!-- A stub so the model zoo's README is the single source of contributor\n"
+"policy: it is what a contributor reads in the package and what a reviewer\n"
+"reads in the pull request. -->\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:2
+msgid "PyBaMM model zoo"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:4
+msgid ""
+"Community- and partner-contributed PyBaMM models. One folder per model, "
+"holding its code, tests, examples, citation, and a declarative `model.toml` "
+"manifest."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:7
+msgid ""
+"The manifest is the only boilerplate you write. The registry, the contract "
+"test suite, the docs page, the CI routing, and the status badge are all "
+"derived from it. Manifests are parsed, never imported, so a model whose "
+"dependencies are missing still appears in the registry and the docs and "
+"reports a clean failure rather than taking the zoo down."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:13
+msgid ""
+"import pybamm\n"
+"import pybamm_model_zoo as zoo\n"
+"\n"
+"zoo.list_models()\n"
+"entry = zoo.info(\"LinearisedSPM\")\n"
+"entry.tier, entry.maintainers, entry.pybamm_requires\n"
+"\n"
+"model = zoo.load(\"LinearisedSPM\")()\n"
+"solution = pybamm.Simulation(model).solve([0, 300])\n"
+"print(solution[\"Voltage [V]\"](150))\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:26
+msgid ""
+"The zoo is a `uv` workspace member, so `uv sync --extra all --group dev` "
+"from the repository root installs it editable alongside `pybamm`."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:29
+msgid ""
+"It is not published to PyPI yet, so `pip install pybamm` does not provide "
+"it. Until it is released, users install it from the repository:"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:32
+msgid ""
+"pip install \"pybamm-model-zoo @ git+https://github.com/pybamm-team/PyBaMM."
+"git#subdirectory=packages/pybamm-model-zoo\"\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:36
+msgid "Adding a model"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:38
+msgid ""
+"nox -s zoo-new -- --slug my_model --name MyModel --author \"A. Author\" --"
+"github ahandle\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:42
+msgid ""
+"That renders [`template/`](https://github.com/pybamm-team/PyBaMM/tree/main/"
+"packages/pybamm-model-zoo/template) into `src/pybamm_model_zoo/my_model/` "
+"and appends your `.github/CODEOWNERS` line, so changes to your folder "
+"request you as reviewer. The rendered skeleton passes the whole contract "
+"suite as generated — the zoo's own test suite renders the template and runs "
+"every check against the result, so that is a tested claim rather than a hope."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:49
+msgid "Then:"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:51
+msgid "Replace the TODOs in `model.toml`, `README.md`, and `CITATION.bib`."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:52
+msgid "Put your physics in `model.py`."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:53
+msgid ""
+"Write at least one test that pins a **physical** result — a known limit, an "
+"analytic solution, a conservation check, or a published figure. That the "
+"model merely runs is already covered by the contract suite, so a test that "
+"only checks it runs adds nothing."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:57
+msgid "Regenerate the docs: `nox -s zoo-docs`."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:58
+msgid "Run it: `nox -s zoo -- --zoo-model=my_model`."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:59
+msgid ""
+"Add a bullet to this package's `CHANGELOG.md`. Zoo pull requests never touch "
+"PyBaMM's changelog."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:62
+msgid ""
+"[`linearised_spm/`](https://github.com/pybamm-team/PyBaMM/tree/main/packages/"
+"pybamm-model-zoo/src/pybamm_model_zoo/linearised_spm) is the reference "
+"entry: the smallest thing that is still a real model. Copy that folder "
+"rather than reading prose."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:66
+msgid "Dependencies"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:68
+msgid ""
+"A model's third-party dependencies go in a per-model **optional** extra "
+"named `zoo-<slug>` (dashes, not underscores) in this package's `pyproject."
+"toml`, listed in the `zoo-all` aggregate — never in the base dependencies. "
+"Workspace members share one lockfile and one dev venv, so a base dependency "
+"here lands in every contributor's environment."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:74
+msgid ""
+"The aggregate is deliberately not called `all`: `uv sync --extra all` "
+"applies the extra to every workspace member that defines one, so an `all` "
+"extra here would drag every model's heavy dependencies into the core dev "
+"environment."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:78
+msgid ""
+"Declare the same requirements in your manifest, and the contract suite "
+"checks that the two agree:"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:81
+msgid ""
+"[model.dependencies]\n"
+"extra = \"zoo-my-model\"\n"
+"packages = [\"scikit-fem>=12.0.2\"]\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:87
+msgid "Tiers"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Tier"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Who sets it"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "CI"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`community`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "the default for a new model"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"Runs on every pull request, **advisory**: reports red without blocking a "
+"merge."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`core`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "PyBaMM maintainers, by adopting a model"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"Runs in PyBaMM's merge gate. A failure blocks a merge, in core and in the "
+"zoo."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:94
+msgid ""
+"Advisory-ness lives in the CI job, never in an `xfail` marker: a community "
+"model that fails, fails, and that is exactly the signal its badge reports. "
+"Being advisory is what lets the zoo test contributed models on every pull "
+"request without a contributed model ever blocking a PyBaMM release. The "
+"manifest tier is what puts a model's tests behind the `gating` marker, and "
+"what `--zoo-tier=core` keeps out of the merge gate's collection entirely."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:101
+msgid "Testing"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:103
+msgid "Three layers; only the middle one is yours."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Layer"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "What"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Where"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "A"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"Contract suite — every check below, against every registered model, "
+"automatically"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`tests/test_contract.py`, checks in `pybamm_model_zoo.testing.contract`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "B"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Your physics tests"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`src/pybamm_model_zoo/<slug>/tests/`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "C"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Your example scripts, executed"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`tests/test_examples.py` over `<slug>/examples/*.py`"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:111
+msgid "The contract"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:113
+msgid ""
+"`pybamm_model_zoo.testing.contract.CHECKS` is the one definition of the "
+"contract: the test suite, the manifest's `skip_contract` validation, and "
+"this table all derive from it. Each check has a **scope**, which is what "
+"lets the same module hold an in-tree model and a third-party collection to "
+"the right rules."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Check"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "Scope"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "What it asserts"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`manifest`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "model"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"Schema valid; `slug` matches the folder name; `class` is parseable; at least "
+"one maintainer; `pybamm_requires` is a valid specifier satisfied by the "
+"installed PyBaMM."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`layout`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"`README.md`, `CITATION.bib`, `examples/`, and `tests/` present, and the "
+"README has `Summary`, `Usage`, `Validation`, and `Citation` sections."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`import`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"The declared class imports and subclasses `pybamm.BaseModel`. Skipped with a "
+"reason when your declared extra is absent."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`citation`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"The manifest's citation key resolves in your `CITATION.bib`, and "
+"instantiating the model registers it, so `pybamm.print_citations()` credits "
+"you."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`well_posed`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`model.check_well_posedness()` passes."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`build`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`pybamm.Simulation(model).build()` succeeds."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`solve`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"The model solves for the manifest's `solve_time`, and every `key_variables` "
+"entry is finite read through the interpolating call interface."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`packaging`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "packaging"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"An in-tree model is importable as `pybamm_model_zoo.<slug>`, and any extra "
+"it declares exists and is aggregated into `zoo-all`."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`docs`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "repo"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"The generated docs page is present *and current*, so docs cannot drift from "
+"code."
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid "`codeowners`"
+msgstr ""
+
+#: ../../../source/model_zoo/contributing.md:7
+msgid ""
+"`.github/CODEOWNERS` names an owner for your folder, so ownership cannot be "
+"dropped silently."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:131
+msgid ""
+"A third-party collection is held only to the `model` scope; it is not wired "
+"into this package and does not live in this repository."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:134
+msgid ""
+"`skip_contract` waives an individual check for a genuinely unusual model — "
+"one with no meaningful standalone solve, say. It is per-check, reviewed, and "
+"visible in the manifest diff. The `manifest` check itself cannot be waived."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:138
+msgid ""
+"nox -s zoo                          # the whole zoo, both tiers, plus "
+"examples\n"
+"nox -s zoo -- --zoo-model=my_model  # one model\n"
+"nox -s zoo-gating                   # only core-tier models (the merge "
+"gate)\n"
+"nox -s zoo-community                # only what the gate does not cover "
+"(advisory CI)\n"
+"nox -s zoo-examples                 # every model's example scripts\n"
+"nox -s zoo-docs                     # regenerate docs pages and badges\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:147
+msgid ""
+"`--zoo-model` and `--zoo-tier` drop the folders they exclude *before* pytest "
+"imports anything in them, so a model that fails to import can only fail its "
+"own run. That is what keeps the merge gate independent of the community "
+"tier: marker deselection alone would not, since it happens after every test "
+"module is loaded."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:152
+msgid ""
+"Aim for contract checks under 60 s per model and a model's own tests under 5 "
+"minutes; `solve_time` in the manifest is the lever."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:155
+msgid "External model collections"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:157
+msgid ""
+"A third-party package can register its own directory of manifests and be "
+"discovered by the same registry:"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:160
+msgid ""
+"[project.entry-points.\"pybamm_zoo_models\"]\n"
+"my_lab_models = \"my_lab_models\"\n"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:165
+msgid ""
+"It can also hold itself to the `model`-scope contract in its own CI, since "
+"the checks ship in `pybamm_model_zoo.testing.contract`. In-tree models win a "
+"name collision, so a third-party package cannot shadow one."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:169
+msgid "Review checklist for a zoo pull request"
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:171
+msgid "Short by design — the contract suite does the rest."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:173
+msgid "[ ] License is OSI-approved and compatible with BSD-3-Clause."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:174
+msgid ""
+"[ ] No edits to `packages/pybamm/src/` in the same pull request; core "
+"changes     are split out."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:176
+msgid "[ ] Third-party dependencies declared as a `zoo-<slug>` extra."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:177
+msgid "[ ] At least one test pins a physical result."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:178
+msgid "[ ] The example script runs."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:179
+msgid "[ ] The citation resolves and is registered on instantiation."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:180
+msgid "[ ] `.github/CODEOWNERS` line added."
+msgstr ""
+
+#: ../../../../packages/pybamm-model-zoo/README.md:181
+msgid "[ ] `CHANGELOG.md` entry in this package."
+msgstr ""
