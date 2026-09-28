@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-07-20T12:56:12+00:00" />
+    <title>PyBaMM Release Policy &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/user_guide/release';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/user_guide/release.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="next" title="Tutorial 1 - How to run a model" href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html" />
+    <link rel="prev" title="Contributing to PyBaMM" href="contributing.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-07-20"/>
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing to PyBaMM</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PyBaMM Release Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/notebooks/performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">PyBaMM Release Policy</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <!-- a stub file to add RELEASE.md from the root directory
+to the hosted docs -->
+<section id="pybamm-release-policy">
+<h1>PyBaMM Release Policy<a class="headerlink" href="#pybamm-release-policy" title="Link to this heading">#</a></h1>
+<p>This document is the source of truth for how PyBaMM is versioned, when releases happen, what counts as a breaking change, and how breaking changes and deprecations are communicated. For a quick summary aimed at users, see the <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/README.md#versioning">Versioning section of the README</a>.</p>
+<section id="at-a-glance">
+<h2>At a glance<a class="headerlink" href="#at-a-glance" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Versioning:</strong> <a class="reference external" href="https://calver.org/">CalVer</a> in the form <code class="docutils literal notranslate"><span class="pre">YY.MM.N.P</span></code> — year, month, feature release index within that month, patch level.</p></li>
+<li><p><strong>Cadence:</strong> We release when there’s something worth releasing, with no fixed schedule. Breaking changes target the first feature release of the month (<code class="docutils literal notranslate"><span class="pre">YY.MM.0.0</span></code>).</p></li>
+<li><p><strong>Breaking changes:</strong> Documented under <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> in <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/CHANGELOG.md"><code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code></a>. Public APIs that are removed or renamed ship a <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> for at least two prior feature releases first (see the Deprecation policy section for the documented exceptions).</p></li>
+<li><p><strong>Pre-announcement:</strong> The <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[Unreleased]</span></code> section at the top of <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> on <code class="docutils literal notranslate"><span class="pre">main</span></code> is the canonical preview of what’s about to ship.</p></li>
+</ul>
+</section>
+<section id="version-scheme">
+<h2>Version scheme<a class="headerlink" href="#version-scheme" title="Link to this heading">#</a></h2>
+<p>PyBaMM versions take the form <code class="docutils literal notranslate"><span class="pre">YY.MM.N.P</span></code>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Component</p></th>
+<th class="head"><p>Meaning</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">YY</span></code></p></td>
+<td><p>Two-digit year</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">27</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">MM</span></code></p></td>
+<td><p>Month of release (1–12, no leading zero)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">11</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">N</span></code></p></td>
+<td><p>Feature release within that month, <strong>0-indexed</strong> — <code class="docutils literal notranslate"><span class="pre">0</span></code> for the first</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">P</span></code></p></td>
+<td><p>Patch level — <code class="docutils literal notranslate"><span class="pre">0</span></code> for the feature release itself; <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code>, … for patches off it</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code>, <code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Worked examples:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">27.1.0.0</span></code> — first feature release in January 2027.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">27.1.0.1</span></code> — first patch off <code class="docutils literal notranslate"><span class="pre">27.1.0.0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">27.1.1.0</span></code> — second feature release in January 2027 (only when two feature releases land in the same calendar month).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">27.1.1.1</span></code> — first patch off <code class="docutils literal notranslate"><span class="pre">27.1.1.0</span></code>.</p></li>
+</ul>
+<p><strong>Cutover.</strong> The first feature release tagged after the policy lands is the first to use <code class="docutils literal notranslate"><span class="pre">YY.MM.N.P</span></code>. Earlier tags (<code class="docutils literal notranslate"><span class="pre">v26.x.N</span></code>) remain in their original form; we do not retroactively retag.</p>
+</section>
+<section id="monorepo-independent-package-releases">
+<h2>Monorepo: independent package releases<a class="headerlink" href="#monorepo-independent-package-releases" title="Link to this heading">#</a></h2>
+<p>PyBaMM and <code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> live in one repository (a UV workspace under
+<code class="docutils literal notranslate"><span class="pre">packages/</span></code>) but release <strong>independently to PyPI</strong>, discriminated by tag
+namespace. See <code class="docutils literal notranslate"><span class="pre">docs/superpowers/specs/2026-06-11-pybamm-monorepo-design.md</span></code> for
+the full design.</p>
+<ul class="simple">
+<li><p>Each package’s publish workflow fires only for its own tag namespace (the
+pre-monorepo <code class="docutils literal notranslate"><span class="pre">github.repository</span></code> guard no longer distinguishes them).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> releases use the <code class="docutils literal notranslate"><span class="pre">pybammsolvers-v*</span></code> namespace.</p></li>
+<li><p><strong>Legacy solver tags</strong> (<code class="docutils literal notranslate"><span class="pre">v0.8.0</span></code>, <code class="docutils literal notranslate"><span class="pre">v0.8.1</span></code>, <code class="docutils literal notranslate"><span class="pre">v0.8.2</span></code>) carried over from the
+standalone <code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> repo are <strong>not</strong> part of PyBaMM’s release history and
+must not drive PyBaMM’s computed version. They are either dropped or re-tagged
+under <code class="docutils literal notranslate"><span class="pre">pybammsolvers-v*</span></code> during the migration.</p></li>
+<li><p>The migration was integrated with a <strong>merge commit (not a squash)</strong> so the full
+commit history of both packages is preserved; PyBaMM’s existing commit SHAs are
+unchanged (no history rewrite).</p></li>
+</ul>
+</section>
+<section id="release-cadence">
+<h2>Release cadence<a class="headerlink" href="#release-cadence" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We release when there’s a meaningful body of work to ship. No fixed monthly or quarterly schedule.</p></li>
+<li><p>Patch releases are cut from the corresponding feature release branch as fixes warrant.</p></li>
+<li><p>Breaking changes target the <strong>first feature release of the month</strong> (<code class="docutils literal notranslate"><span class="pre">YY.MM.0.0</span></code>). Subsequent feature releases in the same month (<code class="docutils literal notranslate"><span class="pre">YY.MM.1.0</span></code>, <code class="docutils literal notranslate"><span class="pre">YY.MM.2.0</span></code>, …) should not contain breaking changes unless absolutely required. Exceptions must be justified in the PR description and in the <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> changelog entry, alongside the standard deprecation note.</p></li>
+</ul>
+</section>
+<section id="what-counts-as-a-breaking-change">
+<h2>What counts as a breaking change<a class="headerlink" href="#what-counts-as-a-breaking-change" title="Link to this heading">#</a></h2>
+<p>A change is <strong>breaking</strong> if it does any of the following:</p>
+<ul class="simple">
+<li><p>Removes or renames a public Python API.</p></li>
+<li><p>Changes the signature, defaults, or return type of a public function in a way existing user code would notice.</p></li>
+<li><p>Changes the <strong>default</strong> model, solver, or option such that an unchanged user script produces materially different numerical output.</p></li>
+<li><p>Drops support for a previously-supported Python version, OS, or core dependency major version.</p></li>
+<li><p>Changes the on-disk format of saved models or solutions without a backward-compatible reader.</p></li>
+</ul>
+<p>A change is <strong>not</strong> breaking if it:</p>
+<ul class="simple">
+<li><p>Adds new optional kwargs to existing public functions.</p></li>
+<li><p>Adds new submodels, solvers, or options that opt-in via explicit configuration.</p></li>
+<li><p>Improves performance.</p></li>
+<li><p>Fixes a bug (corrects behaviour that was previously wrong).</p></li>
+<li><p>Changes numerical output of a <em>non-default</em> model or solver. Algorithmic improvements under the same name and same defaults are not breaking, even if outputs shift.</p></li>
+</ul>
+</section>
+<section id="public-api-defined">
+<h2>“Public API” defined<a class="headerlink" href="#public-api-defined" title="Link to this heading">#</a></h2>
+<p><strong>Public API = anything documented at <a class="reference external" href="https://docs.pybamm.org">docs.pybamm.org</a>.</strong></p>
+<p>If a class, function, or method appears in the rendered API reference, it is in PyBaMM’s public contract. Anything else — internal modules, leading-underscore names, undocumented helpers — is private and may change between any two releases without a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> entry.</p>
+<p>The rendered docs build is the auditable source of truth. A PR reviewer can answer “is this public?” by checking whether the symbol is reachable from the API reference index.</p>
+</section>
+<section id="deprecation-policy">
+<h2>Deprecation policy<a class="headerlink" href="#deprecation-policy" title="Link to this heading">#</a></h2>
+<p>Removing or renaming a public API must ship a <code class="docutils literal notranslate"><span class="pre">DeprecationWarning</span></code> in at least <strong>two prior feature releases</strong> before the removal release.</p>
+<ul class="simple">
+<li><p>The deprecation lands with a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Deprecated</span></code> entry in the changelog.</p></li>
+<li><p>The eventual removal lands with a <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> entry that references the original deprecation.</p></li>
+</ul>
+<p><strong>Exceptions.</strong> The two-release floor may be skipped only when one of the following applies. Each exception must be justified in the PR description <em>and</em> in the <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> changelog entry:</p>
+<ul class="simple">
+<li><p>(a) The API is fundamentally unsafe or broken — keeping it around for two releases would cause harm.</p></li>
+<li><p>(b) The API was never advertised in the docs — it was reachable but not part of the public contract.</p></li>
+<li><p>(c) Deprecation is technically impossible — for example, removing a required positional argument, where there is no behaviour to warn from.</p></li>
+</ul>
+</section>
+<section id="pre-announcement">
+<h2>Pre-announcement<a class="headerlink" href="#pre-announcement" title="Link to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[Unreleased]</span></code> section at the top of <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> on <code class="docutils literal notranslate"><span class="pre">main</span></code> is the canonical pre-announcement channel. Downstream package maintainers, users, and contributors can read that section at any time to see what is about to ship.</p>
+<p>The following are <strong>not</strong> required by policy but may be chosen by maintainers for exceptional breaks (e.g. removing a long-standing core class, dropping a supported Python version):</p>
+<ul class="simple">
+<li><p>Release candidate (RC) tags on PyPI.</p></li>
+<li><p>Pinned GitHub tracking issues.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[BREAKING]</span></code> prefix on GitHub release titles.</p></li>
+<li><p>Announcements on Slack or pybamm.org.</p></li>
+</ul>
+</section>
+<section id="changelog-conventions">
+<h2>Changelog conventions<a class="headerlink" href="#changelog-conventions" title="Link to this heading">#</a></h2>
+<p>Within each release block (and within <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[Unreleased]</span></code>), sections appear in this order, omitting any that are empty:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Breaking changes</span>
+<span class="c1">## Deprecated</span>
+<span class="c1">## Features</span>
+<span class="c1">## Bug fixes</span>
+</pre></div>
+</div>
+<p>The ordering is <strong>scariest first</strong>: anyone scanning the changelog sees breaks and deprecations before features.</p>
+<p><strong>Entry format.</strong> Each entry is a single bullet ending in a PR link:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="k">-</span><span class="w"> </span>Short imperative description of the change. ([#1234](https://github.com/pybamm-team/PyBaMM/pull/1234))
+</pre></div>
+</div>
+<p>Use full GitHub URLs (not bare <code class="docutils literal notranslate"><span class="pre">#1234</span></code>) so the rendered markdown on docs.pybamm.org links correctly. <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code> and <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Deprecated</span></code> entries must include a one-line migration note describing how users adapt.</p>
+<p><strong>Historical entries are not rewritten.</strong> The new section ordering and the new <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Deprecated</span></code> section apply from the next release block forward. Existing release blocks keep whatever they currently have.</p>
+</section>
+<section id="release-manager-checklist">
+<h2>Release-manager checklist<a class="headerlink" href="#release-manager-checklist" title="Link to this heading">#</a></h2>
+<p>The version string in the built distribution is supplied by <code class="docutils literal notranslate"><span class="pre">hatch-vcs</span></code> from the VCS tag (<code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> has <code class="docutils literal notranslate"><span class="pre">dynamic</span> <span class="pre">=</span> <span class="pre">[&quot;version&quot;]</span></code> with <code class="docutils literal notranslate"><span class="pre">version.source</span> <span class="pre">=</span> <span class="pre">&quot;vcs&quot;</span></code>, writing to <code class="docutils literal notranslate"><span class="pre">src/pybamm/_version.py</span></code>). The <code class="docutils literal notranslate"><span class="pre">scripts/update_version.py</span></code> helper updates <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> and prepends a new dated heading to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code>; its version-string handling is format-agnostic and accepts the four-component form unchanged.</p>
+<section id="cutting-a-feature-release">
+<h3>Cutting a feature release<a class="headerlink" href="#cutting-a-feature-release" title="Link to this heading">#</a></h3>
+<p>A feature release is <code class="docutils literal notranslate"><span class="pre">YY.MM.N.0</span></code> — the patch component is <code class="docutils literal notranslate"><span class="pre">0</span></code>. The first feature release in a given calendar month uses <code class="docutils literal notranslate"><span class="pre">N=0</span></code>; subsequent feature releases in the same month use <code class="docutils literal notranslate"><span class="pre">N=1</span></code>, <code class="docutils literal notranslate"><span class="pre">N=2</span></code>, etc.</p>
+<ol class="arabic simple">
+<li><p>Confirm <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[Unreleased]</span></code> in <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> accurately reflects what’s about to ship — every breaking change, deprecation, feature, and bug fix has an entry with a PR link, and entries are grouped under the four sections (<code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Breaking</span> <span class="pre">changes</span></code>, <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Deprecated</span></code>, <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Features</span></code>, <code class="docutils literal notranslate"><span class="pre">##</span> <span class="pre">Bug</span> <span class="pre">fixes</span></code>) in that order.</p></li>
+<li><p>Create and check out a release branch from <code class="docutils literal notranslate"><span class="pre">main</span></code>: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">release/vYY.MM.N.0</span></code>.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">python</span> <span class="pre">scripts/update_version.py</span> <span class="pre">YY.MM.N.0</span></code> to update <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> and prepend a dated heading to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code>.</p></li>
+<li><p>Push the branch and open a PR to <code class="docutils literal notranslate"><span class="pre">main</span></code>. Ensure CI passes, then merge.</p></li>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">main</span></code> at the merge commit, create a GitHub <em>release</em> with the tag <code class="docutils literal notranslate"><span class="pre">pybamm-vYY.MM.N.0</span></code>. Copy the relevant <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> block into the release description. This triggers <code class="docutils literal notranslate"><span class="pre">publish_pypi.yml</span></code> and creates the PyPI release automatically. (Monorepo: PyBaMM release tags use the <code class="docutils literal notranslate"><span class="pre">pybamm-v</span></code> prefix so they are distinct from <code class="docutils literal notranslate"><span class="pre">pybammsolvers-v*</span></code>; see “Monorepo: independent package releases” above.)</p></li>
+<li><p>Verify the release installs cleanly: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybamm==YY.MM.N.0</span></code>.</p></li>
+</ol>
+</section>
+<section id="cutting-a-patch-release">
+<h3>Cutting a patch release<a class="headerlink" href="#cutting-a-patch-release" title="Link to this heading">#</a></h3>
+<p>A patch release is <code class="docutils literal notranslate"><span class="pre">YY.MM.N.P</span></code> where <code class="docutils literal notranslate"><span class="pre">P</span> <span class="pre">&gt;=</span> <span class="pre">1</span></code>. Patches are cut from the previous tag in the same feature line so the release contains only the bug fixes, not unrelated changes that have landed on <code class="docutils literal notranslate"><span class="pre">main</span></code> since the feature release.</p>
+<ol class="arabic">
+<li><p>Ensure all bug fixes are merged to <code class="docutils literal notranslate"><span class="pre">main</span></code> first via normal PRs.</p></li>
+<li><p>Create a new branch from the previous tag in the same feature line: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">release/vYY.MM.N.P</span> <span class="pre">pybamm-vYY.MM.N.{P-1}</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">release/v27.1.0.1</span></code> from <code class="docutils literal notranslate"><span class="pre">pybamm-v27.1.0.0</span></code>).</p></li>
+<li><p>Cherry-pick the bug fixes onto the new branch, recording the original SHA with <code class="docutils literal notranslate"><span class="pre">-x</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>cherry-pick<span class="w"> </span>-x<span class="w"> </span>&lt;commit-sha-from-main&gt;
+</pre></div>
+</div>
+</li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span> <span class="pre">python</span> <span class="pre">scripts/update_version.py</span> <span class="pre">YY.MM.N.P</span></code> to update <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code> and prepend a dated heading to <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code>. Commit the result on the release branch.</p></li>
+<li><p>Create a GitHub <em>release</em> with the tag <code class="docutils literal notranslate"><span class="pre">pybamm-vYY.MM.N.P</span></code> from the <code class="docutils literal notranslate"><span class="pre">release/vYY.MM.N.P</span></code> branch (NOT from <code class="docutils literal notranslate"><span class="pre">main</span></code>). Copy the relevant <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> block into the release description. This triggers <code class="docutils literal notranslate"><span class="pre">publish_pypi.yml</span></code>.</p></li>
+<li><p>Verify the release installs cleanly: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybamm==YY.MM.N.P</span></code>.</p></li>
+<li><p>Update the changelog on <code class="docutils literal notranslate"><span class="pre">main</span></code> separately. <strong>Do not merge the release branch back to <code class="docutils literal notranslate"><span class="pre">main</span></code></strong> — that would duplicate commits with new hashes. Instead:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>checkout<span class="w"> </span>main
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>update-changelog-vYY.MM.N.P
+</pre></div>
+</div>
+<p>Edit <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code> to add the new dated <code class="docutils literal notranslate"><span class="pre">vYY.MM.N.P</span></code> block (moving the entries out of <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">[Unreleased]</span></code>), and update <code class="docutils literal notranslate"><span class="pre">CITATION.cff</span></code>. Open a PR to <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+</li>
+<li><p>Delete the release branch after tagging — it is no longer needed.</p></li>
+</ol>
+</section>
+<section id="cutting-a-pybammsolvers-release">
+<h3>Cutting a <code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> release<a class="headerlink" href="#cutting-a-pybammsolvers-release" title="Link to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> releases independently of PyBaMM. <strong><code class="docutils literal notranslate"><span class="pre">packages/pybammsolvers/src/pybammsolvers/version.py</span></code> is the single source of truth for its published version</strong>, <em>not</em> the release tag — the <code class="docutils literal notranslate"><span class="pre">pybammsolvers-v*</span></code> tag namespace only routes the workflow. The version is a static string (dynamic VCS versioning is avoided because it would force a build during dependency resolution, which build-tool-less resolvers like Dependabot cannot do); the <code class="docutils literal notranslate"><span class="pre">sync-pybammsolvers-version</span></code> pre-commit hook mirrors <code class="docutils literal notranslate"><span class="pre">version.py</span></code> into the two static copies — <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> (<code class="docutils literal notranslate"><span class="pre">[project]</span> <span class="pre">version</span></code>, which stamps the built distribution) and <code class="docutils literal notranslate"><span class="pre">vcpkg.json</span></code> (<code class="docutils literal notranslate"><span class="pre">version-string</span></code>) — so a bump touches only one file. Keep the tag and <code class="docutils literal notranslate"><span class="pre">version.py</span></code> in lockstep, or the wrong version ships.</p>
+<ol class="arabic simple">
+<li><p>Bump <code class="docutils literal notranslate"><span class="pre">__version__</span></code> in <code class="docutils literal notranslate"><span class="pre">packages/pybammsolvers/src/pybammsolvers/version.py</span></code> (the pre-commit hook mirrors it into <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> and <code class="docutils literal notranslate"><span class="pre">vcpkg.json</span></code>) and record the change in <code class="docutils literal notranslate"><span class="pre">CHANGELOG.md</span></code>. Open a PR to <code class="docutils literal notranslate"><span class="pre">main</span></code>, ensure CI passes, then merge.</p></li>
+<li><p>From <code class="docutils literal notranslate"><span class="pre">main</span></code> at the merge commit, create a GitHub <em>release</em> with the tag <code class="docutils literal notranslate"><span class="pre">pybammsolvers-vX.Y.Z</span></code>, where <code class="docutils literal notranslate"><span class="pre">X.Y.Z</span></code> <strong>exactly matches</strong> the new <code class="docutils literal notranslate"><span class="pre">version.py</span></code> value. This triggers <code class="docutils literal notranslate"><span class="pre">release_solvers.yml</span></code>, which builds wheels + sdist and publishes to PyPI. The <code class="docutils literal notranslate"><span class="pre">check_version</span></code> job in that workflow fails the release if the tag, <code class="docutils literal notranslate"><span class="pre">version.py</span></code>, or the <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>/<code class="docutils literal notranslate"><span class="pre">vcpkg.json</span></code> mirrors disagree; PyPI separately rejects a re-upload of an already-published version.</p></li>
+<li><p>Verify the release installs cleanly: <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybammsolvers==X.Y.Z</span></code>.</p></li>
+</ol>
+</section>
+<section id="conda-forge">
+<h3>Conda-forge<a class="headerlink" href="#conda-forge" title="Link to this heading">#</a></h3>
+<p>The conda-forge release flow is triggered automatically after a stable PyPI release: the conda-forge bot opens a PR against <a class="reference external" href="https://github.com/conda-forge/pybamm-feedstock">pybamm-feedstock</a>, which maintainers review and approve.</p>
+<p>When a release touches the API, console scripts, entry points, optional dependencies, supported Python versions, or core project metadata, update <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> in <a class="reference external" href="https://github.com/conda-forge/pybamm-feedstock">pybamm-feedstock</a> following <a class="reference external" href="https://conda-forge.org/docs/maintainer/updating_pkgs/#updating-recipes">the conda-forge maintainer docs</a> and re-render the recipe. Push updates directly to the bot’s automated PR where possible. Manual PRs must bump the <code class="docutils literal notranslate"><span class="pre">build</span></code> number in <code class="docutils literal notranslate"><span class="pre">meta.yaml</span></code> and be opened from a personal fork.</p>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="contributing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Contributing to PyBaMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../examples/notebooks/getting_started/tutorial-1-how-to-run-a-model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial 1 - How to run a model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#at-a-glance">At a glance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version-scheme">Version scheme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monorepo-independent-package-releases">Monorepo: independent package releases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-cadence">Release cadence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-counts-as-a-breaking-change">What counts as a breaking change</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public-api-defined">“Public API” defined</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deprecation-policy">Deprecation policy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-announcement">Pre-announcement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#changelog-conventions">Changelog conventions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#release-manager-checklist">Release-manager checklist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-a-feature-release">Cutting a feature release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-a-patch-release">Cutting a patch release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cutting-a-pybammsolvers-release">Cutting a <code class="docutils literal notranslate"><span class="pre">pybammsolvers</span></code> release</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conda-forge">Conda-forge</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/user_guide/release.md">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-07-20.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

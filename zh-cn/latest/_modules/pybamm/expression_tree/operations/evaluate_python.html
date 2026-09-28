@@ -1,0 +1,1264 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.expression_tree.operations.evaluate_python &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=06885765"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/expression_tree/operations/evaluate_python';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/expression_tree/operations/evaluate_python.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.expression_tree.operations.evaluate_python</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.expression_tree.operations.evaluate_python 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Write a symbol to python</span>
+<span class="c1">#</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numbers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy.sparse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy.typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">ArrayLike</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="k">if</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">has_jax</span><span class="p">():</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">jax.extend</span>
+
+    <span class="n">platform</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">extend</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">get_backend</span><span class="p">()</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">casefold</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">platform</span> <span class="o">!=</span> <span class="s2">&quot;metal&quot;</span><span class="p">:</span>
+        <span class="n">jax</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="s2">&quot;jax_enable_x64&quot;</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">JaxCooMatrix</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A sparse matrix in COO format, with internal arrays using jax device arrays</span>
+
+<span class="sd">    This matrix only has two operations supported, a multiply with a scalar, and a</span>
+<span class="sd">    dot product with a dense vector. It can also be converted to a dense 2D jax</span>
+<span class="sd">    device array</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    row: arraylike</span>
+<span class="sd">        1D array holding row indices of non-zero entries</span>
+<span class="sd">    col: arraylike</span>
+<span class="sd">        1D array holding col indices of non-zero entries</span>
+<span class="sd">    data: arraylike</span>
+<span class="sd">        1D array holding non-zero entries</span>
+<span class="sd">    shape: 2-element tuple (x, y)</span>
+<span class="sd">        where x is the number of rows, and y the number of columns of the matrix</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">col</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="n">ArrayLike</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">has_jax</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+                <span class="s2">&quot;Jax or jaxlib is not installed, please see https://docs.pybamm.org/en/latest/source/user_guide/installation/index.html#optional-jaxsolver&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">row</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">col</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shape</span> <span class="o">=</span> <span class="n">shape</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nnz</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">toarray</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;convert sparse matrix to a dense 2D array&quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">dot_product</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        dot product of matrix with a dense column vector b</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        b: jax device array</span>
+<span class="sd">            must have shape (n, 1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># assume b is a column vector</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">b</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">]</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">])</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">scalar_multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        multiply of matrix with a scalar b</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        b: Number or 1 element jax device array</span>
+<span class="sd">            scalar value to multiply</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># assume b is a scalar or ndarray with 1 element</span>
+        <span class="k">return</span> <span class="n">JaxCooMatrix</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">row</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">col</span><span class="p">,</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">multiply</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        general matrix multiply not supported</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__matmul__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;see self.dot_product&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">dot_product</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">create_jax_coo_matrix</span><span class="p">(</span><span class="n">value</span><span class="p">:</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates a JaxCooMatrix from a scipy.sparse matrix</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    value: scipy.sparse matrix</span>
+<span class="sd">        the sparse matrix to be converted</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">scipy_coo</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">tocoo</span><span class="p">()</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scipy_coo</span><span class="o">.</span><span class="n">row</span><span class="p">)</span>
+    <span class="n">col</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scipy_coo</span><span class="o">.</span><span class="n">col</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">numpy</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">scipy_coo</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">JaxCooMatrix</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="n">constant</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function defines the format for the python variable names used in find_symbols</span>
+<span class="sd">    and to_python. Variable names are based on a nodes&#39; id to make them unique</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">constant</span><span class="p">:</span>
+        <span class="n">var_format</span> <span class="o">=</span> <span class="s2">&quot;const_</span><span class="si">{:05d}</span><span class="s2">&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">var_format</span> <span class="o">=</span> <span class="s2">&quot;var_</span><span class="si">{:05d}</span><span class="s2">&quot;</span>
+
+    <span class="c1"># Need to replace &quot;-&quot; character to make them valid python variable names</span>
+    <span class="k">return</span> <span class="n">var_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;m&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">is_scalar</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+    <span class="n">is_number</span> <span class="o">=</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">is_number</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">arg</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">find_symbols</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span>
+    <span class="n">constant_symbols</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">,</span>
+    <span class="n">variable_symbols</span><span class="p">:</span> <span class="n">OrderedDict</span><span class="p">,</span>
+    <span class="n">output_jax</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function converts an expression tree to a dictionary of node id&#39;s and strings</span>
+<span class="sd">    specifying valid python code to calculate that nodes value, given y and t.</span>
+
+<span class="sd">    The function distinguishes between nodes that represent constant nodes in the tree</span>
+<span class="sd">    (e.g. a pybamm.Matrix), and those that are variable (e.g. subtrees that contain</span>
+<span class="sd">    pybamm.StateVector). The former are put in `constant_symbols`, the latter in</span>
+<span class="sd">    `variable_symbols`</span>
+
+<span class="sd">    Note that it is important that the arguments `constant_symbols` and</span>
+<span class="sd">    `variable_symbols` be an *ordered* dict, since the final ordering of the code lines</span>
+<span class="sd">    are important for the calculations. A dict is specified rather than a list so that</span>
+<span class="sd">    identical subtrees (which give identical id&#39;s) are not recalculated in the code</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    symbol : :class:`pybamm.Symbol`</span>
+<span class="sd">        The symbol or expression tree to convert</span>
+
+<span class="sd">    constant_symbol: collections.OrderedDict</span>
+<span class="sd">        The output dictionary of constant symbol ids to lines of code</span>
+
+<span class="sd">    variable_symbol: collections.OrderedDict</span>
+<span class="sd">        The output dictionary of variable (with y or t) symbol ids to lines of code</span>
+
+<span class="sd">    output_jax: bool</span>
+<span class="sd">        If True, only numpy and jax operations will be used in the generated code,</span>
+<span class="sd">        raises NotImplNotImplementedError if any SparseStack or Mat-Mat multiply</span>
+<span class="sd">        operations are used</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># constant symbols that are not numbers are stored in a list of constants, which are</span>
+    <span class="c1"># passed into the generated function constant symbols that are numbers are written</span>
+    <span class="c1"># directly into the code</span>
+    <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                <span class="c1"># convert any remaining sparse matrices to our custom coo matrix</span>
+                <span class="n">constant_symbols</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">create_jax_coo_matrix</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">constant_symbols</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="k">return</span>
+
+    <span class="c1"># process children recursively</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="n">find_symbols</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">constant_symbols</span><span class="p">,</span> <span class="n">variable_symbols</span><span class="p">,</span> <span class="n">output_jax</span><span class="p">)</span>
+
+    <span class="c1"># calculate the variable names that will hold the result of calculating the</span>
+    <span class="c1"># children variables</span>
+    <span class="n">children_vars</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">child</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+            <span class="n">child_eval</span> <span class="o">=</span> <span class="n">child</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child_eval</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+                <span class="n">children_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">child_eval</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">children_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="kc">True</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">children_vars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Conditional</span><span class="p">):</span>
+        <span class="n">selector_var</span> <span class="o">=</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
+        <span class="k">for</span> <span class="n">branch_index</span><span class="p">,</span> <span class="n">branch_var</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span>
+            <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+        <span class="p">):</span>
+            <span class="n">lower</span> <span class="o">=</span> <span class="n">branch_index</span> <span class="o">-</span> <span class="mf">0.5</span>
+            <span class="n">upper</span> <span class="o">=</span> <span class="n">branch_index</span> <span class="o">+</span> <span class="mf">0.5</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;(</span><span class="si">{</span><span class="n">branch_var</span><span class="si">}</span><span class="s2"> if (</span><span class="si">{</span><span class="n">lower</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">selector_var</span><span class="si">}</span><span class="s2"> &lt; </span><span class="si">{</span><span class="n">upper</span><span class="si">}</span><span class="s2">) else </span><span class="si">{</span><span class="n">symbol_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BinaryOperator</span><span class="p">):</span>
+        <span class="c1"># Multiplication and Division need special handling for scipy sparse matrices</span>
+        <span class="c1"># TODO: we can pass through a dummy y and t to get the type and then hardcode</span>
+        <span class="c1"># the right line, avoiding these checks</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Multiplication</span><span class="p">):</span>
+            <span class="n">dummy_eval_left</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="n">dummy_eval_right</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_left</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">):</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.scalar_multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">elif</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">):</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Division</span><span class="p">):</span>
+            <span class="n">dummy_eval_left</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="n">dummy_eval_right</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_left</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">):</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.scalar_multiply(1/</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.multiply(1/</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Inner</span><span class="p">):</span>
+            <span class="n">dummy_eval_left</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="n">dummy_eval_right</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_left</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">):</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.scalar_multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">.multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">elif</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="n">is_scalar</span><span class="p">(</span><span class="n">dummy_eval_left</span><span class="p">):</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.scalar_multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">.multiply(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> * </span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Minimum</span><span class="p">):</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;np.minimum(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Maximum</span><span class="p">):</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;np.maximum(</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">MatrixMultiplication</span><span class="p">):</span>
+            <span class="n">dummy_eval_left</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="n">dummy_eval_right</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">evaluate_for_shape</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">output_jax</span> <span class="ow">and</span> <span class="p">(</span>
+                <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_left</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">issparse</span><span class="p">(</span><span class="n">dummy_eval_right</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                    <span class="s2">&quot;sparse mat-mat multiplication not supported for output_jax == True&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">+</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">UnaryOperator</span><span class="p">):</span>
+        <span class="c1"># Index has a different syntax than other univariate operations</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Index</span><span class="p">):</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">slice</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">slice</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;(&quot;</span> <span class="o">+</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+        <span class="n">children_str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">for</span> <span class="n">child_var</span> <span class="ow">in</span> <span class="n">children_vars</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">children_str</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="n">children_str</span> <span class="o">=</span> <span class="n">child_var</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">children_str</span> <span class="o">+=</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">child_var</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Arcsinh2</span><span class="p">):</span>
+            <span class="c1"># Arcsinh2._arcsinh2_evaluate takes (a, b, eps) but only (a, b)</span>
+            <span class="c1"># are children, so we need to call _function_evaluate instead</span>
+            <span class="n">constant_symbols</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">_function_evaluate</span>
+            <span class="n">funct_var</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">funct_var</span><span class="si">}</span><span class="s2">([</span><span class="si">{</span><span class="n">children_str</span><span class="si">}</span><span class="s2">])&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">function</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ufunc</span><span class="p">):</span>
+            <span class="c1"># write any numpy functions directly</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;np.</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">children_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># unknown function, store it as a constant and call this in the</span>
+            <span class="c1"># generated code</span>
+            <span class="n">constant_symbols</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">function</span>
+            <span class="n">funct_var</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">funct_var</span><span class="si">}</span><span class="s2">(</span><span class="si">{</span><span class="n">children_str</span><span class="si">}</span><span class="s2">)&quot;</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Concatenation</span><span class="p">):</span>
+        <span class="c1"># no need to concatenate if there is only a single child</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">NumpyConcatenation</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">children_vars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;np.concatenate((</span><span class="si">{}</span><span class="s2">))&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">children_vars</span><span class="p">))</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SparseStack</span><span class="p">):</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">children_vars</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="n">children_vars</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">output_jax</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;scipy.sparse.vstack((</span><span class="si">{}</span><span class="s2">))&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                        <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">children_vars</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+        <span class="c1"># DomainConcatenation specifies a particular ordering for the concatenation,</span>
+        <span class="c1"># which we must follow</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">DomainConcatenation</span><span class="p">):</span>
+            <span class="n">slice_starts</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">all_child_vectors</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">secondary_dimensions_npts</span><span class="p">):</span>
+                <span class="n">child_vectors</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">child_var</span><span class="p">,</span> <span class="n">slices</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                    <span class="n">children_vars</span><span class="p">,</span> <span class="n">symbol</span><span class="o">.</span><span class="n">_children_slices</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">):</span>
+                    <span class="k">for</span> <span class="n">child_dom</span><span class="p">,</span> <span class="n">child_slice</span> <span class="ow">in</span> <span class="n">slices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">slice_starts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">_slices</span><span class="p">[</span><span class="n">child_dom</span><span class="p">][</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="p">)</span>
+                        <span class="n">child_vectors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">child_var</span><span class="si">}</span><span class="s2">[</span><span class="si">{</span><span class="n">child_slice</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">start</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">child_slice</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">stop</span><span class="si">}</span><span class="s2">]&quot;</span>
+                        <span class="p">)</span>
+                <span class="n">all_child_vectors</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">v</span>
+                        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span>
+                            <span class="nb">zip</span><span class="p">(</span><span class="n">slice_starts</span><span class="p">,</span> <span class="n">child_vectors</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                        <span class="p">)</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">children_vars</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">symbol</span><span class="o">.</span><span class="n">secondary_dimensions_npts</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;np.concatenate((</span><span class="si">{}</span><span class="s2">))&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">all_child_vectors</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">children_vars</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+
+    <span class="c1"># Note: we assume that y is being passed as a column vector</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">StateVector</span><span class="p">):</span>
+        <span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">evaluation_array</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
+        <span class="n">consecutive</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">indices</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">-</span> <span class="n">indices</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">consecutive</span><span class="p">:</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;y[</span><span class="si">{</span><span class="n">indices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="n">indices</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">indices_array</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Array</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
+            <span class="n">constant_symbols</span><span class="p">[</span><span class="n">indices_array</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">indices</span>
+            <span class="n">index_name</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">indices_array</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;y[</span><span class="si">{</span><span class="n">index_name</span><span class="si">}</span><span class="s2">]&quot;</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Time</span><span class="p">):</span>
+        <span class="n">symbol_str</span> <span class="o">=</span> <span class="s2">&quot;t&quot;</span>
+
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">):</span>
+        <span class="n">symbol_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;inputs[&quot;</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;]&#39;</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Conversion to python not implemented for a symbol of type &#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
+        <span class="p">)</span>
+
+    <span class="n">variable_symbols</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">]</span> <span class="o">=</span> <span class="n">symbol_str</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">to_python</span><span class="p">(</span>
+    <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_jax</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">OrderedDict</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function converts an expression tree into a dict of constant input values, and</span>
+<span class="sd">    valid python code that acts like the tree&#39;s :func:`pybamm.Symbol.evaluate` function</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    symbol : :class:`pybamm.Symbol`</span>
+<span class="sd">        The symbol to convert to python code</span>
+
+<span class="sd">    debug : bool</span>
+<span class="sd">        If set to True, the function also emits debug code</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    collections.OrderedDict:</span>
+<span class="sd">        dict mapping node id to a constant value. Represents all the constant nodes in</span>
+<span class="sd">        the expression tree</span>
+<span class="sd">    str:</span>
+<span class="sd">        valid python code that will evaluate all the variable nodes in the tree.</span>
+<span class="sd">    output_jax: bool</span>
+<span class="sd">        If True, only numpy and jax operations will be used in the generated code.</span>
+<span class="sd">        Raises NotImplNotImplementedError if any SparseStack or Mat-Mat multiply</span>
+<span class="sd">        operations are used</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">constant_values</span><span class="p">:</span> <span class="n">OrderedDict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">variable_symbols</span><span class="p">:</span> <span class="n">OrderedDict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span>
+    <span class="n">find_symbols</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">constant_values</span><span class="p">,</span> <span class="n">variable_symbols</span><span class="p">,</span> <span class="n">output_jax</span><span class="p">)</span>
+
+    <span class="n">line_format</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span>
+
+    <span class="k">if</span> <span class="n">debug</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+        <span class="n">variable_lines</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="sa">f</span><span class="s2">&quot;print(&#39;</span><span class="si">{</span><span class="n">line_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span><span class="w"> </span><span class="kc">False</span><span class="p">),</span><span class="w"> </span><span class="n">symbol_line</span><span class="p">)</span><span class="si">}</span><span class="s2">&#39;); &quot;</span>
+            <span class="o">+</span> <span class="n">line_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="n">symbol_line</span><span class="p">)</span>
+            <span class="o">+</span> <span class="s2">&quot;; print(type(</span><span class="si">{0}</span><span class="s2">),np.shape(</span><span class="si">{0}</span><span class="s2">))&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="k">for</span> <span class="n">symbol_id</span><span class="p">,</span> <span class="n">symbol_line</span> <span class="ow">in</span> <span class="n">variable_symbols</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">variable_lines</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">line_format</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span> <span class="n">symbol_line</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">symbol_id</span><span class="p">,</span> <span class="n">symbol_line</span> <span class="ow">in</span> <span class="n">variable_symbols</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">constant_values</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">variable_lines</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="EvaluatorPython">
+<a class="viewcode-back" href="../../../../source/api/expression_tree/operations/evaluate.html#pybamm.EvaluatorPython">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluatorPython</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a pybamm expression tree into pure python code that will calculate the</span>
+<span class="sd">    result of calling `evaluate(t, y)` on the given expression tree.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    symbol : :class:`pybamm.Symbol`</span>
+<span class="sd">        The symbol to convert to python code</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+        <span class="n">constants</span><span class="p">,</span> <span class="n">python_str</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">to_python</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># extract constants in generated function</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">symbol_id</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">const_name</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+            <span class="n">python_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">const_name</span><span class="si">}</span><span class="s2"> = constants[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">python_str</span>
+
+        <span class="c1"># constants passed in as an ordered dict, convert to list</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="c1"># indent code</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="s2">&quot;   &quot;</span> <span class="o">+</span> <span class="n">python_str</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   &quot;</span><span class="p">)</span>
+
+        <span class="c1"># add function def to first line</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;def evaluate(constants, t=None, y=None, inputs=None):</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">python_str</span>
+        <span class="p">)</span>
+
+        <span class="c1"># calculate the final variable that will output the result of calling `evaluate`</span>
+        <span class="c1"># on `symbol`</span>
+        <span class="n">result_var</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+            <span class="n">result_value</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+
+        <span class="c1"># add return line</span>
+        <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result_value</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   return &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   return &quot;</span> <span class="o">+</span> <span class="n">result_var</span>
+
+        <span class="c1"># store a copy of examine_jaxpr</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">self._evaluate = evaluate&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_python_str</span> <span class="o">=</span> <span class="n">python_str</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_result_var</span> <span class="o">=</span> <span class="n">result_var</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_symbol</span> <span class="o">=</span> <span class="n">symbol</span>
+
+        <span class="c1"># compile and run the generated python code,</span>
+        <span class="n">compiled_function</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">python_str</span><span class="p">,</span> <span class="n">result_var</span><span class="p">,</span> <span class="s2">&quot;exec&quot;</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">compiled_function</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Control the state of instances of EvaluatorPython</span>
+        <span class="c1"># before pickling. Method &quot;_evaluate&quot; cannot be pickled.</span>
+        <span class="c1"># See https://github.com/pybamm-team/PyBaMM/issues/1283</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">del</span> <span class="n">state</span><span class="p">[</span><span class="s2">&quot;_evaluate&quot;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">state</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="c1"># Restore pickled attributes and</span>
+        <span class="c1"># compile code from &quot;python_str&quot;</span>
+        <span class="c1"># Execution of bytecode (re)adds attribute</span>
+        <span class="c1"># &quot;_method&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">compiled_function</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_python_str</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_result_var</span><span class="p">,</span> <span class="s2">&quot;exec&quot;</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">compiled_function</span><span class="p">)</span></div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluatorJax</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Converts a pybamm expression tree into pure python code that will calculate the</span>
+<span class="sd">    result of calling `evaluate(t, y)` on the given expression tree. The resultant code</span>
+<span class="sd">    is compiled with JAX</span>
+
+<span class="sd">    Limitations: JAX currently does not work on expressions involving sparse matrices,</span>
+<span class="sd">    so any sparse matrices and operations involved sparse matrices are converted to</span>
+<span class="sd">    their dense equivilents before compilation</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+
+<span class="sd">    symbol : :class:`pybamm.Symbol`</span>
+<span class="sd">        The symbol to convert to python code</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">has_jax</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="k">raise</span> <span class="ne">ModuleNotFoundError</span><span class="p">(</span>
+                <span class="s2">&quot;Jax or jaxlib is not installed, please see https://docs.pybamm.org/en/latest/source/user_guide/installation/index.html#optional-jaxsolver&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">constants</span><span class="p">,</span> <span class="n">python_str</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">to_python</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">debug</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">output_jax</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># replace numpy function calls to jax numpy calls</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;np.&quot;</span><span class="p">,</span> <span class="s2">&quot;jax.numpy.&quot;</span><span class="p">)</span>
+
+        <span class="c1"># convert all numpy constants to device vectors</span>
+        <span class="k">for</span> <span class="n">symbol_id</span> <span class="ow">in</span> <span class="n">constants</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">constants</span><span class="p">[</span><span class="n">symbol_id</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">constants</span><span class="p">[</span><span class="n">symbol_id</span><span class="p">]</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">device_put</span><span class="p">(</span><span class="n">constants</span><span class="p">[</span><span class="n">symbol_id</span><span class="p">])</span>
+
+        <span class="c1"># get a list of constant arguments to input to the function</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_arg_list</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol_id</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span> <span class="k">for</span> <span class="n">symbol_id</span> <span class="ow">in</span> <span class="n">constants</span>
+        <span class="p">]</span>
+
+        <span class="c1"># get a list of hashable arguments to make static</span>
+        <span class="c1"># a jax device array is not hashable</span>
+        <span class="n">static_argnums</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">i</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">jax</span><span class="o">.</span><span class="n">Array</span><span class="p">))</span>
+        <span class="p">)</span>
+
+        <span class="c1"># store constants</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">constants</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+        <span class="c1"># indent code</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="s2">&quot;   &quot;</span> <span class="o">+</span> <span class="n">python_str</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   &quot;</span><span class="p">)</span>
+
+        <span class="c1"># add function def to first line</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="s2">&quot;t=None, y=None, inputs=None&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_arg_list</span><span class="p">:</span>
+            <span class="n">args</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_list</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span> <span class="o">+</span> <span class="n">args</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;def evaluate_jax(</span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">):</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">python_str</span>
+
+        <span class="c1"># calculate the final variable that will output the result of calling `evaluate`</span>
+        <span class="c1"># on `symbol`</span>
+        <span class="n">result_var</span> <span class="o">=</span> <span class="n">id_to_python_variable</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">())</span>
+        <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+            <span class="n">result_value</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+
+        <span class="c1"># add return line</span>
+        <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">result_value</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   return &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result_value</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">   return &quot;</span> <span class="o">+</span> <span class="n">result_var</span>
+
+        <span class="c1"># store a copy of examine_jaxpr</span>
+        <span class="n">python_str</span> <span class="o">=</span> <span class="n">python_str</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">self._evaluate_jax = evaluate_jax&quot;</span>
+
+        <span class="c1"># store the final generated code</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_python_str</span> <span class="o">=</span> <span class="n">python_str</span>
+
+        <span class="c1"># compile and run the generated python code,</span>
+        <span class="n">compiled_function</span> <span class="o">=</span> <span class="nb">compile</span><span class="p">(</span><span class="n">python_str</span><span class="p">,</span> <span class="n">result_var</span><span class="p">,</span> <span class="s2">&quot;exec&quot;</span><span class="p">)</span>
+        <span class="n">exec</span><span class="p">(</span><span class="n">compiled_function</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_static_argnums</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">static_argnums</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jit_evaluate</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_jax</span><span class="p">,</span>  <span class="c1"># type:ignore[attr-defined]</span>
+            <span class="n">static_argnums</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_static_argnums</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_constants</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">__constants</span>
+
+    <span class="nd">@_constants</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_constants</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">__constants</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_jacobian</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_list</span><span class="p">)</span>
+
+        <span class="c1"># forward mode autodiff  wrt y, which is argument 1 after arg_list</span>
+        <span class="n">jacobian_evaluate</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_jax</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+            <span class="n">jacobian_evaluate</span><span class="p">,</span> <span class="n">static_argnums</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_static_argnums</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">EvaluatorJaxJacobian</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_jacobian_action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">jvp</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_sensitivities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_arg_list</span><span class="p">)</span>
+
+        <span class="c1"># forward mode autodiff wrt inputs, which is argument 2 after arg_list</span>
+        <span class="n">jacobian_evaluate</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_jax</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">2</span> <span class="o">+</span> <span class="n">n</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sens_evaluate</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span>
+            <span class="n">jacobian_evaluate</span><span class="p">,</span> <span class="n">static_argnums</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_static_argnums</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">EvaluatorJaxSensitivities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sens_evaluate</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">debug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># execute code</span>
+        <span class="n">jaxpr</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">make_jaxpr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_evaluate_jax</span><span class="p">)(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span><span class="o">.</span><span class="n">jaxpr</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;invars:&quot;</span><span class="p">,</span> <span class="n">jaxpr</span><span class="o">.</span><span class="n">invars</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;outvars:&quot;</span><span class="p">,</span> <span class="n">jaxpr</span><span class="o">.</span><span class="n">outvars</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;constvars:&quot;</span><span class="p">,</span> <span class="n">jaxpr</span><span class="o">.</span><span class="n">constvars</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">eqn</span> <span class="ow">in</span> <span class="n">jaxpr</span><span class="o">.</span><span class="n">eqns</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;equation:&quot;</span><span class="p">,</span> <span class="n">eqn</span><span class="o">.</span><span class="n">invars</span><span class="p">,</span> <span class="n">eqn</span><span class="o">.</span><span class="n">primitive</span><span class="p">,</span> <span class="n">eqn</span><span class="o">.</span><span class="n">outvars</span><span class="p">,</span> <span class="n">eqn</span><span class="o">.</span><span class="n">params</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jaxpr:&quot;</span><span class="p">,</span> <span class="n">jaxpr</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jit_evaluate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">jvp</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate jacobian vector product of function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">v</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">bind_t_and_inputs</span><span class="p">(</span><span class="n">the_y</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jit_evaluate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">the_y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">jax</span><span class="o">.</span><span class="n">jvp</span><span class="p">(</span><span class="n">bind_t_and_inputs</span><span class="p">,</span> <span class="p">(</span><span class="n">y</span><span class="p">,),</span> <span class="p">(</span><span class="n">v</span><span class="p">,))[</span><span class="mi">1</span><span class="p">]</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluatorJaxJacobian</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jac_evaluate</span><span class="p">,</span> <span class="n">constants</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span> <span class="o">=</span> <span class="n">jac_evaluate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span> <span class="o">=</span> <span class="n">constants</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># execute code</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluatorJaxSensitivities</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">jac_evaluate</span><span class="p">,</span> <span class="n">constants</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span> <span class="o">=</span> <span class="n">jac_evaluate</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_constants</span> <span class="o">=</span> <span class="n">constants</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        evaluate function</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># generated code assumes y is a column vector</span>
+        <span class="k">if</span> <span class="n">y</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># execute code</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_jac_evaluate</span><span class="p">(</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_constants</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">key</span><span class="p">:</span> <span class="n">value</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">result</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
