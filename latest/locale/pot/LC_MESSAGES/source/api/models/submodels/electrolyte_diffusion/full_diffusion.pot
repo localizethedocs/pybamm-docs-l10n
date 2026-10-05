@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-05 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -43,7 +44,17 @@ msgid "A dictionary of options to be passed to the model."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/electrolyte_diffusion/full_diffusion.py:docstring
-#: of pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full:10
+#: of pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full:9
+msgid ""
+"Whether to make the x-averaged electrolyte concentration an algebraic state "
+"when a surface form is used. This keeps the Jacobian sparse for the "
+"composite conductivity submodels, which read the x-average in every "
+"equation, but only adds an extra state for the full conductivity submodel, "
+"which never reads it. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/electrolyte_diffusion/full_diffusion.py:docstring
+#: of pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full:16
 msgid ""
 "**Extends:** :class:`pybamm.models.submodels.electrolyte_diffusion."
 "base_electrolyte_diffusion.BaseElectrolyteDiffusion`"
@@ -69,6 +80,7 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/electrolyte_diffusion/full_diffusion.py:docstring
 #: of
 #: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.get_coupled_variables:8
+#: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.set_algebraic:6
 #: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.set_boundary_conditions:6
 #: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.set_initial_conditions:7
 #: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.set_rhs:6
@@ -109,6 +121,16 @@ msgstr ""
 msgid ""
 "The variables created by the submodel which are independent of variables in "
 "other submodels."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/electrolyte_diffusion/full_diffusion.py:docstring
+#: of
+#: pybamm.models.submodels.electrolyte_diffusion.full_diffusion.Full.set_algebraic:1
+msgid ""
+"A method to set the differential equations which do not contain a time "
+"derivative. Note: this method modifies the state of self.algebraic. Unless "
+"overwritten by a submodel, the default behaviour of 'pass' is used as "
+"implemented in :class:`pybamm.BaseSubModel`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/submodels/electrolyte_diffusion/full_diffusion.py:docstring
