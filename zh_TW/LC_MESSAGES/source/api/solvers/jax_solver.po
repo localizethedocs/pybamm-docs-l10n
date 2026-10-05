@@ -1,0 +1,218 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/solvers/jax_solver.rst:2
+msgid "JAX Solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:1
+msgid "Solve a discretised model using a JAX compiled solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:3
+msgid "**Note**: this solver will not work with models that have"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:4
+msgid "termination events or are not converted to jax format"
+msgstr ""
+
+#: ../../../source/api/solvers/jax_solver.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:6
+msgid "if model has any termination events"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:7
+msgid "if `model.convert_to_format != 'jax'`"
+msgstr ""
+
+#: ../../../source/api/solvers/jax_solver.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:9
+msgid ""
+"* 'BDF' (default) uses custom jax_bdf_integrate (see `jax_bdf_integrate.py` "
+"for details) * 'RK45' uses jax.experimental.ode.odeint"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:10
+msgid ""
+"'BDF' (default) uses custom jax_bdf_integrate (see `jax_bdf_integrate.py` "
+"for details)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:11
+msgid "'RK45' uses jax.experimental.ode.odeint"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:13
+msgid ""
+"Method to use to calculate consistent initial conditions. By default, this "
+"uses the newton chord method internal to the jax bdf solver, otherwise "
+"choose from the set of default options defined in docs for pybamm.BaseSolver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:17
+msgid "The relative tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:19
+msgid "The absolute tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:21
+msgid ""
+"The tolerance to assert whether extrapolation occurs or not (default is 0)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:23
+msgid ""
+"What to do if the solver is extrapolating. Options are \"warn\", \"error\", "
+"or \"ignore\". Default is \"warn\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:26
+msgid ""
+"Any options to pass to the solver. Please consult `JAX documentation "
+"<https://github.com/jax-ml/jax/blob/master/jax/experimental/ode.py>`_ for "
+"details."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver:32
+msgid "**Extends:** :class:`pybamm.solvers.base_solver.BaseSolver`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver.create_solve:1
+#: pybamm.solvers.jax_solver.JaxSolver.get_solve:1
+msgid ""
+"Return a compiled JAX function that solves an ode model with input arguments."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver.create_solve:3
+#: pybamm.solvers.jax_solver.JaxSolver.get_solve:3
+msgid "The model whose solution to calculate."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver.create_solve:5
+#: pybamm.solvers.jax_solver.JaxSolver.get_solve:5
+msgid "The times at which to compute the solution"
+msgstr ""
+
+#: ../../../source/api/solvers/jax_solver.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_solver.py:docstring
+#: of pybamm.solvers.jax_solver.JaxSolver.create_solve:8
+#: pybamm.solvers.jax_solver.JaxSolver.get_solve:8
+msgid ""
+"A function with signature `f(inputs, y0)`, where inputs are a dict "
+"containing any input parameters to pass to the model when solving, and y0 is "
+"the initial state vector (i.e. one entry from model.y0_list)"
+msgstr ""
+
+#: ../../../source/api/solvers/jax_solver.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:1
+msgid ""
+"Backward Difference formula (BDF) implicit multistep integrator. The basic "
+"algorithm is derived in :footcite:t:`Byrne1975`. This particular "
+"implementation follows that implemented in the Matlab routine ode15s "
+"described in :footcite:t:`Shampine1997` and the SciPy implementation :"
+"footcite:t:`Virtanen2020` which features the NDF formulas for improved "
+"stability, with associated differences in the error constants, and "
+"calculates the jacobian at J(t_{n+1}, y^0_{n+1}). This implementation was "
+"based on that implemented in the SciPy library :footcite:t:`Virtanen2020`, "
+"which also mainly follows :footcite:t:`Shampine1997` but uses the more "
+"standard jacobian update."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:11
+msgid ""
+"function to evaluate the time derivative of the solution `y` at time `t` as "
+"`func(y, t, *args)`, producing the same shape/structure as `y0`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:14
+msgid "initial state vector"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:16
+msgid "time points to evaluate the solution, has shape (m,)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:18
+msgid ""
+"tuple of additional arguments for `fun`, which must be arrays scalars, or "
+"(nested) standard Python containers (tuples, lists, dicts, namedtuples, i.e. "
+"pytrees) of those types."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:22
+msgid "relative tolerance for the solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:24
+msgid "absolute tolerance for the solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:26
+msgid "diagonal of the mass matrix with shape (n,)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/jax_bdf_solver.py:docstring
+#: of pybamm.solvers.jax_bdf_solver.jax_bdf_integrate:29
+msgid "**y** -- calculated state vector at each of the m time points"
+msgstr ""
+
+#: ../../../<generated text>:1
+msgid "References"
+msgstr ""

@@ -1,0 +1,654 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/creating_models/7-creating-a-submodel."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:8
+msgid "Creating a submodel"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:10
+msgid ""
+"In `Tutorial 3 <./3-negative-particle-problem.ipynb>`__ we showed how to "
+"create a simple model from scratch in PyBaMM. In this tutorial we will solve "
+"a very similar problem, but using separate submodels for the linear "
+"diffusion problem and the model for the surface flux. In this simple example "
+"the surface flux is just some known function of the concentration, so we "
+"could just explicitly define it in the model for diffusion. However, we "
+"write it as a separate model to show how submodels interact."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:12
+msgid ""
+"We solved the problem of linear diffusion on a unit sphere with a flux at "
+"the boundary that depends on the concentration"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:14
+msgid "\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:19
+msgid "with the following boundary and initial conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:21
+msgid ""
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
+"\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=1} = -j, \\quad "
+"\\left.c\\right\\vert_{t=0} = c_0,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:26
+msgid "where"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:28
+msgid "j = \\left.j_0(1-c)^{1/2}c^{1/2}\\right\\vert_{r=1}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:33
+msgid ""
+"Here :math:`c_0` and :math:`j_0` are parameters we can control. Again we "
+"will assume that everything is non-dimensional and focus on how to set up "
+"and solve the model rather than any specific physical interpretation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:56
+msgid "Setting up the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:58
+msgid "Again we start with an empty ``BaseModel`` class"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "model = pybamm.BaseModel()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:79
+msgid ""
+"Next we set up the submodel for diffusion in the particle using a ``pybamm."
+"BaseSubModel``. Each submodel has methods that define the variables, "
+"equations, initial and boundary conditions corresponding to the physics the "
+"model describes."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:81
+msgid ""
+"First ``get_fundamental_variables`` defines any variables that can be "
+"defined independently of any other submodels that may be included in our "
+"model. Here we can define the concentration, surface concentration and flux, "
+"and add them to the dictionary of variables."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:83
+msgid ""
+"Next we can use ``get_coupled_variables`` to define any variables that *do* "
+"depend on variables defined in another submodel. In this simple example we "
+"don't have any variables to define here. However, if we had included a "
+"temperature dependent diffusivity, for example, then we would have needed to "
+"define the flux in ``get_coupled_variables`` since it would now depend on "
+"the temperature which would be defined in a separate submodel."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:85
+msgid ""
+"Once we have defined all the variables we need we can write down our "
+"equations. Any equations that include time derivatives will turn into "
+"ordinary differential equations after discretisation. We set the right hand "
+"sides of such equations in the ``set_rhs`` method. In this example we add "
+"the right hand side of the diffusion equation to the ``rhs`` dictionary. "
+"Equations that don't contain time derivatives give algebraic constraints in "
+"our model. These equations are set in the ``set_algebraic`` method. In this "
+"example we don't have any algebraic equations, so we can skip this method."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:88
+msgid ""
+"Finally we set the boundary and initial conditions using the methods "
+"``set_boundary_conditions`` and ``set_initial_conditions``, respectively."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"class Particle(pybamm.BaseSubModel):\n"
+"    def __init__(self, param, domain, options=None):\n"
+"        super().__init__(param, domain, options=options)\n"
+"\n"
+"    def get_fundamental_variables(self):\n"
+"        # create concentration variable\n"
+"        c = pybamm.Variable(\"Concentration\", domain=\"negative "
+"particle\")\n"
+"\n"
+"        # define concentration at the surface of the sphere\n"
+"        c_surf = pybamm.surf(c)\n"
+"\n"
+"        # define flux\n"
+"        N = -pybamm.grad(c)\n"
+"\n"
+"        # create dictionary of model variables\n"
+"        variables = {\n"
+"            \"Concentration\": c,\n"
+"            \"Surface concentration\": c_surf,\n"
+"            \"Flux\": N,\n"
+"        }\n"
+"\n"
+"        return variables\n"
+"\n"
+"    def get_coupled_variables(self, variables):\n"
+"        return variables\n"
+"\n"
+"    def set_rhs(self, variables):\n"
+"        # extract the variables we need\n"
+"        c = variables[\"Concentration\"]\n"
+"        N = variables[\"Flux\"]\n"
+"\n"
+"        # define the rhs of the PDE\n"
+"        dcdt = -pybamm.div(N)\n"
+"\n"
+"        # add it to the submodel dictionary\n"
+"        self.rhs = {c: dcdt}\n"
+"\n"
+"    def set_algebraic(self, variables):\n"
+"        pass\n"
+"\n"
+"    def set_boundary_conditions(self, variables):\n"
+"        # extract the variables we need\n"
+"        c = variables[\"Concentration\"]\n"
+"        j = variables[\"Boundary flux\"]\n"
+"\n"
+"        # add the boundary conditions to the submodel dictionary\n"
+"        self.boundary_conditions = {\n"
+"            c: {\"left\": (0, \"Neumann\"), \"right\": (-j, \"Neumann\")}\n"
+"        }\n"
+"\n"
+"    def set_initial_conditions(self, variables):\n"
+"        # extract the variable we need\n"
+"        c = variables[\"Concentration\"]\n"
+"\n"
+"        # define the initial concentration parameter\n"
+"        c0 = pybamm.Parameter(\"Initial concentration\")\n"
+"\n"
+"        # add the initial conditions to the submodel dictionary\n"
+"        self.initial_conditions = {c: c0}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"class BoundaryFlux(pybamm.BaseSubModel):\n"
+"    def __init__(self, param, domain, options=None):\n"
+"        super().__init__(param, domain, options=options)\n"
+"\n"
+"    def get_coupled_variables(self, variables):\n"
+"        # extract the variable we need\n"
+"        c_surf = variables[\"Surface concentration\"]\n"
+"\n"
+"        # define the flux parameter\n"
+"        j0 = pybamm.Parameter(\"Flux parameter\")\n"
+"        j = j0 * (1 - c_surf) ** (1 / 2) * c_surf ** (1 / 2)  # prescribed "
+"boundary flux\n"
+"\n"
+"        # update dictionary of model variables\n"
+"        variables.update({\"Boundary flux\": j})\n"
+"\n"
+"        return variables"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:192
+msgid ""
+"We can now set the submodels in a model by assigning a dictionary to ``model."
+"submodels``. The dictionary key is the name we want to give to the submodel "
+"and the value is an instance of the submodel class we want to use."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:194
+msgid ""
+"When we instantiate a submodel we are required to pass in ``param``, a class "
+"of parameter symbols we are going to call, and ``domain``, the domain on "
+"which the submodel lives. In this example we will simply set ``param`` to "
+"``None`` and hard-code the definition of our parameters into the submodel. "
+"When writing lots of submodels it is more efficient to define *all* the "
+"parameters in a shared class, and pass this to each submodel. For the domain "
+"we will choose \"Negative\"."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"model.submodels = {\n"
+"    \"Particle\": Particle(None, \"Negative\"),\n"
+"    \"Boundary flux\": BoundaryFlux(None, \"Negative\"),\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:218
+msgid ""
+"At this stage we have just told the model which submodels it is constructed "
+"from, but the variables and equations have not yet been created. For example "
+"if we look at the ``rhs`` dictionary it is empty."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "model.rhs"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:240
+msgid ""
+"<pre>\n"
+"{}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:246
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\\{\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:253
+msgid "{}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:264
+msgid ""
+"To populate the model variables, equations, boundary and initial conditions "
+"we need to \"build\" the model. To do this we call ``build_model``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "model.build_model()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:285
+msgid ""
+"This loops through all of the submodels, first creating the \"fundamental "
+"variables\", followed by the \"coupled variables\" and finally the equations "
+"(``rhs`` and ``algebraic``) and the boundary and initial conditions. Now we "
+"see that ``model.rhs`` contains our diffusion equation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:307
+msgid ""
+"<pre>\n"
+"{Variable(0x48a91fa41dea72d3, Concentration, children=[], domains={&#39;"
+"primary&#39;: [&#39;negative particle&#39;]}): "
+"Divergence(0x4befa5e7cf20d0c5, div, children=[&#39;"
+"grad(Concentration)&#39;], domains={&#39;primary&#39;: [&#39;negative "
+"particle&#39;]})}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:313
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\\{Variable(0x48a91fa41dea72d3, Concentration, children=[], "
+"domains=\\{'primary': ['negative particle']\\}): "
+"Divergence(0x4befa5e7cf20d0c5, div, children=['grad(Concentration)'], "
+"domains=\\{'primary': ['negative particle']\\})\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:320
+msgid ""
+"{Variable(0x48a91fa41dea72d3, Concentration, children=[], "
+"domains={'primary': ['negative particle']}): Divergence(0x4befa5e7cf20d0c5, "
+"div, children=['grad(Concentration)'], domains={'primary': ['negative "
+"particle']})}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:332
+msgid "Using the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:334
+msgid "We can now use our model as in the previous tutorial."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:336
+msgid "We first set up our geometry and mesh"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"r = pybamm.SpatialVariable(\n"
+"    \"r\", domain=[\"negative particle\"], coord_sys=\"spherical polar\"\n"
+")\n"
+"geometry = {\"negative particle\": {r: {\"min\": 0, \"max\": 1}}}\n"
+"spatial_methods = {\"negative particle\": pybamm.FiniteVolume()}\n"
+"submesh_types = {\"negative particle\": pybamm.Uniform1DSubMesh}\n"
+"var_pts = {r: 20}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:364
+msgid ""
+"and then set up our simulation, remembering to set values for our parameters"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"parameter_values = pybamm.ParameterValues(\n"
+"    {\n"
+"        \"Initial concentration\": 0.9,\n"
+"        \"Flux parameter\": 0.8,\n"
+"    }\n"
+")\n"
+"\n"
+"solver = pybamm.ScipySolver()\n"
+"\n"
+"sim = pybamm.Simulation(\n"
+"    model,\n"
+"    geometry=geometry,\n"
+"    parameter_values=parameter_values,\n"
+"    submesh_types=submesh_types,\n"
+"    var_pts=var_pts,\n"
+"    spatial_methods=spatial_methods,\n"
+"    solver=solver,\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:402
+msgid "Finally we can solve the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "sim.solve([0, 1])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:424
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x7f9dc1b2e490&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:430
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x7f9dc1b2e490>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:437
+msgid "<pybamm.solvers.solution.Solution at 0x7f9dc1b2e490>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:448
+msgid "and plot the results"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid ""
+"# pass in a list of the variables we want to plot\n"
+"sim.plot([\"Concentration\", \"Surface concentration\", \"Flux\", \"Boundary "
+"flux\"])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:472
+msgid ""
+"<pre>\n"
+"2022-07-11 13:20:04.194 - [WARNING] processed_variable."
+"get_spatial_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m].\n"
+"2022-07-11 13:20:04.209 - [WARNING] processed_variable."
+"get_spatial_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m].\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:479
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"2022-07-11 13:20:04.194 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m].\n"
+"2022-07-11 13:20:04.209 - [WARNING] processed\\_variable."
+"get\\_spatial\\_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m].\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:487
+msgid ""
+"2022-07-11 13:20:04.194 - [WARNING] processed_variable."
+"get_spatial_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m].\n"
+"2022-07-11 13:20:04.209 - [WARNING] processed_variable."
+"get_spatial_scale(521): No length scale set for negative particle. Using "
+"default of 1 [m]."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:501
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"d9780b7718bd4a9f932f5dd92c065756\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:512
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:518
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:525
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:537
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f9dc1b2ec10&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:543
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f9dc1b2ec10>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:550
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f9dc1b2ec10>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:561
+msgid ""
+"In this notebook we saw how to split a model up into submodels. Although "
+"this was a simple example it let us understand how to construct submodels "
+"and see how they interact via coupled variables."
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:573
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:575
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:596
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:606
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:617
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"[4] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler "
+"Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, "
+"Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for "
+"scientific computing in Python. Nature Methods, 17(3):261–272, 2020. "
+"doi:10.1038/s41592-019-0686-2."
+msgstr ""

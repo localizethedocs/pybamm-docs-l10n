@@ -1,0 +1,317 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/discretisation.rst:2
+msgid "Discretisation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:1
+msgid ""
+"The discretisation class, with methods to process a model and replace "
+"Spatial Operators with Matrices and Variables with StateVectors"
+msgstr ""
+
+#: ../../../source/api/spatial_methods/discretisation.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:4
+msgid "contains all submeshes to be used on each domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:6
+msgid ""
+"a dictionary of the spatial methods to be used on each domain. The keys "
+"correspond to the model domains and the values to the spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:10
+msgid ""
+"If True, model checks are performed after discretisation. For large systems "
+"these checks can be slow, so can be skipped by setting this option to False. "
+"When developing, testing or debugging it is recommended to leave this option "
+"as True as it may help to identify any errors. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:16
+msgid ""
+"If True, model checks to see whether any variables from the RHS are used in "
+"any other equation. If a variable meets all of the following criteria (not "
+"used anywhere in the model, len(rhs)>1), then the variable is moved to be "
+"explicitly integrated when called by the solution object. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation:22
+msgid ""
+"If True, resolve CoupledVariables in rhs, algebraic, initial_conditions, and "
+"boundary_conditions before processing. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.check_model:1
+msgid ""
+"Perform some basic checks to make sure the discretised model makes sense."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.check_tab_conditions:1
+msgid ""
+"Check any boundary conditions applied on \"negative tab\", \"positive tab\" "
+"and \"no tab\". For 1D current collector meshes, these conditions are "
+"converted into boundary conditions on \"left\" (tab at z=0) or "
+"\"right\" (tab at z=l_z) depending on the tab location stored in the mesh. "
+"For 2D current collector meshes, the boundary conditions can be applied on "
+"the tabs directly."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.check_tab_conditions:8
+msgid "The symbol on which the boundary conditions are applied."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.check_tab_conditions:10
+msgid "The dictionary of boundary conditions (a dict of {side: equation})."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/discretisation.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.check_tab_conditions:13
+msgid ""
+"The dictionary of boundary conditions, with the keys changed to \"left\" and "
+"\"right\" where necessary."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/discretisation.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.create_mass_matrix:1
+msgid ""
+"Creates mass matrix of the discretised model. Note that the model is assumed "
+"to be of the form M*y_dot = f(t,y), where M is the (possibly singular) mass "
+"matrix."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.create_mass_matrix:5
+msgid ""
+"Discretised model. Must have attributes rhs, initial_conditions and "
+"boundary_conditions (all dicts of {variable: equation})"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.create_mass_matrix:9
+msgid "The mass matrix"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.create_mass_matrix:10
+msgid ":class:`pybamm.Matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_boundary_conditions:1
+msgid "Discretise model boundary_conditions, also converting keys to ids"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_boundary_conditions:3
+#: pybamm.discretisations.discretisation.Discretisation.process_initial_conditions:3
+#: pybamm.discretisations.discretisation.Discretisation.process_model:3
+#: pybamm.discretisations.discretisation.Discretisation.process_rhs_and_algebraic:3
+msgid ""
+"Model to dicretise. Must have attributes rhs, initial_conditions and "
+"boundary_conditions (all dicts of {variable: equation})"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_boundary_conditions:7
+msgid "Dictionary of processed boundary conditions"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_dict:1
+#: pybamm.discretisations.discretisation.Discretisation.process_equation:1
+msgid ""
+"Discretise a dictionary of {variable: equation}, broadcasting if necessary "
+"(can be model.rhs, model.algebraic, model.initial_conditions or model."
+"variables)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_dict:5
+#: pybamm.discretisations.discretisation.Discretisation.process_equation:5
+msgid ""
+"Equations ({variable: equation} dict) to dicretise (can be model.rhs, model."
+"algebraic, model.initial_conditions or model.variables)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_dict:9
+#: pybamm.discretisations.discretisation.Discretisation.process_equation:9
+msgid ""
+"Whether the equations are initial conditions. If True, the equations are "
+"scaled by the reference value of the variable, if given"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_dict:13
+msgid "**new_var_eqn_dict** -- Discretised equations"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_equation:13
+msgid "Discretised equation"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_initial_conditions:1
+msgid "Discretise model initial_conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_initial_conditions:7
+msgid ""
+"Tuple of processed_initial_conditions (dict of initial conditions) and "
+"concatenated_initial_conditions (numpy array of concatenated initial "
+"conditions)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:1
+msgid ""
+"Discretise a model. Currently inplace, could be changed to return a new "
+"model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:6
+msgid ""
+"If True, discretise the model in place. Otherwise, return a new discretised "
+"model. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:9
+msgid ""
+"If True, make variable processing a post-processing step. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:13
+msgid ""
+"**model_disc** -- The discretised model. Note that if ``inplace`` is True, "
+"model will have also been discretised in place so model == model_disc. If "
+"``inplace`` is False, model != model_disc"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:16
+msgid ":class:`pybamm.BaseModel`"
+msgstr ""
+
+#: ../../../source/api/spatial_methods/discretisation.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_model:18
+msgid ""
+"If an empty model is passed (`model.rhs = {}` and `model.algebraic = {}` "
+"and     `model.variables = {}`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_rhs_and_algebraic:1
+msgid "Discretise model equations - differential ('rhs') and algebraic."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.process_rhs_and_algebraic:7
+msgid ""
+"Tuple of processed_rhs (dict of processed differential equations), "
+"processed_concatenated_rhs, processed_algebraic (dict of processed algebraic "
+"equations) and processed_concatenated_algebraic"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_symbol:1
+msgid ""
+"Discretise operators in model equations. If a symbol has already been "
+"discretised, the stored value is returned."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_symbol:4
+msgid "Symbol to discretise"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_symbol:7
+msgid "Discretised symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of pybamm.discretisations.discretisation.Discretisation.process_symbol:8
+msgid ":class:`pybamm.expression_tree.symbol.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.set_internal_boundary_conditions:1
+msgid ""
+"A method to set the internal boundary conditions for the submodel. These are "
+"required to properly calculate the gradient. Note: this method modifies the "
+"state of self.boundary_conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.set_variable_slices:1
+msgid "Sets the slicing for variables."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/discretisations/discretisation.py:docstring
+#: of
+#: pybamm.discretisations.discretisation.Discretisation.set_variable_slices:3
+msgid "The variables for which to set slices"
+msgstr ""
