@@ -1,0 +1,498 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/DFN.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/DFN.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:9
+msgid "Doyle-Fuller-Newman Model (DFN)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:21
+msgid "Model Equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:32
+msgid ""
+"The DFN comprises equations for charge and mass conservation in the solid "
+"the solid and electrolyte, and also prescribes behaviour for the "
+"electrochemical reactions occurring on the interface between the solid an "
+"electrolyte. For more information please see `[2] <#References>`__ or other "
+"standard texts."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:34
+msgid ""
+"Below we summarise the model, with all parameters give in the table at the "
+"end of this notebook. Here we use a roman subscript :math:`\\text{k} \\in "
+"\\text{n, s, p}` is used to denote the regions negative electrode, "
+"separator, and positive electrode, respectively."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:36
+msgid "The model equations for the DFN read:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:39
+msgid "Charge conservation:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:41
+msgid ""
+"\\frac{\\partial i_{\\text{e,k}}}{\\partial x} = \\begin{cases}\n"
+"                                                  a_{\\text{k}}"
+"j_{\\text{k}}, \\quad &\\text{k} = \\text{n, p}\\\\\n"
+"                                                  0, \\qquad &\\text{k} = "
+"\\text{s}\n"
+"                                            \\end{cases},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:49
+msgid ""
+"i_{\\text{e,k}} = \\epsilon_{\\text{k}}^{\\text{b}} \\kappa_{\\text{e}}"
+"(c_{\\text{e,k}}) \\left( - \\frac{\\partial \\phi_{\\text{e,k}}}{\\partial "
+"x} + 2(1-t^+)\\frac{RT}{F}\\frac{\\partial}{\\partial "
+"x}\\left(\\log(c_{\\text{e,k}})\\right)\\right), \\text{k} \\in \\text{n, s, "
+"p}, \\\\\n"
+"I-i_{\\text{e,k}} = - \\sigma_{\\text{k}} \\frac{\\partial \\phi_{\\text{e,"
+"k}}}{\\partial x}, \\text{k} \\in \\text{n, s, p}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:56
+msgid "Mass conservation:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:58
+msgid ""
+"\\epsilon_{\\text{k}} \\frac{\\partial c_{\\text{e,k}}}{\\partial t} = -"
+"\\frac{\\partial N_{\\text{e,k}}}{\\partial x} + \\frac{1}"
+"{F}\\frac{\\partial i_{\\text{e,k}}}{\\partial x}, \\text{k} \\in \\text{n, "
+"s, p},\\\\\n"
+"N_{\\text{e,k}} = -\\epsilon_{\\text{k}}^{\\text{b}} D_{\\text{e}}"
+"(c_{\\text{e,k}}) \\frac{\\partial c_{\\text{e,k}}}{\\partial x} +  "
+"\\frac{t^+}{F} i_{\\text{e,k}},\n"
+"\\\\ \\text{k} \\in \\text{n, s, p}, \\\\\n"
+"\\frac{\\partial c_{\\text{s,k}}}{\\partial t} = -\\frac{1}{r_{\\text{k}}^2} "
+"\\frac{\\partial}{\\partial r_{\\text{k}}} \\left(r_{\\text{k}}^2 "
+"N_{\\text{s,k}}\\right), \\\\ \\text{k} \\in \\text{n, p},\\\\\n"
+"N_{\\text{s,k}} = -D_{\\text{s,k}}(c_{\\text{s,k}}) \\frac{\\partial "
+"c_{\\text{s,k}}}{\\partial r_{\\text{k}}}, \\\\ \\text{k} \\in \\text{n, p}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:68
+msgid "Electrochemical reactions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:70
+msgid ""
+"j_{\\text{k}} = 2 j_{\\text{0,k}} \\sinh\\left(\\frac{ F\\eta_{\\text{k}}}"
+"{2RT} \\right), \\\\ \\text{k} \\in \\text{n, p}, \\\\\n"
+"j_{\\text{0,k}} = c_{\\text{s,k}}^{1/2} (1-c_{\\text{s,k}})^{1/2}c_{\\text{e,"
+"k}}^{1/2}\\big|_{r_{\\text{k}}=1}, \\\\ \\text{k} \\in \\text{n, p}, \\\\\n"
+"\\eta_{\\text{k}} = \\phi_{\\text{s,k}} - \\phi_{\\text{e,k}} - U_{\\text{k}}"
+"(c_{\\text{s,k}}\\big|_{r_{\\text{k}}=1}), \\\\ \\text{k} \\in \\text{n, p}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:77
+msgid "These are to be solved subject to the following boundary conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:80
+msgid "Current:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:82
+msgid ""
+"i_{\\text{e,n}}\\big|_{x=0} = 0, \\quad i_{\\text{e,p}}\\big|_{x=L}=0,  \\"
+"\\\n"
+"\\phi_{\\text{e,n}}\\big|_{x=L_{\\text{n}}} = \\phi_{\\text{e,s}}\\big|"
+"_{x=L_{\\text{n}}}, \\quad i_{\\text{e,n}}\\big|_{x=L_{\\text{n}}} = "
+"i_{\\text{e,s}}\\big\\vert_{x=L_{\\text{n}}} = I, \\\\\n"
+"\\phi_{\\text{e,s}}\\big|_{x=L-L_{\\text{p}}} = \\phi_{\\text{e,p}}\\big|"
+"_{x=L-L_{\\text{p}}}, \\quad\n"
+"    i_{\\text{e,s}}\\big|_{x=L-L_{\\text{p}}} = i_{\\text{e,p}}\\big|_{x=L-"
+"L_{\\text{p}}} = I."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:91
+msgid "Concentration in the electrolyte:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:93
+msgid ""
+"N_{\\text{e,n}}\\big|_{x=0} = 0, \\quad N_{\\text{e,p}}\\big|_{x=L}=0,\\\\\n"
+"c_{\\text{e,n}}\\big|_{x=L_{\\text{n}}} = c_{\\text{e,s}}|"
+"_{x=L_{\\text{n}}}, \\quad N_{\\text{e,n}}\\big|_{x=L_{\\text{n}}}"
+"=N_{\\text{e,s}}\\big|_{x=L_{\\text{n}}}, \\\\\n"
+"c_{\\text{e,s}}|_{x=L-L_{\\text{p}}}=c_{\\text{e,p}}|_{x=L-L_{\\text{p}}}, "
+"\\quad N_{\\text{e,s}}\\big|_{x=L-L_{\\text{p}}}=N_{\\text{e,p}}\\big|_{x=L-"
+"L_{\\text{p}}}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:101
+msgid "Concentration in the electrode active material:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:103
+msgid ""
+"N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0, \\quad \\text{k} \\in \\text{n, "
+"p}, \\quad \\ \\ N_{\\text{s,k}}\\big|_{r_{\\text{k}}=R_{\\text{k}}} = "
+"\\frac{j_{\\text{k}}}{F}, \\quad \\text{k} \\in \\text{n, p}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:109
+msgid "Reference potential:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:111
+msgid ""
+"\\phi_{\\text{s,cn}} = 0, \\quad  \\boldsymbol{x} \\in \\partial "
+"\\Omega_{\\text{tab,n}}.\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:114
+msgid "And the initial conditions:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:116
+msgid ""
+"c_{\\text{s,k}}(x,r,0) = c_{\\text{s,k,0}}, \\quad \\text{k} \\in \\text{n, "
+"p},\\\\\n"
+"c_{\\text{e,k}}(x,0) = c_{\\text{e,0}}, \\quad \\text{k} \\in \\text{n, s, "
+"p}."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:132
+msgid "Example solving DFN using PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:143
+msgid ""
+"Below we show how to solve the DFN model, using the default geometry, mesh, "
+"parameters, discretisation and solver provided with PyBaMM. For a more "
+"detailed example, see the notebook on the `SPM <https://github.com/pybamm-"
+"team/PyBaMM/blob/main/docs/source/examples/notebooks/models/SPM.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:145
+msgid ""
+"In order to show off all the different points at which the process of "
+"setting up and solving a model in PyBaMM can be customised we explicitly "
+"handle the stages of choosing a geometry, setting parameters, discretising "
+"the model and solving the model. However, it is often simpler in practice to "
+"use the ``Simulation`` class, which handles many of the stages "
+"automatically, as shown `here <../simulations_and_experiments/simulation-"
+"class.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:147
+msgid ""
+"First we need to import pybamm, along with numpy which we will use in this "
+"notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:170
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:176
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:183
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:194
+msgid ""
+"We then load the DFN model and default geometry, and process them both using "
+"the default parameters."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid ""
+"# load model\n"
+"model = pybamm.lithium_ion.DFN()\n"
+"\n"
+"# create geometry\n"
+"geometry = model.default_geometry\n"
+"\n"
+"# load parameter values and process model and geometry\n"
+"param = model.default_parameter_values\n"
+"param.process_model(model)\n"
+"param.process_geometry(geometry)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:224
+msgid ""
+"The next step is to set the mesh and discretise the model. Again, we choose "
+"the default settings."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid ""
+"# set mesh\n"
+"mesh = pybamm.Mesh(geometry, model.default_submesh_types, model."
+"default_var_pts)\n"
+"\n"
+"# discretise model\n"
+"disc = pybamm.Discretisation(mesh, model.default_spatial_methods)\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:250
+msgid ""
+"The model is now ready to be solved. We select the default DAE solver for "
+"the DFN. Note that in order to successfully solve the system of DAEs we are "
+"required to give consistent initial conditions. This is handled "
+"automatically by PyBaMM during the solve operation."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid ""
+"# solve model\n"
+"solver = model.default_solver\n"
+"t_eval = [0, 3600]  # time in seconds\n"
+"solution = solver.solve(model, t_eval)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:274
+msgid ""
+"To get a quick overview of the model outputs we can use the QuickPlot class, "
+"which plots a common set of useful outputs. The method ``Quickplot."
+"dynamic_plot`` makes a slider widget."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid ""
+"quick_plot = pybamm.QuickPlot(\n"
+"    solution, [\"Positive electrode interfacial current density [A.m-2]\"]\n"
+")\n"
+"quick_plot.dynamic_plot();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:299
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"aa2fc8004adc492486d03ca7a5ac6c13\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:309
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:315
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:322
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:334
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:336
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:357
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:371
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/DFN.ipynb:386
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[4] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[5] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[6] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[7] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

@@ -1,0 +1,417 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/scikit_finite_element.rst:2
+msgid "Scikit Finite Elements"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement:1
+msgid ""
+"A class which implements the steps specific to the finite element method "
+"during discretisation. The class uses scikit-fem to discretise the problem "
+"to obtain the mass and stiffness matrices. At present, this class is only "
+"used for solving the Poisson problem -grad^2 u = f in the y-z plane (i.e. "
+"not the through-cell direction)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement:7
+msgid "For broadcast, we follow the default behaviour from SpatialMethod."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement:9
+msgid ""
+"**Extends:** :class:`pybamm.spatial_methods.spatial_method.SpatialMethod`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:1
+msgid ""
+"Assembles the form of the finite element mass matrix over the domain "
+"interior or boundary."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/scikit_finite_element.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:4
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_mass_matrix:4
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.mass_matrix:3
+msgid ""
+"The variable corresponding to the equation for which we are calculating the "
+"mass matrix."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:7
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_mass_matrix:7
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:11
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_matrix:5
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:7
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.mass_matrix:6
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.stiffness_matrix:5
+msgid ""
+"The boundary conditions of the model ({symbol: {\"negative tab\": neg. tab "
+"bc, \"positive tab\": pos. tab bc}})"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:10
+msgid ""
+"The domain over which to assemble the mass matrix form. Can be "
+"\"interior\" (default) or \"boundary\"."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/scikit_finite_element.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:14
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_mass_matrix:11
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.mass_matrix:10
+msgid "The (sparse) mass matrix for the spatial method."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/scikit_finite_element.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.assemble_mass_form:15
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:20
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_mass_matrix:12
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:15
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_matrix:10
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.mass_matrix:11
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.stiffness_matrix:10
+msgid ":class:`pybamm.Matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.bc_apply:1
+msgid ""
+"Adjusts the assembled finite element matrices to account for boundary "
+"conditions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.bc_apply:3
+msgid "The assembled finite element matrix to adjust."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.bc_apply:5
+msgid "Array of the indices which correspond to the boundary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.bc_apply:7
+msgid ""
+"If True, the rows of M given by the indicies in boundary are set to zero. If "
+"False, the diagonal element is set to one. default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral:1
+msgid ""
+"Implementation of the boundary integral operator. See :meth:`pybamm."
+"SpatialMethod.boundary_integral`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:1
+msgid ""
+"A node in the expression tree representing an integral operator over the "
+"boundary of a domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:4
+msgid ""
+"I = \\int_{\\partial a}\\!f(u)\\,du,\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:7
+msgid ""
+"where :math:`\\partial a` is the boundary of the domain, and :math:"
+"`u\\in\\text{domain boundary}`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:10
+msgid "The domain(s) of the variable in the integrand"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:12
+msgid ""
+"The region of the boundary over which to integrate. If region is `entire` "
+"the integration is carried out over the entire boundary. If region is "
+"`negative tab` or `positive tab` then the integration is only carried out "
+"over the appropriate part of the boundary corresponding to the tab."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_integral_vector:19
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:14
+msgid "The finite element integral vector for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_mass_matrix:1
+msgid ""
+"Calculates the mass matrix for the finite element method assembled over the "
+"boundary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_value_or_flux:1
+msgid ""
+"Returns the average value of the symbol over the negative tab (\"negative "
+"tab\") or the positive tab (\"positive tab\") in the Finite Element Method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.boundary_value_or_flux:4
+msgid "Overwrites the default :meth:`pybamm.SpatialMethod.boundary_value`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:1
+msgid ""
+"Matrix for finite-element implementation of the definite integral over the "
+"entire domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:4
+msgid ""
+"I = \\int_{\\Omega}\\!f(s)\\,dx\n"
+"\n"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:7
+msgid "for where :math:`\\Omega` is the domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:9
+msgid "The symbol being integrated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.definite_integral_matrix:11
+msgid "Whether to return a row or column vector (default is row)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.divergence:1
+msgid ""
+"Matrix-vector multiplication to implement the divergence operator. See :meth:"
+"`pybamm.SpatialMethod.divergence`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:1
+msgid ""
+"Matrix-vector multiplication to implement the gradient operator. The "
+"gradient w of the function u is approximated by the finite element method "
+"using the same function space as u, i.e. we solve w = grad(u), which "
+"corresponds to the weak form w*v*dx = grad(u)*v*dx, where v is a suitable "
+"test function."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:7
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:3
+msgid "The symbol that we will take the Laplacian of."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:9
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:5
+msgid "The discretised symbol of the correct size"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:15
+msgid ""
+"A concatenation that contains the result of acting the discretised gradient "
+"on the child discretised_symbol. The first column corresponds to the y-"
+"component of the gradient and the second column corresponds to the z "
+"component of the gradient."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient:19
+msgid "class: `pybamm.Concatenation`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_matrix:1
+msgid "Gradient matrix for finite elements in the appropriate domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_matrix:3
+msgid "The symbol for which we want to calculate the gradient matrix"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_matrix:9
+msgid "The (sparse) finite element gradient matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.gradient_squared:1
+msgid ""
+"Multiplication to implement the inner product of the gradient operator with "
+"itself. See :meth:`pybamm.SpatialMethod.gradient_squared`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.indefinite_integral:1
+msgid ""
+"Implementation of the indefinite integral operator. The input discretised "
+"child must be defined on the internal mesh edges. See :meth:`pybamm."
+"SpatialMethod.indefinite_integral`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.integral:1
+msgid ""
+"Vector-vector dot product to implement the integral operator. See :meth:"
+"`pybamm.SpatialMethod.integral`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:1
+msgid "Matrix-vector multiplication to implement the Laplacian operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:11
+msgid ""
+"Contains the result of acting the discretised gradient on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.laplacian:13
+msgid "class: `pybamm.Array`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.mass_matrix:1
+msgid "Calculates the mass matrix for the finite element method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.spatial_variable:1
+msgid ""
+"Creates a discretised spatial variable compatible with the FiniteElement "
+"method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.spatial_variable:4
+msgid "The spatial variable to be discretised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.spatial_variable:7
+msgid "Contains the discretised spatial variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.spatial_variable:8
+msgid ":class:`pybamm.Vector`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.stiffness_matrix:1
+msgid ""
+"Laplacian (stiffness) matrix for finite elements in the appropriate domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.stiffness_matrix:3
+msgid "The symbol for which we want to calculate the Laplacian matrix"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/scikit_finite_element.py:docstring
+#: of
+#: pybamm.spatial_methods.scikit_finite_element.ScikitFiniteElement.stiffness_matrix:9
+msgid "The (sparse) finite element stiffness matrix for the domain"
+msgstr ""

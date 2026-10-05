@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:3
+msgid "Public API"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:8
+msgid ""
+"PyBaMM is a Python package for mathematical modelling and simulation of "
+"battery systems. The main classes and functions that are intended to be used "
+"by the user are described in this document. For a more detailed description "
+"of the classes and methods, see the :doc:`API reference </source/api/index>`."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:12
+msgid "Available PyBaMM models"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:14
+msgid ""
+"PyBaMM includes a number of pre-implemented models, which can be used as "
+"they are or modified to suit your needs. The main models are:"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:16
+msgid ":class:`lithium_ion.SPM`: Single Particle Model"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:17
+msgid ":class:`lithium_ion.SPMe`: Single Particle Model with Electrolyte"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:18
+msgid ":class:`lithium_ion.DFN`: Doyle-Fuller-Newman"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:20
+msgid ""
+"The behaviour of the models can be modified by passing in an :class:"
+"`BatteryModelOptions` object when creating the model."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:23
+msgid "Simulations"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:25
+msgid ""
+":class:`Simulation` is a class that automates the process of setting up a "
+"model and solving it, and acts as the highest-level API to PyBaMM. Pass at "
+"least a :class:`BaseModel` object, and optionally the experiment, solver, "
+"parameter values, and geometry objects described below to the :class:"
+"`Simulation` object. Any of these optional arguments not provided will be "
+"supplied by the defaults specified in the model."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:30
+msgid "Parameters"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:32
+msgid ""
+"PyBaMM models are parameterised by a set of parameters, which are stored in "
+"a :class:`ParameterValues` object. This object acts like a Python dictionary "
+"with a few extra PyBaMM specific features and methods. Parameters in a model "
+"are represented as either :class:`Parameter` objects or :class:"
+"`FunctionParameter` objects, and the values in the :class:`ParameterValues` "
+"object replace these objects in the model before it is solved. The values in "
+"the :class:`ParameterValues` object can be scalars, Python functions or "
+"expressions of type :class:`Symbol`."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:37
+msgid "Experiments"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:39
+msgid ""
+"An :class:`Experiment` object represents an experimental protocol that can "
+"be used to simulate the behaviour of a battery. The particular protocol can "
+"be provided as a Python string, or as a sequences of :class:`step.BaseStep` "
+"objects."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:43
+msgid "Solvers"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:45
+msgid ""
+"The recommended solver in PyBaMM is the :class:`IDAKLUSolver`, a PyBaMM-"
+"specific wrapper around the Sundials suite of solvers. It is the default "
+"solver for all models and has many options that can be set to control its "
+"behaviour, see its documentation for more details."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:48
+msgid ""
+"When a model is solved, the solution is returned as a :class:`Solution` "
+"object."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:51
+msgid "Plotting"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:53
+msgid ""
+"A solution object can be plotted using the :meth:`Solution.plot` or :meth:"
+"`Simulation.plot` methods, which returns a :class:`QuickPlot` object. Note "
+"that the arguments to the plotting methods of both classes are the same as :"
+"class:`QuickPlot`."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:56
+msgid ""
+"Other plotting functions are the :func:`plot_voltage_components` and :func:"
+"`plot_summary_variables` functions, which correspond to the similarly named "
+"methods of the :class:`Solution` and :class:`Simulation` classes."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:59
+msgid "Writing PyBaMM models"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:61
+msgid ""
+"Each PyBaMM model, and the custom models written by users, are written as a "
+"set of expressions that describe the model. Each of the expressions is a "
+"subclass of the :class:`Symbol` class, which represents a mathematical "
+"expression."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:63
+msgid ""
+"If you wish to create a custom model, you can use the :class:`BaseModel` "
+"class as a starting point."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:67
+msgid "Discretisation"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:69
+msgid ""
+"Each PyBaMM model contains continuous operators that must be discretised "
+"before they can be solved. This is done using a :class:`Discretisation` "
+"object, which takes a :class:`Mesh` object and a dictionary of :class:"
+"`SpatialMethod` objects."
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:72
+msgid "Logging"
+msgstr ""
+
+#: ../../../source/user_guide/fundamentals/public_api.rst:74
+msgid ""
+"PyBaMM uses the Python logging module to log messages at different levels of "
+"severity. Use the :func:`pybamm.set_logging_level` function to set the "
+"logging level for PyBaMM."
+msgstr ""

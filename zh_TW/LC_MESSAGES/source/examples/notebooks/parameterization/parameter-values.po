@@ -1,0 +1,738 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/parameterization/parameter-values.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/parameterization/parameter-values.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:9
+msgid "Parameter Values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:11
+msgid ""
+"In this notebook, we explain how parameter values are set for a model. "
+"Information on creating new parameter sets is provided in our `online "
+"documentation <https://docs.pybamm.org/en/latest/source/api/parameters/"
+"parameter_sets.html#adding-parameter-sets>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:23
+msgid "Setting up parameter values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:52
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:58
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:65
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:76
+msgid ""
+"In ``pybamm``, the object that sets parameter values for a model is the "
+"```ParameterValues`` <https://docs.pybamm.org/en/latest/source/api/"
+"parameters/parameter_values.html>`__ class, which extends ``dict``. This "
+"takes the values of the parameters as input, which can be either a "
+"dictionary,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"param_dict = {\"a\": 1, \"b\": 2, \"c\": 3}\n"
+"parameter_values = pybamm.ParameterValues(param_dict)\n"
+"print(f\"parameter values are {parameter_values}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:99
+msgid ""
+"<pre>\n"
+"parameter values are {&#39;a&#39;: 1,\n"
+" &#39;b&#39;: 2,\n"
+" &#39;c&#39;: 3}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:107
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"parameter values are \\{'a': 1,\n"
+" 'b': 2,\n"
+" 'c': 3\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:116
+msgid ""
+"parameter values are {'a': 1,\n"
+" 'b': 2,\n"
+" 'c': 3}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:129
+msgid "or using one of the pre-set chemistries"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"chem_parameter_values = pybamm.ParameterValues(\"Marquis2019\")\n"
+"print(\n"
+"    \"Negative current collector thickness is {} m\".format(\n"
+"        chem_parameter_values[\"Negative current collector thickness [m]\"]\n"
+"    )\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:155
+msgid ""
+"<pre>\n"
+"Negative current collector thickness is 2.5e-05 m\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:161
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Negative current collector thickness is 2.5e-05 m\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:168
+msgid "Negative current collector thickness is 2.5e-05 m"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:179
+msgid ""
+"We can alter the values of parameters by updating the dictionary, by using "
+"the ``update`` method or by using the ``[]`` operator."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"parameter_values[\"a\"] = 2\n"
+"parameter_values.update({\"b\": 3, \"c\": 4})\n"
+"print(f\"parameter values are {parameter_values}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:202
+msgid ""
+"<pre>\n"
+"parameter values are {&#39;a&#39;: 2,\n"
+" &#39;b&#39;: 3,\n"
+" &#39;c&#39;: 4}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:210
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"parameter values are \\{'a': 2,\n"
+" 'b': 3,\n"
+" 'c': 4\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:219
+msgid ""
+"parameter values are {'a': 2,\n"
+" 'b': 3,\n"
+" 'c': 4}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:232
+msgid ""
+"Parameter values can either be numerical values, python functions or PyBaMM "
+"expressions. We can input functions into the parameter value like so (note "
+"we bypass the check that the parameter already exists):"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"def cubed(x):\n"
+"    return x**3\n"
+"\n"
+"\n"
+"parameter_values.update({\"cube function\": cubed})\n"
+"print(f\"parameter values are {parameter_values}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:258
+msgid ""
+"<pre>\n"
+"parameter values are {&#39;a&#39;: 2,\n"
+" &#39;b&#39;: 3,\n"
+" &#39;c&#39;: 4,\n"
+" &#39;cube function&#39;: &lt;function cubed at 0x1271b82c0&gt;}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:267
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"parameter values are \\{'a': 2,\n"
+" 'b': 3,\n"
+" 'c': 4,\n"
+" 'cube function': <function cubed at 0x1271b82c0>\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:277
+msgid ""
+"parameter values are {'a': 2,\n"
+" 'b': 3,\n"
+" 'c': 4,\n"
+" 'cube function': <function cubed at 0x1271b82c0>}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:291
+msgid ""
+"We can also use a PyBaMM expression to set the parameter value, allowing us "
+"to set parameters based on other parameters:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"parameter_values.update({\"a\": pybamm.Parameter(\"b\") + pybamm."
+"Parameter(\"c\")})"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:313
+msgid "Setting parameters for a PyBaMM model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:324
+msgid ""
+"We represent parameters in models using the classes ```Parameter`` <https://"
+"docs.pybamm.org/en/latest/source/api/expression_tree/parameter.html>`__ and "
+"```FunctionParameter`` <https://docs.pybamm.org/en/latest/source/api/"
+"expression_tree/parameter.html#pybamm.FunctionParameter>`__. These cannot be "
+"evaluated directly,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"a = pybamm.Parameter(\"a\")\n"
+"b = pybamm.Parameter(\"b\")\n"
+"c = pybamm.Parameter(\"c\")\n"
+"func = pybamm.FunctionParameter(\"cube function\", {\"a\": a})\n"
+"\n"
+"expr = a + b * c\n"
+"try:\n"
+"    expr.evaluate()\n"
+"except NotImplementedError as e:\n"
+"    print(e)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:354
+msgid ""
+"<pre>\n"
+"method self.evaluate() not implemented for symbol a of type &lt;class &#39;"
+"pybamm.expression_tree.parameter.Parameter&#39;&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:360
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"method self.evaluate() not implemented for symbol a of type <class 'pybamm."
+"expression\\_tree.parameter.Parameter'>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:367
+msgid ""
+"method self.evaluate() not implemented for symbol a of type <class 'pybamm."
+"expression_tree.parameter.Parameter'>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:378
+msgid ""
+"However, the ``ParameterValues`` class can walk through an expression, "
+"changing an ``Parameter`` objects it sees to the appropriate ``Scalar`` and "
+"any ``FunctionParameter`` object to the appropriate ``Function``, and the "
+"resulting expression can be evaluated"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"expr_eval = parameter_values.process_symbol(expr)\n"
+"print(f\"{expr_eval} = {expr_eval.evaluate()}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:400
+msgid ""
+"<pre>\n"
+"19.0 = 19.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:406
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"19.0 = 19.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:413
+msgid "19.0 = 19.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"func_eval = parameter_values.process_symbol(func)\n"
+"print(f\"{func_eval} = {func_eval.evaluate()}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:435
+msgid ""
+"<pre>\n"
+"343.0 = 343.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:441
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"343.0 = 343.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:448
+msgid "343.0 = 343.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:459
+msgid ""
+"If a parameter needs to be changed often (for example, for convergence "
+"studies or parameter estimation), the ``InputParameter`` class should be "
+"used. This is not fixed by parameter values, and its value can be set on "
+"evaluation (or on solve):"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"d = pybamm.InputParameter(\"d\")\n"
+"expr = 2 + d\n"
+"expr_eval = parameter_values.process_symbol(expr)\n"
+"print(\"with d = {}, {} = {}\".format(3, expr_eval, expr_eval."
+"evaluate(inputs={\"d\": 3})))\n"
+"print(\"with d = {}, {} = {}\".format(5, expr_eval, expr_eval."
+"evaluate(inputs={\"d\": 5})))"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:484
+msgid ""
+"<pre>\n"
+"with d = 3, 2.0 + d = 5.0\n"
+"with d = 5, 2.0 + d = 7.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:491
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"with d = 3, 2.0 + d = 5.0\n"
+"with d = 5, 2.0 + d = 7.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:499
+msgid ""
+"with d = 3, 2.0 + d = 5.0\n"
+"with d = 5, 2.0 + d = 7.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:512
+msgid "Solving a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:523
+msgid "The code below shows the entire workflow of:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:525
+msgid "Proposing a toy model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:526
+msgid "Discretising and solving it first with one set of parameters,"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:527
+msgid "then updating the parameters and solving again"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:529
+msgid "The toy model used is:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:531
+msgid ""
+"\\frac{\\mathrm{d} u}{\\mathrm{d} t} = -a u\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:533
+msgid ""
+"with initial conditions :math:`u(0) = b`. The model is first solved with :"
+"math:`a = 3, b = 2`, then with :math:`a = -1, b = 2`"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"# Create model\n"
+"model = pybamm.BaseModel()\n"
+"u = pybamm.Variable(\"u\")\n"
+"a = pybamm.Parameter(\"a\")\n"
+"b = pybamm.Parameter(\"b\")\n"
+"model.rhs = {u: -a * u}\n"
+"model.initial_conditions = {u: b}\n"
+"model.variables = {\"u\": u, \"a\": a, \"b\": b}\n"
+"\n"
+"# Set parameters, with a as an input ########################\n"
+"parameter_values = pybamm.ParameterValues({\"a\": \"[input]\", \"b\": 2})\n"
+"parameter_values.process_model(model)\n"
+"#############################################################\n"
+"\n"
+"# Discretise using default discretisation\n"
+"disc = pybamm.Discretisation()\n"
+"disc.process_model(model)\n"
+"\n"
+"# Solve\n"
+"t_eval = [0, 2]\n"
+"ode_solver = pybamm.IDAKLUSolver()\n"
+"solution = ode_solver.solve(model, t_eval, inputs={\"a\": 3})\n"
+"\n"
+"# Post-process, so that u1 can be called at any time t (using "
+"interpolation)\n"
+"t_sol1 = solution.t\n"
+"u1 = solution[\"u\"]\n"
+"\n"
+"# Solve again with different inputs ###############################\n"
+"solution = ode_solver.solve(model, t_eval, inputs={\"a\": -1})\n"
+"t_sol2 = solution.t\n"
+"u2 = solution[\"u\"]\n"
+"###################################################################\n"
+"\n"
+"# Plot\n"
+"t_fine = np.linspace(0, t_eval[-1], 1000)\n"
+"\n"
+"fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(13, 4))\n"
+"ax1.plot(t_fine, 2 * np.exp(-3 * t_fine), t_sol1, u1(t_sol1), \"o\")\n"
+"ax1.set_xlabel(\"t\")\n"
+"ax1.legend([\"2 * exp(-3 * t)\", \"u1\"], loc=\"best\")\n"
+"ax1.set_title(\"a = 3, b = 2\")\n"
+"\n"
+"ax2.plot(t_fine, 2 * np.exp(t_fine), t_sol2, u2(t_sol2), \"o\")\n"
+"ax2.set_xlabel(\"t\")\n"
+"ax2.legend([\"2 * exp(t)\", \"u2\"], loc=\"best\")\n"
+"ax2.set_title(\"a = -1, b = 2\")\n"
+"\n"
+"\n"
+"plt.tight_layout()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "model.rhs"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:622
+msgid ""
+"<pre>\n"
+"{Variable(0x6dac40bcc1341c7d, u, children=[], domains={}): "
+"Multiplication(-0x3725c2129ad3dbfd, *, children=[&#39;-a&#39;, &#39;"
+"y[0:1]&#39;], domains={})}\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:628
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\\{Variable(0x6dac40bcc1341c7d, u, children=[], domains=\\{\\}): "
+"Multiplication(-0x3725c2129ad3dbfd, *, children=['-a', 'y[0:1]'], "
+"domains=\\{\\})\\}\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:635
+msgid ""
+"{Variable(0x6dac40bcc1341c7d, u, children=[], domains={}): "
+"Multiplication(-0x3725c2129ad3dbfd, *, children=['-a', 'y[0:1]'], "
+"domains={})}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:647
+msgid "Printing parameter values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:649
+msgid ""
+"Since parameters objects must be processed by the ``ParameterValues`` class "
+"before they can be evaluated, it can be difficult to quickly check the value "
+"of a parameter that is a combination of other parameters. You can print all "
+"of the parameters (including combinations) in a model by using the "
+"``print_parameters`` function."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid ""
+"a = pybamm.Parameter(\"a\")\n"
+"b = pybamm.Parameter(\"b\")\n"
+"parameter_values = pybamm.ParameterValues({\"a\": 4, \"b\": 3})\n"
+"parameters = {\"a\": a, \"b\": b, \"a + b\": a + b, \"a * b\": a * b}\n"
+"param_eval = parameter_values.print_parameters(parameters)\n"
+"for name, value in param_eval.items():\n"
+"    print(f\"{name}: {value}\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:676
+msgid ""
+"<pre>\n"
+"a: 4.0\n"
+"b: 3.0\n"
+"a + b: 7.0\n"
+"a * b: 12.0\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:685
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"a: 4.0\n"
+"b: 3.0\n"
+"a + b: 7.0\n"
+"a * b: 12.0\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:695
+msgid ""
+"a: 4.0\n"
+"b: 3.0\n"
+"a + b: 7.0\n"
+"a * b: 12.0"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:709
+msgid ""
+"If you provide an output file to ``print_parameters``, the parameters will "
+"be printed to that output file."
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:721
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:723
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:744
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:756
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/parameterization/parameter-values.ipynb:769
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[4] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[5] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[6] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

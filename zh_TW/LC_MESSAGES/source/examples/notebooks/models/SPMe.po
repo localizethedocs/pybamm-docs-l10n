@@ -1,0 +1,438 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/SPMe.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/SPMe.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:9
+msgid "Single Particle Model with Electrolyte (SPMe)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:21
+msgid "Model Equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:32
+msgid ""
+"The SPMe comprises an equation for the lithium concentration in a "
+"representative particle in the negative electrode :math:`c_{\\text{s,n}}`, "
+"an equation for the lithium concentration in a representative particle in "
+"the positive electrode :math:`c_{\\text{s,p}}`, and an equation which "
+"governs the behaviour of the first-order correction to the lithium "
+"concentration in the electrolyte :math:`c_{\\text{e,k}}`. Here we use a "
+"roman subscript :math:`\\text{k} \\in \\text{n, s, p}` is used to denote the "
+"regions negative electrode, separator, and positive electrode, respectively."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:35
+msgid ""
+"At the centre of each particle the standard no-flux condition is imposed, "
+"and the flux on the surface of the particle is simply the current :math:`I` "
+"divided by the thickness of the electrode :math:`L_{\\text{k}}`, as in the "
+"SPM. Since lithium is transferred between the electrolyte and particles, the "
+"flux through the particle surface also enters the electrolyte diffusion "
+"equation as a source/sink term. There is no transfer of lithium between the "
+"electrolyte and current collectors, which leads to no flux boundary "
+"conditions on the lithium concentration in the electrolyte :math:"
+"`c_{\\text{e,k}}` at either end of the cell."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:38
+msgid ""
+"We must also impose initial conditions which correspond to setting an "
+"initial concentration in each particle :math:`c_{\\text{s,k}}(t=0) = "
+"c_{\\text{s,k,0}}`, and to having no deviation from the initial (uniform) "
+"lithium concentration in the electrolyte :math:`c_{\\text{e,k}}(t=0) =  "
+"c_{\\text{e,0}}`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:40
+msgid "The model equations for the SPMe read:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:43
+msgid "Particles:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:45
+msgid ""
+"\\frac{\\partial c_{\\text{s,k}}}{\\partial t} = -\\frac{1}{r_{\\text{k}}^2} "
+"\\frac{\\partial}{\\partial r_{\\text{k}}} \\left(r_{\\text{k}}^2 "
+"N_{\\text{s,k}}\\right), \\\\\n"
+"N_{\\text{s,k}} = -D_{\\text{s,k}}(c_{\\text{s,k}}) \\frac{\\partial "
+"c_{\\text{s,k}}}{\\partial r_{\\text{k}}}, \\quad \\text{k} \\in \\text{n, "
+"p},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:51
+msgid ""
+"N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0, \\quad \\text{k} \\in \\text{n, "
+"p}, \\quad \\ \\ N_{\\text{s,k}}\\big|_{r_{\\text{k}}=R_{\\text{k}}} =\n"
+"\\begin{cases}\n"
+"          \\frac{I}{Fa_{\\text{n}}L_{\\text{n}}}, \\quad &\\text{k}"
+"=\\text{n}, \\\\\n"
+"          -\\frac{I}{Fa_{\\text{p}}L_{\\text{p}}}, \\quad &\\text{k}"
+"=\\text{p},\n"
+"\\end{cases} \\\\"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:60
+msgid ""
+"where :math:`D_{\\text{s,k}}` is the diffusion coefficient in the solid, :"
+"math:`N_{\\text{s,k}}` denotes the flux of lithium ions in the solid "
+"particle within the region :math:`\\text{k}`, and :math:`r_{\\text{k}} "
+"\\in[0,R_{\\text{k}}]` is the radial coordinate of the particle in "
+"electrode :math:`\\text{k}`. All other relevant parameters are given in the "
+"table at the end of this notebook."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:63
+msgid "Electrolyte:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:65
+msgid ""
+"\\epsilon_{\\text{k}} \\frac{\\partial c_{\\text{e,k}}}{\\partial t} = -"
+"\\frac{\\partial N_{\\text{e,k}}}{\\partial x} +\n"
+"\\begin{cases}\n"
+"    \\frac{I}{FL_{\\text{n}}}, \\quad &\\text{k}=\\text{n}, \\\\\n"
+"    0, \\quad \\\\\\text{k}=\\text{s}, \\\\\n"
+"    -\\frac{I}{FL_{\\text{p}}}, \\quad &\\text{k}=\\text{p},\n"
+"\\end{cases} \\\\\n"
+"N_{\\text{e,k}} = -\\epsilon_{\\text{k}}^{\\text{b}} D_{\\text{e}} "
+"\\frac{\\partial c_{\\text{e,k}}}{\\partial x} +\n"
+"\\begin{cases}\n"
+"      \\frac{x t^+IRT}{F L_{\\text{n}}}, \\quad &\\text{k}=\\text{n} \\\\\n"
+"     \\frac{t^+IRT}{F}, \\quad &\\text{k}=\\text{s} \\\\\n"
+"     \\frac{(1-x)t^+ IRT}{F L_{\\text{p}}}, \\quad &\\text{k}=\\text{p}\n"
+"\\end{cases}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:81
+msgid ""
+"N_{\\text{e,n}}\\big|_{x=0} = 0, \\quad N_{\\text{e,p}}\\big|_{x=L}=0, \\\\\n"
+"c_{\\text{e,k}}(x,0) = 0, \\quad \\text{k} \\in \\text{n, s, p},"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:87
+msgid ""
+"where :math:`D_{\\text{e}}` is the diffusion coefficient in the solid, :math:"
+"`N_{\\text{e,k}}` denotes the flux of lithium ions in the electrolyte within "
+"the region :math:`\\text{k}`, and :math:`x\\in[0,L]` is the macroscopic "
+"through-cell distance. This equation is also solved subject to continuity of "
+"concentration and flux at the electrode/separator interfaces."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:90
+msgid "Voltage Expression"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:92
+msgid "The voltage is obtained from the expression:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:94
+msgid ""
+"V = U_{\\text{eq}} + \\eta_r + \\eta_c + \\Delta\\Phi_{\\text{Elec}} + "
+"\\Delta\\Phi_{\\text{Solid}}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:99
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:112
+msgid "where"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:101
+msgid ""
+"U_{\\text{eq}} = U_{\\text{p}}(c_{\\text{p}})\\big|_{r_{\\text{p}}=1} - "
+"U_{\\text{n}}(c_{\\text{n}})\\big|_{r_{\\text{n}}=1}, \\\\\n"
+"\\eta_{r} = -2\\sinh^{-1}\\left(\\frac{I}{\\bar{j}_{\\text{0,p}} "
+"L_{\\text{p}}}\\right) - 2\\sinh^{-1}\\left(\\frac{I}{\\bar{j}_{\\text{0,n}} "
+"L_{\\text{n}}}\\right), \\\\\n"
+"\\eta_c = 2 (1-t^+)\\frac{RT}{F}\\left(\\bar{c}_{\\text{e,p}} - \\bar{c}"
+"_{\\text{e,n}}\\right), \\\\\n"
+"\\bar{j}_{\\text{0,n}} =  \\frac{1}{L_{\\text{n}}}\\int_0^{L_{\\text{n}}} "
+"\\frac{\\gamma_{\\text{n}}}{\\mathcal{C}_{\\text{r,n}}} (c_{\\text{n}})^{1/2}"
+"(1-c_{\\text{n}})^{1/2} (1+\\mathcal{C}_{\\text{e}} c_{\\text{e,n}})^{1/2} "
+"\\, \\text{d}x,\\\\\n"
+"\\bar{j}_{\\text{0,p}} =  \\frac{1}{L_{\\text{p}}}\\int_{1-L_{\\text{p}}}^1 "
+"\\frac{\\gamma_{\\text{p}}}{\\mathcal{C}_{\\text{r,p}}} (c_{\\text{p}})^{1/2}"
+"(1-c_{\\text{p}})^{1/2} (1+\\mathcal{C}_{\\text{e}} c_{\\text{e,p}})^{1/2} "
+"\\, \\text{d}x,\\\\\n"
+"\\Delta \\Phi_{\\text{Elec}} = -\\frac{\\mathcal{C}_{\\text{e}}I}"
+"{\\gamma_{\\text{e}} \\kappa_{\\text{e}}(1)} \\left(\\frac{L_{\\text{n}}}"
+"{3\\epsilon_{\\text{n}}^{\\text{b}}} + \\frac{L_{\\text{s}}}"
+"{\\epsilon_{\\text{s}}^{\\text{b}}} + \\frac{L_{\\text{p}}}"
+"{3\\epsilon_{\\text{p}}^{\\text{b}}} \\right), \\\\\n"
+"\\Delta \\Phi_{\\text{Solid}} = -\\frac{I}{3}\\left(\\frac{L_{\\text{p}}}"
+"{\\sigma_{\\text{p}}} + \\frac{L_{\\text{n}}}{\\sigma_{\\text{n}}} \\right),"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:114
+msgid ""
+"\\bar{c}_{\\text{e,n}} = \\frac{1}{L_{\\text{n}}}\\int_0^{L_{\\text{n}}} "
+"c_{\\text{e,n}} \\, \\text{d}x, \\quad\n"
+"\\bar{c}_{\\text{e,p}} = \\frac{1}{L_{\\text{p}}}\\int_{L-L_{\\text{p}}}^{L} "
+"c_{\\text{e,p}} \\, \\text{d}x."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:120
+msgid "More details can be found in `[3] <#References>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:132
+msgid "Example solving SPMe using PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:143
+msgid ""
+"Below we show how to solve the SPMe model using the ``Simulation`` class "
+"with all the default settings. For a more detailed example, see the notebook "
+"on the `SPM <https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/"
+"examples/notebooks/models/SPM.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:145
+msgid "First we need to import ``pybamm``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:167
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:173
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:180
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:191
+msgid "We then load the SPMe model and create a simulation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid ""
+"# load model\n"
+"model = pybamm.lithium_ion.SPMe()\n"
+"\n"
+"# create simulation\n"
+"simulation = pybamm.Simulation(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:216
+msgid "The simulation is now ready to be solved"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid ""
+"# solve simulation\n"
+"simulation.solve([0, 3600])  # time interval in seconds"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:239
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x7f2774bea390&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:245
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x7f2774bea390>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:252
+msgid "<pybamm.solvers.solution.Solution at 0x7f2774bea390>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:263
+msgid ""
+"To get a quick overview of the model outputs we can use the built-in "
+"``plot`` method of the simulation"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "simulation.plot()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:285
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"6ec4df1500094dbd8efbf9fd7447d7f1\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:295
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:301
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:308
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:320
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:322
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:343
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:353
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:364
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj."
+msgstr ""

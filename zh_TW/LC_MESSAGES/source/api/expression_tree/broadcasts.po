@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/broadcasts.rst:2
+msgid "Broadcasting Operators"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:1
+msgid ""
+"A node in the expression tree representing a broadcasting operator. "
+"Broadcasts a child to a specified domain. After discretisation, this will "
+"evaluate to an array of the right shape for the specified domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:5
+msgid ""
+"For an example of broadcasts in action, see `this example notebook <https://"
+"github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/"
+"expression_tree/broadcasts.ipynb>`_"
+msgstr ""
+
+#: ../../../source/api/expression_tree/broadcasts.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:9
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast:8
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast:9
+msgid "child node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:11
+msgid "Domain(s) of the symbol after broadcasting"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:13
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast:12
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast:15
+msgid "name of the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast:16
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.unary_operators.SpatialOperator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast.reduce_one_dimension:1
+#: pybamm.expression_tree.broadcasts.FullBroadcast.reduce_one_dimension:1
+#: pybamm.expression_tree.broadcasts.FullBroadcastToEdges.reduce_one_dimension:1
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast.reduce_one_dimension:1
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast.reduce_one_dimension:1
+msgid "Reduce the broadcast by one dimension."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.Broadcast.to_json:1
+#: pybamm.expression_tree.broadcasts.FullBroadcast.to_json:1
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast.to_json:1
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast.to_json:1
+msgid "Method to serialise a Symbol object into JSON."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.FullBroadcast:1
+msgid "A class for full broadcasts."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.FullBroadcast:3
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast:15
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast:18
+msgid "**Extends:** :class:`pybamm.expression_tree.broadcasts.Broadcast`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.FullBroadcast.check_and_set_domains:1
+#: pybamm.expression_tree.broadcasts.PrimaryBroadcast.check_and_set_domains:1
+#: pybamm.expression_tree.broadcasts.SecondaryBroadcast.check_and_set_domains:1
+msgid "See :meth:`Broadcast.check_and_set_domains`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.PrimaryBroadcast:1
+msgid ""
+"A node in the expression tree representing a primary broadcasting operator. "
+"Broadcasts in a `primary` dimension only. That is, makes explicit copies of "
+"the symbol in the domain specified by `broadcast_domain`. This should be "
+"used for broadcasting from a \"larger\" scale to a \"smaller\" scale, for "
+"example broadcasting temperature T(x) from the electrode to the particles, "
+"or broadcasting current collector current i(y, z) from the current collector "
+"to the electrodes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.PrimaryBroadcast:10
+msgid "Primary domain for broadcast. This will become the domain of the symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.SecondaryBroadcast:1
+msgid ""
+"A node in the expression tree representing a secondary broadcasting "
+"operator. Broadcasts in a `secondary` dimension only. That is, makes "
+"explicit copies of the symbol in the domain specified by `broadcast_domain`. "
+"This should be used for broadcasting from a \"smaller\" scale to a "
+"\"larger\" scale, for example broadcasting SPM particle concentrations "
+"c_s(r) from the particles to the electrodes. Note that this wouldn't be used "
+"to broadcast particle concentrations in the DFN, since these already depend "
+"on both x and r."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.SecondaryBroadcast:11
+msgid ""
+"Secondary domain for broadcast. This will become the secondary domain of the "
+"symbol, shifting the child's `secondary` and `tertiary` (if present) over by "
+"one position."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.FullBroadcastToEdges:1
+msgid ""
+"A full broadcast onto the edges of a domain (edges of primary dimension, "
+"nodes of other dimensions)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.FullBroadcastToEdges:4
+msgid "**Extends:** :class:`pybamm.expression_tree.broadcasts.FullBroadcast`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.PrimaryBroadcastToEdges:1
+msgid "A primary broadcast onto the edges of the domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.PrimaryBroadcastToEdges:3
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.broadcasts.PrimaryBroadcast`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.SecondaryBroadcastToEdges:1
+msgid "A secondary broadcast onto the edges of a domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.SecondaryBroadcastToEdges:3
+msgid ""
+"**Extends:** :class:`pybamm.expression_tree.broadcasts.SecondaryBroadcast`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.ones_like:1
+msgid ""
+"Returns an array with the same shape and domains as the sum of the input "
+"symbols, with each entry equal to one."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.full_like:4
+#: pybamm.expression_tree.broadcasts.ones_like:4
+#: pybamm.expression_tree.broadcasts.zeros_like:4
+msgid "Symbols whose shape to copy"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.zeros_like:1
+msgid ""
+"Returns an array with the same shape and domains as the sum of the input "
+"symbols, with each entry equal to zero."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.full_like:1
+msgid ""
+"Returns an array with the same shape and domains as the sum of the input "
+"symbols, with a constant value given by `fill_value`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/broadcasts.py:docstring
+#: of pybamm.expression_tree.broadcasts.full_like:6
+msgid "Value to assign"
+msgstr ""

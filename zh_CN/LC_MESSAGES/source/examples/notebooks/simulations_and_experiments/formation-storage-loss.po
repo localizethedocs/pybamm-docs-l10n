@@ -1,0 +1,455 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/simulations_and_experiments/formation-storage-"
+"loss.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/simulations_and_experiments/formation-storage-loss."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:9
+msgid "Accounting for formation or storage loss in PyBaMM simulations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:11
+msgid ""
+"What if a PyBaMM parameter set exists for your cell, but the cell has lost "
+"capacity due to SEI formation or SEI growth during storage? It is easy to "
+"modify the parameters to account for this."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import matplotlib.pyplot as plt\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:35
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:41
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:48
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:59
+msgid ""
+"Here, we model the effect of storage on the capacity of the LG M50 cell. "
+"`Chen et al. (2020) <https://iopscience.iop.org/article/10.1149/1945-7111/"
+"ab9050>`__ measured a capacity of 5 Ah, but `Kirkaldy et al. (2022) <https://"
+"doi.org/10.1021/acsaem.2c02047>`__ measured a smaller capacity of 4.865 Ah. "
+"`Li et al. (2025) <https://www.nature.com/articles/s41467-025-57968-3>`__ "
+"assumed the discrepancy to be caused by SEI formation during storage and "
+"adjusted three parameters accordingly: initial negative electrode "
+"stoichiometry, SEI thickness and negative electrode porosity. First, print "
+"the original values of these parameters:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"model = pybamm.lithium_ion.DFN({\"SEI\": \"constant\"})\n"
+"param = pybamm.ParameterValues(\"Chen2020\")\n"
+"exp = pybamm.Experiment([\"Discharge at 1C until 2.5 V\"])\n"
+"sim_original = pybamm.Simulation(model, parameter_values=param, "
+"experiment=exp)\n"
+"sol_original = sim_original.solve()\n"
+"c_max_n = param[\"Maximum concentration in negative electrode [mol.m-3]\"]\n"
+"c_init_n = param[\"Initial concentration in negative electrode [mol.m-3]\"]\n"
+"print(\n"
+"    f\"Before storage, the initial negative electrode stiochiometry is {100 "
+"* c_init_n / c_max_n}%.\"\n"
+")\n"
+"L_SEI_0 = param[\"Initial SEI thickness [m]\"]\n"
+"print(f\"Before storage, the SEI thickness is {L_SEI_0 * 1e9} nm.\")\n"
+"eps_neg = param[\"Negative electrode porosity\"]\n"
+"print(f\"Before storage, the porosity is {eps_neg * 100}%.\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:94
+msgid ""
+"<pre>\n"
+"Before storage, the initial negative electrode stiochiometry is "
+"90.13973983641687%.\n"
+"Before storage, the SEI thickness is 5.0 nm.\n"
+"Before storage, the porosity is 25.0%.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:102
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Before storage, the initial negative electrode stiochiometry is "
+"90.13973983641687\\%.\n"
+"Before storage, the SEI thickness is 5.0 nm.\n"
+"Before storage, the porosity is 25.0\\%.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:111
+msgid ""
+"Before storage, the initial negative electrode stiochiometry is "
+"90.13973983641687%.\n"
+"Before storage, the SEI thickness is 5.0 nm.\n"
+"Before storage, the porosity is 25.0%."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"F = 96485.3\n"
+"L_n = param[\"Negative electrode thickness [m]\"]\n"
+"L_y = param[\"Electrode width [m]\"]\n"
+"L_z = param[\"Electrode height [m]\"]\n"
+"V_n = L_n * L_y * L_z\n"
+"R_n = param[\"Negative particle radius [m]\"]\n"
+"eps_act_n = param[\"Negative electrode active material volume fraction\"]\n"
+"a_n = 3 * eps_act_n / R_n\n"
+"V_bar_SEI = param[\"SEI partial molar volume [m3.mol-1]\"]\n"
+"z_SEI = param[\"Ratio of lithium moles to SEI moles\"]"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:143
+msgid "Enter your storage loss here."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"Delta_Q_Ah = 0.135  # From Li et al. (2025) via Kirkaldy et al. (2022). "
+"Change it and see what happens!"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:164
+msgid ""
+"It is convieniently assumed here that all of the lost lithium comes out of "
+"the negative electrode, because this will not (usually) affect the voltage. "
+"If a change in voltage is measured - for example, during a formation cycle - "
+"the positive stoichiometry may also need to change."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"c_SEI = Delta_Q_Ah * 3600 / (F * z_SEI * V_n)  # SEI concentration\n"
+"Delta_c_n = (\n"
+"    c_SEI * z_SEI / eps_act_n\n"
+")  # loss of lithium from negative electrode particles\n"
+"c_init_degraded = c_init_n - Delta_c_n\n"
+"print(\n"
+"    f\"After storage, the initial negative electrode stoichiometry is {100 * "
+"c_init_degraded / c_max_n}%.\"\n"
+")\n"
+"L_SEI_0_degraded = c_SEI * V_bar_SEI / a_n\n"
+"print(f\"After storage, the SEI thickness is {L_SEI_0_degraded * 1e9} nm."
+"\")\n"
+"eps_neg_degraded = eps_neg - L_SEI_0_degraded * a_n\n"
+"print(f\"After storage, the porosity is {eps_neg_degraded * 100}%.\")\n"
+"param_degraded = param.copy()\n"
+"param_degraded.update(\n"
+"    {\n"
+"        \"Initial concentration in negative electrode [mol.m-3]\": "
+"c_init_degraded,\n"
+"        \"Initial SEI thickness [m]\": L_SEI_0_degraded,\n"
+"        \"Negative electrode porosity\": eps_neg_degraded,\n"
+"    }\n"
+")\n"
+"sim_degraded = pybamm.Simulation(model, parameter_values=param_degraded, "
+"experiment=exp)\n"
+"sol_degraded = sim_degraded.solve()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:206
+msgid ""
+"<pre>\n"
+"After storage, the initial negative electrode stoichiometry is "
+"87.82318249083892%.\n"
+"After storage, the SEI thickness is 71.85256873780948 nm.\n"
+"After storage, the porosity is 22.24115563720015%.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:214
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"After storage, the initial negative electrode stoichiometry is "
+"87.82318249083892\\%.\n"
+"After storage, the SEI thickness is 71.85256873780948 nm.\n"
+"After storage, the porosity is 22.24115563720015\\%.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:223
+msgid ""
+"After storage, the initial negative electrode stoichiometry is "
+"87.82318249083892%.\n"
+"After storage, the SEI thickness is 71.85256873780948 nm.\n"
+"After storage, the porosity is 22.24115563720015%."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:236
+msgid ""
+"Now we know exactly how much the parameters have changed during storage. "
+"Plot and compare:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid ""
+"t_original = sol_original[\"Time [s]\"].entries\n"
+"V_original = sol_original[\"Voltage [V]\"].entries\n"
+"t_degraded = sol_degraded[\"Time [s]\"].entries\n"
+"V_degraded = sol_degraded[\"Voltage [V]\"].entries\n"
+"plt.figure()\n"
+"plt.plot(t_original, V_original, label=\"original\")\n"
+"plt.plot(t_degraded, V_degraded, label=\"degraded\", linestyle=\"dashed\")\n"
+"plt.xlabel(\"Time [s]\")\n"
+"plt.ylabel(\"Voltage [V]\")\n"
+"plt.legend()\n"
+"plt.show()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:275
+msgid ""
+"Inspection of the plot reveals the cell has lost the correct amount of "
+"capacity. In addition, we can plot the voltage components to see how much "
+"the change in porosity has affected the overpotentials:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "sol_original.plot_voltage_components(split_by_electrode=True)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:306
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:350
+msgid ""
+"<pre>\n"
+"(&lt;Figure size 800x400 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;Time [h]&#39;"
+"&gt;)\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:312
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:356
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:319
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:363
+msgid "(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "sol_degraded.plot_voltage_components(split_by_electrode=True)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:374
+msgid ""
+"There is indeed a slight increase in the Ohmic and non-Ohmic electrolyte "
+"overpotentials. Note also that the voltage components no longer add up; this "
+"is due to the SEI film resistance, which is an additional overpotential that "
+"``plot_voltage_components`` does not account for."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:395
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O&#39;Regan, Dominika "
+"Gastol, W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:409
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:424
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten "
+"von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten "
+"der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–"
+"664, 1935.\n"
+"[3] Chang-Hui Chen, Ferran Brosa Planella, Kieran O'Regan, Dominika Gastol, "
+"W. Dhammika Widanage, and Emma Kendrick. Development of Experimental "
+"Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. "
+"Journal of The Electrochemical Society, 167(8):080534, 2020. "
+"doi:10.1149/1945-7111/ab9050.\n"
+"[4] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[5] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[6] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, "
+"Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.\n"
+"[7] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu "
+"Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear "
+"and differential/algebraic equation solvers. ACM Transactions on "
+"Mathematical Software (TOMS), 31(3):363–396, 2005. "
+"doi:10.1145/1089014.1089020.\n"
+"[8] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
+
+#: ../../../source/examples/notebooks/simulations_and_experiments/formation-storage-loss.ipynb:-1
+msgid "[ ]:"
+msgstr ""

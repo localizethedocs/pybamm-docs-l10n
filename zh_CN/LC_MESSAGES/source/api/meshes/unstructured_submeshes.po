@@ -1,0 +1,379 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/meshes/unstructured_submeshes.rst:2
+msgid "Unstructured Sub Meshes"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:1
+msgid "Cell-centered finite volume submesh on polygonal/polyhedral elements."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:3
+msgid "Supported element types:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:5
+msgid "**2D**: triangles (3 vertices) or quadrilaterals (4 vertices)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:6
+msgid "**3D**: tetrahedra (4 vertices) or hexahedra (8 vertices)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:8
+msgid ""
+"Hexahedra must have planar faces: volumes and face fluxes are ill-defined on "
+"warped (non-planar-faced) hexes, so construction raises a :class:`pybamm."
+"GeometryError` for them."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:12
+msgid ""
+"All operators are dimension-agnostic: the same code path handles both 2D and "
+"3D, with dimension inferred from ``vertices.shape[1]``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:0
+#: pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:0
+#: pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:0
+#: ../../../source/api/meshes/unstructured_submeshes.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:15
+msgid "Vertex coordinates, of shape ``(n_vertices, d)`` (d = 2 or 3)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:17
+msgid ""
+"Element vertex indices, of shape ``(n_cells, n_verts_per_cell)``. For 2D: 3 "
+"(triangles) or 4 (quads). For 3D: 4 (tetrahedra) or 8 (hexahedra)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:14
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:21
+#: pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:22
+msgid "Coordinate system, default ``\"cartesian\"``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:23
+msgid ""
+"Maps boundary name to face indices.  If ``None``, no boundary tags are "
+"assigned: tags must come from the mesh source (the built-in generator tags "
+"its own box output, file generators use the mesh file's boundary names), or "
+"call :meth:`detect_box_boundaries` for a hand-built axis-aligned box."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:30
+msgid "**Extends:** :class:`pybamm.meshes.meshes.SubMesh`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.boundary_loops:1
+msgid "Return boundary loops as a list of ``matplotlib.path.Path`` (2D only)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.boundary_loops:3
+msgid ""
+"Walks boundary edges to extract one or more closed loops.  The first path is "
+"the outer boundary (largest area); subsequent paths are holes. Use this to "
+"test containment: a point is in the domain if it is inside the outer loop "
+"and outside all hole loops."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.combine:1
+msgid "Weld a list of :class:`UnstructuredSubMesh` objects into one mesh."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.combine:3
+msgid ""
+"Coincident boundary nodes at domain interfaces are merged so that face "
+"connectivity spans across domains."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.combine:6
+msgid "The submeshes to combine, in order."
+msgstr ""
+
+#: ../../../source/api/meshes/unstructured_submeshes.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.combine:9
+msgid "A single mesh covering the union of the input domains."
+msgstr ""
+
+#: ../../../source/api/meshes/unstructured_submeshes.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.contains_points_3d:1
+msgid "Test whether 3D points lie inside the mesh domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.contains_points_3d:3
+msgid ""
+"Uses the generalized winding number (Van Oosterom--Strackee signed solid "
+"angle sum over all boundary triangles).  Points inside the domain return "
+"``True``; points outside or inside internal cavities return ``False``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.detect_box_boundaries:1
+msgid "Tag boundary faces of an axis-aligned box by outward normal."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.detect_box_boundaries:3
+msgid ""
+"Assigns ``left``/``right`` (x), ``front``/``back`` (y, 3D only), and "
+"``bottom``/``top`` (z) by each exterior face's dominant normal direction, "
+"overwriting ``boundary_faces``. Only meaningful for axis-aligned box domains "
+"(each face genuinely normal to one axis); on curved geometry the buckets are "
+"not surfaces. The built-in generator calls this on its output; meshes from "
+"files should carry their own boundary names instead."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.optimize_ordering:1
+msgid "Reorder cells using Reverse Cuthill-McKee to reduce Jacobian bandwidth."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of
+#: pybamm.meshes.unstructured_submesh.UnstructuredSubMesh.optimize_ordering:3
+msgid ""
+"Permutes all cell-indexed arrays (elements, centroids, volumes, face_owner, "
+"face_neighbor, interface_data) so that adjacent cells have nearby indices, "
+"minimising the bandwidth of the FVM connectivity matrix."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:1
+msgid "Built-in generator that creates meshes from structured grids."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:3
+msgid ""
+"**2D**: rectangular domain meshed as quads, or triangulated by splitting "
+"each quad into 2 triangles."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:5
+msgid ""
+"**3D**: rectangular prism meshed as hexahedra, or split into 6 tetrahedra "
+"per hex (Kuhn decomposition)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:8
+msgid ""
+"On box domains, hexahedra (the 3D default) are preferred for real "
+"simulations: same resolution with 6x fewer cells and ideal face "
+"orthogonality. The simplex element types chiefly exercise the same code "
+"paths as user-supplied (e.g. gmsh) meshes without needing a mesh file, which "
+"is useful for testing and validation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:16
+msgid ""
+"``\"quad\"`` or ``\"triangle\"`` in 2D; ``\"hexahedron\"`` or "
+"``\"tetrahedron\"`` in 3D. If ``None``, defaults to ``\"triangle\"`` in 2D "
+"and ``\"hexahedron\"`` in 3D."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:32
+#: pybamm.meshes.unstructured_submesh.UnstructuredMeshGenerator:21
+#: pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:30
+msgid "**Extends:** :class:`pybamm.meshes.meshes.MeshGenerator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:1
+msgid "Load an unstructured mesh from an external file via *meshio*."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:3
+msgid ""
+"Supported cell types are tetrahedra (3D) and triangles or quadrilaterals "
+"(2D). Hexahedral file meshes are rejected: file meshes commonly contain "
+"warped (non-planar-faced) hexes, whose volumes and face fluxes are ill-"
+"defined. Convert such meshes to tetrahedra before loading."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:8
+msgid ""
+"The interface between adjacent domains must be **conforming**: the two sides "
+"must share the same interface nodes, so that welding in :meth:"
+"`UnstructuredSubMesh.combine` turns the interface into internal faces. In "
+"gmsh, build the regions from one geometry or fragment the parts "
+"(``BooleanFragments`` / ``Coherence``) so the shared surface is meshed once. "
+"A non-conforming interface raises a :class:`pybamm.GeometryError` when the "
+"domains are combined."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:16
+msgid "Path to the mesh file (GMSH ``.msh``, VTK ``.vtu``, etc.)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:18
+msgid "Maps PyBaMM domain name to physical group / cell-data tag."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:20
+msgid "Maps boundary name to physical group / facet tag."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:24
+msgid ""
+"Absolute length (in the mesh file's units) below which coincident nodes "
+"across cell blocks are welded, by quantising coordinates to a grid of this "
+"spacing. Default ``1e-12``; pass ``None`` or ``0`` to disable welding."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:1
+msgid ""
+"Build an :class:`UnstructuredSubMesh` from cells of a single Gmsh physical "
+"group in a ``.msh`` file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:4
+msgid ""
+"Use one instance per region in a multi-domain pybamm model — the region name "
+"doubles as the pybamm domain name. Compare to :class:"
+"`UserSuppliedUnstructuredMesh`, which routes multiple regions through one "
+"generator by introspecting ``lims``; ``TaggedSubMeshGenerator`` is simpler "
+"when the model already supplies one mesh generator per domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:11
+msgid ""
+"Regions that share an interface must be conforming across it (the shared "
+"surface meshed once, so both regions reference the same interface nodes), or "
+"combining the domains raises a :class:`pybamm.GeometryError`. Fragment the "
+"geometry in gmsh (``BooleanFragments`` / ``Coherence``) to guarantee this."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:17
+msgid "Gmsh physical-group name (key in ``meshio.read(...).field_data``)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:19
+msgid "Path to the ``.msh`` file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:21
+msgid ""
+"Multiplier applied to mesh node coordinates (e.g. ``1e-3`` to convert mm to "
+"m). Default ``1.0``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:24
+msgid "Coordinate system label, default ``\"cartesian\"``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:26
+msgid ""
+"Maps boundary name to a gmsh physical *surface* group, given as its "
+"``field_data`` name or integer tag. Matching tagged surface triangles become "
+"the named entries in ``boundary_faces``. Without it the submesh carries no "
+"boundary tags."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:1
+msgid ""
+"Compute coupling data for the interface between two adjacent :class:"
+"`UnstructuredSubMesh` objects."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:4
+msgid ""
+"Finds \"right\" boundary faces of *left_mesh* and \"left\" boundary faces of "
+"*right_mesh*, matches them by face centroid position, and records cell "
+"indices, face areas, and centroid-to-centroid distances."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:8
+msgid ""
+"Domains are assumed to be stacked along x: faces are paired by their "
+"transverse (non-x) centroid coordinates."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:15
+msgid "Domain name of the left mesh (stored as key in ``interface_data``)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:17
+msgid "Domain name of the right mesh (stored as key in ``interface_data``)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
+#: of pybamm.meshes.unstructured_submesh.compute_interface_data:20
+msgid ""
+"Keys: ``\"left_cells\"``, ``\"right_cells\"``, ``\"face_areas\"``, "
+"``\"cell_distances\"``."
+msgstr ""

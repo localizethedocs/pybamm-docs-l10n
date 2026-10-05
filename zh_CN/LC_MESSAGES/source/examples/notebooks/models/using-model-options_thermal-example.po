@@ -1,0 +1,332 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/using-model-options_thermal-example."
+"ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/using-model-options_thermal-example."
+"ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:9
+msgid "Using model options in PyBaMM"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:11
+msgid ""
+"In this notebook we show how to pass options to models. This allows users to "
+"do things such as include extra physics (e.g. thermal effects) or change the "
+"macroscopic dimension of the problem (e.g. change from a 1D model to a 2+1D "
+"pouch cell model). To see all of the options currently available in PyBaMM, "
+"please take a look at the documentation `here <https://docs.pybamm.org/en/"
+"latest/source/api/models/base_models/base_battery_model.html>`__. For more "
+"information on combining submodels explicitly to create your own custom "
+"model, please see the `Using Submodels notebook <using-submodels.ipynb>`__."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:24
+msgid "Example: Solving the SPMe with a lumped thermal model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:26
+msgid ""
+"PyBaMM is designed to be a flexible modelling package that allows users to "
+"easily include different physics within a model without having to start from "
+"scratch. In this example, we show how to pass model options to include "
+"thermal effects in the SPMe (for more information on the SPMe see `here "
+"<SPMe.ipynb>`__). First we import PyBaMM and any other packages we need"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[ ]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import os\n"
+"\n"
+"import pybamm\n"
+"\n"
+"os.chdir(pybamm.__path__[0] + \"/..\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:51
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:57
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:64
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:75
+msgid ""
+"We then choose out model options, which a set as a dictionary. We choose to "
+"model the behaviour in the particle by assuming the concentration profile is "
+"quadratic within the particle. We also choose a lumped thermal model (note "
+"that this is fully-coupled, i.e. parameters can depend on temperature). For "
+"an in-depth look at the thermal models see the `thermal models notebook "
+"<thermal-models.ipynb>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid ""
+"options = {\"particle\": \"quadratic profile\", \"thermal\": \"lumped\"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:95
+msgid "We then pass our options to the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "model = pybamm.lithium_ion.SPMe(options)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:116
+msgid "We choose to use the parameters from Chen2020."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "param = pybamm.ParameterValues(\"Chen2020\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:137
+msgid ""
+"We then create and solve a simulation, making sure we pass in our updated "
+"parameter values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid ""
+"simulation = pybamm.Simulation(model, parameter_values=param)\n"
+"simulation.solve([0, 3600])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:160
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x7f6169de4690&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:166
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x7f6169de4690>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:173
+msgid "<pybamm.solvers.solution.Solution at 0x7f6169de4690>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:184
+msgid "Finally we plot the voltage and the cell temperature"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid ""
+"simulation.plot(\n"
+"    [\n"
+"        \"Voltage [V]\",\n"
+"        \"X-averaged cell temperature [K]\",\n"
+"    ]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:211
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"449fc9b518774804bf0d4367bb914744\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:221
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1163.6363636363637, step=11.636363636363637)…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:227
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=1163.6363636363637, step=11.636363636363637)…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:234
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=1163.6363636363637, step=11.636363636363637)…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:245
+msgid ""
+"Note that the variable \"X-averaged cell temperature [K]\" is the scalar-"
+"valued lumped temperature, whereas the variable \"Cell temperature [K]\" is "
+"the value of the lumped temperature broadcasted across the whole cell "
+"domain. This type of behaviour is purposefully designed to allow easy "
+"comparison of different models and settings. For instance we may wish to "
+"compare a simulation that uses a lumped thermal model with a simulation that "
+"uses a full thermal model (i.e. one that solves the heat equation in the x-"
+"direction). When comparing these two model we could then plot the same "
+"variable \"Cell temperature [K]\" to compare the temperature throughout the "
+"cell."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:258
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:260
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:281
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:292
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/using-model-options_thermal-example.ipynb:304
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[4] Venkat R. Subramanian, Vinten D. Diwakar, and Deepak Tapriyal. Efficient "
+"macro-micro scale coupled modeling of batteries. Journal of The "
+"Electrochemical Society, 152(10):A2002, 2005. doi:10.1149/1.2032427.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). ECSarXiv. "
+"February, 2020. doi:10.1149/osf.io/67ckj."
+msgstr ""
