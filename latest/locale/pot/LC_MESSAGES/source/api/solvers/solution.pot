@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-05 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -359,6 +360,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.Solution.sensitivities:0
+#: pybamm.solvers.solution.SolverStatistics:0
 msgid "type"
 msgstr ""
 
@@ -411,4 +413,43 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.Solution.yp:1
 msgid "Time derivatives of the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:1
+msgid "Counts of the work an integrator did to produce a solution."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:5
+msgid "Internal time steps taken."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:7
+#: pybamm.solvers.solution.SolverStatistics:13
+#: pybamm.solvers.solution.SolverStatistics:19
+#: pybamm.solvers.solution.SolverStatistics:25
+#: pybamm.solvers.solution.SolverStatistics:31
+msgid "int"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:11
+msgid "Calls to the linear solver setup, such as Jacobian factorisations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:17
+msgid "Iterations of the nonlinear (Newton) solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:23
+msgid "Convergence failures of the nonlinear solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:29
+msgid "Steps rejected by the local error test."
 msgstr ""

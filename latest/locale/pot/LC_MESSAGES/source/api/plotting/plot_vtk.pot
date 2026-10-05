@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-05 17:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/plotting/plot_vtk.rst:2
+msgid "VTK Quick Plot"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:1
+msgid "Interactive VTK visualization for unstructured mesh solutions."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:3
+msgid "Supports spatial (unstructured 2D/3D) and 0D (time-series) variables."
+msgstr ""
+
+#: ../../../source/api/plotting/plot_vtk.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:5
+msgid "The solution to plot; a single-element list is also accepted."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:7
+msgid ""
+"Variables to plot. Defaults to the model's default quick-plot variables that "
+"are 0D or live on an unstructured mesh."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:10
+msgid ""
+"Per-variable options keyed by variable name.  Each value is a dict that may "
+"contain:  - ``\"plot_type\"``: ``\"3d\"`` (default) or ``\"slice\"`` - "
+"``\"x\"`` / ``\"y\"`` / ``\"z\"``: float in [0, 1] giving the slice   "
+"position as a fraction of the axis range (required when   ``plot_type`` is "
+"``\"slice\"``) - ``\"scale\"``: ``\"auto\"`` (default), ``None``, or ``(sx, "
+"sy, sz)``  A variable's value may also be a **list** of such dicts, in which "
+"case one panel is created per entry::      options={\"T\": "
+"[         {\"plot_type\": \"3d\"},         {\"plot_type\": \"slice\", \"x\": "
+"0.5},     ]}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:10
+msgid ""
+"Per-variable options keyed by variable name.  Each value is a dict that may "
+"contain:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:13
+msgid "``\"plot_type\"``: ``\"3d\"`` (default) or ``\"slice\"``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:14
+msgid ""
+"``\"x\"`` / ``\"y\"`` / ``\"z\"``: float in [0, 1] giving the slice position "
+"as a fraction of the axis range (required when ``plot_type`` is "
+"``\"slice\"``)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:17
+msgid "``\"scale\"``: ``\"auto\"`` (default), ``None``, or ``(sx, sy, sz)``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:19
+msgid ""
+"A variable's value may also be a **list** of such dicts, in which case one "
+"panel is created per entry::"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:22
+msgid ""
+"options={\"T\": [\n"
+"    {\"plot_type\": \"3d\"},\n"
+"    {\"plot_type\": \"slice\", \"x\": 0.5},\n"
+"]}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot:27
+msgid ""
+"Evaluate the variables at the exact slider time instead of snapping to the "
+"nearest stored solution time. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.dynamic_plot:1
+msgid "Launch an interactive VTK window with a time slider."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:1
+msgid "Render an animation to a GIF file."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:3
+msgid "Output path (e.g. ``\"anim.gif\"``)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:5
+msgid "Frames per second."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:7
+msgid "Number of frames (evenly spaced in time)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/plotting/plot_vtk.py:docstring
+#: of pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:9
+#: pybamm.plotting.plot_vtk.VTKQuickPlot.save_gif:11
+msgid "Pixel dimensions of each frame."
+msgstr ""

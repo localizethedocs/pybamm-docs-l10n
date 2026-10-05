@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-05 17:38+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -106,14 +107,26 @@ msgid "return a :class:`EqualHeaviside` object, or a smooth approximation."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.__getstate__:1
+msgid "Helper for pickle."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.__gt__:1
 #: pybamm.expression_tree.symbol.Symbol.__lt__:1
 msgid "return a :class:`NotEqualHeaviside` object, or a smooth approximation."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.expression_tree.symbol.Symbol.__hash__:1
-msgid "Return hash(self)."
+#: of pybamm.Symbol.id:1 pybamm.expression_tree.symbol.Symbol.id:1
+msgid "The identity of the symbol (e.g. for identifying y_slices)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.id:3 pybamm.expression_tree.symbol.Symbol.id:3
+msgid ""
+"Computed lazily from the class, static fields and leaves. Deprecated in-"
+"place updates invalidate cached identities, including ancestor IDs."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
@@ -167,35 +180,23 @@ msgid "return a string representation of the node and its children."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.Symbol.__weakref__:1
-msgid "list of weak references to the object"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.Symbol.auxiliary_domains:1
 msgid "Returns auxiliary domains."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.Symbol.children:1
-msgid "returns the cached children of this node."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.Symbol.children:3
-msgid ""
-"Note: it is assumed that children of a node are not modified after initial "
-"creation"
+#: of pybamm.Symbol.children:1 pybamm.Symbol.orphans:1
+msgid "The children of this node, as an immutable list."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.clear_domains:1
-msgid "Clear domains, bypassing checks."
+msgid "Clear domains in place (deprecated)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.copy_domains:1
-msgid "Copy the domains from a given symbol, bypassing checks."
+msgid "Copy domains in place (deprecated)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
@@ -248,6 +249,11 @@ msgstr ""
 
 #: ../../../source/api/expression_tree/symbol.rst:0
 msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.domains:1
+msgid "A read-only copy of the domains of this node."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
@@ -383,6 +389,28 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.leaves:1
+msgid ""
+"children first, then the other symbol-valued fields (e.g. a variable's scale "
+"and bounds)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.leaves:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.leaves:4
+msgid "The symbols this node directly depends on"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.mesh:1
+msgid "Mesh of the primary domain, attached by the discretisation (else None)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.Symbol.name:1
 msgid "name of the node."
 msgstr ""
@@ -397,13 +425,6 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.new_copy:1
 msgid "Deprecated alias for :meth:`create_copy`."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.Symbol.orphans:1
-msgid ""
-"Returning new copies of the children, with parents removed to avoid "
-"corrupting the expression tree internal data"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
@@ -427,6 +448,22 @@ msgid "Helper function to get the quaternary domain of a symbol."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.read_domain_or_domains:1
+msgid "Combine ``domain`` and ``auxiliary_domains``, or check ``domains``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.Symbol.reference:1 pybamm.Symbol.scale:1
+#: pybamm.Symbol.secondary_mesh:1 pybamm.Symbol.tertiary_mesh:1
+msgid ""
+"Return a callable object that fetches the given attribute(s) from its "
+"operand. After f = attrgetter('name'), the call f(r) returns r.name. After g "
+"= attrgetter('name', 'date'), the call g(r) returns (r.name, r.date). After "
+"h = attrgetter('name.first', 'name.last'), the call h(r) returns (r.name."
+"first, r.name.last)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.relabel_tree:1
 msgid ""
 "Finds all children of a symbol and assigns them a new id so that they can be "
@@ -446,15 +483,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.set_id:1
-msgid ""
-"Set the immutable \"identity\" of a variable (e.g. for identifying y_slices)."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
-#: of pybamm.expression_tree.symbol.Symbol.set_id:3
-msgid ""
-"Hashing can be slow, so we set the id when we create the node, and hence "
-"only need to hash once."
+msgid "Recompute identity after a legacy update (deprecated)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
@@ -555,4 +584,46 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
 #: of pybamm.expression_tree.symbol.Symbol.visualise:4
 msgid "filename to output, must end in \".png\""
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_domains:1
+msgid "Return a copy of this symbol carrying the validated domains."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_domains:3
+msgid "A symbol whose domains to copy, or a full domains dictionary."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_domains:6
+msgid ""
+"``self`` if the domains already match, otherwise a shallow copy sharing this "
+"symbol's children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_domains:8
+msgid ":class:`pybamm.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_mesh:1
+msgid ""
+"Return a copy carrying the given submeshes, readable as ``mesh``, "
+"``secondary_mesh`` and ``tertiary_mesh``."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.with_meshes:1
+msgid ""
+"Return a copy carrying the meshes of ``domains`` (default: own domains), "
+"readable as ``mesh``, ``secondary_mesh`` and ``tertiary_mesh``. ``self`` is "
+"returned unchanged if there is nothing to attach."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/symbol.py:docstring
+#: of pybamm.expression_tree.symbol.Symbol.without_domains:1
+msgid "Return a copy of this symbol with all domains cleared."
 msgstr ""
