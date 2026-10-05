@@ -1,0 +1,1249 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.parameters.parameter_substitutor &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/parameters/parameter_substitutor';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/parameters/parameter_substitutor.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.parameters.parameter_substitutor</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.parameters.parameter_substitutor 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numbers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.models.base_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelSolutionObservability</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.parameter_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterStore</span>
+
+
+<div class="viewcode-block" id="ParameterSubstitutor">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterSubstitutor</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Handles symbol and model parameterization.</span>
+
+<span class="sd">    This class is responsible for walking through expression trees and replacing</span>
+<span class="sd">    Parameter nodes with their corresponding values from a ParameterStore.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    store : ParameterStore</span>
+<span class="sd">        The parameter store to read values from.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">    &gt;&gt;&gt; store = ParameterStore({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">    &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">    &gt;&gt;&gt; param = pybamm.Parameter(&quot;Temperature [K]&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; processed = processor.process_symbol(param)</span>
+<span class="sd">    &gt;&gt;&gt; float(processed.evaluate())</span>
+<span class="sd">    298.15</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="n">ParameterStore</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="n">store</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+<div class="viewcode-block" id="ParameterSubstitutor.clear_cache">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.clear_cache">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_cache</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Invalidate the processed symbol cache.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">        &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">        &gt;&gt;&gt; processor.clear_cache()  # Force re-processing of symbols</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">cache</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the processed symbols cache (read-only access).&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span>
+
+<div class="viewcode-block" id="ParameterSubstitutor.process_symbol">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.process_symbol">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Walk through the symbol and replace any Parameter with a Value.</span>
+
+<span class="sd">        If a symbol has already been processed, the cached value is returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : pybamm.Symbol</span>
+<span class="sd">            Symbol or Expression tree to set parameters for.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pybamm.Symbol</span>
+<span class="sd">            Symbol with Parameter instances replaced by values.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Current [A]&quot;: 5.0})</span>
+<span class="sd">        &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.Parameter(&quot;Current [A]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; processed = processor.process_symbol(param)</span>
+<span class="sd">        &gt;&gt;&gt; result = processed.evaluate()  # Returns evaluated value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">):</span>
+                <span class="n">processed_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">processed_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_function_parameter</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="o">=</span> <span class="n">processed_symbol</span>
+            <span class="k">return</span> <span class="n">processed_symbol</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal symbol processing implementation.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="c1"># Handle renamed parameter with helpful error message</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="s2">&quot;Exchange-current density for lithium metal electrode [A.m-2]&quot;</span>
+                    <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span>
+                    <span class="ow">and</span> <span class="s2">&quot;Exchange-current density for plating [A.m-2]&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span>
+                <span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                        <span class="s2">&quot;&#39;Exchange-current density for plating [A.m-2]&#39; has been renamed &quot;</span>
+                        <span class="s2">&quot;to &#39;Exchange-current density for lithium metal electrode [A.m-2]&#39; &quot;</span>
+                        <span class="s2">&quot;when referring to the reaction at the surface of a lithium metal &quot;</span>
+                        <span class="s2">&quot;electrode. This is to avoid confusion with the exchange-current &quot;</span>
+                        <span class="s2">&quot;density for the lithium plating reaction in a porous negative &quot;</span>
+                        <span class="s2">&quot;electrode. To avoid this error, change your parameter file to use &quot;</span>
+                        <span class="s2">&quot;the new name.&quot;</span>
+                    <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+                <span class="k">raise</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+                <span class="c1"># Check not NaN (parameter in csv file but no value given)</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; not found&quot;</span><span class="p">)</span>
+                <span class="c1"># Scalar inherits name</span>
+                <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+                <span class="n">new_value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="n">new_value</span><span class="o">.</span><span class="n">copy_domains</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">new_value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Cannot process parameter &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">):</span>
+            <span class="n">function_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">function_name</span><span class="p">,</span>
+                <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">,</span>
+            <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">function_name</span><span class="o">.</span><span class="n">size_for_testing</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="p">):</span>
+                <span class="c1"># no need to process children, they will only be used for shape</span>
+                <span class="n">new_children</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># process children</span>
+                <span class="n">new_children</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+                        <span class="n">x</span> <span class="o">==</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">pre_order</span><span class="p">()</span>
+                    <span class="p">):</span>
+                        <span class="c1"># Wrap with NotConstant to avoid simplification,</span>
+                        <span class="c1"># which would stop symbolic diff from working properly</span>
+                        <span class="n">new_child</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">NotConstant</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+                        <span class="n">new_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_child</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">new_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
+
+            <span class="c1"># Create Function or Interpolant or Scalar object</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">function_name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># CSV or JSON parsed data</span>
+                    <span class="c1"># to create an Interpolant</span>
+                    <span class="n">name</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">function_name</span>
+
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">input_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">input_data</span> <span class="o">=</span> <span class="n">data</span>
+
+                    <span class="c1"># For parameters provided as data we use a cubic interpolant</span>
+                    <span class="c1"># Note: the cubic interpolant can be differentiated</span>
+                    <span class="n">function</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span><span class="p">(</span>
+                        <span class="n">input_data</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                        <span class="n">input_data</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+                        <span class="n">new_children</span><span class="p">,</span>
+                        <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Invalid function name length: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">function_name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+                <span class="c1"># Check not NaN (parameter in csv file but no value given)</span>
+                <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">function_name</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Parameter &#39;</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; (possibly a function) not found&quot;</span>
+                    <span class="p">)</span>
+                <span class="c1"># If the &quot;function&quot; is provided is actually a scalar, return a Scalar</span>
+                <span class="c1"># object instead of throwing an error.</span>
+                <span class="n">function</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="n">function_name</span><span class="p">):</span>
+                <span class="c1"># otherwise evaluate the function to create a new PyBaMM object</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_check_electrode_conductivity_signature</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">function_name</span><span class="p">)</span>
+                <span class="n">function</span> <span class="o">=</span> <span class="n">function_name</span><span class="p">(</span><span class="o">*</span><span class="n">new_children</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">function_name</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span> <span class="o">|</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span>
+            <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
+                <span class="nb">isinstance</span><span class="p">(</span><span class="n">function_name</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="n">function_name</span><span class="o">.</span><span class="n">size_for_testing</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="p">):</span>
+                <span class="n">function</span> <span class="o">=</span> <span class="n">function_name</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Parameter provided for &#39;</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; &quot;</span>
+                    <span class="o">+</span> <span class="s2">&quot;is of the wrong type (should either be scalar-like or callable)&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># Apply post_processor if provided (e.g., for regularisation)</span>
+            <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">post_processor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Build input dict mapping input names to processed symbols</span>
+                <span class="n">input_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="n">symbol</span><span class="o">.</span><span class="n">input_names</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span> <span class="n">new_children</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">input_names</span><span class="p">))</span>
+                <span class="p">}</span>
+                <span class="n">function</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">post_processor</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">input_dict</span><span class="p">)</span>
+
+            <span class="c1"># Differentiate if necessary</span>
+            <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Use ones_like so that we get the right shapes</span>
+                <span class="n">function_out</span> <span class="o">=</span> <span class="n">function</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="o">*</span><span class="n">new_children</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># return differentiated function</span>
+                <span class="n">new_diff_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span><span class="p">)</span>
+                <span class="n">function_out</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">new_diff_variable</span><span class="p">)</span>
+
+            <span class="c1"># Process again just to be sure</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">function_out</span><span class="p">)</span>
+
+        <span class="c1"># Unary operators</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">UnaryOperator</span><span class="p">):</span>
+            <span class="n">new_child</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">child</span><span class="p">)</span>
+            <span class="n">new_symbol</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">create_copy</span><span class="p">(</span><span class="n">new_children</span><span class="o">=</span><span class="p">[</span><span class="n">new_child</span><span class="p">])</span>
+            <span class="c1"># x_average can sometimes create a new symbol with electrode thickness</span>
+            <span class="c1"># parameters, so we process again to make sure these parameters are set</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">XAverage</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">new_symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">XAverage</span>
+            <span class="p">):</span>
+                <span class="n">new_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_symbol</span><span class="p">)</span>
+            <span class="c1"># f_a_dist in the size average needs to be processed</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SizeAverage</span><span class="p">):</span>
+                <span class="n">new_symbol</span><span class="o">.</span><span class="n">f_a_dist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_symbol</span><span class="o">.</span><span class="n">f_a_dist</span><span class="p">)</span>
+            <span class="c1"># position in evaluate at needs to be processed, and should be a Scalar</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EvaluateAt</span><span class="p">):</span>
+                <span class="n">new_symbol_position</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_symbol</span><span class="o">.</span><span class="n">position</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">new_symbol_position</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;&#39;position&#39; in &#39;EvaluateAt&#39; must evaluate to a scalar&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_symbol</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">new_symbol_position</span>
+            <span class="k">return</span> <span class="n">new_symbol</span>
+
+        <span class="c1"># Functions, BinaryOperators &amp; Concatenations</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span>
+            <span class="n">symbol</span><span class="p">,</span>
+            <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">Function</span><span class="p">,</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">Concatenation</span><span class="p">,</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">BinaryOperator</span><span class="p">,</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">Conditional</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">):</span>
+            <span class="n">new_children</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">child</span><span class="p">)</span> <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">symbol</span><span class="o">.</span><span class="n">create_copy</span><span class="p">(</span><span class="n">new_children</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">VectorField</span><span class="p">):</span>
+            <span class="n">left_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">lr_field</span><span class="p">)</span>
+            <span class="n">right_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">tb_field</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">symbol</span><span class="o">.</span><span class="n">create_copy</span><span class="p">(</span><span class="n">new_children</span><span class="o">=</span><span class="p">[</span><span class="n">left_symbol</span><span class="p">,</span> <span class="n">right_symbol</span><span class="p">])</span>
+
+        <span class="c1"># Variables: update scale</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">):</span>
+            <span class="n">new_symbol</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">create_copy</span><span class="p">()</span>
+            <span class="n">new_symbol</span><span class="o">.</span><span class="n">scale</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">scale</span><span class="p">)</span>
+            <span class="n">reference</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">reference</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">reference</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Vector</span><span class="p">):</span>
+                <span class="c1"># address numpy 1.25 deprecation warning: array should have ndim=0</span>
+                <span class="c1"># before conversion</span>
+                <span class="n">reference</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">((</span><span class="n">reference</span><span class="o">.</span><span class="n">evaluate</span><span class="p">())</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+            <span class="n">new_symbol</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="n">reference</span>
+            <span class="n">new_symbol</span><span class="o">.</span><span class="n">bounds</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">bounds</span><span class="p">])</span>
+            <span class="k">return</span> <span class="n">new_symbol</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Backup option: return the object</span>
+            <span class="k">return</span> <span class="n">symbol</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_electrode_conductivity_signature</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">function_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Electrode conductivity may now be supplied as a function of</span>
+<span class="sd">        (stoichiometry, temperature). If it is still supplied as a function of</span>
+<span class="sd">        temperature only, raise a clear error rather than letting it fail later</span>
+<span class="sd">        with a cryptic &quot;takes 1 positional argument but 2 were given&quot; TypeError.</span>
+
+<span class="sd">        Only triggers for a callable conductivity that is being passed</span>
+<span class="sd">        stoichiometry (``input_names`` has more than just temperature); a</span>
+<span class="sd">        constant conductivity is handled elsewhere and never reaches here.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;electrode conductivity [S.m-1]&quot;</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="c1"># only temperature is supplied (e.g. lead-acid, planar lithium metal)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">input_names</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">function_name</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="c1"># can&#39;t introspect (e.g. some builtins) - let the call proceed</span>
+            <span class="k">return</span>
+        <span class="c1"># a function with *args can take any number of positional arguments</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">kind</span> <span class="o">==</span> <span class="n">p</span><span class="o">.</span><span class="n">VAR_POSITIONAL</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span><span class="p">):</span>
+            <span class="k">return</span>
+        <span class="n">n_positional</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">kind</span> <span class="ow">in</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">POSITIONAL_ONLY</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">POSITIONAL_OR_KEYWORD</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">params</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">n_positional</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">input_names</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; must now be a function of &quot;</span>
+                <span class="s2">&quot;(stoichiometry, temperature), e.g. `def sigma(sto, T): ...`. &quot;</span>
+                <span class="s2">&quot;Update your temperature-only conductivity function `f(T)` to &quot;</span>
+                <span class="s2">&quot;`f(sto, T)`; the stoichiometry argument may be ignored if the &quot;</span>
+                <span class="s2">&quot;conductivity does not depend on it.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_process_function_parameter</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Process ExpressionFunctionParameter symbols.&quot;&quot;&quot;</span>
+        <span class="n">function_parameter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">symbol</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+
+        <span class="c1"># Handle symbolic function parameter case</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">function_parameter</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ExpressionFunctionParameter</span><span class="p">):</span>
+            <span class="c1"># Process children</span>
+            <span class="n">new_children</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">symbol</span><span class="o">.</span><span class="n">children</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+                    <span class="n">x</span> <span class="o">==</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">pre_order</span><span class="p">()</span>
+                <span class="p">):</span>
+                    <span class="c1"># Wrap with NotConstant to avoid simplification,</span>
+                    <span class="c1"># which would stop symbolic diff from working properly</span>
+                    <span class="n">new_child</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">NotConstant</span><span class="p">(</span><span class="n">child</span><span class="p">)</span>
+                    <span class="n">new_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_child</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_children</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
+
+            <span class="c1"># Get the expression and inputs for the function.</span>
+            <span class="n">expression</span> <span class="o">=</span> <span class="n">function_parameter</span><span class="o">.</span><span class="n">child</span>
+            <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">arg</span><span class="p">:</span> <span class="n">child</span>
+                <span class="k">for</span> <span class="n">arg</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+                    <span class="n">function_parameter</span><span class="o">.</span><span class="n">func_args</span><span class="p">,</span> <span class="n">new_children</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+                <span class="p">)</span>
+            <span class="p">}</span>
+
+            <span class="c1"># Set domains for function inputs in post-order traversal</span>
+            <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">expression</span><span class="o">.</span><span class="n">post_order</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">:</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">domains</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">node</span><span class="o">.</span><span class="n">name</span><span class="p">]</span><span class="o">.</span><span class="n">domains</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">node</span><span class="o">.</span><span class="n">domains</span> <span class="o">=</span> <span class="n">node</span><span class="o">.</span><span class="n">get_children_domains</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span>
+
+            <span class="c1"># Create a combined processor with inputs as additional parameters</span>
+            <span class="c1"># We need to import here to avoid circular imports</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">.parameter_store</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterStore</span>
+
+            <span class="n">combined_store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">))</span>
+            <span class="n">combined_store</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="n">combined_processor</span> <span class="o">=</span> <span class="n">ParameterSubstitutor</span><span class="p">(</span><span class="n">combined_store</span><span class="p">)</span>
+
+            <span class="c1"># Process any FunctionParameter children first to avoid recursion</span>
+            <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">expression</span><span class="o">.</span><span class="n">pre_order</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">):</span>
+                    <span class="c1"># Build new child with parent inputs</span>
+                    <span class="n">new_child_children</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="n">inputs</span><span class="p">[</span><span class="n">child_child</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+                        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">child_child</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">)</span>
+                        <span class="ow">and</span> <span class="n">child_child</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">inputs</span>
+                        <span class="k">else</span> <span class="n">child_child</span>
+                        <span class="k">for</span> <span class="n">child_child</span> <span class="ow">in</span> <span class="n">child</span><span class="o">.</span><span class="n">children</span>
+                    <span class="p">]</span>
+                    <span class="n">new_child</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">(</span>
+                        <span class="n">child</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
+                        <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">child</span><span class="o">.</span><span class="n">input_names</span><span class="p">,</span> <span class="n">new_child_children</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
+                        <span class="n">diff_variable</span><span class="o">=</span><span class="n">child</span><span class="o">.</span><span class="n">diff_variable</span><span class="p">,</span>
+                        <span class="n">print_name</span><span class="o">=</span><span class="n">child</span><span class="o">.</span><span class="n">print_name</span><span class="p">,</span>
+                    <span class="p">)</span>
+
+                    <span class="c1"># For this local combined processor, process the new child</span>
+                    <span class="c1"># and store the result as the processed symbol for this child</span>
+                    <span class="n">combined_processor</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">child</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="n">combined_processor</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">new_child</span><span class="p">)</span>
+                    <span class="p">)</span>
+
+            <span class="c1"># Process function with combined processor to get a symbolic expression</span>
+            <span class="n">function</span> <span class="o">=</span> <span class="n">combined_processor</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">expression</span><span class="p">)</span>
+
+            <span class="c1"># Apply post_processor if provided (e.g., for regularisation)</span>
+            <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">post_processor</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">function</span> <span class="o">=</span> <span class="n">symbol</span><span class="o">.</span><span class="n">post_processor</span><span class="p">(</span><span class="n">function</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+            <span class="c1"># Differentiate if necessary</span>
+            <span class="k">if</span> <span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Use ones_like so that we get the right shapes</span>
+                <span class="n">function_out</span> <span class="o">=</span> <span class="n">function</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="o">*</span><span class="n">new_children</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># return differentiated function</span>
+                <span class="n">new_diff_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="o">.</span><span class="n">diff_variable</span><span class="p">)</span>
+                <span class="n">function_out</span> <span class="o">=</span> <span class="n">function</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">new_diff_variable</span><span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">function_out</span>
+
+        <span class="c1"># Handle non-symbolic function_name case</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParameterSubstitutor.process_model">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.process_model">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unprocessed_model</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">delayed_variable_processing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign parameter values to a model.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">        &gt;&gt;&gt; store = pybamm.ParameterValues(&quot;Chen2020&quot;).store</span>
+<span class="sd">        &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">        &gt;&gt;&gt; model = pybamm.lithium_ion.SPM()</span>
+<span class="sd">        &gt;&gt;&gt; processed_model = processor.process_model(model)</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        unprocessed_model : pybamm.BaseModel</span>
+<span class="sd">            Model to assign parameter values for.</span>
+<span class="sd">        inplace : bool, optional</span>
+<span class="sd">            If True (default), replace parameters in place.</span>
+<span class="sd">            If False, return a new model with parameter values set.</span>
+<span class="sd">        delayed_variable_processing : bool, optional</span>
+<span class="sd">            If True, make variable processing a post-processing step.</span>
+<span class="sd">            Default is False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pybamm.BaseModel</span>
+<span class="sd">            The parameterized model.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        pybamm.ModelError</span>
+<span class="sd">            If an empty model is passed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start setting parameters for </span><span class="si">{</span><span class="n">unprocessed_model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">delayed_variable_processing</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">delayed_variable_processing</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="c1"># set up inplace vs not inplace</span>
+        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">unprocessed_model</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">new_copy</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">len</span><span class="p">(</span><span class="n">unprocessed_model</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">unprocessed_model</span><span class="o">.</span><span class="n">algebraic</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">unprocessed_model</span><span class="o">.</span><span class="n">variables</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="p">):</span>
+            <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ModelError</span><span class="p">(</span><span class="s2">&quot;Cannot process parameters for empty model&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Find all InputParameters in the parameter values</span>
+        <span class="n">unpacker</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SymbolUnpacker</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">fixed_input_parameters</span> <span class="o">=</span> <span class="n">unpacker</span><span class="o">.</span><span class="n">unpack_parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span>
+
+        <span class="n">new_rhs</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">equation</span> <span class="ow">in</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">rhs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing parameters for </span><span class="si">{</span><span class="n">variable</span><span class="si">!r}</span><span class="s2"> (rhs)&quot;</span><span class="p">)</span>
+            <span class="n">new_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+            <span class="n">new_rhs</span><span class="p">[</span><span class="n">new_variable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">equation</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">rhs</span> <span class="o">=</span> <span class="n">new_rhs</span>
+
+        <span class="n">new_algebraic</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">equation</span> <span class="ow">in</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">algebraic</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing parameters for </span><span class="si">{</span><span class="n">variable</span><span class="si">!r}</span><span class="s2"> (algebraic)&quot;</span><span class="p">)</span>
+            <span class="n">new_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+            <span class="n">new_algebraic</span><span class="p">[</span><span class="n">new_variable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">equation</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="n">new_algebraic</span>
+
+        <span class="n">new_initial_conditions</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">equation</span> <span class="ow">in</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">initial_conditions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Processing parameters for </span><span class="si">{</span><span class="n">variable</span><span class="si">!r}</span><span class="s2"> (initial conditions)&quot;</span>
+            <span class="p">)</span>
+            <span class="n">new_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+            <span class="n">new_initial_conditions</span><span class="p">[</span><span class="n">new_variable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">equation</span><span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="n">new_initial_conditions</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">boundary_conditions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_boundary_conditions</span><span class="p">(</span><span class="n">unprocessed_model</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">delayed_variable_processing</span><span class="p">:</span>
+            <span class="c1"># Process variables and store in _variables_processed, NOT in variables</span>
+            <span class="n">variables_to_process</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">variables</span>
+                <span class="o">|</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">get_processed_variables_dict</span><span class="p">()</span>
+            <span class="p">)</span>
+            <span class="n">processed_variables</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">equation</span> <span class="ow">in</span> <span class="n">variables_to_process</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Processing parameters for </span><span class="si">{</span><span class="n">variable</span><span class="si">!r}</span><span class="s2"> (variables)&quot;</span>
+                <span class="p">)</span>
+                <span class="n">processed_variables</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">equation</span><span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">update_processed_variables</span><span class="p">(</span><span class="n">processed_variables</span><span class="p">)</span>
+
+        <span class="n">new_events</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing parameters for event &#39;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&#39;&quot;</span><span class="p">)</span>
+            <span class="n">new_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span>
+                    <span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">expression</span><span class="p">),</span> <span class="n">event</span><span class="o">.</span><span class="n">event_type</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">interpolant_events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_interpolant_events</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">interpolant_events</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Processing parameters for event &#39;</span><span class="si">{</span><span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39;&#39;&quot;</span><span class="p">)</span>
+            <span class="n">new_events</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span>
+                    <span class="n">event</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">expression</span><span class="p">),</span> <span class="n">event</span><span class="o">.</span><span class="n">event_type</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">events</span> <span class="o">=</span> <span class="n">new_events</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finish setting parameters for </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">unprocessed_model</span><span class="o">.</span><span class="n">is_parameterised</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Model &#39;</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; is being re-processed, &quot;</span>
+                <span class="s2">&quot;which makes it unable to process symbols using `model.process_symbol`&quot;</span>
+            <span class="p">)</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">disable_symbol_processing</span><span class="p">(</span>
+                <span class="n">ModelSolutionObservability</span><span class="o">.</span><span class="n">REPARAMETERISED_MODEL</span>
+            <span class="p">)</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">is_parameterised</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_interpolant_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add events for functions that have been defined as parameters.&quot;&quot;&quot;</span>
+        <span class="n">interpolants</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">_find_symbols</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span><span class="p">)</span>
+        <span class="n">interpolant_events</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">interpolant</span> <span class="ow">in</span> <span class="n">interpolants</span><span class="p">:</span>
+            <span class="n">xs</span> <span class="o">=</span> <span class="n">interpolant</span><span class="o">.</span><span class="n">x</span>
+            <span class="n">children</span> <span class="o">=</span> <span class="n">interpolant</span><span class="o">.</span><span class="n">children</span>
+            <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">child</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">children</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+                <span class="n">interpolant_events</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;Interpolant &#39;</span><span class="si">{</span><span class="n">interpolant</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; lower bound&quot;</span><span class="p">,</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">child</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">EventType</span><span class="o">.</span><span class="n">INTERPOLANT_EXTRAPOLATION</span><span class="p">,</span>
+                        <span class="p">),</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">Event</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;Interpolant &#39;</span><span class="si">{</span><span class="n">interpolant</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; upper bound&quot;</span><span class="p">,</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">child</span><span class="p">),</span>
+                            <span class="n">pybamm</span><span class="o">.</span><span class="n">EventType</span><span class="o">.</span><span class="n">INTERPOLANT_EXTRAPOLATION</span><span class="p">,</span>
+                        <span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">)</span>
+        <span class="k">return</span> <span class="n">interpolant_events</span>
+
+<div class="viewcode-block" id="ParameterSubstitutor.process_boundary_conditions">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.process_boundary_conditions">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_boundary_conditions</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process boundary conditions for a model.</span>
+
+<span class="sd">        Boundary conditions are dictionaries {&quot;left&quot;: left bc, &quot;right&quot;: right bc}</span>
+<span class="sd">        in general, but may be imposed on the tabs (or *not* on the tab) for a</span>
+<span class="sd">        small number of variables.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_boundary_conditions</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">sides</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;left&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;right&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;negative tab&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;positive tab&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;no tab&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;top&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;bottom&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;x_min&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;x_max&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;y_min&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;y_max&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;z_min&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;z_max&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;r_min&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;r_max&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+        <span class="k">for</span> <span class="n">variable</span><span class="p">,</span> <span class="n">bcs</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">boundary_conditions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">processed_variable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">variable</span><span class="p">)</span>
+            <span class="n">new_boundary_conditions</span><span class="p">[</span><span class="n">processed_variable</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">side</span> <span class="ow">in</span> <span class="n">sides</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">bc</span><span class="p">,</span> <span class="n">typ</span> <span class="o">=</span> <span class="n">bcs</span><span class="p">[</span><span class="n">side</span><span class="p">]</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">verbose</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Processing parameters for </span><span class="si">{</span><span class="n">variable</span><span class="si">!r}</span><span class="s2"> (</span><span class="si">{</span><span class="n">side</span><span class="si">}</span><span class="s2"> bc)&quot;</span>
+                    <span class="p">)</span>
+                    <span class="n">processed_bc</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">bc</span><span class="p">),</span> <span class="n">typ</span><span class="p">)</span>
+                    <span class="n">new_boundary_conditions</span><span class="p">[</span><span class="n">processed_variable</span><span class="p">][</span><span class="n">side</span><span class="p">]</span> <span class="o">=</span> <span class="n">processed_bc</span>
+                <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                    <span class="c1"># don&#39;t raise error if the key error comes from the side not being</span>
+                    <span class="c1"># found</span>
+                    <span class="k">if</span> <span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">side</span><span class="p">:</span>
+                        <span class="k">pass</span>
+                    <span class="c1"># do raise error otherwise (e.g. can&#39;t process symbol)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">raise</span>
+
+        <span class="k">return</span> <span class="n">new_boundary_conditions</span></div>
+
+
+<div class="viewcode-block" id="ParameterSubstitutor.process_geometry">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.process_geometry">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign parameter values to a geometry (inplace).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : dict</span>
+<span class="sd">            Geometry specs to assign parameter values to.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">        &gt;&gt;&gt; store = pybamm.ParameterValues(&quot;Marquis2019&quot;).store</span>
+<span class="sd">        &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">        &gt;&gt;&gt; geometry = pybamm.battery_geometry()</span>
+<span class="sd">        &gt;&gt;&gt; processor.process_geometry(geometry)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">process_and_check</span><span class="p">(</span><span class="n">sym</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+            <span class="n">new_sym</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+            <span class="n">leaves</span> <span class="o">=</span> <span class="n">new_sym</span><span class="o">.</span><span class="n">post_order</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="k">lambda</span> <span class="n">node</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">node</span><span class="o">.</span><span class="n">children</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">leaf</span> <span class="ow">in</span> <span class="n">leaves</span><span class="p">:</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">leaf</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span>
+                    <span class="n">leaf</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span>
+                <span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Geometry parameters must be Scalars or InputParameters after parameter processing&quot;</span>
+                    <span class="p">)</span>
+            <span class="k">return</span> <span class="n">new_sym</span>
+
+        <span class="k">for</span> <span class="n">domain_geometry</span> <span class="ow">in</span> <span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">spatial_variable</span><span class="p">,</span> <span class="n">spatial_limits</span> <span class="ow">in</span> <span class="n">domain_geometry</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="c1"># process tab information if using 1 or 2D current collectors</span>
+                <span class="k">if</span> <span class="n">spatial_variable</span> <span class="o">==</span> <span class="s2">&quot;tabs&quot;</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">tab</span><span class="p">,</span> <span class="n">position_info</span> <span class="ow">in</span> <span class="n">spatial_limits</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="k">for</span> <span class="n">position_size</span><span class="p">,</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">position_info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="n">domain_geometry</span><span class="p">[</span><span class="s2">&quot;tabs&quot;</span><span class="p">][</span><span class="n">tab</span><span class="p">][</span><span class="n">position_size</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="n">process_and_check</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span>
+                            <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">for</span> <span class="n">lim</span><span class="p">,</span> <span class="n">sym</span> <span class="ow">in</span> <span class="n">spatial_limits</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                        <span class="n">domain_geometry</span><span class="p">[</span><span class="n">spatial_variable</span><span class="p">][</span><span class="n">lim</span><span class="p">]</span> <span class="o">=</span> <span class="n">process_and_check</span><span class="p">(</span><span class="n">sym</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterSubstitutor.evaluate">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_substitutor.html#pybamm.parameters.ParameterSubstitutor.evaluate">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process and evaluate a symbol.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : pybamm.Symbol</span>
+<span class="sd">            Symbol or Expression tree to evaluate.</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            Input parameter values for evaluation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        number or array</span>
+<span class="sd">            The evaluated symbol.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If symbol does not evaluate to a constant.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; from pybamm.parameters import ParameterStore, ParameterSubstitutor</span>
+<span class="sd">        &gt;&gt;&gt; store = ParameterStore({&quot;Current [A]&quot;: 5.0})</span>
+<span class="sd">        &gt;&gt;&gt; processor = ParameterSubstitutor(store)</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.Parameter(&quot;Current [A]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; result = processor.evaluate(param)  # Returns evaluated value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">processed_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">processed_symbol</span><span class="o">.</span><span class="n">is_constant</span><span class="p">():</span>
+            <span class="k">return</span> <span class="n">processed_symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">processed_symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;symbol must evaluate to a constant scalar or array&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">exc</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

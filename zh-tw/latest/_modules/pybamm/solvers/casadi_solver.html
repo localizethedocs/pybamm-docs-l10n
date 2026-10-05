@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.solvers.casadi_solver &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=25212ffa"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/solvers/casadi_solver';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/solvers/casadi_solver.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.solvers.casadi_solver</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.solvers.casadi_solver 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">casadi</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.interpolate</span><span class="w"> </span><span class="kn">import</span> <span class="n">interp1d</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.lrudict</span><span class="w"> </span><span class="kn">import</span> <span class="n">LRUDict</span>
+
+
+<div class="viewcode-block" id="CasadiSolver">
+<a class="viewcode-back" href="../../../source/api/solvers/casadi_solver.html#pybamm.CasadiSolver">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CasadiSolver</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseSolver</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve a discretised model, using CasADi.</span>
+
+<span class="sd">    .. note::</span>
+<span class="sd">        This solver is deprecated and will be removed in a future release. Use</span>
+<span class="sd">        :class:`pybamm.IDAKLUSolver` instead.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    mode : str</span>
+<span class="sd">        How to solve the model (default is &quot;safe&quot;):</span>
+
+<span class="sd">            - &quot;fast&quot;: perform direct integration, without accounting for events. \</span>
+<span class="sd">            Recommended when simulating a drive cycle or other simulation where \</span>
+<span class="sd">            no events should be triggered.</span>
+<span class="sd">            - &quot;fast with events&quot;: perform direct integration of the whole timespan, \</span>
+<span class="sd">            then go back and check where events were crossed. Experimental only.</span>
+<span class="sd">            - &quot;safe&quot;: perform step-and-check integration in global steps of size \</span>
+<span class="sd">            dt_max, checking whether events have been triggered. Recommended for \</span>
+<span class="sd">            simulations of a full charge or discharge.</span>
+<span class="sd">            - &quot;safe without grid&quot;: perform step-and-check integration step-by-step. \</span>
+<span class="sd">            Takes more steps than &quot;safe&quot; mode, but doesn&#39;t require creating the grid \</span>
+<span class="sd">            each time, so may be faster. Experimental only.</span>
+<span class="sd">    rtol : float, optional</span>
+<span class="sd">        The relative tolerance for the solver (default is 1e-6).</span>
+<span class="sd">    atol : float, optional</span>
+<span class="sd">        The absolute tolerance for the solver (default is 1e-6).</span>
+<span class="sd">    root_method : str or pybamm algebraic solver class, optional</span>
+<span class="sd">        The method to use to find initial conditions (for DAE solvers).</span>
+<span class="sd">        Default is &quot;nonlinear_solver&quot;, which uses a custom Newton solver for consistent</span>
+<span class="sd">        initial conditions (recommended). If &quot;casadi&quot;, the solver uses</span>
+<span class="sd">        casadi&#39;s Newton rootfinding algorithm as a fallback.</span>
+<span class="sd">        Otherwise, the solver uses &#39;scipy.optimize.root&#39; with method</span>
+<span class="sd">        specified by &#39;root_method&#39; (e.g. &quot;lm&quot;, &quot;hybr&quot;, ...)</span>
+<span class="sd">    root_tol : float, optional</span>
+<span class="sd">        The tolerance for root-finding. Default is 1e-6.</span>
+<span class="sd">    max_step_decrease_count : float, optional</span>
+<span class="sd">        The maximum number of times step size can be decreased before an error is</span>
+<span class="sd">        raised. Default is 5.</span>
+<span class="sd">    dt_max : float, optional</span>
+<span class="sd">        The maximum global step size (in seconds) used in &quot;safe&quot; mode. If None</span>
+<span class="sd">        the default value is 600 seconds.</span>
+<span class="sd">    extrap_tol : float, optional</span>
+<span class="sd">        The tolerance to assert whether extrapolation occurs or not. Default is 0.</span>
+<span class="sd">    on_extrapolation : str, optional</span>
+<span class="sd">        What to do if the solver is extrapolating. Options are &quot;warn&quot;, &quot;error&quot;, or &quot;ignore&quot;.</span>
+<span class="sd">        Default is &quot;error&quot;.</span>
+<span class="sd">    extra_options_setup : dict, optional</span>
+<span class="sd">        Any options to pass to the CasADi integrator when creating the integrator.</span>
+<span class="sd">        Please consult `CasADi documentation &lt;https://web.casadi.org/python-api/#integrator&gt;`_ for</span>
+<span class="sd">        details. Some useful options:</span>
+
+<span class="sd">        - &quot;max_num_steps&quot;: Maximum number of integrator steps</span>
+<span class="sd">        - &quot;print_stats&quot;: Print out statistics after integration</span>
+
+<span class="sd">    extra_options_call : dict, optional</span>
+<span class="sd">        Any options to pass to the CasADi integrator when calling the integrator.</span>
+<span class="sd">        Please consult `CasADi documentation &lt;https://web.casadi.org/python-api/#integrator&gt;`_ for</span>
+<span class="sd">        details.</span>
+<span class="sd">    return_solution_if_failed_early : bool, optional</span>
+<span class="sd">        Whether to return a Solution object if the solver fails to reach the end of</span>
+<span class="sd">        the simulation, but managed to take some successful steps. Default is False.</span>
+<span class="sd">    perturb_algebraic_initial_conditions : bool, optional</span>
+<span class="sd">        Whether to perturb algebraic initial conditions to avoid a singularity. This</span>
+<span class="sd">        can sometimes slow down the solver, but is kept True as default for &quot;safe&quot; mode</span>
+<span class="sd">        as it seems to be more robust (False by default for other modes).</span>
+<span class="sd">    integrators_maxcount : int, optional</span>
+<span class="sd">        The maximum number of integrators that the solver will retain before</span>
+<span class="sd">        ejecting past integrators using an LRU methodology. A value of 0 or</span>
+<span class="sd">        None leaves the number of integrators unbound. Default is 100.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;safe&quot;</span><span class="p">,</span>
+        <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">root_method</span><span class="o">=</span><span class="s2">&quot;nonlinear_solver&quot;</span><span class="p">,</span>
+        <span class="n">root_tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+        <span class="n">max_step_decrease_count</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+        <span class="n">dt_max</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">extrap_tol</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">on_extrapolation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_options_setup</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">extra_options_call</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">return_solution_if_failed_early</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">perturb_algebraic_initial_conditions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">integrators_maxcount</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+        <span class="n">store_first_last</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;pybamm.CasadiSolver is deprecated and will be removed in a future &quot;</span>
+            <span class="s2">&quot;release. Use pybamm.IDAKLUSolver instead.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">on_extrapolation</span> <span class="o">=</span> <span class="n">on_extrapolation</span> <span class="ow">or</span> <span class="s2">&quot;error&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;problem dependent&quot;</span><span class="p">,</span>
+            <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">,</span>
+            <span class="n">atol</span><span class="o">=</span><span class="n">atol</span><span class="p">,</span>
+            <span class="n">root_method</span><span class="o">=</span><span class="n">root_method</span><span class="p">,</span>
+            <span class="n">root_tol</span><span class="o">=</span><span class="n">root_tol</span><span class="p">,</span>
+            <span class="n">extrap_tol</span><span class="o">=</span><span class="n">extrap_tol</span><span class="p">,</span>
+            <span class="n">on_extrapolation</span><span class="o">=</span><span class="n">on_extrapolation</span><span class="p">,</span>
+            <span class="n">store_first_last</span><span class="o">=</span><span class="n">store_first_last</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;safe&quot;</span><span class="p">,</span> <span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;fast with events&quot;</span><span class="p">,</span> <span class="s2">&quot;safe without grid&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">mode</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;invalid mode &#39;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&#39;. Must be &#39;safe&#39;, for solving with events, &quot;</span>
+                <span class="s2">&quot;&#39;fast&#39;, for solving quickly without events, or &#39;safe without grid&#39; or &quot;</span>
+                <span class="s2">&quot;&#39;fast with events&#39; (both experimental)&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_step_decrease_count</span> <span class="o">=</span> <span class="n">max_step_decrease_count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt_max</span> <span class="o">=</span> <span class="n">dt_max</span> <span class="ow">or</span> <span class="mi">600</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_options_setup</span> <span class="o">=</span> <span class="n">extra_options_setup</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_options_call</span> <span class="o">=</span> <span class="n">extra_options_call</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_solution_if_failed_early</span> <span class="o">=</span> <span class="n">return_solution_if_failed_early</span>
+
+        <span class="c1"># Decide whether to perturb algebraic initial conditions, True by default for</span>
+        <span class="c1"># &quot;safe&quot; mode, False by default for other modes</span>
+        <span class="k">if</span> <span class="n">perturb_algebraic_initial_conditions</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;safe&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">perturb_algebraic_initial_conditions</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">perturb_algebraic_initial_conditions</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">perturb_algebraic_initial_conditions</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">perturb_algebraic_initial_conditions</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;CasADi solver with &#39;</span><span class="si">{</span><span class="n">mode</span><span class="si">}</span><span class="s2">&#39; mode&quot;</span>
+
+        <span class="c1"># Initialize</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrators_maxcount</span> <span class="o">=</span> <span class="n">integrators_maxcount</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span> <span class="o">=</span> <span class="n">LRUDict</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">integrators_maxcount</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">=</span> <span class="n">LRUDict</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">integrators_maxcount</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y_sols</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Andersson2019&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_integrate_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="p">,</span> <span class="n">y0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Solve a single DAE model defined by residuals with initial conditions y0.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        t_eval : numeric type</span>
+<span class="sd">            The times at which to compute the solution</span>
+<span class="sd">        inputs_dict : dict, optional</span>
+<span class="sd">            Any input parameters to pass to the model when solving</span>
+<span class="sd">        y0 : array-like</span>
+<span class="sd">            The initial conditions for the model</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Solution`</span>
+<span class="sd">            A Solution object containing the times and values of the solution,</span>
+<span class="sd">            as well as various diagnostic messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># casadi solver does not support sensitivity analysis</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">calculate_sensitivities</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                <span class="s2">&quot;Sensitivity analysis is not implemented for the CasADi solver.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Record whether there are any symbolic inputs</span>
+        <span class="n">inputs_dict</span> <span class="o">=</span> <span class="n">inputs_dict</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="c1"># convert inputs to casadi format</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;fast with events&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">model</span><span class="o">.</span><span class="n">events</span><span class="p">:</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No events found, running fast mode&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;fast with events&quot;</span><span class="p">:</span>
+                <span class="c1"># Create the integrator with an event switch that will set the rhs to</span>
+                <span class="c1"># zero when voltage limits are crossed</span>
+                <span class="n">use_event_switch</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">use_event_switch</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="c1"># Create an integrator with the grid (we just need to do this once)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_integrator</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">use_event_switch</span><span class="o">=</span><span class="n">use_event_switch</span>
+            <span class="p">)</span>
+            <span class="n">solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_integrator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+
+            <span class="c1"># Check if the sign of an event changes, if so find an accurate</span>
+            <span class="c1"># termination point and exit</span>
+            <span class="n">solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solve_for_event</span><span class="p">(</span><span class="n">solution</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+            <span class="n">solution</span><span class="o">.</span><span class="n">check_ys_are_not_too_large</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">solution</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;safe&quot;</span><span class="p">,</span> <span class="s2">&quot;safe without grid&quot;</span><span class="p">]:</span>
+            <span class="c1"># Step-and-check</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">t_f</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start solving </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> with </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;safe without grid&quot;</span><span class="p">:</span>
+                <span class="c1"># in &quot;safe without grid&quot; mode,</span>
+                <span class="c1"># create integrator once, without grid,</span>
+                <span class="c1"># to avoid having to create several times</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">create_integrator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+                <span class="c1"># Initialize solution. Coerce y0 to a CasADi DM so that when</span>
+                <span class="c1"># subsequent CasADi integration segments are appended, the</span>
+                <span class="c1"># concatenated ``solution.y`` stays a CasADi type. When the</span>
+                <span class="c1"># root method is NonlinearSolver, y0 arrives as an ndarray.</span>
+                <span class="n">y0_init</span> <span class="o">=</span> <span class="n">y0</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">casadi</span><span class="o">.</span><span class="n">DM</span> <span class="o">|</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="p">)</span> <span class="k">else</span> <span class="n">casadi</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="n">y0</span><span class="p">)</span>
+                <span class="n">solution</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">]),</span>
+                    <span class="n">y0_init</span><span class="p">,</span>
+                    <span class="n">model</span><span class="p">,</span>
+                    <span class="n">inputs_dict</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">solution</span><span class="o">.</span><span class="n">solve_time</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">solution</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">use_grid</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">solution</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="n">use_grid</span> <span class="o">=</span> <span class="kc">True</span>
+
+            <span class="c1"># Try to integrate in global steps of size dt_max. Note: dt_max must</span>
+            <span class="c1"># be at least as big as the the biggest step in t_eval (multiplied</span>
+            <span class="c1"># by some tolerance, here 1.01) to avoid an empty integration window below</span>
+            <span class="n">dt_max</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt_max</span>
+            <span class="n">dt_eval_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t_eval</span><span class="p">))</span> <span class="o">*</span> <span class="mf">1.01</span>
+            <span class="k">if</span> <span class="n">dt_max</span> <span class="o">&lt;</span> <span class="n">dt_eval_max</span><span class="p">:</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                    <span class="s2">&quot;Setting dt_max to be as big as the largest step in &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;t_eval (</span><span class="si">{</span><span class="n">dt_eval_max</span><span class="si">}</span><span class="s2">)&quot;</span>
+                <span class="p">)</span>
+                <span class="n">dt_max</span> <span class="o">=</span> <span class="n">dt_eval_max</span>
+            <span class="n">termination_due_to_small_dt</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">first_ts_solved</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_f</span><span class="p">:</span>
+                <span class="c1"># Step</span>
+                <span class="n">solved</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">dt</span> <span class="o">=</span> <span class="n">dt_max</span>
+                <span class="k">while</span> <span class="ow">not</span> <span class="n">solved</span><span class="p">:</span>
+                    <span class="c1"># Get window of time to integrate over (so that we return</span>
+                    <span class="c1"># all the points in t_eval, not just t and t+dt)</span>
+                    <span class="n">t_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                        <span class="p">([</span><span class="n">t</span><span class="p">],</span> <span class="n">t_eval</span><span class="p">[(</span><span class="n">t_eval</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t_eval</span> <span class="o">&lt;</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">)])</span>
+                    <span class="p">)</span>
+                    <span class="c1"># Sometimes near events the solver fails between two time</span>
+                    <span class="c1"># points in t_eval (i.e. no points t &lt; t_i &lt; t+dt for t_i</span>
+                    <span class="c1"># in t_eval), so we simply integrate from t to t+dt</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_window</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                        <span class="n">t_window</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="p">,</span> <span class="n">t</span> <span class="o">+</span> <span class="n">dt</span><span class="p">])</span>
+
+                    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;safe&quot;</span><span class="p">:</span>
+                        <span class="c1"># update integrator with the grid</span>
+                        <span class="bp">self</span><span class="o">.</span><span class="n">create_integrator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">t_window</span><span class="p">)</span>
+                    <span class="c1"># Try to solve with the current global step, if it fails then</span>
+                    <span class="c1"># halve the step size and try again.</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                            <span class="s2">&quot;Running integrator for &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t_window</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> &lt; t &lt; </span><span class="si">{</span><span class="n">t_window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+                        <span class="p">)</span>
+                        <span class="n">current_step_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_integrator</span><span class="p">(</span>
+                            <span class="n">model</span><span class="p">,</span>
+                            <span class="n">y0</span><span class="p">,</span>
+                            <span class="n">inputs_dict</span><span class="p">,</span>
+                            <span class="n">inputs</span><span class="p">,</span>
+                            <span class="n">t_window</span><span class="p">,</span>
+                            <span class="n">use_grid</span><span class="o">=</span><span class="n">use_grid</span><span class="p">,</span>
+                        <span class="p">)</span>
+                        <span class="n">first_ts_solved</span> <span class="o">=</span> <span class="kc">True</span>
+                        <span class="n">solved</span> <span class="o">=</span> <span class="kc">True</span>
+                    <span class="k">except</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Failed, halving step size&quot;</span><span class="p">)</span>
+                        <span class="n">dt</span> <span class="o">/=</span> <span class="mi">2</span>
+                        <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+                        <span class="c1"># also reduce maximum step size for future global steps,</span>
+                        <span class="c1"># but skip them in the beginning</span>
+                        <span class="c1"># sometimes, for the first integrator smaller timesteps are</span>
+                        <span class="c1"># needed, but this won&#39;t affect the global timesteps. The</span>
+                        <span class="c1"># global timestep will only be reduced after the first timestep.</span>
+                        <span class="k">if</span> <span class="n">first_ts_solved</span><span class="p">:</span>
+                            <span class="n">dt_max</span> <span class="o">=</span> <span class="n">dt</span>
+                        <span class="k">if</span> <span class="n">count</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_step_decrease_count</span><span class="p">:</span>
+                            <span class="n">message</span> <span class="o">=</span> <span class="p">(</span>
+                                <span class="s2">&quot;Maximum number of decreased steps occurred at &quot;</span>
+                                <span class="sa">f</span><span class="s2">&quot;t=</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2"> (final SolverError: &#39;</span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&#39;). &quot;</span>
+                                <span class="s2">&quot;For a full solution try reducing dt_max (currently, &quot;</span>
+                                <span class="sa">f</span><span class="s2">&quot;dt_max=</span><span class="si">{</span><span class="n">dt_max</span><span class="si">}</span><span class="s2">) and/or reducing the size of the &quot;</span>
+                                <span class="s2">&quot;time steps or period of the experiment.&quot;</span>
+                            <span class="p">)</span>
+                            <span class="k">if</span> <span class="n">first_ts_solved</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_solution_if_failed_early</span><span class="p">:</span>
+                                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                                    <span class="n">message</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span>
+                                <span class="p">)</span>
+                                <span class="n">termination_due_to_small_dt</span> <span class="o">=</span> <span class="kc">True</span>
+                                <span class="k">break</span>
+                            <span class="k">else</span><span class="p">:</span>
+                                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                                    <span class="n">message</span>
+                                    <span class="o">+</span> <span class="s2">&quot; Set `return_solution_if_failed_early=True` to &quot;</span>
+                                    <span class="s2">&quot;return the solution object up to the point where &quot;</span>
+                                    <span class="s2">&quot;failure occured.&quot;</span>
+                                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+                <span class="k">if</span> <span class="n">termination_due_to_small_dt</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="c1"># Check if the sign of an event changes, if so find an accurate</span>
+                <span class="c1"># termination point and exit</span>
+                <span class="n">current_step_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solve_for_event</span><span class="p">(</span><span class="n">current_step_sol</span><span class="p">,</span> <span class="n">y0</span><span class="p">)</span>
+                <span class="c1"># assign temporary solve time</span>
+                <span class="n">current_step_sol</span><span class="o">.</span><span class="n">solve_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+                <span class="c1"># append solution from the current step to solution</span>
+                <span class="n">solution</span> <span class="o">=</span> <span class="n">solution</span> <span class="o">+</span> <span class="n">current_step_sol</span>
+                <span class="k">if</span> <span class="n">current_step_sol</span><span class="o">.</span><span class="n">termination</span> <span class="o">==</span> <span class="s2">&quot;event&quot;</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># update time as time</span>
+                    <span class="c1"># from which to start the new casadi integrator</span>
+                    <span class="n">t</span> <span class="o">=</span> <span class="n">t_window</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="c1"># update y0 as initial_values</span>
+                    <span class="c1"># from which to start the new casadi integrator</span>
+                    <span class="n">y0</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">all_ys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="n">solution</span><span class="o">.</span><span class="n">check_ys_are_not_too_large</span><span class="p">()</span>
+            <span class="k">return</span> <span class="n">solution</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_solve_for_event</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">coarse_solution</span><span class="p">,</span> <span class="n">y0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the sign of an event changes, if so find an accurate</span>
+<span class="sd">        termination point and exit</span>
+
+<span class="sd">        Locate the event time using a root finding algorithm and</span>
+<span class="sd">        event state using interpolation. The solution is then truncated</span>
+<span class="sd">        so that only the times up to the event are returned</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Solving for events&quot;</span><span class="p">)</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">all_models</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">inputs_dict</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">all_inputs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">inputs_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+        <span class="k">def</span><span class="w"> </span><span class="nf">find_t_event</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">typ</span><span class="p">):</span>
+            <span class="c1"># Check most recent y to see if any events have been crossed</span>
+            <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">terminate_events_eval</span><span class="p">:</span>
+                <span class="n">y_last</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">all_ys</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">crossed_events</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span>
+                    <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+                        <span class="p">[</span>
+                            <span class="n">event</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_last</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+                            <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">terminate_events_eval</span>
+                        <span class="p">]</span>
+                    <span class="p">)</span>
+                    <span class="o">-</span> <span class="mf">1e-5</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">crossed_events</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">([])</span>
+
+            <span class="c1"># Return None if no events have been triggered</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">crossed_events</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+                <span class="k">return</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+
+            <span class="c1"># get the index of the events that have been crossed</span>
+            <span class="n">event_idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">crossed_events</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">active_events</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">terminate_events_eval</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">event_idx</span><span class="p">]</span>
+
+            <span class="c1"># loop over events to compute the time at which they were triggered</span>
+            <span class="n">t_events</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_events</span><span class="p">)</span>
+            <span class="n">event_idcs_lower</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">active_events</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">event</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">active_events</span><span class="p">):</span>
+                <span class="c1"># Implement our own bisection algorithm for speed</span>
+                <span class="c1"># This is used to find the time range in which the event is triggered</span>
+                <span class="c1"># Evaluations of the &quot;event&quot; function are (relatively) expensive</span>
+                <span class="n">f_eval</span> <span class="o">=</span> <span class="p">{}</span>
+
+                <span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">f_eval</span><span class="o">=</span><span class="n">f_eval</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">event</span><span class="p">):</span>
+                    <span class="k">try</span><span class="p">:</span>
+                        <span class="k">return</span> <span class="n">f_eval</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                    <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                        <span class="c1"># We take away 1e-5 to deal with the case where the event sits</span>
+                        <span class="c1"># exactly on zero, as can happen when the event switch is used</span>
+                        <span class="c1"># (fast with events mode)</span>
+                        <span class="n">f_eval</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">event</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="n">idx</span><span class="p">],</span> <span class="n">inputs</span><span class="p">)</span> <span class="o">-</span> <span class="mf">1e-5</span>
+                        <span class="k">return</span> <span class="n">f_eval</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+                <span class="k">def</span><span class="w"> </span><span class="nf">integer_bisect</span><span class="p">():</span>
+                    <span class="n">a_n</span> <span class="o">=</span> <span class="mi">0</span>
+                    <span class="n">b_n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
+                    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)):</span>
+                        <span class="k">if</span> <span class="n">a_n</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="n">b_n</span><span class="p">:</span>
+                            <span class="k">return</span> <span class="n">a_n</span>
+                        <span class="n">m_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">a_n</span> <span class="o">+</span> <span class="n">b_n</span><span class="p">)</span> <span class="o">//</span> <span class="mi">2</span>
+                        <span class="n">f_m_n</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">m_n</span><span class="p">)</span>
+                        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">f_m_n</span><span class="p">)</span> <span class="ow">or</span> <span class="n">f_m_n</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">b_n</span> <span class="o">=</span> <span class="n">m_n</span>
+                        <span class="k">elif</span> <span class="n">f_m_n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">a_n</span> <span class="o">=</span> <span class="n">m_n</span>
+
+                <span class="n">event_idx_lower</span> <span class="o">=</span> <span class="n">integer_bisect</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;window&quot;</span><span class="p">:</span>
+                    <span class="n">event_idcs_lower</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">event_idx_lower</span>
+                <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;exact&quot;</span><span class="p">:</span>
+                    <span class="c1"># Linear interpolation between the two indices to find the root time</span>
+                    <span class="c1"># We could do cubic interpolation here instead but it would be</span>
+                    <span class="c1"># slower</span>
+                    <span class="n">t_lower</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">event_idx_lower</span><span class="p">]</span>
+                    <span class="n">t_upper</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                    <span class="n">event_lower</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">event_idx_lower</span><span class="p">))</span>
+                    <span class="n">event_upper</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+                    <span class="n">t_events</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">event_lower</span> <span class="o">*</span> <span class="n">t_upper</span> <span class="o">+</span> <span class="n">event_upper</span> <span class="o">*</span> <span class="n">t_lower</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span>
+                        <span class="n">event_lower</span> <span class="o">+</span> <span class="n">event_upper</span>
+                    <span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;window&quot;</span><span class="p">:</span>
+                <span class="n">event_idx_lower</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">event_idcs_lower</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">event_idx_lower</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="n">typ</span> <span class="o">==</span> <span class="s2">&quot;exact&quot;</span><span class="p">:</span>
+                <span class="c1"># t_event is the earliest event triggered</span>
+                <span class="n">t_event</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nanmin</span><span class="p">(</span><span class="n">t_events</span><span class="p">)</span>
+                <span class="c1"># create interpolant to evaluate y in the current integration</span>
+                <span class="c1"># window</span>
+                <span class="n">y_sol</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+                <span class="n">y_event</span> <span class="o">=</span> <span class="n">y_sol</span><span class="p">(</span><span class="n">t_event</span><span class="p">)</span>
+
+                <span class="n">closest_event_idx</span> <span class="o">=</span> <span class="n">event_idx</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nanargmin</span><span class="p">(</span><span class="n">t_events</span><span class="p">)]</span>
+
+                <span class="k">return</span> <span class="n">t_event</span><span class="p">,</span> <span class="n">y_event</span><span class="p">,</span> <span class="n">closest_event_idx</span>
+
+        <span class="c1"># Find the interval in which the event was triggered</span>
+        <span class="n">event_idx_lower</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">find_t_event</span><span class="p">(</span><span class="n">coarse_solution</span><span class="p">,</span> <span class="s2">&quot;window&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Return the existing solution if no events have been triggered</span>
+        <span class="k">if</span> <span class="n">event_idx_lower</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Flag &quot;final time&quot; for termination</span>
+            <span class="n">coarse_solution</span><span class="o">.</span><span class="n">termination</span> <span class="o">=</span> <span class="s2">&quot;final time&quot;</span>
+            <span class="k">return</span> <span class="n">coarse_solution</span>
+
+        <span class="c1"># If events have been triggered, we solve for a dense window in the interval</span>
+        <span class="c1"># where the event was triggered, then find the precise location of the event</span>
+        <span class="c1"># Solve again with a more dense idx_window, starting from the start of the</span>
+        <span class="c1"># window where the event was triggered</span>
+        <span class="n">t_window_event_dense</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+            <span class="n">coarse_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">event_idx_lower</span><span class="p">],</span>
+            <span class="n">coarse_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span>
+            <span class="mi">100</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;safe without grid&quot;</span><span class="p">:</span>
+            <span class="n">use_grid</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">create_integrator</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">t_window_event_dense</span><span class="p">)</span>
+            <span class="n">use_grid</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">y0</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="n">event_idx_lower</span><span class="p">]</span>
+        <span class="n">dense_step_sol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_integrator</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">y0</span><span class="p">,</span>
+            <span class="n">inputs_dict</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="p">,</span>
+            <span class="n">t_window_event_dense</span><span class="p">,</span>
+            <span class="n">use_grid</span><span class="o">=</span><span class="n">use_grid</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Find the exact time at which the event was triggered</span>
+        <span class="n">t_event</span><span class="p">,</span> <span class="n">y_event</span><span class="p">,</span> <span class="n">closest_event_idx</span> <span class="o">=</span> <span class="n">find_t_event</span><span class="p">(</span><span class="n">dense_step_sol</span><span class="p">,</span> <span class="s2">&quot;exact&quot;</span><span class="p">)</span>
+        <span class="c1"># If this returns None, no event was crossed in dense_step_sol. This can happen</span>
+        <span class="c1"># if the event crossing was right at the end of the interval in the coarse</span>
+        <span class="c1"># solution. In this case, return the t and y from the end of the interval</span>
+        <span class="c1"># (i.e. next point in the coarse solution)</span>
+        <span class="k">if</span> <span class="n">y_event</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># This is extremely rare, it&#39;s difficult to find a test that triggers this</span>
+            <span class="c1"># hence no coverage check</span>
+            <span class="n">t_event</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="n">y_event</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">full</span><span class="p">()</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+        <span class="c1"># Return solution truncated at the first coarse event time</span>
+        <span class="c1"># Also assign t_event</span>
+        <span class="n">t_sol</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">t</span><span class="p">[:</span> <span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">y_sol</span> <span class="o">=</span> <span class="n">coarse_solution</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="p">:</span> <span class="n">event_idx_lower</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="n">solution</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+            <span class="n">t_sol</span><span class="p">,</span>
+            <span class="n">y_sol</span><span class="p">,</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">inputs_dict</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">t_event</span><span class="p">]),</span>
+            <span class="n">y_event</span><span class="p">[:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">],</span>
+            <span class="s2">&quot;event&quot;</span><span class="p">,</span>
+            <span class="n">all_t_evals</span><span class="o">=</span><span class="n">t_sol</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">solution</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">coarse_solution</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">+</span> <span class="n">dense_step_sol</span><span class="o">.</span><span class="n">integration_time</span>
+        <span class="p">)</span>
+
+        <span class="n">solution</span><span class="o">.</span><span class="n">closest_event_idx</span> <span class="o">=</span> <span class="n">closest_event_idx</span>
+
+        <span class="k">return</span> <span class="n">solution</span>
+
+<div class="viewcode-block" id="CasadiSolver.create_integrator">
+<a class="viewcode-back" href="../../../source/api/solvers/casadi_solver.html#pybamm.CasadiSolver.create_integrator">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_integrator</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_event_switch</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Method to create a casadi integrator object.</span>
+<span class="sd">        If t_eval is provided, the integrator uses t_eval to make the grid.</span>
+<span class="sd">        Otherwise, the integrator has grid [0,1].</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Creating CasADi integrator&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Use grid if t_eval is given</span>
+        <span class="n">use_grid</span> <span class="o">=</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">t_eval_shifted</span> <span class="o">=</span> <span class="n">t_eval</span> <span class="o">-</span> <span class="n">t_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">t_eval_shifted_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_eval_shifted</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+        <span class="c1"># Only set up problem once</span>
+        <span class="k">if</span> <span class="n">model</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">:</span>
+            <span class="c1"># If we&#39;re not using the grid, we don&#39;t need to change the integrator</span>
+            <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s2">&quot;no grid&quot;</span><span class="p">]</span>
+            <span class="c1"># Otherwise, create new integrator with an updated grid</span>
+            <span class="c1"># We don&#39;t need to update the grid if reusing the same t_eval</span>
+            <span class="c1"># (up to a shift by a constant)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">t_eval_shifted_rounded</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">]:</span>
+                    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="n">t_eval_shifted_rounded</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">method</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">time_args</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrator_specs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span>
+                    <span class="n">time_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">t_eval_shifted</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_eval_shifted</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+                    <span class="n">integrator</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">integrator</span><span class="p">(</span>
+                        <span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="o">*</span><span class="n">time_args</span><span class="p">,</span> <span class="n">options</span>
+                    <span class="p">)</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="n">t_eval_shifted_rounded</span><span class="p">]</span> <span class="o">=</span> <span class="n">integrator</span>
+                    <span class="k">return</span> <span class="n">integrator</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rhs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">casadi_rhs</span>
+            <span class="n">algebraic</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">casadi_algebraic</span>
+
+            <span class="n">options</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;show_eval_warnings&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options_setup</span><span class="p">,</span>
+                <span class="s2">&quot;reltol&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">rtol</span><span class="p">,</span>
+                <span class="s2">&quot;abstol&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">atol</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="c1"># set up and solve</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+            <span class="n">y_diff</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;y_diff&quot;</span><span class="p">,</span> <span class="n">rhs</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y_alg</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;y_alg&quot;</span><span class="p">,</span> <span class="n">algebraic</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y_full</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y_diff</span><span class="p">,</span> <span class="n">y_alg</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="n">time_args</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="c1"># rescale time</span>
+                <span class="n">t_min</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;t_min&quot;</span><span class="p">)</span>
+                <span class="n">t_max</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;t_max&quot;</span><span class="p">)</span>
+                <span class="n">t_max_minus_t_min</span> <span class="o">=</span> <span class="n">t_max</span> <span class="o">-</span> <span class="n">t_min</span>
+                <span class="n">t_scaled</span> <span class="o">=</span> <span class="n">t_min</span> <span class="o">+</span> <span class="p">(</span><span class="n">t_max</span> <span class="o">-</span> <span class="n">t_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">t</span>
+                <span class="c1"># add time limits as inputs</span>
+                <span class="n">p_with_tlims</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">t_min</span><span class="p">,</span> <span class="n">t_max</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">time_args</span> <span class="o">=</span> <span class="p">[</span><span class="n">t_eval_shifted</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_eval_shifted</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span>
+                <span class="c1"># rescale time</span>
+                <span class="n">t_min</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;t_min&quot;</span><span class="p">)</span>
+                <span class="c1"># Set dummy parameters for consistency with rescaled time</span>
+                <span class="n">t_max_minus_t_min</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">t_scaled</span> <span class="o">=</span> <span class="n">t_min</span> <span class="o">+</span> <span class="n">t</span>
+                <span class="n">p_with_tlims</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">t_min</span><span class="p">)</span>
+
+            <span class="c1"># define the event switch as the point when an event is crossed</span>
+            <span class="c1"># we don&#39;t do this for ODE models</span>
+            <span class="c1"># see #1082</span>
+            <span class="n">event_switch</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">use_event_switch</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">algebraic</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+                <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">casadi_switch_events</span><span class="p">:</span>
+                    <span class="n">event_switch</span> <span class="o">*=</span> <span class="n">event</span><span class="p">(</span><span class="n">t_scaled</span><span class="p">,</span> <span class="n">y_full</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+
+            <span class="n">problem</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;t&quot;</span><span class="p">:</span> <span class="n">t</span><span class="p">,</span>
+                <span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="n">y_diff</span><span class="p">,</span>
+                <span class="c1"># rescale rhs by (t_max - t_min)</span>
+                <span class="s2">&quot;ode&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">t_max_minus_t_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t_scaled</span><span class="p">,</span> <span class="n">y_full</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="n">event_switch</span><span class="p">,</span>
+                <span class="s2">&quot;p&quot;</span><span class="p">:</span> <span class="n">p_with_tlims</span><span class="p">,</span>
+            <span class="p">}</span>
+            <span class="k">if</span> <span class="n">algebraic</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+                <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;cvodes&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;idas&quot;</span>
+                <span class="n">problem</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;z&quot;</span><span class="p">:</span> <span class="n">y_alg</span><span class="p">,</span>
+                        <span class="s2">&quot;alg&quot;</span><span class="p">:</span> <span class="n">algebraic</span><span class="p">(</span><span class="n">t_scaled</span><span class="p">,</span> <span class="n">y_full</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="n">integrator</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">integrator</span><span class="p">(</span><span class="s2">&quot;F&quot;</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="o">*</span><span class="n">time_args</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">integrator_specs</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="n">method</span><span class="p">,</span> <span class="n">problem</span><span class="p">,</span> <span class="n">options</span><span class="p">,</span> <span class="n">time_args</span>
+            <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;no grid&quot;</span><span class="p">:</span> <span class="n">integrator</span><span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="n">t_eval_shifted_rounded</span><span class="p">:</span> <span class="n">integrator</span><span class="p">}</span>
+
+            <span class="k">return</span> <span class="n">integrator</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_integrator_error</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">error</span><span class="p">,</span> <span class="n">len_alg</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Wrap an integrator failure, with a hint for DAE models solved</span>
+<span class="sd">        without algebraic IC perturbation (e.g. mode=&quot;fast&quot;).&quot;&quot;&quot;</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="n">error</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">len_alg</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturb_algebraic_initial_conditions</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">+=</span> <span class="p">(</span>
+                <span class="s2">&quot; The algebraic initial conditions may have failed to &quot;</span>
+                <span class="s2">&quot;converge; consider CasadiSolver(mode=&#39;safe&#39;) or &quot;</span>
+                <span class="s2">&quot;perturb_algebraic_initial_conditions=True.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_run_integrator</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">y0</span><span class="p">,</span>
+        <span class="n">inputs_dict</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="p">,</span>
+        <span class="n">use_grid</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Run the integrator.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        y0:</span>
+<span class="sd">            casadi vector of initial conditions</span>
+<span class="sd">        inputs_dict : dict, optional</span>
+<span class="sd">            Any input parameters to pass to the model when solving</span>
+<span class="sd">        inputs:</span>
+<span class="sd">            Casadi vector of inputs</span>
+<span class="sd">        t_eval : numeric type</span>
+<span class="sd">            The times at which to compute the solution</span>
+<span class="sd">        use_grid: bool, optional</span>
+<span class="sd">            Determines whether the casadi solver uses a grid or rescales time to (0,1)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Running CasADi integrator&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">spam</span><span class="p">(</span><span class="s2">&quot;Calculating t_eval_shifted&quot;</span><span class="p">)</span>
+            <span class="n">t_eval_shifted</span> <span class="o">=</span> <span class="n">t_eval</span> <span class="o">-</span> <span class="n">t_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">t_eval_shifted_rounded</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_eval_shifted</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">spam</span><span class="p">(</span><span class="s2">&quot;Finished calculating t_eval_shifted&quot;</span><span class="p">)</span>
+            <span class="n">integrator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="n">t_eval_shifted_rounded</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">integrator</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">integrators</span><span class="p">[</span><span class="n">model</span><span class="p">][</span><span class="s2">&quot;no grid&quot;</span><span class="p">]</span>
+
+        <span class="n">len_rhs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">concatenated_rhs</span><span class="o">.</span><span class="n">size</span>
+        <span class="n">len_alg</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">concatenated_algebraic</span><span class="o">.</span><span class="n">size</span>
+
+        <span class="n">y0_diff</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[:</span><span class="n">len_rhs</span><span class="p">]</span>
+        <span class="n">y0_alg_exact</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[</span><span class="n">len_rhs</span><span class="p">:]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">perturb_algebraic_initial_conditions</span> <span class="ow">and</span> <span class="n">len_alg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Add a tiny perturbation to the algebraic initial conditions</span>
+            <span class="c1"># For some reason this helps with convergence</span>
+            <span class="c1"># The actual value of the initial conditions for the algebraic variables</span>
+            <span class="c1"># doesn&#39;t matter</span>
+            <span class="n">y0_alg</span> <span class="o">=</span> <span class="n">y0_alg_exact</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">1e-6</span> <span class="o">*</span> <span class="n">casadi</span><span class="o">.</span><span class="n">DM</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">len_alg</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">y0_alg</span> <span class="o">=</span> <span class="n">y0_alg_exact</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">spam</span><span class="p">(</span><span class="s2">&quot;Finished preliminary setup for integrator run&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Solve</span>
+        <span class="c1"># Try solving</span>
+        <span class="k">if</span> <span class="n">use_grid</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">t_min</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">inputs_with_tmin</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">t_min</span><span class="p">)</span>
+            <span class="c1"># Call the integrator once, with the grid</span>
+            <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Calling casadi integrator&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">casadi_sol</span> <span class="o">=</span> <span class="n">integrator</span><span class="p">(</span>
+                    <span class="n">x0</span><span class="o">=</span><span class="n">y0_diff</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="n">y0_alg</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">inputs_with_tmin</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options_call</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                <span class="c1"># If it doesn&#39;t work raise error</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Casadi integrator failed with error </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_integrator_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">len_alg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Finished casadi integrator&quot;</span><span class="p">)</span>
+            <span class="n">integration_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+            <span class="c1"># Manually add initial conditions and concatenate</span>
+            <span class="n">x_sol</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="n">y0_diff</span><span class="p">,</span> <span class="n">casadi_sol</span><span class="p">[</span><span class="s2">&quot;xf&quot;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">len_alg</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">z_sol</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="n">y0_alg_exact</span><span class="p">,</span> <span class="n">casadi_sol</span><span class="p">[</span><span class="s2">&quot;zf&quot;</span><span class="p">])</span>
+                <span class="n">y_sol</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">x_sol</span><span class="p">,</span> <span class="n">z_sol</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">y_sol</span> <span class="o">=</span> <span class="n">x_sol</span>
+            <span class="n">sol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+                <span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">y_sol</span><span class="p">,</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">inputs_dict</span><span class="p">,</span>
+                <span class="n">check_solution</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">all_t_evals</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">sol</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="n">integration_time</span>
+            <span class="k">return</span> <span class="n">sol</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Repeated calls to the integrator</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">y0_diff</span>
+            <span class="n">z</span> <span class="o">=</span> <span class="n">y0_alg_exact</span>
+            <span class="n">y_diff</span> <span class="o">=</span> <span class="n">x</span>
+            <span class="n">y_alg</span> <span class="o">=</span> <span class="n">z</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">t_min</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+                <span class="n">t_max</span> <span class="o">=</span> <span class="n">t_eval</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+                <span class="n">inputs_with_tlims</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">t_min</span><span class="p">,</span> <span class="n">t_max</span><span class="p">)</span>
+                <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">casadi_sol</span> <span class="o">=</span> <span class="n">integrator</span><span class="p">(</span>
+                        <span class="n">x0</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">z0</span><span class="o">=</span><span class="n">z</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">inputs_with_tlims</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options_call</span>
+                    <span class="p">)</span>
+                <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+                    <span class="c1"># If it doesn&#39;t work raise error</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Casadi integrator failed with error </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> <span class="bp">self</span><span class="o">.</span><span class="n">_integrator_error</span><span class="p">(</span><span class="n">error</span><span class="p">,</span> <span class="n">len_alg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">error</span>
+                <span class="n">integration_time</span> <span class="o">=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                <span class="n">x</span> <span class="o">=</span> <span class="n">casadi_sol</span><span class="p">[</span><span class="s2">&quot;xf&quot;</span><span class="p">]</span>
+                <span class="n">z</span> <span class="o">=</span> <span class="n">casadi_sol</span><span class="p">[</span><span class="s2">&quot;zf&quot;</span><span class="p">]</span>
+                <span class="n">y_diff</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="n">y_diff</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">z</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+                    <span class="n">y_alg</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="n">y_alg</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">z</span><span class="o">.</span><span class="n">is_empty</span><span class="p">():</span>
+                <span class="n">y_sol</span> <span class="o">=</span> <span class="n">y_diff</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">y_sol</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y_diff</span><span class="p">,</span> <span class="n">y_alg</span><span class="p">)</span>
+
+            <span class="n">sol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+                <span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">y_sol</span><span class="p">,</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">inputs_dict</span><span class="p">,</span>
+                <span class="n">all_t_evals</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+                <span class="n">check_solution</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="n">sol</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="n">integration_time</span>
+            <span class="k">return</span> <span class="n">sol</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

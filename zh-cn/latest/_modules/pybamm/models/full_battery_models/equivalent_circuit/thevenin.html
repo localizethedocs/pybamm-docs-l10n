@@ -1,0 +1,794 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.models.full_battery_models.equivalent_circuit.thevenin &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../../_static/documentation_options.js?v=06885765"></script>
+    <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/models/full_battery_models/equivalent_circuit/thevenin';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/models/full_battery_models/equivalent_circuit/thevenin.html" />
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.models.full_battery_models.equivalent_circuit.thevenin</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.models.full_battery_models.equivalent_circuit.thevenin 源代码</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.ecm_model_options</span><span class="w"> </span><span class="kn">import</span> <span class="n">NaturalNumberOption</span><span class="p">,</span> <span class="n">OperatingModes</span>
+
+
+<div class="viewcode-block" id="Thevenin">
+<a class="viewcode-back" href="../../../../../source/api/models/equivalent_circuit/thevenin.html#pybamm.equivalent_circuit.Thevenin">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Thevenin</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The classical Thevenin Equivalent Circuit Model of a battery as</span>
+<span class="sd">    described in, for example, :footcite:t:`Barletta2022thevenin`.</span>
+
+<span class="sd">    This equivalent circuit model consists of an OCV element, a resistor</span>
+<span class="sd">    element, and a number of RC elements (by default 1). The model is</span>
+<span class="sd">    coupled to two lumped thermal models, one for the cell and</span>
+<span class="sd">    one for the surrounding jig. Heat generation terms for each element</span>
+<span class="sd">    follow equation (1) of :footcite:t:`Nieto2012`.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    name : str, optional</span>
+<span class="sd">        The name of the model. The default is</span>
+<span class="sd">        &quot;Thevenin Equivalent Circuit Model&quot;.</span>
+<span class="sd">    options : dict, optional</span>
+<span class="sd">        A dictionary of options to be passed to the model. The default is None.</span>
+<span class="sd">        Possible options are:</span>
+
+<span class="sd">            * &quot;number of rc elements&quot; : str</span>
+<span class="sd">                The number of RC elements to be added to the model. The default is 1.</span>
+<span class="sd">            * &quot;calculate discharge energy&quot;: str</span>
+<span class="sd">                Whether to calculate the discharge energy, throughput energy and</span>
+<span class="sd">                throughput capacity in addition to discharge capacity. Must be one of</span>
+<span class="sd">                &quot;true&quot; or &quot;false&quot;. &quot;false&quot; is the default, since calculating discharge</span>
+<span class="sd">                energy can be computationally expensive for simple models like SPM.</span>
+<span class="sd">            * &quot;diffusion element&quot; : str</span>
+<span class="sd">                Whether to include the diffusion element to the model. Must be one of</span>
+<span class="sd">                &quot;true&quot; or &quot;false&quot;. &quot;false&quot; is the default.</span>
+<span class="sd">            * &quot;operating mode&quot; : str</span>
+<span class="sd">                Sets the operating mode for the model. This determines how the current</span>
+<span class="sd">                is set. Can be:</span>
+
+<span class="sd">                - &quot;current&quot; (default) : the current is explicity supplied</span>
+<span class="sd">                - &quot;voltage&quot;/&quot;power&quot;/&quot;resistance&quot; : solve an algebraic equation for \</span>
+<span class="sd">                    current such that voltage/power/resistance is correct</span>
+<span class="sd">                - &quot;differential power&quot;/&quot;differential resistance&quot; : solve a \</span>
+<span class="sd">                    differential equation for the power or resistance</span>
+<span class="sd">                - &quot;CCCV&quot;: a special implementation of the common constant-current \</span>
+<span class="sd">                    constant-voltage charging protocol, via an ODE for the current</span>
+<span class="sd">                - callable : if a callable is given as this option, the function \</span>
+<span class="sd">                    defines the residual of an algebraic equation. The applied current \</span>
+<span class="sd">                    will be solved for such that the algebraic constraint is satisfied.</span>
+<span class="sd">    build :  bool, optional</span>
+<span class="sd">        Whether to build the model on instantiation. Default is True. Setting this</span>
+<span class="sd">        option to False allows users to change any number of the submodels before</span>
+<span class="sd">        building the complete model (submodels cannot be changed after the model is</span>
+<span class="sd">        built).</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; model = pybamm.equivalent_circuit.Thevenin()</span>
+<span class="sd">    &gt;&gt;&gt; model.name</span>
+<span class="sd">    &#39;Thevenin Equivalent Circuit Model&#39;</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Thevenin Equivalent Circuit Model&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">build</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_options</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">EcmParameters</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_counter</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_standard_output_variables</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_submodels</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_options</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">extra_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">possible_options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;calculate discharge energy&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;diffusion element&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;false&quot;</span><span class="p">,</span> <span class="s2">&quot;true&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;operating mode&quot;</span><span class="p">:</span> <span class="n">OperatingModes</span><span class="p">(</span><span class="s2">&quot;current&quot;</span><span class="p">),</span>
+            <span class="s2">&quot;number of rc elements&quot;</span><span class="p">:</span> <span class="n">NaturalNumberOption</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="p">}</span>
+
+        <span class="n">default_options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">name</span><span class="p">:</span> <span class="n">options</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">options</span> <span class="ow">in</span> <span class="n">possible_options</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="n">extra_options</span> <span class="o">=</span> <span class="n">extra_options</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="n">options</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FuzzyDict</span><span class="p">(</span><span class="n">default_options</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">opt</span> <span class="ow">in</span> <span class="n">extra_options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">default_options</span><span class="p">:</span>
+                <span class="n">options</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">opt</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Option &#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&#39; not recognised. Best matches are </span><span class="si">{</span><span class="n">options</span><span class="o">.</span><span class="n">get_best_matches</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">opt</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">possible_options</span><span class="p">[</span><span class="n">opt</span><span class="p">]:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">OptionError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Option &#39;</span><span class="si">{</span><span class="n">opt</span><span class="si">}</span><span class="s2">&#39; must be one of </span><span class="si">{</span><span class="n">possible_options</span><span class="p">[</span><span class="n">opt</span><span class="p">]</span><span class="si">}</span><span class="s2">. Got &#39;</span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">&#39; instead.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
+
+<div class="viewcode-block" id="Thevenin.set_external_circuit_submodel">
+<a class="viewcode-back" href="../../../../../source/api/models/equivalent_circuit/thevenin.html#pybamm.equivalent_circuit.Thevenin.set_external_circuit_submodel">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_external_circuit_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Define how the external circuit defines the boundary conditions for the model,</span>
+<span class="sd">        e.g. (not necessarily constant-) current, voltage, etc</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;current&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">ExplicitCurrentControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;voltage&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">VoltageFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;power&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">PowerFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;algebraic&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;differential power&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">PowerFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;differential&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;resistance&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">ResistanceFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;algebraic&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;differential resistance&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">ResistanceFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;differential&quot;</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CCCV&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">CCCVFunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]):</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">FunctionControl</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">],</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">control</span><span class="o">=</span><span class="s2">&quot;differential&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;external circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_ocv_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;Open-circuit voltage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">OCVElement</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_resistor_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Element-0 (Resistor)&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">ResistorElement</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">element_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_rc_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">number_of_rc_elements</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;number of rc elements&quot;</span><span class="p">]</span>
+
+        <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_of_rc_elements</span><span class="p">):</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Element-</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">element_counter</span><span class="si">}</span><span class="s2"> (RC)&quot;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">RCElement</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">element_counter</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">element_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_diffusion_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;diffusion element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">NoDiffusion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;diffusion element&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;Diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">DiffusionElement</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_thermal_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;Thermal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">ThermalSubModel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_voltage_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;Voltage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit_elements</span><span class="o">.</span><span class="n">VoltageModel</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">build</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_external_circuit_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_ocv_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_resistor_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_rc_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_diffusion_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_thermal_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_voltage_submodel</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">summary_variables</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="n">build</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_model</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_standard_output_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Time</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Time [s]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">t</span><span class="p">,</span>
+                <span class="s2">&quot;Time [min]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">t</span> <span class="o">/</span> <span class="mi">60</span><span class="p">,</span>
+                <span class="s2">&quot;Time [h]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">t</span> <span class="o">/</span> <span class="mi">3600</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">build_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Build model variables and equations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_build_model</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished building </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;ECM_Example&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_quick_plot_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+            <span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span> <span class="s2">&quot;Open-circuit voltage [V]&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;SoC&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Power [W]&quot;</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;Cell temperature [degC]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Jig temperature [degC]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Ambient temperature [degC]&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+                <span class="s2">&quot;Total heat generation [W]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Reversible heat generation [W]&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Irreversible heat generation [W]&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_var_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpatialVariable</span><span class="p">(</span>
+            <span class="s2">&quot;x ECMD&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ECMD particle&quot;</span><span class="p">],</span> <span class="n">coord_sys</span><span class="o">=</span><span class="s2">&quot;Cartesian&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="mi">20</span><span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpatialVariable</span><span class="p">(</span>
+            <span class="s2">&quot;x ECMD&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;ECMD particle&quot;</span><span class="p">],</span> <span class="n">coord_sys</span><span class="o">=</span><span class="s2">&quot;Cartesian&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;ECMD particle&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">x</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}}}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_submesh_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;ECMD particle&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Uniform1DSubMesh</span><span class="p">}</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">default_spatial_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;ECMD particle&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">()}</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
