@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-12 18:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -67,29 +68,34 @@ msgid ""
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:14
-msgid "\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),"
+msgid ""
+"\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:19
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:16
 msgid "with the following boundary and initial conditions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:21
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:18
 msgid ""
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=1} = -j, \\quad "
-"\\left.c\\right\\vert_{t=0} = c_0,"
+"\\left.c\\right\\vert_{t=0} = c_0,\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:26
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:20
 msgid "where"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:28
-msgid "j = \\left.j_0(1-c)^{1/2}c^{1/2}\\right\\vert_{r=1}"
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:22
+msgid ""
+"j = \\left.j_0(1-c)^{1/2}c^{1/2}\\right\\vert_{r=1}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:33
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:24
 msgid ""
 "Here :math:`c_0` and :math:`j_0` are parameters we can control. Again we "
 "will assume that everything is non-dimensional and focus on how to set up "
@@ -107,29 +113,29 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:55
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:46
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:61
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:52
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:68
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:59
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:80
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:71
 msgid "Setting up the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:82
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:73
 msgid "Again we start with an empty ``BaseModel`` class"
 msgstr ""
 
@@ -141,7 +147,7 @@ msgstr ""
 msgid "model = pybamm.BaseModel()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:103
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:94
 msgid ""
 "Next we set up the submodel for diffusion in the particle using a ``pybamm."
 "BaseSubModel``. Each submodel has methods that define the variables, "
@@ -149,7 +155,7 @@ msgid ""
 "model describes."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:105
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:96
 msgid ""
 "First ``get_fundamental_variables`` defines any variables that can be "
 "defined independently of any other submodels that may be included in our "
@@ -157,7 +163,7 @@ msgid ""
 "and add them to the dictionary of variables."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:107
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:98
 msgid ""
 "Next we can use ``get_coupled_variables`` to define any variables that *do* "
 "depend on variables defined in another submodel. In this simple example we "
@@ -167,7 +173,7 @@ msgid ""
 "the temperature which would be defined in a separate submodel."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:109
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:100
 msgid ""
 "Once we have defined all the variables we need we can write down our "
 "equations. Any equations that include time derivatives will turn into "
@@ -179,7 +185,7 @@ msgid ""
 "example we don't have any algebraic equations, so we can skip this method."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:112
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:103
 msgid ""
 "Finally we set the boundary and initial conditions using the methods "
 "``set_boundary_conditions`` and ``set_initial_conditions``, respectively."
@@ -278,14 +284,14 @@ msgid ""
 "        return variables"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:216
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:207
 msgid ""
 "We can now set the submodels in a model by assigning a dictionary to ``model."
 "submodels``. The dictionary key is the name we want to give to the submodel "
 "and the value is an instance of the submodel class we want to use."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:218
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:209
 msgid ""
 "When we instantiate a submodel we are required to pass in ``param``, a class "
 "of parameter symbols we are going to call, and ``domain``, the domain on "
@@ -308,7 +314,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:242
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:233
 msgid ""
 "At this stage we have just told the model which submodels it is constructed "
 "from, but the variables and equations have not yet been created. For example "
@@ -323,25 +329,25 @@ msgstr ""
 msgid "model.rhs"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:264
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:255
 msgid ""
 "<pre>\n"
 "{}\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:270
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:261
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "\\{\\}\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:277
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:268
 msgid "{}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:288
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:279
 msgid ""
 "To populate the model variables, equations, boundary and initial conditions "
 "we need to \"build\" the model. To do this we call ``build_model``"
@@ -355,7 +361,7 @@ msgstr ""
 msgid "model.build_model()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:309
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:300
 msgid ""
 "This loops through all of the submodels, first creating the \"fundamental "
 "variables\", followed by the \"coupled variables\" and finally the equations "
@@ -367,7 +373,7 @@ msgstr ""
 msgid "[8]:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:331
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:322
 msgid ""
 "<pre>\n"
 "{Variable(-0x3b3d239e0eb63720, Concentration, children=[], domains={&#39;"
@@ -378,7 +384,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:337
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:328
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "\\{Variable(-0x3b3d239e0eb63720, Concentration, children=[], "
@@ -388,7 +394,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:344
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:335
 msgid ""
 "{Variable(-0x3b3d239e0eb63720, Concentration, children=[], "
 "domains={'primary': ['negative particle']}): Divergence(-0x4067384280550e1e, "
@@ -396,15 +402,15 @@ msgid ""
 "particle']})}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:356
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:347
 msgid "Using the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:358
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:349
 msgid "We can now use our model as in the previous tutorial."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:360
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:351
 msgid "We first set up our geometry and mesh"
 msgstr ""
 
@@ -424,7 +430,7 @@ msgid ""
 "mesh = pybamm.Mesh(geometry, submesh_types, var_pts)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:388
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:379
 msgid ""
 "and then set up our simulation, remembering to set values for our parameters"
 msgstr ""
@@ -455,7 +461,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:426
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:417
 msgid "Finally we can solve the model"
 msgstr ""
 
@@ -467,25 +473,25 @@ msgstr ""
 msgid "sim.solve([0, 1])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:448
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:439
 msgid ""
 "<pre>\n"
 "&lt;pybamm.solvers.solution.Solution at 0x124853f50&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:454
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:445
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.solvers.solution.Solution at 0x124853f50>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:461
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:452
 msgid "<pybamm.solvers.solution.Solution at 0x124853f50>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:472
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:463
 msgid "and plot the results"
 msgstr ""
 
@@ -500,7 +506,7 @@ msgid ""
 "flux\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:495
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:486
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -508,7 +514,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:501
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:492
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -516,42 +522,42 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:508
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:499
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:520
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:511
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x124853ad0&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:526
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:517
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x124853ad0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:533
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:524
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x124853ad0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:544
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:535
 msgid ""
 "In this notebook we saw how to split a model up into submodels. Although "
 "this was a simple example it let us understand how to construct submodels "
 "and see how they interact via coupled variables."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:556
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:547
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:558
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:549
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -563,7 +569,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:579
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:570
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -588,7 +594,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:590
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:581
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -613,7 +619,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:602
+#: ../../../source/examples/notebooks/creating_models/7-creating-a-submodel.ipynb:593
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
