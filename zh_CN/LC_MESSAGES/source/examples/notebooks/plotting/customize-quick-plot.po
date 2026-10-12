@@ -1,0 +1,547 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/plotting/customize-quick-plot.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/plotting/customize-quick-plot.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:9
+msgid "Customizing QuickPlot"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:20
+msgid ""
+"This notebook shows how to customize PyBaMM's ``QuickPlot``, using "
+"matplotlib's `style sheets and rcParams <https://matplotlib.org/stable/"
+"tutorials/introductory/customizing.html>`__"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:31
+msgid "First we define and solve the models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm\n"
+"\n"
+"models = [pybamm.lithium_ion.SPM(), pybamm.lithium_ion.SPMe(), pybamm."
+"lithium_ion.DFN()]\n"
+"sims = []\n"
+"for model in models:\n"
+"    sim = pybamm.Simulation(model)\n"
+"    sim.solve([0, 3600])\n"
+"    sims.append(sim)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:60
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.0.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">23.1.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:69
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.0.1} -> \\textcolor{ansi-green}{23.1.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:79
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.0.1[0m[39;49m -> [0m[32;49m23.1.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:93
+msgid "Call the default plots"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "pybamm.dynamic_plot(sims)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:116
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"74615ee0f3bf4ce7a681c0e556bec502\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:127
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:353
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:470
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:133
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:359
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:476
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:140
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:366
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:483
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:152
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x28810b850&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:158
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x28810b850>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:165
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x28810b850>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:177
+msgid "Using style sheets"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:188
+msgid ""
+"The easiest way to customize style is to use one of matplotlib's available "
+"style sheets"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid ""
+"import matplotlib.pyplot as plt\n"
+"\n"
+"plt.style.available"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:212
+msgid ""
+"<pre>\n"
+"[&#39;Solarize_Light2&#39;,\n"
+" &#39;_classic_test_patch&#39;,\n"
+" &#39;_mpl-gallery&#39;,\n"
+" &#39;_mpl-gallery-nogrid&#39;,\n"
+" &#39;bmh&#39;,\n"
+" &#39;classic&#39;,\n"
+" &#39;dark_background&#39;,\n"
+" &#39;fast&#39;,\n"
+" &#39;fivethirtyeight&#39;,\n"
+" &#39;ggplot&#39;,\n"
+" &#39;grayscale&#39;,\n"
+" &#39;seaborn-v0_8&#39;,\n"
+" &#39;seaborn-v0_8-bright&#39;,\n"
+" &#39;seaborn-v0_8-colorblind&#39;,\n"
+" &#39;seaborn-v0_8-dark&#39;,\n"
+" &#39;seaborn-v0_8-dark-palette&#39;,\n"
+" &#39;seaborn-v0_8-darkgrid&#39;,\n"
+" &#39;seaborn-v0_8-deep&#39;,\n"
+" &#39;seaborn-v0_8-muted&#39;,\n"
+" &#39;seaborn-v0_8-notebook&#39;,\n"
+" &#39;seaborn-v0_8-paper&#39;,\n"
+" &#39;seaborn-v0_8-pastel&#39;,\n"
+" &#39;seaborn-v0_8-poster&#39;,\n"
+" &#39;seaborn-v0_8-talk&#39;,\n"
+" &#39;seaborn-v0_8-ticks&#39;,\n"
+" &#39;seaborn-v0_8-white&#39;,\n"
+" &#39;seaborn-v0_8-whitegrid&#39;,\n"
+" &#39;tableau-colorblind10&#39;]\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:245
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"['Solarize\\_Light2',\n"
+" '\\_classic\\_test\\_patch',\n"
+" '\\_mpl-gallery',\n"
+" '\\_mpl-gallery-nogrid',\n"
+" 'bmh',\n"
+" 'classic',\n"
+" 'dark\\_background',\n"
+" 'fast',\n"
+" 'fivethirtyeight',\n"
+" 'ggplot',\n"
+" 'grayscale',\n"
+" 'seaborn-v0\\_8',\n"
+" 'seaborn-v0\\_8-bright',\n"
+" 'seaborn-v0\\_8-colorblind',\n"
+" 'seaborn-v0\\_8-dark',\n"
+" 'seaborn-v0\\_8-dark-palette',\n"
+" 'seaborn-v0\\_8-darkgrid',\n"
+" 'seaborn-v0\\_8-deep',\n"
+" 'seaborn-v0\\_8-muted',\n"
+" 'seaborn-v0\\_8-notebook',\n"
+" 'seaborn-v0\\_8-paper',\n"
+" 'seaborn-v0\\_8-pastel',\n"
+" 'seaborn-v0\\_8-poster',\n"
+" 'seaborn-v0\\_8-talk',\n"
+" 'seaborn-v0\\_8-ticks',\n"
+" 'seaborn-v0\\_8-white',\n"
+" 'seaborn-v0\\_8-whitegrid',\n"
+" 'tableau-colorblind10']\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:279
+msgid ""
+"['Solarize_Light2',\n"
+" '_classic_test_patch',\n"
+" '_mpl-gallery',\n"
+" '_mpl-gallery-nogrid',\n"
+" 'bmh',\n"
+" 'classic',\n"
+" 'dark_background',\n"
+" 'fast',\n"
+" 'fivethirtyeight',\n"
+" 'ggplot',\n"
+" 'grayscale',\n"
+" 'seaborn-v0_8',\n"
+" 'seaborn-v0_8-bright',\n"
+" 'seaborn-v0_8-colorblind',\n"
+" 'seaborn-v0_8-dark',\n"
+" 'seaborn-v0_8-dark-palette',\n"
+" 'seaborn-v0_8-darkgrid',\n"
+" 'seaborn-v0_8-deep',\n"
+" 'seaborn-v0_8-muted',\n"
+" 'seaborn-v0_8-notebook',\n"
+" 'seaborn-v0_8-paper',\n"
+" 'seaborn-v0_8-pastel',\n"
+" 'seaborn-v0_8-poster',\n"
+" 'seaborn-v0_8-talk',\n"
+" 'seaborn-v0_8-ticks',\n"
+" 'seaborn-v0_8-white',\n"
+" 'seaborn-v0_8-whitegrid',\n"
+" 'tableau-colorblind10']"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:317
+msgid ""
+"For example we can use the ggplot style from R. In this case, the title "
+"fonts are quite large, so we reduce the number of words in a title before a "
+"line break"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid ""
+"plt.style.use(\"ggplot\")\n"
+"pybamm.settings.max_words_in_line = 3\n"
+"pybamm.dynamic_plot(sims)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:342
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"1436920c8a174d099b1fe25dfb41c55c\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:378
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x289590050&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:384
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x289590050>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:391
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x289590050>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:402
+msgid ""
+"Another good set of style sheets for scientific plots is available by pip "
+"installing the `SciencePlots <https://github.com/garrettj403/"
+"SciencePlots>`__ package"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:414
+msgid "Further customization using rcParams"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:425
+msgid ""
+"Sometimes we want further customization of a style, without needing to edit "
+"the style sheets. For example, we can update the font sizes and plot again."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:427
+msgid "To change the line colors, we use ``cycler``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid ""
+"import matplotlib as mpl\n"
+"from cycler import cycler\n"
+"\n"
+"mpl.rcParams[\"axes.labelsize\"] = 12\n"
+"mpl.rcParams[\"axes.titlesize\"] = 12\n"
+"mpl.rcParams[\"xtick.labelsize\"] = 12\n"
+"mpl.rcParams[\"ytick.labelsize\"] = 12\n"
+"mpl.rcParams[\"legend.fontsize\"] = 12\n"
+"mpl.rcParams[\"axes.prop_cycle\"] = cycler(\"color\", [\"k\", \"g\", "
+"\"c\"])\n"
+"pybamm.dynamic_plot(sims)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:459
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"8f4c908b9c604d43a9a028c84fc86b1a\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:495
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x282c16290&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:501
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x282c16290>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:508
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x282c16290>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:520
+msgid "Very fine customization"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:531
+msgid ""
+"Some customization of the ``QuickPlot`` object is possible by passing "
+"arguments - see the `docs <https://docs.pybamm.org/en/latest/source/api/"
+"plotting/quick_plot.html>`__ for details"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:533
+msgid ""
+"We can also further control the plot by calling ``plot.fig`` after the "
+"figure has been created, and editing the matplotlib objects. For example, "
+"here we move the titles to the ylabel, and move the legend."
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid ""
+"pybamm.settings.max_words_in_line = 4\n"
+"\n"
+"plot = pybamm.QuickPlot(sims, figsize=(14, 7))\n"
+"plot.plot(0.5)  # time in hours\n"
+"\n"
+"# Move title to ylabel\n"
+"for ax in plot.fig.axes:\n"
+"    title = ax.get_title()\n"
+"    ax.set_title(\"\")\n"
+"    ax.set_ylabel(title)\n"
+"\n"
+"# Remove old legend and add a new one in the bottom\n"
+"leg = plot.fig.get_children()[-1]\n"
+"leg.set_visible(False)\n"
+"plot.fig.legend(plot.labels, loc=\"lower center\", ncol=len(plot.labels), "
+"fontsize=11)\n"
+"\n"
+"# Adjust layout\n"
+"plot.gridspec.tight_layout(plot.fig, rect=[0, 0.04, 1, 1])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:579
+msgid "The figure can then be saved using ``plot.fig.savefig``"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:591
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:593
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "[14]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:614
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:625
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/plotting/customize-quick-plot.ipynb:637
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
