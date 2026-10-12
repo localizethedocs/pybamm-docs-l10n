@@ -1,0 +1,1075 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>A half cell model &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/creating_models/5-half-cell-model';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/creating_models/5-half-cell-model.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Creating a Simple Model for SEI Growth" href="6-a-simple-SEI-model.html" />
+    <link rel="prev" title="Comparing full and reduced-order models" href="4-comparing-full-and-reduced-order-models.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/getting_started.html">Getting Started</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Fundamentals and usage</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/index.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/battery_models.html">Battery Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/fundamentals/public_api.html">Public API</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing guide</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/contributing.html">Contributing to PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../user_guide/release.html">PyBaMM Release Policy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../user_guide/index.html" class="nav-link">PyBaMM user guide</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">A half cell model</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/creating_models/5-half-cell-model.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/creating_models/5-half-cell-model.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="A-half-cell-model">
+<h1>A half cell model<a class="headerlink" href="#A-half-cell-model" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference internal" href="4-comparing-full-and-reduced-order-models.html"><span class="doc">previous notebook</span></a> we saw how to compare full and reduced-order models. Both of these models were posed on a single domain: the negative electrode particle. Here we will see how to create a model which contains multiple domains.</p>
+<p>We consider a problem posed on a half-cell geometry, which consists of a separator (<span class="math notranslate nohighlight">\(-L_s&lt;x&lt;0\)</span>) and a positive electrode (<span class="math notranslate nohighlight">\(0&lt;x&lt;L_p\)</span>). These two regions are considered “macroscale” domains. At each point in the positive electrode we treat a “microscale” problem to model diffusion of lithium within the positive particles (<span class="math notranslate nohighlight">\(0&lt;r&lt;R_p\)</span>). We will see how to create variables in each of the different domains so that the governing equations are properly coupled.</p>
+<p>In the interest of simplicity we assume that the current in both the the solid and electrolyte is given by Ohm’s law, and ignore any concentration gradients in the electrolyte. The governing equations for charge conservation at the macroscale are then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}i_e = -\kappa \nabla \phi_e, \quad \nabla i_e = a j, \quad -L_s&lt;x&lt;0, \\
+i = -\sigma \nabla \phi, \quad \nabla \cdot i = -a j, \quad 0&lt;x&lt;L_p,\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(i_e\)</span> are the current densities in the solid and electrolyte, respectively, <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(\phi_e\)</span> are the electric potentials in the solid and electrolyte, respectively, <span class="math notranslate nohighlight">\(\sigma\)</span> is the solid conductivity, <span class="math notranslate nohighlight">\(\kappa\)</span> is the ionic conductivity, <span class="math notranslate nohighlight">\(a\)</span> is the electrode surface area per unit volume and <span class="math notranslate nohighlight">\(j\)</span> the interfacial current density. The charge conservation equations are subject to the boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\left.\phi_e\right\vert_{x=-L_s} = 0, \quad \left.i_e\right\vert_{x=L_p} = 0, \quad \left.i\right\vert_{x=0} = 0, \quad \left.i\right\vert_{x=L_p} = \frac{I_{\text{app}}}{A},\]</div>
+<p>where <span class="math notranslate nohighlight">\(I_{\text{app}}\)</span> is the applied current and <span class="math notranslate nohighlight">\(A\)</span> is the electrode cross-sectional area. We then have an equation posed at each macroscopic point in the electrode (<span class="math notranslate nohighlight">\(0&lt;x&lt;L_p\)</span>) describing transport of lithium within the active material particles. That is,</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial c}{\partial t} = \nabla \cdot (D \nabla c), \quad 0&lt;r&lt;R_p,\]</div>
+<p>with the following boundary and initial conditions:</p>
+<div class="math notranslate nohighlight">
+\[\left.\frac{\partial c}{\partial r}\right\vert_{r=0} = 0, \quad \left.\frac{\partial c}{\partial r}\right\vert_{r=R} = -\frac{j}{FD}, \quad \left.c\right\vert_{t=0} = c_0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is the concentration, <span class="math notranslate nohighlight">\(r\)</span> the radial coordinate, <span class="math notranslate nohighlight">\(t\)</span> time, <span class="math notranslate nohighlight">\(R\)</span> the particle radius, <span class="math notranslate nohighlight">\(D\)</span> the diffusion coefficient, <span class="math notranslate nohighlight">\(F\)</span> Faraday’s constant, and <span class="math notranslate nohighlight">\(c_0\)</span> the initial concentration. For the interfacial current density we assume Butler-Volmer kinetics</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}j = \begin{cases}
+        0 &amp;-L_s&lt;x&lt;0 \\
+        2 j_0(c)\sinh\left(\frac{F}{2RT}(\phi-\phi_e-U(c))\right) &amp;0&lt;x&lt;L_p
+    \end{cases},\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(j_0\)</span> is the exchange current density, and <span class="math notranslate nohighlight">\(U\)</span> is the open-circuit potential.</p>
+<section id="Setting-up-the-model">
+<h2>Setting up the model<a class="headerlink" href="#Setting-up-the-model" title="Link to this heading">#</a></h2>
+<p>As before, we begin by importing the PyBaMM library into this notebook, along with any other packages we require, and start with an empty <code class="docutils literal notranslate"><span class="pre">pybamm.BaseModel</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<p>Let’s first define our model variables. We can define the electric potential in the positive electrode in the same way as we defined the concentration variables in the previous notebooks</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;positive electrode&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The potential in the electrolyte spans two domains. To set this up we first define the electric potential in each of the domains</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi_e_s</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;Separator electrolyte potential [V]&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;separator&quot;</span><span class="p">)</span>
+<span class="n">phi_e_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+    <span class="s2">&quot;Positive electrolyte potential [V]&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;positive electrode&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and then concatenate these two variables together to define a single variable that spans the separator and positive electrode</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">phi_e</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">concatenation</span><span class="p">(</span><span class="n">phi_e_s</span><span class="p">,</span> <span class="n">phi_e_p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Note that in our formulation the separator will be on the left and the positive electrode will be on the right, so this is the order in which we concatenated the variables for the electrolyte potential in each domain.</p>
+<p>The concentration in the electrode particles can vary both in <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(x\)</span>, but diffusion only occurs in the <span class="math notranslate nohighlight">\(r\)</span> direction. In order to handle this situation we introduce the concept of “auxiliary domains”. These are domains in which quantities can vary, but spatial operators do not act. To set up our concentration variable we create a <code class="docutils literal notranslate"><span class="pre">Variable</span></code> which has domain “positive particle” and secondary domain “positive electrode”</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span>
+    <span class="s2">&quot;Positive particle concentration [mol.m-3]&quot;</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="s2">&quot;positive particle&quot;</span><span class="p">,</span>
+    <span class="n">auxiliary_domains</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;positive electrode&quot;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now spatial operators acting on <code class="docutils literal notranslate"><span class="pre">c</span></code> only act in the <span class="math notranslate nohighlight">\(r\)</span> direction (corresponding to the primary domain “positive particle”), but <code class="docutils literal notranslate"><span class="pre">c</span></code> can still depend on <span class="math notranslate nohighlight">\(x\)</span> (corresponding to the secondary domain “positive electrode”). For more details on the different domains (primary, secondary, etc.) see the <a class="reference internal" href="../expression_tree/broadcasts.html"><span class="doc">broadcasts notebook</span></a>.</p>
+<p>Next we will define our parameters. As seen before, scalar parameters can be defined using the <code class="docutils literal notranslate"><span class="pre">Parameter</span></code> object</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Faraday constant [C.mol-1]&quot;</span><span class="p">)</span>
+<span class="n">R</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Molar gas constant [J.mol-1.K-1]&quot;</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Temperature [K]&quot;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Surface area per unit volume [m-1]&quot;</span><span class="p">)</span>
+<span class="n">R_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Positive particle radius [m]&quot;</span><span class="p">)</span>
+<span class="n">L_s</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Separator thickness [m]&quot;</span><span class="p">)</span>
+<span class="n">L_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Positive electrode thickness [m]&quot;</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Electrode cross-sectional area [m2]&quot;</span><span class="p">)</span>
+
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Positive electrode conductivity [S.m-1]&quot;</span><span class="p">)</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Electrolyte conductivity [S.m-1]&quot;</span><span class="p">)</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Diffusion coefficient [m2.s-1]&quot;</span><span class="p">)</span>
+
+<span class="n">I_app</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Applied current [A]&quot;</span><span class="p">)</span>
+<span class="n">c0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Initial concentration [mol.m-3]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Parameters can also have some functional dependence. We can define such parameters using the <code class="docutils literal notranslate"><span class="pre">FunctionParameter</span></code> object. We also need to specify the inputs (i.e. the variables on which the function depends). In our example both the exchange current density and the open-circuit potential will depend on the particle surface concentration.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c_surf</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">surf</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># get the surface concentration</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Positive particle surface concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="n">c_surf</span><span class="p">}</span>
+<span class="n">j0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">(</span>
+    <span class="s2">&quot;Positive electrode exchange-current density [A.m-2]&quot;</span><span class="p">,</span> <span class="n">inputs</span>
+<span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">(</span><span class="s2">&quot;Positive electrode OCP [V]&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We also need to define the interfacial current, which is zero in the separator and given by the Butler-Volmer equation in the positive electrode</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">j_s</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">PrimaryBroadcast</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;separator&quot;</span><span class="p">)</span>
+<span class="n">j_p</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">j0</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">sinh</span><span class="p">((</span><span class="n">F</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">R</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">phi</span> <span class="o">-</span> <span class="n">phi_e_p</span> <span class="o">-</span> <span class="n">U</span><span class="p">))</span>
+<span class="n">j</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">concatenation</span><span class="p">(</span><span class="n">j_s</span><span class="p">,</span> <span class="n">j_p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can write our governing equations, boundary and initial conditions. Note that we provide initial conditions for the algebraic equations. These are not really initial conditions, but are used as an initial guess for the solver.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># charge conservation equations</span>
+<span class="n">i</span> <span class="o">=</span> <span class="o">-</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">phi</span><span class="p">)</span>
+<span class="n">i_e</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">phi_e</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">phi</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="n">a</span> <span class="o">*</span> <span class="n">j_p</span><span class="p">,</span>
+    <span class="n">phi_e</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">i_e</span><span class="p">)</span> <span class="o">-</span> <span class="n">a</span> <span class="o">*</span> <span class="n">j</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="c1"># particle equations (mass conservation)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="o">-</span><span class="n">D</span> <span class="o">*</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># flux</span>
+<span class="n">dcdt</span> <span class="o">=</span> <span class="o">-</span><span class="n">pybamm</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">rhs</span> <span class="o">=</span> <span class="p">{</span><span class="n">c</span><span class="p">:</span> <span class="n">dcdt</span><span class="p">}</span>
+
+<span class="c1"># boundary conditions</span>
+<span class="n">model</span><span class="o">.</span><span class="n">boundary_conditions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">phi</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">I_app</span> <span class="o">/</span> <span class="n">A</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">phi_e</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Dirichlet&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span>
+    <span class="p">},</span>
+    <span class="n">c</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;left&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">),</span> <span class="s2">&quot;right&quot;</span><span class="p">:</span> <span class="p">(</span><span class="o">-</span><span class="n">j_p</span> <span class="o">/</span> <span class="n">F</span> <span class="o">/</span> <span class="n">D</span><span class="p">,</span> <span class="s2">&quot;Neumann&quot;</span><span class="p">)},</span>
+<span class="p">}</span>
+
+<span class="c1"># initial conditions</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Initial concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="n">c0</span><span class="p">}</span>
+<span class="n">U_init</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FunctionParameter</span><span class="p">(</span><span class="s2">&quot;Positive electrode OCP [V]&quot;</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">{</span><span class="n">phi</span><span class="p">:</span> <span class="n">U_init</span><span class="p">,</span> <span class="n">phi_e</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="n">c0</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Finally we can add any variables of interest to the model</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">:</span> <span class="n">phi</span><span class="p">,</span>
+    <span class="s2">&quot;Electrolyte potential [V]&quot;</span><span class="p">:</span> <span class="n">phi_e</span><span class="p">,</span>
+    <span class="s2">&quot;Positive particle concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="n">c</span><span class="p">,</span>
+    <span class="s2">&quot;Positive particle surface concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="n">c_surf</span><span class="p">,</span>
+    <span class="s2">&quot;Average positive particle surface concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">x_average</span><span class="p">(</span>
+        <span class="n">c_surf</span>
+    <span class="p">),</span>
+    <span class="s2">&quot;Positive electrode interfacial current density [A.m-2]&quot;</span><span class="p">:</span> <span class="n">j_p</span><span class="p">,</span>
+    <span class="s2">&quot;Positive electrode OCP [V]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">boundary_value</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">boundary_value</span><span class="p">(</span><span class="n">phi</span><span class="p">,</span> <span class="s2">&quot;right&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Using-the-model">
+<h2>Using the model<a class="headerlink" href="#Using-the-model" title="Link to this heading">#</a></h2>
+<p>As we have seen before, we can provide values for our parameters using the <code class="docutils literal notranslate"><span class="pre">ParameterValues</span></code> class. As well as providing scalar values, we also need to provide the functional form using by our <code class="docutils literal notranslate"><span class="pre">FunctionParameter</span></code> objects. Here we will define these functions locally, but we could provide the path to a function defined elsewhere or provide data (see the <a class="reference internal" href="../parameterization/parameterization.html"><span class="doc">parameterization notebook</span></a>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pybamm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tanh</span>
+
+<span class="c1"># both functions will depend on the maximum concentration</span>
+<span class="n">c_max</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Maximum concentration in positive electrode [mol.m-3]&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">exchange_current_density</span><span class="p">(</span><span class="n">c_surf</span><span class="p">):</span>
+    <span class="n">k</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">)</span>  <span class="c1"># reaction rate [(A/m2)(m3/mol)**1.5]</span>
+    <span class="n">c_e</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># (constant) electrolyte concentration [mol.m-3]</span>
+    <span class="k">return</span> <span class="n">k</span> <span class="o">*</span> <span class="n">c_e</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">c_surf</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">c_max</span> <span class="o">-</span> <span class="n">c_surf</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">open_circuit_potential</span><span class="p">(</span><span class="n">c_surf</span><span class="p">):</span>
+    <span class="n">stretch</span> <span class="o">=</span> <span class="mf">1.062</span>
+    <span class="n">sto</span> <span class="o">=</span> <span class="n">stretch</span> <span class="o">*</span> <span class="n">c_surf</span> <span class="o">/</span> <span class="n">c_max</span>
+
+    <span class="n">u_eq</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="mf">2.16216</span>
+        <span class="o">+</span> <span class="mf">0.07645</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">30.834</span> <span class="o">-</span> <span class="mf">54.4806</span> <span class="o">*</span> <span class="n">sto</span><span class="p">)</span>
+        <span class="o">+</span> <span class="mf">2.1581</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">52.294</span> <span class="o">-</span> <span class="mf">50.294</span> <span class="o">*</span> <span class="n">sto</span><span class="p">)</span>
+        <span class="o">-</span> <span class="mf">0.14169</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">11.0923</span> <span class="o">-</span> <span class="mf">19.8543</span> <span class="o">*</span> <span class="n">sto</span><span class="p">)</span>
+        <span class="o">+</span> <span class="mf">0.2051</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mf">1.4684</span> <span class="o">-</span> <span class="mf">5.4888</span> <span class="o">*</span> <span class="n">sto</span><span class="p">)</span>
+        <span class="o">+</span> <span class="mf">0.2531</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">((</span><span class="o">-</span><span class="n">sto</span> <span class="o">+</span> <span class="mf">0.56478</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.1316</span><span class="p">)</span>
+        <span class="o">-</span> <span class="mf">0.02167</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">((</span><span class="n">sto</span> <span class="o">-</span> <span class="mf">0.525</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.006</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="k">return</span> <span class="n">u_eq</span>
+</pre></div>
+</div>
+</div>
+<p>Now we can pass these functions, along with our scalar parameters, to <code class="docutils literal notranslate"><span class="pre">ParameterValues</span></code></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Surface area per unit volume [m-1]&quot;</span><span class="p">:</span> <span class="mf">0.15e6</span><span class="p">,</span>
+        <span class="s2">&quot;Positive particle radius [m]&quot;</span><span class="p">:</span> <span class="mf">10e-6</span><span class="p">,</span>
+        <span class="s2">&quot;Separator thickness [m]&quot;</span><span class="p">:</span> <span class="mf">25e-6</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode thickness [m]&quot;</span><span class="p">:</span> <span class="mf">100e-6</span><span class="p">,</span>
+        <span class="s2">&quot;Electrode cross-sectional area [m2]&quot;</span><span class="p">:</span> <span class="mf">2.8e-2</span><span class="p">,</span>
+        <span class="s2">&quot;Applied current [A]&quot;</span><span class="p">:</span> <span class="mf">0.9</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode conductivity [S.m-1]&quot;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s2">&quot;Electrolyte conductivity [S.m-1]&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;Diffusion coefficient [m2.s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-13</span><span class="p">,</span>
+        <span class="s2">&quot;Faraday constant [C.mol-1]&quot;</span><span class="p">:</span> <span class="mi">96485</span><span class="p">,</span>
+        <span class="s2">&quot;Initial concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mi">25370</span><span class="p">,</span>
+        <span class="s2">&quot;Molar gas constant [J.mol-1.K-1]&quot;</span><span class="p">:</span> <span class="mf">8.314</span><span class="p">,</span>
+        <span class="s2">&quot;Temperature [K]&quot;</span><span class="p">:</span> <span class="mf">298.15</span><span class="p">,</span>
+        <span class="s2">&quot;Maximum concentration in positive electrode [mol.m-3]&quot;</span><span class="p">:</span> <span class="mi">51217</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode exchange-current density [A.m-2]&quot;</span><span class="p">:</span> <span class="n">exchange_current_density</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode OCP [V]&quot;</span><span class="p">:</span> <span class="n">open_circuit_potential</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Next we define the geometry. In the same way that our variable for the concentration in the electrode particles had and “auxiliary domain”, our spatial variable <span class="math notranslate nohighlight">\(r\)</span> also has an auxiliary domain. This means that when the model in discretised there will be the correct number of particles included in the geometry - one for each point in <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpatialVariable</span><span class="p">(</span>
+    <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;positive particle&quot;</span><span class="p">],</span>
+    <span class="n">auxiliary_domains</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="s2">&quot;positive electrode&quot;</span><span class="p">},</span>
+    <span class="n">coord_sys</span><span class="o">=</span><span class="s2">&quot;spherical polar&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">x_s</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpatialVariable</span><span class="p">(</span><span class="s2">&quot;x_s&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;separator&quot;</span><span class="p">],</span> <span class="n">coord_sys</span><span class="o">=</span><span class="s2">&quot;cartesian&quot;</span><span class="p">)</span>
+<span class="n">x_p</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SpatialVariable</span><span class="p">(</span>
+    <span class="s2">&quot;x_p&quot;</span><span class="p">,</span> <span class="n">domain</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;positive electrode&quot;</span><span class="p">],</span> <span class="n">coord_sys</span><span class="o">=</span><span class="s2">&quot;cartesian&quot;</span>
+<span class="p">)</span>
+
+
+<span class="n">geometry</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;separator&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">x_s</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="o">-</span><span class="n">L_s</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}},</span>
+    <span class="s2">&quot;positive electrode&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">x_p</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="n">L_p</span><span class="p">}},</span>
+    <span class="s2">&quot;positive particle&quot;</span><span class="p">:</span> <span class="p">{</span><span class="n">r</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="n">R_p</span><span class="p">}},</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Both the model and geometry can now be processed by the parameter class. This replaces the parameters with the values</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now set up our mesh, choose a spatial method, and discretise our model</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">submesh_types</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;separator&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Uniform1DSubMesh</span><span class="p">,</span>
+    <span class="s2">&quot;positive electrode&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Uniform1DSubMesh</span><span class="p">,</span>
+    <span class="s2">&quot;positive particle&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Uniform1DSubMesh</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">var_pts</span> <span class="o">=</span> <span class="p">{</span><span class="n">x_s</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">x_p</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">submesh_types</span><span class="p">,</span> <span class="n">var_pts</span><span class="p">)</span>
+
+<span class="n">spatial_methods</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;separator&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">(),</span>
+    <span class="s2">&quot;positive electrode&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">(),</span>
+    <span class="s2">&quot;positive particle&quot;</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">FiniteVolume</span><span class="p">(),</span>
+<span class="p">}</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>The model is now discretised and ready to be solved.</p>
+</section>
+<section id="Solving-the-model">
+<h2>Solving the model<a class="headerlink" href="#Solving-the-model" title="Link to this heading">#</a></h2>
+<p>We can now solve the model</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solve</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">()</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">]</span>
+<span class="n">solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and plot the results. To make the plot we will use <code class="docutils literal notranslate"><span class="pre">dynamic_plot</span></code> which automatically creates a slider plot given a <code class="docutils literal notranslate"><span class="pre">solution</span></code> and a list of variables to plot. By nesting variables in the list we can plot two variables together on the same axes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot</span>
+<span class="n">pybamm</span><span class="o">.</span><span class="n">dynamic_plot</span><span class="p">(</span>
+    <span class="n">solution</span><span class="p">,</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;Positive electrode potential [V]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Electrolyte potential [V]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode interfacial current density [A.m-2]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Positive particle surface concentration [mol.m-3]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Average positive particle surface concentration [mol.m-3]&quot;</span><span class="p">,</span>
+        <span class="p">[</span><span class="s2">&quot;Positive electrode OCP [V]&quot;</span><span class="p">,</span> <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2021-11-19 15:30:23,304 - [WARNING] processed_variable.get_spatial_scale(520): No length scale set for positive electrode. Using default of 1 [m].
+2021-11-19 15:30:23,328 - [WARNING] processed_variable.get_spatial_scale(520): No length scale set for separator. Using default of 1 [m].
+2021-11-19 15:30:23,367 - [WARNING] processed_variable.get_spatial_scale(520): No length scale set for positive electrode. Using default of 1 [m].
+2021-11-19 15:30:23,395 - [WARNING] processed_variable.get_spatial_scale(520): No length scale set for positive electrode. Using default of 1 [m].
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "1d57bc29107d47838633a27df1b920cc", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7ff07a82d130&gt;
+</pre></div></div>
+</div>
+<p>In the <a class="reference internal" href="6-a-simple-SEI-model.html"><span class="doc">next notebook</span></a> we consider a simple model for SEI growth, and show how to correctly pose the model in non-dimensional form and then create and solve it using pybamm.</p>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Link to this heading">#</a></h2>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="4-comparing-full-and-reduced-order-models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparing full and reduced-order models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="6-a-simple-SEI-model.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Creating a Simple Model for SEI Growth</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Setting-up-the-model">Setting up the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Using-the-model">Using the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Solving-the-model">Solving the model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/creating_models/5-half-cell-model.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-11.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
