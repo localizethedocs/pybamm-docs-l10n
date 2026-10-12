@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-12 18:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -103,55 +104,55 @@ msgstr ""
 msgid ""
 "\\frac{\\partial }{\\partial t}\\left(\\epsilon c\\right) = -"
 "\\frac{\\partial N}{\\partial x} + sj, \\\\\n"
-"N = -\\frac{\\epsilon^b  D(c)}{\\mathcal{C}_\\text{e}}  \\frac{\\partial c}"
-"{\\partial x}\\\\\n"
-"N\\big|_{x=0}= N\\big|_{x=1}=0, \\\\\n"
-"c\\big|_{t=0} = 1"
+"    N = -\\frac{\\epsilon^b  D(c)}{\\mathcal{C}_\\text{e}}  \\frac{\\partial "
+"c}{\\partial x}\\\\\n"
+"    N\\big|_{x=0}= N\\big|_{x=1}=0, \\\\\n"
+"    c\\big|_{t=0} = 1"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:87
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:86
 msgid "Porosity"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:89
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:88
 msgid ""
 "\\frac{\\partial \\epsilon}{\\partial t} = -\\beta^\\text{surf}j, \\\\\n"
-"\\epsilon\\big|_{t=0} = \\epsilon^0"
+"    \\epsilon\\big|_{t=0} = \\epsilon^0"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:96
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:94
 msgid "Electrolyte Current"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:98
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:96
 msgid ""
 "\\frac{\\partial i_{\\text{e}}}{\\partial x} = j, \\\\\n"
-"\\mathcal{C}_\\text{e} i_{\\text{e}} = \\epsilon_k^b \\kappa(c)\n"
-"    \\left( \\chi \\frac{\\partial}{\\partial x}\\log(c)\n"
-"    - \\frac{\\partial\\phi_{\\text{e}}}{\\partial x}\\right)\\\\\n"
-"i_{\\text{e}}\\big|_{x=0}= i_{\\text{e}}\\big|_{x=1}=0,"
+"    \\mathcal{C}_\\text{e} i_{\\text{e}} = \\epsilon_k^b \\kappa(c)\n"
+"        \\left( \\chi \\frac{\\partial}{\\partial x}\\log(c)\n"
+"        - \\frac{\\partial\\phi_{\\text{e}}}{\\partial x}\\right)\\\\\n"
+"    i_{\\text{e}}\\big|_{x=0}= i_{\\text{e}}\\big|_{x=1}=0,"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:108
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:105
 msgid "Electrode Current"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:110
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:107
 msgid ""
 "\\frac{\\partial i_{\\text{s}}}{\\partial x} = -j,\\\\\n"
-"i_{\\text{s}} = -\\sigma\\frac{\\partial\\phi_{\\text{s}}}{\\partial x},\\"
-"\\\n"
-"\\phi_{\\text{s}}\\big|_{x=0}\n"
-"    = i_{\\text{s}}\\big|_{x=l_\\text{n}}\n"
-"    = i_{\\text{s}}\\big|_{x=1-l_\\text{p}} = 0, \\\\\n"
-"i_{\\text{s}}\\big|_{x=1}=\\mathcal{I},"
+"    i_{\\text{s}} = -\\sigma\\frac{\\partial\\phi_{\\text{s}}}{\\partial x},"
+"\\\\\n"
+"    \\phi_{\\text{s}}\\big|_{x=0}\n"
+"        = i_{\\text{s}}\\big|_{x=l_\\text{n}}\n"
+"        = i_{\\text{s}}\\big|_{x=1-l_\\text{p}} = 0, \\\\\n"
+"    i_{\\text{s}}\\big|_{x=1}=\\mathcal{I},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:121
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:117
 msgid "Interfacial current density"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:123
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:119
 msgid ""
 "j = \\begin{cases}\n"
 "    2j_0(c) \\sinh\\left(\\eta\\right), \\quad &0 < x < l_\\text{n} \\\\\n"
@@ -162,7 +163,7 @@ msgid ""
 "\\eta = \\phi_{\\text{s}} - \\phi_\\text{e} - U(c),"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:134
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:129
 msgid "This model is implemented in PyBaMM as the ``Full`` model"
 msgstr ""
 
@@ -174,27 +175,29 @@ msgstr ""
 msgid "full = pybamm.lead_acid.Full()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:156
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:151
 msgid "\"Leading-order\" model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:158
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:153
 msgid ""
 "\\frac{\\mathrm{d} }{\\mathrm{d} t}\\left(\\epsilon c\\right) = (s_\\text{n} "
 "- s_\\text{p})\\mathrm{I}, \\\\\n"
-"\\frac{\\mathrm{d} \\epsilon}{\\mathrm{d} t} = -\\beta^\\text{surf}j, \\\\\n"
-"j = \\begin{cases}\n"
-"    \\mathrm{I}/l_\\text{n}, \\quad &0 < x < l_\\text{n} \\\\\n"
-"    0, \\quad &l_\\text{n} < x < 1-l_\\text{p} \\\\\n"
-"    -\\mathrm{I}/l_\\text{p}, \\quad &1-l_\\text{p} < x < 1\n"
-"\\end{cases} \\\\\n"
-"\\phi_\\text{e} = -U_\\text{n}(c) + \\sinh^{-1}\\left(\\frac{\\mathrm{I}}"
+"    \\frac{\\mathrm{d} \\epsilon}{\\mathrm{d} t} = -\\beta^\\text{surf}j, \\"
+"\\\n"
+"    j = \\begin{cases}\n"
+"        \\mathrm{I}/l_\\text{n}, \\quad &0 < x < l_\\text{n} \\\\\n"
+"        0, \\quad &l_\\text{n} < x < 1-l_\\text{p} \\\\\n"
+"        -\\mathrm{I}/l_\\text{p}, \\quad &1-l_\\text{p} < x < 1\n"
+"    \\end{cases} \\\\\n"
+"    \\phi_\\text{e} = -U_\\text{n}(c) + \\sinh^{-1}\\left(\\frac{\\mathrm{I}}"
 "{2l_\\text{n}j_{0\\text{n}}(c)}\\right) \\\\\n"
-"V = -\\phi_\\text{e} + U_\\text{p}(c) - \\sinh^{-1}\\left(\\frac{\\mathrm{I}}"
-"{2l_\\text{p}j_{0\\text{p}}(c)}\\right) \\\\"
+"    V = -\\phi_\\text{e} + U_\\text{p}(c) - "
+"\\sinh^{-1}\\left(\\frac{\\mathrm{I}}{2l_\\text{p}j_{0\\text{p}}(c)}\\right) "
+"\\\\"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:171
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:165
 msgid ""
 "This model is implemented in PyBaMM as ``LOQS`` (leading-order quasi-static)"
 msgstr ""
@@ -207,11 +210,11 @@ msgstr ""
 msgid "loqs = pybamm.lead_acid.LOQS()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:193
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:187
 msgid "Solving the models"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:204
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:198
 msgid ""
 "We load process parameters for each model, using the same set of (default) "
 "parameters for all. In anticipation of changing the current later, we make "
@@ -234,7 +237,7 @@ msgid ""
 "    param.process_model(model)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:232
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:226
 msgid "Then, we discretise the models, using the default settings"
 msgstr ""
 
@@ -256,7 +259,7 @@ msgid ""
 "    disc.process_model(model)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:261
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:255
 msgid "Finally, we solve each model using CasADi's solver and a current of 1A"
 msgstr ""
 
@@ -278,7 +281,7 @@ msgid ""
 "    solutions[model] = solution"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:290
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:284
 msgid ""
 "<pre>\n"
 "Solved the LOQS model in 9.057 ms\n"
@@ -286,7 +289,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:297
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:291
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Solved the LOQS model in 9.057 ms\n"
@@ -294,17 +297,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:305
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:299
 msgid ""
 "Solved the LOQS model in 9.057 ms\n"
 "Solved the Full model in 68.144 ms"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:318
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:312
 msgid "Results"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:329
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:323
 msgid ""
 "To plot the results, the variables are extracted from the solutions "
 "dictionary. For example, we can compare the voltages:"
@@ -326,7 +329,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:365
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:359
 msgid ""
 "Alternatively, using ``QuickPlot``, we can compare the values of some "
 "variables"
@@ -343,14 +346,14 @@ msgid ""
 "quick_plot.dynamic_plot();"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:389
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:383
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"bdba6061f9954ca486acecd620969829\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:399
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:393
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -358,7 +361,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:405
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:399
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=17.0, "
@@ -366,13 +369,13 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:412
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:406
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=17.0, "
 "step=0.17), Output()), _dom_classes=('…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:423
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:417
 msgid ""
 "If we update the current, setting it to be 20 A, we observe a greater "
 "discrepancy between the full model and the reduced-order models."
@@ -396,14 +399,14 @@ msgid ""
 "quick_plot.dynamic_plot();"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:453
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:447
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"1ef834bd0d51483784235cc16db2d02d\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:463
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:457
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -411,7 +414,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:469
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:463
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -419,17 +422,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:476
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:470
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=3482.558556072935, step=34.82558556072935), …"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:488
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:482
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:490
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:484
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -441,7 +444,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:511
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:505
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -479,7 +482,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:525
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:519
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -517,7 +520,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/lead-acid.ipynb:540
+#: ../../../source/examples/notebooks/models/lead-acid.ipynb:534
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

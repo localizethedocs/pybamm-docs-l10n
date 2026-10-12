@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-12 18:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -60,15 +61,15 @@ msgid ""
 "    - \\left.\\phi_\\mathrm{s,n}\\right\\rvert_{x=0}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:28
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:27
 msgid ""
 "We can decompose this voltage into constituent components by adding and "
 "subtracting terms and regrouping:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:30
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:29
 msgid ""
-"\\begin{align*}\n"
+"\\begin{aligned}\n"
 "V =& \\left(\\left.\\phi_\\mathrm{s,p}\\right\\rvert_{x=L} - \\bar{\\phi}"
 "_\\mathrm{s,p}\\right)\n"
 "&\\quad&\\text{Positive solid phase ohmic losses}\n"
@@ -99,24 +100,26 @@ msgid ""
 "\\\\\n"
 "&- U(\\bar{c}_\\mathrm{n})\n"
 "&&\\text{Negative bulk open-circuit potential}\n"
-"\\end{align*}"
+"\\end{aligned}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:62
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:60
 msgid "where"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:64
-msgid "\\eta = \\phi_\\mathrm{s} - \\phi_\\mathrm{e} - U(c^\\mathrm{surf})"
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:62
+msgid ""
+"\\eta = \\phi_\\mathrm{s} - \\phi_\\mathrm{e} - U(c^\\mathrm{surf})\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:69
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:64
 msgid ""
 "and :math:`\\bar{\\cdot}` represents the average value of the variable over "
 "its subdomain."
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:80
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:75
 msgid ""
 "To demonstrate this, we solve a standard DFN model with the Chen2020 "
 "parameter set and plot the various potentials"
@@ -158,32 +161,32 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:127
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:122
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:133
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:128
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:140
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:135
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:153
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:148
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"9f5c38b966754ac9902e15cd3356984c\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:164
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:159
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -191,7 +194,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:170
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:165
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -199,31 +202,31 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:177
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:172
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=3555.4443163107762, step=35.55444316310776),…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:189
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:184
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x1339b4620&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:195
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:190
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x1339b4620>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:202
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:197
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x1339b4620>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:213
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:208
 msgid ""
 "A more useful visualization is given by the ``plot_voltage_components`` "
 "function, which can either plot all the individual voltage components"
@@ -237,8 +240,8 @@ msgstr ""
 msgid "sol.plot_voltage_components(split_by_electrode=True)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:244
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:299
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:239
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:294
 msgid ""
 "<pre>\n"
 "(&lt;Figure size 800x400 with 1 Axes&gt;, &lt;Axes: xlabel=&#39;Time [h]&#39;"
@@ -246,20 +249,20 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:250
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:305
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:245
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:300
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:257
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:312
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:252
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:307
 msgid "(<Figure size 800x400 with 1 Axes>, <Axes: xlabel='Time [h]'>)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:268
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:263
 msgid "or group positive and negative together"
 msgstr ""
 
@@ -271,7 +274,7 @@ msgstr ""
 msgid "sol.plot_voltage_components()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:323
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:318
 msgid ""
 "Additionally, for a composite particle model, we can choose which phase to "
 "plot the open-circuit potential, concentration and reaction overpotentials "
@@ -279,18 +282,18 @@ msgid ""
 "composite_particle.ipynb>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:334
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:329
 msgid ""
 "Note that this function further splits the electrolyte overpotential into "
 "the contribution from the electrolyte gradient and the contribution from "
 "ohmic losses"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:346
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:341
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:348
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:343
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -302,7 +305,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:369
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:364
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -339,7 +342,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:383
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:378
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -376,7 +379,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:398
+#: ../../../source/examples/notebooks/plotting/plot-voltage-components.ipynb:393
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

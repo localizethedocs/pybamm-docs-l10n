@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-12 18:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,7 +77,7 @@ msgid ""
 "p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:41
+#: ../../../source/examples/notebooks/models/SPM.ipynb:40
 msgid ""
 "N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0, \\quad \\text{k} \\in \\text{n, "
 "p}, \\quad \\ \\ - N_{\\text{s,k}}\\big|_{r_{\\text{k}}=1} =\n"
@@ -90,7 +91,7 @@ msgid ""
 "\\text{n, p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:51
+#: ../../../source/examples/notebooks/models/SPM.ipynb:49
 msgid ""
 "where :math:`D_{\\text{s,k}}` is the diffusion coefficient in the solid, :"
 "math:`N_{\\text{s,k}}` denotes the flux of lithium ions in the solid "
@@ -99,42 +100,43 @@ msgid ""
 "`\\text{k}`."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:54
+#: ../../../source/examples/notebooks/models/SPM.ipynb:52
 msgid "Voltage Expression"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:56
+#: ../../../source/examples/notebooks/models/SPM.ipynb:54
 msgid "The voltage is obtained from the expression:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:58
+#: ../../../source/examples/notebooks/models/SPM.ipynb:56
 msgid ""
 "V = U_{\\text{p}}(c_{\\text{p}})\\big|_{r_{\\text{p}}=1} - U_{\\text{n}}"
 "(c_{\\text{n}})\\big|_{r_{\\text{n}}=1} - \\frac{2RT}"
 "{F}\\sinh^{-1}\\left(\\frac{I}{2j_{\\text{0,p}} a_{\\text{p}}"
 "L_{\\text{p}}}\\right) - \\frac{2RT}{F}\\sinh^{-1}\\left(\\frac{I}"
-"{2j_{\\text{0,n}} a_{\\text{p}}L_{\\text{n}}}\\right)"
+"{2j_{\\text{0,n}} a_{\\text{p}}L_{\\text{n}}}\\right)\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:63
+#: ../../../source/examples/notebooks/models/SPM.ipynb:58
 msgid "with the exchange current densities given by"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:65
+#: ../../../source/examples/notebooks/models/SPM.ipynb:60
 msgid ""
 "j_{\\text{0,k}} =  (c_{\\text{k}})^{1/2}(1-c_{\\text{k}})^{1/2}\n"
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:67
+#: ../../../source/examples/notebooks/models/SPM.ipynb:62
 msgid "More details can be found in `[3] <#References>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:79
+#: ../../../source/examples/notebooks/models/SPM.ipynb:74
 msgid "Example solving SPM using PyBaMM"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:81
+#: ../../../source/examples/notebooks/models/SPM.ipynb:76
 msgid ""
 "Below we show how to solve the Single Particle Model, using the default "
 "geometry, mesh, parameters, discretisation and solver provided with PyBaMM. "
@@ -145,7 +147,7 @@ msgid ""
 "simulations_and_experiments/simulation-class.ipynb>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:83
+#: ../../../source/examples/notebooks/models/SPM.ipynb:78
 msgid ""
 "First we need to import ``pybamm``, and then change our working directory to "
 "the root of the pybamm folder."
@@ -168,25 +170,25 @@ msgid ""
 "os.chdir(pybamm.__path__[0] + \"/..\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:111
+#: ../../../source/examples/notebooks/models/SPM.ipynb:106
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:117
+#: ../../../source/examples/notebooks/models/SPM.ipynb:112
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:124
+#: ../../../source/examples/notebooks/models/SPM.ipynb:119
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:135
+#: ../../../source/examples/notebooks/models/SPM.ipynb:130
 msgid "We then create an instance of the SPM:"
 msgstr ""
 
@@ -198,7 +200,7 @@ msgstr ""
 msgid "model = pybamm.lithium_ion.SPM()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:156
+#: ../../../source/examples/notebooks/models/SPM.ipynb:151
 msgid ""
 "The model object is a subtype of `pybamm.BaseModel <https://docs.pybamm.org/"
 "en/stable/source/api/models/base_models/base_model.html>`__, and contains "
@@ -221,33 +223,33 @@ msgid ""
 "equation.visualise(\"spm1.png\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:180
+#: ../../../source/examples/notebooks/models/SPM.ipynb:175
 msgid ""
 "<pre>\n"
 "rhs equation for variable &#39; Throughput capacity [A.h] &#39; is:\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:186
+#: ../../../source/examples/notebooks/models/SPM.ipynb:181
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "rhs equation for variable ' Throughput capacity [A.h] ' is:\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:193
+#: ../../../source/examples/notebooks/models/SPM.ipynb:188
 msgid "rhs equation for variable ' Throughput capacity [A.h] ' is:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:204
+#: ../../../source/examples/notebooks/models/SPM.ipynb:199
 msgid "|spm1|"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:206
+#: ../../../source/examples/notebooks/models/SPM.ipynb:201
 msgid "spm1"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:217
+#: ../../../source/examples/notebooks/models/SPM.ipynb:212
 msgid ""
 "We need a geometry in which to define our model equations. In pybamm this is "
 "represented by the `pybamm.Geometry <https://docs.pybamm.org/en/stable/"
@@ -263,7 +265,7 @@ msgstr ""
 msgid "geometry = model.default_geometry"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:238
+#: ../../../source/examples/notebooks/models/SPM.ipynb:233
 msgid ""
 "This geometry object defines a number of domains, each with its own name, "
 "spatial variables and min/max limits (the latter are represented as "
@@ -288,7 +290,7 @@ msgid ""
 "            print(var, \"=\", rng[\"position\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:266
+#: ../../../source/examples/notebooks/models/SPM.ipynb:261
 msgid ""
 "<pre>\n"
 "SPM domains:\n"
@@ -310,7 +312,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:284
+#: ../../../source/examples/notebooks/models/SPM.ipynb:279
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "SPM domains:\n"
@@ -332,7 +334,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:303
+#: ../../../source/examples/notebooks/models/SPM.ipynb:298
 msgid ""
 "SPM domains:\n"
 "1. negative electrode with variables:\n"
@@ -352,7 +354,7 @@ msgid ""
 "z = 1"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:326
+#: ../../../source/examples/notebooks/models/SPM.ipynb:321
 msgid ""
 "Both the model equations and the geometry include parameters, such as :math:"
 "`L_p`. We can substitute these symbolic parameters in the model with values "
@@ -371,7 +373,7 @@ msgstr ""
 msgid "param = model.default_parameter_values"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:348
+#: ../../../source/examples/notebooks/models/SPM.ipynb:343
 msgid "We can then apply this parameter set to the model and geometry"
 msgstr ""
 
@@ -385,7 +387,7 @@ msgid ""
 "param.process_geometry(geometry)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:370
+#: ../../../source/examples/notebooks/models/SPM.ipynb:365
 msgid ""
 "The next step is to mesh the input geometry. We can do this using the "
 "`pybamm.Mesh <https://docs.pybamm.org/en/stable/source/api/meshes/index."
@@ -395,7 +397,7 @@ msgid ""
 "the number of mesh points."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:372
+#: ../../../source/examples/notebooks/models/SPM.ipynb:367
 msgid ""
 "The default mesh types and the default number of points to use in each "
 "variable for the SPM are:"
@@ -413,7 +415,7 @@ msgid ""
 "    print(var, \"has\", npts, \"mesh points\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:396
+#: ../../../source/examples/notebooks/models/SPM.ipynb:391
 msgid ""
 "<pre>\n"
 "negative electrode is of type Uniform1DSubMesh\n"
@@ -452,7 +454,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:434
+#: ../../../source/examples/notebooks/models/SPM.ipynb:429
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "negative electrode is of type Uniform1DSubMesh\n"
@@ -491,7 +493,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:473
+#: ../../../source/examples/notebooks/models/SPM.ipynb:468
 msgid ""
 "negative electrode is of type Uniform1DSubMesh\n"
 "separator is of type Uniform1DSubMesh\n"
@@ -528,7 +530,7 @@ msgid ""
 "R_p_sec has 30 mesh points"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:516
+#: ../../../source/examples/notebooks/models/SPM.ipynb:511
 msgid "With these defaults, we can then create our mesh of the given geometry:"
 msgstr ""
 
@@ -542,7 +544,7 @@ msgid ""
 "default_var_pts)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:537
+#: ../../../source/examples/notebooks/models/SPM.ipynb:532
 msgid ""
 "The next step is to discretise the model equations using this mesh. We do "
 "this using the `pybamm.Discretisation <https://docs.pybamm.org/en/stable/"
@@ -562,7 +564,7 @@ msgid ""
 "    print(k, \"is discretised using\", method.__class__.__name__, \"method\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:559
+#: ../../../source/examples/notebooks/models/SPM.ipynb:554
 msgid ""
 "<pre>\n"
 "macroscale is discretised using FiniteVolume method\n"
@@ -582,7 +584,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:578
+#: ../../../source/examples/notebooks/models/SPM.ipynb:573
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "macroscale is discretised using FiniteVolume method\n"
@@ -602,7 +604,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:598
+#: ../../../source/examples/notebooks/models/SPM.ipynb:593
 msgid ""
 "macroscale is discretised using FiniteVolume method\n"
 "negative particle is discretised using FiniteVolume method\n"
@@ -620,7 +622,7 @@ msgid ""
 "current collector is discretised using ZeroDimensionalSpatialMethod method"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:622
+#: ../../../source/examples/notebooks/models/SPM.ipynb:617
 msgid ""
 "We then create the ``pybamm.Discretisation`` object, and use this to "
 "discretise the model equations"
@@ -636,7 +638,7 @@ msgid ""
 "disc.process_model(model)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:645
+#: ../../../source/examples/notebooks/models/SPM.ipynb:640
 msgid ""
 "<pre>\n"
 "&lt;pybamm.models.full_battery_models.lithium_ion.spm.SPM at "
@@ -644,7 +646,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:651
+#: ../../../source/examples/notebooks/models/SPM.ipynb:646
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.models.full\\_battery\\_models.lithium\\_ion.spm.SPM at "
@@ -652,11 +654,11 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:658
+#: ../../../source/examples/notebooks/models/SPM.ipynb:653
 msgid "<pybamm.models.full_battery_models.lithium_ion.spm.SPM at 0x1312a7c50>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:669
+#: ../../../source/examples/notebooks/models/SPM.ipynb:664
 msgid ""
 "After this stage, all of the variables in ``model`` have been discretised "
 "into ``pybamm.StateVector`` objects, and spatial operators have been "
@@ -674,15 +676,15 @@ msgstr ""
 msgid "model.concatenated_rhs.children[1].visualise(\"spm2.png\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:690
+#: ../../../source/examples/notebooks/models/SPM.ipynb:685
 msgid "|spm2|"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:694
+#: ../../../source/examples/notebooks/models/SPM.ipynb:689
 msgid "spm2"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:692
+#: ../../../source/examples/notebooks/models/SPM.ipynb:687
 msgid ""
 "Now we are ready to run the time-stepping routine to solve the model. Once "
 "again we use the default ODE solver."
@@ -702,7 +704,7 @@ msgid ""
 "print(\"Finished.\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:720
+#: ../../../source/examples/notebooks/models/SPM.ipynb:715
 msgid ""
 "<pre>\n"
 "Solving using IDAKLUSolver solver...\n"
@@ -710,7 +712,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:727
+#: ../../../source/examples/notebooks/models/SPM.ipynb:722
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Solving using IDAKLUSolver solver{\\ldots}\n"
@@ -718,13 +720,13 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:735
+#: ../../../source/examples/notebooks/models/SPM.ipynb:730
 msgid ""
 "Solving using IDAKLUSolver solver...\n"
 "Finished."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:747
+#: ../../../source/examples/notebooks/models/SPM.ipynb:742
 msgid ""
 "Each model in pybamm has a list of relevant variables defined in the model, "
 "for use in visualising the model solution or for comparison with other "
@@ -742,7 +744,7 @@ msgid ""
 "    print(\"\\t-\", v)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:770
+#: ../../../source/examples/notebooks/models/SPM.ipynb:765
 msgid ""
 "<pre>\n"
 "SPM model variables:\n"
@@ -1321,7 +1323,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:1290
+#: ../../../source/examples/notebooks/models/SPM.ipynb:1285
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "SPM model variables:\n"
@@ -1900,7 +1902,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:1811
+#: ../../../source/examples/notebooks/models/SPM.ipynb:1806
 msgid ""
 "SPM model variables:\n"
 "        - Time [s]\n"
@@ -2477,7 +2479,7 @@ msgid ""
 "        - Total capacity lost to side reactions [A.h]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2336
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2331
 msgid ""
 "To help visualise the results, pybamm provides the ``pybamm."
 "ProcessedVariable`` class, which takes the output of a solver and a "
@@ -2497,7 +2499,7 @@ msgid ""
 "c_s_p_surf = solution[\"Positive particle surface concentration\"]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2359
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2354
 msgid ""
 "One we have these variables in hand, we can begin generating plots using a "
 "library such as Matplotlib. Below we plot the voltage and surface particle "
@@ -2534,7 +2536,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2409
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2404
 msgid ""
 "Some of the output variables are defined over space as well as time. Once "
 "option to visualise these variables is to use the ``interact`` slider "
@@ -2591,14 +2593,14 @@ msgid ""
 ");"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2471
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2466
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"fa4c302f734e486f89b260cd8587bdcf\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2481
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2476
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -2606,7 +2608,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2487
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2482
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
@@ -2614,13 +2616,13 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2494
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2489
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=3600.0, "
 "step=10.0), Output()), _dom_classes=…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2505
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2500
 msgid ""
 "The QuickPlot class can be used to plot the common set of useful outputs "
 "which should give you a good initial overview of the model. The method "
@@ -2637,14 +2639,14 @@ msgid ""
 "quick_plot.dynamic_plot()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2528
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2523
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"0a32857aa4f24e668011f0f1c838414d\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2538
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2533
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -2652,7 +2654,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2544
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2539
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -2660,17 +2662,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2551
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2546
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2563
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2558
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2565
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2560
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -2682,7 +2684,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2586
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2581
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -2715,7 +2717,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2599
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2594
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -2748,7 +2750,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPM.ipynb:2613
+#: ../../../source/examples/notebooks/models/SPM.ipynb:2608
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-12 18:08+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -104,7 +105,7 @@ msgid ""
 "p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:51
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:50
 msgid ""
 "N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0, \\quad \\text{k} \\in \\text{n, "
 "p}, \\quad \\ \\ N_{\\text{s,k}}\\big|_{r_{\\text{k}}=R_{\\text{k}}} =\n"
@@ -116,7 +117,7 @@ msgid ""
 "\\end{cases} \\\\"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:60
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:58
 msgid ""
 "where :math:`D_{\\text{s,k}}` is the diffusion coefficient in the solid, :"
 "math:`N_{\\text{s,k}}` denotes the flux of lithium ions in the solid "
@@ -126,11 +127,11 @@ msgid ""
 "table at the end of this notebook."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:63
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:61
 msgid "Electrolyte:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:65
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:63
 msgid ""
 "\\epsilon_{\\text{k}} \\frac{\\partial c_{\\text{e,k}}}{\\partial t} = -"
 "\\frac{\\partial N_{\\text{e,k}}}{\\partial x} +\n"
@@ -148,13 +149,13 @@ msgid ""
 "\\end{cases}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:81
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:78
 msgid ""
 "N_{\\text{e,n}}\\big|_{x=0} = 0, \\quad N_{\\text{e,p}}\\big|_{x=L}=0, \\\\\n"
 "c_{\\text{e,k}}(x,0) = 0, \\quad \\text{k} \\in \\text{n, s, p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:87
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:83
 msgid ""
 "where :math:`D_{\\text{e}}` is the diffusion coefficient in the solid, :math:"
 "`N_{\\text{e,k}}` denotes the flux of lithium ions in the electrolyte within "
@@ -163,26 +164,27 @@ msgid ""
 "concentration and flux at the electrode/separator interfaces."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:90
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:86
 msgid "Voltage Expression"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:92
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:88
 msgid "The voltage is obtained from the expression:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:94
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:90
 msgid ""
 "V = U_{\\text{eq}} + \\eta_r + \\eta_c + \\Delta\\Phi_{\\text{Elec}} + "
-"\\Delta\\Phi_{\\text{Solid}}"
+"\\Delta\\Phi_{\\text{Solid}}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:99
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:112
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:92
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:104
 msgid "where"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:101
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:94
 msgid ""
 "U_{\\text{eq}} = U_{\\text{p}}(c_{\\text{p}})\\big|_{r_{\\text{p}}=1} - "
 "U_{\\text{n}}(c_{\\text{n}})\\big|_{r_{\\text{n}}=1}, \\\\\n"
@@ -208,7 +210,7 @@ msgid ""
 "{\\sigma_{\\text{p}}} + \\frac{L_{\\text{n}}}{\\sigma_{\\text{n}}} \\right),"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:114
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:106
 msgid ""
 "\\bar{c}_{\\text{e,n}} = \\frac{1}{L_{\\text{n}}}\\int_0^{L_{\\text{n}}} "
 "c_{\\text{e,n}} \\, \\text{d}x, \\quad\n"
@@ -216,15 +218,15 @@ msgid ""
 "c_{\\text{e,p}} \\, \\text{d}x."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:120
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:111
 msgid "More details can be found in `[3] <#References>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:132
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:123
 msgid "Example solving SPMe using PyBaMM"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:143
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:134
 msgid ""
 "Below we show how to solve the SPMe model using the ``Simulation`` class "
 "with all the default settings. For a more detailed example, see the notebook "
@@ -232,7 +234,7 @@ msgid ""
 "examples/notebooks/models/SPM.ipynb>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:145
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:136
 msgid "First we need to import ``pybamm``"
 msgstr ""
 
@@ -247,25 +249,25 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:167
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:158
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:173
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:164
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:180
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:171
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:191
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:182
 msgid "We then load the SPMe model and create a simulation"
 msgstr ""
 
@@ -282,7 +284,7 @@ msgid ""
 "simulation = pybamm.Simulation(model)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:216
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:207
 msgid "The simulation is now ready to be solved"
 msgstr ""
 
@@ -296,25 +298,25 @@ msgid ""
 "simulation.solve([0, 3600])  # time interval in seconds"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:239
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:230
 msgid ""
 "<pre>\n"
 "&lt;pybamm.solvers.solution.Solution at 0x7f2774bea390&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:245
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:236
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.solvers.solution.Solution at 0x7f2774bea390>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:252
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:243
 msgid "<pybamm.solvers.solution.Solution at 0x7f2774bea390>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:263
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:254
 msgid ""
 "To get a quick overview of the model outputs we can use the built-in "
 "``plot`` method of the simulation"
@@ -328,14 +330,14 @@ msgstr ""
 msgid "simulation.plot()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:285
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:276
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"6ec4df1500094dbd8efbf9fd7447d7f1\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:295
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:286
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -343,7 +345,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:301
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:292
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -351,17 +353,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:308
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:299
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:320
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:311
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:322
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:313
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -373,7 +375,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:343
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:334
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -395,7 +397,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:353
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:344
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -417,7 +419,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/SPMe.ipynb:364
+#: ../../../source/examples/notebooks/models/SPMe.ipynb:355
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
