@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -101,10 +102,11 @@ msgstr ""
 #: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:63
 msgid ""
 "\\sqrt{\\frac{1}{n} \\sum_{i=1}^n \\left( \\frac{e_{k,i}}{\\epsilon_r |y_i| "
-"+ \\epsilon_a} \\right)^2 } \\leq 1"
+"+ \\epsilon_a} \\right)^2 } \\leq 1\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:68
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:65
 msgid ""
 "The relative tolerance is used to control the error relative to the current "
 "magnitude of the solution, while the absolute tolerance is used to control "
@@ -114,11 +116,11 @@ msgid ""
 "computed by PyBaMM after the solution is found."
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:71
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:68
 msgid "Default tolerances"
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:73
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:70
 msgid ""
 "The default tolerances for the solvers are always given in the documentation "
 "of each solver. For example, the default tolerances for the IDAKLU solver "
@@ -127,11 +129,11 @@ msgid ""
 "arguments to the solver ``__init__`` method."
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:76
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:73
 msgid "Setting tolerances"
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:78
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:75
 msgid ""
 "Generally, a smaller value for the tolerances will lead to a more accurate "
 "solution, but will also require more computational effort. For examples, "
@@ -203,7 +205,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:162
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:159
 msgid ""
 "Thus, the choice of tolerances is a trade-off between accuracy and "
 "computational time. It can often be difficult to know what tolerances to "
@@ -211,7 +213,7 @@ msgid ""
 "adjust them if the solver is too slow or too inaccurate."
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:164
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:161
 msgid ""
 "You can also use a convergence study to determine the best tolerances for "
 "your problem, using either an analytical solution (if available) or by "
@@ -263,7 +265,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:223
+#: ../../../source/examples/notebooks/performance/05-solver-tolerances.ipynb:220
 msgid ""
 "This gives us some justification that a tolerance of :math:`10^{-4}` is a "
 "good compromise between accuracy and computational time for this problem. "

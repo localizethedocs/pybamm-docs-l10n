@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -200,31 +201,31 @@ msgid ""
 "V_{max} = U_p(y_{100}) - U_n(x_{100})."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:199
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:198
 msgid ""
 "Note that Mohtat et al use :math:`n_{Li} = \\frac{3600 Q_{Li}}{F}` instead. "
 "Then, we find :math:`Q` using"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:201
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:200
 msgid ""
 "V_{min} = U_p(y_{0}) - U_n(x_{0})\n"
 "= U_p\\left(y_{100} + \\frac{Q}{Q_p}\\right) - U_n\\left(x_{100} - \\frac{Q}"
 "{Q_n}\\right)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:207
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:205
 msgid "Finally, :math:`x_0` and :math:`y_0` are simply defined as"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:209
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:207
 msgid ""
 "x_0 = x_{100} - \\frac{Q}{Q_n},\n"
 "\\\\\n"
 "y_0 = y_{100} + \\frac{Q}{Q_p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:216
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:213
 msgid "We implement this in PyBaMM as an algebraic model."
 msgstr ""
 
@@ -303,7 +304,7 @@ msgid ""
 "    print(var, \":\", sol[var].data[0])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:304
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:301
 msgid ""
 "<pre>\n"
 "x_100 : 0.8333742766485323\n"
@@ -314,7 +315,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:314
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:311
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "x\\_100 : 0.8333742766485323\n"
@@ -325,7 +326,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:325
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:322
 msgid ""
 "x_100 : 0.8333742766485323\n"
 "y_100 : 0.03354554691532985\n"
@@ -334,7 +335,7 @@ msgid ""
 "y_0 : 0.8908948803914054"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:340
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:337
 msgid "This is implemented in PyBaMM as the ``ElectrodeSOHSolver`` class"
 msgstr ""
 
@@ -356,7 +357,7 @@ msgid ""
 "    print(var, \":\", esoh_sol[var])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:368
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:365
 msgid ""
 "<pre>\n"
 "x_100 : 0.833374276202919\n"
@@ -367,7 +368,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:378
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:375
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "x\\_100 : 0.833374276202919\n"
@@ -378,7 +379,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:389
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:386
 msgid ""
 "x_100 : 0.833374276202919\n"
 "y_100 : 0.0335455473745959\n"
@@ -387,11 +388,11 @@ msgid ""
 "y_0 : 0.890894880089848"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:405
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:402
 msgid "Check against simulations"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:416
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:413
 msgid ""
 "Plotting the SPM simulations against the eSOH calculations validates the min/"
 "max stoichiometry calculations"
@@ -432,11 +433,11 @@ msgid ""
 "fig.tight_layout()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:472
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:469
 msgid "How does electrode SOH depend on cyclable lithium"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:483
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:480
 msgid ""
 "We can do a parameter sweep for the amount of cyclable lithium to see how it "
 "affects the electrode SOH parameters and cell capacity"
@@ -456,6 +457,7 @@ msgid ""
 "    not in [\n"
 "        \"Xu2019\",\n"
 "        \"Chen2020_composite\",\n"
+"        \"Bonkile2024\",\n"
 "        \"Ecker2015_graphite_halfcell\",\n"
 "        \"OKane2022_graphite_SiOx_halfcell\",\n"
 "    ]\n"
@@ -585,7 +587,7 @@ msgid ""
 "        pass"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:637
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:635
 msgid ""
 "<pre>\n"
 "Ai2020\n"
@@ -601,7 +603,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:652
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:650
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Ai2020\n"
@@ -617,7 +619,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:668
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:666
 msgid ""
 "Ai2020\n"
 "Chen2020\n"
@@ -631,11 +633,11 @@ msgid ""
 "Ramadass2004"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:760
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:758
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:762
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:760
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -647,7 +649,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:783
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:781
 msgid ""
 "<pre>\n"
 "[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
@@ -751,7 +753,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:812
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:810
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
@@ -855,7 +857,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:842
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:840
 msgid ""
 "[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. "
 "Electrochemical thermal-mechanical modelling of stress inhomogeneity in "

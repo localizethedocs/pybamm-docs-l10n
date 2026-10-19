@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -73,29 +74,7 @@ msgstr ""
 msgid "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:35
-msgid ""
-"<pre>\n"
-"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
-"not installed. Falling back to cpu.\n"
-"</pre>"
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:41
-msgid ""
-"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
-"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
-"not installed. Falling back to cpu.\n"
-"\\end{sphinxVerbatim}"
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:48
-msgid ""
-"An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is "
-"not installed. Falling back to cpu."
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:59
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:34
 msgid ""
 "We now need to define the model. In this case we take the ``BasicDFN`` model "
 "for sodium-ion batteries (note how it is called from the ``pybamm."
@@ -111,7 +90,7 @@ msgstr ""
 msgid "model = pybamm.sodium_ion.BasicDFN()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:80
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:55
 msgid ""
 "In order to replicate the results in the COMSOL example, we discharge at "
 "different C-rates and compare the solutions. We loop over the C-rate "
@@ -136,54 +115,54 @@ msgid ""
 "pybamm.dynamic_plot(solutions)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:111
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:86
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
-"\"8ca3353c637e48d28c3b02f42d25fa03\", \"version_major\": 2, "
+"\"791168bebe454067838f748c3ca84f28\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:97
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=10.921202043572972, step=0.10921202043572972…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:103
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=10.921202043572972, step=0.10921202043572972…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:110
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=10.921202043572972, step=0.10921202043572972…"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/sodium-ion.ipynb:122
 msgid ""
 "<pre>\n"
-"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
-"max=10.80914150213347, step=0.1080914150213347),…\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x117425dc0&gt;\n"
 "</pre>"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/sodium-ion.ipynb:128
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
-"interactive(children=(FloatSlider(value=0.0, description='t', "
-"max=10.80914150213347, step=0.1080914150213347),…\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x117425dc0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/sodium-ion.ipynb:135
-msgid ""
-"interactive(children=(FloatSlider(value=0.0, description='t', "
-"max=10.80914150213347, step=0.1080914150213347),…"
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x117425dc0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:147
-msgid ""
-"<pre>\n"
-"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7f9763ff3e90&gt;\n"
-"</pre>"
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:153
-msgid ""
-"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
-"<pybamm.plotting.quick\\_plot.QuickPlot at 0x7f9763ff3e90>\n"
-"\\end{sphinxVerbatim}"
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:160
-msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7f9763ff3e90>"
-msgstr ""
-
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:171
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:146
 msgid ""
 "We can now perform a manual plot of voltage versus capacity, to compare the "
 "results with the COMSOL example."
@@ -215,7 +194,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:218
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:193
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -247,7 +226,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:231
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:206
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -279,7 +258,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:245
+#: ../../../source/examples/notebooks/models/sodium-ion.ipynb:220
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

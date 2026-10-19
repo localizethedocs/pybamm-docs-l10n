@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -234,10 +235,11 @@ msgstr ""
 msgid ""
 "U = \\text{sigmoid}\\left(-\\frac{KI(t)}{Q_{\\text{cell}}}\\right) "
 "U_{\\text{delith}} + \\text{sigmoid}\\left(\\frac{KI(t)}"
-"{Q_{\\text{cell}}}\\right) U_{\\text{lith}}"
+"{Q_{\\text{cell}}}\\right) U_{\\text{lith}}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:115
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:113
 msgid ""
 "Where :math:`K` is a fitting parameter (in the current implementation this "
 "is hard-coded to 100, as in the original publication), :math:`I` is the cell "
@@ -246,18 +248,18 @@ msgid ""
 "the hysteresis state variable :math:`h` given by"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:117
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:115
 msgid ""
 "h(t) = 1 - 2 \\, \\text{sigmoid}\\left(-\\frac{KI(t)}"
 "{Q_{\\text{cell}}}\\right).\n"
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:129
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:127
 msgid "Comparing the different hysteresis state models"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:131
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:129
 msgid ""
 "We now compare the behavior of the different hysteresis state models. First "
 "we define the models, which are all based on the DFN model with a composite "
@@ -304,7 +306,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:177
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:175
 msgid ""
 "Next we define the parameter set, which is for a graphite and silicon "
 "negative electrode with a NMC positive electrode. We add some thermal "
@@ -344,7 +346,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:218
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:216
 msgid ""
 "Next, we need to add the additional parameters required by the model. In "
 "this example, :math:`K_{\\text{lith}} = K_{\\text{delith}} = 100` for the HS "
@@ -391,7 +393,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:264
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:262
 msgid ""
 "Then we define the experiment, which is a discharge and charge cycle at 1C."
 msgstr ""
@@ -415,7 +417,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:295
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:293
 msgid "We then loop over the models and solve them."
 msgstr ""
 
@@ -434,7 +436,7 @@ msgid ""
 "    solutions[name] = sim.solve(calc_esoh=False)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:321
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:319
 msgid "Finally, we plot the results."
 msgstr ""
 
@@ -464,14 +466,14 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:361
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:359
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"5efa147c8cf44c7db96697dfdda4e610\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:372
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:370
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -479,7 +481,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:378
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:376
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -487,31 +489,31 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:385
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:383
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=3.041045468063589, step=0.03041045468063589)…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:397
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:395
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x32a3cf2f0&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:403
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:401
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x32a3cf2f0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:410
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:408
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x32a3cf2f0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:421
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:419
 msgid ""
 "We see that both one-state hysteresis models include a decay time for the "
 "hysteresis state variable :math:`h`, and that they \"stick\" the "
