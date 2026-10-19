@@ -1,0 +1,451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/solvers/idaklu_solver.rst:2
+msgid "IDAKLU Solver"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:1
+msgid ""
+"Solve a discretised model, using sundials with the KLU sparse linear solver."
+msgstr ""
+
+#: ../../../source/api/solvers/idaklu_solver.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:3
+msgid "The relative tolerance for the solver (default is 1e-4)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:5
+msgid "The absolute tolerance for the solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:7
+msgid ""
+"The method to use to find initial conditions (for DAE solvers). Default is "
+"None, which uses a custom Newton solver for consistent initial conditions "
+"(recommended). If \"casadi\", the solver uses casadi's Newton rootfinding "
+"algorithm as a fallback. Otherwise, the solver uses 'scipy.optimize.root' "
+"with method specified by 'root_method' (e.g. \"lm\", \"hybr\", ...)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:14
+msgid "The tolerance for the initial-condition solver (default is 1e-6)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:16
+msgid ""
+"The tolerance to assert whether extrapolation occurs or not (default is 0)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:18
+msgid ""
+"What to do if the solver is extrapolating. Options are \"warn\", \"error\", "
+"or \"ignore\". Default is \"warn\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:21
+msgid ""
+"What to do if a solver error flag occurs. Options are \"warn\", \"error\", "
+"or \"ignore\". Default is \"error\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:24
+msgid ""
+"List of variables to calculate and return. If none are specified then the "
+"complete state vector is returned (can be very large) (default is [])"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:27
+msgid ""
+"If True, only the first and last sample of each integration window are "
+"stored (one experiment step in :meth:`pybamm.Simulation.solve`, or the full "
+"``[t_eval[0], t_eval[-1]]`` window in :meth:`solve`). Intended for memory-"
+"light long experiments whose post-processing only reads per-step first/last "
+"values. Note: with this flag on, IDAKLU's Hermite interpolation is disabled "
+"(see :attr:`options[\"hermite_interpolation\"]`) and any query at a non-"
+"endpoint time within a step falls back to linear interpolation across the "
+"whole step, so this flag is **not** appropriate when post-processing queries "
+"an intra-step time. Default is False."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:38
+msgid ""
+"Addititional options to pass to the solver, by default:  .. code-block:: "
+"python      options = {         # Print statistics of the solver after every "
+"solve         \"print_stats\": False,         # If ``True``, ahead-of-time "
+"compile each casadi ``Function``         # to a shared library via the "
+"system C compiler (see         # :mod:`pybamm.codegen.compilation`). If "
+"``False`` (default)         # the casadi in-process virtual machine is "
+"used.         \"compile\": False,         # Number of threads available for "
+"OpenMP (must be greater than or equal to `num_solvers`)         "
+"\"num_threads\": 1,         # Number of solvers to use in parallel (for "
+"solving multiple sets of input parameters in parallel)         "
+"\"num_solvers\": num_threads,         ## Linear solver interface         # "
+"name of sundials linear solver to use options are: "
+"\"SUNLinSol_KLU\",         # \"SUNLinSol_Dense\", \"SUNLinSol_Band\", "
+"\"SUNLinSol_SPBCGS\",         # \"SUNLinSol_SPFGMR\", \"SUNLinSol_SPGMR\", "
+"\"SUNLinSol_SPTFQMR\",         \"linear_solver\": \"SUNLinSol_KLU\",         "
+"# Jacobian form, can be \"none\", \"dense\",         # \"banded\", "
+"\"sparse\", \"matrix-free\"         \"jacobian\": \"sparse\",         # "
+"Preconditioner for iterative solvers, can be \"none\", \"BBDP\"         "
+"\"preconditioner\": \"BBDP\",         # For iterative linear solver "
+"preconditioner, bandwidth of         # approximate jacobian         "
+"\"precon_half_bandwidth\": 5,         # For iterative linear solver "
+"preconditioner, bandwidth of         # approximate jacobian that is "
+"kept         \"precon_half_bandwidth_keep\": 5,         # For iterative "
+"linear solvers, max number of iterations         \"linsol_max_iterations\": "
+"5,         # Ratio between linear and nonlinear tolerances         "
+"\"epsilon_linear_tolerance\": 0.05,         # Increment factor used in DQ "
+"Jacobian-vector product approximation         \"increment_factor\": "
+"1.0,         # Enable or disable linear solution scaling         "
+"\"linear_solution_scaling\": True,         # Silence Sundials errors during "
+"solve         \"silence_sundials_errors\": False,         ## Main "
+"solver         # Maximum order of the linear multistep method         "
+"\"max_order_bdf\": 5,         # Maximum number of steps to be taken by the "
+"solver in its attempt to         # reach the next output time.         # "
+"Note: this value differs from the IDA default of 500         "
+"\"max_num_steps\": 100000,         # Initial step size. The solver default "
+"is used if this is left at 0.0         \"dt_init\": 0.0,         # Minimum "
+"absolute step size. The solver default is used if this is         # left at "
+"0.0         \"dt_min\": 0.0,         # Maximum absolute step size. The "
+"solver default is used if this is         # left at 0.0         \"dt_max\": "
+"0.0,         # Maximum number of error test failures in attempting one "
+"step         \"max_error_test_failures\": 10,         # Maximum number of "
+"nonlinear solver iterations at one step         # Note: this value differs "
+"from the IDA default of 4         \"max_nonlinear_iterations\": 40,         "
+"# Maximum number of nonlinear solver convergence failures at one "
+"step         # Note: this value differs from the IDA default of 10         "
+"\"max_convergence_failures\": 100,         # Safety factor in the nonlinear "
+"convergence test         \"nonlinear_convergence_coefficient\": "
+"0.33,         # Suppress algebraic variables from error test         "
+"\"suppress_algebraic_error\": False,         # Store Hermite interpolation "
+"data for the solution.         # Note: this option is always disabled if "
+"output_variables are given         # or if t_interp values are "
+"specified         \"hermite_interpolation\": True,         # Setting "
+"hermite_reduction_factor > 1.0 compresses the solution size         # by "
+"introducing a small amount of error to the Hermite spline         # "
+"interpolant. A value of `2.0` roughly corresponds to a maximum 2x         # "
+"increase in error (practically the error is much smaller), while         # "
+"reducing the number of saved states by around 5-6x. This option is         # "
+"only active if `hermite_interpolation` is True and sensitivities         # "
+"are disabled.         \"hermite_reduction_factor\": 1.0,         ## Initial "
+"conditions calculation         # Positive constant in the Newton iteration "
+"convergence test within the         # initial condition calculation         "
+"\"nonlinear_convergence_coefficient_ic\": 0.0033,         # Maximum number "
+"of steps allowed when `init_all_y_ic = False`         # Note: this value "
+"differs from the IDA default of 5         \"max_num_steps_ic\": 50,         "
+"# Maximum number of the approximate Jacobian or preconditioner "
+"evaluations         # allowed when the Newton iteration appears to be slowly "
+"converging         # Note: this value differs from the IDA default of "
+"4         \"max_num_jacobians_ic\": 40,         # Maximum number of Newton "
+"iterations allowed in any one attempt to solve         # the initial "
+"conditions calculation problem         # Note: this value differs from the "
+"IDA default of 10         \"max_num_iterations_ic\": 100,         # Maximum "
+"number of linesearch backtracks allowed in any Newton iteration,         # "
+"when solving the initial conditions calculation problem         "
+"\"max_linesearch_backtracks_ic\": 5,         # Turn off linesearch         "
+"\"linesearch_off_ic\": False,         # How to calculate the initial "
+"conditions.         # \"True\": calculate all y0 given ydot0         # "
+"\"False\": calculate y_alg0 and ydot_diff0 given y_diff0         "
+"\"init_all_y_ic\": False,         # Internally calculate consistent initial "
+"conditions         \"calc_ic\": True,         ## Newton IC solver         # "
+"\"auto\": use dedicated sub-block solver when possible.         #         "
+"This can result in a potentially smaller system of only the         "
+"#         algebraic variables. Requires a direct linear solver and         "
+"#         a standard form DAE.         # \"full\": always use IDA's full-"
+"system linear solve. This uses the full         #         system of "
+"equationd and can handle non-standard form DAEs and         #         all "
+"classes of linear solvers/         \"newton_mode\": \"auto\",         ## "
+"Early termination         # Maximum number of consecutive steps allowed "
+"without advancing         # the solution time by at least `t_no_progress` "
+"seconds.         # If set to 0, this feature is disabled.         "
+"\"num_steps_no_progress\": 0,         # Minimum required time advancement "
+"(in seconds) after         # `num_steps_no_progress` consecutive "
+"steps.         # If set to 0.0, this feature is disabled.         "
+"\"t_no_progress\": 0.0,     }  Note: These options only have an effect if "
+"model.convert_to_format == 'casadi'"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:38
+msgid "Addititional options to pass to the solver, by default:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:40
+msgid ""
+"options = {\n"
+"    # Print statistics of the solver after every solve\n"
+"    \"print_stats\": False,\n"
+"    # If ``True``, ahead-of-time compile each casadi ``Function``\n"
+"    # to a shared library via the system C compiler (see\n"
+"    # :mod:`pybamm.codegen.compilation`). If ``False`` (default)\n"
+"    # the casadi in-process virtual machine is used.\n"
+"    \"compile\": False,\n"
+"    # Number of threads available for OpenMP (must be greater than or equal "
+"to `num_solvers`)\n"
+"    \"num_threads\": 1,\n"
+"    # Number of solvers to use in parallel (for solving multiple sets of "
+"input parameters in parallel)\n"
+"    \"num_solvers\": num_threads,\n"
+"    ## Linear solver interface\n"
+"    # name of sundials linear solver to use options are: \"SUNLinSol_KLU\",\n"
+"    # \"SUNLinSol_Dense\", \"SUNLinSol_Band\", \"SUNLinSol_SPBCGS\",\n"
+"    # \"SUNLinSol_SPFGMR\", \"SUNLinSol_SPGMR\", \"SUNLinSol_SPTFQMR\",\n"
+"    \"linear_solver\": \"SUNLinSol_KLU\",\n"
+"    # Jacobian form, can be \"none\", \"dense\",\n"
+"    # \"banded\", \"sparse\", \"matrix-free\"\n"
+"    \"jacobian\": \"sparse\",\n"
+"    # Preconditioner for iterative solvers, can be \"none\", \"BBDP\"\n"
+"    \"preconditioner\": \"BBDP\",\n"
+"    # For iterative linear solver preconditioner, bandwidth of\n"
+"    # approximate jacobian\n"
+"    \"precon_half_bandwidth\": 5,\n"
+"    # For iterative linear solver preconditioner, bandwidth of\n"
+"    # approximate jacobian that is kept\n"
+"    \"precon_half_bandwidth_keep\": 5,\n"
+"    # For iterative linear solvers, max number of iterations\n"
+"    \"linsol_max_iterations\": 5,\n"
+"    # Ratio between linear and nonlinear tolerances\n"
+"    \"epsilon_linear_tolerance\": 0.05,\n"
+"    # Increment factor used in DQ Jacobian-vector product approximation\n"
+"    \"increment_factor\": 1.0,\n"
+"    # Enable or disable linear solution scaling\n"
+"    \"linear_solution_scaling\": True,\n"
+"    # Silence Sundials errors during solve\n"
+"    \"silence_sundials_errors\": False,\n"
+"    ## Main solver\n"
+"    # Maximum order of the linear multistep method\n"
+"    \"max_order_bdf\": 5,\n"
+"    # Maximum number of steps to be taken by the solver in its attempt to\n"
+"    # reach the next output time.\n"
+"    # Note: this value differs from the IDA default of 500\n"
+"    \"max_num_steps\": 100000,\n"
+"    # Initial step size. The solver default is used if this is left at 0.0\n"
+"    \"dt_init\": 0.0,\n"
+"    # Minimum absolute step size. The solver default is used if this is\n"
+"    # left at 0.0\n"
+"    \"dt_min\": 0.0,\n"
+"    # Maximum absolute step size. The solver default is used if this is\n"
+"    # left at 0.0\n"
+"    \"dt_max\": 0.0,\n"
+"    # Maximum number of error test failures in attempting one step\n"
+"    \"max_error_test_failures\": 10,\n"
+"    # Maximum number of nonlinear solver iterations at one step\n"
+"    # Note: this value differs from the IDA default of 4\n"
+"    \"max_nonlinear_iterations\": 40,\n"
+"    # Maximum number of nonlinear solver convergence failures at one step\n"
+"    # Note: this value differs from the IDA default of 10\n"
+"    \"max_convergence_failures\": 100,\n"
+"    # Safety factor in the nonlinear convergence test\n"
+"    \"nonlinear_convergence_coefficient\": 0.33,\n"
+"    # Suppress algebraic variables from error test\n"
+"    \"suppress_algebraic_error\": False,\n"
+"    # Store Hermite interpolation data for the solution.\n"
+"    # Note: this option is always disabled if output_variables are given\n"
+"    # or if t_interp values are specified\n"
+"    \"hermite_interpolation\": True,\n"
+"    # Setting hermite_reduction_factor > 1.0 compresses the solution size\n"
+"    # by introducing a small amount of error to the Hermite spline\n"
+"    # interpolant. A value of `2.0` roughly corresponds to a maximum 2x\n"
+"    # increase in error (practically the error is much smaller), while\n"
+"    # reducing the number of saved states by around 5-6x. This option is\n"
+"    # only active if `hermite_interpolation` is True and sensitivities\n"
+"    # are disabled.\n"
+"    \"hermite_reduction_factor\": 1.0,\n"
+"    ## Initial conditions calculation\n"
+"    # Positive constant in the Newton iteration convergence test within the\n"
+"    # initial condition calculation\n"
+"    \"nonlinear_convergence_coefficient_ic\": 0.0033,\n"
+"    # Maximum number of steps allowed when `init_all_y_ic = False`\n"
+"    # Note: this value differs from the IDA default of 5\n"
+"    \"max_num_steps_ic\": 50,\n"
+"    # Maximum number of the approximate Jacobian or preconditioner "
+"evaluations\n"
+"    # allowed when the Newton iteration appears to be slowly converging\n"
+"    # Note: this value differs from the IDA default of 4\n"
+"    \"max_num_jacobians_ic\": 40,\n"
+"    # Maximum number of Newton iterations allowed in any one attempt to "
+"solve\n"
+"    # the initial conditions calculation problem\n"
+"    # Note: this value differs from the IDA default of 10\n"
+"    \"max_num_iterations_ic\": 100,\n"
+"    # Maximum number of linesearch backtracks allowed in any Newton "
+"iteration,\n"
+"    # when solving the initial conditions calculation problem\n"
+"    \"max_linesearch_backtracks_ic\": 5,\n"
+"    # Turn off linesearch\n"
+"    \"linesearch_off_ic\": False,\n"
+"    # How to calculate the initial conditions.\n"
+"    # \"True\": calculate all y0 given ydot0\n"
+"    # \"False\": calculate y_alg0 and ydot_diff0 given y_diff0\n"
+"    \"init_all_y_ic\": False,\n"
+"    # Internally calculate consistent initial conditions\n"
+"    \"calc_ic\": True,\n"
+"    ## Newton IC solver\n"
+"    # \"auto\": use dedicated sub-block solver when possible.\n"
+"    #         This can result in a potentially smaller system of only the\n"
+"    #         algebraic variables. Requires a direct linear solver and\n"
+"    #         a standard form DAE.\n"
+"    # \"full\": always use IDA's full-system linear solve. This uses the "
+"full\n"
+"    #         system of equationd and can handle non-standard form DAEs and\n"
+"    #         all classes of linear solvers/\n"
+"    \"newton_mode\": \"auto\",\n"
+"    ## Early termination\n"
+"    # Maximum number of consecutive steps allowed without advancing\n"
+"    # the solution time by at least `t_no_progress` seconds.\n"
+"    # If set to 0, this feature is disabled.\n"
+"    \"num_steps_no_progress\": 0,\n"
+"    # Minimum required time advancement (in seconds) after\n"
+"    # `num_steps_no_progress` consecutive steps.\n"
+"    # If set to 0.0, this feature is disabled.\n"
+"    \"t_no_progress\": 0.0,\n"
+"}"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:165
+msgid ""
+"Note: These options only have an effect if model.convert_to_format == "
+"'casadi'"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver:168
+msgid "**Extends:** :class:`pybamm.solvers.base_solver.BaseSolver`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:1
+msgid "JAXify the solver object"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:3
+msgid "Creates a JAX expression representing the IDAKLU-wrapped solver object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:6
+msgid "The model to be solved"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:8
+#: pybamm.solvers.idaklu_solver.IDAKLUSolver.set_up:8
+msgid ""
+"The times at which to stop the integration due to a discontinuity in time."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:10
+msgid ""
+"The variables to be returned. If None, all variables in the model are used."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:12
+msgid "Whether to calculate sensitivities. Default is True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.jaxify:14
+msgid ""
+"The times (in seconds) at which to interpolate the solution. Defaults to "
+"`None`, which returns the adaptive time-stepping times."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:1
+msgid "Reduce knots in a pybamm.Solution using Hermite spline compression."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:3
+msgid ""
+"The multiplier M controls the total error budget relative to the solver's "
+"own WRMS tolerance.  The knot reducer is allowed an additional WRMS error of "
+"(M-1), so the total error satisfies ``||e_total||_WRMS <= M``.  M = 2 "
+"(default) means the reduced solution may have up to 2x the solver's local "
+"error."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:9
+msgid ""
+"The solution to reduce. Must have hermite interpolation data (all_yps is not "
+"None)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:12
+msgid ""
+"Total error multiplier (>= 1.0, default 2.0). The knot reducer's WRMS "
+"threshold is N * (M-1)^2. Larger values allow more aggressive reduction."
+msgstr ""
+
+#: ../../../source/api/solvers/idaklu_solver.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:17
+msgid "The modified solution."
+msgstr ""
+
+#: ../../../source/api/solvers/idaklu_solver.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.reduce_solution:18
+msgid ":class:`pybamm.Solution`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.set_up:1
+msgid "Unpack model, perform checks, and calculate jacobian."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.set_up:3
+msgid ""
+"The model whose solution to calculate. Must have attributes rhs and "
+"initial_conditions"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/idaklu_solver.py:docstring
+#: of pybamm.solvers.idaklu_solver.IDAKLUSolver.set_up:6
+msgid "Any input parameters to pass to the model when solving"
+msgstr ""

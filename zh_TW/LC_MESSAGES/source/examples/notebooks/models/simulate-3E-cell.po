@@ -1,0 +1,319 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/simulate-3E-cell.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/simulate-3E-cell.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:9
+msgid "Simulating a 3E cell"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:11
+msgid ""
+"In this notebook we show how to insert a reference electrode to mimic a 3E "
+"cell."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:33
+msgid ""
+"<pre>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:39
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:46
+msgid "Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:57
+msgid "We first load a model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "model = pybamm.lithium_ion.DFN()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:78
+msgid ""
+"Next we use the helper function ``insert_reference_electrode`` to insert a "
+"reference electrode into the model. This function takes the position of the "
+"reference electrode as an optional argument. If no position is given, the "
+"reference electrode is inserted at the midpoint of the separator. The helper "
+"function adds the new variables \"Reference electrode potential [V]\", "
+"\"Negative electrode 3E potential [V]\" and \"Positive electrode 3E "
+"potential [V]\" to the model."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:80
+msgid ""
+"In this example we will explicitly pass a position to show how it is done"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid ""
+"L_n = model.param.n.L  # Negative electrode thickness [m]\n"
+"L_s = model.param.s.L  # Separator thickness [m]\n"
+"L_ref = L_n + L_s / 2  # Reference electrode position [m]\n"
+"\n"
+"model.insert_reference_electrode(L_ref)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:105
+msgid "Next we can set up a simulation and solve the model as usual"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid ""
+"sim = pybamm.Simulation(model)\n"
+"sim.solve([0, 3600])"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:128
+msgid ""
+"<pre>\n"
+"&lt;pybamm.solvers.solution.Solution at 0x169dc5950&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:134
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.solvers.solution.Solution at 0x169dc5950>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:141
+msgid "<pybamm.solvers.solution.Solution at 0x169dc5950>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:152
+msgid ""
+"Let's plot a comparison of the 3E potentials and the potential difference "
+"between the solid and electrolyte phases at the electrode/separator "
+"interfaces"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid ""
+"sim.plot(\n"
+"    [\n"
+"        [\n"
+"            \"Negative electrode surface potential difference at separator "
+"interface [V]\",\n"
+"            \"Negative electrode 3E potential [V]\",\n"
+"        ],\n"
+"        [\n"
+"            \"Positive electrode surface potential difference at separator "
+"interface [V]\",\n"
+"            \"Positive electrode 3E potential [V]\",\n"
+"        ],\n"
+"        \"Voltage [V]\",\n"
+"    ]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:187
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"d1f4e1ed03764660b87ee56b135b24a7\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:198
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=1.0, step=0.01), Output()), _dom_classes=(&#39;w…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:204
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), \\_dom\\_classes=('w…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:211
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
+"step=0.01), Output()), _dom_classes=('w…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:223
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x169816a90&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:229
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x169816a90>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:236
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x169816a90>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:257
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:268
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:280
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic "
+"charge and discharge of the lithium/polymer/insertion cell. Journal of the "
+"Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.\n"
+"[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. "
+"Jon Chapman. An asymptotic derivation of a single particle model with "
+"electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, "
+"2019. doi:10.1149/2.0341915jes.\n"
+"[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/simulate-3E-cell.ipynb:-1
+msgid "[ ]:"
+msgstr ""

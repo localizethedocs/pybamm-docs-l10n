@@ -1,0 +1,574 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/jelly-roll-model.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/jelly-roll-model.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:9
+msgid "Jelly roll model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:11
+msgid ""
+"In this notebook we show how to set up and solve the \"two-potential\" model "
+"from \"Homogenisation of spirally-wound high-contrast layered materials\", "
+"S. Psaltis, R. Timms, C.P. Please, S.J. Chapman, SIAM Journal on Applied "
+"Mathematics, 2020."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:13
+msgid ""
+"We consider a spirally-wound cell, such as the common 18650 lithium-ion "
+"cell. In practice these cells are constructed by rolling a sandwich of "
+"layers containing the active cathode, positive current collector, active "
+"cathode, separator, active anode, negative current collector, active anode, "
+"and separator. The \"two-potential\" model consists of an equation for the "
+"potential :math:`\\phi^\\pm` in each current collector. The potential "
+"difference drives a current :math:`I` through the electrode/separator/"
+"electrode sandwich (which we refer to as the \"active material\" in the "
+"original paper). Thus, in non-dimensional form, the model is"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:16
+msgid ""
+"\\frac{\\delta^+\\sigma^+}{2\\pi^2}\\frac{1}{r}\\frac{\\mathrm{d}}"
+"{\\mathrm{d}r}\\left(\\frac{1}{r}\\frac{\\mathrm{d}\\phi^+}{\\mathrm{d}"
+"r}\\right) + 2I(\\phi^+-\\phi^-) = 0,\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:18
+msgid ""
+"\\frac{\\delta^-\\sigma^-}{2\\pi^2}\\frac{1}{r}\\frac{\\mathrm{d}}"
+"{\\mathrm{d}r}\\left(\\frac{1}{r}\\frac{\\mathrm{d}\\phi^-}{\\mathrm{d}"
+"r}\\right) - 2I(\\phi^+-\\phi^-) = 0,\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:20
+msgid "with boundary conditions"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:22
+msgid ""
+"\\frac{\\mathrm{d}\\phi^+}{\\mathrm{d}r}(r=r_0) = 0, \\quad \\phi^+(r=1) = "
+"1, \\quad \\phi^-(r=0) = 0, \\quad \\frac{\\mathrm{d}\\phi^-}{\\mathrm{d}r}"
+"(r=1) = 0.\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:24
+msgid ""
+"For a complete description of the model and parameters, please refer to the "
+"original paper."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:26
+msgid ""
+"It can be shown that the active material can be modelled using any 1D "
+"battery model we like to describe the electrochemical/thermal behaviour in "
+"the electrode/separator/electrode sandwich. Such functionality will be added "
+"to PyBaMM in a future release and will enable efficient simulations of jelly "
+"roll cells."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:38
+msgid "Two-potential resistor model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:40
+msgid ""
+"In this section we consider a simplified model in which we ignore the "
+"details of the anode, cathode and separator, and treat them as a single "
+"region of active material, modelled as an Ohmic conductor, with two such "
+"regions per winding. In this case the model becomes"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:42
+msgid ""
+"\\frac{\\delta^+\\sigma^+}{2\\pi^2}\\frac{1}{r}\\frac{\\mathrm{d}}"
+"{\\mathrm{d}r}\\left(\\frac{1}{r}\\frac{\\mathrm{d}\\phi^+}{\\mathrm{d}"
+"r}\\right) + \\frac{2\\sigma^{a}(\\phi^--\\phi^+)}{l\\epsilon^4} = 0,\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:44
+msgid ""
+"\\frac{\\delta^-\\sigma^-}{2\\pi^2}\\frac{1}{r}\\frac{\\mathrm{d}}"
+"{\\mathrm{d}r}\\left(\\frac{1}{r}\\frac{\\mathrm{d}\\phi^-}{\\mathrm{d}"
+"r}\\right) - \\frac{2\\sigma^{a}(\\phi^--\\phi^+)}{l\\epsilon^4} = 0,\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:46
+msgid "along with the same boundary conditions."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:48
+msgid "We begin by importing PyBaMM along with some other useful packages"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[1]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import matplotlib.pyplot as plt\n"
+"import numpy as np\n"
+"from numpy import pi\n"
+"\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:74
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">23.3.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">23.3.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:83
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{23.3.1} -> \\textcolor{ansi-green}{23.3.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:93
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m23.3.1[0m[39;49m -> [0m[32;49m23.3.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:107
+msgid ""
+"First we will define the parameters in the model. Note the model is posed in "
+"non-dimensional form."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[2]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"N = pybamm.Parameter(\"Number of winds\")\n"
+"r0 = pybamm.Parameter(\"Inner radius\")\n"
+"eps = (1 - r0) / N  # ratio of sandwich thickness to cell radius\n"
+"delta = pybamm.Parameter(\"Current collector thickness\")\n"
+"delta_p = delta  # assume same thickness\n"
+"delta_n = delta  # assume same thickness\n"
+"l = 1 / 2 - delta_p - delta_n  # active material thickness\n"
+"sigma_p = pybamm.Parameter(\"Positive current collector conductivity\")\n"
+"sigma_n = pybamm.Parameter(\"Negative current collector conductivity\")\n"
+"sigma_a = pybamm.Parameter(\"Active material conductivity\")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:137
+msgid "Next we define our geometry and model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[3]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# geometry\n"
+"r = pybamm.SpatialVariable(\"radius\", domain=\"cell\", "
+"coord_sys=\"cylindrical polar\")\n"
+"geometry = {\"cell\": {r: {\"min\": r0, \"max\": 1}}}\n"
+"\n"
+"# model\n"
+"model = pybamm.BaseModel()\n"
+"phi_p = pybamm.Variable(\"Positive potential\", domain=\"cell\")\n"
+"phi_n = pybamm.Variable(\"Negative potential\", domain=\"cell\")\n"
+"\n"
+"A_p = (2 * sigma_a / eps**4 / l) / (delta_p * sigma_p / 2 / pi**2)\n"
+"A_n = (2 * sigma_a / eps**4 / l) / (delta_n * sigma_n / 2 / pi**2)\n"
+"model.algebraic = {\n"
+"    phi_p: pybamm.div((1 / r**2) * pybamm.grad(phi_p)) + A_p * (phi_n - "
+"phi_p),\n"
+"    phi_n: pybamm.div((1 / r**2) * pybamm.grad(phi_n)) - A_n * (phi_n - "
+"phi_p),\n"
+"}\n"
+"\n"
+"model.boundary_conditions = {\n"
+"    phi_p: {\n"
+"        \"left\": (0, \"Neumann\"),\n"
+"        \"right\": (1, \"Dirichlet\"),\n"
+"    },\n"
+"    phi_n: {\n"
+"        \"left\": (0, \"Dirichlet\"),\n"
+"        \"right\": (0, \"Neumann\"),\n"
+"    },\n"
+"}\n"
+"\n"
+"model.initial_conditions = {phi_p: 1, phi_n: 0}  # initial guess for solver\n"
+"\n"
+"model.variables = {\"Negative potential\": phi_n, \"Positive potential\": "
+"phi_p}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:187
+msgid ""
+"Next we provide values for our parameters, and process our geometry and "
+"model, thus replacing the ``Parameter`` symbols with numerical values"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[4]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"params = pybamm.ParameterValues(\n"
+"    {\n"
+"        \"Number of winds\": 20,\n"
+"        \"Inner radius\": 0.25,\n"
+"        \"Current collector thickness\": 0.05,\n"
+"        \"Positive current collector conductivity\": 5e6,\n"
+"        \"Negative current collector conductivity\": 5e6,\n"
+"        \"Active material conductivity\": 1,\n"
+"    }\n"
+")\n"
+"params.process_geometry(geometry)\n"
+"params.process_model(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:220
+msgid ""
+"<pre>\n"
+"&lt;pybamm.models.base_model.BaseModel at 0x280b0ed90&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:226
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.models.base\\_model.BaseModel at 0x280b0ed90>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:233
+msgid "<pybamm.models.base_model.BaseModel at 0x280b0ed90>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:244
+msgid ""
+"We choose to discretise in space using the Finite Volume method on a uniform "
+"grid"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[5]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# mesh\n"
+"submesh_types = {\"cell\": pybamm.Uniform1DSubMesh}\n"
+"var_pts = {r: 100}\n"
+"mesh = pybamm.Mesh(geometry, submesh_types, var_pts)\n"
+"# method\n"
+"spatial_methods = {\"cell\": pybamm.FiniteVolume()}\n"
+"# discretise\n"
+"disc = pybamm.Discretisation(mesh, spatial_methods)\n"
+"disc.process_model(model);"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:273
+msgid "We can now solve the model"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[6]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# solver\n"
+"solver = pybamm.CasadiAlgebraicSolver()\n"
+"solution = solver.solve(model)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:296
+msgid ""
+"The model gives the homogenised potentials in the negative a positive "
+"current collectors. Interestingly, the solid potential has microscale "
+"structure, varying linearly in the active material. In order to see this we "
+"need to post-process the solution and plot the potential as a function of "
+"radial position, being careful to capture the spiral geometry."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[7]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# extract numerical parameter values\n"
+"# Note: this overrides the definition of the `pybamm.Parameter` objects\n"
+"N = params.evaluate(N)\n"
+"r0 = params.evaluate(r0)\n"
+"eps = params.evaluate(eps)\n"
+"delta = params.evaluate(delta)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[8]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# post-process homogenised potential\n"
+"phi_n = solution[\"Negative potential\"]\n"
+"phi_p = solution[\"Positive potential\"]\n"
+"\n"
+"\n"
+"def alpha(r):\n"
+"    return 2 * (phi_n(r=r) - phi_p(r=r))\n"
+"\n"
+"\n"
+"def phi_am1(r, theta):\n"
+"    # careful here - phi always returns a column vector so we need to add a "
+"new axis to r to get the right shape\n"
+"    return alpha(r) * (r[:, np.newaxis] / eps - r0 / eps - delta - theta / "
+"2 / pi) / (\n"
+"        1 - 4 * delta\n"
+"    ) + phi_p(r=r)\n"
+"\n"
+"\n"
+"def phi_am2(r, theta):\n"
+"    # careful here - phi always returns a column vector so we need to add a "
+"new axis to r to get the right shape\n"
+"    return alpha(r) * (\n"
+"        r0 / eps + 1 - delta + theta / 2 / pi - r[:, np.newaxis] / eps\n"
+"    ) / (1 - 4 * delta) + phi_p(r=r)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[9]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# define spiral\n"
+"\n"
+"\n"
+"def spiral_pos_inner(t):\n"
+"    return r0 - eps * delta + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_pos_outer(t):\n"
+"    return r0 + eps * delta + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_neg_inner(t):\n"
+"    return r0 - eps * delta + eps / 2 + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_neg_outer(t):\n"
+"    return r0 + eps * delta + eps / 2 + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_am1_inner(t):\n"
+"    return r0 + eps * delta + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_am1_outer(t):\n"
+"    return r0 - eps * delta + eps / 2 + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_am2_inner(t):\n"
+"    return r0 + eps * delta + eps / 2 + eps * t / (2 * pi)\n"
+"\n"
+"\n"
+"def spiral_am2_outer(t):\n"
+"    return r0 - eps * delta + eps + eps * t / (2 * pi)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[10]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# Setup fine mesh with nr points per layer\n"
+"nr = 10\n"
+"rr = np.linspace(r0, 1, nr)\n"
+"tt = np.arange(0, (N + 1) * 2 * pi, 2 * pi)\n"
+"# N+1 winds of pos c.c.\n"
+"r_mesh_pos = np.zeros((len(tt), len(rr)))\n"
+"for i in range(len(tt)):\n"
+"    r_mesh_pos[i, :] = np.linspace(spiral_pos_inner(tt[i]), "
+"spiral_pos_outer(tt[i]), nr)\n"
+"# N winds of neg, am1, am2\n"
+"r_mesh_neg = np.zeros((len(tt) - 1, len(rr)))\n"
+"r_mesh_am1 = np.zeros((len(tt) - 1, len(rr)))\n"
+"r_mesh_am2 = np.zeros((len(tt) - 1, len(rr)))\n"
+"for i in range(len(tt) - 1):\n"
+"    r_mesh_am2[i, :] = np.linspace(spiral_am2_inner(tt[i]), "
+"spiral_am2_outer(tt[i]), nr)\n"
+"    r_mesh_neg[i, :] = np.linspace(spiral_neg_inner(tt[i]), "
+"spiral_neg_outer(tt[i]), nr)\n"
+"    r_mesh_am1[i, :] = np.linspace(spiral_am1_inner(tt[i]), "
+"spiral_am1_outer(tt[i]), nr)\n"
+"# Combine and sort\n"
+"r_total_mesh = np.vstack((r_mesh_pos, r_mesh_neg, r_mesh_am1, r_mesh_am2))\n"
+"r_total_mesh = np.sort(r_total_mesh, axis=None)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid ""
+"# plot homogenised potential\n"
+"fig, ax = plt.subplots(1, 1, figsize=(8, 6))\n"
+"\n"
+"ax.plot(r_total_mesh, phi_n(r=r_total_mesh), \"b\", label=r\"$\\phi^-$\")\n"
+"ax.plot(r_total_mesh, phi_p(r=r_total_mesh), \"r\", label=r\"$\\phi^+$\")\n"
+"for i in range(len(tt)):\n"
+"    ax.plot(\n"
+"        r_mesh_pos[i, :],\n"
+"        phi_p(r=r_mesh_pos[i, :]),\n"
+"        \"k\",\n"
+"        label=r\"$\\phi$\" if i == 0 else \"\",\n"
+"    )\n"
+"for i in range(len(tt) - 1):\n"
+"    ax.plot(r_mesh_neg[i, :], phi_n(r=r_mesh_neg[i, :]), \"k\")\n"
+"    ax.plot(r_mesh_am1[i, :], phi_am1(r_mesh_am1[i, :], tt[i]), \"k\")\n"
+"    ax.plot(r_mesh_am2[i, :], phi_am2(r_mesh_am2[i, :], tt[i]), \"k\")\n"
+"ax.set_xlabel(r\"$r$\")\n"
+"ax.set_ylabel(r\"$\\phi$\")\n"
+"ax.legend();"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:459
+msgid "References"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:461
+msgid "The relevant papers for this notebook are:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:-1
+msgid "pybamm.print_citations()"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:482
+msgid ""
+"<pre>\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:491
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309.\n"
+"\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/jelly-roll-model.ipynb:501
+msgid ""
+"[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
+"Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
+"optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. "
+"doi:10.1007/s12532-018-0139-4.\n"
+"[2] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf "
+"Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, "
+"Sebastian Berg, Nathaniel J. Smith, and others. Array programming with "
+"NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.\n"
+"[3] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. "
+"Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open "
+"Research Software, 9(1):14, 2021. doi:10.5334/jors.309."
+msgstr ""

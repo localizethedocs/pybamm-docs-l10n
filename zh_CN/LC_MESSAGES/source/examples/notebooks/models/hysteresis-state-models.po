@@ -1,0 +1,524 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:11
+msgid ""
+"<div class=\"admonition tip\">\n"
+"    <p class=\"admonition-title\">\n"
+"        Tip\n"
+"    </p>\n"
+"    <p>\n"
+"        An interactive online version of this notebook is available, which "
+"can be\n"
+"        accessed via\n"
+"        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
+"docs/source/examples/notebooks/models/hysteresis-state-models.ipynb\"\n"
+"        target=\"_blank\">\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-badge."
+"svg\"\n"
+"        alt=\"Open this notebook in Google Colab\"/></a>\n"
+"    </p>\n"
+"        <hr>\n"
+"    <p>\n"
+"        Alternatively, you may\n"
+"        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
+"source/examples/notebooks/models/hysteresis-state-models.ipynb\"\n"
+"        target=\"_blank\" download>\n"
+"        download this notebook</a> and run it offline.\n"
+"    </p>\n"
+"</div>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:9
+msgid "Hysteresis State models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[11]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"%pip install \"pybamm[plot,cite]\" -q    # install PyBaMM if it is not "
+"installed\n"
+"import pybamm"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:31
+msgid ""
+"<pre>\n"
+"\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> A new release of pip is available: "
+"<span class=\"ansi-red-fg\">25.1.1</span> -&gt; <span class=\"ansi-green-"
+"fg\">25.2</span>\n"
+"<span class=\"ansi-bold\">[</span><span class=\"ansi-blue-fg\">notice</"
+"span><span class=\"ansi-bold\">]</span> To update, run: <span class=\"ansi-"
+"green-fg\">pip install --upgrade pip</span>\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:40
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} A new release of pip is "
+"available: \\textcolor{ansi-red}{25.1.1} -> \\textcolor{ansi-green}{25.2}\n"
+"\\textbf{[}\\textcolor{ansi-blue}{notice}\\textbf{]} To update, run: "
+"\\textcolor{ansi-green}{pip install --upgrade pip}\n"
+"Note: you may need to restart the kernel to use updated packages.\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:50
+msgid ""
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m A new release of pip is "
+"available: [0m[31;49m25.1.1[0m[39;49m -> [0m[32;49m25.2[0m\n"
+"[1m[[0m[34;49mnotice[0m[1;39;49m][0m[39;49m To update, run: [0m[32;49mpip "
+"install --upgrade pip[0m\n"
+"Note: you may need to restart the kernel to use updated packages."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:65
+msgid "Model Equations"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:67
+msgid ""
+"Herein, we outline the equations for the \"one-state hysteresis\" model "
+"(Axen, 2022), the \"one-state differential capacity hysteresis\" model "
+"(Wycisk, 2022), and the \"current Sigmoid\" model (Ai et al., 2022). In this "
+"notebook we collectively paraphrase all the original literature models into "
+"a common notation and definition. For the original model expressions please "
+"refer to the appropriate references."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:69
+msgid "In all of the models, the open-circuit potential is given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:71
+msgid ""
+"U = \\frac{1+h}{2} U_{\\text{delith}} + \\frac{1-h}{2} U_{\\text{lith}},\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:73
+msgid ""
+"where :math:`h` is a hysteresis state variable, :math:`U_{\\text{delith}}` "
+"is the delithiation open-circuit potential, and :math:`U_{\\text{lith}}` is "
+"the lithiation open-circuit potential. The hysteresis state variable :math:"
+"`h` is defined between -1 and 1, where 1 corresponds to the delithiation "
+"branch and -1 corresponds to the lithiation branch."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:76
+msgid "One-state hysteresis (Axen)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:78
+msgid ""
+"In this model, the state variable :math:`h(z,t)` is both stoichiometry and "
+"time-dependent, and is governed by the following ODE:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:80
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:93
+msgid ""
+"\\frac{dh(z,t)}{dt} = \\gamma \\left( \\frac{i_{\\text{vol}}}{F \\, "
+"c_{\\text{max}} \\, \\epsilon}\\right) \\frac{\\left(1 - \\text{sgn}"
+"(i_{\\text{vol}}) \\, h(z,t)\\right)}{2},\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:82
+msgid ""
+"where :math:`i_{\\text{vol}}` is the volumetric interfacial current "
+"density, :math:`F` is the Faraday constant, :math:`c_{\\text{max}}` is the "
+"maximum lithium concentration in the particles and :math:`\\epsilon` is the "
+"active material volume fraction. In this model, the rate parameter :math:"
+"`\\gamma` is given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:84
+msgid ""
+"\\gamma = \\left( \\frac{1-\\text{sgn}(i_{\\text{vol}})}{2}  "
+"\\gamma_{\\text{lith}} + \\frac{1+\\text{sgn}(i_{\\text{vol}})}{2} "
+"\\gamma_{\\text{delith}}\\right),\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:86
+msgid ""
+"which allows for a different decay rate during delithiation (:math:"
+"`\\gamma_{\\text{delith}}`) and lithiation (:math:`\\gamma_{\\text{lith}}`). "
+"Note that this implementation is a reformulation of the governing equations "
+"in the original paper. Also note that :math:`\\gamma` is dimensionless."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:89
+msgid "One-state differential capacity hysteresis (Wycisk)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:91
+msgid ""
+"As in the Axen model, the state variable :math:`h(z,t)` is both "
+"stoichiometry and time-dependent, and is governed by the same ODE"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:95
+msgid "where now :math:`\\gamma(z)` is given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:97
+msgid ""
+"\\gamma(z) = \\Gamma(z) \\cdot "
+"\\left(\\frac{C_{\\text{diff}}\\left(z\\right)}{C_{\\text{ref,"
+"vol}}}\\right)^{-x}.\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:99
+msgid ""
+"Here :math:`C_{\\text{diff}}(z)` is the differential capacity with respect "
+"to potential, expressed as"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:101
+msgid ""
+"C_{\\text{diff}}(z) = \\frac{dQ}{dU_{\\text{eq}}(z)},\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:103
+msgid ""
+"where :math:`Q` is the capacity of the phase of active material experiencing "
+"the voltage hysteresis and :math:`U_{\\text{eq}}` is the average open-"
+"circuit potential of the phase of active material experiencing the voltage "
+"hysteresis. The remaining parameters are :math:`\\Gamma` and :math:`x` which "
+"are both fitting parameters that affect the response of the hysteresis state "
+"decay when passing charge in either direction. The parameter :math:"
+"`C_{\\text{ref,vol}}` is the reference differential capacity, which in this "
+"implementation is hard-coded to 1 :math:`\\text{F}`."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:107
+msgid "Current Sigmoid (Ai)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:109
+msgid ""
+"This approach uses a sigmoid function to switch between the delithiation and "
+"lithiation branches of the open-circuit potential, depending on the sign of "
+"the current. The original paper gives the following expression for the open-"
+"circuit potential:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:111
+msgid ""
+"U = \\text{sigmoid}\\left(-\\frac{KI(t)}{Q_{\\text{cell}}}\\right) "
+"U_{\\text{delith}} + \\text{sigmoid}\\left(\\frac{KI(t)}"
+"{Q_{\\text{cell}}}\\right) U_{\\text{lith}}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:115
+msgid ""
+"Where :math:`K` is a fitting parameter (in the current implementation this "
+"is hard-coded to 100, as in the original publication), :math:`I` is the cell "
+"current, and :math:`Q_{\\text{cell}}` is the cell capacity. To simplify the "
+"comparison with the other models, we can rewrite this expression in terms of "
+"the hysteresis state variable :math:`h` given by"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:117
+msgid ""
+"h(t) = 1 - 2 \\, \\text{sigmoid}\\left(-\\frac{KI(t)}"
+"{Q_{\\text{cell}}}\\right).\n"
+"\n"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:129
+msgid "Comparing the different hysteresis state models"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:131
+msgid ""
+"We now compare the behavior of the different hysteresis state models. First "
+"we define the models, which are all based on the DFN model with a composite "
+"negative electrode comprised of two particles phases. One phase is modelled "
+"using a single open-circuit potential, while the other is modelled using a "
+"hysteresis state model. The positive electrode is modelled using a single "
+"open-circuit potential."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[12]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"models = {\n"
+"    \"current sigmoid\": pybamm.lithium_ion.DFN(\n"
+"        {\n"
+"            \"open-circuit potential\": ((\"single\", \"current sigmoid\"), "
+"\"single\"),\n"
+"            \"particle phases\": (\"2\", \"1\"),\n"
+"            \"thermal\": \"lumped\",\n"
+"        }\n"
+"    ),\n"
+"    \"one-state differential capacity hysteresis\": pybamm.lithium_ion.DFN(\n"
+"        {\n"
+"            \"open-circuit potential\": (\n"
+"                (\"single\", \"one-state differential capacity "
+"hysteresis\"),\n"
+"                \"single\",\n"
+"            ),\n"
+"            \"particle phases\": (\"2\", \"1\"),\n"
+"            \"thermal\": \"lumped\",\n"
+"        }\n"
+"    ),\n"
+"    \"one-state hysteresis\": pybamm.lithium_ion.DFN(\n"
+"        {\n"
+"            \"open-circuit potential\": ((\"single\", \"one-state "
+"hysteresis\"), \"single\"),\n"
+"            \"particle phases\": (\"2\", \"1\"),\n"
+"            \"thermal\": \"lumped\",\n"
+"        }\n"
+"    ),\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:177
+msgid ""
+"Next we define the parameter set, which is for a graphite and silicon "
+"negative electrode with a NMC positive electrode. We add some thermal "
+"parameters."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[13]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"parameters = pybamm.ParameterValues(\"Chen2020_composite\")\n"
+"parameters.update(\n"
+"    {\n"
+"        \"Negative current collector density [kg.m-3]\": 8933.0,\n"
+"        \"Negative current collector specific heat capacity [J.kg-1.K-1]\": "
+"385.0,\n"
+"        \"Negative current collector thermal conductivity [W.m-1.K-1]\": "
+"398.0,\n"
+"        \"Negative electrode density [kg.m-3]\": 1555.0,\n"
+"        \"Negative electrode specific heat capacity [J.kg-1.K-1]\": 1437.0,\n"
+"        \"Negative electrode thermal conductivity [W.m-1.K-1]\": 1.58,\n"
+"        \"Separator density [kg.m-3]\": 1017.0,\n"
+"        \"Separator specific heat capacity [J.kg-1.K-1]\": 1978.0,\n"
+"        \"Separator thermal conductivity [W.m-1.K-1]\": 0.34,\n"
+"        \"Positive electrode density [kg.m-3]\": 3699.0,\n"
+"        \"Positive electrode specific heat capacity [J.kg-1.K-1]\": 1270.0,\n"
+"        \"Positive electrode thermal conductivity [W.m-1.K-1]\": 1.04,\n"
+"        \"Positive current collector density [kg.m-3]\": 2702.0,\n"
+"        \"Positive current collector specific heat capacity [J.kg-1.K-1]\": "
+"903.0,\n"
+"        \"Positive current collector thermal conductivity [W.m-1.K-1]\": "
+"238.0,\n"
+"        \"Total heat transfer coefficient [W.m-2.K-1]\": 5.0,\n"
+"    }\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:218
+msgid ""
+"Next, we need to add the additional parameters required by the model. In "
+"this example, :math:`K_{\\text{lith}} = K_{\\text{delith}} = 100` for the HS "
+"model, but it is recommended to test different values for the decay rate "
+"aiming for good agreement to experiment if the information is available, or "
+"a smooth transition between the lithiation and delithiation branches of the "
+"hysteresis. For example, depending on the case study, an acceptable value "
+"for :math:`K_{\\text{lith}}` and :math:`K_{\\text{delith}}` could be :math:"
+"`10` or lower."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[15]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"# Wycisk parameters\n"
+"parameters_wycisk = parameters.copy()\n"
+"parameters_wycisk.update(\n"
+"    {\n"
+"        \"Secondary: Negative particle hysteresis decay rate\": 0.1,\n"
+"        \"Secondary: Negative particle hysteresis switching factor\": 10,\n"
+"        \"Secondary: Initial hysteresis state in negative electrode\": 1,\n"
+"    }\n"
+")\n"
+"\n"
+"# Axen parameters\n"
+"parameters_axen = parameters.copy()\n"
+"parameters_axen.update(\n"
+"    {\n"
+"        \"Secondary: Negative particle lithiation hysteresis decay rate\": "
+"100,\n"
+"        \"Secondary: Negative particle delithiation hysteresis decay rate\": "
+"100,\n"
+"        \"Secondary: Initial hysteresis state in negative electrode\": 1,\n"
+"    }\n"
+")\n"
+"\n"
+"parameter_values = {\n"
+"    \"current sigmoid\": parameters,\n"
+"    \"one-state differential capacity hysteresis\": parameters_wycisk,\n"
+"    \"one-state hysteresis\": parameters_axen,\n"
+"}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:264
+msgid ""
+"Then we define the experiment, which is a discharge and charge cycle at 1C."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[16]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"experiment = pybamm.Experiment(\n"
+"    [\n"
+"        (\n"
+"            \"Discharge at 1C for 1 hour or until 2.5 V\",\n"
+"            \"Rest for 15 minutes\",\n"
+"            \"Charge at 1C until 4.2 V\",\n"
+"            \"Hold at 4.2 V until 0.05 C\",\n"
+"            \"Rest for 15 minutes\",\n"
+"        ),\n"
+"    ]\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:295
+msgid "We then loop over the models and solve them."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[17]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"solutions = {}\n"
+"for name, model in models.items():\n"
+"    sim = pybamm.Simulation(\n"
+"        model, experiment=experiment, "
+"parameter_values=parameter_values[name]\n"
+"    )\n"
+"    solutions[name] = sim.solve(calc_esoh=False)"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:321
+msgid "Finally, we plot the results."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid "[18]:"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1
+msgid ""
+"output_variables = [\n"
+"    \"Current [A]\",\n"
+"    \"Negative electrode secondary stoichiometry\",\n"
+"    \"Voltage [V]\",\n"
+"    \"Volume-averaged cell temperature [K]\",\n"
+"    \"Total heating [W.m-3]\",\n"
+"    \"Hysteresis electrochemical heating [W.m-3]\",\n"
+"    \"X-averaged negative electrode secondary hysteresis state\",\n"
+"    \"X-averaged negative electrode secondary open-circuit potential [V]\",\n"
+"]\n"
+"\n"
+"pybamm.dynamic_plot(\n"
+"    list(solutions.values()),\n"
+"    labels=list(solutions.keys()),\n"
+"    colors=[\"black\", \"blue\", \"red\"],\n"
+"    linestyles=[\"-\", \"--\", \"-.\"],\n"
+"    output_variables=output_variables,\n"
+")"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:361
+msgid ""
+"<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
+"\"5efa147c8cf44c7db96697dfdda4e610\", \"version_major\": 2, "
+"\"version_minor\": 0}</script>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:372
+msgid ""
+"<pre>\n"
+"interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
+"max=3.041045468063589, step=0.03041045468063589)…\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:378
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3.041045468063589, step=0.03041045468063589)…\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:385
+msgid ""
+"interactive(children=(FloatSlider(value=0.0, description='t', "
+"max=3.041045468063589, step=0.03041045468063589)…"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:397
+msgid ""
+"<pre>\n"
+"&lt;pybamm.plotting.quick_plot.QuickPlot at 0x32a3cf2f0&gt;\n"
+"</pre>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:403
+msgid ""
+"\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
+"<pybamm.plotting.quick\\_plot.QuickPlot at 0x32a3cf2f0>\n"
+"\\end{sphinxVerbatim}"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:410
+msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x32a3cf2f0>"
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:421
+msgid ""
+"We see that both one-state hysteresis models include a decay time for the "
+"hysteresis state variable :math:`h`, and that they \"stick\" the "
+"(de)lithiation branches during rest. This is in contrast to the current "
+"sigmoid model, which does not stick to the (de)lithiation branches during "
+"rest; it instantly switches back the the equilibrium open-circuit potential. "
+"The effect of this can clearly be seen in the voltage and open-circuit "
+"potential plots."
+msgstr ""
