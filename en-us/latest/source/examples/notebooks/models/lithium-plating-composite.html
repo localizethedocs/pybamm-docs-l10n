@@ -1,0 +1,1343 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-18T13:47:41+00:00" />
+    <title>Modelling lithium plating on composite electrodes in PyBaMM &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/models/lithium-plating-composite';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/models/lithium-plating-composite.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Many Particle Model (MPM)" href="MPM.html" />
+    <link rel="prev" title="Modelling lithium plating in PyBaMM" href="lithium-plating.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-18"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrode-state-of-health.html">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saving_models.html">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solvers/dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/idaklu-jax-interface.html">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-settings.html">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Modelling lithium plating on composite electrodes in PyBaMM</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/lithium-plating-composite.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/lithium-plating-composite.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Modelling-lithium-plating-on-composite-electrodes-in-PyBaMM">
+<h1>Modelling lithium plating on composite electrodes in PyBaMM<a class="headerlink" href="#Modelling-lithium-plating-on-composite-electrodes-in-PyBaMM" title="Link to this heading">#</a></h1>
+<p>This notebook shows how PyBaMM [8] can be used to model both reversible and irreversible lithium plating on composite electrodes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<p>The Doyle-Fuller-Newman model [3] is upgraded with three different lithium plating models. Model 1 contains the reversible lithium plating model of O’Kane et al. [5]. Model 2 contains the same model but with the lithium stripping capability removed, making the plating irreversible. Model 3 contains the updated partially reversible plating of O’Kane et al. [6]. The parameters are taken from Chen et al.’s investigation [2] of an LG M50 cell.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Defining the composite model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;particle phases&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">),</span>
+        <span class="s2">&quot;open-circuit potential&quot;</span><span class="p">:</span> <span class="p">((</span><span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;current sigmoid&quot;</span><span class="p">),</span> <span class="s2">&quot;single&quot;</span><span class="p">),</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="c1"># Invoking the Chen2020 parameter set</span>
+<span class="n">parameter_values</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;Chen2020_composite&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definig temperature/concentration dependent parameters for plating</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">graphite_plating_exchange_current_density_OKane2020</span><span class="p">(</span><span class="n">c_e</span><span class="p">,</span> <span class="n">c_Li</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exchange-current density for Li plating reaction [A.m-2].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] O’Kane, Simon EJ, Ian D. Campbell, Mohamed WJ Marzook, Gregory J. Offer, and</span>
+<span class="sd">    Monica Marinescu. &quot;Physical origin of the differential voltage minimum associated</span>
+<span class="sd">    with lithium plating in Li-ion batteries.&quot; Journal of The Electrochemical Society</span>
+<span class="sd">    167, no. 9 (2020): 090540.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    c_e : :class:`pybamm.Symbol`</span>
+<span class="sd">        Electrolyte concentration [mol.m-3]</span>
+<span class="sd">    c_Li : :class:`pybamm.Symbol`</span>
+<span class="sd">        Plated lithium concentration [mol.m-3]</span>
+<span class="sd">    T : :class:`pybamm.Symbol`</span>
+<span class="sd">        Temperature [K]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Exchange-current density [A.m-2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">k_plating</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+        <span class="s2">&quot;Primary: Lithium plating kinetic rate constant [m.s-1]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">F</span> <span class="o">*</span> <span class="n">k_plating</span> <span class="o">*</span> <span class="n">c_e</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">graphite_stripping_exchange_current_density_OKane2020</span><span class="p">(</span><span class="n">c_e</span><span class="p">,</span> <span class="n">c_Li</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exchange-current density for Li stripping reaction [A.m-2].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] O’Kane, Simon EJ, Ian D. Campbell, Mohamed WJ Marzook, Gregory J. Offer, and</span>
+<span class="sd">    Monica Marinescu. &quot;Physical origin of the differential voltage minimum associated</span>
+<span class="sd">    with lithium plating in Li-ion batteries.&quot; Journal of The Electrochemical Society</span>
+<span class="sd">    167, no. 9 (2020): 090540.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    c_e : :class:`pybamm.Symbol`</span>
+<span class="sd">        Electrolyte concentration [mol.m-3]</span>
+<span class="sd">    c_Li : :class:`pybamm.Symbol`</span>
+<span class="sd">        Plated lithium concentration [mol.m-3]</span>
+<span class="sd">    T : :class:`pybamm.Symbol`</span>
+<span class="sd">        Temperature [K]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Exchange-current density [A.m-2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">k_plating</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+        <span class="s2">&quot;Primary: Lithium plating kinetic rate constant [m.s-1]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">F</span> <span class="o">*</span> <span class="n">k_plating</span> <span class="o">*</span> <span class="n">c_Li</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">graphite_SEI_limited_dead_lithium_OKane2022</span><span class="p">(</span><span class="n">L_sei</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decay rate for dead lithium formation [s-1].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Simon E. J. O&#39;Kane, Weilong Ai, Ganesh Madabattula, Diega Alonso-Alvarez,</span>
+<span class="sd">    Robert Timms, Valentin Sulzer, Jaqueline Sophie Edge, Billy Wu, Gregory J. Offer</span>
+<span class="sd">    and Monica Marinescu. &quot;Lithium-ion battery degradation: how to model it.&quot;</span>
+<span class="sd">    Physical Chemistry: Chemical Physics 24, no. 13 (2022): 7909-7922.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    L_sei : :class:`pybamm.Symbol`</span>
+<span class="sd">        Total SEI thickness [m]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Dead lithium decay rate [s-1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">gamma_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Primary: Dead lithium decay constant [s-1]&quot;</span><span class="p">)</span>
+    <span class="n">L_inner_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Primary: Initial inner SEI thickness [m]&quot;</span><span class="p">)</span>
+    <span class="n">L_outer_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Primary: Initial outer SEI thickness [m]&quot;</span><span class="p">)</span>
+    <span class="n">L_sei_0</span> <span class="o">=</span> <span class="n">L_inner_0</span> <span class="o">+</span> <span class="n">L_outer_0</span>
+
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma_0</span> <span class="o">*</span> <span class="n">L_sei_0</span> <span class="o">/</span> <span class="n">L_sei</span>
+
+    <span class="k">return</span> <span class="n">gamma</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">silicon_plating_exchange_current_density_OKane2020</span><span class="p">(</span><span class="n">c_e</span><span class="p">,</span> <span class="n">c_Li</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exchange-current density for Li plating reaction [A.m-2].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] O’Kane, Simon EJ, Ian D. Campbell, Mohamed WJ Marzook, Gregory J. Offer, and</span>
+<span class="sd">    Monica Marinescu. &quot;Physical origin of the differential voltage minimum associated</span>
+<span class="sd">    with lithium plating in Li-ion batteries.&quot; Journal of The Electrochemical Society</span>
+<span class="sd">    167, no. 9 (2020): 090540.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    c_e : :class:`pybamm.Symbol`</span>
+<span class="sd">        Electrolyte concentration [mol.m-3]</span>
+<span class="sd">    c_Li : :class:`pybamm.Symbol`</span>
+<span class="sd">        Plated lithium concentration [mol.m-3]</span>
+<span class="sd">    T : :class:`pybamm.Symbol`</span>
+<span class="sd">        Temperature [K]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Exchange-current density [A.m-2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">k_plating</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+        <span class="s2">&quot;Secondary: Lithium plating kinetic rate constant [m.s-1]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">F</span> <span class="o">*</span> <span class="n">k_plating</span> <span class="o">*</span> <span class="n">c_e</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">silicon_stripping_exchange_current_density_OKane2020</span><span class="p">(</span><span class="n">c_e</span><span class="p">,</span> <span class="n">c_Li</span><span class="p">,</span> <span class="n">T</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exchange-current density for Li stripping reaction [A.m-2].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] O’Kane, Simon EJ, Ian D. Campbell, Mohamed WJ Marzook, Gregory J. Offer, and</span>
+<span class="sd">    Monica Marinescu. &quot;Physical origin of the differential voltage minimum associated</span>
+<span class="sd">    with lithium plating in Li-ion batteries.&quot; Journal of The Electrochemical Society</span>
+<span class="sd">    167, no. 9 (2020): 090540.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    c_e : :class:`pybamm.Symbol`</span>
+<span class="sd">        Electrolyte concentration [mol.m-3]</span>
+<span class="sd">    c_Li : :class:`pybamm.Symbol`</span>
+<span class="sd">        Plated lithium concentration [mol.m-3]</span>
+<span class="sd">    T : :class:`pybamm.Symbol`</span>
+<span class="sd">        Temperature [K]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Exchange-current density [A.m-2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">k_plating</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span>
+        <span class="s2">&quot;Secondary: Lithium plating kinetic rate constant [m.s-1]&quot;</span>
+    <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">F</span> <span class="o">*</span> <span class="n">k_plating</span> <span class="o">*</span> <span class="n">c_Li</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">silicon_SEI_limited_dead_lithium_OKane2022</span><span class="p">(</span><span class="n">L_sei</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Decay rate for dead lithium formation [s-1].</span>
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Simon E. J. O&#39;Kane, Weilong Ai, Ganesh Madabattula, Diega Alonso-Alvarez,</span>
+<span class="sd">    Robert Timms, Valentin Sulzer, Jaqueline Sophie Edge, Billy Wu, Gregory J. Offer</span>
+<span class="sd">    and Monica Marinescu. &quot;Lithium-ion battery degradation: how to model it.&quot;</span>
+<span class="sd">    Physical Chemistry: Chemical Physics 24, no. 13 (2022): 7909-7922.</span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    L_sei : :class:`pybamm.Symbol`</span>
+<span class="sd">        Total SEI thickness [m]</span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Dead lithium decay rate [s-1]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">gamma_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Secondary: Dead lithium decay constant [s-1]&quot;</span><span class="p">)</span>
+    <span class="n">L_inner_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Secondary: Initial inner SEI thickness [m]&quot;</span><span class="p">)</span>
+    <span class="n">L_outer_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;Secondary: Initial outer SEI thickness [m]&quot;</span><span class="p">)</span>
+    <span class="n">L_sei_0</span> <span class="o">=</span> <span class="n">L_inner_0</span> <span class="o">+</span> <span class="n">L_outer_0</span>
+
+    <span class="n">gamma</span> <span class="o">=</span> <span class="n">gamma_0</span> <span class="o">*</span> <span class="n">L_sei_0</span> <span class="o">/</span> <span class="n">L_sei</span>
+
+    <span class="k">return</span> <span class="n">gamma</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">graphite_LGM50_electrolyte_exchange_current_density_Chen2020</span><span class="p">(</span>
+    <span class="n">c_e</span><span class="p">,</span> <span class="n">c_s_surf</span><span class="p">,</span> <span class="n">c_s_max</span><span class="p">,</span> <span class="n">T</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exchange-current density for Butler-Volmer reactions between graphite and LiPF6 in</span>
+<span class="sd">    EC:DMC.</span>
+
+<span class="sd">    References</span>
+<span class="sd">    ----------</span>
+<span class="sd">    .. [1] Chang-Hui Chen, Ferran Brosa Planella, Kieran O’Regan, Dominika Gastol, W.</span>
+<span class="sd">    Dhammika Widanage, and Emma Kendrick. &quot;Development of Experimental Techniques for</span>
+<span class="sd">    Parameterization of Multi-scale Lithium-ion Battery Models.&quot; Journal of the</span>
+<span class="sd">    Electrochemical Society 167 (2020): 080534.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    c_e : :class:`pybamm.Symbol`</span>
+<span class="sd">        Electrolyte concentration [mol.m-3]</span>
+<span class="sd">    c_s_surf : :class:`pybamm.Symbol`</span>
+<span class="sd">        Particle concentration [mol.m-3]</span>
+<span class="sd">    c_s_max : :class:`pybamm.Symbol`</span>
+<span class="sd">        Maximum particle concentration [mol.m-3]</span>
+<span class="sd">    T : :class:`pybamm.Symbol`</span>
+<span class="sd">        Temperature [K]</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    :class:`pybamm.Symbol`</span>
+<span class="sd">        Exchange-current density [A.m-2]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">m_ref</span> <span class="o">=</span> <span class="mf">6.48e-7</span>  <span class="c1"># (A/m2)(m3/mol)**1.5 - includes ref concentrations</span>
+    <span class="n">E_r</span> <span class="o">=</span> <span class="mi">35000</span>
+    <span class="n">arrhenius</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">E_r</span> <span class="o">/</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">constants</span><span class="o">.</span><span class="n">R</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mf">298.15</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">T</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">m_ref</span> <span class="o">*</span> <span class="n">arrhenius</span> <span class="o">*</span> <span class="n">c_e</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">c_s_surf</span><span class="o">**</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">c_s_max</span> <span class="o">-</span> <span class="n">c_s_surf</span><span class="p">)</span> <span class="o">**</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding plating parameters to the parameter set</span>
+<span class="c1"># plating_parameters =</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="c1"># Plating parameters referred from OKane2022</span>
+        <span class="s2">&quot;Lithium metal partial molar volume [m3.mol-1]&quot;</span><span class="p">:</span> <span class="mf">1.3e-05</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Lithium plating kinetic rate constant [m.s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-09</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Exchange-current density for plating [A.m-2]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">graphite_plating_exchange_current_density_OKane2020</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Exchange-current density for stripping [A.m-2]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">graphite_stripping_exchange_current_density_OKane2020</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Initial plated lithium concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Typical plated lithium concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Lithium plating transfer coefficient&quot;</span><span class="p">:</span> <span class="mf">0.65</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Dead lithium decay constant [s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-06</span><span class="p">,</span>
+        <span class="s2">&quot;Primary: Dead lithium decay rate [s-1]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">graphite_SEI_limited_dead_lithium_OKane2022</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Lithium plating kinetic rate constant [m.s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-09</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Exchange-current density for plating [A.m-2]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">silicon_plating_exchange_current_density_OKane2020</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Exchange-current density for stripping [A.m-2]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">silicon_stripping_exchange_current_density_OKane2020</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Initial plated lithium concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Typical plated lithium concentration [mol.m-3]&quot;</span><span class="p">:</span> <span class="mf">1000.0</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Lithium plating transfer coefficient&quot;</span><span class="p">:</span> <span class="mf">0.65</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Dead lithium decay constant [s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-06</span><span class="p">,</span>
+        <span class="s2">&quot;Secondary: Dead lithium decay rate [s-1]&quot;</span>
+        <span class="s2">&quot;&quot;</span><span class="p">:</span> <span class="n">silicon_SEI_limited_dead_lithium_OKane2022</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose models</span>
+<span class="n">composite_options</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;particle phases&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;1&quot;</span><span class="p">),</span>
+    <span class="s2">&quot;open-circuit potential&quot;</span><span class="p">:</span> <span class="p">((</span><span class="s2">&quot;single&quot;</span><span class="p">,</span> <span class="s2">&quot;current sigmoid&quot;</span><span class="p">),</span> <span class="s2">&quot;single&quot;</span><span class="p">),</span>
+<span class="p">}</span>
+<span class="n">plating_options</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;reversible&quot;</span><span class="p">,</span> <span class="s2">&quot;irreversible&quot;</span><span class="p">,</span> <span class="s2">&quot;partially reversible&quot;</span><span class="p">]</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">option</span> <span class="ow">in</span> <span class="n">plating_options</span><span class="p">:</span>
+    <span class="c1"># Merge the plating option with the default options</span>
+    <span class="n">options</span> <span class="o">=</span> <span class="n">composite_options</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">options</span><span class="p">[</span><span class="s2">&quot;lithium plating&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">option</span>
+
+    <span class="c1"># Initialize the DFN model with these options</span>
+    <span class="n">models</span><span class="p">[</span><span class="n">option</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">option</span><span class="p">)</span>
+
+<span class="c1"># pick parameters</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Ambient temperature [K]&quot;</span><span class="p">:</span> <span class="mf">268.15</span><span class="p">})</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s2">&quot;Upper voltage cut-off [V]&quot;</span><span class="p">:</span> <span class="mf">4.21</span><span class="p">})</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Lithium plating transfer coefficient&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Dead lithium decay constant [s-1]&quot;</span><span class="p">:</span> <span class="mf">1e-4</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Primary: Initial inner SEI thickness [m]&quot;</span><span class="p">:</span> <span class="mf">5e-09</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Primary: Initial outer SEI thickness [m]&quot;</span><span class="p">:</span> <span class="mf">5e-09</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Secondary: Initial inner SEI thickness [m]&quot;</span><span class="p">:</span> <span class="mf">5e-09</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;Secondary: Initial outer SEI thickness [m]&quot;</span><span class="p">:</span> <span class="mf">5e-09</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="c1"># parameter_values.update({&quot;Lithium plating kinetic rate constant [m.s-1]&quot;: 1E-9})</span>
+</pre></div>
+</div>
+</div>
+<p>A series of simple fast charging experiments based on those of Ren et al. [7] is defined here. We first initialise the model at 0% SoC by performing a C/20 discharge (see more details on how to initialise a model from a simulation in <a class="reference internal" href="../initialize-model-with-solution.html"><span class="doc">this notebook</span></a>).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify experiments</span>
+<span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Ren2018&quot;</span><span class="p">)</span>
+
+<span class="n">s</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">step</span><span class="o">.</span><span class="n">string</span>
+<span class="n">experiment_discharge</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="p">(</span>
+            <span class="s2">&quot;Discharge at C/20 until 2.5 V&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Rest for 1 hour&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">sims_discharge</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">sim_discharge</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span>
+        <span class="n">model</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="n">experiment_discharge</span>
+    <span class="p">)</span>
+    <span class="n">sol_discharge</span> <span class="o">=</span> <span class="n">sim_discharge</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">calc_esoh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">set_initial_conditions_from</span><span class="p">(</span><span class="n">sol_discharge</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">sims_discharge</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sim_discharge</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And we can now define the different experiments to charge at different C-rates.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C_rates</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;2C&quot;</span><span class="p">,</span> <span class="s2">&quot;1C&quot;</span><span class="p">,</span> <span class="s2">&quot;C/2&quot;</span><span class="p">,</span> <span class="s2">&quot;C/4&quot;</span><span class="p">,</span> <span class="s2">&quot;C/8&quot;</span><span class="p">]</span>
+<span class="n">experiments</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">C_rate</span> <span class="ow">in</span> <span class="n">C_rates</span><span class="p">:</span>
+    <span class="n">experiments</span><span class="p">[</span><span class="n">C_rate</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Charge at </span><span class="si">{</span><span class="n">C_rate</span><span class="si">}</span><span class="s2"> until 4.2 V&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Hold at 4.2 V until C/20&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Rest for 1 hour&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Solve the reversible plating model first.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">define_and_solve_sims</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">parameter_values</span><span class="p">):</span>
+    <span class="n">sims</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">C_rate</span><span class="p">,</span> <span class="n">experiment</span> <span class="ow">in</span> <span class="n">experiments</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span>
+            <span class="n">model</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span>
+        <span class="p">)</span>
+        <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">calc_esoh</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">sims</span><span class="p">[</span><span class="n">C_rate</span><span class="p">]</span> <span class="o">=</span> <span class="n">sim</span>
+
+    <span class="k">return</span> <span class="n">sims</span>
+
+
+<span class="n">sims_reversible</span> <span class="o">=</span> <span class="n">define_and_solve_sims</span><span class="p">(</span>
+    <span class="n">models</span><span class="p">[</span><span class="s2">&quot;reversible&quot;</span><span class="p">],</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">parameter_values</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;tab:purple&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:cyan&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:red&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:green&quot;</span><span class="p">,</span> <span class="s2">&quot;tab:blue&quot;</span><span class="p">]</span>
+<span class="n">linestyles</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="s2">&quot;solid&quot;</span><span class="p">]</span>
+
+<span class="n">param</span> <span class="o">=</span> <span class="n">models</span><span class="p">[</span><span class="s2">&quot;reversible&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">param</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">L_y</span> <span class="o">*</span> <span class="n">param</span><span class="o">.</span><span class="n">L_z</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">F</span><span class="p">)</span>
+<span class="n">L_n</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">L</span><span class="p">)</span>
+
+<span class="n">currents</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;X-averaged negative electrode volumetric interfacial current density [A.m-3]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;X-averaged negative electrode lithium plating volumetric interfacial current density [A.m-3]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Sum of x-averaged negative electrode volumetric interfacial current densities [A.m-3]&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">sims</span><span class="p">):</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>  <span class="c1"># Create a secondary y-axis</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">C_rate</span><span class="p">,</span> <span class="n">sim</span><span class="p">),</span> <span class="n">color</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sims</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">colors</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="c1"># Isolate final equilibration phase</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solution</span><span class="o">.</span><span class="n">cycles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">steps</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="c1"># Voltage vs time</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;Time [min]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">t</span> <span class="o">-</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">C_rate</span><span class="p">)</span>
+
+        <span class="c1"># Currents</span>
+        <span class="k">for</span> <span class="n">current</span><span class="p">,</span> <span class="n">ls</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">currents</span><span class="p">,</span> <span class="n">linestyles</span><span class="p">,</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+            <span class="n">j</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="n">current</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+            <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="n">ls</span><span class="p">)</span>
+
+        <span class="c1"># Plated lithium capacity</span>
+        <span class="n">Q_Li</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;Loss of capacity to negative lithium plating [A.h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Q_Li</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Capacity vs time</span>
+        <span class="n">Q_prim</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">sol</span><span class="p">[</span>
+                <span class="s2">&quot;Negative electrode primary volume-averaged concentration [mol.m-3]&quot;</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+            <span class="o">*</span> <span class="n">F</span>
+            <span class="o">*</span> <span class="n">A</span>
+            <span class="o">*</span> <span class="n">L_n</span>
+            <span class="o">/</span> <span class="mi">3600</span>
+        <span class="p">)</span>
+        <span class="n">Q_sec</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">sol</span><span class="p">[</span>
+                <span class="s2">&quot;Negative electrode secondary volume-averaged concentration [mol.m-3]&quot;</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">entries</span>
+            <span class="o">*</span> <span class="n">F</span>
+            <span class="o">*</span> <span class="n">A</span>
+            <span class="o">*</span> <span class="n">L_n</span>
+            <span class="o">/</span> <span class="mi">3600</span>
+        <span class="p">)</span>
+
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Q_prim</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;solid&quot;</span><span class="p">)</span>
+        <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Q_sec</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">)</span>
+
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Volumetric interfacial current density [A.m-3]&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">((</span><span class="s2">&quot;Deintercalation current&quot;</span><span class="p">,</span> <span class="s2">&quot;Stripping current&quot;</span><span class="p">,</span> <span class="s2">&quot;Total current&quot;</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Plated lithium capacity [A.h]&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Intercalated lithium capacity (Primary) [A.h]&quot;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Intercalated lithium capacity (Secondary) [A.h]&quot;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="n">axs</span><span class="o">.</span><span class="n">flat</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time [minutes]&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span>
+
+
+<span class="n">plot</span><span class="p">(</span><span class="n">sims_reversible</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_13_0.png" src="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_13_0.png" />
+</div>
+</div>
+<p>The results show both similarities and differences with those of Ren et al. [7]. Notably, unlike Ren et al., this model uses equations [5] that result in a small but finite amount of plated lithium being present in the steady state.</p>
+<p>Now solve the irreversible plating model and see how it compares.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sims_irreversible</span> <span class="o">=</span> <span class="n">define_and_solve_sims</span><span class="p">(</span>
+    <span class="n">models</span><span class="p">[</span><span class="s2">&quot;irreversible&quot;</span><span class="p">],</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">parameter_values</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sims_irreversible</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_17_0.png" src="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_17_0.png" />
+</div>
+</div>
+<p>Unlike in the reversible case, there is no steady state and the capacity degrades quickly. The lithium inventory decreases by around 40 mAh in just an hour, which is unrealistic. The low temperature fast charge simulations are run one more time, with the partially reversible plating model.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sims_partially_reversible</span> <span class="o">=</span> <span class="n">define_and_solve_sims</span><span class="p">(</span>
+    <span class="n">models</span><span class="p">[</span><span class="s2">&quot;partially reversible&quot;</span><span class="p">],</span> <span class="n">experiments</span><span class="p">,</span> <span class="n">parameter_values</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sims_partially_reversible</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_20_0.png" src="../../../../_images/source_examples_notebooks_models_lithium-plating-composite_20_0.png" />
+</div>
+</div>
+<p>The partially reversible plating model has features of both the reversible and irreversible models, which is reflected in the results. The plated lithium capacity decreases with time as lithium is reversibly stripped, but the final plated lithium capacity now depends on charge rate, indicating that some lithium was irreversibly plated during charge.</p>
+</section>
+<section id="References">
+<h1>References<a class="headerlink" href="#References" title="Link to this heading">#</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Weilong Ai, Niall Kirkaldy, Yang Jiang, Gregory Offer, Huizhi Wang, and Billy Wu. A composite electrode model for lithium-ion batteries with silicon/graphite negative electrodes. Journal of Power Sources, 527:231142, 2022. URL: https://www.sciencedirect.com/science/article/pii/S0378775322001604, doi:https://doi.org/10.1016/j.jpowsour.2022.231142.
+[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[3] Von DAG Bruggeman. Berechnung verschiedener physikalischer konstanten von heterogenen substanzen. i. dielektrizitätskonstanten und leitfähigkeiten der mischkörper aus isotropen substanzen. Annalen der physik, 416(7):636–664, 1935.
+[4] Chang-Hui Chen, Ferran Brosa Planella, Kieran O&#39;Regan, Dominika Gastol, W. Dhammika Widanage, and Emma Kendrick. Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. Journal of The Electrochemical Society, 167(8):080534, 2020. doi:10.1149/1945-7111/ab9050.
+[5] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic charge and discharge of the lithium/polymer/insertion cell. Journal of the Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.
+[6] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[7] Alan C. Hindmarsh. The PVODE and IDA algorithms. Technical Report, Lawrence Livermore National Lab., CA (US), 2000. doi:10.2172/802599.
+[8] Alan C. Hindmarsh, Peter N. Brown, Keith E. Grant, Steven L. Lee, Radu Serban, Dan E. Shumaker, and Carol S. Woodward. SUNDIALS: Suite of nonlinear and differential/algebraic equation solvers. ACM Transactions on Mathematical Software (TOMS), 31(3):363–396, 2005. doi:10.1145/1089014.1089020.
+[9] Simon E. J. O&#39;Kane, Ian D. Campbell, Mohamed W. J. Marzook, Gregory J. Offer, and Monica Marinescu. Physical origin of the differential voltage minimum associated with lithium plating in li-ion batteries. Journal of The Electrochemical Society, 167(9):090540, may 2020. URL: https://doi.org/10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.
+[10] Simon E. J. O&#39;Kane, Weilong Ai, Ganesh Madabattula, Diego Alonso-Alvarez, Robert Timms, Valentin Sulzer, Jacqueline Sophie Edge, Billy Wu, Gregory J. Offer, and Monica Marinescu. Lithium-ion battery degradation: how to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://dx.doi.org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.
+[11] Dongsheng Ren, Kandler Smith, Dongxu Guo, Xuebing Han, Xuning Feng, Languang Lu, and Minggao Ouyang. Investigation of lithium plating-stripping process in li-ion batteries at low temperature using an electrochemical model. Journal of the Electrochemistry Society, 165:A2167-A2178, 2018. doi:10.1149/2.0661810jes.
+[12] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+
+</pre></div></div>
+</div>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lithium-plating.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modelling lithium plating in PyBaMM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="MPM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Many Particle Model (MPM)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/models/lithium-plating-composite.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2026-06-18.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
