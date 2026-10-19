@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -109,14 +110,14 @@ msgid ""
 "\\quad N = - D(c) \\frac{\\partial c}{\\partial x} \\label{1}\\\\"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:78
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:77
 msgid ""
 "where :math:`t` is the time, :math:`N` is the solvent flux, and :math:`D(c)` "
 "is the effective solvent diffusivity (a function of the solvent "
 "concentration)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:80
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:79
 msgid ""
 "On the electrode-SEI surface (:math:`x=0`) the solvent is consumed by the "
 "SEI growth reaction, :math:`R`. We assume that diffusion of solvent in the "
@@ -125,22 +126,26 @@ msgid ""
 "math:`c_{\\infty}`. Therefore, the boundary conditions are"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:82
-msgid "N|_{x=0} = - R, \\quad c|_{x=L} = c_{\\infty},"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:81
+msgid ""
+"N|_{x=0} = - R, \\quad c|_{x=L} = c_{\\infty},\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:87
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:83
 msgid ""
 "We also assume that the concentration of solvent within the SEI is initially "
 "uniform and equal to the bulk electrolyte solvent concentration, so that the "
 "initial condition is"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:89
-msgid "c|_{t=0} = c_{\\infty}"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:85
+msgid ""
+"c|_{t=0} = c_{\\infty}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:94
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:87
 msgid ""
 "Since the SEI is growing, we require an additional equation for the SEI "
 "thickness. The thickness of the SEI grows at a rate proportional to the SEI "
@@ -149,11 +154,13 @@ msgid ""
 "assume that the SEI is initially of thickness :math:`L_0`. Therefore, we have"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:96
-msgid "\\frac{d L}{d t} = \\hat{V} R, \\quad L|_{t=0} = L_0"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:89
+msgid ""
+"\\frac{d L}{d t} = \\hat{V} R, \\quad L|_{t=0} = L_0\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:101
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:91
 msgid ""
 "Finally, we assume for the sake of simplicity that the SEI growth reaction "
 "is irreversible and that the potential difference across the SEI is "
@@ -162,59 +169,65 @@ msgid ""
 "Therefore, the reaction flux is given by"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:103
-msgid "R = k c|_{x=0}"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:93
+msgid ""
+"R = k c|_{x=0}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:108
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:95
 msgid ""
 "where :math:`k` is the reaction rate constant (which is in general dependent "
 "upon the potential difference across the SEI)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:111
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:98
 msgid "Fixing the moving boundary"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:113
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:100
 msgid ""
 "The model above is a moving boundary problem as it is defined in :math:"
 "`x\\in[0, L]`. In order to solve it, we need to fix the boundary by "
 "introducing the scaling"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:115
-msgid "x = L \\xi."
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:102
+msgid ""
+"x = L \\xi.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:120
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:104
 msgid "Then, applying the chain rule we have"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:122
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:106
 msgid ""
 "\\frac{\\partial}{\\partial x} \\rightarrow \\frac{1}{L} \\frac{\\partial}"
 "{\\partial \\xi}, \\quad \\text{ and } \\quad \\frac{\\partial}{\\partial t} "
 "\\rightarrow \\frac{\\partial}{\\partial t} - \\frac{L'(t)}{L(t)} \\xi "
-"\\frac{\\partial}{\\partial \\xi}."
+"\\frac{\\partial}{\\partial \\xi}.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:127
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:108
 msgid "Then, (1) can be rewritten as"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:129
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:110
 msgid ""
 "\\frac{\\partial c}{\\partial t} = \\frac{\\hat{V} R}{L} \\xi "
 "\\frac{\\partial c}{\\partial \\xi} + \\frac{1}{L^2} \\frac{\\partial}"
-"{\\partial \\xi} \\left( D(c) \\frac{\\partial c}{\\partial \\xi}\\right)"
+"{\\partial \\xi} \\left( D(c) \\frac{\\partial c}{\\partial \\xi}\\right)\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:144
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:122
 msgid "Entering the Model into PyBaMM"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:155
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:133
 msgid ""
 "As always, we begin by importing PyBaMM and changing our working directory "
 "to the root of the ``pybamm/`` folder."
@@ -237,64 +250,64 @@ msgid ""
 "os.chdir(pybamm.__path__[0] + \"/..\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:183
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:161
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:189
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:167
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:196
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:174
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:207
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:185
 msgid "A model is defined in six steps:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:209
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:228
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:187
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:206
 msgid "Initialise model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:210
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:261
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:188
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:239
 msgid "Define parameters and variables"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:211
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:328
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:189
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:306
 msgid "State governing equations"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:212
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:390
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:190
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:368
 msgid "State boundary conditions"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:213
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:502
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:191
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:471
 msgid "State initial conditions"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:214
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:573
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:192
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:539
 msgid "State output variables"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:216
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:194
 msgid ""
 "We shall proceed through each step to enter our simple SEI growth model."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:239
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:217
 msgid ""
 "We first initialise the model using the ``BaseModel`` class. This sets up "
 "the required structure for our model."
@@ -308,7 +321,7 @@ msgstr ""
 msgid "model = pybamm.BaseModel()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:272
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:250
 msgid ""
 "In our SEI model, we have two dimensionless parameters, :math:`k` and :math:"
 "`\\hat{V}`, and one dimensionless function :math:`D(c)`, which are all given "
@@ -341,7 +354,7 @@ msgid ""
 "    )"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:304
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:282
 msgid ""
 "We now define the dimensionless variables in our model. Since these are the "
 "variables we solve for directly, we do not need to write them in terms of "
@@ -362,7 +375,7 @@ msgid ""
 "L = pybamm.Variable(\"SEI thickness [m]\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:339
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:317
 msgid ""
 "We can now use the symbols we have created for our parameters and variables "
 "to write out our governing equations. Note that before we use the reaction "
@@ -391,7 +404,7 @@ msgid ""
 "dLdt = V_hat * R"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:368
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:346
 msgid ""
 "Once we have stated the equations, we can add them to the ``model.rhs`` "
 "dictionary. This is a dictionary whose keys are the variables being solved "
@@ -407,37 +420,39 @@ msgstr ""
 msgid "model.rhs = {c: dcdt, L: dLdt}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:401
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:379
 msgid ""
 "We only have boundary conditions on the solvent concentration equation. We "
 "must state where a condition is Neumann (on the gradient) or Dirichlet (on "
 "the variable itself)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:403
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:381
 msgid "The boundary condition on the electrode-SEI (x=0) boundary is:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:405
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:383
 msgid ""
 "N|_{\\xi=0} = - R, \\quad  N|_{\\xi=0} = - D(c|_{\\xi=0} )\\left."
-"\\frac{\\partial c}{\\partial \\xi}\\right|_{\\xi=0}"
+"\\frac{\\partial c}{\\partial \\xi}\\right|_{\\xi=0}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:410
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:385
 msgid ""
 "which is a Neumann condition. To implement this boundary condition in "
 "pybamm, we must first rearrange the equation so that the gradient of the "
 "concentration, :math:`\\nabla c|_{x=0}`, is the subject. Therefore we have"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:412
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:387
 msgid ""
 "\\left.\\frac{\\partial c}{\\partial \\xi}\\right|_{\\xi=0} = \\frac{R L}"
-"{D(c|_{\\xi=0} )}"
+"{D(c|_{\\xi=0} )}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:417
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:389
 msgid "which we enter into pybamm as"
 msgstr ""
 
@@ -453,17 +468,19 @@ msgid ""
 "grad_c_left = R * L / D_left"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:441
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:413
 msgid ""
 "On the SEI-electrolyte boundary (:math:`\\xi=1`), we have the boundary "
 "condition"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:443
-msgid "c|_{\\xi=1} = c_∞"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:415
+msgid ""
+"c|_{\\xi=1} = c_∞\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:457
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:426
 msgid "which is a Dirichlet condition and is just entered as"
 msgstr ""
 
@@ -475,7 +492,7 @@ msgstr ""
 msgid "c_right = c_inf"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:478
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:447
 msgid ""
 "We now load these boundary conditions into the ``model.boundary_conditions`` "
 "dictionary in the following way, being careful to state the type of boundary "
@@ -494,15 +511,17 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:513
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:482
 msgid "There are two initial conditions in our model:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:515
-msgid "c|_{t=0} = c_∞, \\quad L|_{t=0} = L_0"
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:484
+msgid ""
+"c|_{t=0} = c_∞, \\quad L|_{t=0} = L_0\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:529
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:495
 msgid "which are simply written in pybamm as"
 msgstr ""
 
@@ -516,7 +535,7 @@ msgid ""
 "L_init = L_0"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:551
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:517
 msgid "and then included into the ``model.initial_conditions`` dictionary:"
 msgstr ""
 
@@ -528,7 +547,7 @@ msgstr ""
 msgid "model.initial_conditions = {c: c_init, L: L_init}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:584
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:550
 msgid ""
 "We already have everything required in model for the model to be used and "
 "solved, but we have not yet stated what we actually want to output from the "
@@ -537,23 +556,23 @@ msgid ""
 "quantities without further tedious postprocessing steps."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:586
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:552
 msgid "Some useful outputs for this simple model are:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:588
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:554
 msgid "the SEI thickness"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:589
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:555
 msgid "the SEI growth rate"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:590
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:556
 msgid "the solvent concentration"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:592
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:558
 msgid ""
 "These are added to the model by adding entries to the ``model.variables`` "
 "dictionary"
@@ -572,7 +591,7 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:617
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:583
 msgid ""
 "The model is now fully defined and ready to be used. If you plan on reusing "
 "the model several times, you can additionally set model defaults which may "
@@ -580,11 +599,11 @@ msgid ""
 "values, a default solver, etc."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:629
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:595
 msgid "Using the Model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:640
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:606
 msgid ""
 "The model will now behave in the same way as any of the inbuilt PyBaMM "
 "models. However, to demonstrate that the model works we display the steps "
@@ -634,21 +653,21 @@ msgid ""
 "disc.process_model(model)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:694
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:660
 msgid ""
 "<pre>\n"
 "&lt;pybamm.models.base_model.BaseModel at 0x130908740&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:700
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:666
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.models.base\\_model.BaseModel at 0x130908740>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:707
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:673
 msgid "<pybamm.models.base_model.BaseModel at 0x130908740>"
 msgstr ""
 
@@ -668,7 +687,7 @@ msgid ""
 "c_out = solution[\"Solvent concentration [mol.m-3]\"]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:735
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:701
 msgid ""
 "Using these outputs, we can now plot the SEI thickness as a function of time "
 "and also the solvent concentration profile within the SEI. We use a slider "
@@ -716,7 +735,7 @@ msgid ""
 ");"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:785
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:751
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;), "
@@ -724,7 +743,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:791
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:757
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t'), Output()), "
@@ -732,17 +751,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:798
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:764
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t'), Output()), "
 "_dom_classes=('widget-interact',))"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:810
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:776
 msgid "Formally adding your model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:821
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:787
 msgid ""
 "The purpose of this notebook has been to go through the steps involved in "
 "getting a simple model working within PyBaMM. However, if you plan on "
@@ -751,11 +770,11 @@ msgid ""
 "this in the \"Adding a Model\" tutorial in the documentation."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:833
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:799
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:835
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:801
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -767,7 +786,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:856
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:822
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -792,7 +811,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:867
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:833
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -817,7 +836,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:879
+#: ../../../source/examples/notebooks/creating_models/6-a-simple-SEI-model.ipynb:845
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -83,10 +84,11 @@ msgstr ""
 msgid ""
 "f_{\\text{k},a}(R_\\text{k}) = \\frac{4\\pi R_\\text{k}^2 f_\\text{k,num}"
 "(R_\\text{k})}{\\int_{R_\\text{k,min}}^{R_\\text{k,max}} 4\\pi R_\\text{k}^2 "
-"f_\\text{k,num}(R_\\text{k})\\,\\text{d}R_\\text{k}}"
+"f_\\text{k,num}(R_\\text{k})\\,\\text{d}R_\\text{k}}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:34
+#: ../../../source/examples/notebooks/models/MPM.ipynb:31
 msgid ""
 "The total amount of surface area (per unit volume) :math:`a_\\text{k,tot}` "
 "accounting for all particles is expressed in terms of the active material "
@@ -94,29 +96,31 @@ msgid ""
 "in PyBaMM (SPM, DFN):"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:36
+#: ../../../source/examples/notebooks/models/MPM.ipynb:33
 msgid ""
 "\\epsilon_{s,\\text{k}}= \\int \\frac{1}{3} R_\\text{k} "
 "\\underbrace{a_\\text{k,tot}f_{\\text{k},a}(R_\\text{k})}_{\\text{area }"
 "a_\\text{k}(R_\\text{k})\\text{ of particles size }R_\\text{k}}\\,\\text{d}"
-"R_\\text{k}"
+"R_\\text{k}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:41
+#: ../../../source/examples/notebooks/models/MPM.ipynb:35
 msgid ""
 "Rearranging and defining :math:`\\bar{R}_{\\text{k},a}=\\int  R_\\text{k} "
 "f_{\\text{k},a}(R_\\text{k})\\,\\text{d}R_\\text{k}` as the mean of the area-"
 "weighted distribution, we find"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:43
+#: ../../../source/examples/notebooks/models/MPM.ipynb:37
 msgid ""
 "a_\\text{k,tot}=\\frac{3\\epsilon_{s,\\text{k}}}{\\int  R_\\text{k} "
 "f_{\\text{k},a}(R_\\text{k})\\,\\text{d}R_\\text{k}} = \\frac{3\\epsilon_{s,"
-"\\text{k}}}{\\bar{R}_{\\text{k},a}}."
+"\\text{k}}}{\\bar{R}_{\\text{k},a}}.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:48
+#: ../../../source/examples/notebooks/models/MPM.ipynb:39
 msgid ""
 "Then :math:`a_\\text{k,tot}` is the aggregate surface area of the particle "
 "population and analogous to the variables ``\"X-averaged negative electrode "
@@ -127,7 +131,7 @@ msgid ""
 "the different types of distribution and mean radii."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:50
+#: ../../../source/examples/notebooks/models/MPM.ipynb:41
 msgid ""
 "Another common way to express the size distribution is via particle volume. "
 "The fraction of volume contributed by the particles of radius :math:"
@@ -135,27 +139,28 @@ msgid ""
 "related to the number and area ones via"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:52
+#: ../../../source/examples/notebooks/models/MPM.ipynb:43
 msgid ""
 "f_{\\text{k},v}(R_\\text{k}) = \\frac{\\frac{1}{3} R_\\text{k} f_{\\text{k},"
 "a}(R_\\text{k})}{\\int_{R_\\text{k,min}}^{R_\\text{k,max}} \\frac{1}{3} "
 "R_\\text{k} f_{\\text{k},a}(R_\\text{k})\\,\\text{d}R_\\text{k}} "
 "=\\frac{\\frac{4}{3}\\pi R_\\text{k}^3 f_\\text{k,num}(R_\\text{k})}"
 "{\\int_{R_\\text{k,min}}^{R_\\text{k,max}} \\frac{4}{3}\\pi R_\\text{k}^3 "
-"f_\\text{k,num}(R_\\text{k})\\,\\text{d}R_\\text{k}}"
+"f_\\text{k,num}(R_\\text{k})\\,\\text{d}R_\\text{k}}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:57
+#: ../../../source/examples/notebooks/models/MPM.ipynb:45
 msgid ""
 "It is sufficient to specify :math:`f_{\\text{k},a}(R_\\text{k})`, which is "
 "present requirement in the MPM."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:69
+#: ../../../source/examples/notebooks/models/MPM.ipynb:57
 msgid "Model equations"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:71
+#: ../../../source/examples/notebooks/models/MPM.ipynb:59
 msgid ""
 "In each electrode, only one representative particle of each size :math:"
 "`R_\\text{k}` needs to be modelled. The concentration of lithium in the "
@@ -166,13 +171,13 @@ msgid ""
 "electrode, :math:`\\phi_{\\text{s,k}}(t)`."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:73
+#: ../../../source/examples/notebooks/models/MPM.ipynb:61
 msgid ""
 "The equations for molar conservation of lithium (:math:`c_{\\text{s,k}}`) "
 "are then:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:75
+#: ../../../source/examples/notebooks/models/MPM.ipynb:63
 msgid ""
 "\\frac{\\partial c_{\\text{s,k}}}{\\partial t} = -\\frac{1}{r_{\\text{k}}^2} "
 "\\frac{\\partial}{\\partial r_{\\text{k}}} \\left(r_{\\text{k}}^2 "
@@ -182,7 +187,7 @@ msgid ""
 "p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:81
+#: ../../../source/examples/notebooks/models/MPM.ipynb:68
 msgid ""
 "N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0,  \\ \\  N_{\\text{s,k}}\\big|"
 "_{r_{\\text{k}}=R_{\\text{k}}} =\n"
@@ -191,7 +196,7 @@ msgid ""
 "\\text{k} \\in \\text{n, p},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:88
+#: ../../../source/examples/notebooks/models/MPM.ipynb:74
 msgid ""
 "where :math:`D_{\\text{s,k}}` is the diffusion coefficient in the solid, :"
 "math:`N_{\\text{s,k}}` denotes the flux of lithium ions in the solid "
@@ -199,11 +204,11 @@ msgid ""
 "is given by :math:`j_\\text{k}`, which also varies with particle size."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:91
+#: ../../../source/examples/notebooks/models/MPM.ipynb:77
 msgid "Algebraic equations for the potentials"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:93
+#: ../../../source/examples/notebooks/models/MPM.ipynb:79
 msgid ""
 "The potentials :math:`\\phi_{\\text{s,k}}(t)` are determined via the "
 "integral constraint that the total current flowing across the electrode "
@@ -212,7 +217,7 @@ msgid ""
 "\\phi_{\\text{s,k}} = \\phi_{\\text{s,k}} - \\phi_{\\text{e}}`,"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:95
+#: ../../../source/examples/notebooks/models/MPM.ipynb:81
 msgid ""
 "L_\\text{k}a_\\text{k,tot}\\int_{R_\\text{k,min}}^{R_\\text{k,max}} "
 "f_{\\text{k},a}(R_\\text{k})j_\\text{k}\\,\\text{d}R_\\text{k} = "
@@ -222,30 +227,33 @@ msgid ""
 "\\end{cases}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:103
+#: ../../../source/examples/notebooks/models/MPM.ipynb:88
 msgid "with Butler-Volmer kinetics"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:105
+#: ../../../source/examples/notebooks/models/MPM.ipynb:90
 msgid ""
 "j_\\text{k}=j_{\\text{0,k}} \\sinh\\left[\\frac{F}{2R_g T}(\\Delta "
 "\\phi_{\\text{s,k}}-U_{\\text{k}}(c_{\\text{s},\\text{k}}))\\right], \\ \\ "
 "j_{\\text{0,k}} =  m_{\\text{k}}(c_{\\text{e}}c_{\\text{s,k}})^{1/2}"
-"(c_\\text{k,max}-c_{\\text{s,k}})^{1/2}."
+"(c_\\text{k,max}-c_{\\text{s,k}})^{1/2}.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:110
+#: ../../../source/examples/notebooks/models/MPM.ipynb:92
 msgid ""
 "This gives an integral (or algebraic once discretized) equation for :math:"
 "`\\Delta \\phi_{\\text{s,k}}` which is coupled to the concentration "
 "equations above. The voltage is then obtained from"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:112
-msgid "V = \\Delta \\phi_{\\text{s,p}} - \\Delta \\phi_{\\text{s,n}}"
+#: ../../../source/examples/notebooks/models/MPM.ipynb:94
+msgid ""
+"V = \\Delta \\phi_{\\text{s,p}} - \\Delta \\phi_{\\text{s,n}}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:127
+#: ../../../source/examples/notebooks/models/MPM.ipynb:106
 msgid "Example solving MPM"
 msgstr ""
 
@@ -262,25 +270,25 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:151
+#: ../../../source/examples/notebooks/models/MPM.ipynb:130
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:157
+#: ../../../source/examples/notebooks/models/MPM.ipynb:136
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:164
+#: ../../../source/examples/notebooks/models/MPM.ipynb:143
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:175
+#: ../../../source/examples/notebooks/models/MPM.ipynb:154
 msgid "Create an instance of the model"
 msgstr ""
 
@@ -292,7 +300,7 @@ msgstr ""
 msgid "model = pybamm.lithium_ion.MPM()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:196
+#: ../../../source/examples/notebooks/models/MPM.ipynb:175
 msgid ""
 "First, let's inspect some variables (e.g. the lithium concentration and "
 "interfacial current densities) that depend on particle size :math:"
@@ -308,7 +316,7 @@ msgstr ""
 msgid "model.variables.search(\"X-averaged negative particle concentration\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:217
+#: ../../../source/examples/notebooks/models/MPM.ipynb:196
 msgid ""
 "<pre>\n"
 "X-averaged negative particle concentration\n"
@@ -318,7 +326,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:226
+#: ../../../source/examples/notebooks/models/MPM.ipynb:205
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "X-averaged negative particle concentration\n"
@@ -328,7 +336,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:236
+#: ../../../source/examples/notebooks/models/MPM.ipynb:215
 msgid ""
 "X-averaged negative particle concentration\n"
 "X-averaged negative particle concentration [mol.m-3]\n"
@@ -336,7 +344,7 @@ msgid ""
 "X-averaged negative particle concentration distribution [mol.m-3]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:250
+#: ../../../source/examples/notebooks/models/MPM.ipynb:229
 msgid ""
 "The concentration that is being solved for in the MPM, and which varies with "
 "particle size is the one ending in ``\"distribution\"``."
@@ -354,7 +362,7 @@ msgid ""
 "c_n_R_dependent.domains"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:275
+#: ../../../source/examples/notebooks/models/MPM.ipynb:254
 msgid ""
 "<pre>\n"
 "{&#39;primary&#39;: [&#39;negative particle&#39;],\n"
@@ -363,7 +371,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:283
+#: ../../../source/examples/notebooks/models/MPM.ipynb:262
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "\\{'primary': ['negative particle'],\n"
@@ -372,20 +380,20 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:292
+#: ../../../source/examples/notebooks/models/MPM.ipynb:271
 msgid ""
 "{'primary': ['negative particle'],\n"
 " 'secondary': ['negative particle size'],\n"
 " 'tertiary': ['current collector']}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:305
+#: ../../../source/examples/notebooks/models/MPM.ipynb:284
 msgid ""
 "Notice that the secondary domain is ``'negative particle size'``, which is "
 "treated as another (microscale) domain in PyBaMM."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:307
+#: ../../../source/examples/notebooks/models/MPM.ipynb:286
 msgid ""
 "The variable without the ``\"distribution\"`` has been \"size averaged\" and "
 "can be compared to the variable with the same name from the other lithium-"
@@ -394,14 +402,15 @@ msgid ""
 "volume (to preserve the total amount of lithium):"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:309
+#: ../../../source/examples/notebooks/models/MPM.ipynb:288
 msgid ""
 "\\left<c_{\\text{s,k}}\\right>_v = \\int_{R_\\text{k,min}}^{R_\\text{k,max}} "
 "f_{\\text{k},v}(R_\\text{k})c_{\\text{s,k}}(t,R_\\text{k}, r_\\text{k})\\,"
-"\\text{d}R_\\text{k}"
+"\\text{d}R_\\text{k}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:314
+#: ../../../source/examples/notebooks/models/MPM.ipynb:290
 msgid ""
 "In particular, if the variance of the particle-size distribution :math:"
 "`f_{\\text{k},a}` is shrunk to zero and all particles become concentrated at "
@@ -412,7 +421,7 @@ msgid ""
 "distribution [mol.m-3]\"`` will remain \"particle-size dependent\"."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:325
+#: ../../../source/examples/notebooks/models/MPM.ipynb:301
 msgid ""
 "The convention of adding ``\"distribution\"`` to the end of a variable name "
 "to indicate particle-size dependence has been used for other variables, such "
@@ -429,7 +438,7 @@ msgid ""
 "density\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:346
+#: ../../../source/examples/notebooks/models/MPM.ipynb:322
 msgid ""
 "<pre>\n"
 "X-averaged negative electrode interfacial current density\n"
@@ -442,7 +451,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:356
+#: ../../../source/examples/notebooks/models/MPM.ipynb:332
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "X-averaged negative electrode interfacial current density\n"
@@ -455,7 +464,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:367
+#: ../../../source/examples/notebooks/models/MPM.ipynb:343
 msgid ""
 "X-averaged negative electrode interfacial current density\n"
 "X-averaged negative electrode interfacial current density [A.m-2]\n"
@@ -465,39 +474,40 @@ msgid ""
 "X-averaged negative electrode interfacial current density per volume [A.m-3]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:382
+#: ../../../source/examples/notebooks/models/MPM.ipynb:358
 msgid ""
 "As the interfacial current density is a flux per unit area on the particle "
 "surface, the \"size averaging\" is done by area (to preserve the total flux "
 "of lithium):"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:384
+#: ../../../source/examples/notebooks/models/MPM.ipynb:360
 msgid ""
 "\\left<j_{\\text{k}}\\right>_a = \\int_{R_\\text{k,min}}^{R_\\text{k,max}} "
 "f_{\\text{k},a}(R_\\text{k})j_{\\text{k}}(t,R_\\text{k})\\,\\text{d}"
-"R_\\text{k}"
+"R_\\text{k}\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:389
+#: ../../../source/examples/notebooks/models/MPM.ipynb:362
 msgid ""
 "The averaging is merely done to allow comparison to variables from other "
 "models with only a single size, and are not necessarily used within the MPM "
 "itself, or are physically meaningful."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:391
+#: ../../../source/examples/notebooks/models/MPM.ipynb:364
 msgid ""
 "Note: not all variables have a \"distribution\" version, such as the "
 "potentials or temperature variables, as they do not vary with particle size "
 "in the MPM as implemented here."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:403
+#: ../../../source/examples/notebooks/models/MPM.ipynb:376
 msgid "Mesh points"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:405
+#: ../../../source/examples/notebooks/models/MPM.ipynb:378
 msgid ""
 "By default, the size domain is discretized into 30 grid points on a uniform "
 "1D mesh."
@@ -515,7 +525,7 @@ msgid ""
 "    print(var, \"has\", npts, \"mesh points\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:429
+#: ../../../source/examples/notebooks/models/MPM.ipynb:402
 msgid ""
 "<pre>\n"
 "negative electrode is of type Uniform1DSubMesh\n"
@@ -538,7 +548,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:451
+#: ../../../source/examples/notebooks/models/MPM.ipynb:424
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "negative electrode is of type Uniform1DSubMesh\n"
@@ -561,7 +571,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:474
+#: ../../../source/examples/notebooks/models/MPM.ipynb:447
 msgid ""
 "negative electrode is of type Uniform1DSubMesh\n"
 "separator is of type Uniform1DSubMesh\n"
@@ -582,11 +592,11 @@ msgid ""
 "R_p has 30 mesh points"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:502
+#: ../../../source/examples/notebooks/models/MPM.ipynb:475
 msgid "Solve"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:504
+#: ../../../source/examples/notebooks/models/MPM.ipynb:477
 msgid "Now solve the MPM with the default parameters and size distributions."
 msgstr ""
 
@@ -615,14 +625,14 @@ msgid ""
 "sim.plot(output_variables=output_variables)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:540
+#: ../../../source/examples/notebooks/models/MPM.ipynb:513
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"f79e30dbc81445a09cc42f3d8f6565fd\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:551
+#: ../../../source/examples/notebooks/models/MPM.ipynb:524
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -630,7 +640,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:557
+#: ../../../source/examples/notebooks/models/MPM.ipynb:530
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -638,31 +648,31 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:564
+#: ../../../source/examples/notebooks/models/MPM.ipynb:537
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=3581.95943869543, step=35.8195943869543), Ou…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:576
+#: ../../../source/examples/notebooks/models/MPM.ipynb:549
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fd39283a7f0&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:582
+#: ../../../source/examples/notebooks/models/MPM.ipynb:555
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x7fd39283a7f0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:589
+#: ../../../source/examples/notebooks/models/MPM.ipynb:562
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7fd39283a7f0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:600
+#: ../../../source/examples/notebooks/models/MPM.ipynb:573
 msgid "We can also visualise the concentration within the particles."
 msgstr ""
 
@@ -723,11 +733,11 @@ msgid ""
 "plot_concentrations(t[-1])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:687
+#: ../../../source/examples/notebooks/models/MPM.ipynb:660
 msgid "Input custom particle-size distributions"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:698
+#: ../../../source/examples/notebooks/models/MPM.ipynb:671
 msgid ""
 "In order to solve the MPM, one must input the area-weighted particle-size "
 "distribution :math:`f_{\\text{k},a}` for each electrode :math:`\\text{k}"
@@ -739,13 +749,13 @@ msgid ""
 "deviations equal to 0.3 times the mean."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:701
+#: ../../../source/examples/notebooks/models/MPM.ipynb:674
 msgid ""
 "You can input any size distribution :math:`f_{\\text{k},a}(R_\\text{k})` as "
 "a function of :math:`R_\\text{k}`, which we will now demonstrate."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:703
+#: ../../../source/examples/notebooks/models/MPM.ipynb:676
 msgid ""
 "Note: :math:`f_{\\text{k},a}(R_\\text{k})` should ideally integrate to 1 "
 "over the specified :math:`R_\\text{k}` range, although it is automatically "
@@ -826,7 +836,7 @@ msgid ""
 "sim.plot(output_variables=output_variables)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:784
+#: ../../../source/examples/notebooks/models/MPM.ipynb:757
 msgid ""
 "The discretized size distributions can be plotted as histograms. Only the "
 "area-weighted distribution has been input, but the corresponding number and "
@@ -890,11 +900,11 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:861
+#: ../../../source/examples/notebooks/models/MPM.ipynb:834
 msgid "Vary standard deviation as an input parameter"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:863
+#: ../../../source/examples/notebooks/models/MPM.ipynb:836
 msgid ""
 "You may define the standard deviation (or other distribution parameters "
 "except for the min or max radii) of the distribution as a pybamm \"input\" "
@@ -953,11 +963,11 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:930
+#: ../../../source/examples/notebooks/models/MPM.ipynb:903
 msgid "Check the distribution statistics"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:932
+#: ../../../source/examples/notebooks/models/MPM.ipynb:905
 msgid ""
 "The mean and standard deviations of the final discretized distributions can "
 "be investigated using the output variables ``\"Negative area-weighted mean "
@@ -978,7 +988,7 @@ msgid ""
 "    print(\"Positive area-weighted mean particle radius [m]\", R.entries[0])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:957
+#: ../../../source/examples/notebooks/models/MPM.ipynb:930
 msgid ""
 "<pre>\n"
 "The mean of the input lognormal was: 1e-05\n"
@@ -989,7 +999,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:967
+#: ../../../source/examples/notebooks/models/MPM.ipynb:940
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "The mean of the input lognormal was: 1e-05\n"
@@ -1000,7 +1010,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:978
+#: ../../../source/examples/notebooks/models/MPM.ipynb:951
 msgid ""
 "The mean of the input lognormal was: 1e-05\n"
 "The means of discretized distributions are:\n"
@@ -1027,7 +1037,7 @@ msgid ""
 "sd.entries[0])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1010
+#: ../../../source/examples/notebooks/models/MPM.ipynb:983
 msgid ""
 "<pre>\n"
 "The standard deviations of the input lognormal were:\n"
@@ -1044,7 +1054,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1023
+#: ../../../source/examples/notebooks/models/MPM.ipynb:996
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "The standard deviations of the input lognormal were:\n"
@@ -1061,7 +1071,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1037
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1010
 msgid ""
 "The standard deviations of the input lognormal were:\n"
 "4.000000000000001e-06\n"
@@ -1076,11 +1086,11 @@ msgid ""
 "5.815728559306213e-06"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1056
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1029
 msgid "Compare to SPM and DFN"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1058
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1031
 msgid ""
 "The MPM can also be easily compared to PyBaMM models with a single particle "
 "size. The standard output variables are computed in the MPM, averaging over "
@@ -1107,15 +1117,15 @@ msgid ""
 "pybamm.dynamic_plot(sims)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1091
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1064
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"fbc7fc1fe7434b48bbcb69376b28f58a\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1102
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1213
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1075
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1186
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -1123,8 +1133,8 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1108
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1219
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1081
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1192
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=3500.0, "
@@ -1132,36 +1142,36 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1115
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1226
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1088
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1199
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=3500.0, "
 "step=35.0), Output()), _dom_classes=…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1127
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1100
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fd3934ec970&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1133
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1106
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x7fd3934ec970>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1140
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1113
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7fd3934ec970>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1152
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1125
 msgid "Model options"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1154
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1127
 msgid ""
 "The MPM is compatible with the current collector and thermal models (except "
 "the \"x-full\" thermal option). Currently, the MPM is not compatible with "
@@ -1169,11 +1179,11 @@ msgid ""
 "cracking/swelling, or lithium plating)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1166
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1139
 msgid "Fickian diffusion vs Uniform profile"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1168
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1141
 msgid ""
 "One can choose from Fickian diffusion or a uniform concentration profile "
 "within the particles. Teh default is \"Fickian diffusion\"."
@@ -1200,36 +1210,36 @@ msgid ""
 "output_variables=output_variables)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1202
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1175
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"1af4a9e7a8c34514829081483c00f571\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1238
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1211
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fd3a30ff880&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1244
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1217
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x7fd3a30ff880>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1251
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1224
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7fd3a30ff880>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1263
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1236
 msgid "1D current collector model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1265
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1238
 msgid ""
 "Add another macroscale dimension \"z\", employing the \"potential pair\" "
 "option solving for the potential in the current collectors."
@@ -1269,14 +1279,14 @@ msgid ""
 "pybamm.dynamic_plot(sim_cc, output_variables=output_variables)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1310
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1283
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"0f7e454c447545d69e8dae1f8e2b1900\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1321
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1294
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -1284,7 +1294,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1327
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1300
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -1292,35 +1302,35 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1334
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1307
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1346
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1319
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x7fd3307d5190&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1352
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1325
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x7fd3307d5190>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1359
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1332
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x7fd3307d5190>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1371
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1344
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1373
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1346
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -1332,7 +1342,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1394
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1367
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -1377,7 +1387,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1410
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1383
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -1422,7 +1432,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/MPM.ipynb:1427
+#: ../../../source/examples/notebooks/models/MPM.ipynb:1400
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

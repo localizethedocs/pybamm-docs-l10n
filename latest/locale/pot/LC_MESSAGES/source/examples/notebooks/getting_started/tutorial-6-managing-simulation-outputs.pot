@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19114,10 +19115,12 @@ msgid ""
 msgstr ""
 
 #: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:1989
-msgid "G = \\dfrac{I}{V} ,"
+msgid ""
+"G = \\dfrac{I}{V} ,\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:1994
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:1991
 msgid "which produces a standard ``ProcessedVariable`` object."
 msgstr ""
 
@@ -19133,7 +19136,7 @@ msgid ""
 "conductance"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2018
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2015
 msgid ""
 "<pre>\n"
 "&lt;pybamm.solvers.processed_variable.ProcessedVariable0D at "
@@ -19141,14 +19144,14 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2024
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2021
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.solvers.processed\\_variable.ProcessedVariable0D at 0x136615580>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2031
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2028
 msgid "<pybamm.solvers.processed_variable.ProcessedVariable0D at 0x136615580>"
 msgstr ""
 
@@ -19166,29 +19169,29 @@ msgid ""
 "plt.ylabel(\"Conductance [S]\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2059
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2056
 msgid ""
 "<pre>\n"
 "Text(0, 0.5, &#39;Conductance [S]&#39;)\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2065
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2062
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Text(0, 0.5, 'Conductance [S]')\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2072
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2069
 msgid "Text(0, 0.5, 'Conductance [S]')"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2092
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2089
 msgid "Saving the simulation and output data"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2103
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2100
 msgid ""
 "In some cases simulations might take a long time to run so it is advisable "
 "to save in your computer so it can be analysed later without re-running the "
@@ -19203,7 +19206,7 @@ msgstr ""
 msgid "sim.save(\"SPMe.pkl\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2124
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2121
 msgid ""
 "If you now check the root directory of your notebooks you will notice that a "
 "new file called ``\"SPMe.pkl\"`` has appeared. We can load the stored "
@@ -19218,7 +19221,7 @@ msgstr ""
 msgid "sim2 = pybamm.load(\"SPMe.pkl\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2145
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2142
 msgid ""
 "which allows the same manipulation as the original simulation would allow"
 msgstr ""
@@ -19231,15 +19234,15 @@ msgstr ""
 msgid "sim2.plot()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2168
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2165
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"a7b10fbeb113473cb59268eb5cdf8317\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2179
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2285
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2176
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2282
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -19247,8 +19250,8 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2185
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2291
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2182
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2288
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -19256,32 +19259,32 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2192
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2298
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2189
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2295
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2204
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2201
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x1369e8590&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2210
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2207
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x1369e8590>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2217
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2214
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x1369e8590>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2228
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2225
 msgid ""
 "Alternatively, we can just save the solution of the simulation in a similar "
 "way"
@@ -19297,7 +19300,7 @@ msgid ""
 "sol.save(\"SPMe_sol.pkl\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2250
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2247
 msgid "and load it in a similar way too"
 msgstr ""
 
@@ -19311,32 +19314,32 @@ msgid ""
 "sol2.plot()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2274
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2271
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"3e0835825c504bc19983873d6bef093b\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2310
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2307
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x1379de4b0&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2316
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2313
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x1379de4b0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2323
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2320
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x1379de4b0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2334
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2331
 msgid "Another option is to just save the data for some variables"
 msgstr ""
 
@@ -19348,7 +19351,7 @@ msgstr ""
 msgid "sol.save_data(\"sol_data.pkl\", [\"Current [A]\", \"Voltage [V]\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2355
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2352
 msgid "or save it in ``.csv`` or ``.mat`` format"
 msgstr ""
 
@@ -19369,21 +19372,21 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2383
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2380
 msgid ""
 "Note that while exporting ``.pkl`` works for all variables, exporting to ``."
 "csv`` and ``.mat`` only works for 0D variables (i.e. variables the do not "
 "depend on space, only on time)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2385
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2382
 msgid ""
 "In this notebook we have shown how to extract and store the outputs of "
 "PyBaMM's simulations. Next, in `Tutorial 7 <./tutorial-7-model-options."
 "ipynb>`__ we will show how to change the model options."
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2396
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2393
 msgid ""
 "Before finishing we will remove the data files we saved so that we leave the "
 "directory as we found it"
@@ -19404,11 +19407,11 @@ msgid ""
 "os.remove(\"sol_data.mat\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2424
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2421
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2426
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2423
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -19420,7 +19423,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2447
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2444
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -19453,7 +19456,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2460
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2457
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -19486,7 +19489,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2474
+#: ../../../source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb:2471
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-19 16:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -112,10 +113,11 @@ msgstr ""
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:65
 msgid ""
 "\\rho_{eff} \\frac{\\partial T}{\\partial t} = \\bar{Q} - \\frac{hA}{V}(T-"
-"T_{\\infty}),"
+"T_{\\infty}),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:70
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:67
 msgid ""
 "where :math:`\\rho_{eff}` is effective volumetric heat capacity, :math:`T` "
 "is the temperature, :math:`t` is time, :math:`\\bar{Q}` is the averaged heat "
@@ -125,15 +127,17 @@ msgid ""
 "`T_0` must be prescribed."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:72
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:69
 msgid "The effective volumetric heat capacity is computed as"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:74
-msgid "\\rho_{eff} = \\frac{\\sum_k \\rho_k c_{p,k} L_k}{\\sum_k L_k},"
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:71
+msgid ""
+"\\rho_{eff} = \\frac{\\sum_k \\rho_k c_{p,k} L_k}{\\sum_k L_k},\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:79
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:73
 msgid ""
 "where :math:`\\rho_k` is the density, :math:`c_{p,k}` is the specific heat, "
 "and :math:`L_k` is the thickness of each component. The subscript :math:`k "
@@ -142,7 +146,7 @@ msgid ""
 "positive current collector."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:81
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:75
 msgid ""
 "The heat source term accounts for Ohmic heating :math:`Q_{Ohm,k}` due to "
 "resistance in the solid and electrolyte, irreverisble heating due to "
@@ -151,22 +155,25 @@ msgid ""
 "contact resistance :math:`Q_{cr}`:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:83
-msgid "Q = Q_{Ohm,k}+Q_{rxn,k}+Q_{rev,k}+Q_{cr},"
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:77
+msgid ""
+"Q = Q_{Ohm,k}+Q_{rxn,k}+Q_{rev,k}+Q_{cr},\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:88
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:79
 msgid "with"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:90
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:81
 msgid ""
 "Q_{Ohm,k} = -i_k \\nabla \\phi_k, \\quad Q_{rxn,k} = a_k j_k \\eta_k, \\quad "
 "Q_{rev,k} = a_k j_k T_k \\frac{\\partial U}{\\partial T} \\bigg|"
-"_{T=T_{\\infty}}, Q_{cr} = \\frac{R_{cr}}{V_{cell}}i_k^2."
+"_{T=T_{\\infty}}, Q_{cr} = \\frac{R_{cr}}{V_{cell}}i_k^2.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:95
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:83
 msgid ""
 "Here :math:`i_k` is the current, :math:`\\phi_k` the potential, :math:`a_k` "
 "the surface area to volume ratio, :math:`j_k` the interfacial current "
@@ -179,31 +186,31 @@ msgid ""
 "`\\bar{Q}` is computed by taking the volume-average of :math:`Q`."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:107
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:95
 msgid ""
 "When using the option ``{\"cell geometry\": \"arbitrary\"}`` the relevant "
 "parameters to specify the cooling conditions are:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:109
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:97
 msgid "\"Total heat transfer coefficient [W.m-2.K-1]\""
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:110
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:98
 msgid "\"Cell cooling surface area [m2]\""
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:111
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:99
 msgid "\"Cell volume [m3]\""
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:113
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:101
 msgid ""
 "which correspond directly to the parameters :math:`h`, :math:`A` and :math:"
 "`V` in the governing equation."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:115
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:103
 msgid ""
 "When using the option ``{\"cell geometry\": \"pouch\"}`` the parameter :math:"
 "`A` and :math:`V` are computed automatically from the pouch dimensions, "
@@ -213,7 +220,7 @@ msgid ""
 "parameter."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:117
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:105
 msgid ""
 "When using the option ``{\"contact resistance\": \"true\"}`` the parameter "
 "\"Contact resistance [Ohm]\" must be specified. This adds a voltage drop :"
@@ -229,7 +236,7 @@ msgid ""
 "``{\"contact resistance\": \"false\"}``."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:120
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:108
 msgid "The lumped thermal option can be selected as follows"
 msgstr ""
 
@@ -246,7 +253,7 @@ msgid ""
 "pouch_lumped_model = pybamm.lithium_ion.DFN(options)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:145
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:133
 msgid ""
 "If no cell geometry is specified, the \"arbitrary\" cell geometry is used by "
 "default"
@@ -263,25 +270,25 @@ msgid ""
 "print(\"Cell geometry:\", model.options[\"cell geometry\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:168
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:156
 msgid ""
 "<pre>\n"
 "Cell geometry: arbitrary\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:174
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:162
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Cell geometry: arbitrary\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:181
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:169
 msgid "Cell geometry: arbitrary"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:192
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:180
 msgid "The contact resistance option can be turned on via the following"
 msgstr ""
 
@@ -295,7 +302,7 @@ msgid ""
 "model = pybamm.lithium_ion.DFN(options)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:214
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:202
 msgid ""
 "The default option for the lumped model does not include contact resistance."
 msgstr ""
@@ -311,33 +318,33 @@ msgid ""
 "print(\"contact resistance:\", model.options[\"contact resistance\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:237
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:225
 msgid ""
 "<pre>\n"
 "contact resistance: false\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:243
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:231
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "contact resistance: false\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:250
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:238
 msgid "contact resistance: false"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:262
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:250
 msgid "Pouch cell models"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:274
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:262
 msgid "1D (through-cell) model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:276
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:264
 msgid ""
 "The 1D model solves for :math:`T(x,t)`, capturing variations through the "
 "thickness of the cell, but ignoring variations in the other dimensions. The "
@@ -345,18 +352,18 @@ msgid ""
 "given here in dimensional terms"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:278
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:266
 msgid ""
 "\\rho_k c_{p,k} \\frac{\\partial T}{\\partial t} = \\lambda_k \\nabla^2 T + "
 "Q(x,t) - Q_{cool}(x,t)\n"
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:280
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:268
 msgid "with boundary conditions"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:282
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:270
 msgid ""
 "-\\lambda_{cn} \\frac{\\partial T}{\\partial x}\\bigg|_{x=0} = h_{cn}"
 "(T_{\\infty} - T) \\quad -\\lambda_{cp} \\frac{\\partial T}{\\partial "
@@ -364,17 +371,17 @@ msgid ""
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:284
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:272
 msgid "and initial condition"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:286
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:274
 msgid ""
 "T\\big|_{t=0} = T_0.\n"
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:288
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:276
 msgid ""
 "Here :math:`\\lambda_k` is the thermal conductivity of component :math:`k`, "
 "and the heat transfer coefficients :math:`h_{cn}` and :math:`h_{cp}` "
@@ -382,14 +389,14 @@ msgid ""
 "the negative current collector, heat transfer at the large surface of the "
 "pouch on the side of the positive current collector, respectively. The heat "
 "source term :math:`Q` is as described in the section on lumped models. The "
-"term :math:`Q_cool` accounts for additional heat losses due to heat transfer "
-"at the sides of the pouch, as well as the tabs. This term is computed "
-"automatically by PyBaMM based on the cell geometry and heat transfer "
-"coefficients on the edges and tabs of the cell."
+"term :math:`Q_{cool}` accounts for additional heat losses due to heat "
+"transfer at the sides of the pouch, as well as the tabs. This term is "
+"computed automatically by PyBaMM based on the cell geometry and heat "
+"transfer coefficients on the edges and tabs of the cell."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:291
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:357
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:279
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:330
 msgid ""
 "The relevant heat transfer parameters are: \"Negative current collector "
 "surface heat transfer coefficient [W.m-2.K-1]\" \"Positive current collector "
@@ -398,7 +405,7 @@ msgid ""
 "K-1]\" \"Edge heat transfer coefficient [W.m-2.K-1]\""
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:293
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:281
 msgid ""
 "The 1D model is termed \"x-full\" (since it fully accounts for variation in "
 "the x direction) and can be selected as follows"
@@ -414,11 +421,11 @@ msgid ""
 "model = pybamm.lithium_ion.DFN(options)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:316
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:304
 msgid "Higher dimensional pouch cell models"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:318
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:306
 msgid ""
 "These pouch cell thermal models ignore any variation in temperature through "
 "the thickness of the cell (x direction), and solve for :math:`T(y,z,t)`. It "
@@ -427,61 +434,67 @@ msgid ""
 "dimensional terms,"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:320
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:308
 msgid ""
 "\\rho_{eff} \\frac{\\partial T}{\\partial t} = \\lambda_{eff} "
-"\\nabla_\\perp^2T + \\bar{Q} - \\frac{(h_{cn}+h_{cp})A}{V}(T-T_{\\infty}),"
+"\\nabla_\\perp^2T + \\bar{Q} - \\frac{(h_{cn}+h_{cp})A}{V}(T-T_{\\infty}),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:325
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:310
 msgid "along with boundary conditions"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:327
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:312
 msgid ""
 "-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = \\frac{L_{cn}"
 "h_{cn} + (L_n+L_s+L_p+L_{cp})h_{edge}}{L_{cn}+L_n+L_s+L_p+L_{cp}}(T-"
-"T_\\infty),"
+"T_\\infty),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:332
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:314
 msgid "at the negative tab,"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:334
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:316
 msgid ""
 "-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = "
 "\\frac{(L_{cn}+L_n+L_s+L_p)h_{edge}+L_{cp}h_{cp}}{L_{cn}+L_n+L_s+L_p+L_{cp}}"
-"(T-T_\\infty),"
+"(T-T_\\infty),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:339
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:318
 msgid "at the positive tab, and"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:341
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:320
 msgid ""
 "-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = h_{edge}(T-"
-"T_\\infty),"
+"T_\\infty),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:346
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:322
 msgid ""
 "elsewhere. Again, an initial temperature :math:`T_0` must be prescribed."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:348
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:324
 msgid ""
 "Here the heat source term is averaged in the x direction so that :math:"
 "`\\bar{Q}=\\bar{Q}(y,z)`. The parameter :math:`\\lambda_{eff}` is the "
 "effective thermal conductivity, computed as"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:350
-msgid "\\lambda_{eff} = \\frac{\\sum_k \\lambda_k L_k}{\\sum_k L_k}."
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:326
+msgid ""
+"\\lambda_{eff} = \\frac{\\sum_k \\lambda_k L_k}{\\sum_k L_k}.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:355
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:328
 msgid ""
 "The heat transfer coefficients :math:`h_{cn}`, :math:`h_{cp}` and :math:"
 "`h_{egde}` correspond to heat transfer at the large surface of the pouch on "
@@ -490,7 +503,7 @@ msgid ""
 "transfer at the remaining, respectively."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:359
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:332
 msgid "The \"2+1D\" model can be selected as follows"
 msgstr ""
 
@@ -508,11 +521,11 @@ msgid ""
 "model = pybamm.lithium_ion.DFN(options)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:386
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:359
 msgid "Model usage"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:397
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:370
 msgid ""
 "Here we compare the \"full\" one-dimensional model with the lumped model for "
 "a pouch cell. We first set up our models, passing the relevant options, and "
@@ -535,7 +548,7 @@ msgid ""
 "models = [full_thermal_model, lumped_thermal_model]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:424
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:397
 msgid "We then pick our parameter set"
 msgstr ""
 
@@ -547,7 +560,7 @@ msgstr ""
 msgid "parameter_values = pybamm.ParameterValues(\"Marquis2019\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:445
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:418
 msgid ""
 "For the \"full\" model we use a heat transfer coefficient of :math:`5\\,  "
 "\\text{Wm}^{-2}\\text{K}^{-1}` on the large surfaces of the pouch and zero "
@@ -574,7 +587,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:477
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:450
 msgid ""
 "For the lumped model we set the \"Total heat transfer coefficient [W.m-2."
 "K-1]\" parameter as well as the \"Cell cooling surface area [m2]\" "
@@ -601,7 +614,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:505
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:478
 msgid ""
 "Let's run simulations with both options and compare the results. For "
 "demonstration purposes we'll increase the current to amplify the thermal "
@@ -644,15 +657,15 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:555
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:528
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"b29f3527b0cb47b888bf748ff800f359\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:566
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:603
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:539
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:576
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -660,8 +673,8 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:572
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:609
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:545
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:582
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -669,39 +682,39 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:579
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:616
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:552
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:589
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=1154.7660708378553, step=11.547660708378553)…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:592
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:565
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"7de290974a0c4649b7edddae4562bf90\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:628
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:601
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x17f501e90&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:634
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:607
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x17f501e90>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:641
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:614
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x17f501e90>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:652
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:625
 msgid ""
 "For the lumped model, we can compare how the contact resistance affects the "
 "heating. To do so, we must set the ``\"contact resistance\"`` option to "
@@ -723,7 +736,7 @@ msgid ""
 "models = [model_no_contact_resistance, model_contact_resistance]"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:681
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:654
 msgid "We then choose a parameter set."
 msgstr ""
 
@@ -734,7 +747,7 @@ msgid ""
 "lumped_params_contact_resistance = parameter_values.copy()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:704
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:677
 msgid ""
 "For the contact resistance model, we must specify a contact resistance "
 "greater than zero. The default is zero."
@@ -749,7 +762,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:729
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:702
 msgid "The models and parameters are then used to solve for a 1C discharge."
 msgstr ""
 
@@ -763,7 +776,7 @@ msgid ""
 "    sols.append(sim.solution)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:755
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:728
 msgid ""
 "We can then compare the voltage and cell temperature and see the impact of "
 "the contact resistance."
@@ -779,14 +792,14 @@ msgid ""
 "pybamm.dynamic_plot(sols, output_variables)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:783
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:756
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"1254ec88a920400096b25541577ee948\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:794
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:767
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -794,7 +807,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:800
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:773
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -802,35 +815,35 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:807
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:780
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:819
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:792
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x338900950&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:825
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:798
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x338900950>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:832
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:805
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x338900950>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:844
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:817
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:846
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:819
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -842,7 +855,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:867
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:840
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -871,7 +884,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:879
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:852
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -900,7 +913,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/thermal-models.ipynb:892
+#: ../../../source/examples/notebooks/models/thermal-models.ipynb:865
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
