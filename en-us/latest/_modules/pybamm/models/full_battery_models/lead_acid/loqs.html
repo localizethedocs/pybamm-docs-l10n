@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.models.full_battery_models.lead_acid.loqs &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/models/full_battery_models/lead_acid/loqs';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/models/full_battery_models/lead_acid/loqs.html" />
+    <link rel="icon" href="../../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../../../_static/searchtools.js"></script>
+    <script src="../../../../../_static/language_data.js"></script>
+    <script src="../../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.models.full_battery_models.lead_acid.loqs</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.models.full_battery_models.lead_acid.loqs</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Lead-acid LOQS model</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.base_lead_acid_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+
+<div class="viewcode-block" id="LOQS">
+<a class="viewcode-back" href="../../../../../source/api/models/lead_acid/loqs.html#pybamm.lead_acid.LOQS">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LOQS</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Leading-Order Quasi-Static model for lead-acid, from</span>
+<span class="sd">    :footcite:t:`Sulzer2019asymptotic`.</span>
+<span class="sd">    See :class:`pybamm.lead_acid.BaseModel` for more details.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;LOQS model&quot;</span><span class="p">,</span> <span class="n">build</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_external_circuit_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_open_circuit_potential_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_intercalation_kinetics_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_interface_utilisation_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_convection_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_porosity_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_active_material_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_transport_efficiency_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_electrolyte_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_electrode_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_thermal_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_surface_temperature_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_side_reaction_submodels</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_current_collector_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_sei_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_lithium_plating_submodel</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">set_total_interface_submodel</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">build</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build_model</span><span class="p">()</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Sulzer2019asymptotic&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="LOQS.set_external_circuit_submodel">
+<a class="viewcode-back" href="../../../../../source/api/models/lead_acid/loqs.html#pybamm.lead_acid.LOQS.set_external_circuit_submodel">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_external_circuit_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Define how the external circuit defines the boundary conditions for the model,</span>
+<span class="sd">        e.g. (not necessarily constant-) current, voltage, etc</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;current&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;external circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">ExplicitCurrentControl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;voltage&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;external circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">VoltageFunctionControl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;power&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;external circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">PowerFunctionControl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">callable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">]):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;external circuit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">external_circuit</span><span class="o">.</span><span class="n">FunctionControl</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;operating mode&quot;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">)</span>
+            <span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_current_collector_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;current collector&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span>
+            <span class="s2">&quot;uniform&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;potential pair quite conductive&quot;</span><span class="p">,</span>
+        <span class="p">]:</span>
+            <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">current_collector</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;current collector&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;potential pair&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">current_collector</span><span class="o">.</span><span class="n">PotentialPair1plus1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;dimensionality&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="n">submodel</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">current_collector</span><span class="o">.</span><span class="n">PotentialPair2plus1D</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order current collector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">submodel</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_porosity_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order porosity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">porosity</span><span class="o">.</span><span class="n">ReactionDrivenODE</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="kc">True</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_convection_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;convection&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order transverse convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">transverse</span><span class="o">.</span><span class="n">NoConvection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order through-cell convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">through_cell</span><span class="o">.</span><span class="n">NoConvection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;convection&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;uniform transverse&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order transverse convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">transverse</span><span class="o">.</span><span class="n">Uniform</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;convection&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;full transverse&quot;</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order transverse convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">transverse</span><span class="o">.</span><span class="n">Full</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order through-cell convection&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">convection</span><span class="o">.</span><span class="n">through_cell</span><span class="o">.</span><span class="n">Explicit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_intercalation_kinetics_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;surface form&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">InverseButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">InverseButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;negative interface current&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">CurrentForInverseKinetics</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;positive interface current&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">CurrentForInverseKinetics</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">SymmetricButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">SymmetricButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="c1"># always use forward Butler-Volmer for the reaction submodel to be passed to the</span>
+        <span class="c1"># higher order model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reaction_submodels</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;negative&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">SymmetricButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;positive&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">SymmetricButlerVolmer</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid main&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">],</span>
+        <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_electrode_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative electrode potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">electrode</span><span class="o">.</span><span class="n">ohm</span><span class="o">.</span><span class="n">LeadingOrder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive electrode potential&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">electrode</span><span class="o">.</span><span class="n">ohm</span><span class="o">.</span><span class="n">LeadingOrder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_electrolyte_submodel</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">surf_form</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">electrolyte_conductivity</span><span class="o">.</span><span class="n">surface_potential_form</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;surface form&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;false&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order electrolyte conductivity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">electrolyte_conductivity</span><span class="o">.</span><span class="n">LeadingOrder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">surf_model</span> <span class="o">=</span> <span class="n">surf_form</span><span class="o">.</span><span class="n">Explicit</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;surface form&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;differential&quot;</span><span class="p">:</span>
+            <span class="n">surf_model</span> <span class="o">=</span> <span class="n">surf_form</span><span class="o">.</span><span class="n">LeadingOrderDifferential</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;surface form&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;algebraic&quot;</span><span class="p">:</span>
+            <span class="n">surf_model</span> <span class="o">=</span> <span class="n">surf_form</span><span class="o">.</span><span class="n">LeadingOrderAlgebraic</span>
+
+        <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">]:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2"> surface potential difference&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">surf_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;electrolyte diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">pybamm</span><span class="o">.</span><span class="n">electrolyte_diffusion</span><span class="o">.</span><span class="n">LeadingOrder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_side_reaction_submodels</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;hydrolysis&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;true&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order oxygen diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">oxygen_diffusion</span><span class="o">.</span><span class="n">LeadingOrder</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive oxygen interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">ForwardTafel</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid oxygen&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative oxygen interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">DiffusionLimited</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+                    <span class="s2">&quot;negative&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;lead-acid oxygen&quot;</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+                    <span class="n">order</span><span class="o">=</span><span class="s2">&quot;leading&quot;</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order oxygen diffusion&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">oxygen_diffusion</span><span class="o">.</span><span class="n">NoOxygen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative oxygen interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">NoReaction</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid oxygen&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive oxygen interface&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">kinetics</span><span class="o">.</span><span class="n">NoReaction</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> <span class="s2">&quot;lead-acid oxygen&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reaction_submodels</span><span class="p">[</span><span class="s2">&quot;negative&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order negative oxygen interface&quot;</span><span class="p">]</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reaction_submodels</span><span class="p">[</span><span class="s2">&quot;positive&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">submodels</span><span class="p">[</span><span class="s2">&quot;leading-order positive oxygen interface&quot;</span><span class="p">]</span>
+        <span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

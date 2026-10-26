@@ -1,0 +1,2199 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-TW" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.parameters.parameter_values &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=6c9e8f96"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/translations.js?v=cbf116e0"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/parameters/parameter_values';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/parameters/parameter_values.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-TW"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    使用者指南
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API 文件
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">模組原始碼</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.parameters.parameter_values</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>pybamm.parameters.parameter_values 的原始碼</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Iterator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pprint</span><span class="w"> </span><span class="kn">import</span> <span class="n">pformat</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">warnings</span><span class="w"> </span><span class="kn">import</span> <span class="n">warn</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.expression_tree.operations.serialise</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">Serialise</span><span class="p">,</span>
+    <span class="n">convert_function_to_symbolic_expression</span><span class="p">,</span>
+    <span class="n">convert_symbol_from_json</span><span class="p">,</span>
+    <span class="n">convert_symbol_to_json</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.models.full_battery_models.lithium_ion.msmr</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">is_deprecated_msmr_name</span><span class="p">,</span>
+    <span class="n">replace_deprecated_msmr_name</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">.parameter_store</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ParameterCategory</span><span class="p">,</span>
+    <span class="n">ParameterDiff</span><span class="p">,</span>
+    <span class="n">ParameterInfo</span><span class="p">,</span>
+    <span class="n">ParameterStore</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.parameter_substitutor</span><span class="w"> </span><span class="kn">import</span> <span class="n">ParameterSubstitutor</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mapping</span>
+
+
+<div class="viewcode-block" id="ParameterValues">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues">[文件]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterValues</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The parameter values for a simulation.</span>
+
+<span class="sd">    Note that this class does not inherit directly from the python dictionary class as</span>
+<span class="sd">    this causes issues with saving and loading simulations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    values : dict or string or ParameterValues</span>
+<span class="sd">        Explicit set of parameters, or reference to an inbuilt parameter set.</span>
+<span class="sd">        If string and matches one of the inbuilt parameter sets, returns that</span>
+<span class="sd">        parameter set.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; values = {&quot;some parameter&quot;: 1, &quot;another parameter&quot;: 2}</span>
+<span class="sd">    &gt;&gt;&gt; param = pybamm.ParameterValues(values)</span>
+<span class="sd">    &gt;&gt;&gt; param[&quot;some parameter&quot;]</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Marquis2019&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; param[&quot;Reference temperature [K]&quot;]</span>
+<span class="sd">    298.15</span>
+
+<span class="sd">    &gt;&gt;&gt; info = param.get_info(&quot;Reference temperature [K]&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; info.units</span>
+<span class="sd">    &#39;K&#39;</span>
+<span class="sd">    &gt;&gt;&gt; electrode_params = param.list_by_category(&quot;negative electrode&quot;)</span>
+<span class="sd">    &gt;&gt;&gt; len(electrode_params) &gt; 0</span>
+<span class="sd">    True</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Physical constants are deprecated in ParameterValues</span>
+    <span class="n">_DEPRECATED_CONSTANTS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;Ideal gas constant [J.K-1.mol-1]&quot;</span><span class="p">:</span> <span class="s2">&quot;pybamm.constants.R&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Faraday constant [C.mol-1]&quot;</span><span class="p">:</span> <span class="s2">&quot;pybamm.constants.F&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Boltzmann constant [J.K-1]&quot;</span><span class="p">:</span> <span class="s2">&quot;pybamm.constants.k_b&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Electron charge [C]&quot;</span><span class="p">:</span> <span class="s2">&quot;pybamm.constants.q_e&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ParameterValues</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># Initialize the store</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span> <span class="o">=</span> <span class="n">ParameterStore</span><span class="p">({})</span>
+
+        <span class="c1"># Initialize the processor (uses this instance&#39;s store)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span> <span class="o">=</span> <span class="n">ParameterSubstitutor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">dict</span> <span class="o">|</span> <span class="n">ParameterValues</span><span class="p">):</span>
+            <span class="c1"># Copy to avoid mutating input</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ParameterValues</span><span class="p">):</span>
+                <span class="n">values_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">values_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+            <span class="c1"># Remove the &quot;chemistry&quot; key if it exists</span>
+            <span class="n">chemistry</span> <span class="o">=</span> <span class="n">values_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;chemistry&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">values_dict</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Check if values is a named parameter set</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+                <span class="n">values_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">parameter_sets</span><span class="p">[</span><span class="n">values</span><span class="p">])</span>
+                <span class="n">chemistry</span> <span class="o">=</span> <span class="n">values_dict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;chemistry&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">values_dict</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">valid_sets</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">values</span><span class="si">}</span><span class="s2">&#39; is not a valid parameter set. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Parameter set must be one of:</span><span class="se">\n</span><span class="si">{</span><span class="n">valid_sets</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">chemistry</span> <span class="o">==</span> <span class="s2">&quot;ecm&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">equivalent_circuit</span><span class="o">.</span><span class="n">set_initial_state</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">set_initial_state</span>
+
+        <span class="c1"># Save citations</span>
+        <span class="k">if</span> <span class="s2">&quot;citations&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">citation</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="s2">&quot;citations&quot;</span><span class="p">]:</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="n">citation</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">store</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterStore</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span>
+
+    <span class="c1"># Factory methods</span>
+<div class="viewcode-block" id="ParameterValues.create_from_bpx">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.create_from_bpx">[文件]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_from_bpx</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">,</span> <span class="n">target_soc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterValues</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create ParameterValues from a BPX file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str or Path</span>
+<span class="sd">            The filename of the `BPX &lt;https://bpxstandard.com/&gt;`_ file.</span>
+<span class="sd">        target_soc : float, optional</span>
+<span class="sd">            .. deprecated:: 26.5</span>
+<span class="sd">                Passing ``target_soc`` is deprecated. The returned</span>
+<span class="sd">                ``ParameterValues`` always has initial concentrations set at</span>
+<span class="sd">                100% SOC (negative phases at their maximum stoichiometry,</span>
+<span class="sd">                positive phases at their minimum stoichiometry). Use</span>
+<span class="sd">                :meth:`ParameterValues.set_initial_state` after creation to</span>
+<span class="sd">                set a different initial SOC. If ``target_soc`` is passed, the</span>
+<span class="sd">                previous behaviour is preserved for non-blended electrodes;</span>
+<span class="sd">                blended electrodes raise ``NotImplementedError``.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterValues</span>
+<span class="sd">            A parameter values object with the parameters from the BPX file.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues.create_from_bpx(&quot;battery_params.json&quot;)  # doctest: +SKIP</span>
+<span class="sd">        &gt;&gt;&gt; param.set_initial_state(0.5)  # doctest: +SKIP</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">bpx</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_bpx_file</span>
+
+        <span class="k">if</span> <span class="n">target_soc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_warn_target_soc_deprecation</span><span class="p">()</span>
+        <span class="n">bpx</span> <span class="o">=</span> <span class="n">parse_bpx_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">filename</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_from_bpx</span><span class="p">(</span><span class="n">bpx</span><span class="p">,</span> <span class="n">target_soc</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.create_from_bpx_obj">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.create_from_bpx_obj">[文件]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_from_bpx_obj</span><span class="p">(</span>
+        <span class="bp">cls</span><span class="p">,</span> <span class="n">bpx_obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">target_soc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterValues</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create ParameterValues from a BPX dictionary object.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        bpx_obj : dict</span>
+<span class="sd">            A dictionary containing the parameters in the</span>
+<span class="sd">            `BPX &lt;https://bpxstandard.com/&gt;`_ format.</span>
+<span class="sd">        target_soc : float, optional</span>
+<span class="sd">            .. deprecated:: 26.5</span>
+<span class="sd">                See :meth:`ParameterValues.create_from_bpx`. Pass nothing</span>
+<span class="sd">                (the default) and use :meth:`ParameterValues.set_initial_state`</span>
+<span class="sd">                to set a non-100%-SOC initial state.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterValues</span>
+<span class="sd">            A parameter values object with the parameters in the BPX file.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; bpx_dict = {&quot;Header&quot;: {...}, &quot;Cell&quot;: {...}, &quot;Parameterisation&quot;: {...}}  # doctest: +SKIP</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues.create_from_bpx_obj(bpx_dict)  # doctest: +SKIP</span>
+<span class="sd">        &gt;&gt;&gt; param.set_initial_state(0.5)  # doctest: +SKIP</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">bpx</span><span class="w"> </span><span class="kn">import</span> <span class="n">parse_bpx_obj</span>
+
+        <span class="k">if</span> <span class="n">target_soc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">_warn_target_soc_deprecation</span><span class="p">()</span>
+        <span class="n">bpx</span> <span class="o">=</span> <span class="n">parse_bpx_obj</span><span class="p">(</span><span class="n">bpx_obj</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_create_from_bpx</span><span class="p">(</span><span class="n">bpx</span><span class="p">,</span> <span class="n">target_soc</span><span class="p">)</span></div>
+
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_warn_target_soc_deprecation</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;Passing &#39;target_soc&#39; to ParameterValues.create_from_bpx / &quot;</span>
+            <span class="s2">&quot;create_from_bpx_obj is deprecated. The returned ParameterValues &quot;</span>
+            <span class="s2">&quot;now has initial concentrations set at 100% SOC by default; call &quot;</span>
+            <span class="s2">&quot;param.set_initial_state(...) afterwards to set a different &quot;</span>
+            <span class="s2">&quot;initial SOC.&quot;</span><span class="p">,</span>
+            <span class="ne">DeprecationWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_from_bpx</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">bpx</span><span class="p">,</span> <span class="n">target_soc</span><span class="p">:</span> <span class="nb">float</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterValues</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Internal method to create ParameterValues from a parsed BPX object.&quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">bpx</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_electrode_concentrations</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">bpx.schema</span><span class="w"> </span><span class="kn">import</span> <span class="n">ElectrodeBlended</span><span class="p">,</span> <span class="n">ElectrodeBlendedSPM</span>
+
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.bpx</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+            <span class="n">_get_phase_names</span><span class="p">,</span>
+            <span class="n">bpx_to_param_dict</span><span class="p">,</span>
+            <span class="n">negative_electrode</span><span class="p">,</span>
+            <span class="n">positive_electrode</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">pybamm_dict</span> <span class="o">=</span> <span class="n">bpx_to_param_dict</span><span class="p">(</span><span class="n">bpx</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s2">&quot;Open-circuit voltage at 0% SOC [V]&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pybamm_dict</span><span class="p">:</span>
+            <span class="n">pybamm_dict</span><span class="p">[</span><span class="s2">&quot;Open-circuit voltage at 0% SOC [V]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm_dict</span><span class="p">[</span>
+                <span class="s2">&quot;Lower voltage cut-off [V]&quot;</span>
+            <span class="p">]</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;Open-circuit voltage at 0% SOC [V]&#39; not found in BPX file. Using &quot;</span>
+                <span class="s2">&quot;&#39;Lower voltage cut-off [V]&#39;.&quot;</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="s2">&quot;Open-circuit voltage at 100% SOC [V]&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">pybamm_dict</span><span class="p">:</span>
+            <span class="n">pybamm_dict</span><span class="p">[</span><span class="s2">&quot;Open-circuit voltage at 100% SOC [V]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm_dict</span><span class="p">[</span>
+                <span class="s2">&quot;Upper voltage cut-off [V]&quot;</span>
+            <span class="p">]</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;&#39;Open-circuit voltage at 100% SOC [V]&#39; not found in BPX file. Using &quot;</span>
+                <span class="s2">&quot;&#39;Upper voltage cut-off [V]&#39;.&quot;</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">target_soc</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Full charge: negative phases at theta_max, positive at theta_min.</span>
+            <span class="k">for</span> <span class="n">bpx_electrode</span><span class="p">,</span> <span class="n">domain</span><span class="p">,</span> <span class="n">sto_bound</span> <span class="ow">in</span> <span class="p">(</span>
+                <span class="p">(</span>
+                    <span class="n">bpx</span><span class="o">.</span><span class="n">parameterisation</span><span class="o">.</span><span class="n">negative_electrode</span><span class="p">,</span>
+                    <span class="n">negative_electrode</span><span class="p">,</span>
+                    <span class="s2">&quot;maximum&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+                <span class="p">(</span>
+                    <span class="n">bpx</span><span class="o">.</span><span class="n">parameterisation</span><span class="o">.</span><span class="n">positive_electrode</span><span class="p">,</span>
+                    <span class="n">positive_electrode</span><span class="p">,</span>
+                    <span class="s2">&quot;minimum&quot;</span><span class="p">,</span>
+                <span class="p">),</span>
+            <span class="p">):</span>
+                <span class="k">for</span> <span class="n">phase</span> <span class="ow">in</span> <span class="n">_get_phase_names</span><span class="p">(</span><span class="n">bpx_electrode</span><span class="p">):</span>
+                    <span class="n">sto</span> <span class="o">=</span> <span class="n">pybamm_dict</span><span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}{</span><span class="n">domain</span><span class="o">.</span><span class="n">pre_name</span><span class="si">}{</span><span class="n">sto_bound</span><span class="si">}</span><span class="s2"> stoichiometry&quot;</span>
+                    <span class="p">]</span>
+                    <span class="n">c_max</span> <span class="o">=</span> <span class="n">pybamm_dict</span><span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">Maximum concentration in </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> [mol.m-3]&quot;</span>
+                    <span class="p">]</span>
+                    <span class="n">pybamm_dict</span><span class="p">[</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">phase</span><span class="si">}</span><span class="s2">Initial concentration in </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> [mol.m-3]&quot;</span>
+                    <span class="p">]</span> <span class="o">=</span> <span class="n">sto</span> <span class="o">*</span> <span class="n">c_max</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">target_soc</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">target_soc</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Target SOC should be between 0 and 1&quot;</span><span class="p">)</span>
+            <span class="n">bpx_neg</span> <span class="o">=</span> <span class="n">bpx</span><span class="o">.</span><span class="n">parameterisation</span><span class="o">.</span><span class="n">negative_electrode</span>
+            <span class="n">bpx_pos</span> <span class="o">=</span> <span class="n">bpx</span><span class="o">.</span><span class="n">parameterisation</span><span class="o">.</span><span class="n">positive_electrode</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span>
+                <span class="n">bpx_neg</span><span class="p">,</span> <span class="n">ElectrodeBlended</span> <span class="o">|</span> <span class="n">ElectrodeBlendedSPM</span>
+            <span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bpx_pos</span><span class="p">,</span> <span class="n">ElectrodeBlended</span> <span class="o">|</span> <span class="n">ElectrodeBlendedSPM</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+                    <span class="s2">&quot;Setting &#39;target_soc&#39; is not supported for BPX files with &quot;</span>
+                    <span class="s2">&quot;blended electrodes. Call create_from_bpx / &quot;</span>
+                    <span class="s2">&quot;create_from_bpx_obj without &#39;target_soc&#39;, then use &quot;</span>
+                    <span class="s2">&quot;param.set_initial_state(...) to set the initial SOC.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">c_n_init</span><span class="p">,</span> <span class="n">c_p_init</span> <span class="o">=</span> <span class="n">get_electrode_concentrations</span><span class="p">(</span><span class="n">target_soc</span><span class="p">,</span> <span class="n">bpx</span><span class="p">)</span>
+            <span class="n">pybamm_dict</span><span class="p">[</span><span class="s2">&quot;Initial concentration in negative electrode [mol.m-3]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">c_n_init</span>
+            <span class="p">)</span>
+            <span class="n">pybamm_dict</span><span class="p">[</span><span class="s2">&quot;Initial concentration in positive electrode [mol.m-3]&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">c_p_init</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">pybamm_dict</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParameterValues.from_json">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.from_json">[文件]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span><span class="n">filename_or_dict</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span> <span class="o">|</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterValues</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Load a ParameterValues object from a JSON file or a dictionary.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename_or_dict : str, Path, or dict</span>
+<span class="sd">            The filename to load the JSON file from, or a dictionary.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterValues</span>
+<span class="sd">            The ParameterValues object.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues.from_json(&quot;parameters.json&quot;)  # doctest: +SKIP</span>
+<span class="sd">        &gt;&gt;&gt; param_dict = {&quot;Temperature [K]&quot;: 298.15}</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues.from_json(param_dict)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename_or_dict</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">Path</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename_or_dict</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">parameter_values_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">filename_or_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">parameter_values_dict</span> <span class="o">=</span> <span class="n">filename_or_dict</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Input must be a filename (str or pathlib.Path) or a dict&quot;</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">parameter_values_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                <span class="n">parameter_values_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_symbol_from_json</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">ParameterValues</span><span class="p">(</span><span class="n">parameter_values_dict</span><span class="p">)</span></div>
+
+
+    <span class="n">from_config</span> <span class="o">=</span> <span class="n">from_json</span>
+
+<div class="viewcode-block" id="ParameterValues.to_json">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.to_json">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convert the parameter values to a JSON-serializable dictionary.</span>
+
+<span class="sd">        Optionally saves to a file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str, optional</span>
+<span class="sd">            The filename to save the JSON file to. If not provided, the</span>
+<span class="sd">            dictionary is not saved.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            The JSON-serializable dictionary.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">        &gt;&gt;&gt; param_dict = param.to_json()  # Get dictionary</span>
+<span class="sd">        &gt;&gt;&gt; isinstance(param_dict, dict)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; param.to_json(&quot;parameters.json&quot;)</span>
+<span class="sd">        {&#39;Temperature [K]&#39;: 298.15}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">convert_parameter_values_to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+
+    <span class="n">to_config</span> <span class="o">=</span> <span class="n">to_json</span>
+
+    <span class="c1"># Dictionary-like interface</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a parameter value by key.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+            <span class="c1"># Provide helpful error for deprecated physical constants</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DEPRECATED_CONSTANTS</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Accessing &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; from ParameterValues is deprecated. &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;Use </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_DEPRECATED_CONSTANTS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2"> instead.&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="c1"># Provide helpful error for renamed parameter</span>
+            <span class="k">if</span> <span class="p">(</span>
+                <span class="s2">&quot;Exchange-current density for lithium metal electrode [A.m-2]&quot;</span>
+                <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="ow">and</span> <span class="s2">&quot;Exchange-current density for plating [A.m-2]&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span>
+                    <span class="s2">&quot;&#39;Exchange-current density for plating [A.m-2]&#39; has been renamed &quot;</span>
+                    <span class="s2">&quot;to &#39;Exchange-current density for lithium metal electrode [A.m-2]&#39; &quot;</span>
+                    <span class="s2">&quot;when referring to the reaction at the surface of a lithium metal &quot;</span>
+                    <span class="s2">&quot;electrode. This is to avoid confusion with the exchange-current &quot;</span>
+                    <span class="s2">&quot;density for the lithium plating reaction in a porous negative &quot;</span>
+                    <span class="s2">&quot;electrode. To avoid this error, change your parameter file to use &quot;</span>
+                    <span class="s2">&quot;the new name.&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+            <span class="k">raise</span>
+
+<div class="viewcode-block" id="ParameterValues.get">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.get">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="p">:</span> <span class="n">Any</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return item corresponding to key if it exists, otherwise return default.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            The parameter name to retrieve.</span>
+<span class="sd">        default : Any, optional</span>
+<span class="sd">            The default value to return if key is not found. Default is None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Any</span>
+<span class="sd">            The parameter value if found, otherwise the default value.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; param.get(&quot;Current function [A]&quot;)</span>
+<span class="sd">        5.0</span>
+<span class="sd">        &gt;&gt;&gt; param.get(&quot;NonExistent Parameter&quot;, 42)</span>
+<span class="sd">        42</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_DEPRECATED_CONSTANTS</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Accessing &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; from ParameterValues is deprecated. &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;Use </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_DEPRECATED_CONSTANTS</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="si">}</span><span class="s2"> instead.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">default</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Set a parameter value (allows new parameters).&quot;&quot;&quot;</span>
+        <span class="c1"># Process special string values like &quot;[input]&quot;</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;[input]&quot;</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="p">(</span>
+                <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[function]&quot;</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[current data]&quot;</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[data]&quot;</span><span class="p">)</span>
+                <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[2D data]&quot;</span><span class="p">)</span>
+            <span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Specifying parameters via [function], [current data], [data] &quot;</span>
+                    <span class="s2">&quot;or [2D data] is no longer supported. For functions, pass in a &quot;</span>
+                    <span class="s2">&quot;python function object. For data, pass in a python function &quot;</span>
+                    <span class="s2">&quot;that returns a pybamm Interpolant object. &quot;</span>
+                    <span class="s2">&quot;See the Ai2020 parameter set for an example with both.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># Try to convert to float</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+                    <span class="k">pass</span>  <span class="c1"># Keep as string if not convertible</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__delitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Delete a parameter.&quot;&quot;&quot;</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check if a parameter exists.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__iter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterator</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Iterate over parameter keys.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">iter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the number of parameters.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return a string representation.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pformat</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="nb">object</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Check equality with another ParameterValues.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ParameterValues</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span> <span class="o">==</span> <span class="nb">dict</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+<div class="viewcode-block" id="ParameterValues.keys">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.keys">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return parameter keys.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict_keys</span>
+<span class="sd">            The parameter keys.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; keys = list(param.keys())</span>
+<span class="sd">        &gt;&gt;&gt; &quot;Current function [A]&quot; in keys</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.values">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.values">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return parameter values.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict_values</span>
+<span class="sd">            The parameter values.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">        &gt;&gt;&gt; vals = list(param.values())</span>
+<span class="sd">        &gt;&gt;&gt; 298.15 in vals</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">values</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.items">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.items">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return parameter items.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict_items</span>
+<span class="sd">            The parameter items as (key, value) pairs.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">        &gt;&gt;&gt; items = list(param.items())</span>
+<span class="sd">        &gt;&gt;&gt; (&quot;Temperature [K]&quot;, 298.15) in items</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">items</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.pop">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.pop">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Remove and return a parameter value.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; val = params.pop(&quot;Current function [A]&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">result</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.copy">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.copy">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterValues</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return a copy of the parameter values.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; params_copy = params.copy()</span>
+<span class="sd">        &gt;&gt;&gt; params_copy[&quot;Current function [A]&quot;] = 10.0  # Original unchanged</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">new_copy</span> <span class="o">=</span> <span class="n">ParameterValues</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">))</span>
+        <span class="n">new_copy</span><span class="o">.</span><span class="n">_set_initial_state</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span>
+        <span class="k">return</span> <span class="n">new_copy</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.search">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.search">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">print_values</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Search dictionary for keys containing &#39;key&#39;.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; params.search(&quot;electrolyte&quot;, print_values=False)</span>
+<span class="sd">        Results for &#39;electrolyte&#39;: ...</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">print_values</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Update methods</span>
+<div class="viewcode-block" id="ParameterValues.update">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.update">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">values</span><span class="p">:</span> <span class="n">Mapping</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">check_conflict</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">check_already_exists</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Update parameter values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        values : dict</span>
+<span class="sd">            Dictionary of parameter values to update.</span>
+<span class="sd">        check_conflict : bool, optional</span>
+<span class="sd">            Deprecated.</span>
+<span class="sd">        check_already_exists : bool, optional</span>
+<span class="sd">            Deprecated.</span>
+<span class="sd">        path : str, optional</span>
+<span class="sd">            Path from which to load functions (legacy parameter).</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; params.update({&quot;Current function [A]&quot;: 2.0})  # Update existing</span>
+<span class="sd">        &gt;&gt;&gt; params.update({&#39;a&#39;: 1.0})  # Create new</span>
+
+<span class="sd">        Notes</span>
+<span class="sd">        -----</span>
+<span class="sd">        The `check_already_exists` parameter is deprecated.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Handle deprecated arguments</span>
+        <span class="k">if</span> <span class="n">check_already_exists</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;check_already_exists is deprecated. &quot;</span>
+                <span class="s2">&quot;This check is no longer supported in pybamm.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">check_conflict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="n">warn</span><span class="p">(</span>
+                <span class="s2">&quot;check_conflict is deprecated. &quot;</span>
+                <span class="s2">&quot;This check is no longer supported in pybamm.&quot;</span><span class="p">,</span>
+                <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Convert ParameterValues to dict</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">ParameterValues</span><span class="p">):</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">_data</span><span class="p">)</span>
+
+        <span class="c1"># Check and transform parameter values</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">check_parameter_values</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">values</span><span class="p">))</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="c1"># Process value</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="k">if</span> <span class="p">(</span>
+                    <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[function]&quot;</span><span class="p">)</span>
+                    <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[current data]&quot;</span><span class="p">)</span>
+                    <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[data]&quot;</span><span class="p">)</span>
+                    <span class="ow">or</span> <span class="n">value</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;[2D data]&quot;</span><span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="s2">&quot;Specifying parameters via [function], [current data], [data] &quot;</span>
+                        <span class="s2">&quot;or [2D data] is no longer supported. For functions, pass in a &quot;</span>
+                        <span class="s2">&quot;python function object. For data, pass in a python function &quot;</span>
+                        <span class="s2">&quot;that returns a pybamm Interpolant object. &quot;</span>
+                        <span class="s2">&quot;See the Ai2020 parameter set for an example with both.&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">elif</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">&quot;[input]&quot;</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">InputParameter</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="c1"># Convert to float</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="c1"># If data is provided as a 2-column array (1D data),</span>
+                <span class="c1"># convert to two arrays for compatibility with 2D data</span>
+                <span class="n">func_name</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="n">data</span> <span class="o">=</span> <span class="p">([</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">func_name</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># Clear processor cache</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">clear_cache</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.check_parameter_values">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.check_parameter_values">[文件]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">check_parameter_values</span><span class="p">(</span><span class="n">values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check and transform parameter values.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        values : dict</span>
+<span class="sd">            Dictionary of parameter values to check.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Checked and transformed parameter values.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If parameter names contain deprecated or invalid formats.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; values = {&quot;Electrode height [m]&quot;: 0.065}</span>
+<span class="sd">        &gt;&gt;&gt; checked = pybamm.ParameterValues.check_parameter_values(values)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">values</span> <span class="o">=</span> <span class="n">scalarize_dict</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">values</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="k">if</span> <span class="s2">&quot;propotional term&quot;</span> <span class="ow">in</span> <span class="n">param</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The parameter &#39;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">&#39; has been renamed to &quot;</span>
+                    <span class="s2">&quot;&#39;... proportional term [s-1]&#39;, and its value should now be divided&quot;</span>
+                    <span class="s2">&quot;by 3600 to get the same results as before.&quot;</span>
+                <span class="p">)</span>
+            <span class="c1"># specific check for renamed parameter &quot;1 + dlnf/dlnc&quot;</span>
+            <span class="k">if</span> <span class="s2">&quot;1 + dlnf/dlnc&quot;</span> <span class="ow">in</span> <span class="n">param</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;parameter &#39;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">&#39; has been renamed to &#39;Thermodynamic factor&#39;&quot;</span>
+                <span class="p">)</span>
+            <span class="k">if</span> <span class="s2">&quot;electrode diffusivity&quot;</span> <span class="ow">in</span> <span class="n">param</span><span class="p">:</span>
+                <span class="n">new_param</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;electrode&quot;</span><span class="p">,</span> <span class="s2">&quot;particle&quot;</span><span class="p">)</span>
+                <span class="n">warn</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The parameter &#39;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">&#39; has been renamed to &#39;</span><span class="si">{</span><span class="n">new_param</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+                    <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">new_param</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">is_deprecated_msmr_name</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+                <span class="n">new_param</span> <span class="o">=</span> <span class="n">replace_deprecated_msmr_name</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+                <span class="n">warn</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;The parameter &#39;</span><span class="si">{</span><span class="n">param</span><span class="si">}</span><span class="s2">&#39; has been renamed to &#39;</span><span class="si">{</span><span class="n">new_param</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">,</span>
+                    <span class="ne">DeprecationWarning</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">values</span><span class="p">[</span><span class="n">new_param</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">values</span></div>
+
+
+    <span class="c1"># Initial state methods</span>
+<div class="viewcode-block" id="ParameterValues.set_initial_state">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.set_initial_state">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_state</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">initial_value</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the initial state of the battery.</span>
+
+<span class="sd">        Delegates to chemistry-specific implementation.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        initial_value : float</span>
+<span class="sd">            The initial state value (e.g., SOC or voltage).</span>
+<span class="sd">        direction : str, optional</span>
+<span class="sd">            Direction for setting state. Default is None.</span>
+<span class="sd">        param : pybamm.ParameterValues, optional</span>
+<span class="sd">            Parameter values to use. Default is None (uses self).</span>
+<span class="sd">        inplace : bool, optional</span>
+<span class="sd">            If True, modify parameters in place. Default is True.</span>
+<span class="sd">        options : dict, optional</span>
+<span class="sd">            Model options. Default is None.</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            Input parameters. Default is None.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterValues or None</span>
+<span class="sd">            Updated parameter values if inplace=False, otherwise None.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; result = param.set_initial_state(0.5)  # Sets initial SOC to 50%</span>
+<span class="sd">        &gt;&gt;&gt; isinstance(result, pybamm.ParameterValues)</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span><span class="p">(</span>
+            <span class="n">initial_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.set_initial_stoichiometry_half_cell">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.set_initial_stoichiometry_half_cell">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_stoichiometry_half_cell</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">initial_value</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">known_value</span><span class="o">=</span><span class="s2">&quot;cyclable lithium capacity&quot;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deprecated: Use set_initial_state instead.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pybamm.parameter_values.set_initial_stoichiometry_half_cell is deprecated, please use set_initial_state.&quot;</span>
+        <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span><span class="p">(</span>
+            <span class="n">initial_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">known_value</span><span class="o">=</span><span class="n">known_value</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.set_initial_stoichiometries">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.set_initial_stoichiometries">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_stoichiometries</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">initial_value</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">known_value</span><span class="o">=</span><span class="s2">&quot;cyclable lithium capacity&quot;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deprecated: Use set_initial_state instead.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pybamm.parameter_values.set_initial_stoichiometries is deprecated, please use set_initial_state.&quot;</span>
+        <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span><span class="p">(</span>
+            <span class="n">initial_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">known_value</span><span class="o">=</span><span class="n">known_value</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">tol</span><span class="o">=</span><span class="n">tol</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.set_initial_ocps">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.set_initial_ocps">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_ocps</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">initial_value</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">param</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">known_value</span><span class="o">=</span><span class="s2">&quot;cyclable lithium capacity&quot;</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Deprecated: Use set_initial_state instead.&quot;&quot;&quot;</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pybamm.parameter_values.set_initial_ocps is deprecated, please use set_initial_state.&quot;</span>
+        <span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_initial_state</span><span class="p">(</span>
+            <span class="n">initial_value</span><span class="p">,</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">known_value</span><span class="o">=</span><span class="n">known_value</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="c1"># Processing methods</span>
+    <span class="c1"># These are delegated to the ParameterSubstitutor</span>
+<div class="viewcode-block" id="ParameterValues.process_model">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.process_model">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">unprocessed_model</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">,</span>
+        <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">delayed_variable_processing</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign parameter values to a model.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        unprocessed_model : pybamm.BaseModel</span>
+<span class="sd">            Model to assign parameter values for.</span>
+<span class="sd">        inplace : bool, optional</span>
+<span class="sd">            If True (default), replace parameters in place.</span>
+<span class="sd">            If False, return a new model with parameter values set.</span>
+<span class="sd">        delayed_variable_processing : bool, optional</span>
+<span class="sd">            If True, make variable processing a post-processing step.</span>
+<span class="sd">            Default is False.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pybamm.BaseModel</span>
+<span class="sd">            The parameterized model.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        pybamm.ModelError</span>
+<span class="sd">            If an empty model is passed.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; model = pybamm.lithium_ion.SPM()</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; processed_model = params.process_model(model)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+            <span class="n">unprocessed_model</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">,</span>
+            <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="n">delayed_variable_processing</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Attach parameter_values to the model&#39;s symbol_processor</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+            <span class="s2">&quot;Attaching the `parameter_values` to the `symbol_processor`&quot;</span>
+        <span class="p">)</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">symbol_processor</span><span class="o">.</span><span class="n">parameter_values</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">return</span> <span class="n">model</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.process_geometry">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.process_geometry">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">geometry</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Assign parameter values to a geometry (inplace).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        geometry : dict</span>
+<span class="sd">            Geometry specs to assign parameter values to.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; geometry = pybamm.battery_geometry()</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; param.process_geometry(geometry)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.process_symbol">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.process_symbol">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_symbol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Walk through the symbol and replace any Parameter with a Value.</span>
+
+<span class="sd">        If a symbol has already been processed, the cached value is returned.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : pybamm.Symbol</span>
+<span class="sd">            Symbol or Expression tree to set parameters for.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pybamm.Symbol</span>
+<span class="sd">            Symbol with Parameter instances replaced by values.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.Parameter(&quot;Current function [A]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; processed = params.process_symbol(param)</span>
+<span class="sd">        &gt;&gt;&gt; result = processed.evaluate()  # Returns evaluated value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.process_boundary_conditions">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.process_boundary_conditions">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process_boundary_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process boundary conditions for a model.</span>
+
+<span class="sd">        Boundary conditions are dictionaries {&quot;left&quot;: left bc, &quot;right&quot;: right bc}</span>
+<span class="sd">        in general, but may be imposed on the tabs for some variables.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : pybamm.BaseModel</span>
+<span class="sd">            Model whose boundary conditions to process.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Processed boundary conditions.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; model = pybamm.lithium_ion.SPM()</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; bcs = param.process_boundary_conditions(model)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">process_boundary_conditions</span><span class="p">(</span><span class="n">model</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.evaluate">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.evaluate">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">evaluate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">:</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">,</span> <span class="n">inputs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process and evaluate a symbol.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        symbol : pybamm.Symbol</span>
+<span class="sd">            Symbol or Expression tree to evaluate.</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            Input parameter values for evaluation.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        number or array</span>
+<span class="sd">            The evaluated symbol.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; params = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.Parameter(&quot;Current function [A]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; result = params.evaluate(param)  # Returns evaluated value</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_processor</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Metatdata methods</span>
+<div class="viewcode-block" id="ParameterValues.get_info">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.get_info">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_info</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterInfo</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get metadata about a parameter.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        key : str</span>
+<span class="sd">            The parameter name.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterInfo</span>
+<span class="sd">            Metadata including value, units, category, and type information.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; info = param.get_info(&quot;Maximum concentration in negative electrode [mol.m-3]&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; info.units</span>
+<span class="sd">        &#39;mol.m-3&#39;</span>
+<span class="sd">        &gt;&gt;&gt; info.category</span>
+<span class="sd">        &#39;negative electrode&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">get_info</span><span class="p">(</span><span class="n">key</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.list_by_category">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.list_by_category">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_by_category</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">category</span><span class="p">:</span> <span class="n">ParameterCategory</span> <span class="o">|</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all parameter names in a given category.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        category : ParameterCategory or str</span>
+<span class="sd">            The category to filter by. Can be a ParameterCategory enum value</span>
+<span class="sd">            or a string like &quot;negative electrode&quot;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list[str]</span>
+<span class="sd">            List of parameter names in the category.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; electrode_params = param.list_by_category(&quot;negative electrode&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; len(electrode_params) &gt; 0</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">list_by_category</span><span class="p">(</span><span class="n">category</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.categories">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.categories">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">categories</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return all parameters grouped by category.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict[str, list[str]]</span>
+<span class="sd">            Dictionary mapping category names to lists of parameter names.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; cats = param.categories()</span>
+<span class="sd">        &gt;&gt;&gt; &quot;negative electrode&quot; in cats</span>
+<span class="sd">        True</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">categories</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.diff">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.diff">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diff</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="n">ParameterValues</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">rtol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ParameterDiff</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compare this ParameterValues with another and return differences.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        other : ParameterValues</span>
+<span class="sd">            The other parameter values to compare against.</span>
+<span class="sd">        rtol : float, optional</span>
+<span class="sd">            Relative tolerance for numerical comparisons. Differences smaller</span>
+<span class="sd">            than ``rtol * max(|a|, |b|)`` are ignored. Default is 0.0 (exact</span>
+<span class="sd">            comparison). Set to e.g. 1e-6 to ignore tiny floating-point</span>
+<span class="sd">            differences.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        ParameterDiff</span>
+<span class="sd">            Object containing added, removed, and changed parameters.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; chen = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; marquis = pybamm.ParameterValues(&quot;Marquis2019&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; diff = chen.diff(marquis)</span>
+<span class="sd">        &gt;&gt;&gt; isinstance(diff.changed, dict)</span>
+<span class="sd">        True</span>
+
+<span class="sd">        With tolerance:</span>
+
+<span class="sd">        &gt;&gt;&gt; params1 = pybamm.ParameterValues({&quot;x&quot;: 1.0})</span>
+<span class="sd">        &gt;&gt;&gt; params2 = pybamm.ParameterValues({&quot;x&quot;: 1.0 + 1e-10})</span>
+<span class="sd">        &gt;&gt;&gt; params1.diff(params2, rtol=1e-9).changed  # Empty</span>
+<span class="sd">        {}</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">_store</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="n">rtol</span><span class="p">)</span></div>
+
+
+    <span class="c1"># Utility methods</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_ipython_key_completions_</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Provide key completions for IPython.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_store</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<div class="viewcode-block" id="ParameterValues.print_parameters">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.print_parameters">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return dictionary of evaluated parameters.</span>
+
+<span class="sd">        Optionally print these evaluated parameters to an output file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        parameters : class or dict containing pybamm.Parameter objects</span>
+<span class="sd">            Class or dictionary containing all the parameters to be evaluated.</span>
+<span class="sd">        output_file : str, optional</span>
+<span class="sd">            The file to print parameters to. If None, the parameters are not</span>
+<span class="sd">            printed, and this function simply acts as a test that all the</span>
+<span class="sd">            parameters can be evaluated.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            The evaluated parameters.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; params_dict = {&quot;param1&quot;: pybamm.Parameter(&quot;Current function [A]&quot;)}</span>
+<span class="sd">        &gt;&gt;&gt; evaluated = param.print_parameters(params_dict)</span>
+<span class="sd">        &gt;&gt;&gt; isinstance(evaluated, dict)</span>
+<span class="sd">        True</span>
+<span class="sd">        &gt;&gt;&gt; param.print_parameters(params_dict, &quot;output.txt&quot;)</span>
+<span class="sd">        defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;param1&#39;: np.float64(5.0)})</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Set list of attributes to ignore</span>
+        <span class="n">ignore</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;__name__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__doc__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__package__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__loader__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__spec__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__file__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__cached__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;__builtins__&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;absolute_import&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;division&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;print_function&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;unicode_literals&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;pybamm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;_options&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;constants&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;np&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;geo&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;elec&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;therm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;half_cell&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;x&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;r&quot;</span><span class="p">,</span>
+        <span class="p">]</span>
+
+        <span class="c1"># If &#39;parameters&#39; is a class, extract the dict</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">parameters_dict</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span>
+            <span class="p">}</span>
+            <span class="k">for</span> <span class="n">domain</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;n&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">]:</span>
+                <span class="n">domain_param</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="n">domain</span><span class="p">)</span>
+                <span class="n">parameters_dict</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">domain</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">:</span> <span class="n">v</span>
+                        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">domain_param</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+                        <span class="k">if</span> <span class="n">k</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignore</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+            <span class="n">parameters</span> <span class="o">=</span> <span class="n">parameters_dict</span>
+
+        <span class="n">evaluated_parameters</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">parameters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">symbol</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Symbol</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">proc_symbol</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+                    <span class="c1"># skip parameters that don&#39;t have a value in that parameter set</span>
+                    <span class="n">proc_symbol</span> <span class="o">=</span> <span class="kc">None</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span>
+                    <span class="nb">callable</span><span class="p">(</span><span class="n">proc_symbol</span><span class="p">)</span>
+                    <span class="ow">or</span> <span class="n">proc_symbol</span> <span class="ow">is</span> <span class="kc">None</span>
+                    <span class="ow">or</span> <span class="n">proc_symbol</span><span class="o">.</span><span class="n">has_symbol_of_classes</span><span class="p">(</span>
+                        <span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">Concatenation</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Broadcast</span><span class="p">)</span>
+                    <span class="p">)</span>
+                <span class="p">):</span>
+                    <span class="n">evaluated_parameters</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">proc_symbol</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="c1"># Print the evaluated_parameters dict to output_file</span>
+        <span class="k">if</span> <span class="n">output_file</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">print_evaluated_parameters</span><span class="p">(</span><span class="n">evaluated_parameters</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">evaluated_parameters</span></div>
+
+
+<div class="viewcode-block" id="ParameterValues.print_evaluated_parameters">
+<a class="viewcode-back" href="../../../source/api/parameters/parameter_values.html#pybamm.ParameterValues.print_evaluated_parameters">[文件]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_evaluated_parameters</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">evaluated_parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="n">output_file</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Print a dictionary of evaluated parameters to an output file.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        evaluated_parameters : dict</span>
+<span class="sd">            The evaluated parameters.</span>
+<span class="sd">        output_file : str</span>
+<span class="sd">            The file to print parameters to.</span>
+
+<span class="sd">        Examples</span>
+<span class="sd">        --------</span>
+<span class="sd">        &gt;&gt;&gt; param = pybamm.ParameterValues(&quot;Chen2020&quot;)</span>
+<span class="sd">        &gt;&gt;&gt; evaluated_params = {&quot;Temperature [K]&quot;: 298.15, &quot;Voltage [V]&quot;: 3.7}</span>
+<span class="sd">        &gt;&gt;&gt; param.print_evaluated_parameters(evaluated_params, &quot;params.txt&quot;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Get column width for pretty printing</span>
+        <span class="n">column_width</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">evaluated_parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="s2">:&gt;</span><span class="si">{</span><span class="n">column_width</span><span class="si">}</span><span class="se">}}</span><span class="s2">&quot;</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_file</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">evaluated_parameters</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+                <span class="k">if</span> <span class="mf">0.001</span> <span class="o">&lt;</span> <span class="nb">abs</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="n">s</span> <span class="o">+</span> <span class="s2">&quot; : </span><span class="si">{:10.4g}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">file</span><span class="o">.</span><span class="n">write</span><span class="p">((</span><span class="n">s</span> <span class="o">+</span> <span class="s2">&quot; : </span><span class="si">{:10.3E}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span></div>
+</div>
+
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">ParameterNameParser</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Utility class for parsing and manipulating parameter names.</span>
+
+<span class="sd">    Parameter names follow a grammar:</span>
+<span class="sd">        - Base: &quot;Parameter name&quot;</span>
+<span class="sd">        - With units: &quot;Parameter name [unit]&quot;</span>
+<span class="sd">        - With index: &quot;Parameter name (idx) [unit]&quot;</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; parser = ParameterNameParser()</span>
+<span class="sd">    &gt;&gt;&gt; parser.parse_units(&quot;Temperature [K]&quot;)</span>
+<span class="sd">    &#39;K&#39;</span>
+<span class="sd">    &gt;&gt;&gt; parser.split(&quot;Temperature [K]&quot;)</span>
+<span class="sd">    (&#39;Temperature&#39;, &#39;K&#39;)</span>
+<span class="sd">    &gt;&gt;&gt; parser.combine(&quot;Temperature&quot;, 0, &quot;K&quot;)</span>
+<span class="sd">    &#39;Temperature (0) [K]&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Regex for indexed parameter names: &quot;name (idx) [unit]&quot;</span>
+    <span class="n">_INDEXED_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;^</span>
+<span class="sd">            (?P&lt;base&gt;[^\[\]]+?)     # base name (non-greedy)</span>
+<span class="sd">            \s\((?P&lt;idx&gt;\d+)\)      # (index)</span>
+<span class="sd">            (?:\s\[(?P&lt;tag&gt;[^\]]+)\])? # optional [unit]</span>
+<span class="sd">        $&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Regex for simple parameter names: &quot;name [unit]&quot;</span>
+    <span class="n">_SIMPLE_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;^</span>
+<span class="sd">            (?P&lt;base&gt;[^\[\]]+?)     # base name (non-greedy)</span>
+<span class="sd">            (?:\s\[(?P&lt;tag&gt;[^\]]+)\])? # optional [unit]</span>
+<span class="sd">        $&quot;&quot;&quot;</span><span class="p">,</span>
+        <span class="n">re</span><span class="o">.</span><span class="n">VERBOSE</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_units</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extract units from a parameter name.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.parse_units(&quot;Temperature [K]&quot;)</span>
+<span class="sd">        &#39;K&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_SIMPLE_RE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">]</span> <span class="k">if</span> <span class="n">match</span> <span class="k">else</span> <span class="kc">None</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Split a parameter name into (base, units).</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Parameter name like &quot;Temperature [K]&quot;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple[str, str | None]</span>
+<span class="sd">            (base_name, units) where units may be None.</span>
+
+<span class="sd">        Raises</span>
+<span class="sd">        ------</span>
+<span class="sd">        ValueError</span>
+<span class="sd">            If the name doesn&#39;t match the expected grammar.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.split(&quot;Temperature [K]&quot;)</span>
+<span class="sd">        (&#39;Temperature&#39;, &#39;K&#39;)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_SIMPLE_RE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Illegal parameter name </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(),</span> <span class="n">match</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">]</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">combine</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Combine base name, index, and optional units into a parameter name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        base : str</span>
+<span class="sd">            Base parameter name.</span>
+<span class="sd">        idx : int</span>
+<span class="sd">            Index (must be &gt;= 0).</span>
+<span class="sd">        units : str, optional</span>
+<span class="sd">            Units to append.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">            Combined name like &quot;base (idx) [units]&quot;.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.combine(&quot;a&quot;, 0, &quot;V&quot;)</span>
+<span class="sd">        &#39;a (0) [V]&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">idx</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;idx must be ≥ 0&quot;</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="k">if</span> <span class="n">units</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot; [</span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_units</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">base</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">units</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Add units to a base name.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.add_units(&quot;Temperature&quot;, &quot;K&quot;)</span>
+<span class="sd">        &#39;Temperature [K]&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">units</span><span class="p">:</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> [</span><span class="si">{</span><span class="n">units</span><span class="si">}</span><span class="s2">]&quot;</span>
+        <span class="k">return</span> <span class="n">base</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parse_indexed</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parse an indexed parameter name.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        name : str</span>
+<span class="sd">            Parameter name like &quot;param (0) [unit]&quot;.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        tuple[str, int, str | None] | None</span>
+<span class="sd">            (base, index, units) or None if not an indexed name.</span>
+
+<span class="sd">        Example</span>
+<span class="sd">        -------</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.parse_indexed(&quot;a (1) [V]&quot;)</span>
+<span class="sd">        (&#39;a&#39;, 1, &#39;V&#39;)</span>
+<span class="sd">        &gt;&gt;&gt; ParameterNameParser.parse_indexed(&quot;not indexed&quot;)  # Returns None</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">match</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">_INDEXED_RE</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">match</span><span class="p">[</span><span class="s2">&quot;base&quot;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">match</span><span class="p">[</span><span class="s2">&quot;idx&quot;</span><span class="p">]),</span> <span class="n">match</span><span class="p">[</span><span class="s2">&quot;tag&quot;</span><span class="p">]</span>
+
+
+<span class="c1"># Dictionary Transformation Utilities</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">scalarize_dict</span><span class="p">(</span>
+    <span class="n">params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">ignored_keys</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Expand list-valued items into scalar keys while preserving tags.</span>
+
+<span class="sd">    This is useful for serialization where lists need to be flattened.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    params : dict[str, Any]</span>
+<span class="sd">        The dictionary to scalarize.</span>
+<span class="sd">    ignored_keys : list[str], optional</span>
+<span class="sd">        Keys to skip (not expand). Defaults to [&quot;citations&quot;].</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict[str, Any]</span>
+<span class="sd">        The scalarized dictionary.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; scalarize_dict({&#39;a [V]&#39;: [1, 2]})</span>
+<span class="sd">    {&#39;a (0) [V]&#39;: 1, &#39;a (1) [V]&#39;: 2}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">ignored_keys</span> <span class="o">=</span> <span class="n">ignored_keys</span> <span class="ow">or</span> <span class="p">[</span><span class="s2">&quot;citations&quot;</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">params</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ignored_keys</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">base</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">ParameterNameParser</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">item</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+                <span class="n">indexed_key</span> <span class="o">=</span> <span class="n">ParameterNameParser</span><span class="o">.</span><span class="n">combine</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">indexed_key</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate key </span><span class="si">{</span><span class="n">indexed_key</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">out</span><span class="p">[</span><span class="n">indexed_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">item</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate key </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">arrayize_dict</span><span class="p">(</span><span class="n">scalar_dict</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Collapse indexed scalar keys back into lists.</span>
+
+<span class="sd">    This is the inverse of scalarize_dict. A sequence is collapsed</span>
+<span class="sd">    only if indices 0…N are all present.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    scalar_dict : dict[str, Any]</span>
+<span class="sd">        The dictionary with indexed keys.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict[str, Any]</span>
+<span class="sd">        The arrayized dictionary.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; arrayize_dict({&#39;a (0) [V]&#39;: 1, &#39;a (1) [V]&#39;: 2})</span>
+<span class="sd">    {&#39;a [V]&#39;: [1, 2]}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">processed</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+
+    <span class="c1"># Discover (base, tag) pairs that appear indexed</span>
+    <span class="n">pairs</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">scalar_dict</span><span class="p">:</span>
+        <span class="n">parsed</span> <span class="o">=</span> <span class="n">ParameterNameParser</span><span class="o">.</span><span class="n">parse_indexed</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">parsed</span><span class="p">:</span>
+            <span class="n">base</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">units</span> <span class="o">=</span> <span class="n">parsed</span>
+            <span class="n">pairs</span><span class="o">.</span><span class="n">add</span><span class="p">((</span><span class="n">base</span><span class="p">,</span> <span class="n">units</span><span class="p">))</span>
+
+    <span class="c1"># Rebuild each pair</span>
+    <span class="k">for</span> <span class="n">base</span><span class="p">,</span> <span class="n">units</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">:</span>
+        <span class="n">idx_val</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="n">own_keys</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">scalar_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">parsed</span> <span class="o">=</span> <span class="n">ParameterNameParser</span><span class="o">.</span><span class="n">parse_indexed</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">parsed</span> <span class="ow">and</span> <span class="n">parsed</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">base</span> <span class="ow">and</span> <span class="n">parsed</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">==</span> <span class="n">units</span><span class="p">:</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">parsed</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">idx</span> <span class="ow">in</span> <span class="n">idx_val</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate index </span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2"> for &#39;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+                <span class="n">idx_val</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+                <span class="n">own_keys</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">idx_val</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;No indices found for &#39;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">&#39;. &quot;</span>
+                <span class="s2">&quot;This should not happen. Please report this bug.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">indices</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">idx_val</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">_is_contiguous</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
+            <span class="n">missing</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">indices</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Missing indices </span><span class="si">{</span><span class="n">missing</span><span class="si">}</span><span class="s2"> for &#39;</span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
+
+        <span class="n">collapsed_key</span> <span class="o">=</span> <span class="n">ParameterNameParser</span><span class="o">.</span><span class="n">add_units</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">units</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">collapsed_key</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate key after rebuild: </span><span class="si">{</span><span class="n">collapsed_key</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">out</span><span class="p">[</span><span class="n">collapsed_key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx_val</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">idx_val</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+        <span class="n">processed</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">own_keys</span><span class="p">)</span>
+
+    <span class="c1"># Copy non-indexed entries</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">scalar_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">processed</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">out</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Duplicate key: </span><span class="si">{</span><span class="n">key</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+    <span class="k">return</span> <span class="n">out</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_contiguous</span><span class="p">(</span><span class="n">indices</span><span class="p">:</span> <span class="nb">set</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if indices form a contiguous sequence starting from 0.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">bool</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="ow">and</span> <span class="n">indices</span> <span class="o">==</span> <span class="nb">set</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_is_iterable</span><span class="p">(</span><span class="n">val</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if a value is iterable (but not string, dict, or bytes).&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="s2">&quot;__iter__&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="nb">dict</span><span class="p">,</span> <span class="nb">bytes</span><span class="p">))</span>
+
+
+<span class="c1"># JSON Conversion Utilities</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_symbols_in_dict</span><span class="p">(</span><span class="n">data_dict</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Recursively convert nested dicts using convert_symbol_from_json.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data_dict : dict, optional</span>
+<span class="sd">        Dictionary to process. Returns empty dict if None.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        Dictionary with symbols converted.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; # Simple conversion</span>
+<span class="sd">    &gt;&gt;&gt; data = {&quot;Temperature [K]&quot;: &quot;298.15&quot;, &quot;Voltage [V]&quot;: 3.7}</span>
+<span class="sd">    &gt;&gt;&gt; converted = convert_symbols_in_dict(data)</span>
+<span class="sd">    &gt;&gt;&gt; converted[&quot;Temperature [K]&quot;]</span>
+<span class="sd">    298.15</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data_dict</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="ow">and</span> <span class="s2">&quot;interpolator&quot;</span> <span class="ow">in</span> <span class="n">value</span><span class="p">:</span>
+            <span class="c1"># Handle interpolant specification</span>
+            <span class="n">interpolator</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;interpolator&quot;</span><span class="p">,</span> <span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="p">[])</span>
+            <span class="n">y</span> <span class="o">=</span> <span class="n">value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">,</span> <span class="p">[])</span>
+
+            <span class="k">def</span><span class="w"> </span><span class="nf">interpolant_function</span><span class="p">(</span><span class="n">sto</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">interpolator</span><span class="o">=</span><span class="n">interpolator</span><span class="p">):</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sto</span><span class="p">,</span> <span class="n">interpolator</span><span class="o">=</span><span class="n">interpolator</span><span class="p">)</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+                    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+            <span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolant_function</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_symbol_from_json</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">convert_symbol_from_json</span><span class="p">(</span><span class="n">item</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">item</span><span class="p">,</span> <span class="nb">dict</span><span class="p">)</span> <span class="k">else</span> <span class="n">item</span>
+                <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">value</span>
+            <span class="p">]</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+            <span class="n">data_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">data_dict</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">convert_parameter_values_to_json</span><span class="p">(</span>
+    <span class="n">parameter_values</span><span class="p">:</span> <span class="n">ParameterValues</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Convert a ParameterValues object to a JSON-serializable dictionary.</span>
+
+<span class="sd">    Optionally saves it to a file.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    parameter_values : ParameterValues</span>
+<span class="sd">        The ParameterValues object to convert.</span>
+<span class="sd">    filename : str, optional</span>
+<span class="sd">        The filename to save the JSON file to.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    dict</span>
+<span class="sd">        The JSON-serializable dictionary.</span>
+
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; param = pybamm.ParameterValues({&quot;Temperature [K]&quot;: 298.15})</span>
+<span class="sd">    &gt;&gt;&gt; json_dict = convert_parameter_values_to_json(param)</span>
+<span class="sd">    &gt;&gt;&gt; isinstance(json_dict, dict)</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; convert_parameter_values_to_json(param, &quot;params.json&quot;)</span>
+<span class="sd">    {&#39;Temperature [K]&#39;: 298.15}</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">parameter_values_dict</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="nb">callable</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+            <span class="n">parameter_values_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_symbol_to_json</span><span class="p">(</span>
+                <span class="n">convert_function_to_symbolic_expression</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">parameter_values_dict</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">convert_symbol_to_json</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">filename</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span>
+                <span class="n">parameter_values_dict</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="n">Serialise</span><span class="o">.</span><span class="n">_json_encoder</span>
+            <span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">parameter_values_dict</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    使用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0 建立。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

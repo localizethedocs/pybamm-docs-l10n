@@ -1,0 +1,1373 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.simulation.base_simulation &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../_static/documentation_options.js?v=9f30519d"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/simulation/base_simulation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/simulation/base_simulation.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.simulation.base_simulation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.simulation.base_simulation</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">functools</span><span class="w"> </span><span class="kn">import</span> <span class="n">lru_cache</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm.telemetry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.models.base_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelSolutionObservability</span>
+
+
+<div class="viewcode-block" id="is_notebook">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.is_notebook">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">is_notebook</span><span class="p">():</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">shell</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span>
+        <span class="k">if</span> <span class="n">shell</span> <span class="o">==</span> <span class="s2">&quot;ZMQInteractiveShell&quot;</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># Jupyter notebook or qtconsole</span>
+            <span class="n">cfg</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">config</span>
+            <span class="n">nb</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;InteractiveShell&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="o">==</span> <span class="mi">0</span>
+            <span class="k">return</span> <span class="n">nb</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># pragma: no cover</span>
+            <span class="c1"># &quot;Shell&quot; is Google Colab; anything else (incl. TerminalInteractiveShell)</span>
+            <span class="c1"># is not a notebook</span>
+            <span class="k">return</span> <span class="n">shell</span> <span class="o">==</span> <span class="s2">&quot;Shell&quot;</span>
+    <span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>  <span class="c1"># Probably standard Python interpreter</span></div>
+
+
+
+<div class="viewcode-block" id="BaseSimulation">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseSimulation</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A Simulation class for easy building and running of PyBaMM simulations.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    model : :class:`pybamm.BaseModel`</span>
+<span class="sd">        The model to be simulated</span>
+<span class="sd">    geometry: :class:`pybamm.Geometry` (optional)</span>
+<span class="sd">        The geometry upon which to solve the model</span>
+<span class="sd">    parameter_values: :class:`pybamm.ParameterValues` (optional)</span>
+<span class="sd">        Parameters and their corresponding numerical values.</span>
+<span class="sd">    submesh_types: dict (optional)</span>
+<span class="sd">        A dictionary of the types of submesh to use on each subdomain</span>
+<span class="sd">    var_pts: dict (optional)</span>
+<span class="sd">        A dictionary of the number of points used by each spatial variable</span>
+<span class="sd">    spatial_methods: dict (optional)</span>
+<span class="sd">        A dictionary of the types of spatial method to use on each</span>
+<span class="sd">        domain (e.g. pybamm.FiniteVolume)</span>
+<span class="sd">    solver: :class:`pybamm.BaseSolver` (optional)</span>
+<span class="sd">        The solver to use to solve the model.</span>
+<span class="sd">    output_variables: list (optional)</span>
+<span class="sd">        A list of variables to plot automatically</span>
+<span class="sd">    C_rate: float (optional)</span>
+<span class="sd">        The C-rate at which you would like to run a constant current (dis)charge.</span>
+<span class="sd">    discretisation_kwargs: dict (optional)</span>
+<span class="sd">        Any keyword arguments to pass to the Discretisation class.</span>
+<span class="sd">        See :class:`pybamm.Discretisation` for details.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">MODE_WITHOUT_EXPERIMENT</span> <span class="o">=</span> <span class="s2">&quot;without experiment&quot;</span>
+    <span class="n">MODE_DRIVE_CYCLE</span> <span class="o">=</span> <span class="s2">&quot;drive cycle&quot;</span>
+    <span class="n">MODE_WITH_EXPERIMENT</span> <span class="o">=</span> <span class="s2">&quot;with experiment&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model</span><span class="p">,</span>
+        <span class="n">geometry</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">parameter_values</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">submesh_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">var_pts</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">spatial_methods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">output_variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">C_rate</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">discretisation_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">cache_esoh</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span> <span class="o">=</span> <span class="n">parameter_values</span> <span class="ow">or</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_parameter_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span>
+
+        <span class="n">current</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Interpolant</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_DRIVE_CYCLE</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITHOUT_EXPERIMENT</span>
+            <span class="k">if</span> <span class="n">C_rate</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">C_rate</span> <span class="o">=</span> <span class="n">C_rate</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+                    <span class="p">{</span>
+                        <span class="s2">&quot;Current function [A]&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">C_rate</span>
+                        <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="p">[</span><span class="s2">&quot;Nominal cell capacity [A.h]&quot;</span><span class="p">]</span>
+                    <span class="p">}</span>
+                <span class="p">)</span>
+
+        <span class="n">model</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">new_copy</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_model</span> <span class="o">=</span> <span class="n">model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="n">model</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span> <span class="o">=</span> <span class="n">geometry</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">default_geometry</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_submesh_types</span> <span class="o">=</span> <span class="n">submesh_types</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">default_submesh_types</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_var_pts</span> <span class="o">=</span> <span class="n">var_pts</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">default_var_pts</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_spatial_methods</span> <span class="o">=</span> <span class="n">spatial_methods</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">default_spatial_methods</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="n">solver</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">default_solver</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_output_variables</span> <span class="o">=</span> <span class="n">output_variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_discretisation_kwargs</span> <span class="o">=</span> <span class="n">discretisation_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="p">,</span> <span class="s2">&quot;output_variables&quot;</span><span class="p">,</span> <span class="p">[])):</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">disable_solution_observability</span><span class="p">(</span>
+                <span class="n">ModelSolutionObservability</span><span class="o">.</span><span class="n">SOLVER_OUTPUT_VARIABLES</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Initialize empty built states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_initial_soc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_nominal_capacity</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cache_esoh</span> <span class="o">=</span> <span class="n">cache_esoh</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_fingerprint</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_initial_soc_solver</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span> <span class="o">=</span> <span class="kc">False</span>
+
+        <span class="k">if</span> <span class="n">is_notebook</span><span class="p">():</span>  <span class="c1"># pragma: no cover</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_esoh_solver</span> <span class="o">=</span> <span class="n">lru_cache</span><span class="p">()(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_esoh_solver</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__getstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return dictionary of picklable items</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">result</span><span class="p">[</span><span class="s2">&quot;get_esoh_solver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Exclude LRU cache</span>
+        <span class="k">return</span> <span class="n">result</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">__setstate__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Unpickle, restoring unpicklable relationships</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span> <span class="o">=</span> <span class="n">state</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_esoh_solver</span> <span class="o">=</span> <span class="n">lru_cache</span><span class="p">()(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_esoh_solver</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="s2">&quot;pybamm.set_parameters is deprecated and not meant to be accessed by users.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_parameters</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_parameters</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method to set the parameters in the model and the associated geometry.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_model</span><span class="p">,</span>
+            <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pv_fingerprint</span><span class="p">(</span><span class="n">pv</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Hash all parameter values to detect any in-place modifications.&quot;&quot;&quot;</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pv</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">pv</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">parts</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_normalize_inputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert input values to hashable, comparison-safe types.&quot;&quot;&quot;</span>
+        <span class="n">items</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+            <span class="n">v</span> <span class="o">=</span> <span class="n">inputs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">tobytes</span><span class="p">()))</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">int</span> <span class="o">|</span> <span class="nb">float</span><span class="p">):</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">k</span><span class="p">,</span> <span class="nb">id</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+        <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_compute_esoh_fingerprint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Compute a fingerprint of all eSOH-relevant state to detect changes.</span>
+
+<span class="sd">        Delegates to the model-specific fingerprint function in</span>
+<span class="sd">        ``pybamm.lithium_ion.compute_esoh_fingerprint``, which evaluates the</span>
+<span class="sd">        exact quantities that determine the eSOH result for this model type.</span>
+<span class="sd">        Falls back to raw inputs if the model-specific evaluation fails.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_parameter_values</span>
+        <span class="c1"># Hash the full parameter store as a safety net: the model-specific</span>
+        <span class="c1"># fingerprint only evaluates a handful of scalar quantities, so it</span>
+        <span class="c1"># cannot detect changes to non-numeric parameters such as OCP</span>
+        <span class="c1"># functions that also affect the eSOH result.</span>
+        <span class="n">pv_fp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pv_fingerprint</span><span class="p">(</span><span class="n">pv</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">evals</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">compute_esoh_fingerprint</span><span class="p">(</span>
+                <span class="n">pv</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">param</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span> <span class="n">inputs</span>
+            <span class="p">)</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">KeyError</span><span class="p">,</span> <span class="ne">AttributeError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ModelError</span><span class="p">):</span>
+            <span class="n">evals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_inputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="k">if</span> <span class="n">inputs</span> <span class="k">else</span> <span class="p">()</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">pv_fp</span><span class="p">,</span> <span class="n">evals</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_create_esoh_solver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">initial_soc</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create the appropriate eSOH solver/sim for this model type.&quot;&quot;&quot;</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">options</span>
+        <span class="n">pv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_parameter_values</span>
+        <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">param</span>
+
+        <span class="k">if</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;open-circuit potential&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;MSMR&quot;</span> <span class="ow">or</span> <span class="p">(</span>
+            <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;working electrode&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;positive&quot;</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">check_if_composite</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;positive&quot;</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="ow">not</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">check_if_composite</span><span class="p">(</span><span class="n">options</span><span class="p">,</span> <span class="s2">&quot;negative&quot;</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span><span class="p">(</span>
+                <span class="n">pv</span><span class="p">,</span>
+                <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+                <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">elif</span> <span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;working electrode&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;positive&quot;</span><span class="p">:</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHHalfCell</span><span class="p">(</span>
+                <span class="s2">&quot;ElectrodeSOH&quot;</span><span class="p">,</span>
+                <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">pv</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="ow">and</span> <span class="n">initial_soc</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">):</span>
+                <span class="n">initialization_method</span> <span class="o">=</span> <span class="s2">&quot;voltage&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">initialization_method</span> <span class="o">=</span> <span class="s2">&quot;SOC&quot;</span>
+            <span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHComposite</span><span class="p">(</span>
+                <span class="n">options</span><span class="p">,</span>
+                <span class="n">direction</span><span class="p">,</span>
+                <span class="n">initialization_method</span><span class="o">=</span><span class="n">initialization_method</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.models.full_battery_models.lithium_ion.electrode_soh</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+                <span class="n">get_esoh_default_solver</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span>
+                <span class="n">model</span><span class="p">,</span>
+                <span class="n">parameter_values</span><span class="o">=</span><span class="n">pv</span><span class="p">,</span>
+                <span class="n">solver</span><span class="o">=</span><span class="n">get_esoh_default_solver</span><span class="p">(),</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_esoh</span><span class="p">:</span>
+            <span class="n">fingerprint</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compute_esoh_fingerprint</span><span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fingerprint</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_fingerprint</span><span class="p">:</span>
+                <span class="k">return</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">normalized</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_normalize_inputs</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span> <span class="k">if</span> <span class="n">inputs</span> <span class="k">else</span> <span class="p">()</span>
+            <span class="n">fingerprint</span> <span class="o">=</span> <span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">normalized</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">fingerprint</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_fingerprint</span><span class="p">:</span>
+                <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="n">param</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">param</span>
+        <span class="n">options</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">options</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache_esoh</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_initial_soc_solver</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_initial_soc_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_esoh_solver</span><span class="p">(</span>
+                    <span class="n">direction</span><span class="p">,</span> <span class="n">initial_soc</span>
+                <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span>
+                <span class="n">initial_soc</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_parameter_values</span><span class="p">,</span>
+                <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+                <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+                <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                <span class="n">esoh_solver</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_initial_soc_solver</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_parameter_values</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span>
+                    <span class="n">initial_soc</span><span class="p">,</span>
+                    <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+                    <span class="n">param</span><span class="o">=</span><span class="n">param</span><span class="p">,</span>
+                    <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                    <span class="n">options</span><span class="o">=</span><span class="n">options</span><span class="p">,</span>
+                    <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Save solved initial SOC in case we need to re-build the model</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_built_initial_soc</span> <span class="o">=</span> <span class="n">initial_soc</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_esoh_fingerprint</span> <span class="o">=</span> <span class="n">fingerprint</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">set_initial_soc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;pybamm.simulation.set_initial_soc is deprecated, please use set_initial_state.&quot;</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">DeprecationWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span>
+            <span class="n">initial_soc</span><span class="o">=</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_prepare_solve</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">warn_stacklevel</span><span class="o">=</span><span class="mi">3</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Common setup for solve methods. Returns resolved values.&quot;&quot;&quot;</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">telemetry</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span><span class="s2">&quot;simulation-solved&quot;</span><span class="p">)</span>
+        <span class="n">t_eval</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">solver</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span>
+        <span class="k">if</span> <span class="n">calc_esoh</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">calc_esoh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">calc_esoh</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">calc_esoh</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">calc_esoh</span><span class="p">:</span>
+                <span class="n">calc_esoh</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;Model is not suitable for calculating eSOH, &quot;</span>
+                    <span class="s2">&quot;setting `calc_esoh` to False&quot;</span><span class="p">,</span>
+                    <span class="ne">UserWarning</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="n">warn_stacklevel</span><span class="p">,</span>
+                <span class="p">)</span>
+        <span class="n">callbacks</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">setup_callbacks</span><span class="p">(</span><span class="n">callbacks</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="k">return</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_built_models</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return list of built models that need IC recomputation.&quot;&quot;&quot;</span>
+        <span class="n">models</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">models</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">models</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_recompute_initial_conditions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Recompute initial conditions on built model(s) without full rebuild.&quot;&quot;&quot;</span>
+        <span class="n">unprocessed_by_name</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">expr</span>
+            <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">expr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unprocessed_model</span><span class="o">.</span><span class="n">initial_conditions</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">}</span>
+
+        <span class="n">models</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_built_models</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">built_model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+            <span class="n">new_param_ics</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">var</span><span class="p">,</span> <span class="n">existing</span> <span class="ow">in</span> <span class="n">built_model</span><span class="o">.</span><span class="n">initial_conditions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">var</span><span class="o">.</span><span class="n">name</span> <span class="ow">in</span> <span class="n">unprocessed_by_name</span><span class="p">:</span>
+                    <span class="n">new_param_ics</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="o">.</span><span class="n">process_symbol</span><span class="p">(</span>
+                        <span class="n">unprocessed_by_name</span><span class="p">[</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">new_param_ics</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">existing</span>
+
+            <span class="n">processed_ics</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span><span class="o">.</span><span class="n">process_dict</span><span class="p">(</span><span class="n">new_param_ics</span><span class="p">,</span> <span class="n">ics</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">slices</span> <span class="o">=</span> <span class="p">[</span><span class="n">built_model</span><span class="o">.</span><span class="n">y_slices</span><span class="p">[</span><span class="n">var</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">processed_ics</span><span class="p">]</span>
+            <span class="n">sorted_eqs</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="n">eq</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">eq</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">slices</span><span class="p">,</span> <span class="n">processed_ics</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+            <span class="p">]</span>
+            <span class="n">concat_ics</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">numpy_concatenation</span><span class="p">(</span><span class="o">*</span><span class="n">sorted_eqs</span><span class="p">)</span>
+
+            <span class="n">built_model</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="n">processed_ics</span>
+            <span class="n">built_model</span><span class="o">.</span><span class="n">concatenated_initial_conditions</span> <span class="o">=</span> <span class="n">concat_ics</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span> <span class="o">=</span> <span class="kc">False</span>
+
+<div class="viewcode-block" id="BaseSimulation.build">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.build">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_soc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method to build the model into a system of matrices and vectors suitable for</span>
+<span class="sd">        performing numerical computations. If the model has already been built or</span>
+<span class="sd">        solved then this function will have no effect.</span>
+<span class="sd">        This method will automatically set the parameters</span>
+<span class="sd">        if they have not already been set.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        initial_soc : float, optional</span>
+<span class="sd">            Initial State of Charge (SOC) for the simulation. Must be between 0 and 1.</span>
+<span class="sd">            If given, overwrites the initial concentrations provided in the parameter</span>
+<span class="sd">            set.</span>
+<span class="sd">        inputs : dict, optional</span>
+<span class="sd">            A dictionary of input parameters to pass to the model when solving.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">initial_soc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">set_initial_state</span><span class="p">(</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_recompute_initial_conditions</span><span class="p">()</span>
+            <span class="k">return</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">is_discretised</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_set_parameters</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submesh_types</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_pts</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spatial_methods</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_discretisation_kwargs</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span><span class="p">,</span>
+                <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">delayed_variable_processing</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">_model_set_up</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_needs_ic_rebuild</span> <span class="o">=</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="BaseSimulation.solve">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.solve">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solve</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">calc_esoh</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">initial_soc</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">direction</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">callbacks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">t_interp</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method to solve the model. This method will automatically build</span>
+<span class="sd">        and set the model parameters if not already done so.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        t_eval : numeric type, optional</span>
+<span class="sd">            The times at which to stop the integration due to a discontinuity in time.</span>
+<span class="sd">            Can be provided as an array of times at which to return the solution, or as</span>
+<span class="sd">            a list `[t0, tf]` where `t0` is the initial time and `tf` is the final</span>
+<span class="sd">            time. If the solver does not support intra-solve interpolation, providing</span>
+<span class="sd">            `t_eval` as a list returns the solution at 100 points within the interval</span>
+<span class="sd">            `[t0, tf]`. Otherwise, the solution is returned at the times specified in</span>
+<span class="sd">            `t_interp` or as a result of the adaptive time-stepping solution. See the</span>
+<span class="sd">            `t_interp` argument for more details.</span>
+
+<span class="sd">            If not using an experiment or running a drive cycle simulation (current</span>
+<span class="sd">            provided as data) `t_eval` *must* be provided.</span>
+
+<span class="sd">            If None and the parameter &quot;Current function [A]&quot; is read from data</span>
+<span class="sd">            (i.e. drive cycle simulation) the model will be solved at the times</span>
+<span class="sd">            provided in the data.</span>
+<span class="sd">        solver : :class:`pybamm.BaseSolver`, optional</span>
+<span class="sd">            The solver to use to solve the model. If None, Simulation.solver is used</span>
+<span class="sd">        calc_esoh : bool, optional</span>
+<span class="sd">            Whether to include eSOH variables in the summary variables. If `False`</span>
+<span class="sd">            then only summary variables that do not require the eSOH calculation</span>
+<span class="sd">            are calculated.</span>
+<span class="sd">            If given, overwrites the default provided by the model.</span>
+<span class="sd">        initial_soc : float, optional</span>
+<span class="sd">            Initial State of Charge (SOC) for the simulation. Must be between 0 and 1.</span>
+<span class="sd">            If given, overwrites the initial concentrations provided in the parameter</span>
+<span class="sd">            set.</span>
+<span class="sd">        callbacks : list of callbacks, optional</span>
+<span class="sd">            A list of callbacks to be called at each time step. Each callback must</span>
+<span class="sd">            implement all the methods defined in :class:`pybamm.callbacks.BaseCallback`.</span>
+<span class="sd">        t_interp : None, list or ndarray, optional</span>
+<span class="sd">            The times (in seconds) at which to interpolate the solution. Defaults to None.</span>
+<span class="sd">            Only valid for solvers that support intra-solve interpolation (`IDAKLUSolver`).</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Additional key-word arguments passed to `solver.solve`.</span>
+<span class="sd">            See :meth:`pybamm.BaseSolver.solve`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_solve</span><span class="p">(</span>
+            <span class="n">t_eval</span><span class="p">,</span> <span class="n">solver</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">callbacks</span><span class="p">,</span> <span class="n">inputs</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">initial_soc</span><span class="o">=</span><span class="n">initial_soc</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span> <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITHOUT_EXPERIMENT</span>
+            <span class="ow">or</span> <span class="s2">&quot;ElectrodeSOH&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">name</span>
+        <span class="p">):</span>
+            <span class="k">if</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                    <span class="s2">&quot;&#39;t_eval&#39; must be provided if not using an experiment or &quot;</span>
+                    <span class="s2">&quot;simulating a drive cycle. &#39;t_eval&#39; can be provided as an &quot;</span>
+                    <span class="s2">&quot;array of times at which to return the solution, or as a &quot;</span>
+                    <span class="s2">&quot;list [t0, tf] where t0 is the initial time and tf is the &quot;</span>
+                    <span class="s2">&quot;final time. &quot;</span>
+                    <span class="s2">&quot;For a constant current (dis)charge the suggested &#39;t_eval&#39;  &quot;</span>
+                    <span class="s2">&quot;is [0, 3700/C] where C is the C-rate. &quot;</span>
+                    <span class="s2">&quot;For example, run</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">sim.solve([0, 3700])</span><span class="se">\n\n</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot;for a 1C discharge.&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_DRIVE_CYCLE</span><span class="p">:</span>
+            <span class="n">time_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="p">[</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">t_eval</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Setting t_eval as specified by the data&quot;</span><span class="p">)</span>
+                <span class="n">t_eval</span> <span class="o">=</span> <span class="n">time_data</span>
+            <span class="k">elif</span> <span class="ow">not</span> <span class="n">solver</span><span class="o">.</span><span class="n">supports_t_eval_discontinuities</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">set</span><span class="p">(</span>
+                <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">time_data</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">issubset</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="mi">12</span><span class="p">))):</span>
+                <span class="c1"># Warn if t_eval misses data points or has coarser resolution</span>
+                <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                    <span class="s2">&quot;t_eval does not contain all of the time points in the data &quot;</span>
+                    <span class="s2">&quot;set. Note: passing t_eval = None automatically sets t_eval &quot;</span>
+                    <span class="s2">&quot;to be the points in the data.&quot;</span><span class="p">,</span>
+                    <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverWarning</span><span class="p">,</span>
+                    <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="n">dt_data_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">time_data</span><span class="p">))</span>
+                <span class="n">dt_eval_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">t_eval</span><span class="p">))</span>
+                <span class="k">if</span> <span class="n">dt_eval_max</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">nextafter</span><span class="p">(</span><span class="n">dt_data_min</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">):</span>
+                    <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;The largest timestep in t_eval (</span><span class="si">{</span><span class="n">dt_eval_max</span><span class="si">}</span><span class="s2">) is larger &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;than the smallest timestep in the data (</span><span class="si">{</span><span class="n">dt_data_min</span><span class="si">}</span><span class="s2">). &quot;</span>
+                        <span class="s2">&quot;The returned solution may not have the correct resolution &quot;</span>
+                        <span class="s2">&quot;to accurately capture the input. Try refining t_eval or &quot;</span>
+                        <span class="s2">&quot;passing t_eval = None.&quot;</span><span class="p">,</span>
+                        <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverWarning</span><span class="p">,</span>
+                        <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                    <span class="p">)</span>
+        <span class="c1"># Drop the prior solution before allocating the new one.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">,</span>
+            <span class="n">t_eval</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="n">t_interp</span><span class="o">=</span><span class="n">t_interp</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span></div>
+
+
+<div class="viewcode-block" id="BaseSimulation.step">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.step">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dt</span><span class="p">,</span>
+        <span class="n">solver</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">t_eval</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">save</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">starting_solution</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">inputs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method to step the model forward one timestep. This method will</span>
+<span class="sd">        automatically build and set the model parameters if not already done so.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        dt : numeric type</span>
+<span class="sd">            The timestep over which to step the solution</span>
+<span class="sd">        solver : :class:`pybamm.BaseSolver`</span>
+<span class="sd">            The solver to use to solve the model.</span>
+<span class="sd">        t_eval : list or numpy.ndarray, optional</span>
+<span class="sd">            An array of times at which to return the solution during the step</span>
+<span class="sd">            (Note: t_eval is the time measured from the start of the step, so should start at 0 and end at dt).</span>
+<span class="sd">            By default, the solution is returned at t0 and t0 + dt.</span>
+<span class="sd">        save : bool</span>
+<span class="sd">            Turn on to store the solution of all previous timesteps</span>
+<span class="sd">        starting_solution : :class:`pybamm.Solution`</span>
+<span class="sd">            The solution to start stepping from. If None (default), then self._solution</span>
+<span class="sd">            is used</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Additional key-word arguments passed to `solver.solve`.</span>
+<span class="sd">            See :meth:`pybamm.BaseSolver.step`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Copy t_eval to avoid modifying the original</span>
+        <span class="n">t_eval</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">t_eval</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">operating_mode</span> <span class="ow">in</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">MODE_WITHOUT_EXPERIMENT</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">MODE_DRIVE_CYCLE</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">solver</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span>
+
+        <span class="k">if</span> <span class="n">starting_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">starting_solution</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">(</span>
+            <span class="n">starting_solution</span><span class="p">,</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">,</span>
+            <span class="n">dt</span><span class="p">,</span>
+            <span class="n">t_eval</span><span class="o">=</span><span class="n">t_eval</span><span class="p">,</span>
+            <span class="n">save</span><span class="o">=</span><span class="n">save</span><span class="p">,</span>
+            <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_esoh_solver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calc_esoh</span><span class="p">,</span> <span class="n">direction</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">calc_esoh</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span><span class="p">,</span>
+            <span class="n">param</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">param</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">direction</span><span class="p">,</span>
+            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">options</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="BaseSimulation.plot">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.plot">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">output_variables</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A method to quickly plot the outputs of the simulation. Creates a</span>
+<span class="sd">        :class:`pybamm.QuickPlot` object (with keyword arguments &#39;kwargs&#39;) and</span>
+<span class="sd">        then calls :meth:`pybamm.QuickPlot.dynamic_plot`.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        output_variables: list, optional</span>
+<span class="sd">            A list of the variables to plot.</span>
+<span class="sd">        **kwargs</span>
+<span class="sd">            Additional keyword arguments passed to</span>
+<span class="sd">            :meth:`pybamm.QuickPlot.dynamic_plot`.</span>
+<span class="sd">            For a list of all possible keyword arguments see :class:`pybamm.QuickPlot`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Model has not been solved, please solve the model before plotting.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">output_variables</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">output_variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_variables</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">dynamic_plot</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="p">,</span> <span class="n">output_variables</span><span class="o">=</span><span class="n">output_variables</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span></div>
+
+
+<div class="viewcode-block" id="BaseSimulation.create_gif">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.create_gif">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">create_gif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number_of_images</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">output_filename</span><span class="o">=</span><span class="s2">&quot;plot.gif&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generates x plots over a time span of t_eval and compiles them to create</span>
+<span class="sd">        a GIF. For more information see :meth:`pybamm.QuickPlot.create_gif`</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        number_of_images : int (optional)</span>
+<span class="sd">            Number of images/plots to be compiled for a GIF.</span>
+<span class="sd">        duration : float (optional)</span>
+<span class="sd">            Duration of visibility of a single image/plot in the created GIF.</span>
+<span class="sd">        output_filename : str (optional)</span>
+<span class="sd">            Name of the generated GIF file.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The simulation has not been solved yet.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">QuickPlot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">quick_plot</span><span class="o">.</span><span class="n">create_gif</span><span class="p">(</span>
+            <span class="n">number_of_images</span><span class="o">=</span><span class="n">number_of_images</span><span class="p">,</span>
+            <span class="n">duration</span><span class="o">=</span><span class="n">duration</span><span class="p">,</span>
+            <span class="n">output_filename</span><span class="o">=</span><span class="n">output_filename</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">model_with_set_params</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_with_set_params</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">built_model</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">geometry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_geometry</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">parameter_values</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parameter_values</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">submesh_types</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_submesh_types</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">mesh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">var_pts</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_var_pts</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">spatial_methods</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_spatial_methods</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solver</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">output_variables</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_variables</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">solution</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span>
+
+<div class="viewcode-block" id="BaseSimulation.save">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.save">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Save simulation using pickle module.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str</span>
+<span class="sd">            The file extension can be arbitrary, but it is common to use &quot;.pkl&quot; or &quot;.pickle&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model</span><span class="o">.</span><span class="n">convert_to_format</span> <span class="o">==</span> <span class="s2">&quot;python&quot;</span><span class="p">:</span>
+            <span class="c1"># We currently cannot save models in the &#39;python&#39; format</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                Cannot save simulation if model format is python.</span>
+<span class="sd">                Set model.convert_to_format = &#39;casadi&#39; instead.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+            <span class="p">)</span>
+        <span class="c1"># Clear solver problem (not pickle-able, will automatically be recomputed)</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">CasadiSolver</span><span class="p">)</span>
+            <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">!=</span> <span class="p">{}</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="o">.</span><span class="n">integrator_specs</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">pickle</span><span class="o">.</span><span class="n">HIGHEST_PROTOCOL</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseSimulation.save_model">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.save_model">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">save_model</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">mesh</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">variables</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Write out a discretised model to a JSON file</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        mesh: bool</span>
+<span class="sd">            The mesh used to discretise the model. If false, plotting tools will not</span>
+<span class="sd">            be available when the model is read back in and solved.</span>
+<span class="sd">        variables: bool</span>
+<span class="sd">            The discretised variables. Not required to solve a model, but if false</span>
+<span class="sd">            tools will not be available. Will automatically save meshes as well, required</span>
+<span class="sd">            for plotting tools.</span>
+<span class="sd">        filename: str, optional</span>
+<span class="sd">            The desired name of the JSON file. If no name is provided, one will be</span>
+<span class="sd">            created based on the model name, and the current datetime.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">mesh</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_mesh</span> <span class="k">if</span> <span class="p">(</span><span class="n">mesh</span> <span class="ow">or</span> <span class="n">variables</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">variables</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="o">.</span><span class="n">variables</span> <span class="k">if</span> <span class="n">variables</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">:</span>
+            <span class="kn">from</span><span class="w"> </span><span class="nn">pybamm.expression_tree.operations.serialise</span><span class="w"> </span><span class="kn">import</span> <span class="n">Serialise</span>
+
+            <span class="n">Serialise</span><span class="p">()</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_built_model</span><span class="p">,</span> <span class="n">filename</span><span class="o">=</span><span class="n">filename</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">variables</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+<span class="w">                </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">                PyBaMM can only serialise a discretised model.</span>
+<span class="sd">                Ensure the model has been built (e.g. run `build()`) before saving.</span>
+<span class="sd">                &quot;&quot;&quot;</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BaseSimulation.plot_voltage_components">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.BaseSimulation.plot_voltage_components">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">plot_voltage_components</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="n">show_legend</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">split_by_electrode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">electrode_phases</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;primary&quot;</span><span class="p">,</span> <span class="s2">&quot;primary&quot;</span><span class="p">),</span>
+        <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs_fill</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Generate a plot showing the component overpotentials that make up the voltage</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        ax : matplotlib Axis, optional</span>
+<span class="sd">            The axis on which to put the plot. If None, a new figure and axis is created.</span>
+<span class="sd">        show_legend : bool, optional</span>
+<span class="sd">            Whether to display the legend. Default is True.</span>
+<span class="sd">        split_by_electrode : bool, optional</span>
+<span class="sd">            Whether to show the overpotentials for the negative and positive electrodes</span>
+<span class="sd">            separately. Default is False.</span>
+<span class="sd">        electrode_phases : (str, str), optional</span>
+<span class="sd">            The phases for which to plot the anode and cathode overpotentials, respectively.</span>
+<span class="sd">            Default is `(&quot;primary&quot;, &quot;primary&quot;)`.</span>
+<span class="sd">        show_plot : bool, optional</span>
+<span class="sd">            Whether to show the plots. Default is True. Set to False if you want to</span>
+<span class="sd">            only display the plot after plt.show() has been called.</span>
+<span class="sd">        kwargs_fill</span>
+<span class="sd">            Keyword arguments, passed to ax.fill_between.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The simulation has not been solved yet.&quot;</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">plot_voltage_components</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solution</span><span class="p">,</span>
+            <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+            <span class="n">show_legend</span><span class="o">=</span><span class="n">show_legend</span><span class="p">,</span>
+            <span class="n">split_by_electrode</span><span class="o">=</span><span class="n">split_by_electrode</span><span class="p">,</span>
+            <span class="n">electrode_phases</span><span class="o">=</span><span class="n">electrode_phases</span><span class="p">,</span>
+            <span class="n">show_plot</span><span class="o">=</span><span class="n">show_plot</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs_fill</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="load_sim">
+<a class="viewcode-back" href="../../../source/api/simulation/base_simulation.html#pybamm.load_sim">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load_sim</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load a saved simulation&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
