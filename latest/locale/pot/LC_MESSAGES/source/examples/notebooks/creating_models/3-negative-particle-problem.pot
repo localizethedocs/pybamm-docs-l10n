@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,19 +28,19 @@ msgid ""
 "can be\n"
 "        accessed via\n"
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
-"docs/source/examples/notebooks/creating_models/3-negative-particle-problem."
-"ipynb\"\n"
+"docs/source/examples/notebooks/creating_models/3-negative-particle-"
+"problem.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
 "    <p>\n"
 "        Alternatively, you may\n"
 "        <a href=\"https://github.com/pybamm-team/PyBaMM/blob/main/docs/"
-"source/examples/notebooks/creating_models/3-negative-particle-problem."
-"ipynb\"\n"
+"source/examples/notebooks/creating_models/3-negative-particle-"
+"problem.ipynb\"\n"
 "        target=\"_blank\" download>\n"
 "        download this notebook</a> and run it offline.\n"
 "    </p>\n"
@@ -59,113 +60,116 @@ msgid ""
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:22
-msgid "\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (D \\nabla c),"
+msgid ""
+"\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (D \\nabla c),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:27
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:24
 msgid "with the following boundary and initial conditions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:29
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:26
 msgid ""
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=R} = -\\frac{j}{FD}, "
-"\\quad \\left.c\\right\\vert_{t=0} = c_0,"
+"\\quad \\left.c\\right\\vert_{t=0} = c_0,\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:34
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:28
 msgid ""
-"where :math:`c` is the concentration, :math:`r` the radial coordinate, :math:"
-"`t` time, :math:`R` the particle radius, :math:`D` the diffusion "
-"coefficient, :math:`j` the interfacial current density, :math:`F` Faraday's "
-"constant, and :math:`c_0` the initial concentration."
+"where :math:`c` is the concentration, :math:`r` the radial "
+"coordinate, :math:`t` time, :math:`R` the particle radius, :math:`D` the "
+"diffusion coefficient, :math:`j` the interfacial current density, :math:`F` "
+"Faraday's constant, and :math:`c_0` the initial concentration."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:36
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:30
 msgid "In this example we use the following parameters:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:33
 msgid "Symbol"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:33
 msgid "Units"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:33
 msgid "Value"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:35
 msgid ":math:`R`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:35
 msgid "m"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:35
 msgid ":math:`10 \\times 10^{-6}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:37
 msgid ":math:`D`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:37
 msgid "m\\ :math:`{^2}` s\\ :math:`^{-1}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:37
 msgid ":math:`3.9 \\times 10^{-14}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:45
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
 msgid ":math:`j`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:45
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
 msgid "A m\\ :math:`^{-2}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:45
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:39
 msgid ":math:`1.4`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:47
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
 msgid ":math:`F`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:47
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
 msgid "C mol\\ :math:`^{-1}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:47
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:41
 msgid ":math:`96485`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:49
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
 msgid ":math:`c_0`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:49
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
 msgid "mol m\\ :math:`^{-3}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:49
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:43
 msgid ":math:`2.5 \\times 10^{4}`"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:62
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:56
 msgid "Setting up the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:64
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:58
 msgid ""
 "As before, we begin by importing the PyBaMM library into this notebook, "
-"along with any other packages we require, and start with an empty ``pybamm."
-"BaseModel``"
+"along with any other packages we require, and start with an empty "
+"``pybamm.BaseModel``"
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:-1
@@ -183,32 +187,32 @@ msgid ""
 "model = pybamm.BaseModel()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:90
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:84
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:96
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:90
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:103
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:97
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:114
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:108
 msgid ""
 "We then define all of the model variables and parameters. Parameters are "
 "created using the ``pybamm.Parameter`` class and are given informative names "
 "(with units). Later, we will provide parameter values and the ``Parameter`` "
 "objects will be turned into numerical values. For more information please "
-"see the `parameter values notebook <../parameterization/parameter-values."
-"ipynb>`__."
+"see the `parameter values notebook <../parameterization/parameter-"
+"values.ipynb>`__."
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:-1
@@ -227,7 +231,7 @@ msgid ""
 "particle\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:141
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:135
 msgid ""
 "Now we define our model equations, boundary and initial conditions, as in "
 "the previous example."
@@ -254,10 +258,10 @@ msgid ""
 "model.initial_conditions = {c: c0}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:173
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:167
 msgid ""
-"Finally, we add any variables of interest to the dictionary ``model."
-"variables``"
+"Finally, we add any variables of interest to the dictionary "
+"``model.variables``"
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:-1
@@ -273,11 +277,11 @@ msgid ""
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:199
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:193
 msgid "Using the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:210
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:204
 msgid ""
 "In order to discretise and solve the model we need to provide values for all "
 "of the parameters. This is done via the ``pybamm.ParameterValues`` class, "
@@ -301,14 +305,14 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:239
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:233
 msgid ""
 "Here all of the parameters are simply scalars, but they can also be "
 "functions or read in from data (see `parameter values notebook <../"
 "parameterization/parameter-values.ipynb>`__)."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:250
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:244
 msgid ""
 "As in the previous example, we define the particle geometry. Note that in "
 "this example the definition of the geometry contains a parameter, the "
@@ -328,7 +332,7 @@ msgid ""
 "R}}}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:274
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:268
 msgid ""
 "Both the model and geometry can now be processed by the parameter class. "
 "This replaces the parameters with the values"
@@ -344,7 +348,7 @@ msgid ""
 "param.process_geometry(geometry)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:296
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:290
 msgid ""
 "We can now set up our mesh, choose a spatial method, and discretise our model"
 msgstr ""
@@ -364,15 +368,15 @@ msgid ""
 "disc.process_model(model);"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:323
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:317
 msgid "The model is now discretised and ready to be solved."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:335
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:329
 msgid "Solving the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:346
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:340
 msgid ""
 "As is the previous example, we choose a solver and times at which we want "
 "the solution returned."
@@ -412,7 +416,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:400
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:394
 msgid ""
 "In the `next notebook <./4-comparing-full-and-reduced-order-models.ipynb>`__ "
 "we consider the limit of fast diffusion in the particle. This leads to a "
@@ -420,11 +424,11 @@ msgid ""
 "full (Fickian diffusion) model."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:412
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:406
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:414
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:408
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -436,7 +440,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:435
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:429
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -461,7 +465,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:446
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:440
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -486,7 +490,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:458
+#: ../../../source/examples/notebooks/creating_models/3-negative-particle-problem.ipynb:452
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

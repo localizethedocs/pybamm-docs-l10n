@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,17 +55,17 @@ msgstr ""
 
 #: ../../../../RELEASE.md:10
 msgid ""
-"**Breaking changes:** Documented under `## Breaking changes` in [`CHANGELOG."
-"md`](https://github.com/pybamm-team/PyBaMM/blob/main/CHANGELOG.md). Public "
-"APIs that are removed or renamed ship a `DeprecationWarning` for at least "
-"two prior feature releases first (see the Deprecation policy section for the "
-"documented exceptions)."
+"**Breaking changes:** Documented under `## Breaking changes` in "
+"[`CHANGELOG.md`](https://github.com/pybamm-team/PyBaMM/blob/main/"
+"CHANGELOG.md). Public APIs that are removed or renamed ship a "
+"`DeprecationWarning` for at least two prior feature releases first (see the "
+"Deprecation policy section for the documented exceptions)."
 msgstr ""
 
 #: ../../../../RELEASE.md:11
 msgid ""
-"**Pre-announcement:** The `# [Unreleased]` section at the top of `CHANGELOG."
-"md` on `main` is the canonical preview of what's about to ship."
+"**Pre-announcement:** The `# [Unreleased]` section at the top of "
+"`CHANGELOG.md` on `main` is the canonical preview of what's about to ship."
 msgstr ""
 
 #: ../../../../RELEASE.md:13
@@ -172,10 +173,10 @@ msgstr ""
 
 #: ../../../../RELEASE.md:35
 msgid ""
-"PyBaMM and `pybammsolvers` live in one repository (a UV workspace under "
-"`packages/`) but release **independently to PyPI**, discriminated by tag "
-"namespace. See `docs/superpowers/specs/2026-06-11-pybamm-monorepo-design.md` "
-"for the full design."
+"PyBaMM, `pybammsolvers`, and `pybamm-model-zoo` live in one repository (a UV "
+"workspace under `packages/`) but release **independently to PyPI**, "
+"discriminated by tag namespace. See `docs/superpowers/specs/2026-06-11-"
+"pybamm-monorepo-design.md` for the full design."
 msgstr ""
 
 #: ../../../../RELEASE.md:40
@@ -189,6 +190,10 @@ msgid "`pybammsolvers` releases use the `pybammsolvers-v*` namespace."
 msgstr ""
 
 #: ../../../../RELEASE.md:43
+msgid "`pybamm-model-zoo` releases use the `pybamm-model-zoo-v*` namespace."
+msgstr ""
+
+#: ../../../../RELEASE.md:44
 msgid ""
 "**Legacy solver tags** (`v0.8.0`, `v0.8.1`, `v0.8.2`) carried over from the "
 "standalone `pybammsolvers` repo are **not** part of PyBaMM's release history "
@@ -196,114 +201,114 @@ msgid ""
 "tagged under `pybammsolvers-v*` during the migration."
 msgstr ""
 
-#: ../../../../RELEASE.md:47
+#: ../../../../RELEASE.md:48
 msgid ""
 "The migration was integrated with a **merge commit (not a squash)** so the "
 "full commit history of both packages is preserved; PyBaMM's existing commit "
 "SHAs are unchanged (no history rewrite)."
 msgstr ""
 
-#: ../../../../RELEASE.md:51
+#: ../../../../RELEASE.md:52
 msgid "Release cadence"
 msgstr ""
 
-#: ../../../../RELEASE.md:53
+#: ../../../../RELEASE.md:54
 msgid ""
 "We release when there's a meaningful body of work to ship. No fixed monthly "
 "or quarterly schedule."
 msgstr ""
 
-#: ../../../../RELEASE.md:54
+#: ../../../../RELEASE.md:55
 msgid ""
 "Patch releases are cut from the corresponding feature release branch as "
 "fixes warrant."
 msgstr ""
 
-#: ../../../../RELEASE.md:55
+#: ../../../../RELEASE.md:56
 msgid ""
-"Breaking changes target the **first feature release of the month** (`YY."
-"MM.0.0`). Subsequent feature releases in the same month (`YY.MM.1.0`, `YY."
-"MM.2.0`, …) should not contain breaking changes unless absolutely required. "
-"Exceptions must be justified in the PR description and in the `## Breaking "
-"changes` changelog entry, alongside the standard deprecation note."
+"Breaking changes target the **first feature release of the month** "
+"(`YY.MM.0.0`). Subsequent feature releases in the same month (`YY.MM.1.0`, "
+"`YY.MM.2.0`, …) should not contain breaking changes unless absolutely "
+"required. Exceptions must be justified in the PR description and in the `## "
+"Breaking changes` changelog entry, alongside the standard deprecation note."
 msgstr ""
 
-#: ../../../../RELEASE.md:57
+#: ../../../../RELEASE.md:58
 msgid "What counts as a breaking change"
 msgstr ""
 
-#: ../../../../RELEASE.md:59
+#: ../../../../RELEASE.md:60
 msgid "A change is **breaking** if it does any of the following:"
 msgstr ""
 
-#: ../../../../RELEASE.md:61
+#: ../../../../RELEASE.md:62
 msgid "Removes or renames a public Python API."
 msgstr ""
 
-#: ../../../../RELEASE.md:62
+#: ../../../../RELEASE.md:63
 msgid ""
 "Changes the signature, defaults, or return type of a public function in a "
 "way existing user code would notice."
 msgstr ""
 
-#: ../../../../RELEASE.md:63
+#: ../../../../RELEASE.md:64
 msgid ""
 "Changes the **default** model, solver, or option such that an unchanged user "
 "script produces materially different numerical output."
 msgstr ""
 
-#: ../../../../RELEASE.md:64
+#: ../../../../RELEASE.md:65
 msgid ""
 "Drops support for a previously-supported Python version, OS, or core "
 "dependency major version."
 msgstr ""
 
-#: ../../../../RELEASE.md:65
+#: ../../../../RELEASE.md:66
 msgid ""
 "Changes the on-disk format of saved models or solutions without a backward-"
 "compatible reader."
 msgstr ""
 
-#: ../../../../RELEASE.md:67
+#: ../../../../RELEASE.md:68
 msgid "A change is **not** breaking if it:"
 msgstr ""
 
-#: ../../../../RELEASE.md:69
+#: ../../../../RELEASE.md:70
 msgid "Adds new optional kwargs to existing public functions."
 msgstr ""
 
-#: ../../../../RELEASE.md:70
+#: ../../../../RELEASE.md:71
 msgid ""
 "Adds new submodels, solvers, or options that opt-in via explicit "
 "configuration."
 msgstr ""
 
-#: ../../../../RELEASE.md:71
+#: ../../../../RELEASE.md:72
 msgid "Improves performance."
 msgstr ""
 
-#: ../../../../RELEASE.md:72
+#: ../../../../RELEASE.md:73
 msgid "Fixes a bug (corrects behaviour that was previously wrong)."
 msgstr ""
 
-#: ../../../../RELEASE.md:73
+#: ../../../../RELEASE.md:74
 msgid ""
 "Changes numerical output of a *non-default* model or solver. Algorithmic "
 "improvements under the same name and same defaults are not breaking, even if "
 "outputs shift."
 msgstr ""
 
-#: ../../../../RELEASE.md:75
+#: ../../../../RELEASE.md:76
 msgid "\"Public API\" defined"
 msgstr ""
 
-#: ../../../../RELEASE.md:77
+#: ../../../../RELEASE.md:78
 msgid ""
-"**Public API = anything documented at [docs.pybamm.org](https://docs.pybamm."
-"org).**"
+"**Public API = anything documented at [docs.pybamm.org](https://"
+"docs.pybamm.org).**"
 msgstr ""
 
-#: ../../../../RELEASE.md:79
+#: ../../../../RELEASE.md:80
 msgid ""
 "If a class, function, or method appears in the rendered API reference, it is "
 "in PyBaMM's public contract. Anything else — internal modules, leading-"
@@ -311,63 +316,63 @@ msgid ""
 "any two releases without a `## Breaking changes` entry."
 msgstr ""
 
-#: ../../../../RELEASE.md:81
+#: ../../../../RELEASE.md:82
 msgid ""
 "The rendered docs build is the auditable source of truth. A PR reviewer can "
 "answer \"is this public?\" by checking whether the symbol is reachable from "
 "the API reference index."
 msgstr ""
 
-#: ../../../../RELEASE.md:83
+#: ../../../../RELEASE.md:84
 msgid "Deprecation policy"
 msgstr ""
 
-#: ../../../../RELEASE.md:85
+#: ../../../../RELEASE.md:86
 msgid ""
 "Removing or renaming a public API must ship a `DeprecationWarning` in at "
 "least **two prior feature releases** before the removal release."
 msgstr ""
 
-#: ../../../../RELEASE.md:87
+#: ../../../../RELEASE.md:88
 msgid "The deprecation lands with a `## Deprecated` entry in the changelog."
 msgstr ""
 
-#: ../../../../RELEASE.md:88
+#: ../../../../RELEASE.md:89
 msgid ""
 "The eventual removal lands with a `## Breaking changes` entry that "
 "references the original deprecation."
 msgstr ""
 
-#: ../../../../RELEASE.md:90
+#: ../../../../RELEASE.md:91
 msgid ""
 "**Exceptions.** The two-release floor may be skipped only when one of the "
 "following applies. Each exception must be justified in the PR description "
 "*and* in the `## Breaking changes` changelog entry:"
 msgstr ""
 
-#: ../../../../RELEASE.md:92
+#: ../../../../RELEASE.md:93
 msgid ""
 "(a) The API is fundamentally unsafe or broken — keeping it around for two "
 "releases would cause harm."
 msgstr ""
 
-#: ../../../../RELEASE.md:93
+#: ../../../../RELEASE.md:94
 msgid ""
 "(b) The API was never advertised in the docs — it was reachable but not part "
 "of the public contract."
 msgstr ""
 
-#: ../../../../RELEASE.md:94
+#: ../../../../RELEASE.md:95
 msgid ""
 "(c) Deprecation is technically impossible — for example, removing a required "
 "positional argument, where there is no behaviour to warn from."
 msgstr ""
 
-#: ../../../../RELEASE.md:96
+#: ../../../../RELEASE.md:97
 msgid "Pre-announcement"
 msgstr ""
 
-#: ../../../../RELEASE.md:98
+#: ../../../../RELEASE.md:99
 msgid ""
 "The `# [Unreleased]` section at the top of `CHANGELOG.md` on `main` is the "
 "canonical pre-announcement channel. Downstream package maintainers, users, "
@@ -375,40 +380,40 @@ msgid ""
 "ship."
 msgstr ""
 
-#: ../../../../RELEASE.md:100
+#: ../../../../RELEASE.md:101
 msgid ""
 "The following are **not** required by policy but may be chosen by "
 "maintainers for exceptional breaks (e.g. removing a long-standing core "
 "class, dropping a supported Python version):"
 msgstr ""
 
-#: ../../../../RELEASE.md:102
+#: ../../../../RELEASE.md:103
 msgid "Release candidate (RC) tags on PyPI."
 msgstr ""
 
-#: ../../../../RELEASE.md:103
+#: ../../../../RELEASE.md:104
 msgid "Pinned GitHub tracking issues."
 msgstr ""
 
-#: ../../../../RELEASE.md:104
+#: ../../../../RELEASE.md:105
 msgid "`[BREAKING]` prefix on GitHub release titles."
 msgstr ""
 
-#: ../../../../RELEASE.md:105
+#: ../../../../RELEASE.md:106
 msgid "Announcements on Slack or pybamm.org."
 msgstr ""
 
-#: ../../../../RELEASE.md:107
+#: ../../../../RELEASE.md:108
 msgid "Changelog conventions"
 msgstr ""
 
-#: ../../../../RELEASE.md:109
+#: ../../../../RELEASE.md:110
 msgid ""
 "Within each release block (and within `# [Unreleased]`), sections appear in "
 "this order, omitting any that are empty:"
 msgstr ""
 
-#: ../../../../RELEASE.md:111
+#: ../../../../RELEASE.md:112
 msgid ""
 "## Breaking changes\n"
 "## Deprecated\n"
@@ -416,62 +421,62 @@ msgid ""
 "## Bug fixes\n"
 msgstr ""
 
-#: ../../../../RELEASE.md:118
+#: ../../../../RELEASE.md:119
 msgid ""
 "The ordering is **scariest first**: anyone scanning the changelog sees "
 "breaks and deprecations before features."
 msgstr ""
 
-#: ../../../../RELEASE.md:120
+#: ../../../../RELEASE.md:121
 msgid "**Entry format.** Each entry is a single bullet ending in a PR link:"
 msgstr ""
 
-#: ../../../../RELEASE.md:122
+#: ../../../../RELEASE.md:123
 msgid ""
 "- Short imperative description of the change. ([#1234](https://github.com/"
 "pybamm-team/PyBaMM/pull/1234))\n"
 msgstr ""
 
-#: ../../../../RELEASE.md:126
+#: ../../../../RELEASE.md:127
 msgid ""
-"Use full GitHub URLs (not bare `#1234`) so the rendered markdown on docs."
-"pybamm.org links correctly. `## Breaking changes` and `## Deprecated` "
+"Use full GitHub URLs (not bare `#1234`) so the rendered markdown on "
+"docs.pybamm.org links correctly. `## Breaking changes` and `## Deprecated` "
 "entries must include a one-line migration note describing how users adapt."
 msgstr ""
 
-#: ../../../../RELEASE.md:128
+#: ../../../../RELEASE.md:129
 msgid ""
 "**Historical entries are not rewritten.** The new section ordering and the "
 "new `## Deprecated` section apply from the next release block forward. "
 "Existing release blocks keep whatever they currently have."
 msgstr ""
 
-#: ../../../../RELEASE.md:130
+#: ../../../../RELEASE.md:131
 msgid "Release-manager checklist"
 msgstr ""
 
-#: ../../../../RELEASE.md:132
+#: ../../../../RELEASE.md:133
 msgid ""
 "The version string in the built distribution is supplied by `hatch-vcs` from "
-"the VCS tag (`pyproject.toml` has `dynamic = [\"version\"]` with `version."
-"source = \"vcs\"`, writing to `src/pybamm/_version.py`). The `scripts/"
-"update_version.py` helper updates `CITATION.cff` and prepends a new dated "
-"heading to `CHANGELOG.md`; its version-string handling is format-agnostic "
-"and accepts the four-component form unchanged."
+"the VCS tag (`pyproject.toml` has `dynamic = [\"version\"]` with "
+"`version.source = \"vcs\"`, writing to `src/pybamm/_version.py`). The "
+"`scripts/update_version.py` helper updates `CITATION.cff` and prepends a new "
+"dated heading to `CHANGELOG.md`; its version-string handling is format-"
+"agnostic and accepts the four-component form unchanged."
 msgstr ""
 
-#: ../../../../RELEASE.md:134
+#: ../../../../RELEASE.md:135
 msgid "Cutting a feature release"
 msgstr ""
 
-#: ../../../../RELEASE.md:136
+#: ../../../../RELEASE.md:137
 msgid ""
 "A feature release is `YY.MM.N.0` — the patch component is `0`. The first "
 "feature release in a given calendar month uses `N=0`; subsequent feature "
 "releases in the same month use `N=1`, `N=2`, etc."
 msgstr ""
 
-#: ../../../../RELEASE.md:138
+#: ../../../../RELEASE.md:139
 msgid ""
 "Confirm `# [Unreleased]` in `CHANGELOG.md` accurately reflects what's about "
 "to ship — every breaking change, deprecation, feature, and bug fix has an "
@@ -480,23 +485,23 @@ msgid ""
 "order."
 msgstr ""
 
-#: ../../../../RELEASE.md:139
+#: ../../../../RELEASE.md:140
 msgid ""
 "Create and check out a release branch from `main`: `git checkout -b release/"
 "vYY.MM.N.0`."
 msgstr ""
 
-#: ../../../../RELEASE.md:140
-msgid ""
-"Run `uv run python scripts/update_version.py YY.MM.N.0` to update `CITATION."
-"cff` and prepend a dated heading to `CHANGELOG.md`."
-msgstr ""
-
 #: ../../../../RELEASE.md:141
-msgid "Push the branch and open a PR to `main`. Ensure CI passes, then merge."
+msgid ""
+"Run `uv run python scripts/update_version.py YY.MM.N.0` to update "
+"`CITATION.cff` and prepend a dated heading to `CHANGELOG.md`."
 msgstr ""
 
 #: ../../../../RELEASE.md:142
+msgid "Push the branch and open a PR to `main`. Ensure CI passes, then merge."
+msgstr ""
+
+#: ../../../../RELEASE.md:143
 msgid ""
 "From `main` at the merge commit, create a GitHub _release_ with the tag "
 "`pybamm-vYY.MM.N.0`. Copy the relevant `CHANGELOG.md` block into the release "
@@ -506,15 +511,15 @@ msgid ""
 "package releases\" above.)"
 msgstr ""
 
-#: ../../../../RELEASE.md:143
+#: ../../../../RELEASE.md:144
 msgid "Verify the release installs cleanly: `pip install pybamm==YY.MM.N.0`."
 msgstr ""
 
-#: ../../../../RELEASE.md:145
+#: ../../../../RELEASE.md:146
 msgid "Cutting a patch release"
 msgstr ""
 
-#: ../../../../RELEASE.md:147
+#: ../../../../RELEASE.md:148
 msgid ""
 "A patch release is `YY.MM.N.P` where `P >= 1`. Patches are cut from the "
 "previous tag in the same feature line so the release contains only the bug "
@@ -522,73 +527,73 @@ msgid ""
 "release."
 msgstr ""
 
-#: ../../../../RELEASE.md:149
+#: ../../../../RELEASE.md:150
 msgid "Ensure all bug fixes are merged to `main` first via normal PRs."
 msgstr ""
 
-#: ../../../../RELEASE.md:150
+#: ../../../../RELEASE.md:151
 msgid ""
 "Create a new branch from the previous tag in the same feature line: `git "
 "checkout -b release/vYY.MM.N.P pybamm-vYY.MM.N.{P-1}` (e.g. `release/"
 "v27.1.0.1` from `pybamm-v27.1.0.0`)."
 msgstr ""
 
-#: ../../../../RELEASE.md:151
+#: ../../../../RELEASE.md:152
 msgid ""
 "Cherry-pick the bug fixes onto the new branch, recording the original SHA "
 "with `-x`:"
 msgstr ""
 
-#: ../../../../RELEASE.md:152
+#: ../../../../RELEASE.md:153
 msgid "git cherry-pick -x <commit-sha-from-main>\n"
 msgstr ""
 
-#: ../../../../RELEASE.md:155
+#: ../../../../RELEASE.md:156
 msgid ""
-"Run `uv run python scripts/update_version.py YY.MM.N.P` to update `CITATION."
-"cff` and prepend a dated heading to `CHANGELOG.md`. Commit the result on the "
-"release branch."
+"Run `uv run python scripts/update_version.py YY.MM.N.P` to update "
+"`CITATION.cff` and prepend a dated heading to `CHANGELOG.md`. Commit the "
+"result on the release branch."
 msgstr ""
 
-#: ../../../../RELEASE.md:156
+#: ../../../../RELEASE.md:157
 msgid ""
 "Create a GitHub _release_ with the tag `pybamm-vYY.MM.N.P` from the `release/"
 "vYY.MM.N.P` branch (NOT from `main`). Copy the relevant `CHANGELOG.md` block "
 "into the release description. This triggers `publish_pypi.yml`."
 msgstr ""
 
-#: ../../../../RELEASE.md:157
+#: ../../../../RELEASE.md:158
 msgid "Verify the release installs cleanly: `pip install pybamm==YY.MM.N.P`."
 msgstr ""
 
-#: ../../../../RELEASE.md:158
+#: ../../../../RELEASE.md:159
 msgid ""
 "Update the changelog on `main` separately. **Do not merge the release branch "
 "back to `main`** — that would duplicate commits with new hashes. Instead:"
 msgstr ""
 
-#: ../../../../RELEASE.md:159
+#: ../../../../RELEASE.md:160
 msgid ""
 "git checkout main\n"
 "git checkout -b update-changelog-vYY.MM.N.P\n"
 msgstr ""
 
-#: ../../../../RELEASE.md:163
+#: ../../../../RELEASE.md:164
 msgid ""
 "Edit `CHANGELOG.md` to add the new dated `vYY.MM.N.P` block (moving the "
 "entries out of `# [Unreleased]`), and update `CITATION.cff`. Open a PR to "
 "`main`."
 msgstr ""
 
-#: ../../../../RELEASE.md:164
+#: ../../../../RELEASE.md:165
 msgid "Delete the release branch after tagging — it is no longer needed."
 msgstr ""
 
-#: ../../../../RELEASE.md:166
+#: ../../../../RELEASE.md:167
 msgid "Cutting a `pybammsolvers` release"
 msgstr ""
 
-#: ../../../../RELEASE.md:168
+#: ../../../../RELEASE.md:169
 msgid ""
 "`pybammsolvers` releases independently of PyBaMM. **`packages/pybammsolvers/"
 "src/pybammsolvers/version.py` is the single source of truth for its "
@@ -603,7 +608,7 @@ msgid ""
 "version ships."
 msgstr ""
 
-#: ../../../../RELEASE.md:170
+#: ../../../../RELEASE.md:171
 msgid ""
 "Bump `__version__` in `packages/pybammsolvers/src/pybammsolvers/version.py` "
 "(the pre-commit hook mirrors it into `pyproject.toml` and `vcpkg.json`) and "
@@ -611,27 +616,87 @@ msgid ""
 "then merge."
 msgstr ""
 
-#: ../../../../RELEASE.md:171
+#: ../../../../RELEASE.md:172
 msgid ""
 "From `main` at the merge commit, create a GitHub _release_ with the tag "
-"`pybammsolvers-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new `version."
-"py` value. This triggers `release_solvers.yml`, which builds wheels + sdist "
-"and publishes to PyPI. The `check_version` job in that workflow fails the "
-"release if the tag, `version.py`, or the `pyproject.toml`/`vcpkg.json` "
-"mirrors disagree; PyPI separately rejects a re-upload of an already-"
-"published version."
+"`pybammsolvers-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new "
+"`version.py` value. This triggers `release_solvers.yml`, which builds wheels "
+"+ sdist and publishes to PyPI. The `check_version` job in that workflow "
+"fails the release if the tag, `version.py`, or the `pyproject.toml`/"
+"`vcpkg.json` mirrors disagree; PyPI separately rejects a re-upload of an "
+"already-published version."
 msgstr ""
 
-#: ../../../../RELEASE.md:172
+#: ../../../../RELEASE.md:173
 msgid ""
 "Verify the release installs cleanly: `pip install pybammsolvers==X.Y.Z`."
 msgstr ""
 
-#: ../../../../RELEASE.md:174
+#: ../../../../RELEASE.md:175
+msgid "Cutting a `pybamm-model-zoo` release"
+msgstr ""
+
+#: ../../../../RELEASE.md:177
+msgid ""
+"`pybamm-model-zoo` releases independently of PyBaMM and is versioned "
+"`X.Y.Z`. **`version` in `packages/pybamm-model-zoo/pyproject.toml` is the "
+"single source of truth for its published version**; the `pybamm-model-zoo-"
+"v*` tag only routes the workflow. It is a static string for the same reason "
+"as `pybammsolvers`'s. The zoo keeps its own changelog, `packages/pybamm-"
+"model-zoo/CHANGELOG.md`."
+msgstr ""
+
+#: ../../../../RELEASE.md:179
+msgid ""
+"In `packages/pybamm-model-zoo/`, bump `version` in `pyproject.toml` and move "
+"the `## [Unreleased]` entries of `CHANGELOG.md` under a new `## [X.Y.Z] - "
+"YYYY-MM-DD` heading. The zoo's `pybamm>=` floor in the same `pyproject.toml` "
+"is every model's floor, raised by the pull request of any model that needs a "
+"newer PyBaMM. Open a PR to `main`, ensure CI passes, then merge."
+msgstr ""
+
+#: ../../../../RELEASE.md:180
+msgid ""
+"From `main` at the merge commit, create a GitHub _release_ with the tag "
+"`pybamm-model-zoo-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new "
+"`version`. This triggers `release_model_zoo.yml`, which builds the sdist and "
+"wheel, installs the wheel with its `zoo-all` extra into two fresh "
+"environments, one with the newest PyBaMM and one with the oldest its "
+"`pybamm>=` floor admits, and fails the release if the tag does not match "
+"`version`, the wheel is missing any committed file under `src/"
+"pybamm_model_zoo/`, or any model fails its model contract checks in either "
+"environment. Publishing then waits for a maintainer to approve the `pypi` "
+"environment."
+msgstr ""
+
+#: ../../../../RELEASE.md:181
+msgid ""
+"Verify the release installs cleanly: `pip install pybamm-model-zoo==X.Y.Z`."
+msgstr ""
+
+#: ../../../../RELEASE.md:183
+msgid ""
+"To rehearse a release without publishing, run `release_model_zoo.yml` from "
+"the Actions tab: a manual run builds and checks the distributions but never "
+"uploads them."
+msgstr ""
+
+#: ../../../../RELEASE.md:185
+msgid ""
+"**First release only.** PyPI has no `pybamm-model-zoo` project until the "
+"first upload, so before step 2 a PyPI account that will own the project must "
+"add a [pending trusted publisher](https://docs.pypi.org/trusted-publishers/"
+"creating-a-project-through-oidc/) with owner `pybamm-team`, repository "
+"`PyBaMM`, workflow `release_model_zoo.yml`, and environment `pypi`. The "
+"first publish creates the project; add the other maintainers as PyPI owners "
+"afterwards."
+msgstr ""
+
+#: ../../../../RELEASE.md:187
 msgid "Conda-forge"
 msgstr ""
 
-#: ../../../../RELEASE.md:176
+#: ../../../../RELEASE.md:189
 msgid ""
 "The conda-forge release flow is triggered automatically after a stable PyPI "
 "release: the conda-forge bot opens a PR against [pybamm-feedstock](https://"
@@ -639,13 +704,13 @@ msgid ""
 "approve."
 msgstr ""
 
-#: ../../../../RELEASE.md:178
+#: ../../../../RELEASE.md:191
 msgid ""
 "When a release touches the API, console scripts, entry points, optional "
 "dependencies, supported Python versions, or core project metadata, update "
 "`meta.yaml` in [pybamm-feedstock](https://github.com/conda-forge/pybamm-"
-"feedstock) following [the conda-forge maintainer docs](https://conda-forge."
-"org/docs/maintainer/updating_pkgs/#updating-recipes) and re-render the "
+"feedstock) following [the conda-forge maintainer docs](https://conda-"
+"forge.org/docs/maintainer/updating_pkgs/#updating-recipes) and re-render the "
 "recipe. Push updates directly to the bot's automated PR where possible. "
 "Manual PRs must bump the `build` number in `meta.yaml` and be opened from a "
 "personal fork."

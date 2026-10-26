@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -35,8 +36,13 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.BoundaryGradient:0
+#: pybamm.expression_tree.unary_operators.BoundaryIntegral:0
+#: pybamm.expression_tree.unary_operators.BoundaryOperator:0
 #: pybamm.expression_tree.unary_operators.BoundaryValue:0
+#: pybamm.expression_tree.unary_operators.DefiniteIntegralVector:0
+#: pybamm.expression_tree.unary_operators.EvaluateAt:0
 #: pybamm.expression_tree.unary_operators.IndefiniteIntegral:0
+#: pybamm.expression_tree.unary_operators.Integral:0
 #: pybamm.expression_tree.unary_operators.Norm:0
 #: ../../../source/api/expression_tree/unary_operator.rst:0
 msgid "Parameters"
@@ -86,6 +92,15 @@ msgid "Convert the node and its subtree into a SymPy equation."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
+#: of pybamm.expression_tree.unary_operators.Component.to_json:1
+#: pybamm.expression_tree.unary_operators.DeltaFunction.to_json:1
+#: pybamm.expression_tree.unary_operators.SpatialOperator.to_json:1
+#: pybamm.expression_tree.unary_operators.UnaryOperator.to_json:1
+msgid ""
+"See :meth:`pybamm.Symbol.to_json()`; extra symbol fields go in children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.Negate:1
 msgid "A node in the expression tree representing a `-` negation operator."
 msgstr ""
@@ -98,8 +113,7 @@ msgstr ""
 #: pybamm.expression_tree.unary_operators.Norm:6
 #: pybamm.expression_tree.unary_operators.Sign:3
 #: pybamm.expression_tree.unary_operators.SpatialOperator:16
-msgid ""
-"**Extends:** :class:`pybamm.expression_tree.unary_operators.UnaryOperator`"
+msgid "**Extends:** :class:`pybamm.expression_tree.unary_operators.UnaryOperator`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -151,17 +165,6 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
-#: of pybamm.expression_tree.unary_operators.BoundaryIntegral.set_id:1
-#: pybamm.expression_tree.unary_operators.BoundaryOperator.set_id:1
-#: pybamm.expression_tree.unary_operators.DefiniteIntegralVector.set_id:1
-#: pybamm.expression_tree.unary_operators.DeltaFunction.set_id:1
-#: pybamm.expression_tree.unary_operators.EvaluateAt.set_id:1
-#: pybamm.expression_tree.unary_operators.Index.set_id:1
-#: pybamm.expression_tree.unary_operators.Integral.set_id:1
-msgid "See :meth:`pybamm.Symbol.set_id()`"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.Index.to_json:1
 msgid "Method to serialise an Index object into JSON."
 msgstr ""
@@ -178,14 +181,6 @@ msgstr ""
 msgid ""
 "This type of node will be replaced by the :class:`Discretisation` class with "
 "a :class:`Matrix`"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
-#: of pybamm.expression_tree.unary_operators.Component.to_json:1
-#: pybamm.expression_tree.unary_operators.DeltaFunction.to_json:1
-#: pybamm.expression_tree.unary_operators.EvaluateAt.to_json:1
-#: pybamm.expression_tree.unary_operators.SpatialOperator.to_json:1
-msgid "Method to serialise a Symbol object into JSON."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -207,8 +202,7 @@ msgstr ""
 #: pybamm.expression_tree.unary_operators.Laplacian:4
 #: pybamm.expression_tree.unary_operators.Mass:4
 #: pybamm.expression_tree.unary_operators.UpwindDownwind:4
-msgid ""
-"**Extends:** :class:`pybamm.expression_tree.unary_operators.SpatialOperator`"
+msgid "**Extends:** :class:`pybamm.expression_tree.unary_operators.SpatialOperator`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -250,8 +244,8 @@ msgstr ""
 #: of pybamm.expression_tree.unary_operators.BoundaryMass:1
 msgid ""
 "Returns the mass matrix for a given symbol assembled over the boundary of "
-"the domain, accounting for Dirchlet boundary conditions where necessary (e."
-"g. in the finite element formualtion)"
+"the domain, accounting for Dirchlet boundary conditions where necessary "
+"(e.g. in the finite element formualtion)"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -324,9 +318,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.IndefiniteIntegral:14
-msgid ""
-"**Extends:** :class:`pybamm.expression_tree.unary_operators."
-"BaseIndefiniteIntegral`"
+msgid "**Extends:** :class:`pybamm.expression_tree.unary_operators.BaseIndefiniteIntegral`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -379,8 +371,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.BoundaryIntegral:7
 msgid ""
-"where :math:`\\partial a` is the boundary of the domain, and :math:"
-"`u\\in\\text{domain boundary}`."
+"where :math:`\\partial a` is the boundary of the domain, "
+"and :math:`u\\in\\text{domain boundary}`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -445,8 +437,7 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.BoundaryGradient:12
 #: pybamm.expression_tree.unary_operators.BoundaryValue:12
-msgid ""
-"**Extends:** :class:`pybamm.expression_tree.unary_operators.BoundaryOperator`"
+msgid "**Extends:** :class:`pybamm.expression_tree.unary_operators.BoundaryOperator`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
@@ -503,8 +494,7 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring
 #: of pybamm.expression_tree.unary_operators.Downwind:3
 #: pybamm.expression_tree.unary_operators.Upwind:3
-msgid ""
-"**Extends:** :class:`pybamm.expression_tree.unary_operators.UpwindDownwind`"
+msgid "**Extends:** :class:`pybamm.expression_tree.unary_operators.UpwindDownwind`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/unary_operators.py:docstring

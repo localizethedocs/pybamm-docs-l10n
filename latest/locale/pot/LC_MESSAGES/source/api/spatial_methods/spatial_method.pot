@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -88,7 +89,7 @@ msgstr ""
 #: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:13
 #: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:13
 #: pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:12
-#: pybamm.spatial_methods.spatial_method.SpatialMethod.integral:12
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.integral:14
 #: pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:13
 msgid "class: `pybamm.Array`"
 msgstr ""
@@ -306,7 +307,12 @@ msgid "The dimension in which to integrate (default is \"primary\")"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
-#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:10
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:9
+msgid "The variables over which to integrate"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:12
 msgid ""
 "Contains the result of acting the discretised integral on the child "
 "discretised_symbol"
@@ -426,6 +432,47 @@ msgstr ""
 #: of
 #: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:16
 msgid ":class:`pybamm.BinaryOperator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:1
+msgid ""
+"Hook for spatial methods that own their internal-BC logic for concatenated "
+"variables (e.g. graph topologies on unstructured meshes)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:5
+msgid "The discretisation, for processing child symbols"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:7
+msgid "The concatenated variable whose boundary conditions are being set"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:9
+msgid "The orphaned children of ``var``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:11
+msgid ""
+"The user-supplied boundary conditions for ``var``, ``{side: (value, type)}``"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.set_internal_bcs_for_concat:15
+msgid ""
+"``{child: {side: (value, type)}}`` to replace the default 1D-stack pairwise "
+"routine, or ``None`` to use it."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring

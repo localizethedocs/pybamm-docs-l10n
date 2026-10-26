@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -94,11 +95,11 @@ msgid ""
 "stored (one experiment step in :meth:`pybamm.Simulation.solve`, or the full "
 "``[t_eval[0], t_eval[-1]]`` window in :meth:`solve`). Intended for memory-"
 "light long experiments whose post-processing only reads per-step first/last "
-"values. Only has effect on solvers that support intra-solve interpolation (e."
-"g. :class:`pybamm.IDAKLUSolver`); a warning is issued otherwise. Note: when "
-"this flag is on, intra-step interpolation falls back to linear across the "
-"whole step, so it is **not** appropriate when post-processing queries a non-"
-"endpoint time within a step. Default is False."
+"values. Only has effect on solvers that support intra-solve interpolation "
+"(e.g. :class:`pybamm.IDAKLUSolver`); a warning is issued otherwise. Note: "
+"when this flag is on, intra-step interpolation falls back to linear across "
+"the whole step, so it is **not** appropriate when post-processing queries a "
+"non-endpoint time within a step. Default is False."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -121,7 +122,7 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
 #: of pybamm.solvers.base_solver.BaseSolver.calculate_consistent_state:8
 #: pybamm.solvers.base_solver.BaseSolver.set_up:6
-#: pybamm.solvers.base_solver.BaseSolver.step:18
+#: pybamm.solvers.base_solver.BaseSolver.step:20
 msgid "Any input parameters to pass to the model when solving"
 msgstr ""
 
@@ -232,8 +233,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
 #: of pybamm.solvers.base_solver.BaseSolver.set_up:8
-msgid ""
-"The times at which to stop the integration due to a discontinuity in time."
+msgid "Not used, kept for backwards compatibility."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -277,17 +277,19 @@ msgid ""
 "Whether the solver calculates sensitivities of all input parameters. "
 "Defaults to False. If only a subset of sensitivities are required, can also "
 "pass a list of input parameter names.  **Limitations**: sensitivities are "
-"not calculated up to numerical tolerances so are not guarenteed to be within "
+"not calculated up to numerical tolerances so are not guaranteed to be within "
 "the tolerances set by the solver, please raise an issue if you require this "
 "functionality. Also, when using this feature with `pybamm.Experiment`, the "
 "sensitivities do not take into account the movement of step-transitions wrt "
 "input parameters, so do not use this feature if the timings of your "
-"experimental protocol change rapidly with respect to your input parameters."
+"experimental protocol change rapidly with respect to your input parameters. "
+"Likewise, they do not include the movement of a discontinuity whose time "
+"depends on an input."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.solve:24
-#: pybamm.solvers.base_solver.BaseSolver.step:30
+#: of pybamm.solvers.base_solver.BaseSolver.solve:25
+#: pybamm.solvers.base_solver.BaseSolver.step:33
 msgid ""
 "The times (in seconds) at which to interpolate the solution. Defaults to "
 "None. Only valid for solvers that support intra-solve interpolation "
@@ -295,14 +297,16 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.solve:28
+#: of pybamm.solvers.base_solver.BaseSolver.solve:29
 msgid ""
-"If type of `inputs` is `list`, return a list of corresponding :class:`pybamm."
-"Solution` objects."
+"If type of `inputs` is `list`, return a list of "
+"corresponding :class:`pybamm.Solution` objects. If no float lies between the "
+"start of `t_eval` and a discontinuity whose time depends on an input, the "
+"solution starts just after the discontinuity."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.solve:30
+#: of pybamm.solvers.base_solver.BaseSolver.solve:33
 msgid ":class:`pybamm.Solution` or list of :class:`pybamm.Solution` objects."
 msgstr ""
 
@@ -311,14 +315,21 @@ msgid "Raises"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.solve:32
+#: of pybamm.solvers.base_solver.BaseSolver.solve:35
 msgid ""
 "If an empty model is passed (`model.rhs = {}` and `model.algebraic={}` "
 "and     `model.variables = {}`)"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.solve:33
+#: of pybamm.solvers.base_solver.BaseSolver.solve:36
+msgid ""
+"If `t_eval` or the period of a modulo of time is invalid, or the input "
+"sets     have discontinuities at different times"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.solve:37
 msgid "If multiple calls to `solve` pass in different models"
 msgstr ""
 
@@ -326,8 +337,8 @@ msgstr ""
 #: of pybamm.solvers.base_solver.BaseSolver.step:1
 msgid ""
 "Step the solution of the model forward by a given time increment. The first "
-"time this method is called it executes the necessary setup by calling `self."
-"set_up(model)`."
+"time this method is called it executes the necessary setup by calling "
+"`self.set_up(model)`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -347,16 +358,18 @@ msgid ""
 "An array of times at which to stop the simulation and return the solution "
 "during the step (Note: t_eval is the time measured from the start of the "
 "step, so should start at 0 and end at dt). By default, the solution is "
-"returned at t0 and t0 + dt."
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.step:20
-msgid "Save solution with all previous timesteps. Defaults to True."
+"returned at t0 and t0 + dt. If no float lies between the start of the step "
+"and a discontinuity whose time depends on an input, the step starts just "
+"after the discontinuity."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
 #: of pybamm.solvers.base_solver.BaseSolver.step:22
+msgid "Save solution with all previous timesteps. Defaults to True."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:24
 msgid ""
 "Whether the solver calculates sensitivities of all input parameters. "
 "Defaults to False. If only a subset of sensitivities are required, can also "
@@ -366,24 +379,41 @@ msgid ""
 "functionality. Also, when using this feature with `pybamm.Experiment`, the "
 "sensitivities do not take into account the movement of step-transitions wrt "
 "input parameters, so do not use this feature if the timings of your "
-"experimental protocol change rapidly with respect to your input parameters."
+"experimental protocol change rapidly with respect to your input parameters. "
+"Likewise, they do not include the movement of a discontinuity whose time "
+"depends on an input."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.step:33
+#: of pybamm.solvers.base_solver.BaseSolver.step:36
 msgid ""
-"A tuple containing a function and its Jacobians to map the state from the "
-"old solution to the new solution. `function`, `jacobian_y` and `jacobian_p` "
-"are casadi/jax/python functions that have been processed using `BaseSolver."
-"process`. If not provided, then `BaseModel.set_initial_conditions_from` is "
-"used to map the state from the old solution to the new solution"
+"The output of `BaseSolver.process` for a function that maps the final state "
+"of the old solution to the initial state of `model`. Only `function` is "
+"used. If it is a CasADi function, sensitivities are mapped by forward-mode "
+"differentiation of it; otherwise they are matched by variable name. If not "
+"provided, then `BaseModel.set_initial_conditions_from` maps the state, and "
+"sensitivities are matched by variable name."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
-#: of pybamm.solvers.base_solver.BaseSolver.step:38
+#: of pybamm.solvers.base_solver.BaseSolver.step:43
 msgid ""
 "If an empty model is passed (`model.rhs = {}` and `model.algebraic = {}` "
 "and     `model.variables = {}`)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:44
+msgid ""
+"If `dt`, `t_eval` or the period of a modulo of time is invalid, the old     "
+"solution has no state sensitivities for an input in "
+"`calculate_sensitivities`,     or `save` is True and the old solution has "
+"sensitivities for other inputs"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
+#: of pybamm.solvers.base_solver.BaseSolver.step:45
+msgid "If the solver has already been set up for a different model"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring

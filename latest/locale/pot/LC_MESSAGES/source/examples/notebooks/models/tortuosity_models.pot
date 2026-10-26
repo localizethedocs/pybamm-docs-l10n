@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/models/tortuosity_models.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -50,27 +51,30 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:20
 msgid ""
-"PyBaMM models utilize a ratio that we refer to as \"transport efficiency\" :"
-"math:`\\mathcal{B}` which can be applied to transport co-efficients such as "
-"the diffusivity in the electrolyte that relates the effective transport "
-"property through a porous media comprised of a conducting and non-conducting "
-"phase to that of the transport through the bulk of the conducting phase:"
+"PyBaMM models utilize a ratio that we refer to as \"transport "
+"efficiency\" :math:`\\mathcal{B}` which can be applied to transport co-"
+"efficients such as the diffusivity in the electrolyte that relates the "
+"effective transport property through a porous media comprised of a "
+"conducting and non-conducting phase to that of the transport through the "
+"bulk of the conducting phase:"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:22
-msgid "\\mathcal{B} = \\frac{X_{eff}}{X_0} = \\frac{\\epsilon}{\\tau},"
+msgid ""
+"\\mathcal{B} = \\frac{X_{eff}}{X_0} = \\frac{\\epsilon}{\\tau},\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:27
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:24
 msgid ""
 "Where :math:`\\epsilon` is the volume fraction of the conducting phase, the "
-"porosity of the electrode for diffusion within the electrolyte, and :math:"
-"`\\tau` is the tortuosity factor. A measure of the effect of the increased "
-"pathlength that transported species traverse due to the presence of "
-"obstacles."
+"porosity of the electrode for diffusion within the electrolyte, "
+"and :math:`\\tau` is the tortuosity factor. A measure of the effect of the "
+"increased pathlength that transported species traverse due to the presence "
+"of obstacles."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:29
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:26
 msgid ""
 "The tortuosity and tortuosity factor are often used interchangably but this "
 "can lead to confusion. Tortusosity is a purely geometric concept relating "
@@ -81,18 +85,18 @@ msgid ""
 "phenomena such as the average pore size which could induce Knudsen effects."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:32
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:29
 msgid ""
-"Many studies have been devoted to understanding relations between :math:"
-"`\\tau` and :math:`\\epsilon` including those summarized by `Shen & Chen "
-"<https://www.sciencedirect.com/science/article/abs/pii/"
+"Many studies have been devoted to understanding relations "
+"between :math:`\\tau` and :math:`\\epsilon` including those summarized by "
+"`Shen & Chen <https://www.sciencedirect.com/science/article/abs/pii/"
 "S0009250907003144>`__. By far the most common is the Bruggeman relation "
-"which is explored more recently by `Tjaden et al. <https://doi.org/10.1016/j."
-"coche.2016.02.006>`__ in the context of materials commonly found in "
+"which is explored more recently by `Tjaden et al. <https://doi.org/10.1016/"
+"j.coche.2016.02.006>`__ in the context of materials commonly found in "
 "batteries and fuel cells."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:43
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:40
 msgid ""
 "A recent study by `Usseglio-Viretta et al. <https://iopscience.iop.org/"
 "article/10.1149/2.0731814jes>`__ found that Bruggeman and similar relations "
@@ -105,7 +109,7 @@ msgid ""
 "supplied."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:55
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:52
 msgid ""
 "The remainder of the notebook demonstrates how to use the different options "
 "for transport efficiency and supply your own tortuosity factor"
@@ -135,7 +139,7 @@ msgid ""
 "print(te_opts)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:91
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:88
 msgid ""
 "<pre>\n"
 "[&#39;Bruggeman&#39;, &#39;ordered packing&#39;, &#39;hyperbola of "
@@ -145,7 +149,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:97
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:94
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "['Bruggeman', 'ordered packing', 'hyperbola of revolution', 'overlapping "
@@ -154,7 +158,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:104
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:101
 msgid ""
 "['Bruggeman', 'ordered packing', 'hyperbola of revolution', 'overlapping "
 "spheres', 'tortuosity factor', 'random overlapping cylinders', "
@@ -169,7 +173,7 @@ msgstr ""
 msgid "parameter_values.search(\"porosity\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:125
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:122
 msgid ""
 "<pre>\n"
 "Negative electrode porosity     0.3\n"
@@ -178,7 +182,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:133
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:130
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Negative electrode porosity     0.3\n"
@@ -187,7 +191,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:142
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:139
 msgid ""
 "Negative electrode porosity     0.3\n"
 "Positive electrode porosity     0.3\n"
@@ -202,7 +206,7 @@ msgstr ""
 msgid "parameter_values.search(\"Bruggeman\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:165
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:162
 msgid ""
 "<pre>\n"
 "Negative electrode Bruggeman coefficient (electrode)    1.5\n"
@@ -213,7 +217,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:175
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:172
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Negative electrode Bruggeman coefficient (electrode)    1.5\n"
@@ -224,7 +228,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:186
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:183
 msgid ""
 "Negative electrode Bruggeman coefficient (electrode)    1.5\n"
 "Negative electrode Bruggeman coefficient (electrolyte)  1.5\n"
@@ -233,7 +237,7 @@ msgid ""
 "Separator Bruggeman coefficient (electrolyte)   1.5"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:201
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:198
 msgid "Add tortuosity factors that replicate the Bruggeman values"
 msgstr ""
 
@@ -258,7 +262,7 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:230
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:227
 msgid ""
 "N.B the differences in the exponent constants used to modify the porosity "
 "and solid volume fraction. The existing Bruggeman model applies the exponent "
@@ -290,15 +294,15 @@ msgstr ""
 msgid "pybamm.dynamic_plot(sols, labels=te_opts)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:268
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:265
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"2a0d1356fdaf495c8898429e27e30478\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:279
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:440
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:276
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:437
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -306,8 +310,8 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:285
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:446
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:282
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:443
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -315,32 +319,32 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:292
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:453
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:289
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:450
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:304
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:301
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x105f6705f90&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:310
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:307
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x105f6705f90>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:317
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:314
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x105f6705f90>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:328
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:325
 msgid "The Bruggeman and tortuosity factor results should be identical"
 msgstr ""
 
@@ -354,25 +358,25 @@ msgid ""
 "voltage [V]\"].data)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:350
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:347
 msgid ""
 "<pre>\n"
 "True\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:356
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:353
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "True\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:363
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:360
 msgid "True"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:374
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:371
 msgid ""
 "Now increase the tortuosity factors. N.B this will need to be calculated for "
 "specific electrodes with given porosity. Changing porosity in the model will "
@@ -419,32 +423,32 @@ msgid ""
 "pybamm.dynamic_plot(sols, labels=[*te_opts, \"higher tortuosity factor\"])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:429
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:426
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"5292e8b8c6884c199cf5023cf42ea3ac\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:465
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:462
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x105f8f85fd0&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:471
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:468
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x105f8f85fd0>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:478
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:475
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x105f8f85fd0>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:489
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:486
 msgid ""
 "The higher tortuosity leads to greater overpotential in the electrolyte and "
 "lower terminal voltage"
@@ -458,7 +462,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:510
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:507
 msgid ""
 "<pre>\n"
 "[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
@@ -506,7 +510,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:529
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:526
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
@@ -554,7 +558,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:549
+#: ../../../source/examples/notebooks/models/tortuosity_models.ipynb:546
 msgid ""
 "[1] KA Akanni, JW Evans, and IS Abramson. Effective transport coefficients "
 "in heterogeneous media. Chemical Engineering Science, 42(8):1945–1954, "
