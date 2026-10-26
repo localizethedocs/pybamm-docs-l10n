@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/models/base_models/event.rst:2
+msgid "Event"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:1
+msgid "Defines an event for use within a pybamm model"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:5
+msgid "A string giving the name of the event."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:7
+msgid "str"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:11
+msgid "An expression that defines when the event occurs."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:13
+msgid ":class:`pybamm.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:17
+msgid ""
+"An enum defining the type of event. By default it is set to TERMINATION."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event:19
+msgid ":class:`pybamm.EventType` (optional)"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event.evaluate:1
+msgid "Acts as a drop-in replacement for :func:`pybamm.Symbol.evaluate`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event.to_json:1
+msgid "Method to serialise an Event object into JSON."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.Event.to_json:3
+msgid ""
+"The expression is written out seperately, See :meth:`pybamm.Serialise."
+"_SymbolEncoder.default()`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:1
+msgid "Defines the type of event, see :class:`pybamm.Event`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:3
+msgid ""
+"TERMINATION indicates an event that will terminate the solver, the "
+"expression should return 0 when the event is triggered"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:6
+msgid ""
+"DISCONTINUITY indicates an expected discontinuity in the solution, the "
+"expression should return the time that the discontinuity occurs. The solver "
+"will integrate up to the discontinuity and then restart just after the "
+"discontinuity."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:10
+msgid ""
+"INTERPOLANT_EXTRAPOLATION indicates that a pybamm.Interpolant object has "
+"been evaluated outside of the range."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:13
+msgid ""
+"SWITCH indicates an event switch that is used in CasADI \"fast with events\" "
+"model."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:15
+msgid "**Extends:** :class:`enum.Enum`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/event.py:docstring
+#: of pybamm.models.event.EventType:0
+msgid "View inheritance diagram for this model"
+msgstr ""
