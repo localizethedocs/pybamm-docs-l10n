@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -39,8 +40,8 @@ msgstr ""
 msgid ""
 "The experimental conditions under which to solve the model. If a string is "
 "passed, the experiment is constructed as `pybamm.Experiment([experiment])`. "
-"If a list is passed, the experiment is constructed as `pybamm."
-"Experiment(experiment)`."
+"If a list is passed, the experiment is constructed as "
+"`pybamm.Experiment(experiment)`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/simulation.py:docstring
@@ -71,8 +72,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/simulation.py:docstring
 #: of pybamm.simulation.simulation.Simulation.save:3
 msgid ""
-"The file extension can be arbitrary, but it is common to use \".pkl\" or \"."
-"pickle\""
+"The file extension can be arbitrary, but it is common to use \".pkl\" or "
+"\".pickle\""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/simulation.py:docstring
@@ -124,11 +125,12 @@ msgstr ""
 #: of pybamm.simulation.simulation.Simulation.solve:9
 msgid ""
 "The solution to start stepping from. If None (default), then self._solution "
-"is used. Must be None if not using an experiment."
+"is used. Must be None if not using an experiment, and otherwise have "
+"sensitivities for the inputs in `calculate_sensitivities` only."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/simulation.py:docstring
-#: of pybamm.simulation.simulation.Simulation.solve:12
+#: of pybamm.simulation.simulation.Simulation.solve:13
 msgid ""
 "Whether to show a progress bar for cycling. If true, shows a progress bar "
 "for cycles. Has no effect when not used with an experiment. Default is False."

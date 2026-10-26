@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/creating_models/2-a-pde-model.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -62,21 +63,24 @@ msgid ""
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:24
-msgid "\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),"
+msgid ""
+"\\frac{\\partial c}{\\partial t} = \\nabla \\cdot (\\nabla c),\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:29
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:26
 msgid "with the following boundary and initial conditions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:31
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:28
 msgid ""
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=0} = 0, \\quad "
 "\\left.\\frac{\\partial c}{\\partial r}\\right\\vert_{r=1} = 2, \\quad "
-"\\left.c\\right\\vert_{t=0} = 1."
+"\\left.c\\right\\vert_{t=0} = 1.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:36
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:30
 msgid ""
 "As before, we begin by importing the PyBaMM library into this notebook, "
 "along with any other packages we require:"
@@ -96,29 +100,29 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:61
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:55
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:67
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:61
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:74
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:68
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:86
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:80
 msgid "Setting up the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:97
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:91
 msgid ""
 "As in the previous example, we start with a ``pybamm.BaseModel`` object and "
 "define our model variables. Since we are now solving a PDE we need to tell "
@@ -138,13 +142,13 @@ msgid ""
 "c = pybamm.Variable(\"Concentration\", domain=\"negative particle\")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:120
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:114
 msgid ""
 "Note that we have given our variable the (useful) name \"Concentration\", "
 "but the symbol representing this variable is simply ``c``."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:131
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:125
 msgid ""
 "We then state out governing equations. Sometime it is useful to define "
 "intermediate quantities in order to express the governing equations more "
@@ -165,7 +169,7 @@ msgid ""
 "model.rhs = {c: dcdt}  # add the equation to rhs dictionary"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:155
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:149
 msgid ""
 "Unlike ODE models, PDE models require both initial and boundary conditions. "
 "Similar to initial conditions, boundary conditions can be added using the "
@@ -192,16 +196,16 @@ msgid ""
 "(rbc, \"Neumann\")}}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:182
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:176
 msgid ""
 "Note that in our example the boundary conditions take constant values, but "
 "the value can be any valid pybamm expression."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:184
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:178
 msgid ""
-"Finally, we add any variables of interest to the dictionary ``model."
-"variables``"
+"Finally, we add any variables of interest to the dictionary "
+"``model.variables``"
 msgstr ""
 
 #: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:-1
@@ -212,11 +216,11 @@ msgstr ""
 msgid "model.variables = {\"Concentration\": c, \"Flux\": N}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:206
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:200
 msgid "Using the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:217
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:211
 msgid ""
 "Now the model is now completely defined all that remains is to discretise "
 "and solve. Since this model is a PDE we need to define the geometry on which "
@@ -224,11 +228,11 @@ msgid ""
 "space."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:229
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:223
 msgid "Defining a geometry and mesh"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:231
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:225
 msgid ""
 "We can define spatial variables in a similar way to how we defined model "
 "variables, providing a domain and a coordinate system. The geometry on which "
@@ -248,12 +252,12 @@ msgid ""
 "    \"r\", domain=[\"negative particle\"], coord_sys=\"spherical polar\"\n"
 ")\n"
 "geometry = {\n"
-"    \"negative particle\": {r: {\"min\": pybamm.Scalar(0), \"max\": pybamm."
-"Scalar(1)}}\n"
+"    \"negative particle\": {r: {\"min\": pybamm.Scalar(0), \"max\": "
+"pybamm.Scalar(1)}}\n"
 "}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:258
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:252
 msgid "We then create a uniform one-dimensional mesh with 20 points."
 msgstr ""
 
@@ -269,21 +273,22 @@ msgid ""
 "mesh = pybamm.Mesh(geometry, submesh_types, var_pts)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:282
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:276
 msgid ""
-"Example of meshes that do require parameters include the ``pybamm."
-"Exponential1DSubMesh`` which clusters points close to one or both boundaries "
-"using an exponential rule. It takes a parameter which sets how closely the "
-"points are clustered together, and also lets the users select the side on "
-"which more points should be clustered. For example, to create a mesh with "
-"more nodes clustered to the right (i.e. the surface in the particle "
-"problem), using a stretch factor of 2, we pass an instance of the "
+"Example of meshes that do require parameters include the "
+"``pybamm.Exponential1DSubMesh`` which clusters points close to one or both "
+"boundaries using an exponential rule. It takes a parameter which sets how "
+"closely the points are clustered together, and also lets the users select "
+"the side on which more points should be clustered. For example, to create a "
+"mesh with more nodes clustered to the right (i.e. the surface in the "
+"particle problem), using a stretch factor of 2, we pass an instance of the "
 "exponential submesh class and a dictionary of parameters into the "
-"``MeshGenerator`` class as follows: ``pybamm.MeshGenerator(pybamm."
-"Exponential1DSubMesh, submesh_params={\"side\": \"right\", \"stretch\": 2})``"
+"``MeshGenerator`` class as follows: "
+"``pybamm.MeshGenerator(pybamm.Exponential1DSubMesh, "
+"submesh_params={\"side\": \"right\", \"stretch\": 2})``"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:294
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:288
 msgid ""
 "After defining a mesh we choose a spatial method. Here we choose the Finite "
 "Volume Method. We then set up a discretisation by passing the mesh and "
@@ -304,15 +309,15 @@ msgid ""
 "disc.process_model(model);"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:317
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:311
 msgid "Now that the model has been discretised we are ready to solve."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:329
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:323
 msgid "Solving the model"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:340
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:334
 msgid ""
 "As before, we choose a solver and times at which we want the solution "
 "returned. We then solve, extract the variables we are interested in, and "
@@ -348,7 +353,7 @@ msgid ""
 "plt.show()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:389
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:383
 msgid ""
 "In the `next notebook <./3-negative-particle-problem.ipynb>`__ we build on "
 "the example here to to solve the problem of diffusion in the negative "
@@ -356,11 +361,11 @@ msgid ""
 "also cover how to include parameters in a model."
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:401
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:395
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:403
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:397
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -372,7 +377,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:424
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:418
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -397,7 +402,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:435
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:429
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -422,7 +427,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:447
+#: ../../../source/examples/notebooks/creating_models/2-a-pde-model.ipynb:441
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "

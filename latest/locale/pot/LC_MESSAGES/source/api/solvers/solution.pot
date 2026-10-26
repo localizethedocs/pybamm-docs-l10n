@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -231,9 +232,9 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.solvers.solution.Solution.plot:1
 msgid ""
-"A method to quickly plot the outputs of the solution. Creates a :class:"
-"`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and then calls :"
-"meth:`pybamm.QuickPlot.dynamic_plot`."
+"A method to quickly plot the outputs of the solution. Creates "
+"a :class:`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and "
+"then calls :meth:`pybamm.QuickPlot.dynamic_plot`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
@@ -244,9 +245,9 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.solvers.solution.Solution.plot:7
 msgid ""
-"Additional keyword arguments passed to :meth:`pybamm.QuickPlot."
-"dynamic_plot`. For a list of all possible keyword arguments see :class:"
-"`pybamm.QuickPlot`."
+"Additional keyword arguments passed "
+"to :meth:`pybamm.QuickPlot.dynamic_plot`. For a list of all possible keyword "
+"arguments see :class:`pybamm.QuickPlot`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
@@ -359,12 +360,20 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.Solution.sensitivities:0
+#: pybamm.solvers.solution.SolverStatistics:0
 msgid "type"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.Solution.sensitivities:3
 msgid "Values of the sensitivities. Returns a dict of param_name"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.Solution.sensitivity_names:1
+msgid ""
+"Names of the inputs this solution has sensitivities for, in the column order "
+"of ``sensitivities[\"all\"]``."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
@@ -411,4 +420,43 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
 #: of pybamm.Solution.yp:1
 msgid "Time derivatives of the solution"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:1
+msgid "Counts of the work an integrator did to produce a solution."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:5
+msgid "Internal time steps taken."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:7
+#: pybamm.solvers.solution.SolverStatistics:13
+#: pybamm.solvers.solution.SolverStatistics:19
+#: pybamm.solvers.solution.SolverStatistics:25
+#: pybamm.solvers.solution.SolverStatistics:31
+msgid "int"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:11
+msgid "Calls to the linear solver setup, such as Jacobian factorisations."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:17
+msgid "Iterations of the nonlinear (Newton) solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:23
+msgid "Convergence failures of the nonlinear solver."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/solution.py:docstring
+#: of pybamm.solvers.solution.SolverStatistics:29
+msgid "Steps rejected by the local error test."
 msgstr ""

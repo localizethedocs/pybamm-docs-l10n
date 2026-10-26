@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-10-26 15:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/models/DFN.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -80,34 +81,34 @@ msgstr ""
 #: ../../../source/examples/notebooks/models/DFN.ipynb:41
 msgid ""
 "\\frac{\\partial i_{\\text{e,k}}}{\\partial x} = \\begin{cases}\n"
-"                                                  a_{\\text{k}}"
+"                                                      a_{\\text{k}}"
 "j_{\\text{k}}, \\quad &\\text{k} = \\text{n, p}\\\\\n"
-"                                                  0, \\qquad &\\text{k} = "
-"\\text{s}\n"
-"                                            \\end{cases},"
+"                                                      0, \\qquad &\\text{k} "
+"= \\text{s}\n"
+"                                                \\end{cases},"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:49
+#: ../../../source/examples/notebooks/models/DFN.ipynb:48
 msgid ""
 "i_{\\text{e,k}} = \\epsilon_{\\text{k}}^{\\text{b}} \\kappa_{\\text{e}}"
 "(c_{\\text{e,k}}) \\left( - \\frac{\\partial \\phi_{\\text{e,k}}}{\\partial "
-"x} + 2(1-t^+)\\frac{RT}{F}\\frac{\\partial}{\\partial "
-"x}\\left(\\log(c_{\\text{e,k}})\\right)\\right), \\text{k} \\in \\text{n, s, "
+"x} + 2(1-t^+)\\frac{RT}{F}\\frac{\\partial}{\\partial x}"
+"\\left(\\log(c_{\\text{e,k}})\\right)\\right), \\text{k} \\in \\text{n, s, "
 "p}, \\\\\n"
-"I-i_{\\text{e,k}} = - \\sigma_{\\text{k}} \\frac{\\partial \\phi_{\\text{e,"
-"k}}}{\\partial x}, \\text{k} \\in \\text{n, s, p}."
+"    I-i_{\\text{e,k}} = - \\sigma_{\\text{k}} \\frac{\\partial "
+"\\phi_{\\text{e,k}}}{\\partial x}, \\text{k} \\in \\text{n, s, p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:56
+#: ../../../source/examples/notebooks/models/DFN.ipynb:54
 msgid "Mass conservation:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:58
+#: ../../../source/examples/notebooks/models/DFN.ipynb:56
 msgid ""
 "\\epsilon_{\\text{k}} \\frac{\\partial c_{\\text{e,k}}}{\\partial t} = -"
-"\\frac{\\partial N_{\\text{e,k}}}{\\partial x} + \\frac{1}"
-"{F}\\frac{\\partial i_{\\text{e,k}}}{\\partial x}, \\text{k} \\in \\text{n, "
-"s, p},\\\\\n"
+"\\frac{\\partial N_{\\text{e,k}}}{\\partial x} + \\frac{1}{F}"
+"\\frac{\\partial i_{\\text{e,k}}}{\\partial x}, \\text{k} \\in \\text{n, s, "
+"p},\\\\\n"
 "N_{\\text{e,k}} = -\\epsilon_{\\text{k}}^{\\text{b}} D_{\\text{e}}"
 "(c_{\\text{e,k}}) \\frac{\\partial c_{\\text{e,k}}}{\\partial x} +  "
 "\\frac{t^+}{F} i_{\\text{e,k}},\n"
@@ -119,29 +120,30 @@ msgid ""
 "c_{\\text{s,k}}}{\\partial r_{\\text{k}}}, \\\\ \\text{k} \\in \\text{n, p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:68
+#: ../../../source/examples/notebooks/models/DFN.ipynb:65
 msgid "Electrochemical reactions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:70
+#: ../../../source/examples/notebooks/models/DFN.ipynb:67
 msgid ""
 "j_{\\text{k}} = 2 j_{\\text{0,k}} \\sinh\\left(\\frac{ F\\eta_{\\text{k}}}"
 "{2RT} \\right), \\\\ \\text{k} \\in \\text{n, p}, \\\\\n"
-"j_{\\text{0,k}} = c_{\\text{s,k}}^{1/2} (1-c_{\\text{s,k}})^{1/2}c_{\\text{e,"
-"k}}^{1/2}\\big|_{r_{\\text{k}}=1}, \\\\ \\text{k} \\in \\text{n, p}, \\\\\n"
+"j_{\\text{0,k}} = c_{\\text{s,k}}^{1/2} (1-c_{\\text{s,k}})^{1/2}"
+"c_{\\text{e,k}}^{1/2}\\big|_{r_{\\text{k}}=1}, \\\\ \\text{k} \\in \\text{n, "
+"p}, \\\\\n"
 "\\eta_{\\text{k}} = \\phi_{\\text{s,k}} - \\phi_{\\text{e,k}} - U_{\\text{k}}"
 "(c_{\\text{s,k}}\\big|_{r_{\\text{k}}=1}), \\\\ \\text{k} \\in \\text{n, p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:77
+#: ../../../source/examples/notebooks/models/DFN.ipynb:73
 msgid "These are to be solved subject to the following boundary conditions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:80
+#: ../../../source/examples/notebooks/models/DFN.ipynb:76
 msgid "Current:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:82
+#: ../../../source/examples/notebooks/models/DFN.ipynb:78
 msgid ""
 "i_{\\text{e,n}}\\big|_{x=0} = 0, \\quad i_{\\text{e,p}}\\big|_{x=L}=0,  \\"
 "\\\n"
@@ -154,11 +156,11 @@ msgid ""
 "L_{\\text{p}}} = I."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:91
+#: ../../../source/examples/notebooks/models/DFN.ipynb:86
 msgid "Concentration in the electrolyte:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:93
+#: ../../../source/examples/notebooks/models/DFN.ipynb:88
 msgid ""
 "N_{\\text{e,n}}\\big|_{x=0} = 0, \\quad N_{\\text{e,p}}\\big|_{x=L}=0,\\\\\n"
 "c_{\\text{e,n}}\\big|_{x=L_{\\text{n}}} = c_{\\text{e,s}}|"
@@ -169,33 +171,34 @@ msgid ""
 "L_{\\text{p}}}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:101
+#: ../../../source/examples/notebooks/models/DFN.ipynb:95
 msgid "Concentration in the electrode active material:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:103
+#: ../../../source/examples/notebooks/models/DFN.ipynb:97
 msgid ""
 "N_{\\text{s,k}}\\big|_{r_{\\text{k}}=0} = 0, \\quad \\text{k} \\in \\text{n, "
 "p}, \\quad \\ \\ N_{\\text{s,k}}\\big|_{r_{\\text{k}}=R_{\\text{k}}} = "
-"\\frac{j_{\\text{k}}}{F}, \\quad \\text{k} \\in \\text{n, p}."
+"\\frac{j_{\\text{k}}}{F}, \\quad \\text{k} \\in \\text{n, p}.\n"
+"\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:109
+#: ../../../source/examples/notebooks/models/DFN.ipynb:100
 msgid "Reference potential:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:111
+#: ../../../source/examples/notebooks/models/DFN.ipynb:102
 msgid ""
 "\\phi_{\\text{s,cn}} = 0, \\quad  \\boldsymbol{x} \\in \\partial "
 "\\Omega_{\\text{tab,n}}.\n"
 "\n"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:114
+#: ../../../source/examples/notebooks/models/DFN.ipynb:105
 msgid "And the initial conditions:"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:116
+#: ../../../source/examples/notebooks/models/DFN.ipynb:107
 msgid ""
 "c_{\\text{s,k}}(x,r,0) = c_{\\text{s,k,0}}, \\quad \\text{k} \\in \\text{n, "
 "p},\\\\\n"
@@ -203,11 +206,11 @@ msgid ""
 "p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:132
+#: ../../../source/examples/notebooks/models/DFN.ipynb:122
 msgid "Example solving DFN using PyBaMM"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:143
+#: ../../../source/examples/notebooks/models/DFN.ipynb:133
 msgid ""
 "Below we show how to solve the DFN model, using the default geometry, mesh, "
 "parameters, discretisation and solver provided with PyBaMM. For a more "
@@ -215,7 +218,7 @@ msgid ""
 "team/PyBaMM/blob/main/docs/source/examples/notebooks/models/SPM.ipynb>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:145
+#: ../../../source/examples/notebooks/models/DFN.ipynb:135
 msgid ""
 "In order to show off all the different points at which the process of "
 "setting up and solving a model in PyBaMM can be customised we explicitly "
@@ -226,7 +229,7 @@ msgid ""
 "class.ipynb>`__."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:147
+#: ../../../source/examples/notebooks/models/DFN.ipynb:137
 msgid ""
 "First we need to import pybamm, along with numpy which we will use in this "
 "notebook."
@@ -244,25 +247,25 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:170
+#: ../../../source/examples/notebooks/models/DFN.ipynb:160
 msgid ""
 "<pre>\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:176
+#: ../../../source/examples/notebooks/models/DFN.ipynb:166
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "Note: you may need to restart the kernel to use updated packages.\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:183
+#: ../../../source/examples/notebooks/models/DFN.ipynb:173
 msgid "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:194
+#: ../../../source/examples/notebooks/models/DFN.ipynb:184
 msgid ""
 "We then load the DFN model and default geometry, and process them both using "
 "the default parameters."
@@ -286,7 +289,7 @@ msgid ""
 "param.process_geometry(geometry)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:224
+#: ../../../source/examples/notebooks/models/DFN.ipynb:214
 msgid ""
 "The next step is to set the mesh and discretise the model. Again, we choose "
 "the default settings."
@@ -299,15 +302,15 @@ msgstr ""
 #: ../../../source/examples/notebooks/models/DFN.ipynb:-1
 msgid ""
 "# set mesh\n"
-"mesh = pybamm.Mesh(geometry, model.default_submesh_types, model."
-"default_var_pts)\n"
+"mesh = pybamm.Mesh(geometry, model.default_submesh_types, "
+"model.default_var_pts)\n"
 "\n"
 "# discretise model\n"
 "disc = pybamm.Discretisation(mesh, model.default_spatial_methods)\n"
 "disc.process_model(model);"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:250
+#: ../../../source/examples/notebooks/models/DFN.ipynb:240
 msgid ""
 "The model is now ready to be solved. We select the default DAE solver for "
 "the DFN. Note that in order to successfully solve the system of DAEs we are "
@@ -327,11 +330,11 @@ msgid ""
 "solution = solver.solve(model, t_eval)"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:274
+#: ../../../source/examples/notebooks/models/DFN.ipynb:264
 msgid ""
 "To get a quick overview of the model outputs we can use the QuickPlot class, "
-"which plots a common set of useful outputs. The method ``Quickplot."
-"dynamic_plot`` makes a slider widget."
+"which plots a common set of useful outputs. The method "
+"``Quickplot.dynamic_plot`` makes a slider widget."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/DFN.ipynb:-1
@@ -346,14 +349,14 @@ msgid ""
 "quick_plot.dynamic_plot();"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:299
+#: ../../../source/examples/notebooks/models/DFN.ipynb:289
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"aa2fc8004adc492486d03ca7a5ac6c13\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:309
+#: ../../../source/examples/notebooks/models/DFN.ipynb:299
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -361,7 +364,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:315
+#: ../../../source/examples/notebooks/models/DFN.ipynb:305
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
@@ -369,17 +372,17 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:322
+#: ../../../source/examples/notebooks/models/DFN.ipynb:312
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', max=1.0, "
 "step=0.01), Output()), _dom_classes=('w…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:334
+#: ../../../source/examples/notebooks/models/DFN.ipynb:324
 msgid "References"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:336
+#: ../../../source/examples/notebooks/models/DFN.ipynb:326
 msgid "The relevant papers for this notebook are:"
 msgstr ""
 
@@ -391,7 +394,7 @@ msgstr ""
 msgid "pybamm.print_citations()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:357
+#: ../../../source/examples/notebooks/models/DFN.ipynb:347
 msgid ""
 "<pre>\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -427,7 +430,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:371
+#: ../../../source/examples/notebooks/models/DFN.ipynb:361
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
@@ -463,7 +466,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/DFN.ipynb:386
+#: ../../../source/examples/notebooks/models/DFN.ipynb:376
 msgid ""
 "[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and "
 "Moritz Diehl. CasADi – A software framework for nonlinear optimization and "
