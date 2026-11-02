@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-02 18:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -29,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/models/electrode-state-of-health.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -57,6 +58,14 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:22
 msgid ""
+"This is also known as electrode balancing: from the electrode capacities, "
+"the amount of cyclable lithium and the voltage limits, we solve for the "
+"stoichiometry limits :math:`x_0`, :math:`x_{100}`, :math:`y_0` "
+"and :math:`y_{100}` of each electrode."
+msgstr ""
+
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:24
+msgid ""
 "[1] Mohtat, P., Lee, S., Siegel, J. B., & Stefanopoulou, A. G. (2019). "
 "Towards better estimability of electrode-specific state of health: Decoding "
 "the cell expansion. Journal of Power Sources, 427, 101-111."
@@ -76,7 +85,7 @@ msgid ""
 "import pybamm"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:47
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:49
 msgid ""
 "<pre>\n"
 "zsh:1: no matches found: pybamm[plot,cite]\n"
@@ -84,7 +93,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:54
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:56
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "zsh:1: no matches found: pybamm[plot,cite]\n"
@@ -92,13 +101,13 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:62
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:64
 msgid ""
 "zsh:1: no matches found: pybamm[plot,cite]\n"
 "Note: you may need to restart the kernel to use updated packages."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:75
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:77
 msgid "Create and solve model"
 msgstr ""
 
@@ -132,14 +141,14 @@ msgid ""
 ")"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:118
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:120
 msgid ""
 "<script type=\"application/vnd.jupyter.widget-view+json\">{\"model_id\": "
 "\"17f51c91ccd74aeb9afa13693702858e\", \"version_major\": 2, "
 "\"version_minor\": 0}</script>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:129
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:131
 msgid ""
 "<pre>\n"
 "interactive(children=(FloatSlider(value=0.0, description=&#39;t&#39;, "
@@ -147,7 +156,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:135
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:137
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "interactive(children=(FloatSlider(value=0.0, description='t', "
@@ -155,58 +164,58 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:142
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:144
 msgid ""
 "interactive(children=(FloatSlider(value=0.0, description='t', "
 "max=2.3248351274860397, step=0.0232483512748604)…"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:154
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:156
 msgid ""
 "<pre>\n"
 "&lt;pybamm.plotting.quick_plot.QuickPlot at 0x17f99c580&gt;\n"
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:160
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:162
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "<pybamm.plotting.quick\\_plot.QuickPlot at 0x17f99c580>\n"
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:167
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:169
 msgid "<pybamm.plotting.quick_plot.QuickPlot at 0x17f99c580>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:179
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:181
 msgid "Solve for electrode SOH variables"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:190
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:192
 msgid ""
 "Given a total amount of cyclable lithium capacity, :math:`Q_{Li}`, electrode "
 "capacities, :math:`Q_n` and :math:`Q_p`, and voltage limits, :math:`V_{min}` "
-"and :math:`V_{max}`, we can solve for the min and max electrode SOCs, :math:"
-"`x_0`, :math:`x_{100}`, :math:`y_0`, and :math:`y_{100}`, and the cell "
-"capacity, :math:`C`, using the algorithm adapted from Mohtat et al [1]. "
-"First, we find :math:`x_{100}` and :math:`y_{100}` using"
+"and :math:`V_{max}`, we can solve for the min and max electrode "
+"SOCs, :math:`x_0`, :math:`x_{100}`, :math:`y_0`, and :math:`y_{100}`, and "
+"the cell capacity, :math:`C`, using the algorithm adapted from Mohtat et al "
+"[1]. First, we find :math:`x_{100}` and :math:`y_{100}` using"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:192
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:194
 msgid ""
 "Q_{Li} = y_{100}Q_p + x_{100}Q_n,\n"
 "\\\\\n"
 "V_{max} = U_p(y_{100}) - U_n(x_{100})."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:199
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:200
 msgid ""
 "Note that Mohtat et al use :math:`n_{Li} = \\frac{3600 Q_{Li}}{F}` instead. "
 "Then, we find :math:`Q` using"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:201
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:202
 msgid ""
 "V_{min} = U_p(y_{0}) - U_n(x_{0})\n"
 "= U_p\\left(y_{100} + \\frac{Q}{Q_p}\\right) - U_n\\left(x_{100} - \\frac{Q}"
@@ -224,7 +233,7 @@ msgid ""
 "y_0 = y_{100} + \\frac{Q}{Q_p}."
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:216
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:215
 msgid "We implement this in PyBaMM as an algebraic model."
 msgstr ""
 
@@ -303,7 +312,7 @@ msgid ""
 "    print(var, \":\", sol[var].data[0])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:304
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:303
 msgid ""
 "<pre>\n"
 "x_100 : 0.8333742766485323\n"
@@ -314,7 +323,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:314
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:313
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "x\\_100 : 0.8333742766485323\n"
@@ -325,7 +334,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:325
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:324
 msgid ""
 "x_100 : 0.8333742766485323\n"
 "y_100 : 0.03354554691532985\n"
@@ -334,7 +343,7 @@ msgid ""
 "y_0 : 0.8908948803914054"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:340
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:339
 msgid "This is implemented in PyBaMM as the ``ElectrodeSOHSolver`` class"
 msgstr ""
 
@@ -356,7 +365,7 @@ msgid ""
 "    print(var, \":\", esoh_sol[var])"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:368
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:367
 msgid ""
 "<pre>\n"
 "x_100 : 0.833374276202919\n"
@@ -367,7 +376,7 @@ msgid ""
 "</pre>"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:378
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:377
 msgid ""
 "\\begin{sphinxVerbatim}[commandchars=\\\\\\{\\}]\n"
 "x\\_100 : 0.833374276202919\n"
@@ -378,7 +387,7 @@ msgid ""
 "\\end{sphinxVerbatim}"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:389
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:388
 msgid ""
 "x_100 : 0.833374276202919\n"
 "y_100 : 0.0335455473745959\n"
@@ -387,11 +396,11 @@ msgid ""
 "y_0 : 0.890894880089848"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:405
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:404
 msgid "Check against simulations"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:416
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:415
 msgid ""
 "Plotting the SPM simulations against the eSOH calculations validates the min/"
 "max stoichiometry calculations"
@@ -432,11 +441,11 @@ msgid ""
 "fig.tight_layout()"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:472
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:471
 msgid "How does electrode SOH depend on cyclable lithium"
 msgstr ""
 
-#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:483
+#: ../../../source/examples/notebooks/models/electrode-state-of-health.ipynb:482
 msgid ""
 "We can do a parameter sweep for the amount of cyclable lithium to see how it "
 "affects the electrode SOH parameters and cell capacity"
@@ -456,6 +465,7 @@ msgid ""
 "    not in [\n"
 "        \"Xu2019\",\n"
 "        \"Chen2020_composite\",\n"
+"        \"Bonkile2024\",\n"
 "        \"Ecker2015_graphite_halfcell\",\n"
 "        \"OKane2022_graphite_SiOx_halfcell\",\n"
 "    ]\n"
@@ -703,8 +713,8 @@ msgid ""
 "[13] Simon E. J. O&#39;Kane, Ian D. Campbell, Mohamed W. J. Marzook, Gregory "
 "J. Offer, and Monica Marinescu. Physical origin of the differential voltage "
 "minimum associated with lithium plating in li-ion batteries. Journal of The "
-"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi."
-"org/10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
+"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi.org/"
+"10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
 "[14] Kieran O&#39;Regan, Ferran Brosa Planella, W. Dhammika Widanage, and "
 "Emma Kendrick. Thermal-electrochemical parameters of a high energy lithium-"
 "ion cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/"
@@ -712,8 +722,8 @@ msgid ""
 "[15] Simon E. J. O&#39;Kane, Weilong Ai, Ganesh Madabattula, Diego Alonso-"
 "Alvarez, Robert Timms, Valentin Sulzer, Jacqueline Sophie Edge, Billy Wu, "
 "Gregory J. Offer, and Monica Marinescu. Lithium-ion battery degradation: how "
-"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://dx.doi."
-"org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
+"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://"
+"dx.doi.org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
 "[16] Eric Prada, D. Di Domenico, Y. Creff, J. Bernard, Valérie Sauvant-"
 "Moynot, and François Huet. A simplified electrochemical and thermal aging "
 "model of LiFePO4-graphite Li-ion batteries: power and capacity fade "
@@ -807,17 +817,17 @@ msgid ""
 "[13] Simon E. J. O'Kane, Ian D. Campbell, Mohamed W. J. Marzook, Gregory J. "
 "Offer, and Monica Marinescu. Physical origin of the differential voltage "
 "minimum associated with lithium plating in li-ion batteries. Journal of The "
-"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi."
-"org/10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
+"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi.org/"
+"10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
 "[14] Kieran O'Regan, Ferran Brosa Planella, W. Dhammika Widanage, and Emma "
 "Kendrick. Thermal-electrochemical parameters of a high energy lithium-ion "
-"cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/j."
-"electacta.2022.140700.\n"
+"cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/"
+"j.electacta.2022.140700.\n"
 "[15] Simon E. J. O'Kane, Weilong Ai, Ganesh Madabattula, Diego Alonso-"
 "Alvarez, Robert Timms, Valentin Sulzer, Jacqueline Sophie Edge, Billy Wu, "
 "Gregory J. Offer, and Monica Marinescu. Lithium-ion battery degradation: how "
-"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://dx.doi."
-"org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
+"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://"
+"dx.doi.org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
 "[16] Eric Prada, D. Di Domenico, Y. Creff, J. Bernard, Valérie Sauvant-"
 "Moynot, and François Huet. A simplified electrochemical and thermal aging "
 "model of LiFePO4-graphite Li-ion batteries: power and capacity fade "
@@ -910,17 +920,17 @@ msgid ""
 "[13] Simon E. J. O'Kane, Ian D. Campbell, Mohamed W. J. Marzook, Gregory J. "
 "Offer, and Monica Marinescu. Physical origin of the differential voltage "
 "minimum associated with lithium plating in li-ion batteries. Journal of The "
-"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi."
-"org/10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
+"Electrochemical Society, 167(9):090540, may 2020. URL: https://doi.org/"
+"10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.\n"
 "[14] Kieran O'Regan, Ferran Brosa Planella, W. Dhammika Widanage, and Emma "
 "Kendrick. Thermal-electrochemical parameters of a high energy lithium-ion "
-"cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/j."
-"electacta.2022.140700.\n"
+"cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/"
+"j.electacta.2022.140700.\n"
 "[15] Simon E. J. O'Kane, Weilong Ai, Ganesh Madabattula, Diego Alonso-"
 "Alvarez, Robert Timms, Valentin Sulzer, Jacqueline Sophie Edge, Billy Wu, "
 "Gregory J. Offer, and Monica Marinescu. Lithium-ion battery degradation: how "
-"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://dx.doi."
-"org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
+"to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://"
+"dx.doi.org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.\n"
 "[16] Eric Prada, D. Di Domenico, Y. Creff, J. Bernard, Valérie Sauvant-"
 "Moynot, and François Huet. A simplified electrochemical and thermal aging "
 "model of LiFePO4-graphite Li-ion batteries: power and capacity fade "
