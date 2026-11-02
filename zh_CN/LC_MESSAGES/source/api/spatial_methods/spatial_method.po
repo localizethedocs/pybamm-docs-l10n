@@ -1,0 +1,458 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/spatial_methods/spatial_method.rst:2
+msgid "Spatial Method"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod:1
+msgid ""
+"A general spatial methods class, with default (trivial) behaviour for some "
+"spatial operations. All spatial methods will follow the general form of "
+"SpatialMethod in that they contain a method for broadcasting variables onto "
+"a mesh, a gradient operator, and a divergence operator."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:1
+msgid "Implements the boundary integral for a spatial method."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spatial_method.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.delta_function:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.integral:3
+msgid "The symbol to which is being integrated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.delta_function:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.integral:5
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:5
+msgid "The discretised symbol of the correct size"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:7
+msgid ""
+"The region of the boundary over which to integrate. If region is None "
+"(default) the integration is carried out over the entire boundary. If region "
+"is `negative tab` or `positive tab` then the integration is only carried out "
+"over the appropriate part of the boundary corresponding to the tab."
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spatial_method.rst:0
+msgid "Returns"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:14
+msgid ""
+"Contains the result of acting the discretised boundary integral on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../source/api/spatial_methods/spatial_method.rst:0
+msgid "Return type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_integral:16
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:13
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:13
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:13
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:12
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.integral:12
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:13
+msgid "class: `pybamm.Array`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:1
+msgid ""
+"Returns the boundary value or flux using the appropriate expression for the "
+"spatial method. To do this, we create a sparse vector 'bv_vector' that "
+"extracts either the first (for side=\"left\") or last (for side=\"right\") "
+"point from 'discretised_child'."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:6
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:3
+msgid "The boundary value or flux symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:8
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:5
+msgid "The discretised variable from which to calculate the boundary value"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:10
+msgid ""
+"The boundary conditions. If these are supplied and \"use bcs\" is True in "
+"the options, then these will be used to improve the accuracy of the "
+"extrapolation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:15
+msgid "The variable representing the surface value."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.boundary_value_or_flux:16
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:11
+msgid ":class:`pybamm.MatrixMultiplication`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:1
+msgid "Broadcast symbol to a specified domain."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:3
+msgid "The symbol to be broadcasted"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:5
+msgid "The domains for broadcasting"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:7
+msgid ""
+"The type of broadcast: 'primary to node', 'primary to edges', 'secondary to "
+"nodes', 'secondary to edges', 'tertiary to nodes', 'tertiary to edges', "
+"'full to nodes' or 'full to edges'"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:12
+msgid ""
+"**broadcasted_symbol** -- The discretised symbol of the correct size for the "
+"spatial method"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.broadcast:13
+msgid "class: `pybamm.Symbol`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.concatenation:1
+msgid "Discrete concatenation object."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.concatenation:3
+msgid "List of discretised children"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.concatenation:6
+msgid "Concatenation of the discretised children"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.concatenation:7
+msgid ":class:`pybamm.DomainConcatenation`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.delta_function:1
+msgid ""
+"Implements the delta function on the approriate side for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:1
+msgid "Implements the divergence for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:3
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:3
+msgid "The symbol that we will take the gradient of."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:7
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:7
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:7
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:7
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.mass_matrix:6
+msgid ""
+"The boundary conditions of the model ({symbol: {\"left\": left bc, "
+"\"right\": right bc}})"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.divergence:11
+msgid ""
+"Contains the result of acting the discretised divergence on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:1
+msgid "Returns the symbol evaluated at a given position in space."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:7
+msgid "The point in one-dimensional space at which to evaluate the symbol."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.evaluate_at:10
+msgid "The variable representing the value at the given point."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.from_config:1
+msgid "Deserialise a spatial method from a dict."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:1
+msgid "Implements the gradient for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.gradient:11
+msgid ""
+"Contains the result of acting the discretised gradient on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:1
+msgid ""
+"Implements the inner product of the gradient with itself for a spatial "
+"method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.gradient_squared:11
+msgid ""
+"Contains the result of taking the inner product of the result of acting the "
+"discretised gradient on the child discretised_symbol with itself"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:1
+msgid "Implements the indefinite integral for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:7
+msgid "The direction of integration"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.indefinite_integral:10
+msgid ""
+"Contains the result of acting the discretised indefinite integral on the "
+"child discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:1
+msgid "Implements the integral for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:7
+msgid "The dimension in which to integrate (default is \"primary\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.integral:10
+msgid ""
+"Contains the result of acting the discretised integral on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.internal_neumann_condition:1
+msgid ""
+"A method to find the internal Neumann conditions between two symbols on "
+"adjacent subdomains."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.internal_neumann_condition:4
+msgid "The discretised symbol on the left subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.internal_neumann_condition:6
+msgid "The discretised symbol on the right subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.internal_neumann_condition:8
+msgid "The mesh on the left subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.internal_neumann_condition:10
+msgid "The mesh on the right subdomain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:1
+msgid "Implements the Laplacian for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.laplacian:11
+msgid ""
+"Contains the result of acting the discretised Laplacian on the child "
+"discretised_symbol"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.mass_matrix:1
+msgid "Calculates the mass matrix for a spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.mass_matrix:3
+msgid ""
+"The variable corresponding to the equation for which we are calculating the "
+"mass matrix."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.mass_matrix:10
+msgid "The (sparse) mass matrix for the spatial method."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.mass_matrix:11
+msgid ":class:`pybamm.Matrix`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:1
+msgid ""
+"Discretise binary operators in model equations. Default behaviour is to "
+"return a new binary operator with the discretised children."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:4
+msgid "Binary operator to discretise"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:6
+msgid "The left child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:8
+msgid "The right child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:10
+msgid "The discretised left child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:12
+msgid "The discretised right child of `bin_op`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:15
+msgid "Discretised binary operator"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of
+#: pybamm.spatial_methods.spatial_method.SpatialMethod.process_binary_operators:16
+msgid ":class:`pybamm.BinaryOperator`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.spatial_variable:1
+msgid ""
+"Convert a :class:`pybamm.SpatialVariable` node to a linear algebra object "
+"that can be evaluated (here, a :class:`pybamm.Vector` on either the nodes or "
+"the edges)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.spatial_variable:5
+msgid "The spatial variable to be discretised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.spatial_variable:8
+msgid "Contains the discretised spatial variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.spatial_variable:9
+msgid ":class:`pybamm.Vector`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/spatial_method.py:docstring
+#: of pybamm.spatial_methods.spatial_method.SpatialMethod.to_config:1
+msgid "Serialise this spatial method to a JSON-serialisable dict."
+msgstr ""
