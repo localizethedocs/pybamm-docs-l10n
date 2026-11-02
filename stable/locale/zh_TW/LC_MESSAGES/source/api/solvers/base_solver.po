@@ -95,11 +95,11 @@ msgid ""
 "stored (one experiment step in :meth:`pybamm.Simulation.solve`, or the full "
 "``[t_eval[0], t_eval[-1]]`` window in :meth:`solve`). Intended for memory-"
 "light long experiments whose post-processing only reads per-step first/last "
-"values. Only has effect on solvers that support intra-solve interpolation (e."
-"g. :class:`pybamm.IDAKLUSolver`); a warning is issued otherwise. Note: when "
-"this flag is on, intra-step interpolation falls back to linear across the "
-"whole step, so it is **not** appropriate when post-processing queries a non-"
-"endpoint time within a step. Default is False."
+"values. Only has effect on solvers that support intra-solve interpolation "
+"(e.g. :class:`pybamm.IDAKLUSolver`); a warning is issued otherwise. Note: "
+"when this flag is on, intra-step interpolation falls back to linear across "
+"the whole step, so it is **not** appropriate when post-processing queries a "
+"non-endpoint time within a step. Default is False."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -298,8 +298,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
 #: of pybamm.solvers.base_solver.BaseSolver.solve:28
 msgid ""
-"If type of `inputs` is `list`, return a list of corresponding :class:`pybamm."
-"Solution` objects."
+"If type of `inputs` is `list`, return a list of "
+"corresponding :class:`pybamm.Solution` objects."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -327,8 +327,8 @@ msgstr ""
 #: of pybamm.solvers.base_solver.BaseSolver.step:1
 msgid ""
 "Step the solution of the model forward by a given time increment. The first "
-"time this method is called it executes the necessary setup by calling `self."
-"set_up(model)`."
+"time this method is called it executes the necessary setup by calling "
+"`self.set_up(model)`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring
@@ -375,9 +375,10 @@ msgstr ""
 msgid ""
 "A tuple containing a function and its Jacobians to map the state from the "
 "old solution to the new solution. `function`, `jacobian_y` and `jacobian_p` "
-"are casadi/jax/python functions that have been processed using `BaseSolver."
-"process`. If not provided, then `BaseModel.set_initial_conditions_from` is "
-"used to map the state from the old solution to the new solution"
+"are casadi/jax/python functions that have been processed using "
+"`BaseSolver.process`. If not provided, then "
+"`BaseModel.set_initial_conditions_from` is used to map the state from the "
+"old solution to the new solution"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/solvers/base_solver.py:docstring

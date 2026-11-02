@@ -30,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/models/thermal-models.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -121,9 +121,9 @@ msgid ""
 "where :math:`\\rho_{eff}` is effective volumetric heat capacity, :math:`T` "
 "is the temperature, :math:`t` is time, :math:`\\bar{Q}` is the averaged heat "
 "source term, :math:`h` is the heat transfer coefficient, :math:`A` is the "
-"surface area (available for cooling), :math:`V` is the cell volume, and :"
-"math:`T_{\\infty}` is the ambient temperature. An initial temperature :math:"
-"`T_0` must be prescribed."
+"surface area (available for cooling), :math:`V` is the cell volume, "
+"and :math:`T_{\\infty}` is the ambient temperature. An initial "
+"temperature :math:`T_0` must be prescribed."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:72
@@ -197,18 +197,18 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:112
 msgid ""
-"which correspond directly to the parameters :math:`h`, :math:`A` and :math:"
-"`V` in the governing equation."
+"which correspond directly to the parameters :math:`h`, :math:`A` "
+"and :math:`V` in the governing equation."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:114
 msgid ""
-"When using the option ``{\"cell geometry\": \"pouch\"}`` the parameter :math:"
-"`A` and :math:`V` are computed automatically from the pouch dimensions, "
-"assuming a single-layer pouch cell, i.e. :math:`A` is the total surface area "
-"of a single-layer pouch cell and :math:`V` is the volume. The parameter :"
-"math:`h` is still set by the \"Total heat transfer coefficient [W.m-2.K-1]\" "
-"parameter."
+"When using the option ``{\"cell geometry\": \"pouch\"}`` the "
+"parameter :math:`A` and :math:`V` are computed automatically from the pouch "
+"dimensions, assuming a single-layer pouch cell, i.e. :math:`A` is the total "
+"surface area of a single-layer pouch cell and :math:`V` is the volume. The "
+"parameter :math:`h` is still set by the \"Total heat transfer coefficient "
+"[W.m-2.K-1]\" parameter."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:116
@@ -350,8 +350,8 @@ msgstr ""
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:280
 msgid ""
 "-\\lambda_{cn} \\frac{\\partial T}{\\partial x}\\bigg|_{x=0} = h_{cn}"
-"(T_{\\infty} - T) \\quad -\\lambda_{cp} \\frac{\\partial T}{\\partial "
-"x}\\bigg|_{x=1} = h_{cp}(T-T_{\\infty}),\n"
+"(T_{\\infty} - T) \\quad -\\lambda_{cp} \\frac{\\partial T}{\\partial x}"
+"\\bigg|_{x=1} = h_{cp}(T-T_{\\infty}),\n"
 "\n"
 msgstr ""
 
@@ -385,8 +385,8 @@ msgid ""
 "The relevant heat transfer parameters are: \"Negative current collector "
 "surface heat transfer coefficient [W.m-2.K-1]\" \"Positive current collector "
 "surface heat transfer coefficient [W.m-2.K-1]\" \"Negative tab heat transfer "
-"coefficient [W.m-2.K-1]\" \"Positive tab heat transfer coefficient [W.m-2."
-"K-1]\" \"Edge heat transfer coefficient [W.m-2.K-1]\""
+"coefficient [W.m-2.K-1]\" \"Positive tab heat transfer coefficient "
+"[W.m-2.K-1]\" \"Edge heat transfer coefficient [W.m-2.K-1]\""
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:291
@@ -441,9 +441,8 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:332
 msgid ""
-"-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = "
-"\\frac{(L_{cn}+L_n+L_s+L_p)h_{edge}+L_{cp}h_{cp}}{L_{cn}+L_n+L_s+L_p+L_{cp}}"
-"(T-T_\\infty),"
+"-\\lambda_{eff} \\nabla_\\perp T \\cdot \\boldsymbol{n} = \\frac{(L_{cn}"
+"+L_n+L_s+L_p)h_{edge}+L_{cp}h_{cp}}{L_{cn}+L_n+L_s+L_p+L_{cp}}(T-T_\\infty),"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:337
@@ -463,9 +462,9 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:346
 msgid ""
-"Here the heat source term is averaged in the x direction so that :math:"
-"`\\bar{Q}=\\bar{Q}(y,z)`. The parameter :math:`\\lambda_{eff}` is the "
-"effective thermal conductivity, computed as"
+"Here the heat source term is averaged in the x direction so "
+"that :math:`\\bar{Q}=\\bar{Q}(y,z)`. The parameter :math:`\\lambda_{eff}` is "
+"the effective thermal conductivity, computed as"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:348
@@ -474,11 +473,11 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:353
 msgid ""
-"The heat transfer coefficients :math:`h_{cn}`, :math:`h_{cp}` and :math:"
-"`h_{egde}` correspond to heat transfer at the large surface of the pouch on "
-"the side of the negative current collector, heat transfer at the large "
-"surface of the pouch on the side of the positive current collector, and heat "
-"transfer at the remaining, respectively."
+"The heat transfer coefficients :math:`h_{cn}`, :math:`h_{cp}` "
+"and :math:`h_{egde}` correspond to heat transfer at the large surface of the "
+"pouch on the side of the negative current collector, heat transfer at the "
+"large surface of the pouch on the side of the positive current collector, "
+"and heat transfer at the remaining, respectively."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:357
@@ -567,8 +566,8 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/thermal-models.ipynb:475
 msgid ""
-"For the lumped model we set the \"Total heat transfer coefficient [W.m-2."
-"K-1]\" parameter as well as the \"Cell cooling surface area [m2]\" "
+"For the lumped model we set the \"Total heat transfer coefficient "
+"[W.m-2.K-1]\" parameter as well as the \"Cell cooling surface area [m2]\" "
 "parameter. Since the \"full\" model only accounts for cooling from the large "
 "surfaces of the pouch, we set the \"Surface area for cooling\" parameter to "
 "the area of the large surfaces of the pouch, and the total heat transfer "

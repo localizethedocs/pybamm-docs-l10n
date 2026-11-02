@@ -99,9 +99,9 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:38
 msgid ""
-"We use [GIT](https://en.wikipedia.org/wiki/Git) and [GitHub](https://en."
-"wikipedia.org/wiki/GitHub) to coordinate our work. When making any kind of "
-"update, we try to follow the procedure below."
+"We use [GIT](https://en.wikipedia.org/wiki/Git) and [GitHub](https://"
+"en.wikipedia.org/wiki/GitHub) to coordinate our work. When making any kind "
+"of update, we try to follow the procedure below."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:40
@@ -124,9 +124,9 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:44
 msgid ""
-"Download the source code onto your local system, by [cloning](https://help."
-"github.com/articles/cloning-a-repository/) the repository (or your fork of "
-"the repository)."
+"Download the source code onto your local system, by [cloning](https://"
+"help.github.com/articles/cloning-a-repository/) the repository (or your fork "
+"of the repository)."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:45
@@ -439,9 +439,9 @@ msgstr ""
 msgid ""
 "The `test_import_optional_dependency` function extracts the optional "
 "dependencies installed in the setup environment, makes them unimportable (by "
-"setting them to `None` among the `sys.modules`), and tests that the `pybamm."
-"util.import_optional_dependency` function throws a `ModuleNotFoundError` "
-"exception when their import is attempted."
+"setting them to `None` among the `sys.modules`), and tests that the "
+"`pybamm.util.import_optional_dependency` function throws a "
+"`ModuleNotFoundError` exception when their import is attempted."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:155
@@ -556,8 +556,8 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:201
 msgid ""
-"nox -s tests -- tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::"
-"test_simple_ode_model\n"
+"nox -s tests -- tests/unit/test_plotting/"
+"test_quick_plot.py::TestQuickPlot::test_simple_ode_model\n"
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:205
@@ -693,8 +693,8 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:275
 msgid ""
-"pytest tests/unit/test_plotting/test_quick_plot.py::TestQuickPlot::"
-"test_simple_ode_model\n"
+"pytest tests/unit/test_plotting/"
+"test_quick_plot.py::TestQuickPlot::test_simple_ode_model\n"
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:279
@@ -812,9 +812,9 @@ msgstr ""
 msgid ""
 "You can then step through the expression tree, using the `children` "
 "attribute, to pinpoint exactly where a bug is coming from. For example, if "
-"`expression_tree.jac(y)` is failing, you can check `expression_tree."
-"children[0].jac(y)`, then `expression_tree.children[0].children[0].jac(y)`, "
-"etc."
+"`expression_tree.jac(y)` is failing, you can check "
+"`expression_tree.children[0].jac(y)`, then "
+"`expression_tree.children[0].children[0].jac(y)`, etc."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:338
@@ -982,18 +982,19 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:411
 msgid ""
-"Major PyBaMM features are showcased in [Jupyter notebooks](https://jupyter."
-"org/) stored in the [docs/source/examples directory](https://github.com/"
-"pybamm-team/PyBaMM/tree/main/docs/source/examples). Which features are "
-"\"major\" is of course wholly subjective, so please discuss on GitHub first!"
+"Major PyBaMM features are showcased in [Jupyter notebooks](https://"
+"jupyter.org/) stored in the [docs/source/examples directory](https://"
+"github.com/pybamm-team/PyBaMM/tree/main/docs/source/examples). Which "
+"features are \"major\" is of course wholly subjective, so please discuss on "
+"GitHub first!"
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:413
 msgid ""
 "All example notebooks should be listed in [docs/source/examples/index.rst]"
-"(https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/index."
-"rst). Please follow the (naming and writing) style of existing notebooks "
-"where possible."
+"(https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/"
+"index.rst). Please follow the (naming and writing) style of existing "
+"notebooks where possible."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:415
@@ -1051,8 +1052,8 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:441
 msgid ""
-"Installation of PyBaMM and its dependencies is handled via [uv](https://docs."
-"astral.sh/uv/) or [pip](https://pip.pypa.io/en/stable/). A `uv.lock` "
+"Installation of PyBaMM and its dependencies is handled via [uv](https://"
+"docs.astral.sh/uv/) or [pip](https://pip.pypa.io/en/stable/). A `uv.lock` "
 "lockfile is maintained in version control to ensure reproducible "
 "environments. Dependabot keeps the locked dependencies up to date via weekly "
 "PRs."
@@ -1103,8 +1104,8 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:461
 msgid ""
-"Configuration files for various GitHub actions workflow can be found in `."
-"github/worklfows`."
+"Configuration files for various GitHub actions workflow can be found in "
+"`.github/worklfows`."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:463
@@ -1138,9 +1139,9 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:479
 msgid ""
-"Editable notebooks are made available using [Google Colab](https://colab."
-"research.google.com/notebooks/intro.ipynb) [here](https://colab.research."
-"google.com/github/pybamm-team/PyBaMM/blob/main/)."
+"Editable notebooks are made available using [Google Colab](https://"
+"colab.research.google.com/notebooks/intro.ipynb) [here](https://"
+"colab.research.google.com/github/pybamm-team/PyBaMM/blob/main/)."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:481
@@ -1153,9 +1154,9 @@ msgstr ""
 
 #: ../../../../CONTRIBUTING.md:485
 msgid ""
-"The first page people see when they go to [our GitHub page](https://github."
-"com/pybamm-team/PyBaMM) displays the contents of [README.md](https://github."
-"com/pybamm-team/PyBaMM/blob/main/README.md), which is written in the "
+"The first page people see when they go to [our GitHub page](https://"
+"github.com/pybamm-team/PyBaMM) displays the contents of [README.md](https://"
+"github.com/pybamm-team/PyBaMM/blob/main/README.md), which is written in the "
 "[Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) "
 "format. Some guidelines can be found [here](https://docs.github.com/articles/"
 "about-readmes/)."
@@ -1164,8 +1165,9 @@ msgstr ""
 #: ../../../../CONTRIBUTING.md:486
 msgid ""
 "The license for using PyBaMM is stored in [LICENSE](https://github.com/"
-"pybamm-team/PyBaMM/blob/main/LICENSE.txt), and [automatically](https://docs."
-"github.com/articles/adding-a-license-to-a-repository/) linked to by GitHub."
+"pybamm-team/PyBaMM/blob/main/LICENSE.txt), and [automatically](https://"
+"docs.github.com/articles/adding-a-license-to-a-repository/) linked to by "
+"GitHub."
 msgstr ""
 
 #: ../../../../CONTRIBUTING.md:487
