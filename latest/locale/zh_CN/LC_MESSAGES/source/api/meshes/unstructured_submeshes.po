@@ -45,8 +45,8 @@ msgstr ""
 #: of pybamm.meshes.unstructured_submesh.UnstructuredSubMesh:8
 msgid ""
 "Hexahedra must have planar faces: volumes and face fluxes are ill-defined on "
-"warped (non-planar-faced) hexes, so construction raises a :class:`pybamm."
-"GeometryError` for them."
+"warped (non-planar-faced) hexes, so construction raises "
+"a :class:`pybamm.GeometryError` for them."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
@@ -251,9 +251,9 @@ msgstr ""
 #: of pybamm.meshes.unstructured_submesh.UserSuppliedUnstructuredMesh:8
 msgid ""
 "The interface between adjacent domains must be **conforming**: the two sides "
-"must share the same interface nodes, so that welding in :meth:"
-"`UnstructuredSubMesh.combine` turns the interface into internal faces. In "
-"gmsh, build the regions from one geometry or fragment the parts "
+"must share the same interface nodes, so that welding "
+"in :meth:`UnstructuredSubMesh.combine` turns the interface into internal "
+"faces. In gmsh, build the regions from one geometry or fragment the parts "
 "(``BooleanFragments`` / ``Coherence``) so the shared surface is meshed once. "
 "A non-conforming interface raises a :class:`pybamm.GeometryError` when the "
 "domains are combined."
@@ -293,10 +293,10 @@ msgstr ""
 #: of pybamm.meshes.unstructured_submesh.TaggedSubMeshGenerator:4
 msgid ""
 "Use one instance per region in a multi-domain pybamm model — the region name "
-"doubles as the pybamm domain name. Compare to :class:"
-"`UserSuppliedUnstructuredMesh`, which routes multiple regions through one "
-"generator by introspecting ``lims``; ``TaggedSubMeshGenerator`` is simpler "
-"when the model already supplies one mesh generator per domain."
+"doubles as the pybamm domain name. Compare "
+"to :class:`UserSuppliedUnstructuredMesh`, which routes multiple regions "
+"through one generator by introspecting ``lims``; ``TaggedSubMeshGenerator`` "
+"is simpler when the model already supplies one mesh generator per domain."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
@@ -342,8 +342,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring
 #: of pybamm.meshes.unstructured_submesh.compute_interface_data:1
 msgid ""
-"Compute coupling data for the interface between two adjacent :class:"
-"`UnstructuredSubMesh` objects."
+"Compute coupling data for the interface between two "
+"adjacent :class:`UnstructuredSubMesh` objects."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/meshes/unstructured_submesh.py:docstring

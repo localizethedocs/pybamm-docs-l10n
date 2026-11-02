@@ -168,13 +168,13 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
 #: of pybamm.models.base_model.BaseModel.build_casadi_jacobian:3
 msgid ""
-"The solver calls this for every model in place of a bare ``casadi."
-"jacobian``. It is plain AD, except for the full rhs+algebraic jacobian of a "
-"model that has a *switching control* equation -- a :class:`pybamm."
-"Conditional` over per-step control laws, recorded in :attr:"
-"`switching_control_variables` by the unified experiment setup. CasADi turns "
-"that ``Conditional`` into a ``Switch`` and differentiates it as a dense, "
-"full-bandwidth row inside the combined sweep."
+"The solver calls this for every model in place of a bare "
+"``casadi.jacobian``. It is plain AD, except for the full rhs+algebraic "
+"jacobian of a model that has a *switching control* equation -- "
+"a :class:`pybamm.Conditional` over per-step control laws, recorded "
+"in :attr:`switching_control_variables` by the unified experiment setup. "
+"CasADi turns that ``Conditional`` into a ``Switch`` and differentiates it as "
+"a dense, full-bandwidth row inside the combined sweep."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -255,9 +255,9 @@ msgid ""
 "Check that the model is well-posed by executing the following tests: - Model "
 "is not over- or underdetermined, by comparing keys and equations in rhs and "
 "algebraic. Overdetermined if more equations than variables, underdetermined "
-"if more variables than equations. - There is an initial condition in self."
-"initial_conditions for each variable/equation pair in self.rhs - There are "
-"appropriate boundary conditions in self.boundary_conditions for each "
+"if more variables than equations. - There is an initial condition in "
+"self.initial_conditions for each variable/equation pair in self.rhs - There "
+"are appropriate boundary conditions in self.boundary_conditions for each "
 "variable/equation pair in self.rhs and self.algebraic"
 msgstr ""
 
@@ -489,8 +489,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
 #: of pybamm.models.base_model.BaseModel.from_json:8
 msgid ""
-"Path to a JSON file containing the saved model, or a dictionary (e.g. from :"
-"meth:`to_json`)."
+"Path to a JSON file containing the saved model, or a dictionary (e.g. "
+"from :meth:`to_json`)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -525,8 +525,8 @@ msgstr ""
 #: of pybamm.models.base_model.BaseModel.get_parameter_info:1
 msgid ""
 "Extracts the parameter information and returns it as a dictionary. To get a "
-"list of all parameter-like objects without extra information, use :py:attr:"
-"`model.parameters`."
+"list of all parameter-like objects without extra information, "
+"use :py:attr:`model.parameters`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -732,9 +732,10 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
 #: of pybamm.models.base_model.BaseModel.process_parameters_and_discretise:3
 msgid ""
-"This method is deprecated. Please process the model first with :meth:"
-"`ParameterValues.process_model` and :meth:`Discretisation.process_model`, "
-"then call :meth:`model.process_symbol(symbol)`."
+"This method is deprecated. Please process the model first "
+"with :meth:`ParameterValues.process_model` "
+"and :meth:`Discretisation.process_model`, then "
+"call :meth:`model.process_symbol(symbol)`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -772,8 +773,8 @@ msgstr ""
 #: of pybamm.models.base_model.BaseModel.serialise_builtin_overrides:9
 msgid ""
 "``dict[str, json]`` – variables the user *added* (keys not present in the "
-"reference model).  Each value is the symbolic expression serialised via :"
-"func:`convert_symbol_to_json`."
+"reference model).  Each value is the symbolic expression serialised "
+"via :func:`convert_symbol_to_json`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -823,9 +824,9 @@ msgstr ""
 #: of pybamm.models.base_model.BaseModel.set_initial_conditions_from:1
 msgid ""
 "Update initial conditions with the final states from a Solution object or "
-"from a dictionary. This assumes that, for each variable in self."
-"initial_conditions, there is a corresponding variable in the solution with "
-"the same name and size."
+"from a dictionary. This assumes that, for each variable in "
+"self.initial_conditions, there is a corresponding variable in the solution "
+"with the same name and size."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -879,8 +880,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
 #: of pybamm.models.base_model.BaseModel.to_config:3
 msgid ""
-"Built-in models (those found in ``pybamm.lithium_ion``, ``pybamm."
-"lead_acid``, etc.) produce a compact format::"
+"Built-in models (those found in ``pybamm.lithium_ion``, "
+"``pybamm.lead_acid``, etc.) produce a compact format::"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring
@@ -968,8 +969,8 @@ msgstr ""
 #: of pybamm.models.base_model.BaseModel.update_processed_variables:3
 msgid ""
 "Either a dictionary of {name: processed_symbol} pairs, or a list of names "
-"(for backward compatibility, where the processed symbol is taken from self."
-"variables)."
+"(for backward compatibility, where the processed symbol is taken from "
+"self.variables)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/models/base_model.py:docstring

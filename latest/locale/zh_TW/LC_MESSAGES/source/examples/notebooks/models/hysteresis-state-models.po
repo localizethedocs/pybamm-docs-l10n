@@ -30,8 +30,8 @@ msgid ""
 "        <a href=\"https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/"
 "docs/source/examples/notebooks/models/hysteresis-state-models.ipynb\"\n"
 "        target=\"_blank\">\n"
-"        <img src=\"https://colab.research.google.com/assets/colab-badge."
-"svg\"\n"
+"        <img src=\"https://colab.research.google.com/assets/colab-"
+"badge.svg\"\n"
 "        alt=\"Open this notebook in Google Colab\"/></a>\n"
 "    </p>\n"
 "        <hr>\n"
@@ -124,9 +124,9 @@ msgstr ""
 msgid ""
 "where :math:`h` is a hysteresis state variable, :math:`U_{\\text{delith}}` "
 "is the delithiation open-circuit potential, and :math:`U_{\\text{lith}}` is "
-"the lithiation open-circuit potential. The hysteresis state variable :math:"
-"`h` is defined between -1 and 1, where 1 corresponds to the delithiation "
-"branch and -1 corresponds to the lithiation branch."
+"the lithiation open-circuit potential. The hysteresis state "
+"variable :math:`h` is defined between -1 and 1, where 1 corresponds to the "
+"delithiation branch and -1 corresponds to the lithiation branch."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:76
@@ -153,8 +153,8 @@ msgid ""
 "where :math:`i_{\\text{vol}}` is the volumetric interfacial current "
 "density, :math:`F` is the Faraday constant, :math:`c_{\\text{max}}` is the "
 "maximum lithium concentration in the particles and :math:`\\epsilon` is the "
-"active material volume fraction. In this model, the rate parameter :math:"
-"`\\gamma` is given by"
+"active material volume fraction. In this model, the rate "
+"parameter :math:`\\gamma` is given by"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:84
@@ -167,10 +167,11 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:86
 msgid ""
-"which allows for a different decay rate during delithiation (:math:"
-"`\\gamma_{\\text{delith}}`) and lithiation (:math:`\\gamma_{\\text{lith}}`). "
-"Note that this implementation is a reformulation of the governing equations "
-"in the original paper. Also note that :math:`\\gamma` is dimensionless."
+"which allows for a different decay rate during delithiation "
+"(:math:`\\gamma_{\\text{delith}}`) and lithiation "
+"(:math:`\\gamma_{\\text{lith}}`). Note that this implementation is a "
+"reformulation of the governing equations in the original paper. Also note "
+"that :math:`\\gamma` is dimensionless."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:89
@@ -189,9 +190,8 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:97
 msgid ""
-"\\gamma(z) = \\Gamma(z) \\cdot "
-"\\left(\\frac{C_{\\text{diff}}\\left(z\\right)}{C_{\\text{ref,"
-"vol}}}\\right)^{-x}.\n"
+"\\gamma(z) = \\Gamma(z) \\cdot \\left(\\frac{C_{\\text{diff}}"
+"\\left(z\\right)}{C_{\\text{ref,vol}}}\\right)^{-x}.\n"
 "\n"
 msgstr ""
 
@@ -214,9 +214,9 @@ msgid ""
 "circuit potential of the phase of active material experiencing the voltage "
 "hysteresis. The remaining parameters are :math:`\\Gamma` and :math:`x` which "
 "are both fitting parameters that affect the response of the hysteresis state "
-"decay when passing charge in either direction. The parameter :math:"
-"`C_{\\text{ref,vol}}` is the reference differential capacity, which in this "
-"implementation is hard-coded to 1 :math:`\\text{F}`."
+"decay when passing charge in either direction. The "
+"parameter :math:`C_{\\text{ref,vol}}` is the reference differential "
+"capacity, which in this implementation is hard-coded to 1 :math:`\\text{F}`."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:107
@@ -234,8 +234,8 @@ msgstr ""
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:111
 msgid ""
 "U = \\text{sigmoid}\\left(-\\frac{KI(t)}{Q_{\\text{cell}}}\\right) "
-"U_{\\text{delith}} + \\text{sigmoid}\\left(\\frac{KI(t)}"
-"{Q_{\\text{cell}}}\\right) U_{\\text{lith}}"
+"U_{\\text{delith}} + \\text{sigmoid}\\left(\\frac{KI(t)}{Q_{\\text{cell}}}"
+"\\right) U_{\\text{lith}}"
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:115
@@ -249,8 +249,8 @@ msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:117
 msgid ""
-"h(t) = 1 - 2 \\, \\text{sigmoid}\\left(-\\frac{KI(t)}"
-"{Q_{\\text{cell}}}\\right).\n"
+"h(t) = 1 - 2 \\, \\text{sigmoid}\\left(-\\frac{KI(t)}{Q_{\\text{cell}}}"
+"\\right).\n"
 "\n"
 msgstr ""
 
@@ -353,8 +353,8 @@ msgid ""
 "aiming for good agreement to experiment if the information is available, or "
 "a smooth transition between the lithiation and delithiation branches of the "
 "hysteresis. For example, depending on the case study, an acceptable value "
-"for :math:`K_{\\text{lith}}` and :math:`K_{\\text{delith}}` could be :math:"
-"`10` or lower."
+"for :math:`K_{\\text{lith}}` and :math:`K_{\\text{delith}}` could "
+"be :math:`10` or lower."
 msgstr ""
 
 #: ../../../source/examples/notebooks/models/hysteresis-state-models.ipynb:-1

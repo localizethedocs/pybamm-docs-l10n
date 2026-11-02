@@ -55,17 +55,17 @@ msgstr ""
 
 #: ../../../../RELEASE.md:10
 msgid ""
-"**Breaking changes:** Documented under `## Breaking changes` in [`CHANGELOG."
-"md`](https://github.com/pybamm-team/PyBaMM/blob/main/CHANGELOG.md). Public "
-"APIs that are removed or renamed ship a `DeprecationWarning` for at least "
-"two prior feature releases first (see the Deprecation policy section for the "
-"documented exceptions)."
+"**Breaking changes:** Documented under `## Breaking changes` in "
+"[`CHANGELOG.md`](https://github.com/pybamm-team/PyBaMM/blob/main/"
+"CHANGELOG.md). Public APIs that are removed or renamed ship a "
+"`DeprecationWarning` for at least two prior feature releases first (see the "
+"Deprecation policy section for the documented exceptions)."
 msgstr ""
 
 #: ../../../../RELEASE.md:11
 msgid ""
-"**Pre-announcement:** The `# [Unreleased]` section at the top of `CHANGELOG."
-"md` on `main` is the canonical preview of what's about to ship."
+"**Pre-announcement:** The `# [Unreleased]` section at the top of "
+"`CHANGELOG.md` on `main` is the canonical preview of what's about to ship."
 msgstr ""
 
 #: ../../../../RELEASE.md:13
@@ -222,11 +222,11 @@ msgstr ""
 
 #: ../../../../RELEASE.md:55
 msgid ""
-"Breaking changes target the **first feature release of the month** (`YY."
-"MM.0.0`). Subsequent feature releases in the same month (`YY.MM.1.0`, `YY."
-"MM.2.0`, …) should not contain breaking changes unless absolutely required. "
-"Exceptions must be justified in the PR description and in the `## Breaking "
-"changes` changelog entry, alongside the standard deprecation note."
+"Breaking changes target the **first feature release of the month** "
+"(`YY.MM.0.0`). Subsequent feature releases in the same month (`YY.MM.1.0`, "
+"`YY.MM.2.0`, …) should not contain breaking changes unless absolutely "
+"required. Exceptions must be justified in the PR description and in the `## "
+"Breaking changes` changelog entry, alongside the standard deprecation note."
 msgstr ""
 
 #: ../../../../RELEASE.md:57
@@ -300,8 +300,8 @@ msgstr ""
 
 #: ../../../../RELEASE.md:77
 msgid ""
-"**Public API = anything documented at [docs.pybamm.org](https://docs.pybamm."
-"org).**"
+"**Public API = anything documented at [docs.pybamm.org](https://"
+"docs.pybamm.org).**"
 msgstr ""
 
 #: ../../../../RELEASE.md:79
@@ -435,8 +435,8 @@ msgstr ""
 
 #: ../../../../RELEASE.md:126
 msgid ""
-"Use full GitHub URLs (not bare `#1234`) so the rendered markdown on docs."
-"pybamm.org links correctly. `## Breaking changes` and `## Deprecated` "
+"Use full GitHub URLs (not bare `#1234`) so the rendered markdown on "
+"docs.pybamm.org links correctly. `## Breaking changes` and `## Deprecated` "
 "entries must include a one-line migration note describing how users adapt."
 msgstr ""
 
@@ -454,11 +454,11 @@ msgstr ""
 #: ../../../../RELEASE.md:132
 msgid ""
 "The version string in the built distribution is supplied by `hatch-vcs` from "
-"the VCS tag (`pyproject.toml` has `dynamic = [\"version\"]` with `version."
-"source = \"vcs\"`, writing to `src/pybamm/_version.py`). The `scripts/"
-"update_version.py` helper updates `CITATION.cff` and prepends a new dated "
-"heading to `CHANGELOG.md`; its version-string handling is format-agnostic "
-"and accepts the four-component form unchanged."
+"the VCS tag (`pyproject.toml` has `dynamic = [\"version\"]` with "
+"`version.source = \"vcs\"`, writing to `src/pybamm/_version.py`). The "
+"`scripts/update_version.py` helper updates `CITATION.cff` and prepends a new "
+"dated heading to `CHANGELOG.md`; its version-string handling is format-"
+"agnostic and accepts the four-component form unchanged."
 msgstr ""
 
 #: ../../../../RELEASE.md:134
@@ -489,8 +489,8 @@ msgstr ""
 
 #: ../../../../RELEASE.md:140
 msgid ""
-"Run `uv run python scripts/update_version.py YY.MM.N.0` to update `CITATION."
-"cff` and prepend a dated heading to `CHANGELOG.md`."
+"Run `uv run python scripts/update_version.py YY.MM.N.0` to update "
+"`CITATION.cff` and prepend a dated heading to `CHANGELOG.md`."
 msgstr ""
 
 #: ../../../../RELEASE.md:141
@@ -546,9 +546,9 @@ msgstr ""
 
 #: ../../../../RELEASE.md:155
 msgid ""
-"Run `uv run python scripts/update_version.py YY.MM.N.P` to update `CITATION."
-"cff` and prepend a dated heading to `CHANGELOG.md`. Commit the result on the "
-"release branch."
+"Run `uv run python scripts/update_version.py YY.MM.N.P` to update "
+"`CITATION.cff` and prepend a dated heading to `CHANGELOG.md`. Commit the "
+"result on the release branch."
 msgstr ""
 
 #: ../../../../RELEASE.md:156
@@ -615,12 +615,12 @@ msgstr ""
 #: ../../../../RELEASE.md:171
 msgid ""
 "From `main` at the merge commit, create a GitHub _release_ with the tag "
-"`pybammsolvers-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new `version."
-"py` value. This triggers `release_solvers.yml`, which builds wheels + sdist "
-"and publishes to PyPI. The `check_version` job in that workflow fails the "
-"release if the tag, `version.py`, or the `pyproject.toml`/`vcpkg.json` "
-"mirrors disagree; PyPI separately rejects a re-upload of an already-"
-"published version."
+"`pybammsolvers-vX.Y.Z`, where `X.Y.Z` **exactly matches** the new "
+"`version.py` value. This triggers `release_solvers.yml`, which builds wheels "
+"+ sdist and publishes to PyPI. The `check_version` job in that workflow "
+"fails the release if the tag, `version.py`, or the `pyproject.toml`/"
+"`vcpkg.json` mirrors disagree; PyPI separately rejects a re-upload of an "
+"already-published version."
 msgstr ""
 
 #: ../../../../RELEASE.md:172
@@ -645,8 +645,8 @@ msgid ""
 "When a release touches the API, console scripts, entry points, optional "
 "dependencies, supported Python versions, or core project metadata, update "
 "`meta.yaml` in [pybamm-feedstock](https://github.com/conda-forge/pybamm-"
-"feedstock) following [the conda-forge maintainer docs](https://conda-forge."
-"org/docs/maintainer/updating_pkgs/#updating-recipes) and re-render the "
+"feedstock) following [the conda-forge maintainer docs](https://conda-"
+"forge.org/docs/maintainer/updating_pkgs/#updating-recipes) and re-render the "
 "recipe. Push updates directly to the bot's automated PR where possible. "
 "Manual PRs must bump the `build` number in `meta.yaml` and be opened from a "
 "personal fork."
