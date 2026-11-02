@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:2
+msgid "GNU/Linux & macOS"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:4
+msgid "Contents"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:7
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:9
+msgid ""
+"To use PyBaMM, you must have Python 3.10, 3.11, 3.12, 3.13, or 3.14 "
+"installed."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:13
+msgid ""
+"To install Python 3 on Debian-based distributions (Debian, Ubuntu), open a "
+"terminal and run"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:15
+msgid ""
+"sudo apt-get update\n"
+"sudo apt-get install python3"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:22
+msgid ""
+"On macOS, you can use the ``homebrew`` package manager. First, `install brew "
+"<https://docs.python-guide.org/starting/install3/osx/>`__:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:25
+msgid ""
+"ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/"
+"HEAD/install.sh)\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:29
+msgid ""
+"then follow instructions in the link on adding ``brew`` to path, and run"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:31
+msgid "brew install python"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:37
+msgid "Install PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:42
+msgid "User install"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:44
+msgid ""
+"We recommend to install PyBaMM within a virtual environment, in order not to "
+"alter any distribution Python files. First, make sure you are using Python "
+"3.10, 3.11, 3.12, 3.13, or 3.14. To create a virtual environment within your "
+"current directory type:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:51
+msgid "uv venv"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:55
+msgid ""
+"This creates a ``.venv`` directory. You can then “activate” the environment "
+"using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:57
+msgid "source .venv/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:63
+msgid "virtualenv env"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:67
+msgid "You can then “activate” the environment using:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:69
+msgid "source env/bin/activate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:73
+msgid ""
+"When you are ready to exit the environment and go back to your original "
+"system, just type:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:75
+msgid "deactivate"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:79
+msgid "PyBaMM can be installed via ``uv``, ``pip``, or ``conda``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:83
+msgid "uv pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:89
+msgid "pip install pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:95
+msgid "conda install -c conda-forge pybamm-base"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:99
+msgid "PyBaMM’s :ref:`required dependencies <install-required-dependencies>`"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:101
+msgid ""
+"(such as ``numpy``, ``casadi``, etc) will be installed automatically when "
+"you install ``pybamm`` using ``pip`` or ``pybamm-base`` using ``conda``."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:104
+msgid ""
+"For an introduction to virtual environments, see (https://realpython.com/"
+"python-virtual-environments-a-primer/)."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:110
+msgid "Optional - JaxSolver"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:112
+msgid "Users can install ``jax`` and ``jaxlib`` to use the Jax solver."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:116
+msgid "uv pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:122
+msgid "pip install \"pybamm[jax]\""
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:126
+msgid ""
+"This command automatically downloads and installs ``pybamm`` and the "
+"compatible versions of ``jax`` and ``jaxlib`` on your system."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:128
+msgid ""
+"PyBaMM's full `conda-forge distribution <index.rst#installation>`_ "
+"(``pybamm``) includes ``jax`` and ``jaxlib`` by default."
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:131
+msgid "Uninstall PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:133
+msgid "PyBaMM can be uninstalled by running"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:135
+msgid "pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/gnu-linux-mac.rst:139
+msgid "in your virtual environment."
+msgstr ""
