@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-02 18:29+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -81,8 +82,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation:22
 msgid ""
-"Any keyword arguments to pass to the Discretisation class. See :class:"
-"`pybamm.Discretisation` for details."
+"Any keyword arguments to pass to the Discretisation class. "
+"See :class:`pybamm.Discretisation` for details."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -106,6 +107,14 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.build:11
 msgid "A dictionary of input parameters to pass to the model when solving."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.build:13
+msgid ""
+"The inputs that sensitivities will be calculated for, so that the initial "
+"state set from ``initial_soc`` carries its derivatives with respect to them. "
+"Default is False."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -133,9 +142,9 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.plot:1
 msgid ""
-"A method to quickly plot the outputs of the simulation. Creates a :class:"
-"`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and then calls :"
-"meth:`pybamm.QuickPlot.dynamic_plot`."
+"A method to quickly plot the outputs of the simulation. Creates "
+"a :class:`pybamm.QuickPlot` object (with keyword arguments 'kwargs') and "
+"then calls :meth:`pybamm.QuickPlot.dynamic_plot`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -146,9 +155,9 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.plot:7
 msgid ""
-"Additional keyword arguments passed to :meth:`pybamm.QuickPlot."
-"dynamic_plot`. For a list of all possible keyword arguments see :class:"
-"`pybamm.QuickPlot`."
+"Additional keyword arguments passed "
+"to :meth:`pybamm.QuickPlot.dynamic_plot`. For a list of all possible keyword "
+"arguments see :class:`pybamm.QuickPlot`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -209,8 +218,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.save:3
 msgid ""
-"The file extension can be arbitrary, but it is common to use \".pkl\" or \"."
-"pickle\""
+"The file extension can be arbitrary, but it is common to use \".pkl\" or "
+"\".pickle\""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -238,6 +247,54 @@ msgstr ""
 msgid ""
 "The desired name of the JSON file. If no name is provided, one will be "
 "created based on the model name, and the current datetime."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:1
+msgid "Set the initial state of the model from an initial SOC or voltage."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:3
+msgid "Initial SOC, or voltage as a string ending in \"V\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:5
+msgid "The OCV branch to use. Can be \"charge\" or \"discharge\"."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:7
+msgid ""
+"Input parameters. A list is accepted if every set gives the same initial "
+"state."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:10
+msgid ""
+"The inputs that sensitivities will be calculated for. The initial state is "
+"then expressed in terms of these inputs, so that its derivatives are "
+"included. Default is False."
+msgstr ""
+
+#: ../../../source/api/simulation/base_simulation.rst:0
+msgid "Raises"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:15
+msgid ""
+"If ``inputs`` is a list of input sets that give different initial     states."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.set_initial_state:16
+msgid ""
+"If sensitivities are requested for an input that the initial state     "
+"depends on and this model's initial state cannot carry derivatives, as     "
+"for an equivalent circuit model, or cannot be differentiated."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -316,16 +373,23 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.solve:34
 msgid ""
+"Input parameters. With ``initial_soc``, input sets are solved together in "
+"groups that give the same initial state."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:37
+msgid ""
 "The times (in seconds) at which to interpolate the solution. Defaults to "
 "None. Only valid for solvers that support intra-solve interpolation "
 "(`IDAKLUSolver`)."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
-#: of pybamm.simulation.base_simulation.BaseSimulation.solve:37
+#: of pybamm.simulation.base_simulation.BaseSimulation.solve:40
 msgid ""
-"Additional key-word arguments passed to `solver.solve`. See :meth:`pybamm."
-"BaseSolver.solve`."
+"Additional key-word arguments passed to `solver.solve`. "
+"See :meth:`pybamm.BaseSolver.solve`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
@@ -363,8 +427,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
 #: of pybamm.simulation.base_simulation.BaseSimulation.step:17
 msgid ""
-"Additional key-word arguments passed to `solver.solve`. See :meth:`pybamm."
-"BaseSolver.step`."
+"Additional key-word arguments passed to `solver.solve`. "
+"See :meth:`pybamm.BaseSolver.step`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/simulation/base_simulation.py:docstring
