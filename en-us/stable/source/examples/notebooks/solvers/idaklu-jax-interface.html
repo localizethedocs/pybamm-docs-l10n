@@ -1,0 +1,1093 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2025-08-04T17:42:48+00:00" />
+    <title>IDAKLU-JAX interface &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/solvers/idaklu-jax-interface';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/solvers/idaklu-jax-interface.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="next" title="Handling instability in non-smooth functions" href="instability-nonsmooth-functions.html" />
+    <link rel="prev" title="ODE solver" href="ode-solver.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+    <meta name="docbuild:last-update" content="2025-08-04"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../models/basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/electrode-state-of-health.html">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/lithium-plating-composite.html">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/saving_models.html">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../models/tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../models/Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-settings.html">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">IDAKLU-JAX interface</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/solvers/idaklu-jax-interface.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/solvers/idaklu-jax-interface.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="IDAKLU-JAX-interface">
+<h1>IDAKLU-JAX interface<a class="headerlink" href="#IDAKLU-JAX-interface" title="Link to this heading">#</a></h1>
+<p>The IDAKLU-JAX interface requires that PyBaMM is installed with the <a class="reference external" href="https://docs.pybamm.org/en/stable/source/user_guide/installation/gnu-linux-mac.html#optional-jaxsolver">optional JAX solver enabled</a> (<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pybamm[jax]</span></code>) and requires at least Python 3.10.</p>
+<p>PyBaMM provides two mechanisms to interface battery models with JAX. The first (JaxSolver) implements PyBaMM models directly in native JAX, and as such provides the greatest flexibility. However, these models can be very slow to compile, especially during their initial run, and can require large amounts of memory.</p>
+<p>The second (the IDAKLU-Jax interface) instead provides a JAX-compliant interface to the IDAKLU solver. IDAKLU is a fast (compiled) solver based on SUNDIALS. By exposing the IDAKLU solver to JAX, we provide a fast solver capable of interfacing with third-party JAX-compatible software libraries, such as numpyro.</p>
+<p>Despite the apparent advantages, there are some limitations to this approach. The most notable is that model derivatives are limited to first-order (i.e. sensitivities), since the IDAKLU solver is not capable of auto-differentiation.</p>
+<section id="Setup-a-basic-DFN-model">
+<h2>Setup a basic DFN model<a class="headerlink" href="#Setup-a-basic-DFN-model" title="Link to this heading">#</a></h2>
+<p>To demonstrate use of the IDAKLU-Jax interface, we first set-up a basic model, choosing the DFN model in this case. We will provide two <code class="docutils literal notranslate"><span class="pre">inputs</span></code> to the model and will specify a list of variables of interest (<code class="docutils literal notranslate"><span class="pre">output_variables</span></code>). Specifying <code class="docutils literal notranslate"><span class="pre">output_variables</span></code> is strongly recommended to reduce computational load, while <code class="docutils literal notranslate"><span class="pre">inputs</span></code> are only required when derivatives are to be considered.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[jax]&quot; -q    # install PyBaMM with JAX support if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We will want to differentiate our model, so let&#39;s define two input parameters</span>
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Current function [A]&quot;</span><span class="p">:</span> <span class="mf">0.222</span><span class="p">,</span>
+    <span class="s2">&quot;Separator porosity&quot;</span><span class="p">:</span> <span class="mf">0.3</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Set-up the model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_geometry</span>
+<span class="n">param</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+<span class="n">param</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">key</span><span class="p">:</span> <span class="s2">&quot;[input]&quot;</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">()})</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+<span class="n">var</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">standard_spatial_vars</span>
+<span class="n">var_pts</span> <span class="o">=</span> <span class="p">{</span><span class="n">var</span><span class="o">.</span><span class="n">x_n</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x_s</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">x_p</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">r_n</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="n">var</span><span class="o">.</span><span class="n">r_p</span><span class="p">:</span> <span class="mi">10</span><span class="p">}</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># Use a short time-vector for this example, and declare which variables to track</span>
+<span class="n">t_eval</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">output_variables</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Time [min]&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># Create the IDAKLU Solver object</span>
+<span class="n">idaklu_solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">IDAKLUSolver</span><span class="p">(</span>
+    <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+    <span class="n">atol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span>
+    <span class="n">output_variables</span><span class="o">=</span><span class="n">output_variables</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Next, we jaxify the IDAKLU solver in the same way that we would run the IDAKLU solve. The only difference is that the <code class="docutils literal notranslate"><span class="pre">jaxify()</span></code> function returns an <code class="docutils literal notranslate"><span class="pre">IDAKLUJax</span></code> object, instead of a <code class="docutils literal notranslate"><span class="pre">Solution</span></code> object. We will keep track of this object, and can request a JAX-expression from it using the <code class="docutils literal notranslate"><span class="pre">get_jaxpr()</span></code> method, as below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is how we would normally perform a solve using IDAKLU</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">idaklu_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">t_eval</span><span class="p">,</span>
+    <span class="n">inputs</span><span class="o">=</span><span class="n">inputs</span><span class="p">,</span>
+    <span class="n">calculate_sensitivities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Instead, we Jaxify the IDAKLU solver using similar arguments...</span>
+<span class="n">jax_solver</span> <span class="o">=</span> <span class="n">idaklu_solver</span><span class="o">.</span><span class="n">jaxify</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="n">t_eval</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># ... and then obtain a JAX expression for the solve</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_jaxpr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;JAX expression: </span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+JAX expression: &lt;function IDAKLUJax._jaxify.&lt;locals&gt;.f at 0x132d50f40&gt;
+</pre></div></div>
+</div>
+<p>The JAX expression (that we named <code class="docutils literal notranslate"><span class="pre">f</span></code> in our example), is a function that can be used and evaluated like any other native JAX expression. This means that it can be included in broader JAX expressions, and can even be JIT compiled. The only limitations are that:</p>
+<ol class="arabic simple">
+<li><p>derivatives cannot be taken beyond first-order, which is the limit of our IDAKLU solver implementation, and</p></li>
+<li><p>you are required to specify <code class="docutils literal notranslate"><span class="pre">output_variables</span></code> either at the <code class="docutils literal notranslate"><span class="pre">IDAKLUSolver</span></code> stage, or at the <code class="docutils literal notranslate"><span class="pre">jaxify</span></code> stage (you can create many jaxified expressions from a single solver object).</p></li>
+</ol>
+<p>Here is the most basic usage example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print all output variables, evaluated over a given time vector</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[3.81930814e+000 2.22000000e-001 4.95024341e-316]
+ [3.81346107e+000 2.22000000e-001 6.66666667e-001]
+ [3.81080090e+000 2.22000000e-001 1.33333333e+000]
+ [3.80885531e+000 2.22000000e-001 2.00000000e+000]
+ [3.80714541e+000 2.22000000e-001 2.66666667e+000]
+ [3.80552362e+000 2.22000000e-001 3.33333333e+000]
+ [3.80393909e+000 2.22000000e-001 4.00000000e+000]
+ [3.80237338e+000 2.22000000e-001 4.66666667e+000]
+ [3.80081962e+000 2.22000000e-001 5.33333333e+000]
+ [3.79927489e+000 2.22000000e-001 6.00000000e+000]]
+</pre></div></div>
+</div>
+<p>Here we see a matrix of (Nx3), where N is the number of time-samples in <code class="docutils literal notranslate"><span class="pre">t_eval</span></code>, and the three column-vectors correspond to our three <code class="docutils literal notranslate"><span class="pre">output_variables</span></code>. We can evaluate the expression at any point within our time-span (e.g. <code class="docutils literal notranslate"><span class="pre">f(0.0,</span> <span class="pre">inputs)</span></code>), or at multiple points (such as the full range of <code class="docutils literal notranslate"><span class="pre">t_eval</span></code>, as in our example). To help isolate output variables, the IDAKLU-Jax interface provides several helper functions. Below we demonstrate isolating a single variable using the <code class="docutils literal notranslate"><span class="pre">get_var</span></code>
+helper. You can also isolate multiple variables, provided as a list, by using the <code class="docutils literal notranslate"><span class="pre">get_vars</span></code> helper function.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Isolate a single variables</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Isolating a single variable returns an array of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Isolate two variables from the solver</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_vars</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+<span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Isolating two variables returns an array of shape </span><span class="si">{</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Isolating a single variable returns an array of shape (10,)
+[3.81930814 3.81346107 3.8108009  3.80885531 3.80714541 3.80552362
+ 3.80393909 3.80237338 3.80081962 3.79927489]
+
+Isolating two variables returns an array of shape (10, 2)
+[[3.81930814 0.222     ]
+ [3.81346107 0.222     ]
+ [3.8108009  0.222     ]
+ [3.80885531 0.222     ]
+ [3.80714541 0.222     ]
+ [3.80552362 0.222     ]
+ [3.80393909 0.222     ]
+ [3.80237338 0.222     ]
+ [3.80081962 0.222     ]
+ [3.79927489 0.222     ]]
+</pre></div></div>
+</div>
+<p>As with any JAX expression, we can create new expressions by encapsulating them in outer functions (as further demonstrated below). The method <code class="docutils literal notranslate"><span class="pre">jax_solver.get_var()</span></code> does this for you by encapsulating <code class="docutils literal notranslate"><span class="pre">f</span></code> with a function that isolates a given variable of interest. We then evaluate that new expression by passing our usual arguments <code class="docutils literal notranslate"><span class="pre">(t_eval,</span> <span class="pre">inputs)</span></code>.</p>
+<p>To compute the Jacobian matrix (the matrix of derivates of output variables with respect to each input parameter), make use of the Jacobian forward derivation <code class="docutils literal notranslate"><span class="pre">jax.jacfwd</span></code> and Jacobian reverse derivation <code class="docutils literal notranslate"><span class="pre">jax.jacrev</span></code> functions.</p>
+<p>When calling these functions we note that <code class="docutils literal notranslate"><span class="pre">argnums=1</span></code> signifies that we are taking the Jacobian with respect to the second argument (indexing from 0: <code class="docutils literal notranslate"><span class="pre">inputs</span></code>). Since <code class="docutils literal notranslate"><span class="pre">inputs</span></code> is a dictionary of input parameters, the result will also be a dictionary of derivatives with respect to each dictionary key / input parameter. These two methods (<code class="docutils literal notranslate"><span class="pre">jacfwd</span></code> and <code class="docutils literal notranslate"><span class="pre">jacrev</span></code>) will produce the same output, it is simply their derivation that differs. In general, the forward method tends to be slightly
+faster to run than the reverse method for our IDAKLU implementation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the Jacobian matrix (via forward autodiff)</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jacobian forward method ran in </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t_start</span><span class="si">:</span><span class="s2">0.3</span><span class="si">}</span><span class="s2"> secs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+<span class="c1"># Calculate Jacobian matrix (via backward autodiff)</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacrev</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Jacobian reverse method ran in </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t_start</span><span class="si">:</span><span class="s2">0.3</span><span class="si">}</span><span class="s2"> secs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Jacobian forward method ran in 0.125 secs
+{&#39;Current function [A]&#39;: Array([[-0.13643792,  1.        ,  0.        ],
+       [-0.16400861,  1.        ,  0.        ],
+       [-0.17630142,  1.        ,  0.        ],
+       [-0.18509421,  1.        ,  0.        ],
+       [-0.19273301,  1.        ,  0.        ],
+       [-0.19993145,  1.        ,  0.        ],
+       [-0.20692727,  1.        ,  0.        ],
+       [-0.21380043,  1.        ,  0.        ],
+       [-0.22057579,  1.        ,  0.        ],
+       [-0.2272616 ,  1.        ,  0.        ]], dtype=float64), &#39;Separator porosity&#39;: Array([[0.00579553, 0.        , 0.        ],
+       [0.00797   , 0.        , 0.        ],
+       [0.0095281 , 0.        , 0.        ],
+       [0.01024868, 0.        , 0.        ],
+       [0.01053737, 0.        , 0.        ],
+       [0.0106461 , 0.        , 0.        ],
+       [0.01068649, 0.        , 0.        ],
+       [0.01070164, 0.        , 0.        ],
+       [0.01070816, 0.        , 0.        ],
+       [0.01071172, 0.        , 0.        ]], dtype=float64)}
+
+Jacobian reverse method ran in 0.196 secs
+{&#39;Current function [A]&#39;: Array([[-0.13643792,  1.        ,  0.        ],
+       [-0.16400861,  1.        ,  0.        ],
+       [-0.17630142,  1.        ,  0.        ],
+       [-0.18509421,  1.        ,  0.        ],
+       [-0.19273301,  1.        ,  0.        ],
+       [-0.19993145,  1.        ,  0.        ],
+       [-0.20692727,  1.        ,  0.        ],
+       [-0.21380043,  1.        ,  0.        ],
+       [-0.22057579,  1.        ,  0.        ],
+       [-0.2272616 ,  1.        ,  0.        ]],      dtype=float64, weak_type=True), &#39;Separator porosity&#39;: Array([[0.00579553, 0.        , 0.        ],
+       [0.00797   , 0.        , 0.        ],
+       [0.0095281 , 0.        , 0.        ],
+       [0.01024868, 0.        , 0.        ],
+       [0.01053737, 0.        , 0.        ],
+       [0.0106461 , 0.        , 0.        ],
+       [0.01068649, 0.        , 0.        ],
+       [0.01070164, 0.        , 0.        ],
+       [0.01070816, 0.        , 0.        ],
+       [0.01071172, 0.        , 0.        ]],      dtype=float64, weak_type=True)}
+</pre></div></div>
+</div>
+<p>To extract the relevant data vector from the above expression, we can again make use of the <code class="docutils literal notranslate"><span class="pre">get_var()</span></code> helper function, which can also take numpy arrays as input, for example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Isolate the derivate of Voltage with respect to the Current function:</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">jacfwd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="n">out</span><span class="p">[</span><span class="s2">&quot;Current function [A]&quot;</span><span class="p">],</span> <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-0.13643792 -0.16400861 -0.17630142 -0.18509421 -0.19273301 -0.19993145
+ -0.20692727 -0.21380043 -0.22057579 -0.2272616 ]
+</pre></div></div>
+</div>
+<p>The gradient (<code class="docutils literal notranslate"><span class="pre">grad</span></code>) function on the other hand requires the underlying function to return a scalar value. The function must therefore be called separately for each time sample, and can only be evaluted for one output variable at a time. We can obey these restrictions with our JAX expression <code class="docutils literal notranslate"><span class="pre">f</span></code> through use of the <code class="docutils literal notranslate"><span class="pre">get_var</span></code> and <code class="docutils literal notranslate"><span class="pre">vmap</span></code> functions (the latter of which provides vector-mapping over time).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example evaluation using the `grad` function</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span>
+    <span class="n">jax</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span>
+        <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">),</span>
+        <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># take derivative with respect to `inputs`</span>
+    <span class="p">),</span>
+    <span class="n">in_axes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>  <span class="c1"># map time over the 0th dimension and do not map inputs</span>
+<span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gradient method ran in </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t_start</span><span class="si">:</span><span class="s2">0.3</span><span class="si">}</span><span class="s2"> secs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Gradient method ran in 0.105 secs
+{&#39;Current function [A]&#39;: Array([-0.13643792, -0.16400861, -0.17630142, -0.18509421, -0.19273301,
+       -0.19993145, -0.20692727, -0.21380043, -0.22057579, -0.2272616 ],      dtype=float64), &#39;Separator porosity&#39;: Array([0.00579553, 0.00797   , 0.0095281 , 0.01024868, 0.01053737,
+       0.0106461 , 0.01068649, 0.01070164, 0.01070816, 0.01071172],      dtype=float64)}
+</pre></div></div>
+</div>
+</section>
+<section id="A-use-case-example">
+<h2>A use-case example<a class="headerlink" href="#A-use-case-example" title="Link to this heading">#</a></h2>
+<p>As a use-case example, consider a fitting procedure where we want to compare simulation data against some experimental data. We achieve this by computing the sum-of-squared error (SEE) between the two. Many fitting procedures will converge more quickly (with fewer iterations) if both the value <em>and gradient</em> of the SSE function are provided. By making use of JAX-expressions we can derive these effortlessly.</p>
+<p><em>Note</em>: We do not need to map over time when calling <code class="docutils literal notranslate"><span class="pre">value_and_grad</span></code> in this example as the <code class="docutils literal notranslate"><span class="pre">sse</span></code> function returns a scalar (despite taking vector inputs).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulate some experimental data using our original parameter settings</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">sim</span><span class="p">[</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">](</span><span class="n">t_eval</span><span class="p">)</span>
+
+
+<span class="c1"># Sum-of-squared errors</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sse</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+    <span class="n">modelled</span> <span class="o">=</span> <span class="n">jax_solver</span><span class="o">.</span><span class="n">get_var</span><span class="p">(</span><span class="s2">&quot;Voltage [V]&quot;</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">jnp</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">modelled</span> <span class="o">-</span> <span class="n">data</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+
+<span class="c1"># Provide some predicted model inputs (these could come from a fitting procedure)</span>
+<span class="n">inputs_pred</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Current function [A]&quot;</span><span class="p">:</span> <span class="mf">0.150</span><span class="p">,</span>
+    <span class="s2">&quot;Separator porosity&quot;</span><span class="p">:</span> <span class="mf">0.333</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Get the value and gradient of the SSE function</span>
+<span class="n">t_start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">value</span><span class="p">,</span> <span class="n">gradient</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">value_and_grad</span><span class="p">(</span><span class="n">sse</span><span class="p">,</span> <span class="n">argnums</span><span class="o">=</span><span class="mi">1</span><span class="p">)(</span><span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value and gradient computed in </span><span class="si">{</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">t_start</span><span class="si">:</span><span class="s2">0.3</span><span class="si">}</span><span class="s2"> secs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SSE value: &quot;</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;SSE gradient (wrt each input): &quot;</span><span class="p">,</span> <span class="n">gradient</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Value and gradient computed in 0.095 secs
+SSE value:  0.0020846163677995366
+SSE gradient (wrt each input):  {&#39;Current function [A]&#39;: array(-0.05775429), &#39;Separator porosity&#39;: array(0.00146983)}
+</pre></div></div>
+</div>
+<p>All of the above expressions can be JIT compiled (onto CPU) by using the <code class="docutils literal notranslate"><span class="pre">jax.jit</span></code> directive. Practically, this provides a wrap-around back to the Python interface of the IDAKLU Solver, so is only provided to afford maximum downstream compatibility (where JIT may be called outside of the user’s control).</p>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ode-solver.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ODE solver</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="instability-nonsmooth-functions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Handling instability in non-smooth functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Setup-a-basic-DFN-model">Setup a basic DFN model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#A-use-case-example">A use-case example</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/solvers/idaklu-jax-interface.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          Edit on GitHub
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  Last updated on 2025-08-04.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

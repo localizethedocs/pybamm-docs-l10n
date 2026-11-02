@@ -1,0 +1,804 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.solvers.casadi_algebraic_solver &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/solvers/casadi_algebraic_solver';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/solvers/casadi_algebraic_solver.html" />
+    <link rel="icon" href="../../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.solvers.casadi_algebraic_solver</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.solvers.casadi_algebraic_solver</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numbers</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">casadi</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+
+<div class="viewcode-block" id="CasadiAlgebraicSolver">
+<a class="viewcode-back" href="../../../source/api/solvers/algebraic_solvers.html#pybamm.CasadiAlgebraicSolver">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CasadiAlgebraicSolver</span><span class="p">(</span><span class="n">pybamm</span><span class="o">.</span><span class="n">BaseSolver</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve a discretised model which contains only (time independent) algebraic</span>
+<span class="sd">    equations using CasADi&#39;s root finding algorithm.</span>
+
+<span class="sd">    Note: this solver could be extended for quasi-static models, or models in</span>
+<span class="sd">    which the time derivative is manually discretised and results in a (possibly</span>
+<span class="sd">    nonlinear) algebraic system at each time level.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    tol : float, optional</span>
+<span class="sd">        The tolerance for the maximum residual error (default is 1e-6).</span>
+<span class="sd">    step_tol : float, optional</span>
+<span class="sd">        The tolerance for the maximum step size (default is 1e-4).</span>
+<span class="sd">    extra_options : dict, optional</span>
+<span class="sd">        Any options to pass to the CasADi rootfinder.</span>
+<span class="sd">        Please consult `CasADi documentation &lt;https://web.casadi.org/python-api/#rootfinding&gt;`_ for</span>
+<span class="sd">        details. By default:</span>
+
+<span class="sd">        .. code-block:: python</span>
+
+<span class="sd">            extra_options = {</span>
+<span class="sd">                # Whether to throw an error if the solver fails to converge.</span>
+<span class="sd">                &quot;error_on_fail&quot;: False,</span>
+<span class="sd">                # Verbosity level</span>
+<span class="sd">                &quot;verbose&quot;: False,</span>
+<span class="sd">                # Whether to show warnings when evaluating the model</span>
+<span class="sd">                &quot;show_eval_warnings&quot;: False,</span>
+<span class="sd">            }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">step_tol</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">extra_options</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">default_extra_options</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;error_on_fail&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;verbose&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+            <span class="s2">&quot;show_eval_warnings&quot;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">extra_options</span> <span class="o">=</span> <span class="n">extra_options</span> <span class="ow">or</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_options</span> <span class="o">=</span> <span class="n">extra_options</span> <span class="o">|</span> <span class="n">default_extra_options</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">step_tol</span> <span class="o">=</span> <span class="n">step_tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tol</span> <span class="o">=</span> <span class="n">tol</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;CasADi algebraic solver&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_algebraic_solver</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">citations</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="s2">&quot;Andersson2019&quot;</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tol</span>
+
+    <span class="nd">@tol</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">tol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_tol</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step_tol</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step_tol</span>
+
+    <span class="nd">@step_tol</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step_tol</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_step_tol</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_set_up_root_solver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Create and return a CasADi rootfinder object. The parameter argument to the</span>
+<span class="sd">        rootfinder is the concatenated time, differential states, and flattened inputs.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        inputs_dict : dict</span>
+<span class="sd">            Dictionary of inputs.</span>
+<span class="sd">        t_eval : :class:`numpy.array`, size (k,)</span>
+<span class="sd">            The times at which to compute the solution (not used).</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`casadi.rootfinder`</span>
+<span class="sd">            The rootfinder function is stored in the model as `algebraic_root_solver`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start building </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">y0</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">y0_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="c1"># The casadi algebraic solver can read rhs equations, but leaves them unchanged</span>
+        <span class="c1"># i.e. the part of the solution vector that corresponds to the differential</span>
+        <span class="c1"># equations will be equal to the initial condition provided. This allows this</span>
+        <span class="c1"># solver to be used for initialising the DAE solvers</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">rhs</span> <span class="o">==</span> <span class="p">{}:</span>
+            <span class="n">len_rhs</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">elif</span> <span class="n">model</span><span class="o">.</span><span class="n">len_rhs_and_alg</span> <span class="o">==</span> <span class="n">y0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+            <span class="n">len_rhs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">len_rhs</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">len_rhs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">len_rhs</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">len_rhs_sens</span>
+
+        <span class="n">len_alg</span> <span class="o">=</span> <span class="n">y0</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">len_rhs</span>
+
+        <span class="c1"># Set up symbolic variables</span>
+        <span class="n">t_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+        <span class="n">y_diff_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;y_diff&quot;</span><span class="p">,</span> <span class="n">len_rhs</span><span class="p">)</span>
+        <span class="n">y_alg_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="s2">&quot;y_alg&quot;</span><span class="p">,</span> <span class="n">len_alg</span><span class="p">)</span>
+        <span class="n">y_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y_diff_sym</span><span class="p">,</span> <span class="n">y_alg_sym</span><span class="p">)</span>
+
+        <span class="c1"># Create parameter dictionary</span>
+        <span class="n">inputs_casadi</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">inputs_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">numbers</span><span class="o">.</span><span class="n">Number</span><span class="p">):</span>
+                <span class="n">inputs_casadi</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">inputs_casadi</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">MX</span><span class="o">.</span><span class="n">sym</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">value</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">inputs_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">inputs_casadi</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+        <span class="n">p_sym</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span>
+            <span class="n">t_sym</span><span class="p">,</span>
+            <span class="n">y_diff_sym</span><span class="p">,</span>
+            <span class="n">inputs_sym</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">alg</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">casadi_algebraic</span><span class="p">(</span><span class="n">t_sym</span><span class="p">,</span> <span class="n">y_sym</span><span class="p">,</span> <span class="n">inputs_sym</span><span class="p">)</span>
+
+        <span class="c1"># Set constraints vector in the casadi format</span>
+        <span class="c1"># Constrain the unknowns. 0 (default): no constraint on ui, 1: ui &gt;= 0.0,</span>
+        <span class="c1"># -1: ui &lt;= 0.0, 2: ui &gt; 0.0, -2: ui &lt; 0.0.</span>
+        <span class="n">model_alg_lb</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">len_rhs</span><span class="p">:]</span>
+        <span class="n">model_alg_ub</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">len_rhs</span><span class="p">:]</span>
+        <span class="n">constraints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">model_alg_lb</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="c1"># If the lower bound is positive then the variable must always be positive</span>
+        <span class="n">constraints</span><span class="p">[</span><span class="n">model_alg_lb</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="c1"># If the upper bound is negative then the variable must always be negative</span>
+        <span class="n">constraints</span><span class="p">[</span><span class="n">model_alg_ub</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+        <span class="c1"># Set up rootfinder</span>
+        <span class="n">out</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">rootfinder</span><span class="p">(</span>
+            <span class="s2">&quot;roots&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;newton&quot;</span><span class="p">,</span>
+            <span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_alg_sym</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">p_sym</span><span class="p">,</span> <span class="n">g</span><span class="o">=</span><span class="n">alg</span><span class="p">),</span>
+            <span class="p">{</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_options</span><span class="p">,</span>
+                <span class="s2">&quot;abstol&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="p">,</span>
+                <span class="s2">&quot;abstolStep&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">step_tol</span><span class="p">,</span>
+                <span class="s2">&quot;constraints&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(</span><span class="n">constraints</span><span class="p">),</span>
+            <span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">pybamm</span><span class="o">.</span><span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finish building </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">out</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_integrate_single</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="p">,</span> <span class="n">y0</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Calculate the solution of the algebraic equations through root-finding</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        model : :class:`pybamm.BaseModel`</span>
+<span class="sd">            The model whose solution to calculate.</span>
+<span class="sd">        t_eval : :class:`numpy.array`, size (k,)</span>
+<span class="sd">            The times at which to compute the solution</span>
+<span class="sd">        inputs_dict : dict, optional</span>
+<span class="sd">            Any input parameters to pass to the model when solving</span>
+<span class="sd">        y0 : array-like</span>
+<span class="sd">            The initial conditions for the model</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        :class:`pybamm.Solution`</span>
+<span class="sd">            A Solution object containing the times and values of the solution,</span>
+<span class="sd">            as well as various diagnostic messages.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Record whether there are any symbolic inputs</span>
+        <span class="n">inputs_dict</span> <span class="o">=</span> <span class="n">inputs_dict</span> <span class="ow">or</span> <span class="p">{}</span>
+
+        <span class="c1"># Create casadi objects for the root-finder</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">inputs_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+        <span class="c1"># The casadi algebraic solver can read rhs equations, but leaves them unchanged</span>
+        <span class="c1"># i.e. the part of the solution vector that corresponds to the differential</span>
+        <span class="c1"># equations will be equal to the initial condition provided. This allows this</span>
+        <span class="c1"># solver to be used for initialising the DAE solvers</span>
+        <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">rhs</span> <span class="o">==</span> <span class="p">{}:</span>
+            <span class="n">len_rhs</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="n">y0_diff</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">DM</span><span class="p">()</span>
+            <span class="n">y0_alg</span> <span class="o">=</span> <span class="n">y0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">len_rhs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">len_rhs</span>
+            <span class="n">y0_diff</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[:</span><span class="n">len_rhs</span><span class="p">]</span>
+            <span class="n">y0_alg</span> <span class="o">=</span> <span class="n">y0</span><span class="p">[</span><span class="n">len_rhs</span><span class="p">:]</span>
+
+        <span class="n">y_alg</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="c1"># Set the parameter vector</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">len_rhs</span> <span class="o">+</span> <span class="n">inputs</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="c1"># Set the time</span>
+        <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># Set the differential states portion of the parameter vector</span>
+        <span class="n">p</span><span class="p">[</span><span class="mi">1</span> <span class="p">:</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">len_rhs</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y0_diff</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+        <span class="c1"># Set the inputs portion of the parameter vector</span>
+        <span class="n">p</span><span class="p">[</span><span class="mi">1</span> <span class="o">+</span> <span class="n">len_rhs</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+
+        <span class="n">roots</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_root_solver</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">inputs_dict</span><span class="p">,</span> <span class="n">t_eval</span><span class="p">)</span>
+
+        <span class="n">timer</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Timer</span><span class="p">()</span>
+        <span class="n">integration_time</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">t_eval</span><span class="p">:</span>
+            <span class="c1"># Set the time for the parameter vector</span>
+            <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">t</span>
+
+            <span class="c1"># Solve</span>
+            <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="n">y_alg_sol</span> <span class="o">=</span> <span class="n">y0_alg</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="c1"># Casadi does not give us the value of the final residuals or step</span>
+                <span class="c1"># norm, however, if it returns a success flag and there are no NaNs or</span>
+                <span class="c1"># Infs in the solution, then it must be successful. The casadi</span>
+                <span class="c1"># rootfinder can sometimes return due to step_tol being reached, so</span>
+                <span class="c1"># retry once if the residual is above tolerance.</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+                    <span class="n">timer</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+                    <span class="n">y_alg_sol</span> <span class="o">=</span> <span class="n">roots</span><span class="p">(</span><span class="n">y_alg_sol</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span>
+                    <span class="n">integration_time</span> <span class="o">+=</span> <span class="n">timer</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+                    <span class="n">fun</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">casadi_algebraic</span><span class="p">(</span>
+                        <span class="n">t</span><span class="p">,</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y0_diff</span><span class="p">,</span> <span class="n">y_alg_sol</span><span class="p">),</span> <span class="n">inputs</span>
+                    <span class="p">)</span>
+                    <span class="n">y_is_finite</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">max_abs</span><span class="p">(</span><span class="n">y_alg_sol</span><span class="p">))</span>
+                    <span class="n">fun_max_abs</span> <span class="o">=</span> <span class="n">max_abs</span><span class="p">(</span><span class="n">fun</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="p">(</span>
+                        <span class="ow">not</span> <span class="n">y_is_finite</span>
+                        <span class="ow">or</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">fun_max_abs</span><span class="p">)</span>
+                        <span class="ow">or</span> <span class="n">fun_max_abs</span> <span class="o">&lt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tol</span>
+                    <span class="p">):</span>
+                        <span class="k">break</span>
+
+                <span class="n">solver_stats</span> <span class="o">=</span> <span class="n">roots</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="n">solver_stats</span><span class="p">[</span><span class="s2">&quot;success&quot;</span><span class="p">]</span> <span class="ow">and</span> <span class="n">y_is_finite</span> <span class="ow">and</span> <span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">fun_max_abs</span><span class="p">)</span>
+                <span class="p">)</span>
+            <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                <span class="n">success</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="n">err</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not find acceptable solution: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">err</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isfinite</span><span class="p">(</span><span class="n">fun</span><span class="p">)):</span>
+                    <span class="n">reason</span> <span class="o">=</span> <span class="s2">&quot;solver returned NaNs or Infs&quot;</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">reason</span> <span class="o">=</span> <span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;solver terminated unsuccessfully and maximum solution error (</span><span class="si">{</span><span class="n">casadi</span><span class="o">.</span><span class="n">mmax</span><span class="p">(</span><span class="n">casadi</span><span class="o">.</span><span class="n">fabs</span><span class="p">(</span><span class="n">fun</span><span class="p">))</span><span class="si">}</span><span class="s2">) &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;above tolerance (</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tol</span><span class="si">}</span><span class="s2">)&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="k">raise</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Could not find acceptable solution: </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># update initial guess for the next iteration</span>
+            <span class="n">y0_alg</span> <span class="o">=</span> <span class="n">y_alg_sol</span>
+            <span class="n">y0</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y0_diff</span><span class="p">,</span> <span class="n">y0_alg</span><span class="p">)</span>
+            <span class="c1"># update solution array</span>
+            <span class="k">if</span> <span class="n">y_alg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">y_alg</span> <span class="o">=</span> <span class="n">y_alg_sol</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">y_alg</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="n">y_alg</span><span class="p">,</span> <span class="n">y_alg_sol</span><span class="p">)</span>
+
+        <span class="c1"># Concatenate differential part</span>
+        <span class="n">y_diff</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">horzcat</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">y0_diff</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">t_eval</span><span class="p">))</span>
+        <span class="n">y_sol</span> <span class="o">=</span> <span class="n">casadi</span><span class="o">.</span><span class="n">vertcat</span><span class="p">(</span><span class="n">y_diff</span><span class="p">,</span> <span class="n">y_alg</span><span class="p">)</span>
+
+        <span class="c1"># Return solution object (no events, so pass None to t_event, y_event)</span>
+        <span class="n">sol</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Solution</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">t_eval</span><span class="p">],</span>
+            <span class="n">y_sol</span><span class="p">,</span>
+            <span class="n">model</span><span class="p">,</span>
+            <span class="n">inputs_dict</span><span class="p">,</span>
+            <span class="n">termination</span><span class="o">=</span><span class="s2">&quot;final time&quot;</span><span class="p">,</span>
+            <span class="n">all_t_evals</span><span class="o">=</span><span class="p">[</span><span class="n">t_eval</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="n">sol</span><span class="o">.</span><span class="n">integration_time</span> <span class="o">=</span> <span class="n">integration_time</span>
+        <span class="k">return</span> <span class="n">sol</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">max_abs</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">ord</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
