@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-16 18:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -294,6 +295,13 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
+#: of pybamm.step.BaseStep.upsampling_variable:1
+msgid ""
+"The scalar output the solver's ``upsampling_tolerance`` resolves. An "
+"algebraic state adds no points, as the integrator already resolves it."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/base_step.py:docstring
 #: of
 #: pybamm.experiment.step.base_step.BaseStep.value_based_charge_or_discharge:1
 msgid ""
@@ -368,9 +376,10 @@ msgstr ""
 #: of pybamm.experiment.step.steps.CustomStepImplicit:6
 msgid ""
 "Whether the control is algebraic or differential. Default is algebraic, in "
-"which case the equation is  .. math::     0 = f(\\text{{variables}})  where :"
-"math:`f` is the current_rhs_function.  If control is \"differential\", the "
-"equation is  .. math::     \\frac{dI}{dt} = f(\\text{{variables}})"
+"which case the equation is  .. math::     0 = f(\\text{{variables}})  "
+"where :math:`f` is the current_rhs_function.  If control is "
+"\"differential\", the equation is  .. math::     \\frac{dI}{dt} = "
+"f(\\text{{variables}})"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/steps.py:docstring
@@ -461,8 +470,7 @@ msgstr ""
 #: pybamm.experiment.step.step_termination.CurrentTermination:4
 #: pybamm.experiment.step.step_termination.CustomTermination:23
 #: pybamm.experiment.step.step_termination.VoltageTermination:4
-msgid ""
-"**Extends:** :class:`pybamm.experiment.step.step_termination.BaseTermination`"
+msgid "**Extends:** :class:`pybamm.experiment.step.step_termination.BaseTermination`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
@@ -524,8 +532,8 @@ msgstr ""
 msgid ""
 "Base class for a termination event for an experiment step. To create a "
 "custom termination, a class must implement `get_event_expression` to return "
-"the symbolic expression for the event. In most cases the class :class:"
-"`pybamm.step.CustomTermination` can be used to assist with this."
+"the symbolic expression for the event. In most cases the "
+"class :class:`pybamm.step.CustomTermination` can be used to assist with this."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/experiment/step/step_termination.py:docstring
