@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en-US" data-content_root="../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>pybamm.pybamm_data &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../_static/documentation_options.js?v=d68ff1f1"></script>
+    <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/pybamm/pybamm_data';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/_modules/pybamm/pybamm_data.html" />
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en-US"/>
+  <meta name="docsearch:version" content="26.5.0" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../source/user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">Module code</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">pybamm.pybamm_data</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>Source code for pybamm.pybamm_data</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pooch</span>
+
+
+<div class="viewcode-block" id="DataLoader">
+<a class="viewcode-back" href="../../source/api/pybamm_data.html#pybamm.DataLoader">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataLoader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Data Loader class for downloading and loading data files upstream at https://github.com/pybamm-team/pybamm-data/</span>
+
+<span class="sd">    The following files are listed in the registry -</span>
+
+<span class="sd">    COMSOL Results</span>
+<span class="sd">    ---------------</span>
+
+<span class="sd">    :footcite:t:`Andersson2019`</span>
+<span class="sd">    :footcite:t:`Doyle1993`</span>
+<span class="sd">    :footcite:t:`Harris2020`</span>
+<span class="sd">    :footcite:t:`Marquis2019`</span>
+<span class="sd">    :footcite:t:`Marquis2020`</span>
+
+<span class="sd">    - comsol_01C.json</span>
+<span class="sd">    - comsol_05C.json</span>
+<span class="sd">    - comsol_1C.json</span>
+<span class="sd">    - comsol_1plus1D_3C.json</span>
+<span class="sd">    - comsol_2C.json</span>
+<span class="sd">    - comsol_3C.json</span>
+
+<span class="sd">    Kokam SLPB 75106100 discharge data from Ecker et al (2015)</span>
+<span class="sd">    ----------------------------------------------------------</span>
+
+<span class="sd">    :footcite:t:`Ecker2015i`</span>
+<span class="sd">    :footcite:t:`Ecker2015ii`</span>
+
+<span class="sd">    - Ecker_1C.csv</span>
+<span class="sd">    - Ecker_5C.csv</span>
+
+<span class="sd">    Enertech cells - discharge results for beginning of life</span>
+<span class="sd">    --------------------------------------------------------</span>
+
+<span class="sd">    :footcite:t:`Andersson2019`</span>
+<span class="sd">    :footcite:t:`Doyle1993`</span>
+<span class="sd">    :footcite:t:`Harris2020`</span>
+<span class="sd">    :footcite:t:`Marquis2019`</span>
+<span class="sd">    :footcite:t:`Ai2019`</span>
+<span class="sd">    :footcite:t:`Deshpande2012`</span>
+<span class="sd">    :footcite:t:`Timms2021`</span>
+
+<span class="sd">    - 0.1C_discharge_U.txt</span>
+<span class="sd">    - 0.1C_discharge_displacement.txt</span>
+<span class="sd">    - 0.5C_discharge_T.txt</span>
+<span class="sd">    - 0.5C_discharge_U.txt</span>
+<span class="sd">    - 0.5C_discharge_displacement.txt</span>
+<span class="sd">    - 1C_discharge_T.txt</span>
+<span class="sd">    - 1C_discharge_U.txt</span>
+<span class="sd">    - 1C_discharge_displacement.txt</span>
+<span class="sd">    - 2C_discharge_T.txt</span>
+<span class="sd">    - 2C_discharge_U.txt</span>
+<span class="sd">    - 2C_discharge_displacement.txt</span>
+<span class="sd">    - stn_2C.txt</span>
+<span class="sd">    - stp_2C.txt</span>
+
+
+<span class="sd">    Drive cycles</span>
+<span class="sd">    ------------</span>
+
+<span class="sd">    :footcite:t:`Andersson2019`</span>
+<span class="sd">    :footcite:t:`Doyle1993`</span>
+<span class="sd">    :footcite:t:`Harris2020`</span>
+<span class="sd">    :footcite:t:`Marquis2019`</span>
+<span class="sd">    :footcite:t:`Marquis2020`</span>
+
+<span class="sd">    - UDDS.csv</span>
+<span class="sd">    - US06.csv</span>
+<span class="sd">    - WLTC.csv</span>
+<span class="sd">    - car_current.csv</span>
+
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a pooch registry with the following data files available upstream at https://github.com/pybamm-team/pybamm-data/</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">version</span> <span class="o">=</span> <span class="s2">&quot;v1.0.2&quot;</span>  <span class="c1"># Version of pybamm-data release</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">os_cache</span><span class="p">(</span><span class="s2">&quot;pybamm&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">files</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># COMSOL results</span>
+            <span class="s2">&quot;comsol_01C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:bc5136fe961e269453bdc31fcaa97376d6f8c347d570fd30ce4b7660c68ae22c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comsol_05C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:3b044135ad88bdb88959304a33fe42b654d5ef7ef79d1271dd909cec55b257fb&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comsol_1C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:d45e3ab482c497c37ebbc68898da22bab0b0263992d8f2302502028bfd5ba0e9&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comsol_1plus1D_3C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:cdd5759202f9c7887d2ea6032f82212f2ca89297191fe5282b8812e1a09b1e1f&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comsol_2C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:15c2637f54bf1639621c58795db859cb08611c8182b7b20ade10e4c3e2839a5b&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;comsol_3C.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:11d5afccb70be85d4ac7e61d413c6e0f5e318e1635b1347c9a3c6784119711e6&quot;</span><span class="p">,</span>
+            <span class="c1"># Kokam SLPB 75106100 discharge data from Ecker et al (2015)</span>
+            <span class="s2">&quot;Ecker_1C.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:428dc5113a6430492f430fb9e895f67d3e20f5643dc49a1cc0a922b92a5a8e01&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Ecker_5C.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:a89f8bf6e305b2a4195e1fae5e803277a40ed7557d263ef726f621803dcbb495&quot;</span><span class="p">,</span>
+            <span class="c1"># Enertech cells - discharge results for beginning of life</span>
+            <span class="s2">&quot;0.1C_discharge_U.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:7b9fcd137441eea4ab686faee8d57fe242c5544400939ef358ccd99c63c9579d&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;0.1C_discharge_displacement.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:f1329731ead5a82a2be9851cf80e4c6d68dd0774e07aee5361e2af3ab420d7be&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;0.5C_discharge_T.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:2140b2f6bd698135d09a25b1f04c271d35a3a02999ace118b10389e01defa2ae&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;0.5C_discharge_U.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:9ed8368b2c6149d2a69218e7df6aaade2511c9f7f6fc7932cda153d9a3a10f39&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;0.5C_discharge_displacement.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:8098565ff99bc938864797b402f483c1c64a583d6db85d086f39ab0e7b638dd1&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1C_discharge_T.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:97308dfd7f7dd6c434e30f6c00fb6707c43c963855bb0800e0336809d5cc3756&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1C_discharge_U.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:8fc19de45172215d65c56522c224e6fc700ee443db236b814238a829b7a14c3a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;1C_discharge_displacement.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:c2e8617ac48a20921da1b40bbebac479a0a143edf16b12b2e1ff9aaaf1a32ff4&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2C_discharge_T.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:4bd688fb7653539701fe3df61857474b4d54e8b142c84fdc4c8b92b9573fa5d0&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2C_discharge_U.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:7b3c24b5e6df377075002abc2f62bab7c88b27d826812ba5a4c8385a1a12e723&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;2C_discharge_displacement.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:2b11513d80827c762325c819a084b87b3a239af7d112f234c9871481760a0013&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;stn_2C.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:bb2f90ccfd2cd86ad589287caae13470e554df2f4f47f0f583a5a7e3e6bd9d4c&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;stp_2C.txt&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:6fe73b3a18e5fcfb95151dfd7d34c3cbe929792631447ed3ec88c047c9778223&quot;</span><span class="p">,</span>
+            <span class="c1"># Drive cycles</span>
+            <span class="s2">&quot;UDDS.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:9fe6558c17aad3cc08109186923aeb7459cd3097a381c44e854bf22dd12a5a2a&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;US06.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:5909eb2ec7983fae86a050ff3b35a2041d0ab698710a6b0f95d5816e348077ba&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;WLTC.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:bb2f95018a44ac1425cb9c787c34721192af502c7385f1358f28e4f75df11fd8&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;car_current.csv&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:4305b91b9df073cb048c25dd3fae725e06a94fe200e322e5c08db290d6799e36&quot;</span><span class="p">,</span>
+            <span class="c1"># BPX files</span>
+            <span class="s2">&quot;nmc_pouch_cell_BPX.json&quot;</span><span class="p">:</span> <span class="s2">&quot;sha256:cea07ea4fff9d667c2ad3fc430e699bb962a941051004dce52fddcd2d44ace3f&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registry</span> <span class="o">=</span> <span class="n">pooch</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">,</span>
+            <span class="n">base_url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;https://github.com/pybamm-team/pybamm-data/releases/download/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="p">,</span>
+            <span class="n">registry</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="DataLoader.get_data">
+<a class="viewcode-back" href="../../source/api/pybamm_data.html#pybamm.DataLoader.get_data">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fetches the data file from upstream and stores it in the local cache directory under pybamm directory.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        filename : str</span>
+<span class="sd">            Name of the data file to be fetched from the registry.</span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        pathlib.PurePath</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DataLoader.show_registry">
+<a class="viewcode-back" href="../../source/api/pybamm_data.html#pybamm.DataLoader.show_registry">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">show_registry</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Prints the name of all the files present in the registry.</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        list</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">files</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+</div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

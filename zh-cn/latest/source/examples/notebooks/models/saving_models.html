@@ -1,0 +1,1023 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2026-06-11T09:44:02+00:00" />
+    <title>Saving PyBaMM models to file &#8212; PyBaMM v0.0.1.dev1+g6e5f8be9a Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=0790524f97105ba85085" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=0790524f97105ba85085"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085" />
+
+    <script src="../../../../_static/documentation_options.js?v=06885765"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/models/saving_models';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/models/saving_models.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="next" title="Modelling SEI growth on particle cracks" href="SEI-on-cracks.html" />
+    <link rel="prev" title="Generate rate capability plots" href="rate-capability.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="0.0.1.dev1+g6e5f8be9a" />
+    <meta name="docbuild:last-update" content="2026-06-11"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v0.0.1.dev1+g6e5f8be9a Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="亮色"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="暗色"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>亮色</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>暗色</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i><span class="visually-hidden">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i><span class="visually-hidden">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="electrode-state-of-health.html">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lithium-plating-composite.html">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solvers/dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/idaklu-jax-interface.html">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-settings.html">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Saving PyBaMM models to file</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/saving_models.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/saving_models.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Saving-PyBaMM-models-to-file">
+<h1>Saving PyBaMM models to file<a class="headerlink" href="#Saving-PyBaMM-models-to-file" title="链接到此标题。">#</a></h1>
+<p>Models which are discretised (i.e. ready to solve/ previously solved, see <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/spatial_methods/finite-volumes.ipynb">this notebook</a> for more information on the pybamm.Discretisation class) can be serialised and saved to a JSON file, ready to be read in again either in PyBaMM, or a different modelling library. The structure of the saved JSON, and the legacy formats written by older PyBaMM versions (which still load),
+are documented in the <a class="reference external" href="https://docs.pybamm.org/en/latest/source/api/expression_tree/operations/serialise.html">Serialise API docs</a>.</p>
+<p>In the example below, we build a basic DFN model, and then save the model out to <code class="docutils literal notranslate"><span class="pre">sim_model_example.json</span></code>, which should have appear in the ‘models’ directory.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install pybamm -q    # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+
+<span class="c1"># do the example</span>
+<span class="n">dfn_model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">DFN</span><span class="p">()</span>
+<span class="n">dfn_sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">dfn_model</span><span class="p">)</span>
+<span class="c1"># discretise and build the model</span>
+<span class="n">dfn_sim</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+
+<span class="n">dfn_sim</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="s2">&quot;sim_model_example&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<p>This model file can then be read in and solved by choosing a solver, and running as below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Recreate the pybamm model from the JSON file</span>
+<span class="n">new_dfn_model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;sim_model_example.json&quot;</span><span class="p">)</span>
+
+<span class="n">sim_reloaded</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">new_dfn_model</span><span class="p">)</span>
+<span class="n">sim_reloaded</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.solvers.solution.Solution at 0x2a4e10550&gt;
+</pre></div></div>
+</div>
+<p>It would be nice to plot the results of the two models, to confirm that they are producing the same result.</p>
+<p>However, notice that running the code below generates an error stating that the model variables were not provided during the reading in of the model.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dfn_models</span> <span class="o">=</span> <span class="p">[</span><span class="n">dfn_model</span><span class="p">,</span> <span class="n">new_dfn_model</span><span class="p">]</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">dfn_models</span><span class="p">:</span>
+    <span class="n">plot_sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">plot_sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+    <span class="n">sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">plot_sim</span><span class="p">)</span>
+
+<span class="n">pybamm</span><span class="o">.</span><span class="n">dynamic_plot</span><span class="p">(</span><span class="n">sims</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">AttributeError</span>                            Traceback (most recent call last)
+<span class="ansi-green-intense-fg ansi-bold">/Users/pipliggins/Documents/repos/pybamm-local/docs/source/examples/notebooks/models/saving_models.ipynb Cell 7</span> line <span class="ansi-cyan-fg">8
+</span><span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/Users/pipliggins/Documents/repos/pybamm-local/docs/source/examples/notebooks/models/saving_models.ipynb#W6sZmlsZQ%3D%3D?line=4&#39;&gt;5&lt;/a&gt;</span>     plot_sim.solve([0, 3600])
+<span class="ansi-green-intense-fg ansi-bold">      &lt;a href=&#39;vscode-notebook-cell:/Users/pipliggins/Documents/repos/pybamm-local/docs/source/examples/notebooks/models/saving_models.ipynb#W6sZmlsZQ%3D%3D?line=5&#39;&gt;6&lt;/a&gt;</span>     sims.append(plot_sim)
+<span class="ansi-green-fg">----&gt; &lt;a href=&#39;vscode-notebook-cell:/Users/pipliggins/Documents/repos/pybamm-local/docs/source/examples/notebooks/models/saving_models.ipynb#W6sZmlsZQ%3D%3D?line=7&#39;&gt;8&lt;/a&gt;</span> pybamm.dynamic_plot(sims, time_unit=&#34;seconds&#34;)
+
+File <span class="ansi-green-fg">~/Documents/repos/pybamm-local/pybamm/plotting/dynamic_plot.py:20</span>, in <span class="ansi-cyan-fg">dynamic_plot</span><span class="ansi-blue-fg">(*args, **kwargs)</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> &#34;&#34;&#34;
+<span class="ansi-green-intense-fg ansi-bold">      9</span> Creates a :class:`pybamm.QuickPlot` object (with arguments &#39;args&#39; and keyword
+<span class="ansi-green-intense-fg ansi-bold">     10</span> arguments &#39;kwargs&#39;) and then calls :meth:`pybamm.QuickPlot.dynamic_plot`.
+<span class="ansi-green-fg">   (...)</span>
+<span class="ansi-green-intense-fg ansi-bold">     17</span>     The &#39;QuickPlot&#39; object that was created
+<span class="ansi-green-intense-fg ansi-bold">     18</span> &#34;&#34;&#34;
+<span class="ansi-green-intense-fg ansi-bold">     19</span> kwargs_for_class = {k: v for k, v in kwargs.items() if k != &#34;testing&#34;}
+<span class="ansi-green-fg">---&gt; 20</span> plot = pybamm.QuickPlot(*args, **kwargs_for_class)
+<span class="ansi-green-intense-fg ansi-bold">     21</span> plot.dynamic_plot(kwargs.get(&#34;testing&#34;, False))
+<span class="ansi-green-intense-fg ansi-bold">     22</span> return plot
+
+File <span class="ansi-green-fg">~/Documents/repos/pybamm-local/pybamm/plotting/quick_plot.py:146</span>, in <span class="ansi-cyan-fg">QuickPlot.__init__</span><span class="ansi-blue-fg">(self, solutions, output_variables, labels, colors, linestyles, shading, figsize, n_rows, time_unit, spatial_unit, variable_limits)</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span> # check variables have been provided after any serialisation
+<span class="ansi-green-intense-fg ansi-bold">    145</span> if any(len(m.variables) == 0 for m in models):
+<span class="ansi-green-fg">--&gt; 146</span>     raise AttributeError(&#34;No variables to plot&#34;)
+<span class="ansi-green-intense-fg ansi-bold">    148</span> self.n_rows = n_rows or int(
+<span class="ansi-green-intense-fg ansi-bold">    149</span>     len(output_variables) // np.sqrt(len(output_variables))
+<span class="ansi-green-intense-fg ansi-bold">    150</span> )
+<span class="ansi-green-intense-fg ansi-bold">    151</span> self.n_cols = int(np.ceil(len(output_variables) / self.n_rows))
+
+<span class="ansi-red-fg">AttributeError</span>: No variables to plot
+</pre></div></div>
+</div>
+<p>To be able to plot the results from a serialised model, the mesh and model variables need to be saved alongside the model itself.</p>
+<p>To do this, set the <code class="docutils literal notranslate"><span class="pre">variables</span></code> option to <code class="docutils literal notranslate"><span class="pre">True</span></code> when saving the model as in the example below; notice how the models will now plot nicely.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># using the first simulation, save a new file which includes a list of the model variables</span>
+<span class="n">dfn_sim</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="s2">&quot;sim_model_variables&quot;</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># read the model back in</span>
+<span class="n">model_with_vars</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;sim_model_variables.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># plot the pre- and post-serialisation models together to prove they behave the same</span>
+<span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">dfn_model</span><span class="p">,</span> <span class="n">model_with_vars</span><span class="p">]</span>
+<span class="n">sims</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">:</span>
+    <span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
+    <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+    <span class="n">sims</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+
+<span class="n">pybamm</span><span class="o">.</span><span class="n">dynamic_plot</span><span class="p">(</span><span class="n">sims</span><span class="p">,</span> <span class="n">time_unit</span><span class="o">=</span><span class="s2">&quot;seconds&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "81d8329fab424264bd56c65d53d34f63", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x111963010&gt;
+</pre></div></div>
+</div>
+<section id="Saving-from-Model">
+<h2>Saving from Model<a class="headerlink" href="#Saving-from-Model" title="链接到此标题。">#</a></h2>
+<p>Alternatively, the model can be saved directly from the Model class.</p>
+<p>Note that at the moment, only models derived from the BaseBatteryModel class can be serialised; those built from scratch using pybamm.BaseModel() are currently unsupported.</p>
+<p>First set up the model, as explained in detail for the <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/SPM.ipynb">SPM</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create the model</span>
+<span class="n">spm_model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+
+<span class="c1"># set up and discretise ready to solve</span>
+<span class="n">geometry</span> <span class="o">=</span> <span class="n">spm_model</span><span class="o">.</span><span class="n">default_geometry</span>
+<span class="n">param</span> <span class="o">=</span> <span class="n">spm_model</span><span class="o">.</span><span class="n">default_parameter_values</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">spm_model</span><span class="p">)</span>
+<span class="n">param</span><span class="o">.</span><span class="n">process_geometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">)</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">spm_model</span><span class="o">.</span><span class="n">default_submesh_types</span><span class="p">,</span> <span class="n">spm_model</span><span class="o">.</span><span class="n">default_var_pts</span><span class="p">)</span>
+<span class="n">disc</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Discretisation</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">spm_model</span><span class="o">.</span><span class="n">default_spatial_methods</span><span class="p">)</span>
+<span class="n">disc</span><span class="o">.</span><span class="n">process_model</span><span class="p">(</span><span class="n">spm_model</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.models.full_battery_models.lithium_ion.spm.SPM at 0x29cf65c90&gt;
+</pre></div></div>
+</div>
+<p>Then save the model. Note that in this case the model variables and the mesh must be provided directly.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Serialise the spm_model, providing the varaibles and the mesh</span>
+<span class="n">spm_model</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span><span class="s2">&quot;example_model&quot;</span><span class="p">,</span> <span class="n">variables</span><span class="o">=</span><span class="n">spm_model</span><span class="o">.</span><span class="n">variables</span><span class="p">,</span> <span class="n">mesh</span><span class="o">=</span><span class="n">mesh</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Now you can read the model back in, solve and plot.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># read back in</span>
+<span class="n">new_spm_model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;example_model.json&quot;</span><span class="p">)</span>
+
+<span class="c1"># select a solver and solve</span>
+<span class="n">new_spm_solver</span> <span class="o">=</span> <span class="n">new_spm_model</span><span class="o">.</span><span class="n">default_solver</span>
+<span class="n">new_spm_solution</span> <span class="o">=</span> <span class="n">new_spm_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">new_spm_model</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3600</span><span class="p">])</span>
+
+<span class="c1"># plot the solution</span>
+<span class="n">new_spm_solution</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ce5addf4f59c447e97d2fbee633cb6e0", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x29c8a3d10&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="Making-edits-to-a-serialised-model">
+<h2>Making edits to a serialised model<a class="headerlink" href="#Making-edits-to-a-serialised-model" title="链接到此标题。">#</a></h2>
+<p>As mentioned at the begining of this notebook, only models which have already been discretised can be serialised and readh back in. This means that after serialisation, the model <em>cannot be edited</em>, as the non-discretised elements of the model such as the original rhs are not saved.</p>
+<p>If you are likely to want to save a model and then edit it in the future, you may wish to use the <code class="docutils literal notranslate"><span class="pre">Simulation.save()</span></code> functionality to pickle your simulation, as described in <a class="reference external" href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/getting_started/tutorial-6-managing-simulation-outputs.ipynb">tutorial 6</a>.</p>
+<p>Before finishing we will remove the data files we saved so that we leave the directory as we found it</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;example_model.json&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;sim_model_example.json&quot;</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;sim_model_variables.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="链接到此标题。">#</a></h2>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[2] Marc Doyle, Thomas F. Fuller, and John Newman. Modeling of galvanostatic charge and discharge of the lithium/polymer/insertion cell. Journal of the Electrochemical society, 140(6):1526–1533, 1993. doi:10.1149/1.2221597.
+[3] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[4] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, 2019. doi:10.1149/2.0341915jes.
+[5] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="rate-capability.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">Generate rate capability plots</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="SEI-on-cracks.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Modelling SEI growth on particle cracks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Saving-from-Model">Saving from Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Making-edits-to-a-serialised-model">Making edits to a serialised model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/models/saving_models.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=0790524f97105ba85085"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=0790524f97105ba85085"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.18.0构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最后更新于 2026-06-11.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
