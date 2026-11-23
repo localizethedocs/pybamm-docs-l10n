@@ -1,0 +1,161 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM stable\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:58+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/callbacks.rst:2
+msgid "Callbacks"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback:1
+msgid "Base class for callbacks, for documenting callback methods."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback:3
+msgid ""
+"Callbacks are used to perform actions (e.g. logging, saving) at certain "
+"points in the simulation. Each callback method is named `on_<event>`, where "
+"`<event>` describes the point at which the callback is called. For example, "
+"the callback `on_experiment_start` is called at the start of an experiment "
+"simulation. In general, callbacks take a single argument, `logs`, which is a "
+"dictionary of information about the simulation. Each callback method should "
+"return `None` (the output of the method is ignored)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback:11
+msgid ""
+"**EXPERIMENTAL** - this class is experimental and the callback interface may "
+"change in future releases."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_cycle_end:1
+#: pybamm.callbacks.LoggingCallback.on_cycle_end:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the end of each cycle in an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_cycle_start:1
+#: pybamm.callbacks.LoggingCallback.on_cycle_start:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the start of each cycle in an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_end:1
+#: pybamm.callbacks.LoggingCallback.on_experiment_end:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the end of an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_error:1
+#: pybamm.callbacks.LoggingCallback.on_experiment_error:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called when a SolverError occurs during an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_error:3
+#: pybamm.callbacks.LoggingCallback.on_experiment_error:3
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:3
+msgid ""
+"For example, this could be used to send an error alert with a bug report "
+"when running batch simulations in the cloud."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_infeasible_event:1
+#: pybamm.callbacks.LoggingCallback.on_experiment_infeasible_event:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called when an experiment simulation is infeasible due to an event."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_infeasible_time:1
+#: pybamm.callbacks.LoggingCallback.on_experiment_infeasible_time:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid ""
+"Called when an experiment simulation is infeasible due to reaching maximum "
+"time."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_experiment_start:1
+#: pybamm.callbacks.LoggingCallback.on_experiment_start:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the start of an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_step_end:1
+#: pybamm.callbacks.LoggingCallback.on_step_end:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the end of each step in an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.Callback.on_step_start:1
+#: pybamm.callbacks.LoggingCallback.on_step_start:1
+#: pybamm.callbacks.callback_loop_decorator.<locals>.wrapper:1
+msgid "Called at the start of each step in an experiment simulation."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.CallbackList:1
+msgid ""
+"Container abstracting a list of callbacks, so that they can be called in a "
+"single step e.g. `callbacks.on_simulation_end(...)`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.CallbackList:4
+msgid ""
+"This is done without having to redefine the method each time by using the "
+"`callback_loop_decorator` decorator, which is applied to every method that "
+"starts with `on_`, using the `inspect` module."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.CallbackList:8
+msgid ""
+"If better control over how the callbacks are called is required, it might be "
+"better to be more explicit with the for loop."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.CallbackList:11 pybamm.callbacks.LoggingCallback:6
+msgid "**Extends:** :class:`pybamm.callbacks.Callback`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.LoggingCallback:1
+msgid "Logging callback, implements methods to log progress of the simulation."
+msgstr ""
+
+#: ../../../source/api/callbacks.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/callbacks.py:docstring
+#: of pybamm.callbacks.LoggingCallback:3
+msgid "Where to send the log output. If None, uses pybamm's logger."
+msgstr ""
