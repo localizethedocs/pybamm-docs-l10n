@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-23 20:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -44,17 +45,51 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume:6
 msgid ""
-"A dictionary of options to be passed to the spatial method. The only option "
-"currently available is \"extrapolation\", which has options for \"order\" "
-"and \"use_bcs\". It sets the order separately for `pybamm.BoundaryValue` and "
+"A dictionary of options to be passed to the spatial method:  - "
+"\"extrapolation\", which has options for \"order\" and \"use_bcs\". It sets "
+"the   order separately for `pybamm.BoundaryValue` and "
+"`pybamm.BoundaryGradient`.   Default is \"linear\" for the value and "
+"quadratic for the gradient. - \"harmonic flux coefficients\" (bool, default "
+"False). If True, a coefficient   multiplying a signed sum of gradient terms, "
+"such as the electrolyte   conductivity in ``kappa * (chi * grad(c_e) - "
+"grad(phi_e))``, is averaged   onto faces with the harmonic mean, which is "
+"second order across a jump in   the coefficient. A coefficient of a single "
+"gradient always takes the   harmonic mean."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:6
+msgid "A dictionary of options to be passed to the spatial method:"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:8
+msgid ""
+"\"extrapolation\", which has options for \"order\" and \"use_bcs\". It sets "
+"the order separately for `pybamm.BoundaryValue` and "
 "`pybamm.BoundaryGradient`. Default is \"linear\" for the value and quadratic "
 "for the gradient."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume:12
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:11
 msgid ""
-"**Extends:** :class:`pybamm.spatial_methods.spatial_method.SpatialMethod`"
+"\"harmonic flux coefficients\" (bool, default False). If True, a coefficient "
+"multiplying a signed sum of gradient terms, such as the electrolyte "
+"conductivity in ``kappa * (chi * grad(c_e) - grad(phi_e))``, is averaged "
+"onto faces with the harmonic mean, which is second order across a jump in "
+"the coefficient. A coefficient of a single gradient always takes the "
+"harmonic mean."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume:19
+msgid "**Extends:** :class:`pybamm.spatial_methods.spatial_method.SpatialMethod`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_flux_values:1
+msgid "Add Flux boundary conditions, if defined."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -67,12 +102,13 @@ msgstr ""
 msgid ""
 "For Dirichlet bcs, for a boundary condition \"y = a at the left-hand "
 "boundary\", we concatenate a ghost node to the start of the vector y with "
-"value \"2*a - y1\" where y1 is the value of the first node. Similarly for "
-"the right-hand boundary condition."
+"value \"2*a - y1\" where y1 is the value of the first node, or with value "
+"\"a\" if `use_boundary_value` is True. Similarly for the right-hand boundary "
+"condition."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:8
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:9
 msgid ""
 "For Neumann bcs no ghost nodes are added. Instead, the exact value provided "
 "by the boundary condition is used at the cell edge when calculating the "
@@ -80,25 +116,32 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:12
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:13
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:7
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:5
 msgid "The variable to be discretised"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:14
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:15
 msgid "Contains the discretised variable"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:16
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:17
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:11
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.upwind_or_downwind:9
 msgid ""
 "Dictionary (with keys \"left\" and \"right\") of boundary conditions. Each "
 "boundary condition consists of a value and a flag indicating its type (e.g. "
 "\"Dirichlet\")"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:21
+msgid ""
+"If True, Dirichlet ghost nodes take the boundary value \"a\" instead of "
+"\"2*a - y1\". Default is False."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -109,7 +152,7 @@ msgid "Returns"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:21
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:25
 msgid ""
 "`Matrix @ discretised_symbol + bcs_vector`. When evaluated, this gives the "
 "discretised_symbol, with appropriate ghost nodes concatenated at each end."
@@ -123,9 +166,13 @@ msgid "Return type"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:23
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_ghost_nodes:27
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:21
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:23
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:20
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:10
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:11
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:13
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:29
 msgid ":class:`pybamm.Symbol`"
 msgstr ""
 
@@ -139,8 +186,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.add_neumann_values:4
 msgid ""
-"Dirichlet bcs are implemented using ghost nodes, see :meth:`pybamm."
-"FiniteVolume.add_ghost_nodes`."
+"Dirichlet bcs are implemented using ghost nodes, "
+"see :meth:`pybamm.FiniteVolume.add_ghost_nodes`."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -230,19 +277,9 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:18
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:10
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:11
-msgid "The finite volume integral matrix for the domain"
-msgstr ""
-
-#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.definite_integral_matrix:19
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:8
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:8
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:11
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:12
-msgid ":class:`pybamm.Matrix`"
+msgid ""
+"The finite volume integral matrix for the domain. On a mesh with a symbolic "
+"length it is a constant matrix with symbolic scaling."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -263,8 +300,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence:1
 msgid ""
-"Matrix-vector multiplication to implement the divergence operator. See :meth:"
-"`pybamm.SpatialMethod.divergence`"
+"Matrix-vector multiplication to implement the divergence operator. "
+"See :meth:`pybamm.SpatialMethod.divergence`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -282,7 +319,9 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.divergence_matrix:7
-msgid "The (sparse) finite volume divergence matrix for the domain"
+msgid ""
+"The (sparse) finite volume divergence matrix for the domain. On a mesh with "
+"a symbolic length it is a constant matrix with symbolically scaled rows."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -325,8 +364,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient:1
 msgid ""
-"Matrix-vector multiplication to implement the gradient operator. See :meth:"
-"`pybamm.SpatialMethod.gradient`"
+"Matrix-vector multiplication to implement the gradient operator. "
+"See :meth:`pybamm.SpatialMethod.gradient`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -343,8 +382,15 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:7
-msgid "The (sparse) finite volume gradient matrix for the domain"
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:6
+msgid "The domain and auxiliary domains of the symbol being differentiated"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.gradient_matrix:9
+msgid ""
+"The (sparse) finite volume gradient matrix for the domain. On a mesh with a "
+"symbolic length it is a constant matrix with symbolically scaled rows."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -372,6 +418,18 @@ msgstr ""
 #: of
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:7
 msgid "The direction of integration (forward or backward). See notes."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:10
+msgid "The finite volume integral matrix for the domain"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_edges:11
+msgid ":class:`pybamm.Matrix`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -529,6 +587,14 @@ msgid "The direction of integration (forward or backward)"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
+#: of
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.indefinite_integral_matrix_nodes:11
+msgid ""
+"The finite volume integral matrix for the domain. On a mesh with a symbolic "
+"length it is a constant matrix with symbolically scaled columns."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.integral:1
 msgid "Vector-vector dot product to implement the integral operator."
 msgstr ""
@@ -568,8 +634,8 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of pybamm.spatial_methods.finite_volume.FiniteVolume.laplacian:1
 msgid ""
-"Laplacian operator, implemented as div(grad(.)) See :meth:`pybamm."
-"SpatialMethod.laplacian`"
+"Laplacian operator, implemented as div(grad(.)) "
+"See :meth:`pybamm.SpatialMethod.laplacian`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
@@ -583,16 +649,20 @@ msgstr ""
 #: of
 #: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:1
 msgid ""
-"Discretise binary operators in model equations.  Performs appropriate "
-"averaging of diffusivities if one of the children is a gradient operator, so "
-"that discretised sizes match up. For this averaging we use the harmonic mean "
-"[1]."
+"Discretise binary operators in model equations.  Averages a child that "
+"evaluates on nodes onto the edges when the other child evaluates on edges, "
+"so that discretised sizes match up. A coefficient multiplying a bare "
+"gradient takes the harmonic mean [1], as does a coefficient multiplying a "
+"signed sum of gradient terms when the \"harmonic flux coefficients\" option "
+"is True. A divisor of such a gradient takes the series mean, the reciprocal "
+"of the harmonic mean of its reciprocal; anything else takes the arithmetic "
+"mean."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:6
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:7
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:9
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.shift:8
 msgid ""
 "[1] Recktenwald, Gerald. \"The control-volume finite-difference "
 "approximation to the diffusion equation.\" (2012)."
@@ -600,43 +670,43 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:9
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:12
 msgid "Binary operator to discretise"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:11
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:14
 msgid "The left child of `bin_op`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:13
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:16
 msgid "The right child of `bin_op`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:15
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:18
 msgid "The discretised left child of `bin_op`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:17
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:20
 msgid "The discretised right child of `bin_op`"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:20
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:23
 msgid "Discretised binary operator"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
 #: of
-#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:21
+#: pybamm.spatial_methods.finite_volume.FiniteVolume.process_binary_operators:24
 msgid ":class:`pybamm.BinaryOperator`"
 msgstr ""
 
@@ -645,18 +715,18 @@ msgstr ""
 msgid ""
 "Convert a discretised symbol evaluated at edges/nodes, to a discretised "
 "symbol evaluated at nodes/edges. Can be the arithmetic mean or the harmonic "
-"mean."
+"mean, or, from nodes to edges, the series mean."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:4
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:5
 msgid ""
 "Note: when computing fluxes at cell edges it is better to take the harmonic "
 "mean based on [1]."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:10
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:11
 msgid ""
 "Symbol to be averaged. When evaluated, this symbol returns either a scalar "
 "or an array of shape (n,) or (n+1,), where n is the number of points in the "
@@ -664,19 +734,25 @@ msgid ""
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:14
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:15
 msgid ""
 "Whether to shift from nodes to edges (\"node to edge\"), or from edges to "
 "nodes (\"edge to node\")"
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:17
-msgid "Whether to use the \"arithmetic\" or \"harmonic\" mean"
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:18
+msgid ""
+"Whether to use the \"arithmetic\", \"harmonic\" or \"series\" mean. On an "
+"edge between cells of widths :math:`\\Delta x_1` and :math:`\\Delta x_2`, "
+"with :math:`\\beta = \\Delta x_1 / (\\Delta x_1 + \\Delta x_2)`, the "
+"arithmetic mean interpolates, :math:`(1 - \\beta) D_1 + \\beta D_2`, while "
+"the series mean weights each cell by its width, :math:`\\beta D_1 + (1 - "
+"\\beta) D_2`, as for resistances in series."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/spatial_methods/finite_volume.py:docstring
-#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:20
+#: of pybamm.spatial_methods.finite_volume.FiniteVolume.shift:26
 msgid ""
 "Averaged symbol. When evaluated, this returns either a scalar or an array of "
 "shape (n+1,) (if `shift_key = \"node to edge\"`) or (n,) (if `shift_key = "

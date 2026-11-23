@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-23 20:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/developer/rust_idaklu_build.md:1
+msgid "Building the Rust Backend"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:3
+msgid ""
+"This guide covers building the Rust compute core and its Python bindings for "
+"development. Everything lives in this repository's `uv` workspace; there are "
+"no side-by-side clones or environment variables to configure."
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:7
+msgid "Components"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Component"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Location"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Build tool"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Output"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "`pybamm-core`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "`packages/pybamm-rust/pybamm-core`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Cargo"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "Rust library (rlib)"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "`pybamm-python`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "`packages/pybamm-rust/pybamm-python`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "maturin (via `uv sync`)"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:0
+msgid "`pybamm.rust._core` extension module"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:14
+msgid "**How the pieces connect:**"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:16
+msgid ""
+"`pybamm-python` implements `pybamm.rust`, which provides the Python API over "
+"the Rust code in `pybamm-core`, which compiles expressions into evaluable "
+"functions and sparse Jacobians."
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:20
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:22
+msgid ""
+"**Rust 1.89+**: `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | "
+"sh`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:23
+msgid "**uv**: `curl -LsSf https://astral.sh/uv/install.sh | sh`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:24
+msgid "**CMake 3.22+** (the bundled SuiteSparse's floor) and a C++17 compiler"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:25
+msgid ""
+"**BLAS and a Fortran compiler** for SuiteSparse, e.g. `libopenblas-dev "
+"gfortran`"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:26
+msgid "**macOS only**: Homebrew with `libomp` (`brew install libomp`)"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:28
+msgid "Quick start"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:30
+msgid ""
+"One sync builds everything — the hatch build hook compiles "
+"`pybamm.rust._core` in release mode, and pybammsolvers builds SUNDIALS/"
+"SuiteSparse from its bundled submodules on first build:"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:34
+msgid ""
+"git clone https://github.com/pybamm-team/PyBaMM.git\n"
+"cd PyBaMM\n"
+"git submodule update --init --recursive\n"
+"uv sync --extra all --group dev\n"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:41
+msgid "Verify the extension imports:"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:43
+msgid ""
+"uv run python -c \"\n"
+"from pybamm.rust import ExprGraph\n"
+"print('Rust bindings:', ExprGraph)\n"
+"\"\n"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:50
+msgid "Rebuilding after changes"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:52
+msgid ""
+"`uv`'s cache keys cover the Rust sources, so `uv sync --extra all --group "
+"dev` or `uv run` rebuilds `pybamm.rust._core` whenever a `.rs` file changes."
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:55
+msgid "Running tests"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:57
+msgid ""
+"# Rust unit + contract tests\n"
+"cd packages/pybamm-rust && cargo test --workspace\n"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:62
+msgid "Running benchmarks"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:64
+msgid ""
+"# Rust micro-benchmarks (Criterion); --all-features runs those that need "
+"`serialize`\n"
+"cd packages/pybamm-rust && cargo bench -p pybamm-core --all-features\n"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:69
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:71
+msgid "`pybamm.rust._core` import fails"
+msgstr ""
+
+#: ../../../source/developer/rust_idaklu_build.md:73
+msgid "uv sync --extra all --group dev --reinstall-package pybamm\n"
+msgstr ""

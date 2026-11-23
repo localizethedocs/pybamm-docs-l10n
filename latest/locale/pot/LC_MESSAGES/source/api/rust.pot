@@ -1,0 +1,282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-23 20:30+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/rust.rst:2
+msgid "Rust compute core"
+msgstr ""
+
+#: ../../../source/api/rust.rst:4
+msgid ""
+"``pybamm.rust`` exposes the Rust compute core that ships compiled inside the "
+"``pybamm`` wheel. An :class:`~pybamm.rust.ExprGraph` holds expression nodes, "
+"and compiling one of them gives a :class:`~pybamm.rust.CompiledFunction` "
+"that evaluates the expression and its Jacobian-vector products, and "
+"a :class:`~pybamm.rust.CompiledJacobian` that assembles its sparse Jacobian."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph:1
+msgid "Wrapper type for the rust-core [`Arena`] struct"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.compile:1
+msgid "Compile an expression into an immutable, shareable `CompiledFunction`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.compile:3
+msgid ""
+"`n_states` overrides the scanned state extent, e.g. to the full system width."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.compile_outputs:1
+msgid ""
+"Compile a named set of outputs into one shared tape as a `CompiledFunction`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.conditional:1
+msgid ""
+"Conditional expression; branch i (1-based) is active when i - 0.5 < selector "
+"< i + 0.5."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.conditional:3
+msgid ""
+"With no branch active (a selector out of range, exactly i + 0.5, or NaN), "
+"the result is zero."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.dense_matrix:1
+msgid "Dense matrix constant from row-major data (rows × cols)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.dump_dag:1
+msgid "Write the graph `expr` reaches to `path` as a serialized `DagSnapshot`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.dump_dag:3
+msgid ""
+"`n_states` overrides the scanned state extent, e.g. to the full system "
+"width; the packed input width is the graph's."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.eval_to_array:1
+msgid ""
+"Evaluate `expr` at one point into a new array, as built: no simplification "
+"runs first."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.eval_to_float:1
+msgid ""
+"Evaluate a one-element `expr` at one point, as built: no simplification runs "
+"first."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.input_index:1
+msgid ""
+"Registration index (not packed offset) of `name`, or `None` if unregistered."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.input_parameter:1
+msgid ""
+"Register a named input parameter of `width` packed values, or look up its "
+"node."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.interpolant_1d_cubic:1
+msgid "Build a 1D cubic/pchip interpolant."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.interpolant_1d_cubic:3
+msgid ""
+"`coeffs` is flat row-major `[c0,c1,c2,c3, c0,c1,c2,c3, ...]`, four per "
+"segment."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.interpolant_nd:1
+msgid ""
+"Build an N-D (2 or 3 axis) tensor-product interpolant, one child per axis."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.interpolant_nd:3
+msgid ""
+"`coeffs` is cell-major (axis-0 slowest), then `order^ndim` ascending power "
+"coeffs per cell; `order` is 2 (multilinear) or 4 (tensor cubic)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.n_inputs:1
+msgid "Total packed width of the registered inputs (the stacked `p` length)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.ExprGraph.n_nodes:1
+msgid "Number of nodes in the expression arena."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.Expr:1
+msgid "Wrapper type for the rust-core [`NodeId`] struct"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction:1
+msgid ""
+"One expression compiled into one tape: `f(t, y, p)`, plus `y_dot` when read."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction:3
+msgid ""
+"`p` is a name-keyed mapping or an already-packed array; derivatives are "
+"memoised."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.branch_block_lens:1
+msgid "Per-branch block lengths, in tape order."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.eval:1
+msgid "Alias for `__call__`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.eval_into:1
+msgid ""
+"Evaluate into `out`, a contiguous, writeable array of `output_len` values."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.eval_trajectory:1
+msgid ""
+"Evaluate along a trajectory, returning `(output_len, n_t)` F-contiguous."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.eval_trajectory_hermite:1
+msgid ""
+"Cubic-Hermite reconstruct the state at each `t_query` from the solver knots "
+"(`ts`, `ys`, `yps`), then evaluate; returns `(output_len, n_query)`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.eval_trajectory_hermite:4
+msgid "`ts` must be finite and strictly increasing."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.jacobian:1
+msgid "Lazy, cached-per-wrt prepared jacobian."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.jvp:1
+msgid "Forward-mode JVP: df/dy @ vy (+ df/dp @ vp when given)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.jvp_trajectory:1
+msgid ""
+"Forward-mode JVP per time column: `df/dy @ vy_j (+ df/dp @ vp when given)`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.jvp_trajectory:3
+msgid ""
+"`vy_traj` is `(n_states, n_t)`; `vp` has `vp_len` entries, not the packed "
+"width. Returns `(output_len, n_t)` F-contiguous."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.n_dispatches:1
+msgid "How many dispatches `n_instructions` includes, one per conditional."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.n_instructions:1
+msgid ""
+"Instruction count excluding conditional branch blocks (one dispatch each)."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.n_instructions_total:1
+msgid "Raw tape length, branch blocks included."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.output_lens:1
+msgid "Rows each declared output owns, ordered as `output_names`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.output_names:1
+msgid "Declared output names, or `None` for a single-expression function."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.pack:1
+msgid "Pack a {name: value} mapping into the stacked input layout."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.split:1
+msgid ""
+"One view (not a copy) per declared output, sliced along the leading axis."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.vp_len:1
+msgid "one entry per input registration index, not the packed input width."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.vp_len:0
+msgid "type"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledFunction.vp_len:4
+msgid "Length of a `vp` direction"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledJacobian.n_dense_rows:1
+msgid "Number of dense rows split out of the column coloring."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/rust/__init__.py:docstring
+#: of pybamm.rust.CompiledJacobian.sparsity:1
+msgid "CSC pattern as `(indptr, indices)`, in new int32 arrays."
+msgstr ""
