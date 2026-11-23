@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-23 20:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -31,7 +32,7 @@ msgid "Prerequisites"
 msgstr ""
 
 #: ../../../source/user_guide/installation/index.rst:11
-msgid "To use PyBaMM, you must have Python 3.10 - 3.14 installed."
+msgid "To use PyBaMM, you must have Python 3.11 - 3.15 installed."
 msgstr ""
 
 #: ../../../source/user_guide/installation/index.rst:15
@@ -72,8 +73,8 @@ msgid ""
 "To install Python 3, download the installation files from `Python's website "
 "<https://www.python.org/downloads/windows/>`__. Make sure to tick the box on "
 "``Add Python 3.X to PATH``. For more detailed instructions please see the "
-"`official Python on Windows guide <https://docs.python.org/3/using/windows."
-"html>`__."
+"`official Python on Windows guide <https://docs.python.org/3/using/"
+"windows.html>`__."
 msgstr ""
 
 #: ../../../source/user_guide/installation/index.rst:48
@@ -161,759 +162,824 @@ msgstr ""
 msgid "Install PyBaMM"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:123
+#: ../../../source/user_guide/installation/index.rst:121
+msgid ""
+"PyBaMM publishes platform-specific wheels for macOS (arm64, x86_64), Linux "
+"(``manylinux`` x86_64 and aarch64), and Windows (AMD64). One wheel per "
+"platform covers Python 3.11 to 3.15, because the bundled Rust compute core "
+"is built against CPython's stable ABI. On any other platform ``pip`` falls "
+"back to the source distribution, which compiles that core and therefore "
+"needs a Rust toolchain — see :doc:`install-from-source`."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:130
 msgid ""
 "PyBaMM can be installed via `uv <https://docs.astral.sh/uv/>`__ from `PyPI "
 "<https://pypi.org/project/pybamm>`__."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:125
+#: ../../../source/user_guide/installation/index.rst:132
 msgid "uv pip install pybamm"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:131
+#: ../../../source/user_guide/installation/index.rst:138
 msgid ""
 "PyBaMM can be installed via pip from `PyPI <https://pypi.org/project/"
 "pybamm>`__."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:133
+#: ../../../source/user_guide/installation/index.rst:140
 msgid "pip install pybamm"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:139
+#: ../../../source/user_guide/installation/index.rst:146
 msgid ""
 "PyBaMM is available as a ``conda`` package through the conda-forge channel."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:143
+#: ../../../source/user_guide/installation/index.rst:150
 msgid ""
 "PyBaMM versions between 24.11.2 and 25.6 (not including these boundary "
 "versions) are not available on conda-forge."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:145
+#: ../../../source/user_guide/installation/index.rst:152
 msgid ""
 "The ``pybamm-base`` package installs PyBaMM with its :ref:`required "
 "dependencies <install-required-dependencies>` only:"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:147
+#: ../../../source/user_guide/installation/index.rst:154
 msgid "conda install -c conda-forge pybamm-base"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:151
+#: ../../../source/user_guide/installation/index.rst:158
 msgid ""
 "The ``pybamm`` package installs PyBaMM with all :ref:`optional dependencies "
 "<install.optional_dependencies>` except jax:"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:153
+#: ../../../source/user_guide/installation/index.rst:160
 msgid "conda install -c conda-forge pybamm"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:157
+#: ../../../source/user_guide/installation/index.rst:164
 msgid "To optionally install jax, see :ref:`optional-jaxsolver`."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:159
+#: ../../../source/user_guide/installation/index.rst:166
 msgid ""
 "PyBaMM's :ref:`required dependencies <install-required-dependencies>` (such "
 "as ``numpy``, ``casadi``, etc) will be installed automatically when you "
 "install ``pybamm`` using ``pip`` or ``pybamm-base`` using ``conda``."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:166
+#: ../../../source/user_guide/installation/index.rst:173
 msgid "Optional - JaxSolver"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:168
+#: ../../../source/user_guide/installation/index.rst:175
 msgid ""
 "Users can install ``pybamm`` with ``jax`` and ``jaxlib`` to use the Jax "
 "solver."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:172
+#: ../../../source/user_guide/installation/index.rst:179
 msgid "uv pip install \"pybamm[jax]\""
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:178
+#: ../../../source/user_guide/installation/index.rst:185
 msgid "pip install \"pybamm[jax]\""
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:184
-msgid "conda install -c conda-forge \"jax>=0.7.0,<0.9.0\""
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:189
-msgid "Uninstall PyBaMM"
-msgstr ""
-
 #: ../../../source/user_guide/installation/index.rst:191
-msgid "PyBaMM can be uninstalled by running"
+msgid "conda install -c conda-forge \"jax>=0.7.0,<0.12.0\""
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:195
-msgid "uv pip uninstall pybamm"
+#: ../../../source/user_guide/installation/index.rst:198
+msgid "Optional - Model zoo"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:201
-msgid "pip uninstall pybamm"
+#: ../../../source/user_guide/installation/index.rst:200
+msgid ""
+"Community- and partner-contributed models are distributed separately, as the "
+"``pybamm-model-zoo`` package, which installs ``pybamm`` too. See "
+"the :ref:`model zoo <model_zoo>` for the models it provides."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:207
-msgid "conda remove pybamm"
+#: ../../../source/user_guide/installation/index.rst:206
+msgid "uv pip install pybamm-model-zoo"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:211
-msgid "in your virtual environment."
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:214
-msgid "Dependencies"
+#: ../../../source/user_guide/installation/index.rst:212
+msgid "pip install pybamm-model-zoo"
 msgstr ""
 
 #: ../../../source/user_guide/installation/index.rst:216
-msgid "PyBaMM requires the following dependencies:"
+msgid ""
+"The model zoo is not available on conda-forge; in a conda environment, "
+"install it with ``pip``."
 msgstr ""
 
 #: ../../../source/user_guide/installation/index.rst:220
+msgid "Uninstall PyBaMM"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:222
+msgid "PyBaMM can be uninstalled by running"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:226
+msgid "uv pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:232
+msgid "pip uninstall pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:238
+msgid "conda remove pybamm"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:242
+msgid "in your virtual environment."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:245
+msgid "Dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:247
+msgid "PyBaMM requires the following dependencies:"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:251
 msgid ""
 "The list of dependencies below might be outdated. Users are advised to "
 "manually check the `pyproject.toml`_ file to find out supported versions."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:228
+#: ../../../source/user_guide/installation/index.rst:259
 msgid "Required dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:231
+#: ../../../source/user_guide/installation/index.rst:262
 msgid "PyBaMM requires the following dependencies."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:234
+#: ../../../source/user_guide/installation/index.rst:265
 msgid "Package"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:234
+#: ../../../source/user_guide/installation/index.rst:265
 msgid "Supported version(s)"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:236
+#: ../../../source/user_guide/installation/index.rst:267
 msgid "`PyBaMM solvers <https://github.com/pybamm-team/pybammsolvers>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:236
-msgid ">= 0.8.0, <0.9.0"
+#: ../../../source/user_guide/installation/index.rst:267
+msgid ">= 0.13.0, <0.14.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:237
+#: ../../../source/user_guide/installation/index.rst:268
 msgid "`NumPy <https://numpy.org>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:237
+#: ../../../source/user_guide/installation/index.rst:268
 msgid "Whatever recent versions work. >= 2.0.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:238
+#: ../../../source/user_guide/installation/index.rst:269
 msgid "`SciPy <https://docs.scipy.org/doc/scipy/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:238
+#: ../../../source/user_guide/installation/index.rst:269
 msgid "Whatever recent versions work. >= 1.11.4"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:239
+#: ../../../source/user_guide/installation/index.rst:270
 msgid "`CasADi <https://web.casadi.org/docs/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:239
+#: ../../../source/user_guide/installation/index.rst:270
 msgid "Whatever recent versions work (transitive via pybammsolvers)"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:240
-msgid "`Xarray <https://docs.xarray.dev/en/stable/>`__"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:240
-msgid "Whatever recent versions work. >= 2022.6.0"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:241
+#: ../../../source/user_guide/installation/index.rst:271
 msgid "`Anytree <https://anytree.readthedocs.io/en/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:241
+#: ../../../source/user_guide/installation/index.rst:271
 msgid "Whatever recent versions work. >= 2.8.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:242
+#: ../../../source/user_guide/installation/index.rst:272
 msgid "`SymPy <https://docs.sympy.org/latest/index.html>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:242
+#: ../../../source/user_guide/installation/index.rst:272
 msgid "Whatever recent versions work. >= 1.12"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:243
-msgid "`typing-extensions <https://pypi.org/project/typing-extensions/>`__"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:243
-msgid "Whatever recent versions work. >= 4.10.0"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:244
-msgid "`pandas <https://pypi.org/project/pandas/>`__"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:244
-msgid "Whatever recent versions work. >= 1.5.0"
-msgstr ""
-
-#: ../../../source/user_guide/installation/index.rst:245
+#: ../../../source/user_guide/installation/index.rst:273
 msgid "`pooch <https://www.fatiando.org/pooch/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:245
+#: ../../../source/user_guide/installation/index.rst:273
 msgid "Whatever recent versions work. >= 1.8.1"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:246
+#: ../../../source/user_guide/installation/index.rst:274
 msgid "`posthog <https://posthog.com/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:246
+#: ../../../source/user_guide/installation/index.rst:274
 msgid "Whatever recent versions work"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:247
+#: ../../../source/user_guide/installation/index.rst:275
 msgid "`black <https://black.readthedocs.io/en/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:248
+#: ../../../source/user_guide/installation/index.rst:276
 msgid "`pyyaml <https://pyyaml.org/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:249
+#: ../../../source/user_guide/installation/index.rst:277
 msgid "`platformdirs <https://platformdirs.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:255
+#: ../../../source/user_guide/installation/index.rst:283
 msgid "Optional Dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:257
+#: ../../../source/user_guide/installation/index.rst:285
 msgid ""
 "PyBaMM has a number of optional dependencies for different functionalities. "
 "If the optional dependency is not installed, PyBaMM will raise an "
 "ImportError when the method requiring that dependency is called."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:260
+#: ../../../source/user_guide/installation/index.rst:288
 msgid ""
 "If you are using ``pip``, optional PyBaMM dependencies can be installed or "
-"managed in a file (e.g., pyproject.toml) as optional extras (e.g.,"
-"``pybamm[plot,cite]``). All optional dependencies can be installed with "
-"``pybamm[all]``, and specific sets of dependencies are listed in the "
+"managed in a file (e.g., pyproject.toml) as optional extras "
+"(e.g.,``pybamm[plot,cite]``). All optional dependencies can be installed "
+"with ``pybamm[all]``, and specific sets of dependencies are listed in the "
 "sections below."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:267
+#: ../../../source/user_guide/installation/index.rst:295
 msgid "Plot dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:269
+#: ../../../source/user_guide/installation/index.rst:297
 msgid "Installable with ``pip install \"pybamm[plot]\"``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:272
-#: ../../../source/user_guide/installation/index.rst:285
-#: ../../../source/user_guide/installation/index.rst:312
-#: ../../../source/user_guide/installation/index.rst:325
-#: ../../../source/user_guide/installation/index.rst:348
-#: ../../../source/user_guide/installation/index.rst:362
-#: ../../../source/user_guide/installation/index.rst:375
-#: ../../../source/user_guide/installation/index.rst:388
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:313
+#: ../../../source/user_guide/installation/index.rst:340
+#: ../../../source/user_guide/installation/index.rst:354
+#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:391
+#: ../../../source/user_guide/installation/index.rst:404
+#: ../../../source/user_guide/installation/index.rst:417
+#: ../../../source/user_guide/installation/index.rst:431
 msgid "Dependency"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:272
-#: ../../../source/user_guide/installation/index.rst:285
-#: ../../../source/user_guide/installation/index.rst:312
-#: ../../../source/user_guide/installation/index.rst:325
-#: ../../../source/user_guide/installation/index.rst:348
-#: ../../../source/user_guide/installation/index.rst:362
-#: ../../../source/user_guide/installation/index.rst:375
-#: ../../../source/user_guide/installation/index.rst:388
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:313
+#: ../../../source/user_guide/installation/index.rst:340
+#: ../../../source/user_guide/installation/index.rst:354
+#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:391
+#: ../../../source/user_guide/installation/index.rst:404
+#: ../../../source/user_guide/installation/index.rst:417
+#: ../../../source/user_guide/installation/index.rst:431
 msgid "Minimum Version"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:272
-#: ../../../source/user_guide/installation/index.rst:312
-#: ../../../source/user_guide/installation/index.rst:348
-#: ../../../source/user_guide/installation/index.rst:362
-#: ../../../source/user_guide/installation/index.rst:375
-#: ../../../source/user_guide/installation/index.rst:388
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:340
+#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:391
+#: ../../../source/user_guide/installation/index.rst:404
+#: ../../../source/user_guide/installation/index.rst:417
+#: ../../../source/user_guide/installation/index.rst:431
 msgid "pip extra"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:272
-#: ../../../source/user_guide/installation/index.rst:285
-#: ../../../source/user_guide/installation/index.rst:312
-#: ../../../source/user_guide/installation/index.rst:325
-#: ../../../source/user_guide/installation/index.rst:348
-#: ../../../source/user_guide/installation/index.rst:362
-#: ../../../source/user_guide/installation/index.rst:375
-#: ../../../source/user_guide/installation/index.rst:388
+#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:313
+#: ../../../source/user_guide/installation/index.rst:340
+#: ../../../source/user_guide/installation/index.rst:354
+#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:391
+#: ../../../source/user_guide/installation/index.rst:404
+#: ../../../source/user_guide/installation/index.rst:417
+#: ../../../source/user_guide/installation/index.rst:431
 msgid "Notes"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:274
+#: ../../../source/user_guide/installation/index.rst:302
 msgid "`matplotlib <https://matplotlib.org/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:274
+#: ../../../source/user_guide/installation/index.rst:302
 msgid "3.6.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:274
+#: ../../../source/user_guide/installation/index.rst:302
 msgid "plot"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:274
+#: ../../../source/user_guide/installation/index.rst:302
 msgid "To plot various battery models, and analyzing battery performance."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:280
+#: ../../../source/user_guide/installation/index.rst:308
 msgid "Docs dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:282
+#: ../../../source/user_guide/installation/index.rst:310
 msgid ""
 "Installable with ``pip install --group docs`` or ``uv sync --group docs``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:285
-#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:313
+#: ../../../source/user_guide/installation/index.rst:354
 msgid "group"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:287
+#: ../../../source/user_guide/installation/index.rst:315
 msgid "`sphinx <https://www.sphinx-doc.org/en/master/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:287
-#: ../../../source/user_guide/installation/index.rst:288
-#: ../../../source/user_guide/installation/index.rst:289
-#: ../../../source/user_guide/installation/index.rst:290
-#: ../../../source/user_guide/installation/index.rst:291
-#: ../../../source/user_guide/installation/index.rst:292
-#: ../../../source/user_guide/installation/index.rst:293
-#: ../../../source/user_guide/installation/index.rst:294
-#: ../../../source/user_guide/installation/index.rst:295
-#: ../../../source/user_guide/installation/index.rst:296
-#: ../../../source/user_guide/installation/index.rst:297
-#: ../../../source/user_guide/installation/index.rst:298
-#: ../../../source/user_guide/installation/index.rst:299
-#: ../../../source/user_guide/installation/index.rst:300
-#: ../../../source/user_guide/installation/index.rst:301
-#: ../../../source/user_guide/installation/index.rst:314
+#: ../../../source/user_guide/installation/index.rst:315
+#: ../../../source/user_guide/installation/index.rst:316
+#: ../../../source/user_guide/installation/index.rst:317
+#: ../../../source/user_guide/installation/index.rst:318
+#: ../../../source/user_guide/installation/index.rst:319
+#: ../../../source/user_guide/installation/index.rst:320
+#: ../../../source/user_guide/installation/index.rst:321
+#: ../../../source/user_guide/installation/index.rst:322
+#: ../../../source/user_guide/installation/index.rst:323
+#: ../../../source/user_guide/installation/index.rst:324
+#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:326
 #: ../../../source/user_guide/installation/index.rst:327
 #: ../../../source/user_guide/installation/index.rst:328
 #: ../../../source/user_guide/installation/index.rst:329
-#: ../../../source/user_guide/installation/index.rst:330
-#: ../../../source/user_guide/installation/index.rst:332
-#: ../../../source/user_guide/installation/index.rst:333
-#: ../../../source/user_guide/installation/index.rst:334
-#: ../../../source/user_guide/installation/index.rst:335
-#: ../../../source/user_guide/installation/index.rst:336
-#: ../../../source/user_guide/installation/index.rst:337
-#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:342
+#: ../../../source/user_guide/installation/index.rst:356
+#: ../../../source/user_guide/installation/index.rst:357
+#: ../../../source/user_guide/installation/index.rst:358
+#: ../../../source/user_guide/installation/index.rst:359
+#: ../../../source/user_guide/installation/index.rst:361
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:363
+#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:365
+#: ../../../source/user_guide/installation/index.rst:366
+#: ../../../source/user_guide/installation/index.rst:406
 msgid "\\-"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:287
-#: ../../../source/user_guide/installation/index.rst:288
-#: ../../../source/user_guide/installation/index.rst:289
-#: ../../../source/user_guide/installation/index.rst:290
-#: ../../../source/user_guide/installation/index.rst:291
-#: ../../../source/user_guide/installation/index.rst:292
-#: ../../../source/user_guide/installation/index.rst:293
-#: ../../../source/user_guide/installation/index.rst:294
-#: ../../../source/user_guide/installation/index.rst:295
-#: ../../../source/user_guide/installation/index.rst:296
-#: ../../../source/user_guide/installation/index.rst:297
-#: ../../../source/user_guide/installation/index.rst:298
-#: ../../../source/user_guide/installation/index.rst:299
-#: ../../../source/user_guide/installation/index.rst:300
-#: ../../../source/user_guide/installation/index.rst:301
+#: ../../../source/user_guide/installation/index.rst:315
+#: ../../../source/user_guide/installation/index.rst:316
+#: ../../../source/user_guide/installation/index.rst:317
+#: ../../../source/user_guide/installation/index.rst:318
+#: ../../../source/user_guide/installation/index.rst:319
+#: ../../../source/user_guide/installation/index.rst:320
+#: ../../../source/user_guide/installation/index.rst:321
+#: ../../../source/user_guide/installation/index.rst:322
+#: ../../../source/user_guide/installation/index.rst:323
+#: ../../../source/user_guide/installation/index.rst:324
+#: ../../../source/user_guide/installation/index.rst:325
+#: ../../../source/user_guide/installation/index.rst:326
+#: ../../../source/user_guide/installation/index.rst:327
+#: ../../../source/user_guide/installation/index.rst:328
+#: ../../../source/user_guide/installation/index.rst:329
 msgid "docs"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:287
+#: ../../../source/user_guide/installation/index.rst:315
 msgid "Sphinx makes it easy to create intelligent and beautiful documentation."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:288
+#: ../../../source/user_guide/installation/index.rst:316
 msgid "`sphinx_rtd_theme <https://pypi.org/project/sphinx-rtd-theme/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:288
+#: ../../../source/user_guide/installation/index.rst:316
 msgid "This Sphinx theme provides a great reader experience for documentation."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:289
+#: ../../../source/user_guide/installation/index.rst:317
 msgid ""
 "`pydata-sphinx-theme <https://pydata-sphinx-theme.readthedocs.io/en/stable/"
 ">`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:289
+#: ../../../source/user_guide/installation/index.rst:317
 msgid "A clean, Bootstrap-based Sphinx theme."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:290
+#: ../../../source/user_guide/installation/index.rst:318
 msgid "`sphinx_design <https://sphinx-design.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:290
+#: ../../../source/user_guide/installation/index.rst:318
 msgid "A sphinx extension for designing."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:291
+#: ../../../source/user_guide/installation/index.rst:319
 msgid ""
 "`sphinx-copybutton <https://sphinx-copybutton.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:291
+#: ../../../source/user_guide/installation/index.rst:319
 msgid "To copy codeblocks."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:292
+#: ../../../source/user_guide/installation/index.rst:320
 msgid "`myst-parser <https://myst-parser.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:292
+#: ../../../source/user_guide/installation/index.rst:320
 msgid "For technical & scientific documentation."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:293
+#: ../../../source/user_guide/installation/index.rst:321
 msgid ""
 "`sphinx-inline-tabs <https://sphinx-inline-tabs.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:293
+#: ../../../source/user_guide/installation/index.rst:321
 msgid "Add inline tabbed content to your Sphinx documentation."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:294
+#: ../../../source/user_guide/installation/index.rst:322
 msgid ""
 "`sphinxcontrib-bibtex <https://sphinxcontrib-bibtex.readthedocs.io/en/latest/"
 ">`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:294
+#: ../../../source/user_guide/installation/index.rst:322
 msgid "For BibTeX citations."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:295
+#: ../../../source/user_guide/installation/index.rst:323
 msgid ""
 "`sphinx-autobuild <https://sphinx-extensions.readthedocs.io/en/latest/sphinx-"
 "autobuild.html>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:295
+#: ../../../source/user_guide/installation/index.rst:323
 msgid "For re-building docs once triggered."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:296
+#: ../../../source/user_guide/installation/index.rst:324
 msgid ""
 "`sphinx-last-updated-by-git <https://pypi.org/project/sphinx-last-updated-by-"
 "git/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:296
+#: ../../../source/user_guide/installation/index.rst:324
 msgid "To get the \"last updated\" time for each Sphinx page from Git."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:297
+#: ../../../source/user_guide/installation/index.rst:325
 msgid "`nbsphinx <https://nbsphinx.readthedocs.io/en/0.9.5/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:297
+#: ../../../source/user_guide/installation/index.rst:325
 msgid "Sphinx extension that provides a source parser for .ipynb files"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:298
+#: ../../../source/user_guide/installation/index.rst:326
 msgid "`ipykernel <https://pypi.org/project/ipykernel/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:298
+#: ../../../source/user_guide/installation/index.rst:326
 msgid "Provides the IPython kernel for Jupyter."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:299
+#: ../../../source/user_guide/installation/index.rst:327
 msgid "`ipywidgets <https://ipywidgets.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:299
+#: ../../../source/user_guide/installation/index.rst:327
 msgid "Interactive HTML widgets for Jupyter notebooks and the IPython kernel."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:328
 msgid "`sphinx-gallery <https://pypi.org/project/sphinx-gallery/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:300
+#: ../../../source/user_guide/installation/index.rst:328
 msgid "Builds an HTML gallery of examples from any set of Python scripts."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:301
+#: ../../../source/user_guide/installation/index.rst:329
 msgid "`sphinx-docsearch <https://sphinx-docsearch.readthedocs.io/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:301
+#: ../../../source/user_guide/installation/index.rst:329
 msgid "To replaces Sphinx's built-in search with Algolia DocSearch."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:307
+#: ../../../source/user_guide/installation/index.rst:335
 msgid "Examples dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:309
+#: ../../../source/user_guide/installation/index.rst:337
 msgid "Installable with ``pip install \"pybamm[examples]\"``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:314
+#: ../../../source/user_guide/installation/index.rst:342
 msgid "`jupyter <https://docs.jupyter.org/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:314
+#: ../../../source/user_guide/installation/index.rst:342
+#: ../../../source/user_guide/installation/index.rst:343
 msgid "examples"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:314
+#: ../../../source/user_guide/installation/index.rst:342
 msgid "For example notebooks rendering."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:320
+#: ../../../source/user_guide/installation/index.rst:343
+msgid "`pandas <https://pypi.org/project/pandas/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:343
+msgid "1.5.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:343
+msgid "For reading data in examples."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:349
 msgid "Dev dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:322
+#: ../../../source/user_guide/installation/index.rst:351
 msgid "Installable with ``pip install --group dev`` or ``uv sync --group dev``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:327
+#: ../../../source/user_guide/installation/index.rst:356
 msgid "`pre-commit <https://pre-commit.com/index.html>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:327
-#: ../../../source/user_guide/installation/index.rst:328
-#: ../../../source/user_guide/installation/index.rst:329
-#: ../../../source/user_guide/installation/index.rst:330
-#: ../../../source/user_guide/installation/index.rst:331
-#: ../../../source/user_guide/installation/index.rst:332
-#: ../../../source/user_guide/installation/index.rst:333
-#: ../../../source/user_guide/installation/index.rst:334
-#: ../../../source/user_guide/installation/index.rst:335
-#: ../../../source/user_guide/installation/index.rst:336
-#: ../../../source/user_guide/installation/index.rst:337
+#: ../../../source/user_guide/installation/index.rst:356
+#: ../../../source/user_guide/installation/index.rst:357
+#: ../../../source/user_guide/installation/index.rst:358
+#: ../../../source/user_guide/installation/index.rst:359
+#: ../../../source/user_guide/installation/index.rst:360
+#: ../../../source/user_guide/installation/index.rst:361
+#: ../../../source/user_guide/installation/index.rst:362
+#: ../../../source/user_guide/installation/index.rst:363
+#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:365
+#: ../../../source/user_guide/installation/index.rst:366
 msgid "dev"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:327
+#: ../../../source/user_guide/installation/index.rst:356
 msgid "For managing and maintaining multi-language pre-commit hooks."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:328
+#: ../../../source/user_guide/installation/index.rst:357
 msgid "`ruff <https://beta.ruff.rs/docs/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:328
+#: ../../../source/user_guide/installation/index.rst:357
 msgid "For code formatting."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:329
+#: ../../../source/user_guide/installation/index.rst:358
 msgid "`nox <https://nox.thea.codes/en/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:329
+#: ../../../source/user_guide/installation/index.rst:358
 msgid "For running testing sessions in multiple environments."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:330
+#: ../../../source/user_guide/installation/index.rst:359
 msgid "`pytest-cov <https://pytest-cov.readthedocs.io/en/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:330
+#: ../../../source/user_guide/installation/index.rst:359
 msgid "For calculating test coverage."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:331
+#: ../../../source/user_guide/installation/index.rst:360
 msgid "`pytest <https://docs.pytest.org/en/stable/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:331
+#: ../../../source/user_guide/installation/index.rst:360
 msgid "9.0.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:331
+#: ../../../source/user_guide/installation/index.rst:360
 msgid "For running the test suites (includes subtests support)."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:332
+#: ../../../source/user_guide/installation/index.rst:361
 msgid ""
 "`pytest-doctestplus <https://github.com/scientific-python/pytest-"
 "doctestplus>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:332
+#: ../../../source/user_guide/installation/index.rst:361
 msgid "For running doctests."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:333
+#: ../../../source/user_guide/installation/index.rst:362
 msgid "`pytest-xdist <https://pytest-xdist.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:333
+#: ../../../source/user_guide/installation/index.rst:362
 msgid "For running tests in parallel across distributed workers."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:334
+#: ../../../source/user_guide/installation/index.rst:363
 msgid ""
 "`pytest-mock <https://pytest-mock.readthedocs.io/en/latest/index.html>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:334
+#: ../../../source/user_guide/installation/index.rst:363
 msgid "Provides a mocker fixture."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:335
+#: ../../../source/user_guide/installation/index.rst:364
 msgid "`nbmake <https://github.com/treebeardtech/nbmake/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:335
+#: ../../../source/user_guide/installation/index.rst:364
 msgid "A ``pytest`` plugin for executing Jupyter notebooks."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:336
+#: ../../../source/user_guide/installation/index.rst:365
 msgid "`pytest-snapshot <https://github.com/joseph-roitman/pytest-snapshot>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:336
+#: ../../../source/user_guide/installation/index.rst:365
 msgid "For snapshot testing."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:337
+#: ../../../source/user_guide/installation/index.rst:366
 msgid "`hypothesis <https://hypothesis.readthedocs.io/en/latest/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:337
+#: ../../../source/user_guide/installation/index.rst:366
 msgid "Used to perform property based testing."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:343
+#: ../../../source/user_guide/installation/index.rst:372
 msgid "Cite dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:345
+#: ../../../source/user_guide/installation/index.rst:374
 msgid "Installable with ``pip install \"pybamm[cite]\"``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:350
+#: ../../../source/user_guide/installation/index.rst:379
 msgid "`pybtex <https://docs.pybtex.org/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:350
+#: ../../../source/user_guide/installation/index.rst:379
 msgid "0.25.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:350
+#: ../../../source/user_guide/installation/index.rst:379
 msgid "cite"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:350
+#: ../../../source/user_guide/installation/index.rst:379
 msgid "BibTeX-compatible bibliography processor."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:356
+#: ../../../source/user_guide/installation/index.rst:385
 msgid "bpx dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:359
+#: ../../../source/user_guide/installation/index.rst:388
 msgid "Installable with ``pip install \"pybamm[bpx]\"``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:393
 msgid "`bpx <https://pypi.org/project/bpx/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:393
 msgid "1.1.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:393
 msgid "bpx"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:364
+#: ../../../source/user_guide/installation/index.rst:393
 msgid "Battery Parameter eXchange"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:370
+#: ../../../source/user_guide/installation/index.rst:399
 msgid "tqdm dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:372
+#: ../../../source/user_guide/installation/index.rst:401
 msgid "Installable with ``pip install \"pybamm[tqdm]\"``"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:406
 msgid "`tqdm <https://tqdm.github.io/>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:406
 msgid "tqdm"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:377
+#: ../../../source/user_guide/installation/index.rst:406
 msgid "For logging loops."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:383
+#: ../../../source/user_guide/installation/index.rst:412
+msgid "FEM dependencies"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:414
+msgid "Installable with ``pip install \"pybamm[fem]\"``"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:419
+msgid "`scikit-fem <https://scikit-fem.readthedocs.io/>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:419
+msgid "12.0.2"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:419
+#: ../../../source/user_guide/installation/index.rst:420
+msgid "fem"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:419
+msgid "To build 2D and 3D finite-element meshes."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:420
+msgid "`meshio <https://github.com/nschloe/meshio>`__"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:420
+msgid "5.3.0"
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:420
+msgid "To read meshes from files."
+msgstr ""
+
+#: ../../../source/user_guide/installation/index.rst:426
 msgid "Jax dependencies"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:385
+#: ../../../source/user_guide/installation/index.rst:428
 msgid ""
 "Installable with ``pip install \"pybamm[jax]\"``, currently supported on "
-"Python 3.11-3.14."
+"Python 3.11-3.15."
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:390
+#: ../../../source/user_guide/installation/index.rst:433
 msgid ""
 "`JAX <https://jax.readthedocs.io/en/latest/notebooks/quickstart.html>`__"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:390
+#: ../../../source/user_guide/installation/index.rst:433
 msgid "0.7.0"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:390
+#: ../../../source/user_guide/installation/index.rst:433
 msgid "jax"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:390
+#: ../../../source/user_guide/installation/index.rst:433
 msgid "For the JAX solver"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:394
+#: ../../../source/user_guide/installation/index.rst:437
 msgid "Installing from source"
 msgstr ""
 
-#: ../../../source/user_guide/installation/index.rst:396
+#: ../../../source/user_guide/installation/index.rst:439
 msgid ""
 "Installing a specific version? Installing from source? Check the advanced "
 "installation pages below."

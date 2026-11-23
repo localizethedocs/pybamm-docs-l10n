@@ -8,10 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PyBaMM latest\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"POT-Creation-Date: 2026-11-23 20:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -72,7 +73,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
 #: of pybamm.expression_tree.variable.Variable:24
-#: pybamm.expression_tree.variable.VariableDot:26
+#: pybamm.expression_tree.variable.VariableDot:25
 msgid ""
 "The name to use for printing. Default is None, in which case self.name is "
 "used."
@@ -80,7 +81,6 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
 #: of pybamm.expression_tree.variable.Variable:26
-#: pybamm.expression_tree.variable.VariableDot:28
 msgid ""
 "The scale of the variable, used for scaling the model when solving. The "
 "state vector representing this variable will be multiplied by this scale. "
@@ -89,7 +89,6 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
 #: of pybamm.expression_tree.variable.Variable:30
-#: pybamm.expression_tree.variable.VariableDot:32
 msgid ""
 "The reference value of the variable, used for scaling the model when "
 "solving. This value will be added to the state vector representing this "
@@ -98,7 +97,7 @@ msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
 #: of pybamm.expression_tree.variable.Variable:35
-#: pybamm.expression_tree.variable.VariableDot:37
+#: pybamm.expression_tree.variable.VariableDot:35
 msgid "**Extends:** :class:`pybamm.expression_tree.variable.VariableBase`"
 msgstr ""
 
@@ -145,8 +144,22 @@ msgstr ""
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
 #: of pybamm.expression_tree.variable.VariableDot:23
 msgid ""
-"Physical bounds on the variable. Included for compatibility with "
-"`VariableBase`, but ignored."
+"Physical bounds on the variable, identifying it with its :class:`Variable`."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:27
+msgid ""
+"The scale of the variable, used for scaling the model when solving. The "
+"derivative of the state vector representing this variable will be multiplied "
+"by this scale. Default is 1."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:31
+msgid ""
+"The constant reference value of the variable, identifying it with "
+"its :class:`Variable`. It does not enter the derivative. Default is 0."
 msgstr ""
 
 #: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
