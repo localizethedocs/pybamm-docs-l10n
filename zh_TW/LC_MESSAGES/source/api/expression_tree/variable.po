@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, The PyBaMM Team
+# This file is distributed under the same license as the PyBaMM package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PyBaMM latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-10 10:57+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../source/api/expression_tree/variable.rst:2
+msgid "Variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:1
+msgid "A node in the expression tree represending a dependent variable."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:3
+msgid ""
+"This node will be discretised by :class:`.Discretisation` and converted to "
+"a :class:`pybamm.StateVector` node."
+msgstr ""
+
+#: ../../../source/api/expression_tree/variable.rst:0
+msgid "Parameters"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:6
+msgid ""
+"name of the node domain : iterable of str, optional list of domains that "
+"this variable is valid over"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:10
+#: pybamm.expression_tree.variable.VariableDot:11
+msgid ""
+"dictionary of auxiliary domains ({'secondary': ..., 'tertiary': ..., "
+"'quaternary': ...}). For example, for the single particle model, the "
+"particle concentration would be a Variable with domain 'negative particle' "
+"and secondary auxiliary domain 'current collector'. For the DFN, the "
+"particle concentration would be a Variable with domain 'negative particle', "
+"secondary domain 'negative electrode' and tertiary domain 'current collector'"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:17
+#: pybamm.expression_tree.variable.VariableDot:18
+msgid ""
+"A dictionary equivalent to {'primary': domain, auxiliary_domains}. Either "
+"'domain' and 'auxiliary_domains', or just 'domains', should be provided (not "
+"both). In future, the 'domain' and 'auxiliary_domains' arguments may be "
+"deprecated."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:22
+msgid "Physical bounds on the variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:24
+#: pybamm.expression_tree.variable.VariableDot:26
+msgid ""
+"The name to use for printing. Default is None, in which case self.name is "
+"used."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:26
+#: pybamm.expression_tree.variable.VariableDot:28
+msgid ""
+"The scale of the variable, used for scaling the model when solving. The "
+"state vector representing this variable will be multiplied by this scale. "
+"Default is 1."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:30
+#: pybamm.expression_tree.variable.VariableDot:32
+msgid ""
+"The reference value of the variable, used for scaling the model when "
+"solving. This value will be added to the state vector representing this "
+"variable. Default is 0."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable:35
+#: pybamm.expression_tree.variable.VariableDot:37
+msgid "**Extends:** :class:`pybamm.expression_tree.variable.VariableBase`"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable.diff:1
+#: pybamm.expression_tree.variable.VariableDot.diff:1
+msgid ""
+"Differentiate a symbol with respect to a variable. For any symbol that can "
+"be differentiated, return `1` if differentiating with respect to yourself, "
+"`self._diff(variable)` if `variable` is in the expression tree of the "
+"symbol, and zero otherwise."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.Variable.diff:6
+#: pybamm.expression_tree.variable.VariableDot.diff:6
+msgid "The variable with respect to which to differentiate"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:1
+msgid ""
+"A node in the expression tree represending the time derviative of a "
+"dependent variable"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:4
+msgid ""
+"This node will be discretised by :class:`.Discretisation` and converted to "
+"a :class:`pybamm.StateVectorDot` node."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:7
+msgid "name of the node"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:9
+msgid "list of domains that this variable is valid over"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot:23
+msgid ""
+"Physical bounds on the variable. Included for compatibility with "
+"`VariableBase`, but ignored."
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot.get_variable:1
+msgid "return a :class:`.Variable` corresponding to this VariableDot"
+msgstr ""
+
+#: ../../../../../../.conda/lib/python3.13/site-packages/pybamm/expression_tree/variable.py:docstring
+#: of pybamm.expression_tree.variable.VariableDot.get_variable:3
+msgid ""
+"Note: Variable._jac adds a dash to the name of the corresponding "
+"VariableDot, so we remove this here"
+msgstr ""
