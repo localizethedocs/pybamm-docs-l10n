@@ -1,0 +1,1250 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../../" data-theme="light">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta property="article:modified_time" content="2025-08-05T08:37:23+00:00" />
+    <title>Electrode State of Health &#8212; PyBaMM v26.5.0 Manual</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/docsearch.css?v=065cca34" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pybamm.css?v=2bc0005e" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pydata-docsearch-custom.css?v=1ec07212" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
+
+    <script src="../../../../_static/documentation_options.js?v=4f37f709"></script>
+    <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../../_static/tabs.js?v=3ee01567"></script>
+    <script defer="defer" src="../../../../_static/docsearch.js?v=97306bf9"></script>
+    <script defer="defer" src="../../../../_static/docsearch_config.js?v=6db09bee"></script>
+    <script src="../../../../_static/translations.js?v=540d3cec"></script>
+    <script src="../../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-domain="docs.pybamm.org" defer="defer" src="https://plausible.io/js/script.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'source/examples/notebooks/models/electrode-state-of-health';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="canonical" href="https://projects.localizethedocs.org/pybamm-docs-l10n/source/examples/notebooks/models/electrode-state-of-health.html" />
+    <link rel="icon" href="../../../../_static/favicon.png"/>
+    <link rel="index" title="索引" href="../../../../genindex.html" />
+    <link rel="next" title="Simulating graded electrodes" href="graded-electrodes.html" />
+    <link rel="prev" title="Doyle-Fuller-Newman Model (DFN)" href="DFN.html" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="26.5.0" />
+    <meta name="docbuild:last-update" content="2025-08-05"/>
+  
+    
+    <script src="../../../../_static/searchtools.js"></script>
+    <script src="../../../../_static/language_data.js"></script>
+    <script src="../../../../searchindex.js"></script>
+  
+<script type="text/javascript" src="../../../../ltd-provenance.js"></script>
+<script type="text/javascript" src="../../../../ltd-current.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-config.js"></script>
+<script type="text/javascript" src="../../../../../../ltd-flyout.js"></script>
+
+  </head>
+  <body data-default-mode="light">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+    
+    <img src="../../../../_static/pybamm_logo.png" class="logo__image only-light" alt="PyBaMM v26.5.0 Manual - Home"/>
+    <img src="../../../../_static/pybamm_logo_whitetext.png" class="logo__image only-dark pst-js-only" alt="PyBaMM v26.5.0 Manual - Home"/>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          <div id="algolia-docsearch"></div>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile"><div id="algolia-docsearch"></div>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/index.html">
+    User Guide
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api/index.html">
+    API documentation
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../user_guide/contributing.html">
+    Contributing
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/pybamm-team/pybamm" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/pybamm_" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://pypi.org/project/pybamm/" title="PyPI" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-solid fa-box fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">PyPI</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-1-how-to-run-a-model.html">Tutorial 1 - How to run a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-2-compare-models.html">Tutorial 2 - Compare models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-3-basic-plotting.html">Tutorial 3 - Basic plotting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4-setting-parameter-values.html">Tutorial 4 - Setting parameter values</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-4b-parameter-introspection.html">Tutorial 4b: Parameter Introspection and Comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-5-run-experiments.html">Tutorial 5 - Run experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-6-managing-simulation-outputs.html">Tutorial 6 - Managing simulation outputs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-7-model-options.html">Tutorial 7 - Model options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-8-solver-options.html">Tutorial 8 - Solver options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/tutorial-9-changing-the-mesh.html">Tutorial 9 - Changing the mesh</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Creating Models</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/1-an-ode-model.html">Creating a simple ODE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/2-a-pde-model.html">Creating a simple PDE model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/3-negative-particle-problem.html">A step towards the Single Particle Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/4-comparing-full-and-reduced-order-models.html">Comparing full and reduced-order models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/5-half-cell-model.html">A half cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/6-a-simple-SEI-model.html">Creating a Simple Model for SEI Growth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../creating_models/7-creating-a-submodel.html">Setting up the model</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Performance</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../performance/01-simulation-pipeline.html">Understanding the PyBaMM pipeline and performance profile of the Simulation class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/02-input-parameters.html">Using Input Parameters to efficiently re-run simulations with different parameters</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../performance/03-pybamm-solvers.html">The PyBaMM Solvers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/04-interpolation-points.html">Interpolation and evaluation points</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/05-solver-tolerances.html">Solver tolerances</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/06-output-variables.html">Defining output variables to reduce memory usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../performance/07-multithreading.html">Running many simulations in parallel using OpenMP</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Expression Tree</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/expression-tree.html">The PyBaMM Pipeline</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../expression_tree/broadcasts.html">Broadcasts</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Models</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="basic-DFN-2d.html">BasicDFN2D: simulating in-plane electrolyte flows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-comsol-discharge-curve.html">Comparison of PyBaMM and COMSOL Discharge Curves</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-ecker-data.html">Comparing with Experimental Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compare-lithium-ion.html">Compare lithium-ion battery models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="compare-particle-diffusion-models.html">Compare particle diffusion models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="composite_particle.html">A composite electrode particle model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coupled-degradation.html">Modelling coupled degradation mechanisms in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN-with-particle-size-distributions.html">Doyle-Fuller-Newman Model with particle-size distributions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DFN.html">Doyle-Fuller-Newman Model (DFN)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Electrode State of Health</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graded-electrodes.html">Simulating graded electrodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="half-cell.html">Half-cell models in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hysteresis-state-models.html">Hysteresis State models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jelly-roll-model.html">Jelly roll model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latexify.html">Using latexify in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lead-acid.html">Lead-Acid Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lithium-plating.html">Modelling lithium plating in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="lithium-plating-composite.html">Modelling lithium plating on composite electrodes in PyBaMM</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="MPM.html">Many Particle Model (MPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MSMR.html">Multi-Species Multi-Reaction model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pouch-cell-model.html">Pouch cell model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rate-capability.html">Generate rate capability plots</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saving_models.html">Saving PyBaMM models to file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SEI-on-cracks.html">Modelling SEI growth on particle cracks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulate-3E-cell.html">Simulating a 3E cell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulating-ORegan-2022-parameter-set.html">Run simulations with O’Regan 2022 parameter set (LG M50)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sodium-ion.html">DFN model for sodium-ion batteries</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPM.html">Single Particle Model (SPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SPMe.html">Single Particle Model with Electrolyte (SPMe)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="submodel_cracking_DFN_or_SPM.html">Using crack submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loss_of_active_materials.html">Loss of active material submodels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="thermal-models.html">Thermal models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tortuosity_models.html">Transport efficiency and the models for tortuosity factor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unsteady-heat-equation.html">Solving the heat equation in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-model-options_thermal-example.html">Using model options in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-submodels.html">Using submodels in PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Validating_mechanical_models_Enertech_DFN.html">Test the parameter set of the Enertech cells</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Parameterization</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/change-input-current.html">Changing the input current when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameter-values.html">Parameter Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/parameterization.html">Parameterisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/sensitivities_and_data_fitting.html">Sensitivities and data fitting using PyBaMM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/bpx.html">Using Battery Parameter eXchange (BPX) files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../parameterization/geometric_parameters.html">Optimizing geometric parameters</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Simulations and Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/callbacks.html">Callbacks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/custom-experiments.html">Custom experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/eis-simulation.html">EIS Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/experiments-start-time.html">Experiments with <code class="docutils literal notranslate"><span class="pre">start_time</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/formation-storage-loss.html">Accounting for formation or storage loss in PyBaMM simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/rpt-experiment.html">Degradation experiments with reference performance tests</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulating-long-experiments.html">Simulating long experiments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../simulations_and_experiments/simulation-class.html">A step-by-step look at the Simulation class</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Plotting</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../plotting/customize-quick-plot.html">Customizing QuickPlot</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../plotting/plot-voltage-components.html">Plot voltage components</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Solvers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../solvers/dae-solver.html">DAE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/ode-solver.html">ODE solver</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/idaklu-jax-interface.html">IDAKLU-JAX interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solvers/instability-nonsmooth-functions.html">Handling instability in non-smooth functions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Spatial Methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../spatial_methods/finite-volumes.html">Finite Volume Discretisation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Miscellaneous Notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../batch_study.html">Comparisons using the BatchStudy class</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../change-settings.html">Changing settings when solving PyBaMM models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../initialize-model-with-solution.html">Initializing a model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../solution-data-and-processed-variables.html">A look at solution data and processed variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pybamm_data.html">PyBaMM DataLoader</a></li>
+</ul>
+</div>
+</nav></div>
+        <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../../index.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../index.html" class="nav-link">Examples</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Electrode State of Health</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition tip">
+    <p class="admonition-title">
+        Tip
+    </p>
+    <p>
+        An interactive online version of this notebook is available, which can be
+        accessed via
+        <a href="https://githubtocolab.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/electrode-state-of-health.ipynb"
+        target="_blank">
+        <img src="https://colab.research.google.com/assets/colab-badge.svg"
+        alt="Open this notebook in Google Colab"/></a>
+    </p>
+        <hr>
+    <p>
+        Alternatively, you may
+        <a href="https://github.com/pybamm-team/PyBaMM/blob/main/docs/source/examples/notebooks/models/electrode-state-of-health.ipynb"
+        target="_blank" download>
+        download this notebook</a> and run it offline.
+    </p>
+</div><section id="Electrode-State-of-Health">
+<h1>Electrode State of Health<a class="headerlink" href="#Electrode-State-of-Health" title="链接到此标题。">#</a></h1>
+<p>This notebook demonstrates some utilities to work with electrode State of Health (also sometimes called electrode stoichiometry), using the algorithm from Mohtat et al [1]</p>
+<p>[1] Mohtat, P., Lee, S., Siegel, J. B., &amp; Stefanopoulou, A. G. (2019). Towards better estimability of electrode-specific state of health: Decoding the cell expansion. Journal of Power Sources, 427, 101-111.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">pip</span> install &quot;pybamm[plot,cite]&quot; -q # install PyBaMM if it is not installed
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">pybamm</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+zsh:1: no matches found: pybamm[plot,cite]
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<section id="Create-and-solve-model">
+<h2>Create and solve model<a class="headerlink" href="#Create-and-solve-model" title="链接到此标题。">#</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spm</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">SPM</span><span class="p">()</span>
+<span class="n">experiment</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Experiment</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;Charge at 1C until 4.2V&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hold at 4.2V until C/50&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Discharge at 1C until 2.8V&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Hold at 2.8V until C/50&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+<span class="n">parameter_values</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="s2">&quot;Mohtat2020&quot;</span><span class="p">)</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">spm</span><span class="p">,</span> <span class="n">experiment</span><span class="o">=</span><span class="n">experiment</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">)</span>
+<span class="n">spm_sol</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">spm_sol</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="s2">&quot;Voltage [V]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Current [A]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Negative electrode stoichiometry&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Positive electrode stoichiometry&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "17f51c91ccd74aeb9afa13693702858e", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;pybamm.plotting.quick_plot.QuickPlot at 0x17f99c580&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="Solve-for-electrode-SOH-variables">
+<h2>Solve for electrode SOH variables<a class="headerlink" href="#Solve-for-electrode-SOH-variables" title="链接到此标题。">#</a></h2>
+<p>Given a total amount of cyclable lithium capacity, <span class="math notranslate nohighlight">\(Q_{Li}\)</span>, electrode capacities, <span class="math notranslate nohighlight">\(Q_n\)</span> and <span class="math notranslate nohighlight">\(Q_p\)</span>, and voltage limits, <span class="math notranslate nohighlight">\(V_{min}\)</span> and <span class="math notranslate nohighlight">\(V_{max}\)</span>, we can solve for the min and max electrode SOCs, <span class="math notranslate nohighlight">\(x_0\)</span>, <span class="math notranslate nohighlight">\(x_{100}\)</span>, <span class="math notranslate nohighlight">\(y_0\)</span>, and <span class="math notranslate nohighlight">\(y_{100}\)</span>, and the cell capacity, <span class="math notranslate nohighlight">\(C\)</span>, using the algorithm adapted from Mohtat et al [1]. First, we find <span class="math notranslate nohighlight">\(x_{100}\)</span> and <span class="math notranslate nohighlight">\(y_{100}\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}Q_{Li} = y_{100}Q_p + x_{100}Q_n,
+\\
+V_{max} = U_p(y_{100}) - U_n(x_{100}).\end{split}\]</div>
+<p>Note that Mohtat et al use <span class="math notranslate nohighlight">\(n_{Li} = \frac{3600 Q_{Li}}{F}\)</span> instead. Then, we find <span class="math notranslate nohighlight">\(Q\)</span> using</p>
+<div class="math notranslate nohighlight">
+\[V_{min} = U_p(y_{0}) - U_n(x_{0})
+= U_p\left(y_{100} + \frac{Q}{Q_p}\right) - U_n\left(x_{100} - \frac{Q}{Q_n}\right)\]</div>
+<p>Finally, <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(y_0\)</span> are simply defined as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}x_0 = x_{100} - \frac{Q}{Q_n},
+\\
+y_0 = y_{100} + \frac{Q}{Q_p}.\end{split}\]</div>
+<p>We implement this in PyBaMM as an algebraic model.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">param</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">LithiumIonParameters</span><span class="p">()</span>
+
+<span class="n">Vmin</span> <span class="o">=</span> <span class="mf">2.8</span>
+<span class="n">Vmax</span> <span class="o">=</span> <span class="mf">4.2</span>
+<span class="n">Q_n</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+<span class="n">Q_p</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+<span class="n">Q_Li</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Q_Li_particles_init</span><span class="p">)</span>
+
+<span class="n">U_n</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">U</span>
+<span class="n">U_p</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">U</span>
+<span class="n">T_ref</span> <span class="o">=</span> <span class="n">param</span><span class="o">.</span><span class="n">T_ref</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First we solve for x_100 and y_100</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">()</span>
+
+<span class="n">x_100</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;x_100&quot;</span><span class="p">)</span>
+<span class="n">y_100</span> <span class="o">=</span> <span class="p">(</span><span class="n">Q_Li</span> <span class="o">-</span> <span class="n">x_100</span> <span class="o">*</span> <span class="n">Q_n</span><span class="p">)</span> <span class="o">/</span> <span class="n">Q_p</span>
+
+<span class="n">y_100_min</span> <span class="o">=</span> <span class="mf">1e-10</span>
+
+<span class="n">x_100_upper_limit</span> <span class="o">=</span> <span class="p">(</span><span class="n">Q_Li</span> <span class="o">-</span> <span class="n">y_100_min</span> <span class="o">*</span> <span class="n">Q_p</span><span class="p">)</span> <span class="o">/</span> <span class="n">Q_n</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="p">{</span><span class="n">x_100</span><span class="p">:</span> <span class="n">U_p</span><span class="p">(</span><span class="n">y_100</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span> <span class="o">-</span> <span class="n">U_n</span><span class="p">(</span><span class="n">x_100</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span> <span class="o">-</span> <span class="n">Vmax</span><span class="p">}</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">{</span><span class="n">x_100</span><span class="p">:</span> <span class="n">x_100_upper_limit</span><span class="p">}</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x_100&quot;</span><span class="p">:</span> <span class="n">x_100</span><span class="p">,</span> <span class="s2">&quot;y_100&quot;</span><span class="p">:</span> <span class="n">y_100</span><span class="p">}</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">x_100</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;x_100&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y_100</span> <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="s2">&quot;y_100&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;x_100&quot;</span><span class="p">,</span> <span class="s2">&quot;y_100&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Based on the calculated values for x_100 and y_100 we solve for x_0</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">BaseModel</span><span class="p">()</span>
+
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="s2">&quot;x_0&quot;</span><span class="p">)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">Q_n</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_100</span> <span class="o">-</span> <span class="n">x_0</span><span class="p">)</span>
+<span class="n">y_0</span> <span class="o">=</span> <span class="n">y_100</span> <span class="o">+</span> <span class="n">Q</span> <span class="o">/</span> <span class="n">Q_p</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">algebraic</span> <span class="o">=</span> <span class="p">{</span><span class="n">x_0</span><span class="p">:</span> <span class="n">U_p</span><span class="p">(</span><span class="n">y_0</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span> <span class="o">-</span> <span class="n">U_n</span><span class="p">(</span><span class="n">x_0</span><span class="p">,</span> <span class="n">T_ref</span><span class="p">)</span> <span class="o">-</span> <span class="n">Vmin</span><span class="p">}</span>
+<span class="n">model</span><span class="o">.</span><span class="n">initial_conditions</span> <span class="o">=</span> <span class="p">{</span><span class="n">x_0</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">variables</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span>
+    <span class="s2">&quot;x_0&quot;</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span>
+    <span class="s2">&quot;y_0&quot;</span><span class="p">:</span> <span class="n">y_0</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">Simulation</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">parameter_values</span><span class="o">=</span><span class="n">parameter_values</span><span class="p">)</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sim</span><span class="o">.</span><span class="n">solve</span><span class="p">([</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;x_0&quot;</span><span class="p">,</span> <span class="s2">&quot;y_0&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x_100 : 0.8333742766485323
+y_100 : 0.03354554691532985
+Q : 4.968932683689383
+x_0 : 0.0015118453536460618
+y_0 : 0.8908948803914054
+</pre></div></div>
+</div>
+<p>This is implemented in PyBaMM as the <code class="docutils literal notranslate"><span class="pre">ElectrodeSOHSolver</span></code> class</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">esoh_solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+
+<span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;V_min&quot;</span><span class="p">:</span> <span class="n">Vmin</span><span class="p">,</span> <span class="s2">&quot;V_max&quot;</span><span class="p">:</span> <span class="n">Vmax</span><span class="p">,</span> <span class="s2">&quot;Q_n&quot;</span><span class="p">:</span> <span class="n">Q_n</span><span class="p">,</span> <span class="s2">&quot;Q_p&quot;</span><span class="p">:</span> <span class="n">Q_p</span><span class="p">,</span> <span class="s2">&quot;Q_Li&quot;</span><span class="p">:</span> <span class="n">Q_Li</span><span class="p">}</span>
+
+<span class="n">esoh_sol</span> <span class="o">=</span> <span class="n">esoh_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;x_100&quot;</span><span class="p">,</span> <span class="s2">&quot;y_100&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">,</span> <span class="s2">&quot;x_0&quot;</span><span class="p">,</span> <span class="s2">&quot;y_0&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">esoh_sol</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x_100 : 0.833374276202919
+y_100 : 0.0335455473745959
+Q : 4.968932679279884
+x_0 : 0.0015118456462390713
+y_0 : 0.890894880089848
+</pre></div></div>
+</div>
+</section>
+<section id="Check-against-simulations">
+<h2>Check against simulations<a class="headerlink" href="#Check-against-simulations" title="链接到此标题。">#</a></h2>
+<p>Plotting the SPM simulations against the eSOH calculations validates the min/max stoichiometry calculations</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">spm_sol</span><span class="p">[</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">x_spm</span> <span class="o">=</span> <span class="n">spm_sol</span><span class="p">[</span><span class="s2">&quot;Negative electrode stoichiometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+<span class="n">y_spm</span> <span class="o">=</span> <span class="n">spm_sol</span><span class="p">[</span><span class="s2">&quot;Positive electrode stoichiometry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span>
+
+<span class="n">x_0</span> <span class="o">=</span> <span class="n">esoh_sol</span><span class="p">[</span><span class="s2">&quot;x_0&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">y_0</span> <span class="o">=</span> <span class="n">esoh_sol</span><span class="p">[</span><span class="s2">&quot;y_0&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">x_100</span> <span class="o">=</span> <span class="n">esoh_sol</span><span class="p">[</span><span class="s2">&quot;x_100&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="n">y_100</span> <span class="o">=</span> <span class="n">esoh_sol</span><span class="p">[</span><span class="s2">&quot;y_100&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_spm</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_0</span><span class="p">,</span> <span class="s2">&quot;k:&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_100</span><span class="p">,</span> <span class="s2">&quot;k:&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_spm</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_0</span><span class="p">,</span> <span class="s2">&quot;k:&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y_100</span><span class="p">,</span> <span class="s2">&quot;k:&quot;</span><span class="p">)</span>
+<span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Time [h]&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_13_0.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_13_0.png" />
+</div>
+</div>
+</section>
+<section id="How-does-electrode-SOH-depend-on-cyclable-lithium">
+<h2>How does electrode SOH depend on cyclable lithium<a class="headerlink" href="#How-does-electrode-SOH-depend-on-cyclable-lithium" title="链接到此标题。">#</a></h2>
+<p>We can do a parameter sweep for the amount of cyclable lithium to see how it affects the electrode SOH parameters and cell capacity</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_parameter_sets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">k</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">parameter_sets</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s2">&quot;chemistry&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;lithium_ion&quot;</span>
+    <span class="ow">and</span> <span class="n">k</span>
+    <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span>
+        <span class="s2">&quot;Xu2019&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Chen2020_composite&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Ecker2015_graphite_halfcell&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;OKane2022_graphite_SiOx_halfcell&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_esoh_sweep_QLi</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">,</span> <span class="n">param</span><span class="p">):</span>
+    <span class="n">parameter_values</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">)</span>
+
+    <span class="c1"># Vmin = parameter_values[&quot;Lower voltage cut-off [V]&quot;]</span>
+    <span class="c1"># Vmax = parameter_values[&quot;Upper voltage cut-off [V]&quot;]</span>
+    <span class="n">Vmin</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="p">[</span><span class="s2">&quot;Open-circuit voltage at 0% SOC [V]&quot;</span><span class="p">]</span>
+    <span class="n">Vmax</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="p">[</span><span class="s2">&quot;Open-circuit voltage at 100% SOC [V]&quot;</span><span class="p">]</span>
+
+    <span class="n">Q_n</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+    <span class="n">Q_p</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Q</span><span class="p">)</span>
+    <span class="n">esoh_solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span><span class="p">(</span>
+        <span class="n">parameter_values</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">known_value</span><span class="o">=</span><span class="s2">&quot;cell capacity&quot;</span>
+    <span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;V_max&quot;</span><span class="p">:</span> <span class="n">Vmax</span><span class="p">,</span> <span class="s2">&quot;V_min&quot;</span><span class="p">:</span> <span class="n">Vmin</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">:</span> <span class="n">Q</span><span class="p">,</span> <span class="s2">&quot;Q_n&quot;</span><span class="p">:</span> <span class="n">Q_n</span><span class="p">,</span> <span class="s2">&quot;Q_p&quot;</span><span class="p">:</span> <span class="n">Q_p</span><span class="p">}</span>
+    <span class="n">sol_init_Q</span> <span class="o">=</span> <span class="n">esoh_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="n">Q_Li_init</span> <span class="o">=</span> <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">Q_Li_particles_init</span><span class="p">)</span>
+    <span class="n">esoh_solver</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">lithium_ion</span><span class="o">.</span><span class="n">ElectrodeSOHSolver</span><span class="p">(</span><span class="n">parameter_values</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+    <span class="n">inputs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;V_max&quot;</span><span class="p">:</span> <span class="n">Vmax</span><span class="p">,</span> <span class="s2">&quot;V_min&quot;</span><span class="p">:</span> <span class="n">Vmin</span><span class="p">,</span> <span class="s2">&quot;Q_Li&quot;</span><span class="p">:</span> <span class="n">Q_Li_init</span><span class="p">,</span> <span class="s2">&quot;Q_n&quot;</span><span class="p">:</span> <span class="n">Q_n</span><span class="p">,</span> <span class="s2">&quot;Q_p&quot;</span><span class="p">:</span> <span class="n">Q_p</span><span class="p">}</span>
+    <span class="n">sol_init_QLi</span> <span class="o">=</span> <span class="n">esoh_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+    <span class="n">Q_Li_sweep</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">Q_n</span> <span class="o">+</span> <span class="n">Q_p</span><span class="p">)</span>
+    <span class="n">sweep</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">,</span> <span class="s2">&quot;x_0&quot;</span><span class="p">,</span> <span class="s2">&quot;x_100&quot;</span><span class="p">,</span> <span class="s2">&quot;y_0&quot;</span><span class="p">,</span> <span class="s2">&quot;y_100&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+        <span class="n">sweep</span><span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">Q_Li</span> <span class="ow">in</span> <span class="n">Q_Li_sweep</span><span class="p">:</span>
+        <span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">Q_Li</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">sol</span> <span class="o">=</span> <span class="n">esoh_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">variables</span><span class="p">:</span>
+                <span class="n">sweep</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="n">var</span><span class="p">])</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">SolverError</span><span class="p">):</span>
+            <span class="k">pass</span>
+
+    <span class="k">return</span> <span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init_QLi</span><span class="p">,</span> <span class="n">sol_init_Q</span>
+
+
+<span class="k">for</span> <span class="n">parameter_set</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;Chen2020&quot;</span><span class="p">]:</span>
+    <span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init_QLi</span><span class="p">,</span> <span class="n">sol_init_Q</span> <span class="o">=</span> <span class="n">solve_esoh_sweep_QLi</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">plot_sweep</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init</span><span class="p">,</span> <span class="n">sol_init_Q</span><span class="p">,</span> <span class="n">parameter_set</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">parameter_values</span> <span class="o">=</span> <span class="n">pybamm</span><span class="o">.</span><span class="n">ParameterValues</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">)</span>
+    <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+    <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">Q_init</span><span class="p">)</span>
+    <span class="c1"># Plot min/max stoichimetric limits, including the value with the given Q_Li</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ks</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([[</span><span class="s2">&quot;x_0&quot;</span><span class="p">,</span> <span class="s2">&quot;x_100&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;y_0&quot;</span><span class="p">,</span> <span class="s2">&quot;y_100&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;Q&quot;</span><span class="p">]]):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ks</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="s2">&quot;Stoichiometric envelope&quot;</span>
+                <span class="n">label2</span> <span class="o">=</span> <span class="s2">&quot;Calculation from cyclable lithium&quot;</span>
+                <span class="n">label3</span> <span class="o">=</span> <span class="s2">&quot;Calculation from cell capacity&quot;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">label1</span> <span class="o">=</span> <span class="n">label2</span> <span class="o">=</span> <span class="n">label3</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sweep</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">],</span> <span class="n">sweep</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label1</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">sol_init_QLi</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label2</span><span class="p">)</span>
+            <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">sol_init_Q</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label3</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Cyclable lithium [A.h]&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">ks</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">sweep</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sweep</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">])])</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">sol_init_QLi</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">sol_init_Q</span><span class="p">[</span><span class="s2">&quot;Q_Li&quot;</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+        <span class="c1"># Plot capacities of electrodes</span>
+        <span class="c1"># ax.axvline(Qn,c=&quot;b&quot;,linestyle=&quot;--&quot;)</span>
+        <span class="c1"># ax.axvline(Qp,c=&quot;r&quot;,linestyle=&quot;--&quot;)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cell capacity [A.h]&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Plot initial values of stoichometries</span>
+    <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">n</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">sto_init_av</span><span class="p">)</span>
+    <span class="n">parameter_values</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">param</span><span class="o">.</span><span class="n">p</span><span class="o">.</span><span class="n">prim</span><span class="o">.</span><span class="n">sto_init_av</span><span class="p">)</span>
+    <span class="c1"># axes[0].axhline(sto_n_init,c=&quot;g&quot;,linestyle=&quot;--&quot;)</span>
+    <span class="c1"># axes[1].axhline(sto_p_init,c=&quot;g&quot;,linestyle=&quot;--&quot;)</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">)</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span>
+
+
+<span class="n">plot_sweep</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init_QLi</span><span class="p">,</span> <span class="n">sol_init_Q</span><span class="p">,</span> <span class="s2">&quot;Chen2020&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_17_0.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_17_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Skip the MSMR example parameter set since we need to set up the ESOH solver differently</span>
+<span class="n">all_parameter_sets</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;MSMR_Example&quot;</span><span class="p">)</span>
+<span class="c1"># Loop over all parameter sets and solve the ESOH problem</span>
+<span class="k">for</span> <span class="n">parameter_set</span> <span class="ow">in</span> <span class="n">all_parameter_sets</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init_QLi</span><span class="p">,</span> <span class="n">sol_init_Q</span> <span class="o">=</span> <span class="n">solve_esoh_sweep_QLi</span><span class="p">(</span><span class="n">parameter_set</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plot_sweep</span><span class="p">(</span><span class="n">sweep</span><span class="p">,</span> <span class="n">sol_init_QLi</span><span class="p">,</span> <span class="n">sol_init_Q</span><span class="p">,</span> <span class="n">parameter_set</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Ai2020
+Chen2020
+Ecker2015
+Marquis2019
+Mohtat2020
+NCA_Kim2011
+OKane2022
+ORegan2022
+Prada2013
+Ramadass2004
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_1.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_2.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_2.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_3.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_4.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_4.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_5.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_6.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_6.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_7.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_7.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_8.png" src="../../../../_images/source_examples_notebooks_models_electrode-state-of-health_18_8.png" />
+</div>
+</div>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="链接到此标题。">#</a></h2>
+<p>The relevant papers for this notebook are:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pybamm</span><span class="o">.</span><span class="n">print_citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] Weilong Ai, Ludwig Kraft, Johannes Sturm, Andreas Jossen, and Billy Wu. Electrochemical thermal-mechanical modelling of stress inhomogeneity in lithium-ion pouch cells. Journal of The Electrochemical Society, 167(1):013512, 2019. doi:10.1149/2.0122001JES.
+[2] Joel A. E. Andersson, Joris Gillis, Greg Horn, James B. Rawlings, and Moritz Diehl. CasADi – A software framework for nonlinear optimization and optimal control. Mathematical Programming Computation, 11(1):1–36, 2019. doi:10.1007/s12532-018-0139-4.
+[3] Daniel R Baker and Mark W Verbrugge. Multi-species, multi-reaction model for porous intercalation electrodes: part i. model formulation and a perturbation solution for low-scan-rate, linear-sweep voltammetry of a spinel lithium manganese oxide electrode. Journal of The Electrochemical Society, 165(16):A3952, 2018.
+[4] Chang-Hui Chen, Ferran Brosa Planella, Kieran O&#39;Regan, Dominika Gastol, W. Dhammika Widanage, and Emma Kendrick. Development of Experimental Techniques for Parameterization of Multi-scale Lithium-ion Battery Models. Journal of The Electrochemical Society, 167(8):080534, 2020. doi:10.1149/1945-7111/ab9050.
+[5] Madeleine Ecker, Stefan Käbitz, Izaro Laresgoiti, and Dirk Uwe Sauer. Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: II. Model Validation. Journal of The Electrochemical Society, 162(9):A1849–A1857, 2015. doi:10.1149/2.0541509jes.
+[6] Madeleine Ecker, Thi Kim Dung Tran, Philipp Dechent, Stefan Käbitz, Alexander Warnecke, and Dirk Uwe Sauer. Parameterization of a Physico-Chemical Model of a Lithium-Ion Battery: I. Determination of Parameters. Journal of the Electrochemical Society, 162(9):A1836–A1848, 2015. doi:10.1149/2.0551509jes.
+[7] Alastair Hales, Laura Bravo Diaz, Mohamed Waseem Marzook, Yan Zhao, Yatish Patel, and Gregory Offer. The cell cooling coefficient: a standard to define heat rejection from lithium-ion batteries. Journal of The Electrochemical Society, 166(12):A2383, 2019.
+[8] Charles R. Harris, K. Jarrod Millman, Stéfan J. van der Walt, Ralf Gommers, Pauli Virtanen, David Cournapeau, Eric Wieser, Julian Taylor, Sebastian Berg, Nathaniel J. Smith, and others. Array programming with NumPy. Nature, 585(7825):357–362, 2020. doi:10.1038/s41586-020-2649-2.
+[9] Gi-Heon Kim, Kandler Smith, Kyu-Jin Lee, Shriram Santhanagopalan, and Ahmad Pesaran. Multi-domain modeling of lithium-ion batteries encompassing multi-physics in varied length scales. Journal of the Electrochemical Society, 158(8):A955–A969, 2011. doi:10.1149/1.3597614.
+[10] Scott G. Marquis, Valentin Sulzer, Robert Timms, Colin P. Please, and S. Jon Chapman. An asymptotic derivation of a single particle model with electrolyte. Journal of The Electrochemical Society, 166(15):A3693–A3706, 2019. doi:10.1149/2.0341915jes.
+[11] Peyman Mohtat, Suhak Lee, Jason B Siegel, and Anna G Stefanopoulou. Towards better estimability of electrode-specific state of health: decoding the cell expansion. Journal of Power Sources, 427:101–111, 2019.
+[12] Peyman Mohtat, Suhak Lee, Valentin Sulzer, Jason B. Siegel, and Anna G. Stefanopoulou. Differential Expansion and Voltage Model for Li-ion Batteries at Practical Charging Rates. Journal of The Electrochemical Society, 167(11):110561, 2020. doi:10.1149/1945-7111/aba5d1.
+[13] Simon E. J. O&#39;Kane, Ian D. Campbell, Mohamed W. J. Marzook, Gregory J. Offer, and Monica Marinescu. Physical origin of the differential voltage minimum associated with lithium plating in li-ion batteries. Journal of The Electrochemical Society, 167(9):090540, may 2020. URL: https://doi.org/10.1149/1945-7111/ab90ac, doi:10.1149/1945-7111/ab90ac.
+[14] Kieran O&#39;Regan, Ferran Brosa Planella, W. Dhammika Widanage, and Emma Kendrick. Thermal-electrochemical parameters of a high energy lithium-ion cylindrical battery. Electrochimica Acta, 425:140700, 2022. doi:10.1016/j.electacta.2022.140700.
+[15] Simon E. J. O&#39;Kane, Weilong Ai, Ganesh Madabattula, Diego Alonso-Alvarez, Robert Timms, Valentin Sulzer, Jacqueline Sophie Edge, Billy Wu, Gregory J. Offer, and Monica Marinescu. Lithium-ion battery degradation: how to model it. Phys. Chem. Chem. Phys., 24:7909-7922, 2022. URL: http://dx.doi.org/10.1039/D2CP00417H, doi:10.1039/D2CP00417H.
+[16] Eric Prada, D. Di Domenico, Y. Creff, J. Bernard, Valérie Sauvant-Moynot, and François Huet. A simplified electrochemical and thermal aging model of LiFePO4-graphite Li-ion batteries: power and capacity fade simulations. Journal of The Electrochemical Society, 160(4):A616, 2013. doi:10.1149/2.053304jes.
+[17] P Ramadass, Bala Haran, Parthasarathy M Gomadam, Ralph White, and Branko N Popov. Development of first principles capacity fade model for li-ion cells. Journal of the Electrochemical Society, 151(2):A196, 2004. doi:10.1149/1.1634273.
+[18] Giles Richardson, Ivan Korotkin, Rahifa Ranom, Michael Castle, and Jamie M. Foster. Generalised single particle models for high-rate operation of graded lithium-ion electrodes: systematic derivation and validation. Electrochimica Acta, 339:135862, 2020. doi:10.1016/j.electacta.2020.135862.
+[19] Valentin Sulzer, Scott G. Marquis, Robert Timms, Martin Robinson, and S. Jon Chapman. Python Battery Mathematical Modelling (PyBaMM). Journal of Open Research Software, 9(1):14, 2021. doi:10.5334/jors.309.
+[20] Mark Verbrugge, Daniel Baker, Brian Koch, Xingcheng Xiao, and Wentian Gu. Thermodynamic model for substitutional materials: application to lithiated graphite, spinel manganese oxide, iron phosphate, and layered nickel-manganese-cobalt oxide. Journal of The Electrochemical Society, 164(11):E3243, 2017.
+[21] Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, and others. SciPy 1.0: fundamental algorithms for scientific computing in Python. Nature Methods, 17(3):261–272, 2020. doi:10.1038/s41592-019-0686-2.
+[22] Andrew Weng, Jason B Siegel, and Anna Stefanopoulou. Differential voltage analysis for battery manufacturing process control. arXiv preprint arXiv:2303.07088, 2023.
+[23] Yan Zhao, Yatish Patel, Teng Zhang, and Gregory J Offer. Modeling the effects of thermal gradients induced by tab and surface cooling on lithium ion cell performance. Journal of The Electrochemical Society, 165(13):A3169, 2018.
+
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DFN.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">Doyle-Fuller-Newman Model (DFN)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="graded-electrodes.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">Simulating graded electrodes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Create-and-solve-model">Create and solve model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Solve-for-electrode-SOH-variables">Solve for electrode SOH variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#Check-against-simulations">Check against simulations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#How-does-electrode-SOH-depend-on-cyclable-lithium">How does electrode SOH depend on cyclable lithium</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#References">References</a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  
+  <div class="tocsection editthispage">
+    <a href="https://github.com/pybamm-team/pybamm/edit/main/docs/source/examples/notebooks/models/electrode-state-of-health.ipynb">
+      <i class="fa-solid fa-pencil"></i>
+      
+      
+        
+          由 GitHub 编辑
+        
+      
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2018, The PyBaMM Team.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.17.1构建.
+</p></div>
+      
+        <div class="footer-item"><p class="last-updated">
+  最后更新于 2025-08-05.
+  <br/>
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
